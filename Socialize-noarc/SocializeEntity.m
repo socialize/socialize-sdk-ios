@@ -20,6 +20,7 @@
 @synthesize  shares = _shares;
 @synthesize  meta = _meta;
 @synthesize  userActionSummary = _userActionSummary;
+@synthesize  type = _type;
 
 -(void)dealloc
 {

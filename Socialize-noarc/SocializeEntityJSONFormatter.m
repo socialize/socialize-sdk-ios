@@ -19,6 +19,7 @@
  
     [toEntity setKey:[JSONDictionary objectForKey:@"key"]];
     [toEntity setName:[JSONDictionary objectForKey:@"name"]];
+    [toEntity setType:[JSONDictionary objectForKey:@"type"]];
     [toEntity setViews:[[JSONDictionary objectForKey:@"views"]intValue]];
     [toEntity setLikes:[[JSONDictionary objectForKey:@"likes"]intValue]];
     [toEntity setComments:[[JSONDictionary objectForKey:@"comments"]intValue]];  
@@ -34,6 +35,8 @@
     id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
     [JSONFormatDictionary setObject:[fromEntity key] forKey:@"key"];
     [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
+    
+    [JSONFormatDictionary setValue:[fromEntity type] forKey:@"type"];
     
     if ([fromEntity meta] != nil) {
         [JSONFormatDictionary setObject:[fromEntity meta] forKey:@"meta"];

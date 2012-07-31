@@ -13,9 +13,13 @@
 - (void)testEntityWrappers {
     NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity_target", _cmd]];
     SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Entity target"];
+    NSString *testType = @"testType";
+    entity.type = testType;
     
     // Add entity
     id<SZEntity> createdEntity = [self addEntity:entity];
+    
+    GHAssertEqualStrings([createdEntity type], testType, @"Bad type");
     
     // Get entities (app-wide)
     NSArray *entities = [self getEntities];

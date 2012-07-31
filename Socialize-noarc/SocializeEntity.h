@@ -31,6 +31,9 @@
  */
 -(void)setName:(NSString *)name;
 
+-(NSString *)type;
+-(void)setType:(NSString *)type;
+
 /**Get views' count*/
 -(int)views;
 
@@ -89,6 +92,9 @@
 @property (nonatomic, copy) NSString * key;
 /**Entity name*/
 @property (nonatomic, copy) NSString * name;
+
+@property (nonatomic, copy) NSString * type;
+
 /**Views' count*/
 @property (nonatomic, assign) int views; 
 /**Likes' count*/
