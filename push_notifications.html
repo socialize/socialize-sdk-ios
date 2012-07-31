@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.2 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.2.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.2',
+        VERSION:     '2.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.2.1 documentation" href="index.html" />
     <link rel="next" title="Entities" href="entities.html" />
     <link rel="prev" title="Facebook" href="facebook.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -184,15 +184,33 @@ Socialize apps (one for Development, and one for Production).</p>
 <ul class="simple">
 <li>Add the lines below to allow Socialize to handle the notification.</li>
 </ul>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didReceiveRemoteNotification:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">handleNotification:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
+</span><span class="hll">    <span class="k">if</span> <span class="p">([[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="n">applicationState</span><span class="p">]</span> <span class="o">==</span> <span class="n">UIApplicationStateActive</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">openNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification (background).&quot;</span><span class="p">);</span>
+</span><span class="hll">            
+</span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification (background).&quot;</span><span class="p">);</span>
+</span><span class="hll">            
+</span><span class="hll">        <span class="p">}</span>
+</span><span class="hll">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="hll">        
+</span><span class="hll">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Notification received in foreground&quot;</span><span class="p">);</span>
+</span><span class="hll">        
+</span><span class="hll">        <span class="c1">// You may want to display an alert or other popup instead of immediately opening the notification here.</span>
+</span><span class="hll">        
+</span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">openNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification (foreground).&quot;</span><span class="p">);</span>
+</span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification (foreground).&quot;</span><span class="p">);</span>
+</span><span class="hll">        <span class="p">}</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll"><span class="p">}</span>
+</span>
+<span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didReceiveRemoteNotification:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
 </span><span class="hll">    
 </span><span class="hll">    <span class="c1">// Handle Socialize notification at foreground</span>
-</span><span class="hll">    <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
-</span><span class="hll">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification on foreground&quot;</span><span class="p">);</span>
-</span><span class="hll">        <span class="k">return</span><span class="p">;</span>
-</span><span class="hll">    <span class="p">}</span>
-</span><span class="hll">    
-</span><span class="hll">    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification on foreground&quot;</span><span class="p">);</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
 </span><span class="hll"><span class="p">}</span>
 </span>
 <span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
@@ -201,15 +219,11 @@ Socialize apps (one for Development, and one for Production).</p>
 
     <span class="c1">// Register for Apple Push Notification Service</span>
     <span class="p">[</span><span class="n">application</span> <span class="nl">registerForRemoteNotificationTypes:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
-<span class="hll">
-</span><span class="hll">    <span class="c1">// Handle Socialize notification at launch</span>
-</span><span class="hll">    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
+
+    <span class="c1">// Handle Socialize notification at launch</span>
+<span class="hll">    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
 </span><span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
-</span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification on app launch.&quot;</span><span class="p">);</span>
-</span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification on app launch.&quot;</span><span class="p">);</span>
-</span><span class="hll">        <span class="p">}</span>
+</span><span class="hll">        <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
 </span><span class="hll">    <span class="p">}</span>
 </span>    
     <span class="c1">//your application specific code</span>
@@ -221,7 +235,7 @@ Socialize apps (one for Development, and one for Production).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>Socialize will not currently do any foreground handling of notifications. If a notification is received while the Application is in the foreground, it will be ignored.</li>
+<li>Socialize will not currently do any UI display for notifications received while in the foreground. If you need special behavior for foreground notifications, you should add it on your own. See the bottom else block in handleNotification: above.</li>
 <li>Our method call will let you know if the notification was a Socialize notification. This allows you to use the logic below to also handle notifications of your own, if you need to.</li>
 </ul>
 </div>
@@ -248,11 +262,7 @@ loader called <strong>SampleEntityLoader</strong>. This class is not intended fo
     <span class="c1">// Handle Socialize notification at launch</span>
     <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification on app launch.&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize did not handle the notification on app launch.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
     <span class="p">}</span>
 
 <span class="hll">    <span class="c1">// Specify a Socialize entity loader block</span>
@@ -311,7 +321,26 @@ a comma-separated list of user ids.</p>
 <img alt="images/send_targeted_smartalert.png" src="images/send_targeted_smartalert.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Socialize v1.6 or later is required to receive target SmartAlerts</p>
+<p class="last">Socialize v1.6 or later is required to receive targeted SmartAlerts</p>
+</div>
+</div>
+<div class="section" id="subscribing-to-entity-subscribers-without-comments">
+<h2>Subscribing to Entity Subscribers (Without Comments)<a class="headerlink" href="#subscribing-to-entity-subscribers-without-comments" title="Permalink to this headline">¶</a></h2>
+<p>It&#8217;s possible to subscribe your users to specific entities, and send alerts only to users
+who have subscribed to these entities. The builtin UI controllers do not expose this
+functionality, but if you wish, you can handle the subscription on your own.</p>
+<ol class="arabic simple">
+<li>Open the Socialize web dashboard for your app at getsocialize.com / &#8220;My Apps&#8221;</li>
+<li>Select the &#8220;Entities&#8221; tab</li>
+<li>Navigate to or search for your entity by key or id</li>
+<li>Click &#8216;Send SmartAlert&#8217; underneath &#8216;I want to...&#8217; on the right</li>
+<li>Fill out the alert content</li>
+<li>Check &#8216;Send only to explicitly subscribed users&#8217;</li>
+</ol>
+<img alt="images/send_subscriber_smartalert.png" src="images/send_subscriber_smartalert.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Socialize v2.2.1 or later is required to receive subscriber-only smart alerts</p>
 </div>
 </div>
 <div class="section" id="programmatically-dismissing-notification-popups">
@@ -398,6 +427,7 @@ web interface.</p>
 <li class="toctree-l2"><a class="reference internal" href="#step-6-configuring-notifications-in-your-app">Step 6: Configuring Notifications in Your App</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-smartalerts">Testing SmartAlerts™</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sending-targeted-smartalerts">Sending Targeted SmartAlerts™</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subscribing-to-entity-subscribers-without-comments">Subscribing to Entity Subscribers (Without Comments)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#programmatically-dismissing-notification-popups">Programmatically Dismissing Notification Popups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-notifications">Troubleshooting Notifications</a></li>
 </ul>
@@ -440,7 +470,7 @@ web interface.</p>
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

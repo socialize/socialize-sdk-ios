@@ -121,11 +121,11 @@ Handle Notifications
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-handle-snippet
   :end-before: end-handle-snippet
-  :emphasize-lines: 0-10,18-27
+  :emphasize-lines: 1-22,24-28,38-41
 
 .. note::
 
-    * Socialize will not currently do any foreground handling of notifications. If a notification is received while the Application is in the foreground, it will be ignored.
+    * Socialize will not currently do any UI display for notifications received while in the foreground. If you need special behavior for foreground notifications, you should add it on your own. See the bottom else block in handleNotification: above.
     * Our method call will let you know if the notification was a Socialize notification. This allows you to use the logic below to also handle notifications of your own, if you need to.
  
 Defining an Entity Loader
@@ -148,7 +148,7 @@ Copy the lines below to add an entity loader
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-entity-loader-snippet
   :end-before: end-entity-loader-snippet
-  :emphasize-lines: 18-22
+  :emphasize-lines: 14-18
 
 .. image:: images/entity_loader.png
 
@@ -187,7 +187,24 @@ a comma-separated list of user ids.
 
 .. image:: images/send_targeted_smartalert.png
 
-.. note:: Socialize v1.6 or later is required to receive target SmartAlerts
+.. note:: Socialize v1.6 or later is required to receive targeted SmartAlerts
+
+Subscribing to Entity Subscribers (Without Comments)
+-----------------------------------------------------------------------------------
+It's possible to subscribe your users to specific entities, and send alerts only to users
+who have subscribed to these entities. The builtin UI controllers do not expose this
+functionality, but if you wish, you can handle the subscription on your own.
+
+#. Open the Socialize web dashboard for your app at getsocialize.com / "My Apps"
+#. Select the "Entities" tab
+#. Navigate to or search for your entity by key or id
+#. Click 'Send SmartAlert' underneath 'I want to...' on the right
+#. Fill out the alert content
+#. Check 'Send only to explicitly subscribed users'
+
+.. image:: images/send_subscriber_smartalert.png
+
+.. note:: Socialize v2.2.1 or later is required to receive subscriber-only smart alerts
 
 Programmatically Dismissing Notification Popups
 ----------------------------------------
