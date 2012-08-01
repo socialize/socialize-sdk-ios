@@ -15,9 +15,11 @@
 + (id)defaultOptions;
 
 @property (nonatomic, assign) BOOL dontShareLocation;
-@property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network, NSMutableDictionary *params)  __attribute__((deprecated("Please use willAttemptPostToSocialNetworkBlock, which allows for more complete customization")));
-@property (nonatomic, copy) void (^willAttemptPostToSocialNetworkBlock)(SZSocialNetwork network, SZSocialNetworkPostData *postData);
-@property (nonatomic, copy) void (^didPostToSocialNetworkBlock)(SZSocialNetwork network);
-@property (nonatomic, copy) void (^didFailToPostToSocialNetworkBlock)(SZSocialNetwork network);
+@property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network, NSMutableDictionary *params)  __attribute__((deprecated("Please use willAttemptPostingToSocialNetworkBlock, which allows for more complete customization")));
+@property (nonatomic, copy) void (^didPostToSocialNetworkBlock)(SZSocialNetwork network) __attribute__((deprecated("Please use didSucceedPostingToSocialNetworkBlock, which allows for more complete customization")));
+@property (nonatomic, copy) void (^didFailToPostToSocialNetworkBlock)(SZSocialNetwork network) __attribute__((deprecated("Please use didFailPostingToSocialNetworkBlock, which allows for more complete customization")));
+@property (nonatomic, copy) void (^willAttemptPostingToSocialNetworkBlock)(SZSocialNetwork network, SZSocialNetworkPostData *postData);
+@property (nonatomic, copy) void (^didSucceedPostingToSocialNetworkBlock)(SZSocialNetwork network, id result);
+@property (nonatomic, copy) void (^didFailPostingToSocialNetworkBlock)(SZSocialNetwork network, NSError *error);
 
 @end

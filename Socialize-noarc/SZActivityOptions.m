@@ -13,7 +13,9 @@
 @synthesize willPostToSocialNetworkBlock = willPostToSocialNetworkBlock_;
 @synthesize didPostToSocialNetworkBlock = didPostToSocialNetworkBlock_;
 @synthesize didFailToPostToSocialNetworkBlock = _didFailToPostToSocialNetworkBlock;
-@synthesize willAttemptPostToSocialNetworkBlock = _willAttemptPostToSocialNetworkBlock;
+@synthesize willAttemptPostingToSocialNetworkBlock = _willAttemptPostingToSocialNetworkBlock;
+@synthesize didSucceedPostingToSocialNetworkBlock = _didSucceedPostingToSocialNetworkBlock;
+@synthesize didFailPostingToSocialNetworkBlock = _didFailPostingToSocialNetworkBlock;
 
 + (id)defaultOptions {
     return [[self alloc] init];

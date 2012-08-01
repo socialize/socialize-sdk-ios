@@ -41,20 +41,20 @@
     SZLikeOptions *options = [SZLikeOptions defaultOptions];
 
     __block BOOL willPostCalled = NO;
-    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         GHAssertEquals(network, SZSocialNetworkFacebook, @"Should be facebook");
         GHAssertEqualStrings(postData.path, @"me/og.likes", @"Should be og likes endpoint");
         willPostCalled = YES;
     };
     
     __block BOOL didPostCalled = NO;
-    options.didPostToSocialNetworkBlock = ^(SZSocialNetwork network) {
+    options.didSucceedPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
         GHAssertEquals(network, SZSocialNetworkFacebook, @"Should be facebook");
         didPostCalled = YES;
     };
 
     __block BOOL didFailCalled = NO;
-    options.didFailToPostToSocialNetworkBlock = ^(SZSocialNetwork network) {
+    options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
         didFailCalled = YES;
     };
     
@@ -90,17 +90,17 @@
     SZLikeOptions *options = [SZLikeOptions defaultOptions];
     
     __block BOOL willPostCalled = NO;
-    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         willPostCalled = YES;
     };
     
     __block BOOL didPostCalled = NO;
-    options.didPostToSocialNetworkBlock = ^(SZSocialNetwork network) {
+    options.didSucceedPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
         didPostCalled = YES;
     };
     
     __block BOOL didFailCalled = NO;
-    options.didFailToPostToSocialNetworkBlock = ^(SZSocialNetwork network) {
+    options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
         didFailCalled = YES;
     };
     
@@ -134,20 +134,20 @@
     SZLikeOptions *options = [SZLikeOptions defaultOptions];
     
     __block BOOL willPostCalled = NO;
-    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         GHAssertEquals(network, SZSocialNetworkFacebook, @"Should be facebook");
         GHAssertEqualStrings(postData.path, @"me/links", @"Should be links endpoint");
         willPostCalled = YES;
     };
     
     __block BOOL didPostCalled = NO;
-    options.didPostToSocialNetworkBlock = ^(SZSocialNetwork network) {
+    options.didSucceedPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
         GHAssertEquals(network, SZSocialNetworkFacebook, @"Should be facebook");
         didPostCalled = YES;
     };
     
     __block BOOL didFailCalled = NO;
-    options.didFailToPostToSocialNetworkBlock = ^(SZSocialNetwork network) {
+    options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
         didFailCalled = YES;
     };
     

@@ -263,16 +263,18 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                 SZSocialNetworkPostData *postData = defaultFacebookPostData(activity);
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
-
                 BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData.params);
-
 #pragma GCC diagnostic pop
                 
-                BLOCK_CALL_2(options.willAttemptPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
+                BLOCK_CALL_2(options.willAttemptPostingToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
 
                 [SZFacebookUtils postWithGraphPath:postData.path params:postData.params success:^(id result) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkFacebook);
-                    
+#pragma GCC diagnostic pop
+                    BLOCK_CALL_2(options.didSucceedPostingToSocialNetworkBlock, SZSocialNetworkFacebook, result);
+
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
                     
@@ -283,7 +285,11 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                     }
                     
                     // Failed Wall post is still a success. Handle separately in options.
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
                     BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkFacebook);
+#pragma GCC diagnostic pop
+                    BLOCK_CALL_2(options.didFailPostingToSocialNetworkBlock, SZSocialNetworkFacebook, error);
 
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
@@ -296,9 +302,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
-
                 BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkTwitter, params);
-
 #pragma GCC diagnostic pop
 
                 SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
@@ -306,16 +310,23 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                 postData.path = @"/1/statuses/update.json";
                 postData.entity = [activity entity];
                 postData.propagationInfo = [activity propagationInfoResponse];
-                BLOCK_CALL_2(options.willAttemptPostToSocialNetworkBlock, SZSocialNetworkTwitter, postData);
+                BLOCK_CALL_2(options.willAttemptPostingToSocialNetworkBlock, SZSocialNetworkTwitter, postData);
 
                 [SZTwitterUtils postWithPath:postData.path params:postData.params success:^(id result) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkTwitter);
+#pragma GCC diagnostic pop
+                    BLOCK_CALL_2(options.didSucceedPostingToSocialNetworkBlock, SZSocialNetworkTwitter, result);
 
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
                 } failure:^(NSError *error) {
                     
-                    BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkTwitter);
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
+                    BLOCK_CALL_2(options.didFailPostingToSocialNetworkBlock, SZSocialNetworkTwitter, error);
+#pragma GCC diagnostic pop
 
                     NSLog(@"Socialize Warning: Failed to post to Twitter feed: %@ / %@", [error localizedDescription], [error userInfo]);
                     [finishedNetworksLock lock];

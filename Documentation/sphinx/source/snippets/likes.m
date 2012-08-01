@@ -17,7 +17,7 @@
     SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
     
     SZLikeOptions *options = [SZLikeUtils userLikeOptions];
-    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         [postData.params setObject:@"Custom message" forKey:@"message"];
     };
 

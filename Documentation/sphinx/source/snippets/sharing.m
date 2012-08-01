@@ -78,7 +78,7 @@
     
     // http://developers.facebook.com/docs/reference/api/link/
     
-    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         [postData.params setObject:@"Hey check out this site i found" forKey:@"message"];
         [postData.params setObject:@"http://www.facebook.com" forKey:@"link"];
         [postData.params setObject:@"A caption" forKey:@"caption"];
