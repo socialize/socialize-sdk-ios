@@ -28,7 +28,7 @@
     
     SZLinkAndGetPreferredNetworks(viewController, ^(SZSocialNetwork preferredNetworks) {
         
-        [self likeWithEntity:entity options:[self userLikeOptions] networks:preferredNetworks success:success failure:failure];
+        [self likeWithEntity:entity options:options networks:preferredNetworks success:success failure:failure];
         
     }, ^{
         

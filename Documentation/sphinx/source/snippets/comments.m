@@ -73,8 +73,8 @@
     SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
     
     SZCommentOptions *options = [SZCommentUtils userCommentOptions];
-    options.willPostToSocialNetworkBlock = ^(SZSocialNetwork network, NSMutableDictionary *params) {
-        [params setObject:@"Custom message" forKey:@"message"];
+    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        [postData.params setObject:@"Custom message" forKey:@"message"];
     };
     
     [SZCommentUtils addCommentWithEntity:entity text:@"A Comment!" options:options networks:SZAvailableSocialNetworks() success:^(id<SZComment> comment) {

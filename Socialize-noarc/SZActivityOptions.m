@@ -13,6 +13,7 @@
 @synthesize willPostToSocialNetworkBlock = willPostToSocialNetworkBlock_;
 @synthesize didPostToSocialNetworkBlock = didPostToSocialNetworkBlock_;
 @synthesize didFailToPostToSocialNetworkBlock = _didFailToPostToSocialNetworkBlock;
+@synthesize willAttemptPostToSocialNetworkBlock = _willAttemptPostToSocialNetworkBlock;
 
 + (SZActivityOptions*)defaultOptions {
     return [[self alloc] init];

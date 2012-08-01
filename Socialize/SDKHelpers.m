@@ -241,16 +241,28 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                     message = [(id)activity text];
                 }
                 
-                NSMutableDictionary *postData = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                NSMutableDictionary *postParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                  name, @"name",
                                                  message, @"message",
                                                  link, @"link",
                                                  @"link", @"type",
                                                  nil];
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
+
+                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postParams);
+
+#pragma GCC diagnostic pop
                 
-                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
+                SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
+                postData.params = postParams;
+                postData.path = @"me/links";
+                postData.entity = [activity entity];
+                postData.propagationInfo = [activity propagationInfoResponse];
                 
-                [SZFacebookUtils postWithGraphPath:@"me/links" params:postData success:^(id result) {
+                BLOCK_CALL_2(options.willAttemptPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
+
+                [SZFacebookUtils postWithGraphPath:postData.path params:postData.params success:^(id result) {
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkFacebook);
                     
                     [finishedNetworksLock lock];
@@ -274,9 +286,21 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
                 NSString *text = [SZTwitterUtils defaultTwitterTextForActivity:activity];
                 NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:text forKey:@"status"];
                 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"
+
                 BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkTwitter, params);
 
-                [SZTwitterUtils postWithPath:@"/1/statuses/update.json" params:params success:^(id result) {
+#pragma GCC diagnostic pop
+
+                SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
+                postData.params = params;
+                postData.path = @"/1/statuses/update.json";
+                postData.entity = [activity entity];
+                postData.propagationInfo = [activity propagationInfoResponse];
+                BLOCK_CALL_2(options.willAttemptPostToSocialNetworkBlock, SZSocialNetworkTwitter, postData);
+
+                [SZTwitterUtils postWithPath:postData.path params:postData.params success:^(id result) {
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkTwitter);
 
                     [finishedNetworksLock lock];

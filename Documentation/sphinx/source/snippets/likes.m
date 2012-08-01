@@ -17,8 +17,8 @@
     SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
     
     SZLikeOptions *options = [SZLikeUtils userLikeOptions];
-    options.willPostToSocialNetworkBlock = ^(SZSocialNetwork network, NSMutableDictionary *params) {
-        [params setObject:@"Custom message" forKey:@"message"];
+    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        [postData.params setObject:@"Custom message" forKey:@"message"];
     };
 
     [SZLikeUtils likeWithEntity:entity options:nil networks:SZAvailableSocialNetworks() success:^(id<SZLike> like) {

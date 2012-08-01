@@ -78,12 +78,12 @@
     
     // http://developers.facebook.com/docs/reference/api/link/
     
-    options.willPostToSocialNetworkBlock = ^(SZSocialNetwork network, NSMutableDictionary *params) {
-        [params setObject:@"Hey check out this site i found" forKey:@"message"];
-        [params setObject:@"http://www.facebook.com" forKey:@"link"];
-        [params setObject:@"A caption" forKey:@"caption"];
-        [params setObject:@"Facebook" forKey:@"name"];
-        [params setObject:@"A Site" forKey:@"description"];
+    options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        [postData.params setObject:@"Hey check out this site i found" forKey:@"message"];
+        [postData.params setObject:@"http://www.facebook.com" forKey:@"link"];
+        [postData.params setObject:@"A caption" forKey:@"caption"];
+        [postData.params setObject:@"Facebook" forKey:@"name"];
+        [postData.params setObject:@"A Site" forKey:@"description"];
     };
     
     [SZShareUtils shareViaSocialNetworksWithEntity:entity networks:SZAvailableSocialNetworks() options:options success:^(id<SZShare> share) {

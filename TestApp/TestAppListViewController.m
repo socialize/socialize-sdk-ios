@@ -152,7 +152,13 @@ static TestAppListViewController *sharedSampleListViewController;
 
     NSMutableArray *likeRows = [NSMutableArray array];
     [likeRows addObject:[self rowWithIdentifier:kLikeEntityRow text:@"Like an Entity" executionBlock:^{
-        [SZLikeUtils likeWithViewController:self options:nil entity:self.entity success:nil failure:nil];
+        SZLikeOptions *options = [SZLikeUtils userLikeOptions];
+        options.willAttemptPostToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+            postData.path = @"me/feed";
+            [postData.params setObject:@"blah" forKey:@"description"];
+        };
+        
+        [SZLikeUtils likeWithViewController:self options:options entity:self.entity success:nil failure:nil];
     }]];
     
     NSMutableArray *facebookRows = [NSMutableArray array];
