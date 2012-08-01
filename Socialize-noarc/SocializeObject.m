@@ -14,6 +14,14 @@
 @synthesize objectID = _objectID;
 @synthesize fromServer = _fromServer;
 @synthesize serverDictionary = _serverDictionary;
+@synthesize extraParams = _extraParams;
+
+- (void)dealloc {
+    [_serverDictionary release];
+    [_extraParams release];
+    
+    [super dealloc];
+}
 
 - (id)copyWithZone:(NSZone *)zone {
     SocializeObject *copy = [[self class] allocWithZone:zone];

@@ -60,6 +60,8 @@
 }
 
 -(void)doToDictionary:(NSMutableDictionary *)dictionary fromObject:(id<SocializeObject>) fromObject
-{}
+{
+    [dictionary addEntriesFromDictionary:[fromObject extraParams]];
+}
 
 @end

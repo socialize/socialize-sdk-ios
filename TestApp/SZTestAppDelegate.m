@@ -24,6 +24,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [Socialize storeOGLikeEnabled:YES];
     [Socialize storeAnonymousAllowed:YES];
     [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
     [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];

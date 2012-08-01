@@ -43,6 +43,9 @@
     
     SZLike *like = [SZLike likeWithEntity:entity];
     ActivityCreatorBlock likeCreator = ^(id<SZLike> like, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
+        if ([Socialize OGLikeEnabled]) {
+            [like setExtraParams:[NSDictionary dictionaryWithObject:@"like" forKey:@"og_action"]];
+        }
         
         SZAuthWrapper(^{
             [[Socialize sharedSocialize] createLike:like success:createSuccess failure:createFailure];

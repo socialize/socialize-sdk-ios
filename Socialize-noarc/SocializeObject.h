@@ -30,6 +30,9 @@
 - (void)setServerDictionary:(NSDictionary*)serverDictionary;
 - (NSDictionary*)serverDictionary;
 
+- (void)setExtraParams:(NSDictionary*)extraParams;
+- (NSDictionary*)extraParams;
+
 @end
 
 /**
@@ -46,5 +49,6 @@
 
 @property (nonatomic, assign, getter=isFromServer) BOOL fromServer;
 @property (nonatomic, retain) NSDictionary *serverDictionary;
+@property (nonatomic, retain) NSDictionary *extraParams;
 
 @end
