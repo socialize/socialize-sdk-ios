@@ -96,5 +96,37 @@
 
 // end-post-image-snippet
 
+// begin-set-entity-type-snippet
+
+- (void)createEntityWithType {
+    SZEntity *entity = [SZEntity entityWithKey:@"http://myentity.com" name:@"My Name"];
+    
+    // MUST be a valid OG type
+    [entity setType:@"video.movie"];
+}
+
+// end-set-entity-type-snippet
+
+@end
+
+@implementation facebook (oglikes)
+
+// begin-enable-og-likes-snippet
+
+//import the socialize header
+#import <Socialize/Socialize.h>
+
+#pragma mark
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    [Socialize storeOGLikeEnabled:YES];
+    
+    //your application specific code
+    
+    return YES;
+}
+
+// end-enable-og-likes-snippet
+
+
 
 @end

@@ -96,6 +96,8 @@ Entity Activity
 
 For information on retrieving a social activity stream for a given entity, see the `Actions Section <actions.html#working-with-actions>`_.
 
+.. _entity_no_url:
+
 Entities Without URLs
 ---------------------
 
