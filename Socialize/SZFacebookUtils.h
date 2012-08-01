@@ -12,6 +12,7 @@
 
 @interface SZFacebookUtils : NSObject
 
++ (NSArray*)requiredPermissions;
 + (void)setAccessToken:(NSString*)accessToken expirationDate:(NSDate*)expirationDate;
 + (void)setAppId:(NSString*)appId;
 + (NSString*)accessToken;

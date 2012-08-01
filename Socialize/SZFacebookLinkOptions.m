@@ -14,7 +14,6 @@
 
 + (SZFacebookLinkOptions*)defaultOptions {
     SZFacebookLinkOptions *options = [[SZFacebookLinkOptions alloc] init];
-    options.permissions = [NSArray arrayWithObjects:@"publish_stream", @"offline_access", nil];
     
     return options;
 }

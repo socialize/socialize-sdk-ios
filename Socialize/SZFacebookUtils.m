@@ -39,6 +39,10 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeFacebookAuthExpirationDate];
 }
 
++ (NSArray*)requiredPermissions {
+    return [NSArray arrayWithObjects:@"publish_stream", nil];
+}
+
 + (BOOL)isAvailable {
     BOOL available = [SocializeThirdPartyFacebook available];
     if (!available) SZEmitUnconfiguredFacebookMessage();
@@ -77,7 +81,7 @@
     
     NSString *facebookAppId = [SocializeThirdPartyFacebook facebookAppId];
     NSString *urlSchemeSuffix = [SocializeThirdPartyFacebook facebookUrlSchemeSuffix];
-    NSArray *permissions = options.permissions != nil ? options.permissions : [NSArray arrayWithObjects:@"publish_stream", @"offline_access", nil];
+    NSArray *permissions = options.permissions != nil ? options.permissions : [self requiredPermissions];
     
     [[SocializeFacebookAuthHandler sharedFacebookAuthHandler]
      authenticateWithAppId:facebookAppId
