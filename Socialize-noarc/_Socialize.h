@@ -865,6 +865,10 @@ otherwise you will get a failure.
 
 + (BOOL)anonymousAllowed;
 
++ (void)storeOGLikeEnabled:(BOOL)OGLikedEnabled;
+
++ (BOOL)OGLikeEnabled;
+
 /**
  Get single entity by id
  

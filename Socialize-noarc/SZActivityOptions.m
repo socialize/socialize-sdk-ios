@@ -15,7 +15,7 @@
 @synthesize didFailToPostToSocialNetworkBlock = _didFailToPostToSocialNetworkBlock;
 @synthesize willAttemptPostToSocialNetworkBlock = _willAttemptPostToSocialNetworkBlock;
 
-+ (SZActivityOptions*)defaultOptions {
++ (id)defaultOptions {
     return [[self alloc] init];
 }
 

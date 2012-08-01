@@ -117,6 +117,8 @@ NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
 NSString *const SZLikeButtonDidChangeStateNotification = @"SZLikeButtonDidChangeStateNotification";
 
+NSString *const kSocializeOGLikeEnabled = @"kSocializeOGLikeEnabled";
+
 NSString *const SocializeShouldDismissAllNotificationControllersNotification = @"SocializeShouldDismissAllNotificationControllersNotification";
 
 
@@ -286,6 +288,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, 
 
 SYNTH_DEFAULTS_BOOL_PROPERTY(AuthenticationNotRequired, authenticationNotRequired, kSocializeAuthenticationNotRequired)
 SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnonymousAllowed);
+SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabled);
 
 +(void)storeApplicationLink:(NSString*)link {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

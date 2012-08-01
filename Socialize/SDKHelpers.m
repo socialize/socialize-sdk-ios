@@ -198,7 +198,37 @@ void SZAttemptAction(NSTimeInterval retryInterval, SZAttemptActionBlock attempt)
     attemptBlock();
 }
 
-void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error)) {
+SZPostDataBuilderBlock SZDefaultLinkPostData() {
+    return ^(id<SZActivity> activity) {
+        // This shortened link returned from the server encapsulates all the Socialize magic
+        NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"entity_url"];
+        
+        NSString *name = [activity.entity displayName];
+        NSString *link = shareURL;
+        
+        NSString *message = @"";
+        if ([activity respondsToSelector:@selector(text)]) {
+            message = [(id)activity text];
+        }
+        
+        NSMutableDictionary *postParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           name, @"name",
+                                           message, @"message",
+                                           link, @"link",
+                                           @"link", @"type",
+                                           nil];
+        SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
+        postData.params = postParams;
+        postData.path = @"me/links";
+        postData.entity = [activity entity];
+        postData.propagationInfo = [activity propagationInfoResponse];
+        
+
+        return postData;
+    };
+}
+
+void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock defaultFacebookPostData, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error)) {
     if (networks & SZSocialNetworkFacebook && (![SZFacebookUtils isAvailable] || ![SZFacebookUtils isLinked])) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookUnavailable]);
         return;
@@ -230,35 +260,13 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZActivityOptions *option
         creator(activity, ^(id<SZActivity> activity) {
             if (networks & SZSocialNetworkFacebook) {
                 
-                // This shortened link returned from the server encapsulates all the Socialize magic
-                NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"entity_url"];
-                
-                NSString *name = [activity.entity displayName];
-                NSString *link = shareURL;
-                
-                NSString *message = @"";
-                if ([activity respondsToSelector:@selector(text)]) {
-                    message = [(id)activity text];
-                }
-                
-                NSMutableDictionary *postParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                 name, @"name",
-                                                 message, @"message",
-                                                 link, @"link",
-                                                 @"link", @"type",
-                                                 nil];
+                SZSocialNetworkPostData *postData = defaultFacebookPostData(activity);
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
 
-                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postParams);
+                BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData.params);
 
 #pragma GCC diagnostic pop
-                
-                SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
-                postData.params = postParams;
-                postData.path = @"me/links";
-                postData.entity = [activity entity];
-                postData.propagationInfo = [activity propagationInfoResponse];
                 
                 BLOCK_CALL_2(options.willAttemptPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData);
 

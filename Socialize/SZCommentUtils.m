@@ -18,6 +18,8 @@
 #import "SZComposeCommentViewController.h"
 #import "SZCommentsListViewController.h"
 #import "socialize_globals.h"
+#import "SDKHelpers.h"
+
 
 @implementation SZCommentUtils
 
@@ -71,7 +73,7 @@
 
     };
     
-    SZCreateAndShareActivity(comment, options, networks, commentCreator, success, failure);
+    SZCreateAndShareActivity(comment, SZDefaultLinkPostData(), options, networks, commentCreator, success, failure);
 }
 
 + (void)addCommentWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {

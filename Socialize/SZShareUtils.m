@@ -80,7 +80,7 @@
         }, failure);
     };
                                      
-    SZCreateAndShareActivity(share, options, networks, shareCreator, success, failure);
+    SZCreateAndShareActivity(share, SZDefaultLinkPostData(), options, networks, shareCreator, success, failure);
 }
 
 + (NSString*)defaultMessageForShare:(id<SZShare>)share {

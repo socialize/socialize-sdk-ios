@@ -14,7 +14,6 @@
 #import "_Socialize.h"
 #import <OCMock/OCMock.h>
 
-
 id testSelf;
 
 @implementation SocializeTestCase
@@ -189,5 +188,86 @@ id testSelf;
 
 }
 
+- (void)succeedFacebookPostWithVerify:(void(^)(NSString *path, NSDictionary *params))verify {
+    [[[SZFacebookUtils expect] andDo4:^(NSString *path, NSDictionary *params, id success, id failure) {
+        
+        BLOCK_CALL_2(verify, path, params);
+
+        void (^successBlock)(id result) = success;
+        successBlock(nil);
+    }] postWithGraphPath:OCMOCK_ANY params:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)failFacebookPost {
+    [[[SZFacebookUtils expect] andDo4:^(NSString *path, NSDictionary *params, id success, id failure) {
+        void (^failureBlock)(NSError *error) = failure;
+        failureBlock(nil);
+    }] postWithGraphPath:OCMOCK_ANY params:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)succeedTwitterPost {
+    [[[SZTwitterUtils expect] andDo4:^(id _1, id _2, id success, id failure) {
+        void (^successBlock)(id result) = success;
+        successBlock(nil);
+    }] postWithPath:OCMOCK_ANY params:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)stubFacebookUsable {
+    [[[SZFacebookUtils stub] andReturnBool:YES] isAvailable];
+    [[[SZFacebookUtils stub] andReturnBool:YES] isLinked];
+}
+
+- (void)stubTwitterUsable {
+    [[[SZTwitterUtils stub] andReturnBool:YES] isAvailable];
+    [[[SZTwitterUtils stub] andReturnBool:YES] isLinked];
+}
+
+- (void)stubIsAuthenticated {
+    [[[SZUserUtils stub] andReturnBool:YES] userIsAuthenticated];
+}
+
+- (void)stubOGLikeEnabled {
+    [[[Socialize stub] andReturnBool:YES] OGLikeEnabled];
+}
+
+- (void)stubOGLikeDisabled {
+    [[[Socialize stub] andReturnBool:NO] OGLikeEnabled];
+}
+
+- (void)succeedShareCreate {
+    [[[self.mockSharedSocialize stub] andDo3:^(id _1, id success, id _3) {
+        void (^successBlock)(id result) = success;
+        successBlock(nil);
+    }] createShare:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)failShareCreate {
+    [[[self.mockSharedSocialize stub] andDo3:^(id _1, id _2, id failure) {
+        void (^failureBlock)(id result) = failure;
+        failureBlock(nil);
+    }] createShare:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)succeedLikeCreateWithVerify:(void(^)(id<SZLike>))verify {
+    [[[self.mockSharedSocialize expect] andDo3:^(id like, id success, id _3) {
+        BLOCK_CALL_1(verify, like);
+        void (^successBlock)(id result) = success;
+        successBlock(nil);
+    }] createLike:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)stubShouldShareLocation {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kSocializeShouldShareLocationKey];
+}
+
+- (id)succeedGetLocation {
+    id mockLocation = [OCMockObject niceMockForClass:[CLLocation class]];
+    [[[SZLocationUtils expect] andDo2:^(id success, id _2) {
+        void (^successBlock)(id result) = success;
+        successBlock(mockLocation);
+    }] getCurrentLocationWithSuccess:OCMOCK_ANY failure:OCMOCK_ANY];
+    
+    return mockLocation;
+}
 
 @end

@@ -12,7 +12,7 @@
 
 @interface SZActivityOptions : NSObject
 
-+ (SZActivityOptions*)defaultOptions;
++ (id)defaultOptions;
 
 @property (nonatomic, assign) BOOL dontShareLocation;
 @property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network, NSMutableDictionary *params)  __attribute__((deprecated("Please use willAttemptPostToSocialNetworkBlock, which allows for more complete customization")));

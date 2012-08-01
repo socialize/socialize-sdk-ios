@@ -14,6 +14,10 @@
 #import "SocializeService+Testing.h"
 #import "StringHelper.h"
 #import "_Socialize.h"
+#import "SZFacebookUtils.h"
+#import "SZTwitterUtils.h"
+#import "SZUserUtils.h"
+#import "SZLocationUtils.h"
 
 @class SocializeTestCase;
 
@@ -38,5 +42,18 @@ extern id testSelf;
 - (void)fakeCurrentUserNotAuthedInSocialize:(id)socialize;
 - (void)startMockingSharedSocialize;
 - (void)stopMockingSharedSocialize;
+- (void)succeedFacebookPostWithVerify:(void(^)(NSString *path, NSDictionary *params))verify;
+- (void)failFacebookPost;
+- (void)succeedTwitterPost;
+- (void)stubFacebookUsable;
+- (void)stubTwitterUsable;
+- (void)stubIsAuthenticated;
+- (void)succeedShareCreate;
+- (void)failShareCreate;
+- (void)stubShouldShareLocation;
+- (id)succeedGetLocation;
+- (void)succeedLikeCreateWithVerify:(void(^)(id<SZLike>))verify;
+- (void)stubOGLikeEnabled;
+- (void)stubOGLikeDisabled;
 
 @end

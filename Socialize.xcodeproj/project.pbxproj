@@ -1387,6 +1387,7 @@
 		AAC7CB7915C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC7CB7615C8A5D30064C5FD /* SZSocialNetworkPostData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7CB7715C8A5D30064C5FD /* SZSocialNetworkPostData.m */; };
 		AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7CB7715C8A5D30064C5FD /* SZSocialNetworkPostData.m */; };
+		AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */; };
 		AACC19F2159B9B1900800576 /* SZActionBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AACC19F1159B9B1900800576 /* SZActionBarTests.m */; };
 		AACED945158FCDC70024EC43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C601F158FC4F000F66A3B /* main.m */; };
 		AACED946158FCDD20024EC43 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
@@ -2706,6 +2707,8 @@
 		AAC194E615AF925200DDE42F /* NSOperationQueue+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+Socialize.m"; sourceTree = "<group>"; };
 		AAC7CB7615C8A5D30064C5FD /* SZSocialNetworkPostData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSocialNetworkPostData.h; sourceTree = "<group>"; };
 		AAC7CB7715C8A5D30064C5FD /* SZSocialNetworkPostData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSocialNetworkPostData.m; sourceTree = "<group>"; };
+		AAC7CB7C15C9C1630064C5FD /* SZLikeUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeUtilsTests.h; sourceTree = "<group>"; };
+		AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeUtilsTests.m; sourceTree = "<group>"; };
 		AACC19F0159B9B1900800576 /* SZActionBarTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarTests.h; sourceTree = "<group>"; };
 		AACC19F1159B9B1900800576 /* SZActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBarTests.m; sourceTree = "<group>"; };
 		AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JSON-RequestAndResponse-TestFiles"; sourceTree = "<group>"; };
@@ -3240,6 +3243,8 @@
 				AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */,
 				AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */,
 				AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */,
+				AAC7CB7C15C9C1630064C5FD /* SZLikeUtilsTests.h */,
+				AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -6036,6 +6041,7 @@
 				AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */,
 				AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */,
 				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
+				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

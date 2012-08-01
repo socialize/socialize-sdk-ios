@@ -37,6 +37,10 @@
 }
 
 + (void)likeWithEntity:(id<SZEntity>)entity options:(SZLikeOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
+    if (options == nil) {
+        options = [self userLikeOptions];
+    }
+    
     SZLike *like = [SZLike likeWithEntity:entity];
     ActivityCreatorBlock likeCreator = ^(id<SZLike> like, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         
@@ -45,8 +49,32 @@
         }, failure);
 
     };
+    
+    SZPostDataBuilderBlock ogLikeBuilder = ^(id<SZActivity> activity) {
+        // This shortened link returned from the server encapsulates all the Socialize magic
+        NSString *shareURL = [[[activity propagationInfoResponse] objectForKey:@"facebook"] objectForKey:@"entity_url"];
+        
+        NSMutableDictionary *postParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           shareURL, @"object",
+                                           nil];
+        
+        SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
+        postData.params = postParams;
+        postData.path = @"me/og.likes";
+        postData.entity = [activity entity];
+        postData.propagationInfo = [activity propagationInfoResponse];
+        
+        return postData;
+    };
+    
+    SZPostDataBuilderBlock facebookPostDataBuilder;
+    if ([Socialize OGLikeEnabled]) {
+        facebookPostDataBuilder = ogLikeBuilder;
+    } else {
+        facebookPostDataBuilder = SZDefaultLinkPostData();
+    }
 
-    SZCreateAndShareActivity(like, options, networks, likeCreator, success, failure);
+    SZCreateAndShareActivity(like, facebookPostDataBuilder, options, networks, likeCreator, success, failure);
 }
 
 + (void)unlike:(id<SZEntity>)entity success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
