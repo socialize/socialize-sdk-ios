@@ -313,6 +313,7 @@ tokenRequest = _tokenRequest;
         OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:[SocializeRequest consumerKey] secret:[SocializeRequest consumerSecret]] autorelease];
 
         _request = [[OAMutableURLRequest alloc] initWithURL:nil consumer:consumer token:self.token realm:nil signatureProvider:nil];
+        [_request setTimeoutInterval:30];
     }
     
     return _request;

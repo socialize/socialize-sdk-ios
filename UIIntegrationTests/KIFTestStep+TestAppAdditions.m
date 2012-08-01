@@ -31,6 +31,13 @@
 
 @implementation KIFTestStep (TestAppAdditions)
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
++ (NSTimeInterval)defaultTimeout {
+    return 30.;
+}
+#pragma clang diagnostic pop
+
 + (NSArray*)stepsToPopNavigationControllerToIndex:(NSInteger)index
 {
     NSMutableArray *steps = [NSMutableArray array];
