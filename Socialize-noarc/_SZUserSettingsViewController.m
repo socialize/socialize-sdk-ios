@@ -29,17 +29,9 @@
 }
 
 // Latch the status for these, so we can perform row animations
-@property (nonatomic, assign) BOOL showingFacebookLogout;
-@property (nonatomic, assign) BOOL showingTwitterLogout;
+@property (nonatomic, assign) BOOL showingFacebookPostRow;
+@property (nonatomic, assign) BOOL showingTwitterPostRow;
 @property (nonatomic, assign) BOOL profileImageChanged;
-
-- (void)updateInterfaceToReflectFacebookSessionStatus ;
-- (void)updateInterfaceToReflectSessionStatuses;
-- (void)updateInterfaceToReflectTwitterSessionStatus;
-- (NSIndexPath*)indexPathForTwitterLogoutRow;
-- (NSIndexPath*)indexPathForFacebookLogoutRow;
-- (void)authenticateViaFacebook;
-- (void)authenticateViaTwitter;
 
 @end
 
@@ -73,8 +65,8 @@ static _SZUserSettingsViewControllerPropertiesInfo _SZUserSettingsViewController
 @synthesize editOccured = editOccured_;
 SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 @synthesize facebookCells = facebookCells_;
-@synthesize showingFacebookLogout = showFacebookLogout_;
-@synthesize showingTwitterLogout = showTwitterLogout_;
+@synthesize showingFacebookPostRow = showingFacebookPostRow_;
+@synthesize showingTwitterPostRow = showingTwitterPostRow_;
 @synthesize popover = popover_;
 @synthesize userSettingsCompletionBlock = userSettingsCompletionBlock_;
 @synthesize profileImageChanged = _profileImageChanged;
@@ -195,12 +187,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self.tableView reloadData];
 }
 
-- (BOOL)shouldShowTwitterLogout{
-    return !self.hideLogoutButtons && [SocializeThirdPartyTwitter isLinkedToSocialize];
+- (BOOL)shouldShowTwitterPostRow {
+    return [SocializeThirdPartyTwitter isLinkedToSocialize];
 }
 
-- (BOOL)shouldShowFacebookLogout {
-    return !self.hideLogoutButtons && [SocializeThirdPartyFacebook isLinkedToSocialize];
+- (BOOL)shouldShowFacebookPostRow {
+    return [SocializeThirdPartyFacebook isLinkedToSocialize];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -209,8 +201,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if (!_initialized) {
         _initialized = YES;
         
-        self.showingTwitterLogout = [self shouldShowTwitterLogout];
-        self.showingFacebookLogout = [self shouldShowFacebookLogout];
+        self.showingTwitterPostRow = [self shouldShowTwitterPostRow];
+        self.showingFacebookPostRow = [self shouldShowFacebookPostRow];
     }
     
     if (self.fullUser == nil) {
@@ -230,10 +222,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 - (SZUserSettings*)userSettingsForInterfaceState {
     SZUserSettings *userSettings = [[[SZUserSettings alloc] initWithFullUser:self.fullUser] autorelease];
     
-    BOOL postToFacebook = self.facebookSwitch.on;
+    BOOL postToFacebook = [SZFacebookUtils isLinked] && self.facebookSwitch.on;
     userSettings.dontPostToFacebook = [NSNumber numberWithBool:!postToFacebook];
 
-    BOOL postToTwitter = self.twitterSwitch.on;
+    BOOL postToTwitter = [SZTwitterUtils isLinked] && self.twitterSwitch.on;
     userSettings.dontPostToTwitter = [NSNumber numberWithBool:!postToTwitter];
     
     BOOL autopost = postToTwitter || postToFacebook;
@@ -357,13 +349,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     } else if (section == [self propertiesSection]) {
         numRows = sizeof(_SZUserSettingsViewControllerPropertiesInfoItems) / sizeof(_SZUserSettingsViewControllerPropertiesInfo);
     } else if (section == [self facebookSection]) {
-        if (self.showingFacebookLogout) {
+        if (self.showingFacebookPostRow) {
             numRows = 2;
         } else {
             numRows = 1;
         }
     } else if (section == [self twitterSection]) {
-        if (self.showingTwitterLogout) {
+        if (self.showingTwitterPostRow) {
             numRows = 2;
         } else {
             numRows = 1;
@@ -517,13 +509,24 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             case _SZUserSettingsViewControllerFacebookRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textAlignment = UITextAlignmentLeft;
-                cell.textLabel.text = @"Autopost to Facebook";
+                cell.textLabel.text = @"Post to Facebook by Default";
                 cell.accessoryView = self.facebookSwitch;
                 break;
-            case _SZUserSettingsViewControllerFacebookRowLogout:
-                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            case _SZUserSettingsViewControllerFacebookRowLoginLogout:
                 cell.textLabel.textAlignment = UITextAlignmentCenter;
-                cell.textLabel.text = @"Sign out of Facebook";
+                
+                if ([SZFacebookUtils isLinked]) {
+                    if (self.hideLogoutButtons) {
+                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                        cell.textLabel.text = @"Logged in to Facebook";
+                    } else {
+                        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                        cell.textLabel.text = @"Sign out of Facebook";                        
+                    }
+                } else {
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                    cell.textLabel.text = @"Sign in to Facebook";
+                }
                 cell.accessoryView = nil;
                 break;
             default:
@@ -538,14 +541,29 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             case _SZUserSettingsViewControllerTwitterRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textAlignment = UITextAlignmentLeft;
-                cell.textLabel.text = @"Autopost to Twitter";
+                cell.textLabel.text = @"Post to Twitter by Default";
                 cell.accessoryView = self.twitterSwitch;
                 
                 break;
-            case _SZUserSettingsViewControllerTwitterRowLogout:
+            case _SZUserSettingsViewControllerTwitterRowLoginLogout:
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.textLabel.textAlignment = UITextAlignmentCenter;
-                cell.textLabel.text = @"Sign out of Twitter";
+                
+                if ([SZTwitterUtils isLinked]) {
+                    
+                    if (self.hideLogoutButtons) {
+                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                        cell.textLabel.text = @"Logged in to Twitter";
+                    } else {
+                        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                        cell.textLabel.text = @"Sign out of Twitter";
+                    }
+                    
+                } else {
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                    cell.textLabel.text = @"Sign in to Twitter";
+                }
+
                 cell.accessoryView = nil;
                 
                 break;
@@ -684,12 +702,20 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     [self updateInterfaceToReflectFacebookSessionStatus];
 }
 
+- (NSIndexPath*)indexPathForTwitterPostRow {
+    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowPost inSection:[self twitterSection]];
+}
+
+- (NSIndexPath*)indexPathForFacebookPostRow {
+    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowPost inSection:[self facebookSection]];
+}
+
 - (NSIndexPath*)indexPathForTwitterLogoutRow {
-    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
+    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowLoginLogout inSection:[self twitterSection]];
 }
 
 - (NSIndexPath*)indexPathForFacebookLogoutRow {
-    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];
+    return [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowLoginLogout inSection:[self facebookSection]];
 }
 
 - (void)showConfirmLogoutDialogForService:(NSString*)service handler:(void(^)())handler {
@@ -746,16 +772,41 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         self.editValueController.indexPath = indexPath;
         [self.navigationController pushViewController:self.editValueController animated:YES];
     } else if (indexPath.section == [self twitterSection]) {
-        if (indexPath.row == _SZUserSettingsViewControllerTwitterRowLogout) {
+        if (indexPath.row == _SZUserSettingsViewControllerTwitterRowLoginLogout) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-            [self showConfirmLogoutDialogForService:@"Twitter" handler:^{ [weakSelf twitterLogout]; }];
+            
+            if ([SZTwitterUtils isLinked]) {
+                
+                if (!self.hideLogoutButtons) {
+                    [self showConfirmLogoutDialogForService:@"Twitter" handler:^{ [weakSelf twitterLogout]; }];
+                }
+            } else {
+                [self authenticateViaTwitter];
+            }
         }
     } else if (indexPath.section == [self facebookSection]) {
-        if (indexPath.row == _SZUserSettingsViewControllerFacebookRowLogout) {
+        if (indexPath.row == _SZUserSettingsViewControllerFacebookRowLoginLogout) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-            [self showConfirmLogoutDialogForService:@"Facebook" handler:^{ [weakSelf facebookLogout]; }];
+
+            if ([SZFacebookUtils isLinked]) {
+                
+                if (!self.hideLogoutButtons) {
+                    [self showConfirmLogoutDialogForService:@"Facebook" handler:^{ [weakSelf facebookLogout]; }];
+                }
+                
+            } else {
+                [self authenticateViaFacebook];
+            }
         }
     }
+}
+
+- (void)reloadFacebookLoginLogoutRow {
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookLogoutRow]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)reloadTwitterLoginLogoutRow {
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterLogoutRow]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)updateInterfaceToReflectFacebookSessionStatus {
@@ -763,22 +814,24 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         return;
     }
     
-    if ([self shouldShowFacebookLogout] && !self.showingFacebookLogout) {
+    if ([self shouldShowFacebookPostRow] && !self.showingFacebookPostRow) {
 
-        // Logout button should be shown but isn't. Animate it into view
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerFacebookRowLogout inSection:[self facebookSection]];        
+        // Autopost row should be shown but isn't. Animate it into view
         [self.tableView beginUpdates];
-        self.showingFacebookLogout = YES;
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        self.showingFacebookPostRow = YES;
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookPostRow]] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-    } else if (![self shouldShowFacebookLogout] && self.showingFacebookLogout) {
         
-        // Logout button shown but shouldn't be. Animate it out of view
+        [self reloadFacebookLoginLogoutRow];
+    } else if (![self shouldShowFacebookPostRow] && self.showingFacebookPostRow) {
+        
+        // Autopost shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
-        self.showingFacebookLogout = NO;
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
+        self.showingFacebookPostRow = NO;
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForFacebookPostRow]] withRowAnimation:UITableViewRowAnimationBottom];
         [self.tableView endUpdates];
-
+        
+        [self reloadFacebookLoginLogoutRow];
     }
     
     if (![SocializeThirdPartyFacebook isLinkedToSocialize]) {
@@ -794,26 +847,28 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         return;
     }
 
-    if ([self shouldShowTwitterLogout] && !self.showingTwitterLogout) {
+    if ([self shouldShowTwitterPostRow] && !self.showingTwitterPostRow) {
 
-        // Logout button should be shown but isn't. Animate it into view
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_SZUserSettingsViewControllerTwitterRowLogout inSection:[self twitterSection]];
+        // Autpost row should be shown but isn't. Animate it into view
         [self.tableView beginUpdates];
-        self.showingTwitterLogout = YES;
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        self.showingTwitterPostRow = YES;
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterPostRow]] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
         
-        
+        [self reloadTwitterLoginLogoutRow];
+
         // Since twitter logout is currently the last row, it feels awkward if we don't scroll
         [self scrollToTwitterLogoutRow];
 
-    } else if (![self shouldShowTwitterLogout] && self.showingTwitterLogout) {
+    } else if (![self shouldShowTwitterPostRow] && self.showingTwitterPostRow) {
         
-        // Logout button shown but shouldn't be. Animate it out of view
+        // Autpost row shown but shouldn't be. Animate it out of view
         [self.tableView beginUpdates];
-        self.showingTwitterLogout = NO;
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterLogoutRow]] withRowAnimation:UITableViewRowAnimationBottom];
+        self.showingTwitterPostRow = NO;
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self indexPathForTwitterPostRow]] withRowAnimation:UITableViewRowAnimationBottom];
         [self.tableView endUpdates];
+
+        [self reloadTwitterLoginLogoutRow];
 
     }
     

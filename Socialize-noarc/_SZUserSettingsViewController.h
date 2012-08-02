@@ -26,14 +26,14 @@ typedef enum {
 } _SZUserSettingsViewControllerPropertiesRow;
 
 typedef enum {
+    _SZUserSettingsViewControllerFacebookRowLoginLogout,
     _SZUserSettingsViewControllerFacebookRowPost,
-    _SZUserSettingsViewControllerFacebookRowLogout,
     _SZUserSettingsViewControllerNumFacebookRows,
 } _SZUserSettingsViewControllerFacebookRow;
 
 typedef enum {
+    _SZUserSettingsViewControllerTwitterRowLoginLogout,
     _SZUserSettingsViewControllerTwitterRowPost,
-    _SZUserSettingsViewControllerTwitterRowLogout,
     _SZUserSettingsViewControllerNumTwitterRows,
 } _SZUserSettingsViewControllerTwitterRow;
 
