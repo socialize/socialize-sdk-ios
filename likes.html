@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Likes &mdash; Socialize iOS SDK 2.2.1 documentation</title>
+    <title>Likes &mdash; Socialize iOS SDK 2.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.2.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.2.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.3 documentation" href="index.html" />
     <link rel="next" title="Views" href="views.html" />
     <link rel="prev" title="Comments" href="comments.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="comments.html" title="Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -93,8 +93,8 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
     <span class="n">SZLikeOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">userLikeOptions</span><span class="p">];</span>
-    <span class="n">options</span><span class="p">.</span><span class="n">willPostToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Custom message&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
+    <span class="n">options</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Custom message&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
     <span class="p">};</span>
 
     <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">likeWithEntity:</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span> <span class="nl">networks:</span><span class="n">SZAvailableSocialNetworks</span><span class="p">()</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
@@ -234,7 +234,7 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
         <li class="right" >
           <a href="comments.html" title="Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -4,6 +4,24 @@
 Changelog
 =============================================
 
+v2.3
+----
+[feature] Allow setting type on entities [ ]
+
+[feature] Developer can override social network post path (previously only params could be overriden) [ ]
+
+[feature] Socialize likes can propagate as OG like on Facebook [ ]
+
+[feature] Propagations for likes which use FB OG should include an extra param, "og_action=like" [ ]
+
+[feature] Improve docs and support related to required socialize fb perms / authing on your own [ ]
+
+[feature] Improve social network hooks (success has server result, failure has server error) [ ]
+
+[feature] Add note about deep linking to docs [ ]
+
+[bug] Fix a 'bad image reference' error log [ ]
+
 v2.2.1
 ------
 [bug] Fix a case where device token would not be sent on startupa [ ]

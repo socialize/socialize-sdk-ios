@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 2.2.1 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 2.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.2.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.2.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.3 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -153,12 +153,12 @@ the parameters used to post to the user&#8217;s wall</p>
     
     <span class="c1">// http://developers.facebook.com/docs/reference/api/link/</span>
     
-    <span class="n">options</span><span class="p">.</span><span class="n">willPostToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Hey check out this site i found&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;http://www.facebook.com&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;link&quot;</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A caption&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Facebook&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A Site&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;description&quot;</span><span class="p">];</span>
+    <span class="n">options</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Hey check out this site i found&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;http://www.facebook.com&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;link&quot;</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A caption&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Facebook&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A Site&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;description&quot;</span><span class="p">];</span>
     <span class="p">};</span>
     
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">shareViaSocialNetworksWithEntity:</span><span class="n">entity</span> <span class="nl">networks:</span><span class="n">SZAvailableSocialNetworks</span><span class="p">()</span> <span class="nl">options:</span><span class="n">options</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZShare</span><span class="o">&gt;</span> <span class="n">share</span><span class="p">)</span> <span class="p">{</span>
@@ -315,7 +315,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

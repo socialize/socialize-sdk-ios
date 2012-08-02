@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Facebook &mdash; Socialize iOS SDK 2.2.1 documentation</title>
+    <title>Facebook &mdash; Socialize iOS SDK 2.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.2.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.2.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.3 documentation" href="index.html" />
     <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -68,6 +68,12 @@ Facebook app id here: <a class="reference external" href="https://developers.fac
     <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<p>You should set your app up as a native iOS app in its settings at <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a>. You should enable SSO (single sign-on) and disable deep linking, as in the following screenshot</p>
+<img alt="images/facebook_ios_app_config.png" src="images/facebook_ios_app_config.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ensure <strong>iOS Native Deep Linking is DISABLED</strong> otherwise Facebook will bypass the Socialize SmartDownload process.</p>
 </div>
 <p>If your app is not already configured for facebook authentication, then you&#8217;ll
 need to perform two more steps:</p>
@@ -120,8 +126,8 @@ using FBConnect on your own, you can check the official Facebook tutorial at
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The &#8220;publish_stream&#8221; permission is required for Socialize to function correctly. You must
-request this permission when performing your own Facebook authentication.</p>
+<p class="last">The &#8220;publish_stream&#8221; permission is required for Socialize to function correctly. For maximum
+compatibility you should merge your apps required permissions with the &#8216;requiredPermissions&#8217; class method of SZFacebookUtils</p>
 </div>
 </div>
 <div class="section" id="posting-to-facebook-on-your-own">
@@ -163,6 +169,171 @@ direct Facebook access methods on the utils classes</p>
 </div>
 <p>See <a class="reference external" href="http://developers.facebook.com/docs/reference/api/photo/">http://developers.facebook.com/docs/reference/api/photo/</a> for more info</p>
 </div>
+<div class="section" id="using-facebook-open-graph">
+<span id="open-graph"></span><h2>Using Facebook Open Graph<a class="headerlink" href="#using-facebook-open-graph" title="Permalink to this headline">¶</a></h2>
+<p>From v2.3 onwards Socialize supports Facebook &#8220;like&#8221; Open Graph actions.  This means that when a user executes a &#8220;like&#8221; on Socialize and elects to
+share this on Facebook it can be posted as an &#8220;Open Graph Like&#8221; in the user&#8217;s Facebook Activity stream.</p>
+<p>This behavior can be enabled programatically as follows</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
+
+<span class="cp">#pragma mark</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeOGLikeEnabled:</span><span class="n">YES</span><span class="p">];</span>
+    
+    <span class="c1">//your application specific code</span>
+    
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are not already familiar with the Facebook Open Graph we recommend reviewing the <a class="reference external" href="https://developers.facebook.com/docs/opengraph/">Facebook Documentation</a> first</p>
+</div>
+<div class="section" id="configuring-your-facebook-app-for-open-graph">
+<h3>Configuring your Facebook App for Open Graph<a class="headerlink" href="#configuring-your-facebook-app-for-open-graph" title="Permalink to this headline">¶</a></h3>
+<p>Before you are able to utilize Open Graph calls such as &#8220;like&#8221; you must first follow the Facebook Guidelines for approval of Open Graph actions.</p>
+<p>This is detailed on the Facebook website here:</p>
+<p><a class="reference external" href="http://developers.facebook.com/docs/opengraph/opengraph-approval/">Open Graph Approval Process</a></p>
+<p>The following steps apply to seeking approval for the in-built &#8220;like&#8221; action however the same approach can be followed for all Open Graph Actions.</p>
+<div class="section" id="adding-an-open-graph-action-to-your-app">
+<h4>Adding an Open Graph Action to your App<a class="headerlink" href="#adding-an-open-graph-action-to-your-app" title="Permalink to this headline">¶</a></h4>
+<p>In your app settings on Facebook, access the Open Graph section:</p>
+<img alt="images/fb_og_menu.png" src="images/fb_og_menu.png" />
+<p>You will be presented with the default configuration screen for Open Graph.  Click the <strong>Create New Action Type</strong> button and select the action to be added</p>
+<img alt="images/fb_og_page1.png" src="images/fb_og_page1.png" />
+<p>You will then be presented with a dialog in which your action can be selected.  Choose an appropriate action and click <strong>Submit</strong></p>
+<img alt="images/fb_og_select_action.png" src="images/fb_og_select_action.png" />
+<p>Once your action has been added you are ready to submit it for approval.  Click the <strong>Submit</strong> link.</p>
+<img alt="images/fb_og_page2.png" src="images/fb_og_page2.png" />
+<p>At this point you may encounter some validation errors.  The most common of which are:</p>
+<img alt="images/fb_og_error1.png" src="images/fb_og_error1.png" />
+<p>The <strong>Publish Action</strong> requirement is most easily satisfied by simply executing the same <em>curl</em> command provided by Facebook.</p>
+<p>Click on the <strong>Get Code</strong> link next to your action and run the <em>curl</em> command you are provided from your terminal (command line) interface</p>
+<img alt="images/fb_og_curl.png" src="images/fb_og_curl.png" />
+<p>The final step in the approval process requires you to clarify with Facebook the exact purpose for your OG action.</p>
+<img alt="images/fb_og_error2.png" src="images/fb_og_error2.png" />
+<p>Socialize has prepared a standard response for you to use in this situation.  If you are using the Socialize UI features &#8220;out-of-the-box&#8221; (that is, without modification) then you
+can simply refer to the content we have provided for you at:</p>
+<p><a class="reference external" href="http://blog.getsocialize.com/facebook-open-graph-review">http://blog.getsocialize.com/facebook-open-graph-review</a></p>
+<p>If you have implemented your own UI and/or are calling the Socialize SDK directly through any other means we recommend you follow the guidelines established by Facebook for the approval of
+Open Graph actions.</p>
+<p><a class="reference external" href="https://developers.facebook.com/docs/opengraph/checklist/">https://developers.facebook.com/docs/opengraph/checklist/</a></p>
+</div>
+</div>
+<div class="section" id="using-in-built-open-graph-actions">
+<h3>Using In Built Open Graph Actions<a class="headerlink" href="#using-in-built-open-graph-actions" title="Permalink to this headline">¶</a></h3>
+<p>The in built OG actions provided by Facebook <strong>require approval by Facebook</strong> and there is a limited set of actions available and a corresponding limited set of object types.</p>
+<p>The actions supported and the corresponding object types are as follows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="31%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Action</th>
+<th class="head">Path</th>
+<th class="head">Object Types</th>
+<th class="head">Parameter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>like</td>
+<td>me/og.likes</td>
+<td>object</td>
+<td>object</td>
+</tr>
+<tr class="row-odd"><td>follow</td>
+<td>me/og.follows</td>
+<td>profile</td>
+<td>profile</td>
+</tr>
+<tr class="row-even"><td>publish</td>
+<td>me/news.publishes</td>
+<td>article</td>
+<td>article</td>
+</tr>
+<tr class="row-odd"><td>read</td>
+<td>me/news.reads</td>
+<td>article</td>
+<td>article</td>
+</tr>
+<tr class="row-even"><td>watch</td>
+<td>me/video.watches</td>
+<td>video.movie</td>
+<td>movie</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>video.episode</td>
+<td>movie</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>video.tv_show</td>
+<td>movie</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>video.other</td>
+<td>movie</td>
+</tr>
+</tbody>
+</table>
+<p>The Object Types specified in the Open Graph call <strong>MUST</strong> correspond to a valid <em>og:type</em> meta element in the HTML page that represents the object.</p>
+<p>For example:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;video.movie&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Fortunately Socialize will <strong>automatically generate OG tags</strong> on your entity page, but you must specify the correct type on the entity object itself.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithType</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;http://myentity.com&quot;</span> <span class="nl">name:</span><span class="s">@&quot;My Name&quot;</span><span class="p">];</span>
+    
+    <span class="c1">// MUST be a valid OG type</span>
+    <span class="p">[</span><span class="n">entity</span> <span class="nl">setType:</span><span class="s">@&quot;video.movie&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Once you have setup your Entity with the correct type you can force an Open Graph post by changing the PostData in the SocialNetworkListener.
+Here&#8217;s a complete example</p>
+<p>The corresponding entity page on Socialize will automatically populate the required OG meta tags:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:title&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;My Entity Name&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:description&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;...parsed from your URL...&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:image&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;...parsed from your URL...&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;video.movie&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:url&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;...the URL of this page...&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>If you don&#8217;t have an actual URL for your entity you can setup the correct description, image etc by changing the meta data on your entity.</p>
+<p>Refer to <a class="reference internal" href="entities.html#entity-no-url"><em>Entities Without URLs</em></a> for more details on customizing the entity page.</p>
+<div class="section" id="using-custom-open-graph-actions">
+<h4>Using Custom Open Graph Actions<a class="headerlink" href="#using-custom-open-graph-actions" title="Permalink to this headline">¶</a></h4>
+<p>In addition to using the built-in Open Graph actions, you can also define your own.</p>
+<p>For example an app that reviews restaurants may want to post the fact that a user &#8220;ate&#8221; a &#8220;meal&#8221; rather than simply saying a user &#8220;shared&#8221; a &#8220;link&#8221;.</p>
+<p>There is however a fairly lengthy setup process to correctly configure your application to handle custom OG actions.</p>
+<p>We recommend reviewing the <a class="reference external" href="http://developers.facebook.com/docs/opengraph/tutorial/">Open Graph Tutorial</a> to understand how to configure your app for custom Open Graph actions.</p>
+<div class="section" id="configuring-custom-open-graph-actions">
+<h5>Configuring Custom Open Graph Actions<a class="headerlink" href="#configuring-custom-open-graph-actions" title="Permalink to this headline">¶</a></h5>
+<p>Facebook Open Graph implements several security systems to ensure that owners of content are verified.  One such security measure ensures that websites housing information about custom OG types are registered
+against the Facebook App to guarantee that 3rd party users cannot fraudulently represent custom types on external pages.</p>
+<p>If you want to utilize custom open graph actions in your Socialize enabled app you must first configure your Facebook application to expect posts that refer to websites hosted by Socialize.</p>
+<p>This consists of 3 simple steps:</p>
+<ol class="arabic simple">
+<li>Obtain your Socialize App Url from your dashboard at www.getsocialize.com</li>
+<li>Nominate the Socialize App Url as your &#8220;Site URL&#8221; on Facebook</li>
+<li>Add the <strong>getsocialize.com</strong> domain to your list of App Domains on Facebook.</li>
+</ol>
+<img alt="images/fb_og_config.png" src="images/fb_og_config.png" />
+<p>You can obtain your Socialize App Url from the &#8220;SmartDownloads&#8221; section accessed from your dashboard at www.getsocialize.com</p>
+<img alt="images/app_url.png" src="images/app_url.png" />
+<p>Once you have configured your application to accept custom Open Graph actions you can post these actions to Facebook by changing the PostData in the SocialNetworkListener.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -183,6 +354,7 @@ direct Facebook access methods on the utils classes</p>
 <li class="toctree-l2"><a class="reference internal" href="#linking-with-existing-facebook-credentials">Linking with Existing Facebook Credentials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#posting-to-facebook-on-your-own">Posting to Facebook on your own</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#posting-images-to-facebook">Posting Images to Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-facebook-open-graph">Using Facebook Open Graph</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
@@ -224,7 +396,7 @@ direct Facebook access methods on the utils classes</p>
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
