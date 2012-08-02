@@ -12,7 +12,7 @@ Facebook app id here: https://developers.facebook.com/apps
   :end-before: end-configure-snippet
   :emphasize-lines: 9
 
-You should set your app up as a native iOS app in its settings. You should enable SSO (single sign-on) and disable deep linking, as in the following screenshot
+You should set your app up as a native iOS app in its settings at https://developers.facebook.com/apps. You should enable SSO (single sign-on) and disable deep linking, as in the following screenshot
 
 .. image:: images/facebook_ios_app_config.png	
 
