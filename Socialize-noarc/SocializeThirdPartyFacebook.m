@@ -20,7 +20,10 @@
     }
     
     if (![self canOpenFacebookURL]) {
-        NSLog(@"Socialize Warning: Application cannot open facebook url");
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            NSLog(SOCIALIZE_FACEBOOK_CANNOT_OPEN_URL_MESSAGE);
+        });
     }
     
     return YES;

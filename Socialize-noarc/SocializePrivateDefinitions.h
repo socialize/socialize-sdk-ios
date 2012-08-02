@@ -21,6 +21,7 @@
 #define MIN_MODAL_DISMISS_INTERVAL 0.75
 
 #define SOCIALIZE_FACEBOOK_NOT_CONFIGURED_MESSAGE @"Socialize Warning: Facebook is not configured. Facebook UI controls will not be shown. You should consider enabling Socialize's Facebook support, as described in http://socialize.github.com/socialize-sdk-ios/getting_started.html"
+#define SOCIALIZE_FACEBOOK_CANNOT_OPEN_URL_MESSAGE @"Socialize Warning: Application cannot open facebook url"
 #define SOCIALIZE_TWITTER_NOT_CONFIGURED_MESSAGE @"Socialize Warning: Twitter is not configured. Twitter UI controls will not be shown. You should consider enabling Socialize's Twitter support, as described in http://socialize.github.com/socialize-sdk-ios/twitter.html"
 #define SOCIALIZE_NOTIFICATIONS_NOT_CONFIGURED_MESSAGE @"Socialize Warning: SmartAlerts are not configured. SmartAlerts UI controls will not be shown. You can read about Socialize's SmartAlerts at http://socialize.github.com/socialize-sdk-ios/push_notifications.html"
 
