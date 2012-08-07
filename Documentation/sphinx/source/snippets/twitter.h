@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface twitter : NSObject
+@interface twitter : UIViewController
 
 @end
