@@ -103,7 +103,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                     }];
                 };
                 selectNetwork.cancellationBlock = ^{
-                    [link.navigationController popToViewController:link animated:YES];
+                    [link popToRootViewControllerAnimated:YES];
                 };
                 
                 [weakLink pushViewController:selectNetwork animated:YES];
