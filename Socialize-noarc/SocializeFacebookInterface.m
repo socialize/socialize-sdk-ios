@@ -10,6 +10,7 @@
 #import "SocializeFacebookInterface.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "socialize_globals.h"
+#import "SZFacebookUtils.h"
 
 static SocializeFacebookInterface *sharedFacebookInterface;
 
@@ -22,19 +23,42 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 @synthesize facebook = facebook_;
 @synthesize handlers = handlers_;
 
+- (void)dealloc {
+    self.facebook = nil;
+    self.handlers = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super dealloc];
+}
+
+- (id)init {
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    }
+    
+    return self;
+}
+
+- (void)tryToExtendAccessToken {
+    if ([SZFacebookUtils isAvailable] && [SZFacebookUtils isLinked]) {
+        [self.facebook extendAccessToken];
+    }    
+}
+
+- (void)applicationDidBecomeActive:(NSNotification*)notification {
+    [self tryToExtendAccessToken];
+}
+
++ (void)load {
+    (void)[self sharedFacebookInterface];
+}
+
 + (SocializeFacebookInterface*)sharedFacebookInterface {
     if (sharedFacebookInterface == nil) {
         sharedFacebookInterface = [[SocializeFacebookInterface alloc] init];
     }
     
     return sharedFacebookInterface;
-}
-
-- (void)dealloc {
-    self.facebook = nil;
-    self.handlers = nil;
-    
-    [super dealloc];
 }
 
 - (Facebook*)facebook {
