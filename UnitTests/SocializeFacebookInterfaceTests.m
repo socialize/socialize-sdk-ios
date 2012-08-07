@@ -12,6 +12,7 @@
 #import "Socialize.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeTestCase.h"
+#import "Facebook+Socialize.h"
 
 @interface SocializeFacebookInterface () <FBRequestDelegate>
 @end
@@ -31,6 +32,7 @@
     __block BOOL completed = NO;
     
     id mockFacebook = [OCMockObject mockForClass:[Facebook class]];
+    [[[mockFacebook stub] andReturnBool:YES] isForCurrentSocializeSession];
     id mockRequest = [OCMockObject mockForClass:[FBRequest class]];
     [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
@@ -49,6 +51,7 @@
     __block BOOL completed = NO;
     
     id mockFacebook = [OCMockObject mockForClass:[Facebook class]];
+    [[[mockFacebook stub] andReturnBool:YES] isForCurrentSocializeSession];
     id mockRequest = [OCMockObject mockForClass:[FBRequest class]];
     [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
