@@ -19,3 +19,4 @@
 #import "SocializeObjects.h"
 #import "SocializeCommonDefinitions.h"
 #import "SZAPIClientHelpers.h"
+#import "Facebook+Socialize.h"

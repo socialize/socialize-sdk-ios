@@ -39,6 +39,10 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeFacebookAuthExpirationDate];
 }
 
++ (NSString*)urlSchemeSuffix {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeFacebookAuthLocalAppId];
+}
+
 + (NSArray*)requiredPermissions {
     return [NSArray arrayWithObjects:@"publish_stream", nil];
 }

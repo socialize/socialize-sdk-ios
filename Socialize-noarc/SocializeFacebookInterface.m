@@ -64,7 +64,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 }
 
 - (Facebook*)facebook {
-    if (facebook_ == nil) {
+    if (facebook_ == nil || ![facebook_ isForCurrentSocializeSession]) {
         facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
         facebook_.sessionDelegate = self;
     }
