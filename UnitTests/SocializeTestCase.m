@@ -206,10 +206,10 @@ id testSelf;
 }
 
 - (void)succeedTwitterPost {
-    [[[SZTwitterUtils expect] andDo4:^(id _1, id _2, id success, id failure) {
+    [[[SZTwitterUtils expect] andDo5:^(id _1, id _2, id _3, id success, id failure) {
         void (^successBlock)(id result) = success;
         successBlock(nil);
-    }] postWithPath:OCMOCK_ANY params:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+    }] postWithViewController:OCMOCK_ANY path:OCMOCK_ANY params:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
 - (void)stubFacebookUsable {
