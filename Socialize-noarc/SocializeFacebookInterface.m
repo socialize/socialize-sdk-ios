@@ -12,6 +12,8 @@
 #import "socialize_globals.h"
 #import "SZFacebookUtils.h"
 
+static const int FBRESTAPIAccessTokenErrorCode = 190;
+
 static SocializeFacebookInterface *sharedFacebookInterface;
 
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
@@ -99,8 +101,17 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     }
 }
 
+- (void)wipeLocalSession {
+    self.facebook = nil;
+    [SocializeThirdPartyFacebook removeLocalCredentials];
+}
+
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-    DebugLog(@"Facebook Wall Post Failed! Description: %@", [error localizedDescription]);
+    if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"code"] integerValue] == FBRESTAPIAccessTokenErrorCode) {
+        [self wipeLocalSession];
+    }
+    
+    DebugLog(@"Facebook Wall Post Failed! Description: %@ %@", [error localizedDescription], [error userInfo]);
     RequestCompletionBlock completionBlock = [self.handlers objectForKey:[self requestIdentifier:request]];
     completionBlock(nil, error);
     [self removeHandlerForRequest:request];
@@ -129,7 +140,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 }
 
 - (void)fbSessionInvalidated {
-    [SocializeThirdPartyFacebook removeLocalCredentials];
+    [self wipeLocalSession];
 }
 
 @end
