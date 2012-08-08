@@ -1367,6 +1367,10 @@
 		AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB73D551597C01800220492 /* ButtonExampleViewController.m */; };
 		AAB73D591597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
 		AAB73D5A1597C01800220492 /* ButtonExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB73D561597C01800220492 /* ButtonExampleViewController.xib */; };
+		AAB9D35315D2783700004E77 /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB9D35115D2783700004E77 /* Facebook+Socialize.h */; };
+		AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB9D35115D2783700004E77 /* Facebook+Socialize.h */; };
+		AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
+		AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
 		AABCC67715C08181005FA860 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; };
 		AABCC67815C08181005FA860 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; };
 		AABCC67915C08181005FA860 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
@@ -2697,6 +2701,8 @@
 		AAB73D541597C01800220492 /* ButtonExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonExampleViewController.h; sourceTree = "<group>"; };
 		AAB73D551597C01800220492 /* ButtonExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonExampleViewController.m; sourceTree = "<group>"; };
 		AAB73D561597C01800220492 /* ButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonExampleViewController.xib; sourceTree = "<group>"; };
+		AAB9D35115D2783700004E77 /* Facebook+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Facebook+Socialize.h"; sourceTree = "<group>"; };
+		AAB9D35215D2783700004E77 /* Facebook+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Facebook+Socialize.m"; sourceTree = "<group>"; };
 		AABCC67515C08181005FA860 /* SZSessionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTracker.h; sourceTree = "<group>"; };
 		AABCC67615C08181005FA860 /* SZSessionTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTracker.m; sourceTree = "<group>"; };
 		AABCC67B15C083CD005FA860 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
@@ -3963,6 +3969,8 @@
 		AAC194E415AF923700DDE42F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AAB9D35115D2783700004E77 /* Facebook+Socialize.h */,
+				AAB9D35215D2783700004E77 /* Facebook+Socialize.m */,
 				AAC194E515AF925200DDE42F /* NSOperationQueue+Socialize.h */,
 				AAC194E615AF925200DDE42F /* NSOperationQueue+Socialize.m */,
 				AABCC67B15C083CD005FA860 /* NSString+UUID.h */,
@@ -4240,6 +4248,7 @@
 				AABCC67715C08181005FA860 /* SZSessionTracker.h in Headers */,
 				AABCC67D15C083CD005FA860 /* NSString+UUID.h in Headers */,
 				AAC7CB7815C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
+				AAB9D35315D2783700004E77 /* Facebook+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4332,6 +4341,7 @@
 				AABCC67815C08181005FA860 /* SZSessionTracker.h in Headers */,
 				AABCC67E15C083CD005FA860 /* NSString+UUID.h in Headers */,
 				AAC7CB7915C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
+				AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5789,6 +5799,7 @@
 				AABCC67915C08181005FA860 /* SZSessionTracker.m in Sources */,
 				AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
+				AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6283,6 +6294,7 @@
 				AABCC67A15C08181005FA860 /* SZSessionTracker.m in Sources */,
 				AABCC68015C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
+				AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
