@@ -4,6 +4,20 @@
 Changelog
 =============================================
 
+v2.3.1
+------
+[feature] Improve settings sign-in / sign-out interface (now similar to Android) [ profile ]
+
+[bug] Autopost setting not being respected [ facebook twitter ]
+
+[bug] Back-navigation during first third party link not working [ authentication ]
+
+[bug] Twitter direct api calls should auto auth if needed [ twitter ]
+
+[bug] All facebook oauth failures should wipe local creds [ facebook ]
+
+[bug] Immediately autoextend facebook token on foreground [ authentication facebook ]
+
 v2.3
 ----
 [feature] Allow setting type on entities [ ]
