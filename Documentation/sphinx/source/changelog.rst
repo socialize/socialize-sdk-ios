@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.3.2
+------
+[bug] Fix isForCurrentSocializeSession crash [ ]
+
 v2.3.1
 ------
 [feature] Improve settings sign-in / sign-out interface (now similar to Android) [ profile ]
