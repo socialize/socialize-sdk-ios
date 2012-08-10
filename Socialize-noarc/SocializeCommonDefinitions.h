@@ -48,6 +48,8 @@ typedef enum {
 
 extern NSString *const kSocializeConsumerKey;
 extern NSString *const kSocializeConsumerSecret;
+extern NSString *const kSocializeAccessToken;
+extern NSString *const kSocializeAccessTokenSecret;
 
 // Notifications
 extern NSString *const SocializeAuthenticatedUserDidChangeNotification;

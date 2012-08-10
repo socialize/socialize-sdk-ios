@@ -547,6 +547,10 @@
 		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CE7C31592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
 		AA5CE7C41592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
+		AA60845315D3015E0065C543 /* SZOARequest+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */; };
+		AA60845415D3015E0065C543 /* SZOARequest+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */; };
+		AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */; };
+		AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */; };
 		AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */; };
 		AA65A266159CD43600613E5A /* entities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA65A265159CD43600613E5A /* entities.m */; };
 		AA67143A159CC5D60000E3BE /* actions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA671439159CC5D60000E3BE /* actions.m */; };
@@ -2356,6 +2360,8 @@
 		AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCommentsListViewController.m; sourceTree = "<group>"; };
 		AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogViewController.h; sourceTree = "<group>"; };
 		AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewController.m; sourceTree = "<group>"; };
+		AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SZOARequest+Socialize.h"; sourceTree = "<group>"; };
+		AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SZOARequest+Socialize.m"; sourceTree = "<group>"; };
 		AA65A264159CD43600613E5A /* entities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entities.h; sourceTree = "<group>"; };
 		AA65A265159CD43600613E5A /* entities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = entities.m; sourceTree = "<group>"; };
 		AA671438159CC5D60000E3BE /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = actions.h; sourceTree = "<group>"; };
@@ -3869,6 +3875,8 @@
 				AA77C95515ACCE6B00745096 /* SZOARequest.m */,
 				AAC194D815AF712B00DDE42F /* SZOARequest+Twitter.h */,
 				AAC194D915AF712B00DDE42F /* SZOARequest+Twitter.m */,
+				AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */,
+				AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -4249,6 +4257,7 @@
 				AABCC67D15C083CD005FA860 /* NSString+UUID.h in Headers */,
 				AAC7CB7815C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
 				AAB9D35315D2783700004E77 /* Facebook+Socialize.h in Headers */,
+				AA60845315D3015E0065C543 /* SZOARequest+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4342,6 +4351,7 @@
 				AABCC67E15C083CD005FA860 /* NSString+UUID.h in Headers */,
 				AAC7CB7915C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
 				AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */,
+				AA60845415D3015E0065C543 /* SZOARequest+Socialize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5800,6 +5810,7 @@
 				AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */,
+				AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6295,6 +6306,7 @@
 				AABCC68015C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */,
+				AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

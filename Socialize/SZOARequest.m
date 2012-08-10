@@ -52,7 +52,7 @@
             tokenObject = [[OAToken alloc] initWithKey:token secret:tokenSecret];
         }
         
-        NSURL *url = [[NSURL alloc] initWithScheme:scheme host:host path:path];
+        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@://%@%@", scheme, host, path]];
         self.request = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:tokenObject realm:@"" signatureProvider:nil];
         
         [self.request setHTTPMethod:method];
@@ -97,7 +97,24 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.executing = YES;
+        
+//        [self.request prepare];
+//        NSString *body = [[NSString alloc] initWithData:[self.request HTTPBody] encoding:NSASCIIStringEncoding];
+//        NSString *urlString = [[self.request URL] absoluteString];
+//        SDebugLog(2, @"----- Sending Request -----");
+//        SDebugLog(2, @"URL: %@", urlString);
+//        SDebugLog(2, @"Headers: %@", [[self request] allHTTPHeaderFields]);
+//        //        OAToken *token = [self.request token];
+//        //        SDebugLog(2, @"OAuth key: %@, OAuth secret: %@", self.token.key, self.token.secret);
+//        //        SDebugLog(2, @"Consumer key: %@, Consumer secret: %@", [SocializeRequest consumerKey], [SocializeRequest consumerSecret]);
+//        //        SDebugLog(2, @"Signature Base String: %@", [[self request] _signatureBaseString]);
+//        SDebugLog(2, @"Body: %@", body);
+//        //        SDebugLog(2, @"Params: %@", _paraams);
+//        SDebugLog(2, @"----- End Request ---------");
+
         [self.fetcher start];
+        
+
     });
 }
 
