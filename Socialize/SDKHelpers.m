@@ -476,36 +476,4 @@ NSString *NSStringForHTTPURLResponse(NSHTTPURLResponse* response, NSData *data) 
     return [[NSString alloc] initWithData:data encoding:encoding];
 }
 
-NSString *SZGetProvisioningProfile() {
-    NSString * profilePath = [[NSBundle mainBundle] pathForResource:@"embedded.mobileprovision" ofType:nil];
-    if (profilePath == nil) {
-        return nil;
-    }
-    
-    NSData *profileData = [NSData dataWithContentsOfFile:profilePath];
-    NSData *startData = [@"<!DOCTYPE" dataUsingEncoding:NSISOLatin1StringEncoding];
 
-    // Find the xml string
-    NSRange doctypeRange = [profileData rangeOfData:startData options:0 range:NSMakeRange(0, [profileData length])];
-    if (doctypeRange.location == NSNotFound) {
-        return nil;
-    }
-    NSRange xmlRange = NSMakeRange(doctypeRange.location, [profileData length] - doctypeRange.location);
-    NSData *xmlData = [profileData subdataWithRange:xmlRange];
-    NSString *profileAsString = [[NSString alloc] initWithData:xmlData encoding:NSISOLatin1StringEncoding];
-
-    return profileAsString;
-}
-
-BOOL SZIsProduction() {
-    NSString *profileAsString = SZGetProvisioningProfile();
-    if ([profileAsString length] == 0) {
-        return NO;
-    }
-    
-    profileAsString = [[profileAsString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
-    NSRange range = [profileAsString rangeOfString:@"<key>get-task-allow</key><true/>" options:NSCaseInsensitiveSearch];
-    BOOL isProduction = range.location == NSNotFound;
-
-    return isProduction;
-}

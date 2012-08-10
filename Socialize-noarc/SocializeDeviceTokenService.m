@@ -9,6 +9,7 @@
 #import "SocializeRequest.h"
 #import "SocializeDeviceToken.h"
 #import "Socialize.h"
+#import "socialize_globals.h"
 
 #define SOCIALIZE_USER_DEVICE_METHOD @"user/device/"
 
@@ -16,14 +17,15 @@
 
 - (void)registerDeviceTokens:(NSArray *)tokens {
     NSMutableArray *params = [NSMutableArray array];
-    NSNumber *isProduction = [NSNumber numberWithBool:SZIsProduction()];
+    NSString *serviceType = SZAPINSStringForCurrentProvisioningState();
     for ( NSString *token in tokens ) {
         
         NSDictionary *deviceToken = [NSDictionary dictionaryWithObjectsAndKeys:
                                      token, @"device_token",
                                      @"iOS", @"device_type",
-                                     isProduction, @"is_production",
+                                     serviceType, @"service_type",
                                      nil];
+        NSLog(@"Registering with string %@", serviceType);
         [params addObject:deviceToken];
        
     }

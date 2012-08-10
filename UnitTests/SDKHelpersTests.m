@@ -8,6 +8,7 @@
 
 #import "SDKHelpersTests.h"
 #import "SDKHelpers.h"
+#import "socialize_globals.h"
 
 @implementation SDKHelpersTests
 

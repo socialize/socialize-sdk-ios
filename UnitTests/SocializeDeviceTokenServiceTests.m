@@ -55,17 +55,20 @@
         NSDictionary *deviceTokenObject = [params objectAtIndex:0];
         NSString *deviceToken = [deviceTokenObject objectForKey:@"device_token"];
         NSString *deviceType = [deviceTokenObject objectForKey:@"device_type"];
+        NSString *serviceType = [deviceTokenObject objectForKey:@"service_type"];
         
         if (![deviceToken isEqualToString:@"FFFF"])
             return NO;
         if (![deviceType isEqualToString:@"iOS"])
             return NO;
         
+        if (![serviceType isEqualToString:@"APNS_DEVELOPMENT"])
+            return NO;
+
         return YES;
     }]];
     
     [self.deviceTokenService registerDeviceTokenString:@"FFFF"];
-    
 }
 
 @end
