@@ -21,7 +21,7 @@
 }
 
 + (BOOL)openNotification:(NSDictionary*)userInfo {
-    return [Socialize handleNotification:userInfo];
+    return [Socialize openNotification:userInfo];
 }
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
