@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SocializeCommonDefinitions.h"
 #import "SZActivityOptions.h"
+#import "SZSMSShareData.h"
+#import "SZEmailShareData.h"
 
 @interface SZShareOptions : SZActivityOptions
 @property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) void (^willShowSMSComposerBlock)(SZSMSShareData *smsData);
+@property (nonatomic, copy) void (^willShowEmailComposerBlock)(SZEmailShareData *emailData);
 
 + (SZShareOptions*)defaultOptions;
 

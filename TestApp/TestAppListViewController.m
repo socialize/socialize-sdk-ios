@@ -122,7 +122,20 @@ static TestAppListViewController *sharedSampleListViewController;
          
 
     [shareRows addObject:[self rowWithText:@"Share Via Email" executionBlock:^{
-        [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:^(id<SZShare> share) {
+        
+        SZShareOptions *options = [[SZShareOptions alloc] init];
+        options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+            emailData.subject = @"What's up?";
+            
+            NSString *appURL = [emailData.propagationInfo objectForKey:@"application_url"];
+            NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
+            id<SZEntity> entity = emailData.share.entity;
+            NSString *appName = emailData.share.application.name;
+
+            emailData.messageBody = [NSString stringWithFormat:@"Hark! (%@/%@, shared from the excellent %@ (%@))", entity.name, entityURL, appName, appURL];
+        };
+        
+        [SZShareUtils shareViaEmailWithViewController:self options:options entity:self.entity success:^(id<SZShare> share) {
 //            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
@@ -132,7 +145,17 @@ static TestAppListViewController *sharedSampleListViewController;
     }]];
     
     [shareRows addObject:[self rowWithText:@"Share Via SMS" executionBlock:^{
-        [SZShareUtils shareViaSMSWithViewController:self entity:self.entity success:^(id<SZShare> share) {
+        SZShareOptions *options = [[SZShareOptions alloc] init];
+        options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+            NSString *appURL = [smsData.propagationInfo objectForKey:@"application_url"];
+            NSString *entityURL = [smsData.propagationInfo objectForKey:@"entity_url"];
+            id<SZEntity> entity = smsData.share.entity;
+            NSString *appName = smsData.share.application.name;
+            
+            smsData.body = [NSString stringWithFormat:@"Hark! (%@/%@, shared from the excellent %@ (%@))", entity.name, entityURL, appName, appURL];
+        };
+
+        [SZShareUtils shareViaSMSWithViewController:self options:options entity:self.entity success:^(id<SZShare> share) {
             [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];

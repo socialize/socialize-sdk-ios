@@ -10,6 +10,8 @@
 
 @implementation SZShareOptions
 @synthesize text = text_;
+@synthesize willShowSMSComposerBlock = _willShowSMSComposerBlock;
+@synthesize willShowEmailComposerBlock = _willShowEmailComposerBlock;
 
 + (SZShareOptions*)defaultOptions {
     return [[self alloc] init];

@@ -104,6 +104,10 @@
 }
 
 + (void)shareViaEmailWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [self shareViaEmailWithViewController:viewController options:nil entity:entity success:success failure:failure];
+}
+
++ (void)shareViaEmailWithViewController:(UIViewController*)viewController options:(SZShareOptions*)options entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     
     if (![self canShareViaEmail]) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorEmailNotAvailable]);
@@ -144,9 +148,16 @@
     SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"email"] forKey:@"third_parties"]];
     [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
+        SZEmailShareData *emailData = [[SZEmailShareData alloc] init];
+        emailData.share = serverShare;
+        emailData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"email"];
+        emailData.messageBody = [self defaultMessageForShare:serverShare];
+        emailData.subject = [[serverShare entity] displayName];
+        BLOCK_CALL_1(options.willShowEmailComposerBlock, emailData);
+
         [viewController hideSocializeLoadingView];
-        [composer setSubject:[[serverShare entity] displayName]];
-        [composer setMessageBody:[self defaultMessageForShare:serverShare] isHTML:NO];
+        [composer setSubject:emailData.subject];
+        [composer setMessageBody:emailData.messageBody isHTML:emailData.isHTML];
         [viewController presentModalViewController:composer animated:YES];
     } failure:^(NSError *error) {
         [viewController hideSocializeLoadingView];
@@ -156,6 +167,10 @@
 }
 
 + (void)shareViaSMSWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+    [self shareViaSMSWithViewController:viewController options:nil entity:entity success:success failure:failure];
+}
+
++ (void)shareViaSMSWithViewController:(UIViewController*)viewController options:(SZShareOptions*)options entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     
     if (![self canShareViaSMS]) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorSMSNotAvailable]);
@@ -195,8 +210,14 @@
     SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"sms"] forKey:@"third_parties"]];
     [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
+        SZSMSShareData *shareData = [[SZSMSShareData alloc] init];
+        shareData.share = serverShare;
+        shareData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"sms"];
+        shareData.body = [self defaultMessageForShare:serverShare];
+        BLOCK_CALL_1(options.willShowSMSComposerBlock, shareData);
+        
         [viewController hideSocializeLoadingView];
-        [composer setBody:[self defaultMessageForShare:serverShare]];
+        [composer setBody:shareData.body];
         [viewController presentModalViewController:composer animated:YES];
     } failure:^(NSError *error) {
         [viewController hideSocializeLoadingView];

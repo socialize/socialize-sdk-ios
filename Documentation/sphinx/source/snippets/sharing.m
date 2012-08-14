@@ -103,7 +103,18 @@
 - (void)showSMS {
     id<SZEntity> entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
 
-    [SZShareUtils shareViaSMSWithViewController:self entity:entity success:^(id<SZShare> share) {
+    SZShareOptions *options = [[SZShareOptions alloc] init];
+    options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+        NSString *appURL = [smsData.propagationInfo objectForKey:@"application_url"];
+        NSString *entityURL = [smsData.propagationInfo objectForKey:@"entity_url"];
+        id<SZEntity> entity = smsData.share.entity;
+        NSString *appName = smsData.share.application.name;
+        
+        smsData.body = [NSString stringWithFormat:@"Hark! (%@/%@, shared from the excellent %@ (%@))", entity.name, entityURL, appName, appURL];
+    };
+    
+
+    [SZShareUtils shareViaSMSWithViewController:self options:options entity:entity success:^(id<SZShare> share) {
         
         NSLog(@"Created share: %@", share);
         
@@ -120,7 +131,19 @@
 - (void)showEmail {
     id<SZEntity> entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
     
-    [SZShareUtils shareViaEmailWithViewController:self entity:entity success:^(id<SZShare> share) {
+    SZShareOptions *options = [[SZShareOptions alloc] init];
+    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+        emailData.subject = @"What's up?";
+        
+        NSString *appURL = [emailData.propagationInfo objectForKey:@"application_url"];
+        NSString *entityURL = [emailData.propagationInfo objectForKey:@"entity_url"];
+        id<SZEntity> entity = emailData.share.entity;
+        NSString *appName = emailData.share.application.name;
+        
+        emailData.messageBody = [NSString stringWithFormat:@"Hark! (%@/%@, shared from the excellent %@ (%@))", entity.name, entityURL, appName, appURL];
+    };
+
+    [SZShareUtils shareViaEmailWithViewController:self options:options entity:entity success:^(id<SZShare> share) {
         
         NSLog(@"Created share: %@", share);
         

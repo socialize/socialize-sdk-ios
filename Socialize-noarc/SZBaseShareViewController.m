@@ -408,7 +408,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
         
-        [SZShareUtils shareViaSMSWithViewController:weakSelf entity:weakSelf.entity success:^(id<SZShare> share) {
+        [SZShareUtils shareViaSMSWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
             [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
@@ -440,7 +440,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
 
-        [SZShareUtils shareViaEmailWithViewController:weakSelf entity:weakSelf.entity success:^(id<SZShare> share) {
+        [SZShareUtils shareViaEmailWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
             [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];

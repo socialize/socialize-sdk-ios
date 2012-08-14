@@ -46,7 +46,7 @@
 }
 
 - (void)emailButtonPressed:(id)sender {
-    [SZShareUtils shareViaEmailWithViewController:self entity:self.entity success:nil failure:nil];
+    [SZShareUtils shareViaEmailWithViewController:self options:nil entity:self.entity success:nil failure:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

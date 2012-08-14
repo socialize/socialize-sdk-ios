@@ -657,6 +657,14 @@
 		AA7D041415A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D041515A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
+		AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
+		AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
+		AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */; };
+		AA815C8915DACDBF00A31E39 /* SZSMSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */; };
+		AA815C8C15DACDCC00A31E39 /* SZEmailShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8A15DACDCC00A31E39 /* SZEmailShareData.h */; };
+		AA815C8D15DACDCC00A31E39 /* SZEmailShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8A15DACDCC00A31E39 /* SZEmailShareData.h */; };
+		AA815C8E15DACDCC00A31E39 /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
+		AA815C8F15DACDCC00A31E39 /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
 		AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */; };
 		AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */; };
 		AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */ = {isa = PBXBuildFile; fileRef = AA85D2F1159E55B7004DEB35 /* standalone_share.m */; };
@@ -2460,6 +2468,10 @@
 		AA7D03DF15A26CAA00EBB705 /* SZUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserUtils.m; sourceTree = "<group>"; };
 		AA7D03E015A26CAA00EBB705 /* SZViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZViewUtils.h; sourceTree = "<group>"; };
 		AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZViewUtils.m; sourceTree = "<group>"; };
+		AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSMSShareData.h; sourceTree = "<group>"; };
+		AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSMSShareData.m; sourceTree = "<group>"; };
+		AA815C8A15DACDCC00A31E39 /* SZEmailShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZEmailShareData.h; sourceTree = "<group>"; };
+		AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZEmailShareData.m; sourceTree = "<group>"; };
 		AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTrackerTests.h; sourceTree = "<group>"; };
 		AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTrackerTests.m; sourceTree = "<group>"; };
 		AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZOARequestTests.h; sourceTree = "<group>"; };
@@ -3864,6 +3876,10 @@
 				AA0086F4158D35BF00480399 /* SZCommentOptions.m */,
 				AAC7CB7615C8A5D30064C5FD /* SZSocialNetworkPostData.h */,
 				AAC7CB7715C8A5D30064C5FD /* SZSocialNetworkPostData.m */,
+				AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */,
+				AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */,
+				AA815C8A15DACDCC00A31E39 /* SZEmailShareData.h */,
+				AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -4258,6 +4274,8 @@
 				AAC7CB7815C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
 				AAB9D35315D2783700004E77 /* Facebook+Socialize.h in Headers */,
 				AA60845315D3015E0065C543 /* SZOARequest+Socialize.h in Headers */,
+				AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
+				AA815C8C15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4352,6 +4370,8 @@
 				AAC7CB7915C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
 				AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */,
 				AA60845415D3015E0065C543 /* SZOARequest+Socialize.h in Headers */,
+				AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
+				AA815C8D15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5811,6 +5831,8 @@
 				AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */,
 				AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
+				AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */,
+				AA815C8E15DACDCC00A31E39 /* SZEmailShareData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6307,6 +6329,8 @@
 				AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */,
 				AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
+				AA815C8915DACDBF00A31E39 /* SZSMSShareData.m in Sources */,
+				AA815C8F15DACDCC00A31E39 /* SZEmailShareData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
