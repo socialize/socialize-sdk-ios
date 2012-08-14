@@ -4,6 +4,16 @@
 Changelog
 =============================================
 
+v2.3.3
+------
+[bug] Development/Sandbox push certificates not being flagged correctly with api [ notifications ]
+
+[feature] End-user will get a bubble that they can turn off notifications for this thread after opening app from thread based notifications [ notifications ]
+
+[feature] Remember post to no networks for comment/like ('Always post' becomes 'Remember Selection') [ ui ]
+
+[feature] Add override hook for sms/email [ share ]
+
 v2.3.2
 ------
 [bug] Fix isForCurrentSocializeSession crash [ ]
