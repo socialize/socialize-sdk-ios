@@ -39,6 +39,7 @@
     if (commentsTableViewController_ == nil) {
         commentsTableViewController_ = [[_SZCommentsListViewController alloc] initWithNibName:nil bundle:nil entryUrlString:nil];
         commentsTableViewController_.delegate = self;
+        commentsTableViewController_.showNotificationHintOnAppear = YES;
     }
     return commentsTableViewController_;
 }

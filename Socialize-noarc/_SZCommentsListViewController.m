@@ -50,6 +50,7 @@
 @synthesize entity = _entity;
 @synthesize bubbleView = bubbleView_;
 @synthesize bubbleContentView = bubbleContentView_;
+@synthesize showNotificationHintOnAppear = showNotificationHintOnAppear_;
 
 @synthesize delegate = delegate_;
 @synthesize isLoading = _isLoading;
@@ -227,6 +228,12 @@
     return bubbleView_;
 }
 
+- (void)showAndHideBubble {
+    CGRect buttonRect = [self.footerView.subscribedButton convertRect:self.footerView.subscribedButton.frame toView:self.view];
+    [self.bubbleView showFromRect:buttonRect inView:self.view offset:CGPointMake(0, -15) animated:YES];
+    [self.bubbleView performSelector:@selector(animateOutAndRemoveFromSuperview) withObject:nil afterDelay:2];
+}
+
 - (IBAction)subscribedButtonPressed:(id)sender {
     if (self.footerView.subscribedButton.selected) {
         self.footerView.subscribedButton.selected = NO;
@@ -242,9 +249,18 @@
     }
     [self.bubbleContentView configureForNotificationsEnabled:self.footerView.subscribedButton.selected];
     
-    CGRect buttonRect = [self.footerView.subscribedButton convertRect:self.footerView.subscribedButton.frame toView:self.view];
-    [self.bubbleView showFromRect:buttonRect inView:self.view offset:CGPointMake(0, -15) animated:YES];
-    [self.bubbleView performSelector:@selector(animateOutAndRemoveFromSuperview) withObject:nil afterDelay:2];
+    [self showAndHideBubble];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if (self.showNotificationHintOnAppear) {
+        self.showNotificationHintOnAppear = NO;
+        [self.bubbleContentView configureForNotificationsEnabled:self.footerView.subscribedButton.selected];
+        self.bubbleContentView.descriptionLabel.text = @"Tap here to toggle notifications on and off for this thread.";
+        [self showAndHideBubble];
+    }
 }
 
 #pragma mark -

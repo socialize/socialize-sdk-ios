@@ -69,6 +69,8 @@
 @property (retain, nonatomic) SocializeBubbleView *bubbleView;
 @property (retain, nonatomic) SocializeNotificationToggleBubbleContentView *bubbleContentView;
 
+@property (nonatomic, assign) BOOL showNotificationHintOnAppear;
+
 + (_SZCommentsListViewController*)commentsListViewControllerWithEntityKey:(NSString*)entityKey;
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName __attribute__((deprecated("Please use commentsListViewControllerWithEntityKey: and the SZNavigationController, or the utility functions in SZCommentUtils")));
 + (_SZCommentsListViewController*)commentsListViewControllerWithEntity:(id<SZEntity>)entity;

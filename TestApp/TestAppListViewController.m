@@ -194,6 +194,22 @@ static TestAppListViewController *sharedSampleListViewController;
         [SZSmartAlertUtils openNotification:userInfo];
     }]];
 
+    [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Comment SmartAlert" executionBlock:^{
+        [SZCommentUtils getCommentsByApplicationWithFirst:nil last:[NSNumber numberWithInteger:1] success:^(NSArray *comments) {
+            if ([comments count] > 0) {
+                id<SZComment> comment = [comments objectAtIndex:0];
+                NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               @"new_comments", @"notification_type",
+                                               @"comment", @"activity_type",
+                                               [NSNumber numberWithInteger:[comment objectID]], @"activity_id",
+                                               nil];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+                
+                [SZSmartAlertUtils openNotification:userInfo];
+            }
+        } failure:nil];
+    }]];
+
     NSMutableArray *actionBarRows = [NSMutableArray array];
     [actionBarRows addObject:[self rowWithIdentifier:kShowActionBarExampleRow text:@"Show Action Bar Example" executionBlock:^{
         ActionBarExampleViewController *actionBarExample = [[ActionBarExampleViewController alloc] initWithEntity:self.entity];
