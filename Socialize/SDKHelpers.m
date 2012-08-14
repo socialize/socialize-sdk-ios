@@ -66,6 +66,11 @@ SZSocialNetwork SZAutoPostNetworks() {
     return networks;
 }
 
+BOOL SZShouldShowNetworkSelection() {
+    BOOL skipSelection = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
+    return !skipSelection;
+}
+
 BOOL SZShouldShowLinkDialog() {
     return ( SZLinkedSocialNetworks() == SZSocialNetworkNone && SZAvailableSocialNetworks() != SZSocialNetworkNone && ![Socialize authenticationNotRequired]);
 }
@@ -129,7 +134,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
         
         // No link dialog required
         
-        if (SZAutoPostNetworks() != SZSocialNetworkNone) {
+        if (!SZShouldShowNetworkSelection()) {
             BLOCK_CALL_1(completion, SZAutoPostNetworks());
         } else {
             SZSelectNetworkViewController *selectNetwork = [[SZSelectNetworkViewController alloc] init];

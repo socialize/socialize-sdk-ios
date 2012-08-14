@@ -24,6 +24,7 @@ SocializeShareMedium SocializeShareMediumForSZSocialNetworks(SZSocialNetwork net
 void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error));
 SZActivityOptions *SZActivityOptionsFromUserDefaults(Class optionsClass);
 BOOL SZShouldShowLinkDialog();
+BOOL SZShouldShowNetworkSelection();
 BOOL SZErrorsAreDisabled();
 void SZEmitUIError(id object, NSError *error);
 void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error));
