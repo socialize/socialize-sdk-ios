@@ -52,7 +52,8 @@
             tokenObject = [[OAToken alloc] initWithKey:token secret:tokenSecret];
         }
         
-        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@://%@/%@", scheme, host, path]];
+        NSString *trimmedPath = [path stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@://%@/%@", scheme, host, trimmedPath]];
         self.request = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:tokenObject realm:@"" signatureProvider:nil];
         
         [self.request setHTTPMethod:method];
