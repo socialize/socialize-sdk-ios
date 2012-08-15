@@ -30,6 +30,11 @@
     NSAssert(consumerKey != nil, credentialsMessage);
     NSAssert(consumerSecret != nil, credentialsMessage);
     
+    // This is what the Socialize API wants
+    if ([method isEqualToString:@"POST"] || [method isEqualToString:@"PUT"]) {
+        parameters = [NSDictionary dictionaryWithObject:parameters forKey:@"payload"];
+    }
+    
     SZOARequest *request = [[SZOARequest alloc] initWithConsumerKey:consumerKey
                                                      consumerSecret:consumerSecret
                                                               token:accessToken
@@ -40,7 +45,15 @@
                                                                path:path
                                                          parameters:parameters
                                                             success:^(NSURLResponse *response, NSData *data) {
-                                                                BLOCK_CALL_1(success, [data objectFromJSONData]);
+                                                                NSDictionary *dictionary = [data objectFromJSONData];
+                                                                NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                                                
+                                                                if (dictionary == nil || ![dictionary isKindOfClass:[NSDictionary class]]) {
+                                                                    BLOCK_CALL_1(failure, [NSError socializeUnexpectedJSONResponseErrorWithResponse:responseString reason:@"Not a dictionary"]);
+                                                                    return;
+                                                                }
+                                                                                                                                
+                                                                BLOCK_CALL_1(success, [dictionary objectForKey:@"items"]);
                                                             }
                                                             failure:failure];
     
