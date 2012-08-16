@@ -295,9 +295,6 @@
 		AA159D5F158FAD4B006E1CAE /* comment-sm-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E2158F187200B5B2BC /* comment-sm-icon@2x.png */; };
 		AA159D60158FAD4B006E1CAE /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E3158F187200B5B2BC /* comments-cell-bg-borders.png */; };
 		AA159D61158FAD4B006E1CAE /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E4158F187200B5B2BC /* comments-cell-bg-borders@2x.png */; };
-		AA159D62158FAD4B006E1CAE /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E5158F187200B5B2BC /* commentsNavBarLeftItemView.xib */; };
-		AA159D63158FAD4B006E1CAE /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E6158F187200B5B2BC /* CommentsTableViewCell.xib */; };
-		AA159D64158FAD4B006E1CAE /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E7158F187200B5B2BC /* SampleEntityLoader.xib */; };
 		AA159D65158FAD4B006E1CAE /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E8158F187200B5B2BC /* socialize_logo.png */; };
 		AA159D66158FAD4B006E1CAE /* socialize_twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E9158F187200B5B2BC /* socialize_twitter_load.png */; };
 		AA159D67158FAD4B006E1CAE /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358EA158F187200B5B2BC /* socialize-activity-bg.png */; };
@@ -443,23 +440,8 @@
 		AA159DF3158FAD4B006E1CAE /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935976158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon@2x.png */; };
 		AA159DF4158FAD4B006E1CAE /* socialize-selectnetwork-twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935977158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png */; };
 		AA159DF5158FAD4B006E1CAE /* socialize-selectnetwork-twitter-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */; };
-		AA159DF6158FAD4B006E1CAE /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */; };
-		AA159DF7158FAD4B006E1CAE /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */; };
-		AA159DF8158FAD4B006E1CAE /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */; };
-		AA159DF9158FAD4B006E1CAE /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597C158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib */; };
-		AA159DFA158FAD4B006E1CAE /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597D158F187200B5B2BC /* SocializeAuthTableViewCell.xib */; };
 		AA159DFB158FAD4B006E1CAE /* _SZLinkDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */; };
-		AA159DFC158FAD4B006E1CAE /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597F158F187200B5B2BC /* SocializeCommentDetailsViewController.xib */; };
-		AA159DFD158FAD4B006E1CAE /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935980158F187200B5B2BC /* SocializeComposeMessageViewController.xib */; };
 		AA159DFE158FAD4B006E1CAE /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935981158F187200B5B2BC /* SocializeConfigurationInfo.plist */; };
-		AA159DFF158FAD4B006E1CAE /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935982158F187200B5B2BC /* SocializeDummyViewController.xib */; };
-		AA159E00158FAD4B006E1CAE /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935983158F187200B5B2BC /* SocializeEditValueTableViewCell.xib */; };
-		AA159E01158FAD4B006E1CAE /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935984158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AA159E02158FAD4B006E1CAE /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935985158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib */; };
-		AA159E03158FAD4B006E1CAE /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935986158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib */; };
-		AA159E04158FAD4B006E1CAE /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935987158F187200B5B2BC /* SocializeProfileEditValueViewController.xib */; };
-		AA159E05158FAD4B006E1CAE /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */; };
-		AA159E06158FAD4B006E1CAE /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935989158F187200B5B2BC /* SocializeTableViewController.xib */; };
 		AA159E07158FAD4B006E1CAE /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AA159E08158FAD4B006E1CAE /* _SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* _SZCommentsListViewController.xib */; };
 		AA159E09158FAD4B006E1CAE /* _SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */; };
@@ -741,12 +723,6 @@
 		AA9359E6158F187200B5B2BC /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E3158F187200B5B2BC /* comments-cell-bg-borders.png */; };
 		AA9359E7158F187200B5B2BC /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E4158F187200B5B2BC /* comments-cell-bg-borders@2x.png */; };
 		AA9359E9158F187200B5B2BC /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E4158F187200B5B2BC /* comments-cell-bg-borders@2x.png */; };
-		AA9359EA158F187200B5B2BC /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E5158F187200B5B2BC /* commentsNavBarLeftItemView.xib */; };
-		AA9359EC158F187200B5B2BC /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E5158F187200B5B2BC /* commentsNavBarLeftItemView.xib */; };
-		AA9359ED158F187200B5B2BC /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E6158F187200B5B2BC /* CommentsTableViewCell.xib */; };
-		AA9359EF158F187200B5B2BC /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E6158F187200B5B2BC /* CommentsTableViewCell.xib */; };
-		AA9359F0158F187200B5B2BC /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E7158F187200B5B2BC /* SampleEntityLoader.xib */; };
-		AA9359F2158F187200B5B2BC /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E7158F187200B5B2BC /* SampleEntityLoader.xib */; };
 		AA9359F3158F187200B5B2BC /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E8158F187200B5B2BC /* socialize_logo.png */; };
 		AA9359F5158F187200B5B2BC /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E8158F187200B5B2BC /* socialize_logo.png */; };
 		AA9359F6158F187200B5B2BC /* socialize_twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E9158F187200B5B2BC /* socialize_twitter_load.png */; };
@@ -1037,40 +1013,10 @@
 		AA935BA2158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935977158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png */; };
 		AA935BA3158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */; };
 		AA935BA5158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */; };
-		AA935BA6158F187200B5B2BC /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */; };
-		AA935BA8158F187200B5B2BC /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */; };
-		AA935BA9158F187200B5B2BC /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */; };
-		AA935BAB158F187200B5B2BC /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */; };
-		AA935BAC158F187200B5B2BC /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */; };
-		AA935BAE158F187200B5B2BC /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */; };
-		AA935BAF158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597C158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib */; };
-		AA935BB1158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597C158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib */; };
-		AA935BB2158F187200B5B2BC /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597D158F187200B5B2BC /* SocializeAuthTableViewCell.xib */; };
-		AA935BB4158F187200B5B2BC /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597D158F187200B5B2BC /* SocializeAuthTableViewCell.xib */; };
 		AA935BB5158F187200B5B2BC /* _SZLinkDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */; };
 		AA935BB7158F187200B5B2BC /* _SZLinkDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */; };
-		AA935BB8158F187200B5B2BC /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597F158F187200B5B2BC /* SocializeCommentDetailsViewController.xib */; };
-		AA935BBA158F187200B5B2BC /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597F158F187200B5B2BC /* SocializeCommentDetailsViewController.xib */; };
-		AA935BBB158F187200B5B2BC /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935980158F187200B5B2BC /* SocializeComposeMessageViewController.xib */; };
-		AA935BBD158F187200B5B2BC /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935980158F187200B5B2BC /* SocializeComposeMessageViewController.xib */; };
 		AA935BBE158F187200B5B2BC /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935981158F187200B5B2BC /* SocializeConfigurationInfo.plist */; };
 		AA935BC0158F187200B5B2BC /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935981158F187200B5B2BC /* SocializeConfigurationInfo.plist */; };
-		AA935BC1158F187200B5B2BC /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935982158F187200B5B2BC /* SocializeDummyViewController.xib */; };
-		AA935BC3158F187200B5B2BC /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935982158F187200B5B2BC /* SocializeDummyViewController.xib */; };
-		AA935BC4158F187200B5B2BC /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935983158F187200B5B2BC /* SocializeEditValueTableViewCell.xib */; };
-		AA935BC6158F187200B5B2BC /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935983158F187200B5B2BC /* SocializeEditValueTableViewCell.xib */; };
-		AA935BC7158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935984158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AA935BC9158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935984158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AA935BCA158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935985158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib */; };
-		AA935BCC158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935985158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib */; };
-		AA935BCD158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935986158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib */; };
-		AA935BCF158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935986158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib */; };
-		AA935BD0158F187200B5B2BC /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935987158F187200B5B2BC /* SocializeProfileEditValueViewController.xib */; };
-		AA935BD2158F187200B5B2BC /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935987158F187200B5B2BC /* SocializeProfileEditValueViewController.xib */; };
-		AA935BD3158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */; };
-		AA935BD5158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */; };
-		AA935BD6158F187200B5B2BC /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935989158F187200B5B2BC /* SocializeTableViewController.xib */; };
-		AA935BD8158F187200B5B2BC /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935989158F187200B5B2BC /* SocializeTableViewController.xib */; };
 		AA935BD9158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AA935BDB158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AA935BDC158F187200B5B2BC /* _SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* _SZCommentsListViewController.xib */; };
@@ -1440,9 +1386,6 @@
 		AACED966158FCE770024EC43 /* comment-sm-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E2158F187200B5B2BC /* comment-sm-icon@2x.png */; };
 		AACED967158FCE770024EC43 /* comments-cell-bg-borders.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E3158F187200B5B2BC /* comments-cell-bg-borders.png */; };
 		AACED968158FCE770024EC43 /* comments-cell-bg-borders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E4158F187200B5B2BC /* comments-cell-bg-borders@2x.png */; };
-		AACED969158FCE770024EC43 /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E5158F187200B5B2BC /* commentsNavBarLeftItemView.xib */; };
-		AACED96A158FCE770024EC43 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E6158F187200B5B2BC /* CommentsTableViewCell.xib */; };
-		AACED96B158FCE770024EC43 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E7158F187200B5B2BC /* SampleEntityLoader.xib */; };
 		AACED96C158FCE770024EC43 /* socialize_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E8158F187200B5B2BC /* socialize_logo.png */; };
 		AACED96D158FCE770024EC43 /* socialize_twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358E9158F187200B5B2BC /* socialize_twitter_load.png */; };
 		AACED96E158FCE770024EC43 /* socialize-activity-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9358EA158F187200B5B2BC /* socialize-activity-bg.png */; };
@@ -1588,23 +1531,8 @@
 		AACED9FA158FCE770024EC43 /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935976158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon@2x.png */; };
 		AACED9FB158FCE770024EC43 /* socialize-selectnetwork-twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935977158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png */; };
 		AACED9FC158FCE770024EC43 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */; };
-		AACED9FD158FCE770024EC43 /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */; };
-		AACED9FE158FCE770024EC43 /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */; };
-		AACED9FF158FCE770024EC43 /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */; };
-		AACEDA00158FCE770024EC43 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597C158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib */; };
-		AACEDA01158FCE770024EC43 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597D158F187200B5B2BC /* SocializeAuthTableViewCell.xib */; };
 		AACEDA02158FCE770024EC43 /* _SZLinkDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */; };
-		AACEDA03158FCE770024EC43 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93597F158F187200B5B2BC /* SocializeCommentDetailsViewController.xib */; };
-		AACEDA04158FCE770024EC43 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935980158F187200B5B2BC /* SocializeComposeMessageViewController.xib */; };
 		AACEDA05158FCE770024EC43 /* SocializeConfigurationInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935981158F187200B5B2BC /* SocializeConfigurationInfo.plist */; };
-		AACEDA06158FCE770024EC43 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935982158F187200B5B2BC /* SocializeDummyViewController.xib */; };
-		AACEDA07158FCE770024EC43 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935983158F187200B5B2BC /* SocializeEditValueTableViewCell.xib */; };
-		AACEDA08158FCE770024EC43 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935984158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib */; };
-		AACEDA09158FCE770024EC43 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935985158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib */; };
-		AACEDA0A158FCE770024EC43 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935986158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib */; };
-		AACEDA0B158FCE770024EC43 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935987158F187200B5B2BC /* SocializeProfileEditValueViewController.xib */; };
-		AACEDA0C158FCE770024EC43 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */; };
-		AACEDA0D158FCE770024EC43 /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA935989158F187200B5B2BC /* SocializeTableViewController.xib */; };
 		AACEDA0E158FCE770024EC43 /* _SZTwitterLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */; };
 		AACEDA0F158FCE770024EC43 /* _SZCommentsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598B158F187200B5B2BC /* _SZCommentsListViewController.xib */; };
 		AACEDA10158FCE770024EC43 /* _SZComposeCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */; };
@@ -1649,6 +1577,78 @@
 		AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; };
 		AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; };
 		AAF098DC158FB4EA005726C2 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
+		AD40C63C15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64115DD04DF008F8980 /* SocializeActivityDetailsViewController.xib */; };
+		AD40C63D15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64115DD04DF008F8980 /* SocializeActivityDetailsViewController.xib */; };
+		AD40C63E15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64115DD04DF008F8980 /* SocializeActivityDetailsViewController.xib */; };
+		AD40C63F15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64115DD04DF008F8980 /* SocializeActivityDetailsViewController.xib */; };
+		AD40C64215DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64715DD04FF008F8980 /* SocializeActivityTableViewCell.xib */; };
+		AD40C64315DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64715DD04FF008F8980 /* SocializeActivityTableViewCell.xib */; };
+		AD40C64415DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64715DD04FF008F8980 /* SocializeActivityTableViewCell.xib */; };
+		AD40C64515DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64715DD04FF008F8980 /* SocializeActivityTableViewCell.xib */; };
+		AD40C64815DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64D15DD0520008F8980 /* SocializeComposeMessageViewController.xib */; };
+		AD40C64915DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64D15DD0520008F8980 /* SocializeComposeMessageViewController.xib */; };
+		AD40C64A15DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64D15DD0520008F8980 /* SocializeComposeMessageViewController.xib */; };
+		AD40C64B15DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C64D15DD0520008F8980 /* SocializeComposeMessageViewController.xib */; };
+		AD40C64E15DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65315DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AD40C64F15DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65315DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AD40C65015DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65315DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AD40C65115DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65315DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib */; };
+		AD40C65415DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65915DD0540008F8980 /* SocializeProfileEditTableViewCell.xib */; };
+		AD40C65515DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65915DD0540008F8980 /* SocializeProfileEditTableViewCell.xib */; };
+		AD40C65615DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65915DD0540008F8980 /* SocializeProfileEditTableViewCell.xib */; };
+		AD40C65715DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65915DD0540008F8980 /* SocializeProfileEditTableViewCell.xib */; };
+		AD40C65A15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65F15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib */; };
+		AD40C65B15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65F15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib */; };
+		AD40C65C15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65F15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib */; };
+		AD40C65D15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C65F15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib */; };
+		AD40C66015DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66515DD054E008F8980 /* SocializeProfileEditValueViewController.xib */; };
+		AD40C66115DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66515DD054E008F8980 /* SocializeProfileEditValueViewController.xib */; };
+		AD40C66215DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66515DD054E008F8980 /* SocializeProfileEditValueViewController.xib */; };
+		AD40C66315DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66515DD054E008F8980 /* SocializeProfileEditValueViewController.xib */; };
+		AD40C66615DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66B15DD0555008F8980 /* SocializeRichPushNotificationViewController.xib */; };
+		AD40C66715DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66B15DD0555008F8980 /* SocializeRichPushNotificationViewController.xib */; };
+		AD40C66815DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66B15DD0555008F8980 /* SocializeRichPushNotificationViewController.xib */; };
+		AD40C66915DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C66B15DD0555008F8980 /* SocializeRichPushNotificationViewController.xib */; };
+		AD40C66C15DD055B008F8980 /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67115DD055B008F8980 /* SocializeTableViewController.xib */; };
+		AD40C66D15DD055B008F8980 /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67115DD055B008F8980 /* SocializeTableViewController.xib */; };
+		AD40C66E15DD055B008F8980 /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67115DD055B008F8980 /* SocializeTableViewController.xib */; };
+		AD40C66F15DD055B008F8980 /* SocializeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67115DD055B008F8980 /* SocializeTableViewController.xib */; };
+		AD40C67215DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67715DD0561008F8980 /* SocializeEditValueTableViewCell.xib */; };
+		AD40C67315DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67715DD0561008F8980 /* SocializeEditValueTableViewCell.xib */; };
+		AD40C67415DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67715DD0561008F8980 /* SocializeEditValueTableViewCell.xib */; };
+		AD40C67515DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67715DD0561008F8980 /* SocializeEditValueTableViewCell.xib */; };
+		AD40C67815DD0566008F8980 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67D15DD0566008F8980 /* SocializeDummyViewController.xib */; };
+		AD40C67915DD0566008F8980 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67D15DD0566008F8980 /* SocializeDummyViewController.xib */; };
+		AD40C67A15DD0566008F8980 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67D15DD0566008F8980 /* SocializeDummyViewController.xib */; };
+		AD40C67B15DD0566008F8980 /* SocializeDummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C67D15DD0566008F8980 /* SocializeDummyViewController.xib */; };
+		AD40C67E15DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68315DD056F008F8980 /* SocializeCommentDetailsViewController.xib */; };
+		AD40C67F15DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68315DD056F008F8980 /* SocializeCommentDetailsViewController.xib */; };
+		AD40C68015DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68315DD056F008F8980 /* SocializeCommentDetailsViewController.xib */; };
+		AD40C68115DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68315DD056F008F8980 /* SocializeCommentDetailsViewController.xib */; };
+		AD40C68415DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68915DD0573008F8980 /* SocializeAuthTableViewCell.xib */; };
+		AD40C68515DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68915DD0573008F8980 /* SocializeAuthTableViewCell.xib */; };
+		AD40C68615DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68915DD0573008F8980 /* SocializeAuthTableViewCell.xib */; };
+		AD40C68715DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68915DD0573008F8980 /* SocializeAuthTableViewCell.xib */; };
+		AD40C68A15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68F15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib */; };
+		AD40C68B15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68F15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib */; };
+		AD40C68C15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68F15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib */; };
+		AD40C68D15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C68F15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib */; };
+		AD40C69015DD0582008F8980 /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69515DD0582008F8980 /* SocializeActivityViewController.xib */; };
+		AD40C69115DD0582008F8980 /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69515DD0582008F8980 /* SocializeActivityViewController.xib */; };
+		AD40C69215DD0582008F8980 /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69515DD0582008F8980 /* SocializeActivityViewController.xib */; };
+		AD40C69315DD0582008F8980 /* SocializeActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69515DD0582008F8980 /* SocializeActivityViewController.xib */; };
+		AD40C69615DD0598008F8980 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69B15DD0598008F8980 /* SampleEntityLoader.xib */; };
+		AD40C69715DD0598008F8980 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69B15DD0598008F8980 /* SampleEntityLoader.xib */; };
+		AD40C69815DD0598008F8980 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69B15DD0598008F8980 /* SampleEntityLoader.xib */; };
+		AD40C69915DD0598008F8980 /* SampleEntityLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C69B15DD0598008F8980 /* SampleEntityLoader.xib */; };
+		AD40C69C15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A115DD059E008F8980 /* CommentsTableViewCell.xib */; };
+		AD40C69D15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A115DD059E008F8980 /* CommentsTableViewCell.xib */; };
+		AD40C69E15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A115DD059E008F8980 /* CommentsTableViewCell.xib */; };
+		AD40C69F15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A115DD059E008F8980 /* CommentsTableViewCell.xib */; };
+		AD40C6A215DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A715DD05A5008F8980 /* commentsNavBarLeftItemView.xib */; };
+		AD40C6A315DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A715DD05A5008F8980 /* commentsNavBarLeftItemView.xib */; };
+		AD40C6A415DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A715DD05A5008F8980 /* commentsNavBarLeftItemView.xib */; };
+		AD40C6A515DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD40C6A715DD05A5008F8980 /* commentsNavBarLeftItemView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2523,9 +2523,6 @@
 		AA9358E2158F187200B5B2BC /* comment-sm-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-sm-icon@2x.png"; path = "Socialize/Resources/comment-sm-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		AA9358E3158F187200B5B2BC /* comments-cell-bg-borders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comments-cell-bg-borders.png"; path = "Socialize/Resources/comments-cell-bg-borders.png"; sourceTree = SOURCE_ROOT; };
 		AA9358E4158F187200B5B2BC /* comments-cell-bg-borders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comments-cell-bg-borders@2x.png"; path = "Socialize/Resources/comments-cell-bg-borders@2x.png"; sourceTree = SOURCE_ROOT; };
-		AA9358E5158F187200B5B2BC /* commentsNavBarLeftItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = commentsNavBarLeftItemView.xib; path = Socialize/Resources/commentsNavBarLeftItemView.xib; sourceTree = SOURCE_ROOT; };
-		AA9358E6158F187200B5B2BC /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentsTableViewCell.xib; path = Socialize/Resources/CommentsTableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		AA9358E7158F187200B5B2BC /* SampleEntityLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SampleEntityLoader.xib; path = Socialize/Resources/SampleEntityLoader.xib; sourceTree = SOURCE_ROOT; };
 		AA9358E8158F187200B5B2BC /* socialize_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = socialize_logo.png; path = Socialize/Resources/socialize_logo.png; sourceTree = SOURCE_ROOT; };
 		AA9358E9158F187200B5B2BC /* socialize_twitter_load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = socialize_twitter_load.png; path = Socialize/Resources/socialize_twitter_load.png; sourceTree = SOURCE_ROOT; };
 		AA9358EA158F187200B5B2BC /* socialize-activity-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-bg.png"; path = "Socialize/Resources/socialize-activity-bg.png"; sourceTree = SOURCE_ROOT; };
@@ -2671,23 +2668,8 @@
 		AA935976158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-twitter-dis-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-twitter-dis-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		AA935977158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-twitter-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-twitter-icon.png"; sourceTree = SOURCE_ROOT; };
 		AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-twitter-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-twitter-icon@2x.png"; sourceTree = SOURCE_ROOT; };
-		AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityDetailsViewController.xib; path = Socialize/Resources/SocializeActivityDetailsViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityTableViewCell.xib; path = Socialize/Resources/SocializeActivityTableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityViewController.xib; path = Socialize/Resources/SocializeActivityViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA93597C158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthInfoTableViewCell.xib; path = Socialize/Resources/SocializeAuthInfoTableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		AA93597D158F187200B5B2BC /* SocializeAuthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeAuthTableViewCell.xib; path = Socialize/Resources/SocializeAuthTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZLinkDialogViewController.xib; path = Socialize/Resources/_SZLinkDialogViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA93597F158F187200B5B2BC /* SocializeCommentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeCommentDetailsViewController.xib; path = Socialize/Resources/SocializeCommentDetailsViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA935980158F187200B5B2BC /* SocializeComposeMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeComposeMessageViewController.xib; path = Socialize/Resources/SocializeComposeMessageViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA935981158F187200B5B2BC /* SocializeConfigurationInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SocializeConfigurationInfo.plist; path = Socialize/Resources/SocializeConfigurationInfo.plist; sourceTree = SOURCE_ROOT; };
-		AA935982158F187200B5B2BC /* SocializeDummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeDummyViewController.xib; path = Socialize/Resources/SocializeDummyViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA935983158F187200B5B2BC /* SocializeEditValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeEditValueTableViewCell.xib; path = Socialize/Resources/SocializeEditValueTableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		AA935984158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeNotificationToggleBubbleContentView.xib; path = Socialize/Resources/SocializeNotificationToggleBubbleContentView.xib; sourceTree = SOURCE_ROOT; };
-		AA935985158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewCell.xib; path = Socialize/Resources/SocializeProfileEditTableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		AA935986158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditTableViewImageCell.xib; path = Socialize/Resources/SocializeProfileEditTableViewImageCell.xib; sourceTree = SOURCE_ROOT; };
-		AA935987158F187200B5B2BC /* SocializeProfileEditValueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeProfileEditValueViewController.xib; path = Socialize/Resources/SocializeProfileEditValueViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeRichPushNotificationViewController.xib; path = Socialize/Resources/SocializeRichPushNotificationViewController.xib; sourceTree = SOURCE_ROOT; };
-		AA935989158F187200B5B2BC /* SocializeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeTableViewController.xib; path = Socialize/Resources/SocializeTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598A158F187200B5B2BC /* _SZTwitterLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZTwitterLinkViewController.xib; path = Socialize/Resources/_SZTwitterLinkViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598B158F187200B5B2BC /* _SZCommentsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZCommentsListViewController.xib; path = Socialize/Resources/_SZCommentsListViewController.xib; sourceTree = SOURCE_ROOT; };
 		AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = _SZComposeCommentViewController.xib; path = Socialize/Resources/_SZComposeCommentViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -2760,6 +2742,24 @@
 		AAEC2B0F15B4DA5400C9C65A /* example-distribution.embedded.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-distribution.embedded.mobileprovision"; sourceTree = "<group>"; };
 		AAEEE62315A26B6B003566BA /* SDKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDKHelpers.h; path = Socialize/SDKHelpers.h; sourceTree = SOURCE_ROOT; };
 		AAEEE62415A26B6B003566BA /* SDKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKHelpers.m; path = Socialize/SDKHelpers.m; sourceTree = SOURCE_ROOT; };
+		AD40C64015DD04DF008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeActivityDetailsViewController.xib; sourceTree = "<group>"; };
+		AD40C64615DD04FF008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeActivityTableViewCell.xib; sourceTree = "<group>"; };
+		AD40C64C15DD0520008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeComposeMessageViewController.xib; sourceTree = "<group>"; };
+		AD40C65215DD0532008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeNotificationToggleBubbleContentView.xib; sourceTree = "<group>"; };
+		AD40C65815DD0540008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeProfileEditTableViewCell.xib; sourceTree = "<group>"; };
+		AD40C65E15DD0546008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeProfileEditTableViewImageCell.xib; sourceTree = "<group>"; };
+		AD40C66415DD054E008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeProfileEditValueViewController.xib; sourceTree = "<group>"; };
+		AD40C66A15DD0555008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeRichPushNotificationViewController.xib; sourceTree = "<group>"; };
+		AD40C67015DD055B008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeTableViewController.xib; sourceTree = "<group>"; };
+		AD40C67615DD0561008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeEditValueTableViewCell.xib; sourceTree = "<group>"; };
+		AD40C67C15DD0566008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeDummyViewController.xib; sourceTree = "<group>"; };
+		AD40C68215DD056F008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeCommentDetailsViewController.xib; sourceTree = "<group>"; };
+		AD40C68815DD0573008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeAuthTableViewCell.xib; sourceTree = "<group>"; };
+		AD40C68E15DD0578008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeAuthInfoTableViewCell.xib; sourceTree = "<group>"; };
+		AD40C69415DD0582008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SocializeActivityViewController.xib; sourceTree = "<group>"; };
+		AD40C69A15DD0598008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SampleEntityLoader.xib; sourceTree = "<group>"; };
+		AD40C6A015DD059E008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		AD40C6A615DD05A5008F8980 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/commentsNavBarLeftItemView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3609,9 +3609,9 @@
 				AA9358E2158F187200B5B2BC /* comment-sm-icon@2x.png */,
 				AA9358E3158F187200B5B2BC /* comments-cell-bg-borders.png */,
 				AA9358E4158F187200B5B2BC /* comments-cell-bg-borders@2x.png */,
-				AA9358E5158F187200B5B2BC /* commentsNavBarLeftItemView.xib */,
-				AA9358E6158F187200B5B2BC /* CommentsTableViewCell.xib */,
-				AA9358E7158F187200B5B2BC /* SampleEntityLoader.xib */,
+				AD40C6A715DD05A5008F8980 /* commentsNavBarLeftItemView.xib */,
+				AD40C6A115DD059E008F8980 /* CommentsTableViewCell.xib */,
+				AD40C69B15DD0598008F8980 /* SampleEntityLoader.xib */,
 				AA9358E8158F187200B5B2BC /* socialize_logo.png */,
 				AA9358E9158F187200B5B2BC /* socialize_twitter_load.png */,
 				AA9358EA158F187200B5B2BC /* socialize-activity-bg.png */,
@@ -3757,22 +3757,22 @@
 				AA935976158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon@2x.png */,
 				AA935977158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png */,
 				AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */,
-				AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */,
-				AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */,
-				AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */,
-				AA93597C158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib */,
-				AA93597D158F187200B5B2BC /* SocializeAuthTableViewCell.xib */,
-				AA93597F158F187200B5B2BC /* SocializeCommentDetailsViewController.xib */,
-				AA935980158F187200B5B2BC /* SocializeComposeMessageViewController.xib */,
+				AD40C64115DD04DF008F8980 /* SocializeActivityDetailsViewController.xib */,
+				AD40C64715DD04FF008F8980 /* SocializeActivityTableViewCell.xib */,
+				AD40C69515DD0582008F8980 /* SocializeActivityViewController.xib */,
+				AD40C68F15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib */,
+				AD40C68915DD0573008F8980 /* SocializeAuthTableViewCell.xib */,
+				AD40C68315DD056F008F8980 /* SocializeCommentDetailsViewController.xib */,
+				AD40C64D15DD0520008F8980 /* SocializeComposeMessageViewController.xib */,
 				AA935981158F187200B5B2BC /* SocializeConfigurationInfo.plist */,
-				AA935982158F187200B5B2BC /* SocializeDummyViewController.xib */,
-				AA935983158F187200B5B2BC /* SocializeEditValueTableViewCell.xib */,
-				AA935984158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib */,
-				AA935985158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib */,
-				AA935986158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib */,
-				AA935987158F187200B5B2BC /* SocializeProfileEditValueViewController.xib */,
-				AA935988158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib */,
-				AA935989158F187200B5B2BC /* SocializeTableViewController.xib */,
+				AD40C67D15DD0566008F8980 /* SocializeDummyViewController.xib */,
+				AD40C67715DD0561008F8980 /* SocializeEditValueTableViewCell.xib */,
+				AD40C65315DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib */,
+				AD40C65915DD0540008F8980 /* SocializeProfileEditTableViewCell.xib */,
+				AD40C65F15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib */,
+				AD40C66515DD054E008F8980 /* SocializeProfileEditValueViewController.xib */,
+				AD40C66B15DD0555008F8980 /* SocializeRichPushNotificationViewController.xib */,
+				AD40C67115DD055B008F8980 /* SocializeTableViewController.xib */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -4736,9 +4736,9 @@
 				AA9359E1158F187200B5B2BC /* comment-sm-icon@2x.png in Resources */,
 				AA9359E4158F187200B5B2BC /* comments-cell-bg-borders.png in Resources */,
 				AA9359E7158F187200B5B2BC /* comments-cell-bg-borders@2x.png in Resources */,
-				AA9359EA158F187200B5B2BC /* commentsNavBarLeftItemView.xib in Resources */,
-				AA9359ED158F187200B5B2BC /* CommentsTableViewCell.xib in Resources */,
-				AA9359F0158F187200B5B2BC /* SampleEntityLoader.xib in Resources */,
+				AD40C6A215DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */,
+				AD40C69C15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */,
+				AD40C69615DD0598008F8980 /* SampleEntityLoader.xib in Resources */,
 				AA9359F3158F187200B5B2BC /* socialize_logo.png in Resources */,
 				AA9359F6158F187200B5B2BC /* socialize_twitter_load.png in Resources */,
 				AA9359F9158F187200B5B2BC /* socialize-activity-bg.png in Resources */,
@@ -4884,23 +4884,23 @@
 				AA935B9D158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AA935BA0158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA935BA3158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
-				AA935BA6158F187200B5B2BC /* SocializeActivityDetailsViewController.xib in Resources */,
-				AA935BA9158F187200B5B2BC /* SocializeActivityTableViewCell.xib in Resources */,
-				AA935BAC158F187200B5B2BC /* SocializeActivityViewController.xib in Resources */,
-				AA935BAF158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib in Resources */,
-				AA935BB2158F187200B5B2BC /* SocializeAuthTableViewCell.xib in Resources */,
+				AD40C63C15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */,
+				AD40C64215DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */,
+				AD40C69015DD0582008F8980 /* SocializeActivityViewController.xib in Resources */,
+				AD40C68A15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AD40C68415DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */,
 				AA935BB5158F187200B5B2BC /* _SZLinkDialogViewController.xib in Resources */,
-				AA935BB8158F187200B5B2BC /* SocializeCommentDetailsViewController.xib in Resources */,
-				AA935BBB158F187200B5B2BC /* SocializeComposeMessageViewController.xib in Resources */,
+				AD40C67E15DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */,
+				AD40C64815DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA935BBE158F187200B5B2BC /* SocializeConfigurationInfo.plist in Resources */,
-				AA935BC1158F187200B5B2BC /* SocializeDummyViewController.xib in Resources */,
-				AA935BC4158F187200B5B2BC /* SocializeEditValueTableViewCell.xib in Resources */,
-				AA935BC7158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AA935BCA158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib in Resources */,
-				AA935BCD158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib in Resources */,
-				AA935BD0158F187200B5B2BC /* SocializeProfileEditValueViewController.xib in Resources */,
-				AA935BD3158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib in Resources */,
-				AA935BD6158F187200B5B2BC /* SocializeTableViewController.xib in Resources */,
+				AD40C67815DD0566008F8980 /* SocializeDummyViewController.xib in Resources */,
+				AD40C67215DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */,
+				AD40C64E15DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
+				AD40C65415DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */,
+				AD40C65A15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
+				AD40C66015DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */,
+				AD40C66615DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */,
+				AD40C66C15DD055B008F8980 /* SocializeTableViewController.xib in Resources */,
 				AA935BD9158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */,
 				AA935BDC158F187200B5B2BC /* _SZCommentsListViewController.xib in Resources */,
 				AA935BDF158F187200B5B2BC /* _SZComposeCommentViewController.xib in Resources */,
@@ -4967,9 +4967,9 @@
 				AACED966158FCE770024EC43 /* comment-sm-icon@2x.png in Resources */,
 				AACED967158FCE770024EC43 /* comments-cell-bg-borders.png in Resources */,
 				AACED968158FCE770024EC43 /* comments-cell-bg-borders@2x.png in Resources */,
-				AACED969158FCE770024EC43 /* commentsNavBarLeftItemView.xib in Resources */,
-				AACED96A158FCE770024EC43 /* CommentsTableViewCell.xib in Resources */,
-				AACED96B158FCE770024EC43 /* SampleEntityLoader.xib in Resources */,
+				AD40C6A515DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */,
+				AD40C69F15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */,
+				AD40C69915DD0598008F8980 /* SampleEntityLoader.xib in Resources */,
 				AACED96C158FCE770024EC43 /* socialize_logo.png in Resources */,
 				AACED96D158FCE770024EC43 /* socialize_twitter_load.png in Resources */,
 				AACED96E158FCE770024EC43 /* socialize-activity-bg.png in Resources */,
@@ -5115,23 +5115,23 @@
 				AACED9FA158FCE770024EC43 /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AACED9FB158FCE770024EC43 /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AACED9FC158FCE770024EC43 /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
-				AACED9FD158FCE770024EC43 /* SocializeActivityDetailsViewController.xib in Resources */,
-				AACED9FE158FCE770024EC43 /* SocializeActivityTableViewCell.xib in Resources */,
-				AACED9FF158FCE770024EC43 /* SocializeActivityViewController.xib in Resources */,
-				AACEDA00158FCE770024EC43 /* SocializeAuthInfoTableViewCell.xib in Resources */,
-				AACEDA01158FCE770024EC43 /* SocializeAuthTableViewCell.xib in Resources */,
+				AD40C63F15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */,
+				AD40C64515DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */,
+				AD40C69315DD0582008F8980 /* SocializeActivityViewController.xib in Resources */,
+				AD40C68D15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AD40C68715DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */,
 				AACEDA02158FCE770024EC43 /* _SZLinkDialogViewController.xib in Resources */,
-				AACEDA03158FCE770024EC43 /* SocializeCommentDetailsViewController.xib in Resources */,
-				AACEDA04158FCE770024EC43 /* SocializeComposeMessageViewController.xib in Resources */,
+				AD40C68115DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */,
+				AD40C64B15DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */,
 				AACEDA05158FCE770024EC43 /* SocializeConfigurationInfo.plist in Resources */,
-				AACEDA06158FCE770024EC43 /* SocializeDummyViewController.xib in Resources */,
-				AACEDA07158FCE770024EC43 /* SocializeEditValueTableViewCell.xib in Resources */,
-				AACEDA08158FCE770024EC43 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AACEDA09158FCE770024EC43 /* SocializeProfileEditTableViewCell.xib in Resources */,
-				AACEDA0A158FCE770024EC43 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
-				AACEDA0B158FCE770024EC43 /* SocializeProfileEditValueViewController.xib in Resources */,
-				AACEDA0C158FCE770024EC43 /* SocializeRichPushNotificationViewController.xib in Resources */,
-				AACEDA0D158FCE770024EC43 /* SocializeTableViewController.xib in Resources */,
+				AD40C67B15DD0566008F8980 /* SocializeDummyViewController.xib in Resources */,
+				AD40C67515DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */,
+				AD40C65115DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
+				AD40C65715DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */,
+				AD40C65D15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
+				AD40C66315DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */,
+				AD40C66915DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */,
+				AD40C66F15DD055B008F8980 /* SocializeTableViewController.xib in Resources */,
 				AACEDA0E158FCE770024EC43 /* _SZTwitterLinkViewController.xib in Resources */,
 				AACEDA0F158FCE770024EC43 /* _SZCommentsListViewController.xib in Resources */,
 				AACEDA10158FCE770024EC43 /* _SZComposeCommentViewController.xib in Resources */,
@@ -5197,9 +5197,9 @@
 				AA159D5F158FAD4B006E1CAE /* comment-sm-icon@2x.png in Resources */,
 				AA159D60158FAD4B006E1CAE /* comments-cell-bg-borders.png in Resources */,
 				AA159D61158FAD4B006E1CAE /* comments-cell-bg-borders@2x.png in Resources */,
-				AA159D62158FAD4B006E1CAE /* commentsNavBarLeftItemView.xib in Resources */,
-				AA159D63158FAD4B006E1CAE /* CommentsTableViewCell.xib in Resources */,
-				AA159D64158FAD4B006E1CAE /* SampleEntityLoader.xib in Resources */,
+				AD40C6A315DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */,
+				AD40C69D15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */,
+				AD40C69715DD0598008F8980 /* SampleEntityLoader.xib in Resources */,
 				AA159D65158FAD4B006E1CAE /* socialize_logo.png in Resources */,
 				AA159D66158FAD4B006E1CAE /* socialize_twitter_load.png in Resources */,
 				AA159D67158FAD4B006E1CAE /* socialize-activity-bg.png in Resources */,
@@ -5345,23 +5345,23 @@
 				AA159DF3158FAD4B006E1CAE /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AA159DF4158FAD4B006E1CAE /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA159DF5158FAD4B006E1CAE /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
-				AA159DF6158FAD4B006E1CAE /* SocializeActivityDetailsViewController.xib in Resources */,
-				AA159DF7158FAD4B006E1CAE /* SocializeActivityTableViewCell.xib in Resources */,
-				AA159DF8158FAD4B006E1CAE /* SocializeActivityViewController.xib in Resources */,
-				AA159DF9158FAD4B006E1CAE /* SocializeAuthInfoTableViewCell.xib in Resources */,
-				AA159DFA158FAD4B006E1CAE /* SocializeAuthTableViewCell.xib in Resources */,
+				AD40C63D15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */,
+				AD40C64315DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */,
+				AD40C69115DD0582008F8980 /* SocializeActivityViewController.xib in Resources */,
+				AD40C68B15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AD40C68515DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */,
 				AA159DFB158FAD4B006E1CAE /* _SZLinkDialogViewController.xib in Resources */,
-				AA159DFC158FAD4B006E1CAE /* SocializeCommentDetailsViewController.xib in Resources */,
-				AA159DFD158FAD4B006E1CAE /* SocializeComposeMessageViewController.xib in Resources */,
+				AD40C67F15DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */,
+				AD40C64915DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA159DFE158FAD4B006E1CAE /* SocializeConfigurationInfo.plist in Resources */,
-				AA159DFF158FAD4B006E1CAE /* SocializeDummyViewController.xib in Resources */,
-				AA159E00158FAD4B006E1CAE /* SocializeEditValueTableViewCell.xib in Resources */,
-				AA159E01158FAD4B006E1CAE /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AA159E02158FAD4B006E1CAE /* SocializeProfileEditTableViewCell.xib in Resources */,
-				AA159E03158FAD4B006E1CAE /* SocializeProfileEditTableViewImageCell.xib in Resources */,
-				AA159E04158FAD4B006E1CAE /* SocializeProfileEditValueViewController.xib in Resources */,
-				AA159E05158FAD4B006E1CAE /* SocializeRichPushNotificationViewController.xib in Resources */,
-				AA159E06158FAD4B006E1CAE /* SocializeTableViewController.xib in Resources */,
+				AD40C67915DD0566008F8980 /* SocializeDummyViewController.xib in Resources */,
+				AD40C67315DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */,
+				AD40C64F15DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
+				AD40C65515DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */,
+				AD40C65B15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
+				AD40C66115DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */,
+				AD40C66715DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */,
+				AD40C66D15DD055B008F8980 /* SocializeTableViewController.xib in Resources */,
 				AA159E07158FAD4B006E1CAE /* _SZTwitterLinkViewController.xib in Resources */,
 				AA159E08158FAD4B006E1CAE /* _SZCommentsListViewController.xib in Resources */,
 				AA159E09158FAD4B006E1CAE /* _SZComposeCommentViewController.xib in Resources */,
@@ -5426,9 +5426,9 @@
 				AA9359E3158F187200B5B2BC /* comment-sm-icon@2x.png in Resources */,
 				AA9359E6158F187200B5B2BC /* comments-cell-bg-borders.png in Resources */,
 				AA9359E9158F187200B5B2BC /* comments-cell-bg-borders@2x.png in Resources */,
-				AA9359EC158F187200B5B2BC /* commentsNavBarLeftItemView.xib in Resources */,
-				AA9359EF158F187200B5B2BC /* CommentsTableViewCell.xib in Resources */,
-				AA9359F2158F187200B5B2BC /* SampleEntityLoader.xib in Resources */,
+				AD40C6A415DD05A5008F8980 /* commentsNavBarLeftItemView.xib in Resources */,
+				AD40C69E15DD059E008F8980 /* CommentsTableViewCell.xib in Resources */,
+				AD40C69815DD0598008F8980 /* SampleEntityLoader.xib in Resources */,
 				AA9359F5158F187200B5B2BC /* socialize_logo.png in Resources */,
 				AA9359F8158F187200B5B2BC /* socialize_twitter_load.png in Resources */,
 				AA9359FB158F187200B5B2BC /* socialize-activity-bg.png in Resources */,
@@ -5574,23 +5574,23 @@
 				AA935B9F158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon@2x.png in Resources */,
 				AA935BA2158F187200B5B2BC /* socialize-selectnetwork-twitter-icon.png in Resources */,
 				AA935BA5158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png in Resources */,
-				AA935BA8158F187200B5B2BC /* SocializeActivityDetailsViewController.xib in Resources */,
-				AA935BAB158F187200B5B2BC /* SocializeActivityTableViewCell.xib in Resources */,
-				AA935BAE158F187200B5B2BC /* SocializeActivityViewController.xib in Resources */,
-				AA935BB1158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib in Resources */,
-				AA935BB4158F187200B5B2BC /* SocializeAuthTableViewCell.xib in Resources */,
+				AD40C63E15DD04DF008F8980 /* SocializeActivityDetailsViewController.xib in Resources */,
+				AD40C64415DD04FF008F8980 /* SocializeActivityTableViewCell.xib in Resources */,
+				AD40C69215DD0582008F8980 /* SocializeActivityViewController.xib in Resources */,
+				AD40C68C15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				AD40C68615DD0573008F8980 /* SocializeAuthTableViewCell.xib in Resources */,
 				AA935BB7158F187200B5B2BC /* _SZLinkDialogViewController.xib in Resources */,
-				AA935BBA158F187200B5B2BC /* SocializeCommentDetailsViewController.xib in Resources */,
-				AA935BBD158F187200B5B2BC /* SocializeComposeMessageViewController.xib in Resources */,
+				AD40C68015DD056F008F8980 /* SocializeCommentDetailsViewController.xib in Resources */,
+				AD40C64A15DD0520008F8980 /* SocializeComposeMessageViewController.xib in Resources */,
 				AA935BC0158F187200B5B2BC /* SocializeConfigurationInfo.plist in Resources */,
-				AA935BC3158F187200B5B2BC /* SocializeDummyViewController.xib in Resources */,
-				AA935BC6158F187200B5B2BC /* SocializeEditValueTableViewCell.xib in Resources */,
-				AA935BC9158F187200B5B2BC /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
-				AA935BCC158F187200B5B2BC /* SocializeProfileEditTableViewCell.xib in Resources */,
-				AA935BCF158F187200B5B2BC /* SocializeProfileEditTableViewImageCell.xib in Resources */,
-				AA935BD2158F187200B5B2BC /* SocializeProfileEditValueViewController.xib in Resources */,
-				AA935BD5158F187200B5B2BC /* SocializeRichPushNotificationViewController.xib in Resources */,
-				AA935BD8158F187200B5B2BC /* SocializeTableViewController.xib in Resources */,
+				AD40C67A15DD0566008F8980 /* SocializeDummyViewController.xib in Resources */,
+				AD40C67415DD0561008F8980 /* SocializeEditValueTableViewCell.xib in Resources */,
+				AD40C65015DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib in Resources */,
+				AD40C65615DD0540008F8980 /* SocializeProfileEditTableViewCell.xib in Resources */,
+				AD40C65C15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib in Resources */,
+				AD40C66215DD054E008F8980 /* SocializeProfileEditValueViewController.xib in Resources */,
+				AD40C66815DD0555008F8980 /* SocializeRichPushNotificationViewController.xib in Resources */,
+				AD40C66E15DD055B008F8980 /* SocializeTableViewController.xib in Resources */,
 				AA935BDB158F187200B5B2BC /* _SZTwitterLinkViewController.xib in Resources */,
 				AA935BDE158F187200B5B2BC /* _SZCommentsListViewController.xib in Resources */,
 				AA935BE1158F187200B5B2BC /* _SZComposeCommentViewController.xib in Resources */,
@@ -6393,6 +6393,168 @@
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
+		};
+		AD40C64115DD04DF008F8980 /* SocializeActivityDetailsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C64015DD04DF008F8980 /* en */,
+			);
+			name = SocializeActivityDetailsViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C64715DD04FF008F8980 /* SocializeActivityTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C64615DD04FF008F8980 /* en */,
+			);
+			name = SocializeActivityTableViewCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C64D15DD0520008F8980 /* SocializeComposeMessageViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C64C15DD0520008F8980 /* en */,
+			);
+			name = SocializeComposeMessageViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C65315DD0532008F8980 /* SocializeNotificationToggleBubbleContentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C65215DD0532008F8980 /* en */,
+			);
+			name = SocializeNotificationToggleBubbleContentView.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C65915DD0540008F8980 /* SocializeProfileEditTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C65815DD0540008F8980 /* en */,
+			);
+			name = SocializeProfileEditTableViewCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C65F15DD0546008F8980 /* SocializeProfileEditTableViewImageCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C65E15DD0546008F8980 /* en */,
+			);
+			name = SocializeProfileEditTableViewImageCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C66515DD054E008F8980 /* SocializeProfileEditValueViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C66415DD054E008F8980 /* en */,
+			);
+			name = SocializeProfileEditValueViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C66B15DD0555008F8980 /* SocializeRichPushNotificationViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C66A15DD0555008F8980 /* en */,
+			);
+			name = SocializeRichPushNotificationViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C67115DD055B008F8980 /* SocializeTableViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C67015DD055B008F8980 /* en */,
+			);
+			name = SocializeTableViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C67715DD0561008F8980 /* SocializeEditValueTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C67615DD0561008F8980 /* en */,
+			);
+			name = SocializeEditValueTableViewCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C67D15DD0566008F8980 /* SocializeDummyViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C67C15DD0566008F8980 /* en */,
+			);
+			name = SocializeDummyViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C68315DD056F008F8980 /* SocializeCommentDetailsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C68215DD056F008F8980 /* en */,
+			);
+			name = SocializeCommentDetailsViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C68915DD0573008F8980 /* SocializeAuthTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C68815DD0573008F8980 /* en */,
+			);
+			name = SocializeAuthTableViewCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C68F15DD0578008F8980 /* SocializeAuthInfoTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C68E15DD0578008F8980 /* en */,
+			);
+			name = SocializeAuthInfoTableViewCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C69515DD0582008F8980 /* SocializeActivityViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C69415DD0582008F8980 /* en */,
+			);
+			name = SocializeActivityViewController.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C69B15DD0598008F8980 /* SampleEntityLoader.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C69A15DD0598008F8980 /* en */,
+			);
+			name = SampleEntityLoader.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C6A115DD059E008F8980 /* CommentsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C6A015DD059E008F8980 /* en */,
+			);
+			name = CommentsTableViewCell.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD40C6A715DD05A5008F8980 /* commentsNavBarLeftItemView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD40C6A615DD05A5008F8980 /* en */,
+			);
+			name = commentsNavBarLeftItemView.xib;
+			path = Socialize/Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
