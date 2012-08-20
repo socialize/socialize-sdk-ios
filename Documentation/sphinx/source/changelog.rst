@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.3.4
+------
+[bug] FB Auth should always remain in-app if UIApplicationExitsOnSuspend=YES [ facebook ]
+
 v2.3.3
 ------
 [bug] Development/Sandbox push certificates not being flagged correctly with api [ notifications ]
