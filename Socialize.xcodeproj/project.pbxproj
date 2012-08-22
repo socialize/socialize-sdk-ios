@@ -513,6 +513,10 @@
 		AA2FC1AA15926CAF00B52772 /* SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */; };
 		AA2FC2381592789800B52772 /* _SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086D0158D35BE00480399 /* _SZTwitterLinkViewController.m */; };
 		AA2FC2391592789900B52772 /* _SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086D0158D35BE00480399 /* _SZTwitterLinkViewController.m */; };
+		AA3A9E2B15E5909700CD2F75 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA3A9E2C15E5909800CD2F75 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA3A9E2D15E5909E00CD2F75 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
+		AA3A9E2E15E5909F00CD2F75 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
 		AA3BC36F158E7F170073AD50 /* libSocialize-noarc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085F3158D358B00480399 /* libSocialize-noarc.a */; };
 		AA3BC370158E7F200073AD50 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085C0158D2EFC00480399 /* libSocialize.a */; };
 		AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* TestAppListViewController.m */; };
@@ -1383,10 +1387,6 @@
 		AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB9D35115D2783700004E77 /* Facebook+Socialize.h */; };
 		AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
 		AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
-		AABCC67715C08181005FA860 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; };
-		AABCC67815C08181005FA860 /* SZSessionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67515C08181005FA860 /* SZSessionTracker.h */; };
-		AABCC67915C08181005FA860 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
-		AABCC67A15C08181005FA860 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
 		AABCC67D15C083CD005FA860 /* NSString+UUID.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67B15C083CD005FA860 /* NSString+UUID.h */; };
 		AABCC67E15C083CD005FA860 /* NSString+UUID.h in Headers */ = {isa = PBXBuildFile; fileRef = AABCC67B15C083CD005FA860 /* NSString+UUID.h */; };
 		AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67C15C083CD005FA860 /* NSString+UUID.m */; };
@@ -3014,6 +3014,8 @@
 				AA0086DC158D35BF00480399 /* SocializeVersion.h */,
 				AA0086DD158D35BF00480399 /* SocializeVersion.h.in */,
 				AA0086E6158D35BF00480399 /* SynthesizeSingleton.h */,
+				AABCC67515C08181005FA860 /* SZSessionTracker.h */,
+				AABCC67615C08181005FA860 /* SZSessionTracker.m */,
 				AA0085F6158D358B00480399 /* Supporting Files */,
 			);
 			path = "Socialize-noarc";
@@ -3984,8 +3986,6 @@
 			children = (
 				AA41522E15911DF0003717AC /* Utils */,
 				AA25FEAF159119F50067741A /* UI */,
-				AABCC67515C08181005FA860 /* SZSessionTracker.h */,
-				AABCC67615C08181005FA860 /* SZSessionTracker.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -4269,13 +4269,13 @@
 				AAC194DA15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E715AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
 				AA91F93815B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
-				AABCC67715C08181005FA860 /* SZSessionTracker.h in Headers */,
 				AABCC67D15C083CD005FA860 /* NSString+UUID.h in Headers */,
 				AAC7CB7815C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
 				AAB9D35315D2783700004E77 /* Facebook+Socialize.h in Headers */,
 				AA60845315D3015E0065C543 /* SZOARequest+Socialize.h in Headers */,
 				AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
 				AA815C8C15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
+				AA3A9E2B15E5909700CD2F75 /* SZSessionTracker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4365,13 +4365,13 @@
 				AAC194DB15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E815AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
 				AA91F93915B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
-				AABCC67815C08181005FA860 /* SZSessionTracker.h in Headers */,
 				AABCC67E15C083CD005FA860 /* NSString+UUID.h in Headers */,
 				AAC7CB7915C8A5D30064C5FD /* SZSocialNetworkPostData.h in Headers */,
 				AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */,
 				AA60845415D3015E0065C543 /* SZOARequest+Socialize.h in Headers */,
 				AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
 				AA815C8D15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
+				AA3A9E2C15E5909800CD2F75 /* SZSessionTracker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5826,7 +5826,6 @@
 				AAC194DC15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */,
 				AAC194E915AF925200DDE42F /* NSOperationQueue+Socialize.m in Sources */,
 				AA91F93A15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
-				AABCC67915C08181005FA860 /* SZSessionTracker.m in Sources */,
 				AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */,
@@ -5974,6 +5973,7 @@
 				AA0089AC158D6F4E00480399 /* DataHelper.m in Sources */,
 				AA6C99821591634600E24658 /* _SZSelectNetworkViewController.m in Sources */,
 				AAD98F9C1591682000845FC9 /* _SZShareDialogViewController.m in Sources */,
+				AA3A9E2D15E5909E00CD2F75 /* SZSessionTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6280,6 +6280,7 @@
 				AAB5E514159044E600D3EBDF /* DataHelper.m in Sources */,
 				AA6C99831591634600E24658 /* _SZSelectNetworkViewController.m in Sources */,
 				AAD98F9D1591682000845FC9 /* _SZShareDialogViewController.m in Sources */,
+				AA3A9E2E15E5909F00CD2F75 /* SZSessionTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6324,7 +6325,6 @@
 				AAC194DD15AF712B00DDE42F /* SZOARequest+Twitter.m in Sources */,
 				AAC194EA15AF925200DDE42F /* NSOperationQueue+Socialize.m in Sources */,
 				AA91F93B15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
-				AABCC67A15C08181005FA860 /* SZSessionTracker.m in Sources */,
 				AABCC68015C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */,
