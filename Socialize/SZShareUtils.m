@@ -65,11 +65,6 @@
             BLOCK_CALL(cancellation);
         }];
      };
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        shareDialog.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-    
     [viewController presentModalViewController:shareDialog animated:YES];
 }
 
@@ -163,11 +158,6 @@
         [viewController hideSocializeLoadingView];
         [composer setSubject:emailData.subject];
         [composer setMessageBody:emailData.messageBody isHTML:emailData.isHTML];
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            composer.modalPresentationStyle = UIModalPresentationFormSheet;
-        }
-        
         [viewController presentModalViewController:composer animated:YES];
     } failure:^(NSError *error) {
         [viewController hideSocializeLoadingView];
