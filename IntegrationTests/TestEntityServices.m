@@ -12,7 +12,7 @@
 
 - (void)testCreateEntity {
     SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
-    NSString *entityURL = [self testURL:[NSString stringWithFormat:@"%s/entity", _cmd]];
+    NSString *entityURL = [self testURL:[NSString stringWithFormat:@"%s/entity", (char*)_cmd]];
     NSString *entityName = @"entityName";
     NSString *entityMeta = @"entityMeta";
     

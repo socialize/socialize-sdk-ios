@@ -12,16 +12,16 @@
 @implementation TestActivityServices
 
 - (void)testGetUserActivity {
-    NSString *commentURL = [self testURL:[NSString stringWithFormat:@"%s/comment", _cmd]];
+    NSString *commentURL = [self testURL:[NSString stringWithFormat:@"%s/comment", (char*)_cmd]];
     [self createCommentWithURL:commentURL text:@"comment" latitude:nil longitude:nil subscribe:NO];
 
-    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
+    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", (char*)_cmd]];
     [self createShareWithURL:shareURL medium:SocializeShareMediumFacebook text:@"share"];
 
-    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", _cmd]];
+    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", (char*)_cmd]];
     [self createLikeWithURL:likeURL latitude:nil longitude:nil];
     
-    NSString *viewURL = [self testURL:[NSString stringWithFormat:@"%s/view", _cmd]];
+    NSString *viewURL = [self testURL:[NSString stringWithFormat:@"%s/view", (char*)_cmd]];
     [self createViewWithURL:viewURL latitude:nil longitude:nil];
     
     // FIXME -- we can't even verify existence, sometimes these are missing

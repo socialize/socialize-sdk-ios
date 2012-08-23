@@ -11,7 +11,7 @@
 @implementation TestUserService
 
 - (void)testGettingLikeForCurrentUser {
-    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", _cmd]];
+    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", (char*)_cmd]];
     id<SocializeEntity> entity = [SocializeEntity entityWithKey:likeURL name:@"My Like"];
     [self createLikeWithURL:likeURL latitude:nil longitude:nil];
     

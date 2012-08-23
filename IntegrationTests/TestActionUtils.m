@@ -11,7 +11,7 @@
 @implementation TestActionUtils
 
 - (void)testActionHelpers {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/action_target", _cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/action_target", (char*)_cmd]];
     SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Action target"];
     
     id<SZLike> serverLike = [self likeWithEntity:entity options:nil networks:SZSocialNetworkNone];
