@@ -156,14 +156,20 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 
 -(void) testDidSelectRowForFB {
+    [SZFacebookUtils startMockingClass];
+    
     [[[SocializeThirdPartyFacebook stub] andReturnBool:YES] available];
     [[[SocializeThirdPartyTwitter stub] andReturnBool:YES] available];
+    
+    [[SZFacebookUtils expect] linkWithOptions:OCMOCK_ANY success:OCMOCK_ANY foreground:OCMOCK_ANY failure:OCMOCK_ANY];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     id mockTableView = [OCMockObject mockForClass:[UITableView class]];
     [[mockTableView expect] deselectRowAtIndexPath:path animated:YES];
     [self.authViewController tableView:mockTableView didSelectRowAtIndexPath:path];
     [mockTableView verify];
+    
+    [SZFacebookUtils stopMockingClassAndVerify];
 }
 
 -(void) testGetCellFromNib {

@@ -6,14 +6,15 @@
 //  Copyright (c) 2012 Socialize. All rights reserved.
 //
 
+
+//import the socialize header
+#import <Socialize/Socialize.h>
+
 #import "facebook.h"
 
 @implementation facebook
 
 // begin-configure-snippet
-
-//import the socialize header
-#import <Socialize/Socialize.h>
 
 #pragma mark
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {

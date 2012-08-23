@@ -9,7 +9,6 @@
 #import "SZTestAppDelegate.h"
 #import "TestAppListViewController.h"
 #import <Socialize/Socialize.h>
-#import "SZOARequest+Socialize.h"
 
 #if RUN_KIF_TESTS
 #import "TestAppKIFTestController.h"

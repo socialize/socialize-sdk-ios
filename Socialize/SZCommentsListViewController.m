@@ -25,6 +25,10 @@
     return nil;
 }
 
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;

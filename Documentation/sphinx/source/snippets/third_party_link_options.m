@@ -1,12 +1,13 @@
+
+//import the Socialize header
+#import <Socialize/Socialize.h>
+
 @interface ThirdPartyLinkOptions
 @end
 
 @implementation ThirdPartyLinkOptions
 
 // begin-snippet
-
-//import the Socialize header
-#import <Socialize/Socialize.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 

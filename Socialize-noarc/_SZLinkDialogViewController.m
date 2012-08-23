@@ -167,17 +167,15 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         [self startLoading];
     };
     
-    SZShowLinkToFacebookAlertView(^{
-        [SZFacebookUtils linkWithOptions:options success:^(id<SZFullUser> fullUser) {
-            [self stopLoading];
-            [self authenticationComplete];
-        } foreground:nil failure:^(NSError *error) {
-            [self stopLoading];
-            if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                [self failWithError:error];
-            }
-        }];
-    }, nil);
+    [SZFacebookUtils linkWithOptions:options success:^(id<SZFullUser> fullUser) {
+        [self stopLoading];
+        [self authenticationComplete];
+    } foreground:nil failure:^(NSError *error) {
+        [self stopLoading];
+        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+            [self failWithError:error];
+        }
+    }];
 }
 
 - (void)authenticationComplete {
