@@ -11,7 +11,7 @@
 @implementation TestEntityUtils
 
 - (void)testEntityWrappers {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity_target", _cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity_target", (char*)_cmd]];
     SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Entity target"];
     NSString *testType = @"testType";
     entity.type = testType;

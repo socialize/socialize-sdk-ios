@@ -13,7 +13,7 @@
 - (void)testCreateComment {
     SocializeEntity *entity = [[[SocializeEntity alloc] init] autorelease];
     entity.name = @"my comment name";
-    entity.key = [self testURL:[NSString stringWithFormat:@"%s/comment", _cmd]];
+    entity.key = [self testURL:[NSString stringWithFormat:@"%s/comment", (char*)_cmd]];
     NSNumber *latitude = [NSNumber numberWithFloat:12.f];
     NSNumber *longitude = [NSNumber numberWithFloat:34.f];
     
@@ -30,7 +30,7 @@
 
 - (void)testCreateCommentJustKey {
     NSString *commentText = @"test comment";
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/comment", _cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/comment", (char*)_cmd]];
     NSNumber *latitude = [NSNumber numberWithFloat:12.f];
     NSNumber *longitude = [NSNumber numberWithFloat:34.f];
     
@@ -45,8 +45,8 @@
 }
 
 - (void)testCreateMultipleComments {
-    NSString *key1 = [self testURL:[NSString stringWithFormat:@"%s/comment1", _cmd]];
-    NSString *key2 = [self testURL:[NSString stringWithFormat:@"%s/comment2", _cmd]];
+    NSString *key1 = [self testURL:[NSString stringWithFormat:@"%s/comment1", (char*)_cmd]];
+    NSString *key2 = [self testURL:[NSString stringWithFormat:@"%s/comment2", (char*)_cmd]];
     SocializeEntity *entity1 = [SocializeEntity entityWithKey:key1 name:@"name1"];
     SocializeEntity *entity2 = [SocializeEntity entityWithKey:key2 name:@"name2"];
 

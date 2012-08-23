@@ -11,7 +11,7 @@
 @implementation TestSubscriptionUtils
 
 - (void)testSubscriptionWrappers {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/subscription_target", _cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/subscription_target", (char*)_cmd]];
     SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Subscription target"];
 
     id<SZSubscription> createdSubscription = [self subscribeToEntity:entity subscriptionType:SZSubscriptionTypeNewComments];
@@ -30,7 +30,7 @@
 }
 
 - (void)testSubscribeEntity {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/subscription_target", _cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/subscription_target", (char*)_cmd]];
     SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Subscription target"];
     
     id<SZSubscription> createdSubscription = [self subscribeToEntity:entity subscriptionType:SZSubscriptionTypeNewComments];

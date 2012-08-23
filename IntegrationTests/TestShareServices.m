@@ -11,12 +11,12 @@
 @implementation TestShareServices
 
 - (void)testCreateShare {
-    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
+    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", (char*)_cmd]];
     [self createShareWithURL:shareURL medium:SocializeShareMediumFacebook text:@"a share"];
 }
 
 - (void)testCreateShareWithPropagationInfo {
-    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", _cmd]];
+    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", (char*)_cmd]];
     SocializeEntity *entity = [SocializeEntity entityWithKey:shareURL name:@"Test"];
     SocializeShare *share = [SocializeShare shareWithEntity:entity text:@"a share" medium:SocializeShareMediumFacebook];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"]];
