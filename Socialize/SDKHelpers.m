@@ -138,6 +138,10 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
             }];
         };
         
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            link.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
+        
         [viewController presentModalViewController:link animated:YES];
     } else {
         
@@ -158,6 +162,10 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                     BLOCK_CALL(cancellation);
                 }];
             };
+            
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                selectNetwork.modalPresentationStyle = UIModalPresentationFormSheet;
+            }
             
             [viewController presentModalViewController:selectNetwork animated:YES];
         }
