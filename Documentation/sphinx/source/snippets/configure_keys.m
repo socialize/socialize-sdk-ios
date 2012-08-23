@@ -1,12 +1,12 @@
+//import the socialize header
+#import <Socialize/Socialize.h>
+
 @interface ConfigureKeys
 @end
 
 @implementation ConfigureKeys
 
 // begin-snippet
-
-//import the socialize header
-#import <Socialize/Socialize.h>
 
 #pragma mark
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {

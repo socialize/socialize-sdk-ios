@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 Socialize. All rights reserved.
 //
 
+//import the socialize header
+#import <Socialize/Socialize.h>
+
 #import "twitter.h"
 
 @implementation twitter
 
 // begin-configure-snippet
-
-//import the socialize header
-#import <Socialize/Socialize.h>
 
 #pragma mark
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {

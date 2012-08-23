@@ -1,12 +1,12 @@
+//import the socialize header
+#import <Socialize/Socialize.h>
+
 @interface DisableErrorAlerts
 @end
 
 @implementation DisableErrorAlerts
 
 // begin-snippet
-
-//import the socialize header
-#import <Socialize/Socialize.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Socialize storeUIErrorAlertsDisabled:YES];

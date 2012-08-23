@@ -1,12 +1,13 @@
+
+//import the socialize header
+#import <Socialize/Socialize.h>
+
 @interface ConfigureNotifications
 @end
 
 @implementation ConfigureNotifications
 
 // begin-snippet
-
-//import the socialize header
-#import <Socialize/Socialize.h>
 
 #pragma mark
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
