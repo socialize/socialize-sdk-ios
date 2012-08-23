@@ -36,10 +36,6 @@
         }];
     };
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        commentsList.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-
     [viewController presentModalViewController:commentsList animated:YES];
 }
 
