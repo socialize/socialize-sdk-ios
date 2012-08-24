@@ -49,10 +49,7 @@
     };
     
     composer.cancellationBlock = ^{
-        NSDate *start = [NSDate date];
         [viewController SZDismissViewControllerAnimated:YES completion:^{
-            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:start];
-            NSLog(@"Took %f seconds", interval);
             BLOCK_CALL(cancellation);
         }];
     };
