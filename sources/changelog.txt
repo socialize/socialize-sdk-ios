@@ -4,6 +4,16 @@
 Changelog
 =============================================
 
+v2.3.5
+------
+[bug] Fix nonarc / iOS 4 crash when building with latest Xcode [ ]
+
+[feature] Link dialog should not show UIAlertView before facebook callout [ ]
+
+[bug] Facebook auth fix not included in v2.3.4 release as advertised [ ]
+
+[feature] Developer can disable all location prompting and tracking in Socialize [ ]
+
 v2.3.4
 ------
 [bug] FB Auth should always remain in-app if UIApplicationExitsOnSuspend=YES [ facebook ]

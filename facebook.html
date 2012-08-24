@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Facebook &mdash; Socialize iOS SDK 2.3.4 documentation</title>
+    <title>Facebook &mdash; Socialize iOS SDK 2.3.5 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.3.4',
+        VERSION:     '2.3.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.3.4 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.3.5 documentation" href="index.html" />
     <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -53,19 +53,16 @@
 <p>It is strongly recommended that users be able to authenticate with Facebook when using Socialize so as to maximize the exposure, and promotion of your app.</p>
 <p>Let Socialize know your Facebook app id.  You can register or find your
 Facebook app id here: <a class="reference external" href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a></p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
-<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="cp">#pragma mark</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
 <span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-<span class="hll">    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setAppId:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
-</span>    
-    <span class="c1">//your application specific code</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setAppId:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
     
-    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+    <span class="c1">//your application specific code</span>
+<span class="hll">    
+</span>    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -396,7 +393,7 @@ against the Facebook App to guarantee that 3rd party users cannot fraudulently r
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

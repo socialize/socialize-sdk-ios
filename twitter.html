@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 2.3.4 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 2.3.5 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.3.4',
+        VERSION:     '2.3.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.3.4 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.3.5 documentation" href="index.html" />
     <link rel="next" title="Facebook" href="facebook.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -101,19 +101,16 @@ valid URL for callback otherwise authentication will fail.</li>
 <div class="section" id="configuring-twitter-in-socialize">
 <span id="propagate-tw"></span><h2>Configuring Twitter in Socialize<a class="headerlink" href="#configuring-twitter-in-socialize" title="Permalink to this headline">¶</a></h2>
 <p>Once you have a twitter application, simply tell Socialize about your consumer key and secret:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">//import the socialize header</span>
-<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
-
-<span class="cp">#pragma mark</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
 <span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-<span class="hll">    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span> <span class="nl">consumerSecret:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-</span>    <span class="c1">//your application specific code</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span> <span class="nl">consumerSecret:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+    <span class="c1">//your application specific code</span>
     
-    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="hll">    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+</span><span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -237,7 +234,7 @@ authorize with twitter by calling the link methods directly.</p>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
