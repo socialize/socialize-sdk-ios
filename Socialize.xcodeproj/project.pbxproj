@@ -1649,6 +1649,7 @@
 		AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; };
 		AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; };
 		AAF098DC158FB4EA005726C2 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
+		AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB0B8115E70FB10091600C /* ui_advanced.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2760,6 +2761,8 @@
 		AAEC2B0F15B4DA5400C9C65A /* example-distribution.embedded.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-distribution.embedded.mobileprovision"; sourceTree = "<group>"; };
 		AAEEE62315A26B6B003566BA /* SDKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDKHelpers.h; path = Socialize/SDKHelpers.h; sourceTree = SOURCE_ROOT; };
 		AAEEE62415A26B6B003566BA /* SDKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKHelpers.m; path = Socialize/SDKHelpers.m; sourceTree = SOURCE_ROOT; };
+		AAFB0B8015E70FB10091600C /* ui_advanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_advanced.h; sourceTree = "<group>"; };
+		AAFB0B8115E70FB10091600C /* ui_advanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ui_advanced.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3941,6 +3944,8 @@
 				AA2B1246159E475E00AD53D5 /* twitter.m */,
 				AA2B1248159E486E00AD53D5 /* facebook.h */,
 				AA2B1249159E486E00AD53D5 /* facebook.m */,
+				AAFB0B8015E70FB10091600C /* ui_advanced.h */,
+				AAFB0B8115E70FB10091600C /* ui_advanced.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -6086,6 +6091,7 @@
 				AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */,
 				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
 				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
+				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

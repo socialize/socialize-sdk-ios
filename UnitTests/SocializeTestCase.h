@@ -55,5 +55,6 @@ extern id testSelf;
 - (void)succeedLikeCreateWithVerify:(void(^)(id<SZLike>))verify;
 - (void)stubOGLikeEnabled;
 - (void)stubOGLikeDisabled;
+- (void)stubLocationSharingDisabled:(BOOL)disabled;
 
 @end

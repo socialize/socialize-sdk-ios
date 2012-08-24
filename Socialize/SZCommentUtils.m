@@ -36,10 +36,6 @@
         }];
     };
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        commentsList.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-
     [viewController presentModalViewController:commentsList animated:YES];
 }
 
@@ -53,10 +49,7 @@
     };
     
     composer.cancellationBlock = ^{
-        NSDate *start = [NSDate date];
         [viewController SZDismissViewControllerAnimated:YES completion:^{
-            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:start];
-            NSLog(@"Took %f seconds", interval);
             BLOCK_CALL(cancellation);
         }];
     };

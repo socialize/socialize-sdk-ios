@@ -47,6 +47,7 @@
     [self stubIsAuthenticated];
     [self stubFacebookUsable];
     [self stubTwitterUsable];
+    [self stubLocationSharingDisabled:NO];
     [self succeedFacebookPostWithVerify:nil];
     [self succeedTwitterPost];
     [self succeedShareCreate];
@@ -69,6 +70,7 @@
     [self stubIsAuthenticated];
     [self stubFacebookUsable];
     [self stubTwitterUsable];
+    [self stubLocationSharingDisabled:NO];
     [self stubShouldShareLocation];
     [self succeedGetLocation];
     [self failShareCreate];
