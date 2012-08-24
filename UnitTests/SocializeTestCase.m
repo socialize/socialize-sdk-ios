@@ -234,6 +234,10 @@ id testSelf;
     [[[Socialize stub] andReturnBool:NO] OGLikeEnabled];
 }
 
+- (void)stubLocationSharingDisabled:(BOOL)disabled {
+    [[[Socialize stub] andReturnBool:disabled] locationSharingDisabled];
+}
+
 - (void)succeedShareCreate {
     [[[self.mockSharedSocialize stub] andDo3:^(id _1, id success, id _3) {
         void (^successBlock)(id result) = success;

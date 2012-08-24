@@ -21,6 +21,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SZHorizontalContainerView.h"
 #import "socialize_globals.h"
+#import "SZLocationUtils.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 
@@ -281,17 +282,30 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     
     BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
     [self setShareLocation:shareLocation];
-    
+
     [self.mapOfUserLocation roundCorners];
     [self configureDoNotShareLocationButton];       
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
     
     self.messageActionButtonContainer.rightJustified = YES;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([Socialize locationSharingDisabled]) {
+        self.mapOfUserLocation.showsUserLocation = NO;
+        self.activateLocationButton.hidden = YES;
+        self.locationText.hidden = YES;
+    } else {
+        self.mapOfUserLocation.showsUserLocation = YES;
+        self.activateLocationButton.hidden = NO;
+        self.locationText.hidden = NO;
+    }
+    
+
 }
 
 - (void)viewDidUnload

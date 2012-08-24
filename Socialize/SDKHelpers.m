@@ -194,7 +194,7 @@ BOOL SZShouldShareLocation() {
         return YES;
     }
     
-    return [shouldShareNumber boolValue];
+    return [shouldShareNumber boolValue] && ![Socialize locationSharingDisabled];
 }
 
 SZActivityOptions *SZActivityOptionsFromUserDefaults(Class optionsClass) {

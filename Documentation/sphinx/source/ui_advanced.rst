@@ -46,3 +46,13 @@ to your app.
 .. literalinclude:: snippets/standalone_share.m
   :start-after: begin-snippet
   :end-before: end-snippet
+
+Disabling Location
+------------------
+
+If do not wish for Socialize to ask for the user's location under any circumstances, you can
+completely disable location sharing
+
+.. literalinclude:: snippets/ui_advanced.m
+  :start-after: begin-disable-location-snippet
+  :end-before: end-disable-location-snippet
