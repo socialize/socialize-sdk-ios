@@ -861,6 +861,10 @@ otherwise you will get a failure.
  */
 + (BOOL)authenticationNotRequired;
 
++ (void)storeLocationSharingDisabled:(BOOL)locationSharingDisabled;
+
++ (BOOL)locationSharingDisabled;
+
 + (void)storeAnonymousAllowed:(BOOL)anonymousAllowed;
 
 + (BOOL)anonymousAllowed;

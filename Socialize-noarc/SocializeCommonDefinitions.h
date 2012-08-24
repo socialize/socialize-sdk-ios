@@ -85,6 +85,8 @@ extern NSString *const kSocializeFacebookAuthExpirationDate;
 extern NSString *const kSocializeFacebookStringForAPI;
 
 extern NSString *const kSocializeAuthenticationNotRequired;
+extern NSString *const kSocializeLocationSharingDisabled;
+
 extern NSString *const kSocializeAnonymousAllowed;
 
 extern NSString *const kSocializeDontPostToFacebookKey;

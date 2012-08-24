@@ -114,6 +114,7 @@ NSString *const kSocializeFacebookStringForAPI = @"FaceBook";
 
 // Authentication settings
 NSString *const kSocializeAuthenticationNotRequired = @"kSocializeAuthenticationNotRequired";
+NSString *const kSocializeLocationSharingDisabled = @"kSocializeLocationSharingDisabled";
 NSString *const kSocializeAnonymousAllowed = @"kSocializeAnonymousAllowed";
 
 NSString *const SocializeDidRegisterDeviceTokenNotification = @"SocializeDidRegisterDeviceTokenNotification";
@@ -289,6 +290,7 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocia
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
 
 SYNTH_DEFAULTS_BOOL_PROPERTY(AuthenticationNotRequired, authenticationNotRequired, kSocializeAuthenticationNotRequired)
+SYNTH_DEFAULTS_BOOL_PROPERTY(LocationSharingDisabled, locationSharingDisabled, kSocializeLocationSharingDisabled)
 SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnonymousAllowed);
 SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabled);
 

@@ -37,7 +37,8 @@
     [self stubOGLikeEnabled];
     [self stubIsAuthenticated];
     [self stubFacebookUsable];
-    
+    [self stubLocationSharingDisabled:NO];
+
     SZLikeOptions *options = [SZLikeOptions defaultOptions];
 
     __block BOOL willPostCalled = NO;
@@ -86,6 +87,7 @@
     [self stubOGLikeDisabled];
     [self stubIsAuthenticated];
     [self stubFacebookUsable];
+    [self stubLocationSharingDisabled:NO];
     
     SZLikeOptions *options = [SZLikeOptions defaultOptions];
     
@@ -130,7 +132,8 @@
     [self stubOGLikeDisabled];
     [self stubIsAuthenticated];
     [self stubFacebookUsable];
-    
+    [self stubLocationSharingDisabled:NO];
+
     SZLikeOptions *options = [SZLikeOptions defaultOptions];
     
     __block BOOL willPostCalled = NO;
