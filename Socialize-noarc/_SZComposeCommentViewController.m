@@ -174,7 +174,8 @@
         [self setDontSubscribeToDiscussion:NO];
         [self setSubviewForLowerContainer:self.subscribeContainer];
     } else {
-        if ([commentTextView isFirstResponder]) 
+        [self enableLowerContainer];
+        if ([commentTextView isFirstResponder])
         {
             [self setSubviewForLowerContainer:self.subscribeContainer];
             [commentTextView resignFirstResponder];          
@@ -182,13 +183,15 @@
         else
         {
             [commentTextView becomeFirstResponder];
-        }            
+        }
     }
 }
 
 -(IBAction)unsubscribeButtonPressed:(id)sender {
     [self setDontSubscribeToDiscussion:YES];
     [commentTextView becomeFirstResponder];
+    
+    [self disableLowerContainer];
 }
 
 -(void)authorizationSkipped {

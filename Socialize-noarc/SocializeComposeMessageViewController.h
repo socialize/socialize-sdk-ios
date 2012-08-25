@@ -43,6 +43,11 @@
 @property(nonatomic, retain) NSArray *messageActionButtons;
 @property(nonatomic, copy) NSString *currentLocationDescription;
 @property (nonatomic, retain) SocializeLocationManager *locationManager;
+@property (retain, nonatomic) IBOutlet UIView *bottomContainerDisabledView;
+
+- (BOOL)isFormsheetModal;
+- (void)disableLowerContainer;
+- (void)enableLowerContainer;
 
 -(IBAction)activateLocationButtonPressed:(id)sender;
 -(IBAction)doNotShareLocationButtonPressed:(id)sender;
