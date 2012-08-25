@@ -32,6 +32,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SDKHelpers.h"
 #import "SZSmartAlertUtils.h"
+#import "SZCommentUtils.h"
 
 @interface _SZCommentsListViewController()
 @end
@@ -292,8 +293,7 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController = [_SZComposeCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key delegate:self];
-    [self presentModalViewController:pcNavController animated:YES];
+    [SZCommentUtils showCommentComposerWithViewController:self entity:_entity completion:nil cancellation:nil];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
