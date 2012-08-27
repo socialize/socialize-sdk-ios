@@ -58,7 +58,7 @@ SZSocialNetwork SZAutoPostNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
     
     for (Class<SocializeThirdParty> thirdParty in [SocializeThirdParty allThirdParties]) {
-        if ([thirdParty shouldAutopost]) {
+        if ([thirdParty shouldAutopost] && [thirdParty isLinkedToSocialize]) {
             networks |= [thirdParty socialNetworkFlag];
         }
     }
@@ -78,7 +78,16 @@ BOOL SZShouldShowLinkDialog() {
 void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)()) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required" message:@"Link to Facebook?"];
     [alertView addButtonWithTitle:@"Cancel" handler:cancelBlock];
-    [alertView addButtonWithTitle:@"Ok" handler:okBlock];
+    [alertView addButtonWithTitle:@"Ok" handler:^{
+        
+        // This is a hack for the cases that require a fallback to in-app modal fb login dialog. It does not
+        // like being displayed immediately after dismissal of a UIAlertView.
+        double delayInSeconds = 0.3;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            BLOCK_CALL(okBlock);
+        });
+    }];
 
     [alertView show];
 }

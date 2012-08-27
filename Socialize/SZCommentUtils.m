@@ -54,6 +54,10 @@
         }];
     };
     
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        composer.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
     [viewController presentModalViewController:composer animated:YES];
 }
 

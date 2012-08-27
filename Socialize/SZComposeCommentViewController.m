@@ -36,6 +36,10 @@
     return self;
 }
 
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     return self.composeComment;
 }

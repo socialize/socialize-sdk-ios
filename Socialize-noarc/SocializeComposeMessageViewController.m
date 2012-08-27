@@ -54,6 +54,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 @synthesize messageActionButtons = messageActionButtons_;
 @synthesize currentLocationDescription = currentLocationDescription_;
 @synthesize locationManager = locationManager_;
+@synthesize bottomContainerDisabledView;
 
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
@@ -90,6 +91,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [currentLocationDescription_ release];
     [locationManager_ release];
     
+    [bottomContainerDisabledView release];
     [super dealloc];
 }
 
@@ -243,6 +245,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 {  
     [self setShareLocation:NO];
     [commentTextView becomeFirstResponder];
+    
+    [self disableLowerContainer];
 }
 
 #pragma mark - SocializeServiceDelegate
@@ -303,6 +307,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
         self.mapOfUserLocation.showsUserLocation = YES;
         self.activateLocationButton.hidden = NO;
         self.locationText.hidden = NO;
+        [self setSubviewForLowerContainer:self.mapContainer];
+        
+        if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue]) {
+            [self disableLowerContainer];
+        }
     }
     
 
@@ -310,6 +319,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 - (void)viewDidUnload
 {
+    [self setBottomContainerDisabledView:nil];
     [super viewDidUnload];
         
     self.commentTextView = nil;
@@ -332,15 +342,30 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     return self.upperContainer;
 }
 
+- (BOOL)isFormsheetModal {
+    return self.modalPresentationStyle == UIModalPresentationFormSheet || self.navigationController.modalPresentationStyle == UIModalPresentationFormSheet;
+}
+
+- (void)disableLowerContainer {
+    self.bottomContainerDisabledView.hidden = NO;
+    [self.lowerContainer addSubview:self.bottomContainerDisabledView];
+}
+
+- (void)enableLowerContainer {
+    self.bottomContainerDisabledView.hidden = YES;
+}
+
 - (void)keyboardListener:(SocializeKeyboardListener *)keyboardListener keyboardWillShowWithWithBeginFrame:(CGRect)beginFrame endFrame:(CGRect)endFrame animationCurve:(UIViewAnimationCurve)animationCurve animationDuration:(NSTimeInterval)animationDuration {
     CGRect newKeyboardFrame = [self.keyboardListener convertKeyboardRect:endFrame toView:self.view];
     
-    // The lower container is just the same size as the keyboard
-    self.lowerContainer.frame = newKeyboardFrame;
-    // The upper container covers the rest of our view
-    CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
-    CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
-    self.upperContainer.frame = upperFrame;
+    if (![self isFormsheetModal]) {
+        // The lower container is just the same size as the keyboard
+        self.lowerContainer.frame = newKeyboardFrame;
+        // The upper container covers the rest of our view
+        CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
+        CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
+        self.upperContainer.frame = upperFrame;
+    }
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
