@@ -58,7 +58,7 @@ SZSocialNetwork SZAutoPostNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
     
     for (Class<SocializeThirdParty> thirdParty in [SocializeThirdParty allThirdParties]) {
-        if ([thirdParty shouldAutopost]) {
+        if ([thirdParty shouldAutopost] && [thirdParty isLinkedToSocialize]) {
             networks |= [thirdParty socialNetworkFlag];
         }
     }
