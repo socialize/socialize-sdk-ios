@@ -670,6 +670,18 @@
 		AA815C8E15DACDCC00A31E39 /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
 		AA815C8F15DACDCC00A31E39 /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
 		AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */; };
+		AA84654715EBE52B00065678 /* SZStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA84654515EBE52B00065678 /* SZStatusView.h */; };
+		AA84654815EBE52B00065678 /* SZStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA84654515EBE52B00065678 /* SZStatusView.h */; };
+		AA84654915EBE52B00065678 /* SZStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84654615EBE52B00065678 /* SZStatusView.m */; };
+		AA84654A15EBE52B00065678 /* SZStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84654615EBE52B00065678 /* SZStatusView.m */; };
+		AA84655715EBFE4A00065678 /* socialize-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA84655615EBFE4A00065678 /* socialize-checkmark.png */; };
+		AA84655815EBFE4A00065678 /* socialize-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA84655615EBFE4A00065678 /* socialize-checkmark.png */; };
+		AA84655915EBFE4A00065678 /* socialize-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA84655615EBFE4A00065678 /* socialize-checkmark.png */; };
+		AA84655A15EBFE4A00065678 /* socialize-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA84655615EBFE4A00065678 /* socialize-checkmark.png */; };
+		AA8468D015EC25C200065678 /* SZStatusImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */; };
+		AA8468D115EC25C200065678 /* SZStatusImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */; };
+		AA8468D215EC25C200065678 /* SZStatusImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */; };
+		AA8468D315EC25C200065678 /* SZStatusImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */; };
 		AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */; };
 		AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */ = {isa = PBXBuildFile; fileRef = AA85D2F1159E55B7004DEB35 /* standalone_share.m */; };
 		AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
@@ -2475,6 +2487,10 @@
 		AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZEmailShareData.m; sourceTree = "<group>"; };
 		AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTrackerTests.h; sourceTree = "<group>"; };
 		AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTrackerTests.m; sourceTree = "<group>"; };
+		AA84654515EBE52B00065678 /* SZStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZStatusView.h; sourceTree = "<group>"; };
+		AA84654615EBE52B00065678 /* SZStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZStatusView.m; sourceTree = "<group>"; };
+		AA84655615EBFE4A00065678 /* socialize-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-checkmark.png"; path = "Socialize/Resources/socialize-checkmark.png"; sourceTree = SOURCE_ROOT; };
+		AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SZStatusImageLabelView.xib; path = Resources/SZStatusImageLabelView.xib; sourceTree = "<group>"; };
 		AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZOARequestTests.h; sourceTree = "<group>"; };
 		AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOARequestTests.m; sourceTree = "<group>"; };
 		AA85D2F0159E55B7004DEB35 /* standalone_share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standalone_share.h; sourceTree = "<group>"; };
@@ -3568,6 +3584,7 @@
 		AA5807E4158E994D005B9F6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA84655615EBFE4A00065678 /* socialize-checkmark.png */,
 				AAA928BB159A370300BE83F3 /* socialize-activity-details-back-entry-x.png */,
 				AAA928BC159A370300BE83F3 /* socialize-activity-details-back-entry-x@2x.png */,
 				AAA928BD159A370300BE83F3 /* socialize-activity-details-back-section-x.png */,
@@ -3973,6 +3990,9 @@
 			isa = PBXGroup;
 			children = (
 				AADFE5E915967A7400FE2B61 /* SZActionBar.h */,
+				AA84654515EBE52B00065678 /* SZStatusView.h */,
+				AA84654615EBE52B00065678 /* SZStatusView.m */,
+				AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */,
 				AADFE5EA15967A7400FE2B61 /* SZActionBar.m */,
 				AADFE5EB15967A7400FE2B61 /* SZHorizontalContainerView.h */,
 				AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */,
@@ -4281,6 +4301,7 @@
 				AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
 				AA815C8C15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 				AA3A9E2B15E5909700CD2F75 /* SZSessionTracker.h in Headers */,
+				AA84654715EBE52B00065678 /* SZStatusView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4377,6 +4398,7 @@
 				AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
 				AA815C8D15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 				AA3A9E2C15E5909800CD2F75 /* SZSessionTracker.h in Headers */,
+				AA84654815EBE52B00065678 /* SZStatusView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4931,6 +4953,8 @@
 				AAA928FF159A370300BE83F3 /* socialize-activity-details-profile-pic-small@2x.png in Resources */,
 				AAA92903159A370300BE83F3 /* socialize-activity-details-top-back.png in Resources */,
 				AAA92907159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
+				AA84655715EBFE4A00065678 /* socialize-checkmark.png in Resources */,
+				AA8468D015EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5163,6 +5187,8 @@
 				AAA9290A159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
 				AAEC2B0E15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision in Resources */,
 				AAEC2B1015B4DA5400C9C65A /* example-distribution.embedded.mobileprovision in Resources */,
+				AA84655A15EBFE4A00065678 /* socialize-checkmark.png in Resources */,
+				AA8468D315EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5392,6 +5418,8 @@
 				AAA92900159A370300BE83F3 /* socialize-activity-details-profile-pic-small@2x.png in Resources */,
 				AAA92904159A370300BE83F3 /* socialize-activity-details-top-back.png in Resources */,
 				AAA92908159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
+				AA84655815EBFE4A00065678 /* socialize-checkmark.png in Resources */,
+				AA8468D115EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5620,6 +5648,8 @@
 				AAA92901159A370300BE83F3 /* socialize-activity-details-profile-pic-small@2x.png in Resources */,
 				AAA92905159A370300BE83F3 /* socialize-activity-details-top-back.png in Resources */,
 				AAA92909159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
+				AA84655915EBFE4A00065678 /* socialize-checkmark.png in Resources */,
+				AA8468D215EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5837,6 +5867,7 @@
 				AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
 				AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */,
 				AA815C8E15DACDCC00A31E39 /* SZEmailShareData.m in Sources */,
+				AA84654915EBE52B00065678 /* SZStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6337,6 +6368,7 @@
 				AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
 				AA815C8915DACDBF00A31E39 /* SZSMSShareData.m in Sources */,
 				AA815C8F15DACDCC00A31E39 /* SZEmailShareData.m in Sources */,
+				AA84654A15EBE52B00065678 /* SZStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

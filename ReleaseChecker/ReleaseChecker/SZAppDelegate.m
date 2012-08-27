@@ -7,6 +7,7 @@
 //
 
 #import "SZAppDelegate.h"
+#import <Socialize/Socialize.h>
 
 @implementation SZAppDelegate
 
@@ -18,6 +19,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [SZActionBar defaultActionBarWithFrame:CGRectNull entity:nil viewController:nil];
     return YES;
 }
 

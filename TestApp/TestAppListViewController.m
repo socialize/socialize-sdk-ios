@@ -299,7 +299,6 @@ static TestAppListViewController *sharedSampleListViewController;
     imageView.alpha = 0.25;
     self.tableView.backgroundView = imageView;
     self.tableView.accessibilityLabel = @"tableView";
-    
 //    [self createSections];
 }
 
@@ -310,6 +309,8 @@ static TestAppListViewController *sharedSampleListViewController;
 //        NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowCommentsListRow];
 //        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 //    });
+    
+//    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 //- (NSArray*)sections {
