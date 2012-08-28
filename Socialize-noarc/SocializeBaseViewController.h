@@ -75,6 +75,7 @@
 - (void)failWithError:(NSError*)error;
 - (void)userSettingsChanged:(id<SZFullUser>)updatedSettings;
 - (void)userChanged:(id<SZFullUser>)newUser;
+- (void)cancel;
 
 @end
 
