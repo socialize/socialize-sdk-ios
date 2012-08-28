@@ -45,7 +45,6 @@
 @property (nonatomic, retain) SocializeLocationManager *locationManager;
 @property (retain, nonatomic) IBOutlet UIView *bottomContainerDisabledView;
 
-- (BOOL)isFormsheetModal;
 - (void)disableLowerContainer;
 - (void)enableLowerContainer;
 

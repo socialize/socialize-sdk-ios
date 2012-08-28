@@ -78,6 +78,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.keyboardListener = nil;
     self.cancellationBlock = nil;
     self.completionBlock = nil;
+    self.formsheetDismissGestureRecognizer = nil;
 
     [super dealloc];
 }
@@ -101,12 +102,17 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.settingsButton = nil;
 }
 
+- (BOOL)isFormsheetModal {
+    return self.modalPresentationStyle == UIModalPresentationFormSheet || self.navigationController.modalPresentationStyle == UIModalPresentationFormSheet;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     if (self.tableView == nil && [self.view isKindOfClass:[UITableView class]]) {
         self.tableView = (UITableView*)self.view;
     }
+    
 }
 
 - (SocializeKeyboardListener*)keyboardListener {
@@ -284,11 +290,42 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     }
     
     [self.navigationController.navigationBar resetBackground];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.navigationController.navigationBar resetBackground];
+    
+    if (self.formsheetDismissGestureRecognizer == nil && [self isFormsheetModal]) {
+        UIWindow *window = self.view.window;
+        __block __typeof__(self) weakSelf = self;
+        self.formsheetDismissGestureRecognizer = [[UITapGestureRecognizer alloc] initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+            if (state == UIGestureRecognizerStateEnded) {
+                UIView *testView = weakSelf.navigationController.view;
+                if (testView == nil) testView = weakSelf.view;
+                
+                CGPoint p = [sender locationInView:testView];
+                if (!CGRectContainsPoint(testView.bounds, p)) {
+                    [weakSelf cancel];
+                }
+            }
+        }];
+        self.formsheetDismissGestureRecognizer.cancelsTouchesInView = NO;
+        [window addGestureRecognizer:self.formsheetDismissGestureRecognizer];
+    }
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    
+    if (self.formsheetDismissGestureRecognizer != nil) {
+        [self.view.window removeGestureRecognizer:self.formsheetDismissGestureRecognizer];
+        self.formsheetDismissGestureRecognizer = nil;
+    }
+
 }
 
 - (void)failWithError:(NSError*)error {

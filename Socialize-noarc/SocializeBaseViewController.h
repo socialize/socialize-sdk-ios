@@ -51,7 +51,9 @@
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, copy) void (^cancellationBlock)();
+@property (nonatomic, retain) UITapGestureRecognizer *formsheetDismissGestureRecognizer;
 
+- (BOOL)isFormsheetModal;
 -(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title;
 -(void) startLoading;
 -(void) stopLoading;

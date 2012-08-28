@@ -342,10 +342,6 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     return self.upperContainer;
 }
 
-- (BOOL)isFormsheetModal {
-    return self.modalPresentationStyle == UIModalPresentationFormSheet || self.navigationController.modalPresentationStyle == UIModalPresentationFormSheet;
-}
-
 - (void)disableLowerContainer {
     self.bottomContainerDisabledView.hidden = NO;
     [self.lowerContainer addSubview:self.bottomContainerDisabledView];
