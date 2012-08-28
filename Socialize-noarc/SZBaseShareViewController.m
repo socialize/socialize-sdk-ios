@@ -166,15 +166,19 @@ static NSString *kAutopostSection = @"kAutopostSection";
     });
 }
 
+- (void)deselectSelectedRow {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if (indexPath != nil) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [self syncInterfaceWithThirdPartyState];
 
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    if (indexPath != nil) {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-    }
+    [self deselectSelectedRow];
 }
 
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]
@@ -409,9 +413,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
         
         [SZShareUtils shareViaSMSWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
+            [self deselectSelectedRow];
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
+            [self deselectSelectedRow];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];
@@ -441,9 +446,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
 
         [SZShareUtils shareViaEmailWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
+            [self deselectSelectedRow];
+
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
+            [self deselectSelectedRow];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];
