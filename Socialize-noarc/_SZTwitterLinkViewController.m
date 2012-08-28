@@ -278,7 +278,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     [self stopLoading];
 }
 
-- (void)cancel {
+- (void)cancelledAlert {
     // The user has aborted the authorization process
 }
 
@@ -291,7 +291,7 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
     [self stopLoading];
 
     UIAlertView *alertView = [UIAlertView alertWithTitle:@"Twitter Authentication Failed" message:message];
-    [alertView setCancelButtonWithTitle:@"Cancel" handler:^{ [self cancel]; }];
+    [alertView setCancelButtonWithTitle:@"Cancel" handler:^{ [self cancelledAlert]; }];
     [alertView addButtonWithTitle:@"Retry" handler:^{ [self retry]; }];
     [alertView show];
 }
