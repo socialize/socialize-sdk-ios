@@ -16,6 +16,7 @@
 #import "SocializeGeocoderAdapter.h"
 #import "SocializeComposeMessageViewController.h"
 #import "SZHorizontalContainerView.h"
+#import <BlocksKit/BlocksKit.h>
 
 @interface SocializeComposeMessageViewController ()
 - (void)setShareLocation:(BOOL)shareLocation;
@@ -224,12 +225,18 @@
 }
 
 - (void)testMapViewLocationUpdateUpdatesLocationManager {
+    [NSTimer startMockingClass];
+    
+    [[NSTimer expect] scheduledTimerWithTimeInterval:10 block:OCMOCK_ANY repeats:YES];
+    
     id mockMKUserLocation = [OCMockObject niceMockForClass:[MKUserLocation class]];
     id mockLocation = [OCMockObject niceMockForClass:[CLLocation class]];
     [[[mockMKUserLocation stub] andReturn:mockLocation] location];
 //    [[self.mockLocationManager expect] setLastLocation:mockLocation];
     
     [self.composeMessageViewController mapView:nil didUpdateUserLocation:mockMKUserLocation];
+    
+    [NSTimer stopMockingClassAndVerify];
 }
 
 @end
