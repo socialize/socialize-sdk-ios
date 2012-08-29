@@ -28,14 +28,15 @@
 #define PORTRAIT_KEYBOARD_HEIGHT 216
 #define LANDSCAPE_KEYBOARD_HEIGHT 162
 
-@interface SocializeComposeMessageViewController ()
+static NSTimeInterval ReverseGeocodeRetryInterval = 10;
 
--(void)setShareLocation:(BOOL)enableLocation;
--(void)configureLocationText; 
--(void)configureDoNotShareLocationButton;
--(void)updateViewWithNewLocation: (CLLocation*)userLocation;
+@interface SocializeComposeMessageViewController () {
+    BOOL _succeededReverseGeocode;
+}
 
-@end 
+@property (nonatomic, retain) NSTimer *reverseGeocodeTimer;
+
+@end
 
 @implementation SocializeComposeMessageViewController
 
@@ -90,6 +91,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [messageActionButtons_ release];
     [currentLocationDescription_ release];
     [locationManager_ release];
+    [_currentLocation release];
+    [_reverseGeocodeTimer release];
     
     [bottomContainerDisabledView release];
     [super dealloc];
@@ -124,28 +127,63 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [self updateSendButton];
 }
 
+- (void)attemptReverseGeocode {
+    __block id geocoder = [[SocializeGeocoderAdapter alloc]init];
+    
+    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray*placemarks, NSError *error)
+     {
+         if(error)
+         {
+             self.currentLocationDescription = NO_CITY_MSG;
+         }
+         else
+         {
+             self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
+             _succeededReverseGeocode = YES;
+         }
+         [self configureLocationText];
+         [geocoder autorelease];
+     }
+     ];
+}
+
+- (void)stopReverseGeocodeTimer {
+    [self.reverseGeocodeTimer invalidate];
+    self.reverseGeocodeTimer = nil;
+}
+
+- (void)startReverseGeocodeTimer {
+    if (_succeededReverseGeocode) {
+        return;
+    }
+    
+    if (self.reverseGeocodeTimer != nil) {
+        return;
+    }
+    
+    __block __typeof__(self) weakSelf = self;
+    self.reverseGeocodeTimer = [NSTimer scheduledTimerWithTimeInterval:ReverseGeocodeRetryInterval block:^(NSTimeInterval time) {
+        if (_succeededReverseGeocode) {
+            [weakSelf stopReverseGeocodeTimer];
+        } else {
+            [weakSelf attemptReverseGeocode];
+        }
+    } repeats:YES];
+}
+
+- (void)startReverseGeocode {
+    [self attemptReverseGeocode];
+    [self startReverseGeocodeTimer];
+}
+
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation
-{   
+{
     if (userLocation) {
+        self.currentLocation = userLocation;
         
         [mapOfUserLocation setFitLocation: userLocation.coordinate withSpan: [CommentMapView coordinateSpan]];
         
-        __block id geocoder = [[SocializeGeocoderAdapter alloc]init];
-        
-        [geocoder reverseGeocodeLocation:userLocation completionHandler:^(NSArray*placemarks, NSError *error)
-         {
-             if(error)
-             {
-                 self.currentLocationDescription = NO_CITY_MSG;
-             }
-             else
-             {
-                 self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
-             }
-             [self configureLocationText];
-             [geocoder autorelease];
-         }
-         ];
+        [self startReverseGeocode];
     }
 }
 
