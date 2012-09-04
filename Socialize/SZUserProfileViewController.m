@@ -40,11 +40,6 @@
     return _profile;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     return self.profile;
 }
