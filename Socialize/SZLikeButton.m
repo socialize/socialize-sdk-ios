@@ -215,6 +215,12 @@
 
 
 - (void)setEntity:(id<SocializeEntity>)entity {
+    
+    // Require explicit refresh for now
+    if ([entity isEqual:_entity]) {
+        return;
+    }
+    
     _entity = entity;
     
     if (_entity == nil) {
@@ -222,7 +228,7 @@
     }
     
     // This is the user-set entity property. The server entity is always stored in self.serverEntity
-    if (![entity isFromServer]) {
+    if (![entity isFromServer] || [entity userActionSummary] == nil) {
         [self refresh];
     } else {
         [self configureForNewServerEntity:entity];

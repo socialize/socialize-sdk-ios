@@ -11,7 +11,7 @@
 #import "SocializeLike.h"
 #import "SocializeObjectFactory.h"
 #import "SocializeEntity.h"
-
+#import "socialize_globals.h"
 
 #define LIKE_METHOD @"like/"
 #define ENTRY_KEY @"key"
@@ -53,11 +53,17 @@
 }
 
 - (void)callLikePostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [self callLikeWithMethod:@"POST" params:params success:success failure:failure];
+    [self callLikeWithMethod:@"POST" params:params success:^(NSArray *likes) {
+        SZPostActivityEntityDidChangeNotifications(likes);
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:likes];
+    } failure:failure];
 }
 
 - (void)callLikeDeleteWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
-    [self callLikeWithMethod:@"DELETE" params:params success:success failure:failure];
+    [self callLikeWithMethod:@"DELETE" params:params success:^(NSArray *likes) {
+        SZPostActivityEntityDidChangeNotifications(likes);
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didDelete:) object:likes];
+    } failure:failure];
 }
 
 - (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {

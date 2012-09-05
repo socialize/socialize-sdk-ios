@@ -14,3 +14,4 @@ void SZHandleUserChange(id<SZFullUser> fullUser);
 NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
 BOOL SZIsProduction();
 NSString *SZAPINSStringForCurrentProvisioningState();
+void SZPostActivityEntityDidChangeNotifications(NSArray *activities);

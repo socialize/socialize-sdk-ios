@@ -43,6 +43,14 @@
     return entity;
 }
 
+- (BOOL)isEqual:(id)object {
+    return [object isKindOfClass:[SZEntity class]] && [[object key] isEqualToString:[self key]];
+}
+
+- (NSUInteger)hash {
+    return [self.key hash];
+}
+
 - (NSString*)description {
     return [NSString stringWithFormat:@"%@/%@, %d/%d/%d, %@", [self key], [self name], [self comments], [self likes], [self shares], [self userActionSummary]];
 }

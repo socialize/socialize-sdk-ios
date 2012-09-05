@@ -8,6 +8,15 @@
 
 #import "SZActionBarTests.h"
 #import "SZEntityUtils.h"
+#import "SZHorizontalContainerView.h"
+
+@interface SZActionBar ()
+@property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerRight;
+@property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerLeft;
+
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+
+@end
 
 @implementation SZActionBarTests
 @synthesize actionBar = _actionBar;
@@ -66,6 +75,29 @@
     self.actionBar.entity = mockEntity2;
     
     [SZEntityUtils stopMockingClassAndVerify];
+}
+
+- (void)ignoreContainers {
+    id mockContainerLeft = [OCMockObject niceMockForClass:[SZHorizontalContainerView class]];
+    self.actionBar.buttonsContainerLeft = mockContainerLeft;
+
+    id mockContainerRight = [OCMockObject niceMockForClass:[SZHorizontalContainerView class]];
+    self.actionBar.buttonsContainerRight = mockContainerRight;
+}
+
+- (void)testEntityDidChangeUpdatesItems {
+    id mockEntity = [self mockEntityWithKey:@"key" fromServer:YES];
+    self.actionBar = [[[SZActionBar alloc] initWithFrame:CGRectMake(0, 0, 1, 1) entity:mockEntity viewController:nil] autorelease];
+    [self ignoreContainers];
+    
+    id mockButton = [OCMockObject niceMockForProtocol:@protocol(SZActionBarItem)];
+    self.actionBar.itemsLeft = @[ mockButton ];
+    
+    [[mockButton expect] actionBar:self.actionBar didLoadEntity:mockEntity];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SZEntityDidChangeNotification object:mockEntity];
+    
+    [mockButton verify];
+    [mockEntity verify];
 }
 
 @end
