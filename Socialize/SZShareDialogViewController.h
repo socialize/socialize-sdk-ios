@@ -18,4 +18,6 @@
 @property (nonatomic, strong) id<SZEntity> entity;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *footerView;
+@property (nonatomic, copy) NSString *continueText;
+
 @end

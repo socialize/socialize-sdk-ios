@@ -17,6 +17,8 @@
 #import "SocializeComposeMessageViewController.h"
 #import "SZHorizontalContainerView.h"
 #import <BlocksKit/BlocksKit.h>
+#import "UIBarButtonItem+Socialize.h"
+
 
 @interface SocializeComposeMessageViewController ()
 - (void)setShareLocation:(BOOL)shareLocation;
@@ -206,6 +208,7 @@
     [[self.mockNavigationItem expect] setLeftBarButtonItem:self.mockCancelButton];
     [[self.mockNavigationItem expect] setRightBarButtonItem:self.mockSendButton];
     [[self.mockSendButton expect] setEnabled:NO];
+    [[self.mockSendButton stub] changeTitleOnCustomButtonToText:OCMOCK_ANY];
     
     [[self.mockMessageActionButtonContainer expect] setRightJustified:YES];
     

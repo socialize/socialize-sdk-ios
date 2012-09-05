@@ -138,6 +138,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Continue" handler:^(id sender) {
         [weakSelf continueButtonPressed:nil];
     }];
+    
+    if ([self.continueText length]) {
+        [self.navigationItem.rightBarButtonItem changeTitleOnCustomButtonToText:self.continueText];
+    }
                                               
     if (self.headerView != nil) {
         self.shareDialogView.headerView = self.headerView;

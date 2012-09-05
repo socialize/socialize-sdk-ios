@@ -22,6 +22,7 @@
 #import "SZHorizontalContainerView.h"
 #import "socialize_globals.h"
 #import "SZLocationUtils.h"
+#import "SDKHelpers.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 
@@ -318,6 +319,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.navigationItem.rightBarButtonItem = self.sendButton;
+    
+    if (SZShouldShowNetworkSelection()) {
+        [self.sendButton changeTitleOnCustomButtonToText:@"Continue"];
+    }
+    
     [self updateSendButton];
     
     [self.commentTextView becomeFirstResponder];    

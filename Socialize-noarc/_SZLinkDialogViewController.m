@@ -129,7 +129,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     }
     
     // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
-    [self.tableView setBackgroundView:nil];
+    [self.tableView setBackgroundView:nil];    
 }
 
 -(IBAction)skipButtonPressed:(id)sender {

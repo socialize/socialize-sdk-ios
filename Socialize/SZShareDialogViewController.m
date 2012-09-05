@@ -23,6 +23,7 @@
 @synthesize shareDialog = _shareDialog;
 @synthesize shares = _shares;
 @synthesize entity = entity_;
+@dynamic continueText;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];
