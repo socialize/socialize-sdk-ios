@@ -33,6 +33,7 @@
 #import "SDKHelpers.h"
 #import "SZSmartAlertUtils.h"
 #import "SZCommentUtils.h"
+#import "SZComposeCommentViewController.h"
 
 @interface _SZCommentsListViewController()
 @end
@@ -293,7 +294,20 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    [SZCommentUtils showCommentComposerWithViewController:self entity:_entity completion:nil cancellation:nil];
+    SZComposeCommentViewController *composer = [[[SZComposeCommentViewController alloc] initWithEntity:_entity] autorelease];
+    composer.completionBlock = ^(id<SZComment> comment) {
+        [self postCommentViewController:composer.composeComment didCreateComment:comment];
+    };
+    
+    composer.cancellationBlock = ^{
+        [self dismissModalViewControllerAnimated:YES];
+    };
+    
+    if (self.modalPresentationStyle == UIModalPresentationFormSheet) {
+        composer.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    [self presentModalViewController:composer animated:YES];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {

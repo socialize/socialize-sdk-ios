@@ -29,6 +29,7 @@
 #import "SocializeComment.h"
 #import "SocializeCommentJSONFormatter.h"
 #import "SocializeObjectFactory.h"
+#import "socialize_globals.h"
 
 #define COMMENTS_LIST_METHOD @"comment/"
 
@@ -122,7 +123,12 @@
                                resourcePath:COMMENTS_LIST_METHOD
                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                      params:params];
-    request.successBlock = success;
+
+    request.successBlock = ^(NSArray *comments) {
+        SZPostActivityEntityDidChangeNotifications(comments);
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:comments];
+    };
+    
     request.failureBlock = failure;
 
     [self executeRequest:request];

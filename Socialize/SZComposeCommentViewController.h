@@ -10,6 +10,7 @@
 #import "SocializeObjects.h"
 
 @interface SZComposeCommentViewController : SZNavigationController
+@property (nonatomic, strong) _SZComposeCommentViewController *composeComment;
 - (id)initWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, copy) void (^completionBlock)(id<SZComment> comment);
 @property (nonatomic, copy) void (^cancellationBlock)();

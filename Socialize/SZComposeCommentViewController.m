@@ -10,7 +10,6 @@
 #import "_SZComposeCommentViewController.h"
 
 @interface SZComposeCommentViewController ()
-@property (nonatomic, strong) _SZComposeCommentViewController *composeComment;
 @property (nonatomic, strong) id<SZEntity> entity;
 
 @end

@@ -46,6 +46,17 @@ NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting) {
     return nil;
 }
 
+void SZPostActivityEntityDidChangeNotifications(NSArray *activities) {
+    NSMutableSet *entities = [NSMutableSet set];
+    for (id<SZActivity> activity in activities) {
+        [entities addObject:activity.entity];
+    }
+    
+    for (id<SZEntity> entity in entities) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SZEntityDidChangeNotification object:entity];
+    }
+}
+
 NSString *SZGetProvisioningProfile() {
     NSString * profilePath = [[NSBundle mainBundle] pathForResource:@"embedded.mobileprovision" ofType:nil];
     if (profilePath == nil) {
