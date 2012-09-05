@@ -303,6 +303,10 @@
         [self dismissModalViewControllerAnimated:YES];
     };
     
+    if (self.modalPresentationStyle == UIModalPresentationFormSheet) {
+        composer.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
     [self presentModalViewController:composer animated:YES];
 }
 
