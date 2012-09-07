@@ -107,3 +107,12 @@ NSString *SZBase64EncodedUDID() {
     NSString *encoded = [udidData base64Encoding];
     return encoded;
 }
+
+BOOL SZEventTrackingDisabled() {
+    const char *disabled = getenv("SZEventTrackingDisabled");
+    if (disabled != NULL && strncmp("1", disabled, 1) == 0) {
+        return YES;
+    }
+    
+    return NO;
+}

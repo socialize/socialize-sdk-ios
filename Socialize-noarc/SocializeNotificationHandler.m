@@ -13,6 +13,7 @@
 #import "SocializeActivityDetailsViewController.h"
 #import "SocializeDirectEntityNotificationDisplayController.h"
 #import "_Socialize_private.h"
+#import "SZEventUtils.h"
 
 static SocializeNotificationHandler *sharedNotificationHandler;
 
@@ -157,8 +158,7 @@ static SocializeNotificationHandler *sharedNotificationHandler;
     // Track the event
     NSMutableDictionary *eventParams = [NSMutableDictionary dictionaryWithDictionary:socializeDictionary];
     [eventParams setObject:notificationType forKey:@"notification_type"];
-    [self.socialize trackEventWithBucket:@"NOTIFICATION_OPEN" values:eventParams];
-    
+    [SZEventUtils trackEventWithBucket:@"NOTIFICATION_OPEN" values:eventParams success:nil failure:nil];
 
     if ([notificationType isEqualToString:@"new_comments"]) {
         SocializeNewCommentsNotificationDisplayController *display = [[[SocializeNewCommentsNotificationDisplayController alloc] initWithUserInfo:userInfo] autorelease];

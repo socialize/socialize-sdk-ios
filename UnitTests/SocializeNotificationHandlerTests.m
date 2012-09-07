@@ -11,6 +11,7 @@
 #import "_Socialize_private.h"
 #import "SocializeDirectEntityNotificationDisplayController.h"
 #import "SocializeTestCase.h"
+#import "SZEventUtils.h"
 
 @interface SocializeNotificationHandler ()
 - (void)animatedDismissOfTopDisplayController;
@@ -38,6 +39,8 @@
     self.mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[self.mockSocialize stub] setDelegate:nil];
     self.notificationHandler.socialize = self.mockSocialize;
+    
+    [SZEventUtils startMockingClass];
 }
 
 - (void)tearDown {
@@ -48,6 +51,9 @@
     self.mockSocialize = nil;
     self.origNotificationHandler = nil;
     self.notificationHandler = nil;
+    
+    [SZEventUtils stopMockingClassAndVerify];
+
 }
 
 - (void)testValidSocializeNotificationIsNotification {
@@ -117,7 +123,7 @@
 }
 
 - (void)expectEvent {
-    [[self.mockSocialize expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY];
+    [[SZEventUtils expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
 - (void)testHandleNewCommentsSocializeNotification {

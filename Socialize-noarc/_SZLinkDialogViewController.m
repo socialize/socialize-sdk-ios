@@ -20,6 +20,7 @@
 #import "SDKHelpers.h"
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
+#import "SZEventUtils.h"
 
 #define LINK_DIALOG_BUCKET @"LINK_DIALOG"
 
@@ -282,7 +283,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         [fullValues addEntriesFromDictionary:values];  
     }
     
-    [[Socialize sharedSocialize] trackEventWithBucket:LINK_DIALOG_BUCKET values:fullValues];
+    [SZEventUtils trackEventWithBucket:LINK_DIALOG_BUCKET values:fullValues success:nil failure:nil];
 }
     
 - (void)finish {

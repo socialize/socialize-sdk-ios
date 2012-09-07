@@ -18,6 +18,7 @@
 #import "socialize_globals.h"
 #import "SZLocationUtils.h"
 #import <JSONKit/JSONKit.h>
+#import "SZEventUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -394,7 +395,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if ([networkNames count]) {
         NSString *jsonNetworks = [networkNames JSONString];
         NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:@"share", @"action", jsonNetworks, @"networks", nil];
-        [[Socialize sharedSocialize] trackEventWithBucket:SHARE_DIALOG_BUCKET values:values];
+        [SZEventUtils trackEventWithBucket:SHARE_DIALOG_BUCKET values:values success:nil failure:nil];
     }
 }
 

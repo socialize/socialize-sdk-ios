@@ -10,6 +10,7 @@
 #import "SZShareUtils.h"
 #import "socialize_globals.h"
 #import "SocializeThirdParty.h"
+#import "SZEventUtils.h"
 
 @interface _SZShareDialogViewController () {
     dispatch_once_t _initToken;
@@ -67,12 +68,13 @@
 
 - (void)trackCloseEvent {
     NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:@"close", @"action", nil];
-    [[Socialize sharedSocialize] trackEventWithBucket:SHARE_DIALOG_BUCKET values:values];
+    [SZEventUtils trackEventWithBucket:SHARE_DIALOG_BUCKET values:values success:nil failure:nil];
+
 }
 
 - (void)trackOpenEvent {
     NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:@"open", @"action", nil];
-    [[Socialize sharedSocialize] trackEventWithBucket:SHARE_DIALOG_BUCKET values:values];
+    [SZEventUtils trackEventWithBucket:SHARE_DIALOG_BUCKET values:values success:nil failure:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

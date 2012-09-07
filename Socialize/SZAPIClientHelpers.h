@@ -16,3 +16,4 @@ BOOL SZIsProduction();
 NSString *SZAPINSStringForCurrentProvisioningState();
 void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
 NSString *SZBase64EncodedUDID();
+BOOL SZEventTrackingDisabled();

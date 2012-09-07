@@ -8,6 +8,7 @@
 
 #import "SocializeEventService.h"
 #import <Socialize/Socialize.h>
+#import "socialize_globals.h"
 
 #define EVENT_METHOD @"private/sdk_event/"
 
@@ -21,8 +22,7 @@
 
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id result))success failure:(void(^)(NSError *error))failure {
 
-    const char *disabled = getenv("SZEventTrackingDisabled");
-    if (disabled != NULL && strncmp("1", disabled, 1) == 0) {
+    if (SZEventTrackingDisabled()) {
         return;
     }
     
