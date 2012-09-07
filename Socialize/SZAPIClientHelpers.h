@@ -15,3 +15,4 @@ NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
 BOOL SZIsProduction();
 NSString *SZAPINSStringForCurrentProvisioningState();
 void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
+NSString *SZBase64EncodedUDID();

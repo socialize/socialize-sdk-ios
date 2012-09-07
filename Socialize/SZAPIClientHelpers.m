@@ -10,6 +10,7 @@
 #import "socialize_globals.h"
 #import "SocializePrivateDefinitions.h"
 #import "SocializeObjectFactory.h"
+#import "NSData+Base64.h"
 
 void SZHandleUserChange(id<SZFullUser> fullUser) {
     NSDictionary *fullUserDictionary = [fullUser serverDictionary];
@@ -98,4 +99,11 @@ NSString *SZAPINSStringForCurrentProvisioningState() {
     } else {
         return @"APNS_DEVELOPMENT";
     }
+}
+
+NSString *SZBase64EncodedUDID() {
+    NSString *udid = [[UIDevice currentDevice] uniqueIdentifier];
+    NSData *udidData = [udid dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *encoded = [udidData base64Encoding];
+    return encoded;
 }
