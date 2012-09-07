@@ -940,6 +940,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_eventsService trackEventWithBucket:bucket values:values];
 }
 
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    [_eventsService trackEventWithBucket:bucket values:values success:success failure:failure];
+}
+
 - (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
     [_shareService createShare:share success:success failure:failure];
 }

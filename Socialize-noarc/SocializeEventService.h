@@ -7,8 +7,9 @@
 //
 
 #import "SocializeService.h"
+#import "SocializeObjects.h"
 
 @interface SocializeEventService : SocializeService
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
-
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id result))success failure:(void(^)(NSError *error))failure;
 @end

@@ -251,6 +251,11 @@
 		AA0C6162158FC61D00F66A3B /* UserUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */; };
 		AA0C6165158FC6D400F66A3B /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6164158FC6D400F66A3B /* SocializeUnitTestApplication.m */; };
 		AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
+		AA0F103D15FAB61900391CFE /* SZEventUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F103B15FAB61900391CFE /* SZEventUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0F103E15FAB61900391CFE /* SZEventUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F103B15FAB61900391CFE /* SZEventUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0F103F15FAB61900391CFE /* SZEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F103C15FAB61900391CFE /* SZEventUtils.m */; };
+		AA0F104015FAB61900391CFE /* SZEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F103C15FAB61900391CFE /* SZEventUtils.m */; };
+		AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F104215FAB90B00391CFE /* TestEventUtils.m */; };
 		AA1505FA159CDE0E00F639E7 /* users.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1505F9159CDE0E00F639E7 /* users.m */; };
 		AA159D34158FAD4B006E1CAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A0158D2B1100480399 /* main.m */; };
 		AA159D35158FAD4B006E1CAE /* SZTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */; };
@@ -2318,6 +2323,10 @@
 		AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUtilsTests.m; sourceTree = "<group>"; };
 		AA0C6163158FC6D400F66A3B /* SocializeUnitTestApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUnitTestApplication.h; sourceTree = "<group>"; };
 		AA0C6164158FC6D400F66A3B /* SocializeUnitTestApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUnitTestApplication.m; sourceTree = "<group>"; };
+		AA0F103B15FAB61900391CFE /* SZEventUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZEventUtils.h; path = Socialize/SZEventUtils.h; sourceTree = SOURCE_ROOT; };
+		AA0F103C15FAB61900391CFE /* SZEventUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZEventUtils.m; path = Socialize/SZEventUtils.m; sourceTree = SOURCE_ROOT; };
+		AA0F104115FAB90B00391CFE /* TestEventUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEventUtils.h; sourceTree = "<group>"; };
+		AA0F104215FAB90B00391CFE /* TestEventUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEventUtils.m; sourceTree = "<group>"; };
 		AA1505F8159CDE0E00F639E7 /* users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = users.h; sourceTree = "<group>"; };
 		AA1505F9159CDE0E00F639E7 /* users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = users.m; sourceTree = "<group>"; };
 		AA159E12158FAD4B006E1CAE /* UIIntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIIntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3560,6 +3569,8 @@
 				AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */,
 				AA2D42E8159D4FFD00622210 /* SZUserSettings.h */,
 				AA2D42E9159D4FFD00622210 /* SZUserSettings.m */,
+				AA0F103B15FAB61900391CFE /* SZEventUtils.h */,
+				AA0F103C15FAB61900391CFE /* SZEventUtils.m */,
 				AA6D5A821592F31E00058669 /* Options */,
 			);
 			name = Utils;
@@ -3840,6 +3851,8 @@
 				AA6C6425158F0F49005E5632 /* IntegrationTestsAppDelegate.h */,
 				AA6C6426158F0F49005E5632 /* IntegrationTestsAppDelegate.m */,
 				AA6C63D2158F0EB0005E5632 /* Supporting Files */,
+				AA0F104115FAB90B00391CFE /* TestEventUtils.h */,
+				AA0F104215FAB90B00391CFE /* TestEventUtils.m */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -4281,6 +4294,7 @@
 				AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
 				AA815C8C15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 				AA3A9E2B15E5909700CD2F75 /* SZSessionTracker.h in Headers */,
+				AA0F103D15FAB61900391CFE /* SZEventUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4377,6 +4391,7 @@
 				AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */,
 				AA815C8D15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 				AA3A9E2C15E5909800CD2F75 /* SZSessionTracker.h in Headers */,
+				AA0F103E15FAB61900391CFE /* SZEventUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5837,6 +5852,7 @@
 				AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
 				AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */,
 				AA815C8E15DACDCC00A31E39 /* SZEmailShareData.m in Sources */,
+				AA0F103F15FAB61900391CFE /* SZEventUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6145,6 +6161,7 @@
 				AA6C642E158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 				AA6C6432158F10D7005E5632 /* SZTestHelper.m in Sources */,
 				AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */,
+				AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6337,6 +6354,7 @@
 				AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
 				AA815C8915DACDBF00A31E39 /* SZSMSShareData.m in Sources */,
 				AA815C8F15DACDCC00A31E39 /* SZEmailShareData.m in Sources */,
+				AA0F104015FAB61900391CFE /* SZEventUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
