@@ -18,6 +18,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SZSmartAlertUtils.h"
 #import "socialize_globals.h"
+#import "SZStatusView.h"
 
 @implementation _SZComposeCommentViewController
 @synthesize commentObject = commentObject_;
@@ -136,6 +137,10 @@
     [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
+        
+        SZStatusView *status = [SZStatusView successStatusViewWithFrame:CGRectZero];
+        [status showAndHideInKeyWindowWithDuration:2.];
+
     } failure:^(NSError *error) {
         [self stopLoading];
         

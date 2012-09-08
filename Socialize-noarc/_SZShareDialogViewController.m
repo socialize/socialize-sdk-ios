@@ -11,6 +11,8 @@
 #import "socialize_globals.h"
 #import "SocializeThirdParty.h"
 #import "SZEventUtils.h"
+#import "SocializeLoadingView.h"
+#import "SZStatusView.h"
 
 @interface _SZShareDialogViewController () {
     dispatch_once_t _initToken;
@@ -30,6 +32,11 @@
     return self;
 }
 
+- (void)cancel {
+    [self trackCloseEvent];
+    BLOCK_CALL(self.cancellationBlock);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -39,8 +46,7 @@
     
     __block __typeof__(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id sender) {
-        [self trackCloseEvent];
-        BLOCK_CALL(weakSelf.cancellationBlock);
+        [weakSelf cancel];
     }];
 }
 
@@ -53,10 +59,17 @@
         
         SZShareOptions *shareOptions = [SZShareUtils userShareOptions];
         [self startLoading];
+        __block id mySelf = self;
+        (void)mySelf;
         [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:shareOptions success:^(id<SZShare> share) {
+            
             [self stopLoading];
             [self.createdShares addObject:share];
             BLOCK_CALL_1(self.completionBlock, self.createdShares);
+            
+            SZStatusView *status = [SZStatusView successStatusViewWithFrame:CGRectZero];
+            [status showAndHideInKeyWindowWithDuration:2.];
+            
         } failure:^(NSError *error) {
             [self stopLoading];
             [self failWithError:error];

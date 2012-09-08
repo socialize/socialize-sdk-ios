@@ -46,7 +46,6 @@
 @property (retain, nonatomic) IBOutlet UIView *bottomContainerDisabledView;
 @property (nonatomic, retain) CLLocation *currentLocation;
 
-- (BOOL)isFormsheetModal;
 - (void)disableLowerContainer;
 - (void)enableLowerContainer;
 

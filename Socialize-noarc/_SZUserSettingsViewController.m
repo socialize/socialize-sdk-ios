@@ -115,6 +115,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 #pragma mark - View lifecycle
 
+- (void)cancel {
+    BLOCK_CALL_2(self.userSettingsCompletionBlock, NO, self.fullUser);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -125,7 +129,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     
     __block __typeof__(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id _) {
-        BLOCK_CALL_2(weakSelf.userSettingsCompletionBlock, NO, weakSelf.fullUser);
+        [weakSelf cancel];
     }];
     self.navigationItem.rightBarButtonItem = self.saveButton;
     [self changeTitleOnCustomBarButton:self.saveButton toText:@"Done"];
