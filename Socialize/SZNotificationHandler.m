@@ -120,7 +120,11 @@ static SZNotificationHandler *sharedNotificationHandler;
         return NO;
     }
     
-    id<SZDisplay> display = [self display];
+    id<SZDisplay> display = nil;
+    if ([self displayBlock] != nil) {
+        display = [self displayBlock]();
+    }
+    
     if (display == nil) {
         display = [[SZWindowDisplay alloc] init];
         [self.windowDisplays addObject:display];

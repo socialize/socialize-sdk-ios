@@ -16,5 +16,6 @@
 - (BOOL)openSocializeNotification:(NSDictionary*)userInfo;
 - (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
 
-@property (nonatomic, strong) id<SZDisplay> display;
+@property (nonatomic, copy) id<SZDisplay>(^displayBlock)();
+
 @end

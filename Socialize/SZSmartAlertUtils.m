@@ -15,14 +15,6 @@
 
 @implementation SZSmartAlertUtils
 
-+ (void)setNotificationDisplay:(id<SZDisplay>)display {
-    [[SZNotificationHandler sharedNotificationHandler] setDisplay:display];
-}
-
-+ (id<SZDisplay>)notificationDisplay {
-    return [[SZNotificationHandler sharedNotificationHandler] display];
-}
-
 + (BOOL)isAvailable {
     BOOL available = [[Socialize sharedSocialize] notificationsAreConfigured];
     if (!available) {

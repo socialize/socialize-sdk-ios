@@ -50,7 +50,9 @@
         [self handleNotification:userInfo];
     }
     
-    [SZSmartAlertUtils setNotificationDisplay:sample];
+    [SZDisplayUtils setGlobalDisplayBlock:^id<SZDisplay>{
+        return sample;
+    }];
     
 #if RUN_KIF_TESTS
     [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];

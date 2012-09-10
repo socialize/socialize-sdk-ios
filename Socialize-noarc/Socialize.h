@@ -46,6 +46,7 @@
 #import "SZSubscriptionUtils.h"
 #import "SZViewUtils.h"
 #import "SZEventUtils.h"
+#import "SZDisplayUtils.h"
 
 #import "SZUserSettingsViewController.h"
 #import "SZUserProfileViewController.h"
