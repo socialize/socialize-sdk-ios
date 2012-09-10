@@ -10,7 +10,6 @@
 #import "_SZShareDialogViewController.h"
 
 @interface SZShareDialogViewController ()
-@property (nonatomic, strong) _SZShareDialogViewController *shareDialog;
 
 @end
 
@@ -19,11 +18,8 @@
 @dynamic cancellationBlock;
 @dynamic headerView;
 @dynamic footerView;
-@synthesize title = __title;
-@synthesize shareDialog = _shareDialog;
-@synthesize shares = _shares;
-@synthesize entity = entity_;
 @dynamic continueText;
+@synthesize title = __title;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];
@@ -40,21 +36,21 @@
 }
 
 - (void)createShareDialog {
-    self.shareDialog = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
-    [self pushViewController:self.shareDialog animated:NO];
+    self._shareDialogViewController = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
+    [self pushViewController:self._shareDialogViewController animated:NO];
 }
 
 - (void)setTitle:(NSString *)title {
     __title = title;
-    [self.shareDialog setTitle:title];
+    [self._shareDialogViewController setTitle:title];
 }
 
 - (NSString*)title {
-    return self.shareDialog.title;
+    return self._shareDialogViewController.title;
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    return self.shareDialog;
+    return self._shareDialogViewController;
 }
 
 @end
