@@ -229,6 +229,7 @@
 		AA8468CC15EC0D2B00065678 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB366B515D587A200A43A8F /* CoreLocation.framework */; };
 		AA8468CD15EC0D3700065678 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB366B315D5879B00A43A8F /* MessageUI.framework */; };
 		AA8468CE15EC0D4000065678 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB366B715D587AB00A43A8F /* QuartzCore.framework */; };
+		AAA2F65515FE9DA7004E6404 /* Socialize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8467F015EC0BEA00065678 /* Socialize.framework */; };
 		AAB3648D15D5849800A43A8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB3648C15D5849800A43A8F /* UIKit.framework */; };
 		AAB3648F15D5849800A43A8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB3648E15D5849800A43A8F /* Foundation.framework */; };
 		AAB3649115D5849800A43A8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB3649015D5849800A43A8F /* CoreGraphics.framework */; };
@@ -534,6 +535,7 @@
 				AAB3666415D585EC00A43A8F /* UIKit.framework in Frameworks */,
 				AAB3666515D585EC00A43A8F /* Foundation.framework in Frameworks */,
 				AAB3666615D585EC00A43A8F /* CoreGraphics.framework in Frameworks */,
+				AAA2F65515FE9DA7004E6404 /* Socialize.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
