@@ -296,7 +296,7 @@
 {
     SZComposeCommentViewController *composer = [[[SZComposeCommentViewController alloc] initWithEntity:_entity] autorelease];
     composer.completionBlock = ^(id<SZComment> comment) {
-        [self postCommentViewController:composer.composeComment didCreateComment:comment];
+        [self postCommentViewController:composer._composeCommentViewController didCreateComment:comment];
     };
     
     composer.cancellationBlock = ^{

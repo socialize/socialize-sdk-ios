@@ -15,8 +15,6 @@
 @end
 
 @implementation SZComposeCommentViewController
-@synthesize composeComment = _composeComment;
-@synthesize entity = _entity;
 @dynamic completionBlock;
 @dynamic cancellationBlock;
 
@@ -28,8 +26,8 @@
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;
-        self.composeComment = [[_SZComposeCommentViewController alloc] initWithEntity:self.entity];
-        [self pushViewController:self.composeComment animated:NO];
+        self._composeCommentViewController = [[_SZComposeCommentViewController alloc] initWithEntity:self.entity];
+        [self pushViewController:self._composeCommentViewController animated:NO];
     }
     
     return self;
@@ -40,7 +38,7 @@
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    return self.composeComment;
+    return self._composeCommentViewController;
 }
 
 @end
