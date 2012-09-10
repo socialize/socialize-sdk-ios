@@ -20,6 +20,7 @@
 @dynamic footerView;
 @dynamic continueText;
 @synthesize title = __title;
+@dynamic display;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

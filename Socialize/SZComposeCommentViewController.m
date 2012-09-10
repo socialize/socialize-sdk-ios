@@ -17,6 +17,7 @@
 @implementation SZComposeCommentViewController
 @dynamic completionBlock;
 @dynamic cancellationBlock;
+@dynamic display;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

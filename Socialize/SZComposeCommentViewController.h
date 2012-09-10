@@ -8,6 +8,7 @@
 
 #import "SZNavigationController.h"
 #import "SocializeObjects.h"
+#import "SZDisplay.h"
 
 @interface SZComposeCommentViewController : SZNavigationController
 @property (nonatomic, strong) _SZComposeCommentViewController *_composeCommentViewController;
@@ -15,4 +16,6 @@
 @property (nonatomic, copy) void (^completionBlock)(id<SZComment> comment);
 @property (nonatomic, copy) void (^cancellationBlock)();
 @property (nonatomic, strong, readonly) id<SZEntity> entity;
+@property (nonatomic, strong) id<SZDisplay> display;
+
 @end

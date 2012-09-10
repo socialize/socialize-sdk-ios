@@ -9,6 +9,7 @@
 #import "SZNavigationController.h"
 #import "SocializeObjects.h"
 #import "_SZShareDialogViewController.h"
+#import "SZDisplay.h"
 
 @interface SZShareDialogViewController : SZNavigationController
 - (id)initWithEntity:(id<SZEntity>)entity;
@@ -21,5 +22,6 @@
 @property (nonatomic, strong) UIView *footerView;
 @property (nonatomic, copy) NSString *continueText;
 @property (nonatomic, strong) _SZShareDialogViewController *_shareDialogViewController;
+@property (nonatomic, strong) id<SZDisplay> display;
 
 @end
