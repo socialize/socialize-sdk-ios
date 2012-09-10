@@ -11,8 +11,10 @@
 
 @interface SZNotificationHandler : NSObject
 
++ (BOOL)isSocializeNotification:(NSDictionary*)userInfo;
 + (SZNotificationHandler*)sharedNotificationHandler;
 - (BOOL)openSocializeNotification:(NSDictionary*)userInfo;
+- (BOOL)handleSocializeNotification:(NSDictionary*)userInfo;
 
 @property (nonatomic, strong) id<SZDisplay> display;
 @end

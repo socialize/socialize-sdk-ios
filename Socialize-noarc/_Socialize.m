@@ -21,7 +21,6 @@
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
 #import <Blockskit/Blockskit.h>
-#import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
 #import "SocializeDeviceTokenSender.h"
 #import "SocializeFacebookAuthHandler.h"
@@ -32,6 +31,7 @@
 #import "SZFacebookUtils.h"
 #import "SocializePrivateDefinitions.h"
 #import "socialize_globals.h"
+#import "SZNotificationHandler.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -354,15 +354,15 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 }
 
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo {
-    return [SocializeNotificationHandler isSocializeNotification:userInfo];
+    return [SZNotificationHandler isSocializeNotification:userInfo];
 }
 
 + (BOOL)openNotification:(NSDictionary*)userInfo {
-    return [[SocializeNotificationHandler sharedNotificationHandler] openSocializeNotification:userInfo];
+    return [[SZNotificationHandler sharedNotificationHandler] openSocializeNotification:userInfo];
 }
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
-    return [[SocializeNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
+    return [[SZNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
 }
 
 #pragma mark authentication info

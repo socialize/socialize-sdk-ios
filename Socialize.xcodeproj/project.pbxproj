@@ -75,8 +75,6 @@
 		AA008767158D35BF00480399 /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00865E158D35BD00480399 /* SocializeDeviceTokenJSONFormatter.m */; };
 		AA008768158D35BF00480399 /* SocializeDeviceTokenSender.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008660158D35BD00480399 /* SocializeDeviceTokenSender.m */; };
 		AA008769158D35BF00480399 /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008662158D35BD00480399 /* SocializeDeviceTokenService.m */; };
-		AA00876A158D35BF00480399 /* SocializeDirectEntityNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008664158D35BD00480399 /* SocializeDirectEntityNotificationDisplayController.m */; };
-		AA00876B158D35BF00480399 /* SocializeDirectURLNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008666158D35BD00480399 /* SocializeDirectURLNotificationDisplayController.m */; };
 		AA00876C158D35BF00480399 /* SocializeDummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008668158D35BD00480399 /* SocializeDummyViewController.m */; };
 		AA00876D158D35BF00480399 /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00866A158D35BD00480399 /* SocializeDynamicTest.m */; };
 		AA00876E158D35BF00480399 /* SocializeEditValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00866C158D35BD00480399 /* SocializeEditValueTableViewCell.m */; };
@@ -99,9 +97,6 @@
 		AA008780158D35BF00480399 /* SocializeListFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008690158D35BE00480399 /* SocializeListFormatter.m */; };
 		AA008781158D35BF00480399 /* SocializeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008692158D35BE00480399 /* SocializeLoadingView.m */; };
 		AA008782158D35BF00480399 /* SocializeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008694158D35BE00480399 /* SocializeLocationManager.m */; };
-		AA008783158D35BF00480399 /* SocializeNewCommentsNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008696158D35BE00480399 /* SocializeNewCommentsNotificationDisplayController.m */; };
-		AA008784158D35BF00480399 /* SocializeNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008698158D35BE00480399 /* SocializeNotificationDisplayController.m */; };
-		AA008785158D35BF00480399 /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00869A158D35BE00480399 /* SocializeNotificationHandler.m */; };
 		AA008786158D35BF00480399 /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00869C158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AA008787158D35BF00480399 /* SocializeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00869E158D35BE00480399 /* SocializeObject.m */; };
 		AA008788158D35BF00480399 /* SocializeObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086A0158D35BE00480399 /* SocializeObjectFactory.m */; };
@@ -203,7 +198,6 @@
 		AA0C612E158FC61D00F66A3B /* SocializeDeviceTokenJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60AB158FC61D00F66A3B /* SocializeDeviceTokenJSONFormatterTests.m */; };
 		AA0C612F158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60AD158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m */; };
 		AA0C6130158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60AF158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m */; };
-		AA0C6131158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B1158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.m */; };
 		AA0C6132158FC61D00F66A3B /* SocializeEntityFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B3158FC61D00F66A3B /* SocializeEntityFormatterTests.m */; };
 		AA0C6133158FC61D00F66A3B /* SocializeEntityServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B5158FC61D00F66A3B /* SocializeEntityServiceTests.m */; };
 		AA0C6134158FC61D00F66A3B /* SocializeErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B7158FC61D00F66A3B /* SocializeErrorTests.m */; };
@@ -216,16 +210,12 @@
 		AA0C613B158FC61D00F66A3B /* SocializeLikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60C5158FC61D00F66A3B /* SocializeLikeTests.m */; };
 		AA0C613C158FC61D00F66A3B /* SocializeListFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60C7158FC61D00F66A3B /* SocializeListFormatterTests.m */; };
 		AA0C613D158FC61D00F66A3B /* SocializeLocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60C9158FC61D00F66A3B /* SocializeLocationManagerTests.m */; };
-		AA0C613E158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60CB158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.m */; };
-		AA0C613F158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60CD158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.m */; };
-		AA0C6140158FC61D00F66A3B /* SocializeNotificationHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60CF158FC61D00F66A3B /* SocializeNotificationHandlerTests.m */; };
 		AA0C6141158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60D1158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.m */; };
 		AA0C6142158FC61D00F66A3B /* SocializeObjectFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60D3158FC61D00F66A3B /* SocializeObjectFormatterTests.m */; };
 		AA0C6143158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60D5158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.m */; };
 		AA0C6144158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60D7158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.m */; };
 		AA0C6145158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60D9158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.m */; };
 		AA0C6146158FC61D00F66A3B /* SocializeRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60DB158FC61D00F66A3B /* SocializeRequestTests.m */; };
-		AA0C6147158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60DD158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.m */; };
 		AA0C6148158FC61D00F66A3B /* SocializeService+Testing.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60DF158FC61D00F66A3B /* SocializeService+Testing.m */; };
 		AA0C6149158FC61D00F66A3B /* SocializeServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60E1158FC61D00F66A3B /* SocializeServiceTests.m */; };
 		AA0C614B158FC61D00F66A3B /* SocializeShareFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60E5158FC61D00F66A3B /* SocializeShareFormatterTests.m */; };
@@ -1286,8 +1276,6 @@
 		AAB5E4A4159044E600D3EBDF /* SocializeDeviceTokenJSONFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00865E158D35BD00480399 /* SocializeDeviceTokenJSONFormatter.m */; };
 		AAB5E4A5159044E600D3EBDF /* SocializeDeviceTokenSender.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008660158D35BD00480399 /* SocializeDeviceTokenSender.m */; };
 		AAB5E4A6159044E600D3EBDF /* SocializeDeviceTokenService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008662158D35BD00480399 /* SocializeDeviceTokenService.m */; };
-		AAB5E4A7159044E600D3EBDF /* SocializeDirectEntityNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008664158D35BD00480399 /* SocializeDirectEntityNotificationDisplayController.m */; };
-		AAB5E4A8159044E600D3EBDF /* SocializeDirectURLNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008666158D35BD00480399 /* SocializeDirectURLNotificationDisplayController.m */; };
 		AAB5E4A9159044E600D3EBDF /* SocializeDummyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008668158D35BD00480399 /* SocializeDummyViewController.m */; };
 		AAB5E4AA159044E600D3EBDF /* SocializeDynamicTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00866A158D35BD00480399 /* SocializeDynamicTest.m */; };
 		AAB5E4AB159044E600D3EBDF /* SocializeEditValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00866C158D35BD00480399 /* SocializeEditValueTableViewCell.m */; };
@@ -1310,9 +1298,6 @@
 		AAB5E4BD159044E600D3EBDF /* SocializeListFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008690158D35BE00480399 /* SocializeListFormatter.m */; };
 		AAB5E4BE159044E600D3EBDF /* SocializeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008692158D35BE00480399 /* SocializeLoadingView.m */; };
 		AAB5E4BF159044E600D3EBDF /* SocializeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008694158D35BE00480399 /* SocializeLocationManager.m */; };
-		AAB5E4C0159044E600D3EBDF /* SocializeNewCommentsNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008696158D35BE00480399 /* SocializeNewCommentsNotificationDisplayController.m */; };
-		AAB5E4C1159044E600D3EBDF /* SocializeNotificationDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008698158D35BE00480399 /* SocializeNotificationDisplayController.m */; };
-		AAB5E4C2159044E600D3EBDF /* SocializeNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00869A158D35BE00480399 /* SocializeNotificationHandler.m */; };
 		AAB5E4C3159044E600D3EBDF /* SocializeNotificationToggleBubbleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00869C158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.m */; };
 		AAB5E4C4159044E600D3EBDF /* SocializeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00869E158D35BE00480399 /* SocializeObject.m */; };
 		AAB5E4C5159044E600D3EBDF /* SocializeObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086A0158D35BE00480399 /* SocializeObjectFactory.m */; };
@@ -1982,10 +1967,6 @@
 		AA008660158D35BD00480399 /* SocializeDeviceTokenSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDeviceTokenSender.m; sourceTree = "<group>"; };
 		AA008661158D35BD00480399 /* SocializeDeviceTokenService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDeviceTokenService.h; sourceTree = "<group>"; };
 		AA008662158D35BD00480399 /* SocializeDeviceTokenService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDeviceTokenService.m; sourceTree = "<group>"; };
-		AA008663158D35BD00480399 /* SocializeDirectEntityNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDirectEntityNotificationDisplayController.h; sourceTree = "<group>"; };
-		AA008664158D35BD00480399 /* SocializeDirectEntityNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDirectEntityNotificationDisplayController.m; sourceTree = "<group>"; };
-		AA008665158D35BD00480399 /* SocializeDirectURLNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDirectURLNotificationDisplayController.h; sourceTree = "<group>"; };
-		AA008666158D35BD00480399 /* SocializeDirectURLNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDirectURLNotificationDisplayController.m; sourceTree = "<group>"; };
 		AA008667158D35BD00480399 /* SocializeDummyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDummyViewController.h; sourceTree = "<group>"; };
 		AA008668158D35BD00480399 /* SocializeDummyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDummyViewController.m; sourceTree = "<group>"; };
 		AA008669158D35BD00480399 /* SocializeDynamicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDynamicTest.h; sourceTree = "<group>"; };
@@ -2030,12 +2011,6 @@
 		AA008692158D35BE00480399 /* SocializeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeLoadingView.m; sourceTree = "<group>"; };
 		AA008693158D35BE00480399 /* SocializeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLocationManager.h; sourceTree = "<group>"; };
 		AA008694158D35BE00480399 /* SocializeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeLocationManager.m; sourceTree = "<group>"; };
-		AA008695158D35BE00480399 /* SocializeNewCommentsNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNewCommentsNotificationDisplayController.h; sourceTree = "<group>"; };
-		AA008696158D35BE00480399 /* SocializeNewCommentsNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNewCommentsNotificationDisplayController.m; sourceTree = "<group>"; };
-		AA008697158D35BE00480399 /* SocializeNotificationDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationDisplayController.h; sourceTree = "<group>"; };
-		AA008698158D35BE00480399 /* SocializeNotificationDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationDisplayController.m; sourceTree = "<group>"; };
-		AA008699158D35BE00480399 /* SocializeNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationHandler.h; sourceTree = "<group>"; };
-		AA00869A158D35BE00480399 /* SocializeNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationHandler.m; sourceTree = "<group>"; };
 		AA00869B158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationToggleBubbleContentView.h; sourceTree = "<group>"; };
 		AA00869C158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationToggleBubbleContentView.m; sourceTree = "<group>"; };
 		AA00869D158D35BE00480399 /* SocializeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObject.h; sourceTree = "<group>"; };
@@ -2247,8 +2222,6 @@
 		AA0C60AD158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDeviceTokenSenderTests.m; sourceTree = "<group>"; };
 		AA0C60AE158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDeviceTokenServiceTests.h; sourceTree = "<group>"; };
 		AA0C60AF158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDeviceTokenServiceTests.m; sourceTree = "<group>"; };
-		AA0C60B0158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeDirectEntityNotificationDisplayControllerTests.h; sourceTree = "<group>"; };
-		AA0C60B1158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeDirectEntityNotificationDisplayControllerTests.m; sourceTree = "<group>"; };
 		AA0C60B2158FC61D00F66A3B /* SocializeEntityFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeEntityFormatterTests.h; sourceTree = "<group>"; };
 		AA0C60B3158FC61D00F66A3B /* SocializeEntityFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeEntityFormatterTests.m; sourceTree = "<group>"; };
 		AA0C60B4158FC61D00F66A3B /* SocializeEntityServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeEntityServiceTests.h; sourceTree = "<group>"; };
@@ -2273,12 +2246,6 @@
 		AA0C60C7158FC61D00F66A3B /* SocializeListFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeListFormatterTests.m; sourceTree = "<group>"; };
 		AA0C60C8158FC61D00F66A3B /* SocializeLocationManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeLocationManagerTests.h; sourceTree = "<group>"; };
 		AA0C60C9158FC61D00F66A3B /* SocializeLocationManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeLocationManagerTests.m; sourceTree = "<group>"; };
-		AA0C60CA158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNewCommentsNotificationDisplayControllerTests.h; sourceTree = "<group>"; };
-		AA0C60CB158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNewCommentsNotificationDisplayControllerTests.m; sourceTree = "<group>"; };
-		AA0C60CC158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationDisplayControllerTests.h; sourceTree = "<group>"; };
-		AA0C60CD158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationDisplayControllerTests.m; sourceTree = "<group>"; };
-		AA0C60CE158FC61D00F66A3B /* SocializeNotificationHandlerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationHandlerTests.h; sourceTree = "<group>"; };
-		AA0C60CF158FC61D00F66A3B /* SocializeNotificationHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationHandlerTests.m; sourceTree = "<group>"; };
 		AA0C60D0158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeNotificationToggleBubbleContentViewTests.h; sourceTree = "<group>"; };
 		AA0C60D1158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeNotificationToggleBubbleContentViewTests.m; sourceTree = "<group>"; };
 		AA0C60D2158FC61D00F66A3B /* SocializeObjectFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeObjectFormatterTests.h; sourceTree = "<group>"; };
@@ -2291,8 +2258,6 @@
 		AA0C60D9158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeProfileEditValueViewControllerTest.m; sourceTree = "<group>"; };
 		AA0C60DA158FC61D00F66A3B /* SocializeRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeRequestTests.h; sourceTree = "<group>"; };
 		AA0C60DB158FC61D00F66A3B /* SocializeRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeRequestTests.m; sourceTree = "<group>"; };
-		AA0C60DC158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeRichPushNotificationDisplayControllerTests.h; sourceTree = "<group>"; };
-		AA0C60DD158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeRichPushNotificationDisplayControllerTests.m; sourceTree = "<group>"; };
 		AA0C60DE158FC61D00F66A3B /* SocializeService+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocializeService+Testing.h"; sourceTree = "<group>"; };
 		AA0C60DF158FC61D00F66A3B /* SocializeService+Testing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SocializeService+Testing.m"; sourceTree = "<group>"; };
 		AA0C60E0158FC61D00F66A3B /* SocializeServiceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeServiceTests.h; sourceTree = "<group>"; };
@@ -3202,8 +3167,6 @@
 				AA0C60AD158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m */,
 				AA0C60AE158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.h */,
 				AA0C60AF158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m */,
-				AA0C60B0158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.h */,
-				AA0C60B1158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.m */,
 				AA0C60B2158FC61D00F66A3B /* SocializeEntityFormatterTests.h */,
 				AA0C60B3158FC61D00F66A3B /* SocializeEntityFormatterTests.m */,
 				AA0C60B4158FC61D00F66A3B /* SocializeEntityServiceTests.h */,
@@ -3228,12 +3191,6 @@
 				AA0C60C7158FC61D00F66A3B /* SocializeListFormatterTests.m */,
 				AA0C60C8158FC61D00F66A3B /* SocializeLocationManagerTests.h */,
 				AA0C60C9158FC61D00F66A3B /* SocializeLocationManagerTests.m */,
-				AA0C60CA158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.h */,
-				AA0C60CB158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.m */,
-				AA0C60CC158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.h */,
-				AA0C60CD158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.m */,
-				AA0C60CE158FC61D00F66A3B /* SocializeNotificationHandlerTests.h */,
-				AA0C60CF158FC61D00F66A3B /* SocializeNotificationHandlerTests.m */,
 				AA0C60D0158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.h */,
 				AA0C60D1158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.m */,
 				AA0C60D2158FC61D00F66A3B /* SocializeObjectFormatterTests.h */,
@@ -3246,8 +3203,6 @@
 				AA0C60D9158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.m */,
 				AA0C60DA158FC61D00F66A3B /* SocializeRequestTests.h */,
 				AA0C60DB158FC61D00F66A3B /* SocializeRequestTests.m */,
-				AA0C60DC158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.h */,
-				AA0C60DD158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.m */,
 				AA0C60DE158FC61D00F66A3B /* SocializeService+Testing.h */,
 				AA0C60DF158FC61D00F66A3B /* SocializeService+Testing.m */,
 				AA0C60E0158FC61D00F66A3B /* SocializeServiceTests.h */,
@@ -3366,7 +3321,6 @@
 				AA0086CC158D35BE00480399 /* SocializeThirdPartyFacebook.m */,
 				AA0086CD158D35BE00480399 /* SocializeThirdPartyTwitter.h */,
 				AA0086CE158D35BE00480399 /* SocializeThirdPartyTwitter.m */,
-				AA1C1C08158EB54700A763CA /* Notifications */,
 				AAD1FF6C158EB21E00D908EC /* UI */,
 				AA1C1C06158EB50C00A763CA /* Utils */,
 			);
@@ -3499,23 +3453,6 @@
 			children = (
 			);
 			name = Utils;
-			sourceTree = "<group>";
-		};
-		AA1C1C08158EB54700A763CA /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				AA008663158D35BD00480399 /* SocializeDirectEntityNotificationDisplayController.h */,
-				AA008664158D35BD00480399 /* SocializeDirectEntityNotificationDisplayController.m */,
-				AA008665158D35BD00480399 /* SocializeDirectURLNotificationDisplayController.h */,
-				AA008666158D35BD00480399 /* SocializeDirectURLNotificationDisplayController.m */,
-				AA008695158D35BE00480399 /* SocializeNewCommentsNotificationDisplayController.h */,
-				AA008696158D35BE00480399 /* SocializeNewCommentsNotificationDisplayController.m */,
-				AA008697158D35BE00480399 /* SocializeNotificationDisplayController.h */,
-				AA008698158D35BE00480399 /* SocializeNotificationDisplayController.m */,
-				AA008699158D35BE00480399 /* SocializeNotificationHandler.h */,
-				AA00869A158D35BE00480399 /* SocializeNotificationHandler.m */,
-			);
-			name = Notifications;
 			sourceTree = "<group>";
 		};
 		AA1D1091158EFBCE000C8A44 /* Products */ = {
@@ -5972,8 +5909,6 @@
 				AA008767158D35BF00480399 /* SocializeDeviceTokenJSONFormatter.m in Sources */,
 				AA008768158D35BF00480399 /* SocializeDeviceTokenSender.m in Sources */,
 				AA008769158D35BF00480399 /* SocializeDeviceTokenService.m in Sources */,
-				AA00876A158D35BF00480399 /* SocializeDirectEntityNotificationDisplayController.m in Sources */,
-				AA00876B158D35BF00480399 /* SocializeDirectURLNotificationDisplayController.m in Sources */,
 				AA00876C158D35BF00480399 /* SocializeDummyViewController.m in Sources */,
 				AA00876D158D35BF00480399 /* SocializeDynamicTest.m in Sources */,
 				AA00876E158D35BF00480399 /* SocializeEditValueTableViewCell.m in Sources */,
@@ -5996,9 +5931,6 @@
 				AA008780158D35BF00480399 /* SocializeListFormatter.m in Sources */,
 				AA008781158D35BF00480399 /* SocializeLoadingView.m in Sources */,
 				AA008782158D35BF00480399 /* SocializeLocationManager.m in Sources */,
-				AA008783158D35BF00480399 /* SocializeNewCommentsNotificationDisplayController.m in Sources */,
-				AA008784158D35BF00480399 /* SocializeNotificationDisplayController.m in Sources */,
-				AA008785158D35BF00480399 /* SocializeNotificationHandler.m in Sources */,
 				AA008786158D35BF00480399 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				AA008787158D35BF00480399 /* SocializeObject.m in Sources */,
 				AA008788158D35BF00480399 /* SocializeObjectFactory.m in Sources */,
@@ -6099,7 +6031,6 @@
 				AA0C612E158FC61D00F66A3B /* SocializeDeviceTokenJSONFormatterTests.m in Sources */,
 				AA0C612F158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m in Sources */,
 				AA0C6130158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m in Sources */,
-				AA0C6131158FC61D00F66A3B /* SocializeDirectEntityNotificationDisplayControllerTests.m in Sources */,
 				AA0C6132158FC61D00F66A3B /* SocializeEntityFormatterTests.m in Sources */,
 				AA0C6133158FC61D00F66A3B /* SocializeEntityServiceTests.m in Sources */,
 				AA0C6134158FC61D00F66A3B /* SocializeErrorTests.m in Sources */,
@@ -6112,16 +6043,12 @@
 				AA0C613B158FC61D00F66A3B /* SocializeLikeTests.m in Sources */,
 				AA0C613C158FC61D00F66A3B /* SocializeListFormatterTests.m in Sources */,
 				AA0C613D158FC61D00F66A3B /* SocializeLocationManagerTests.m in Sources */,
-				AA0C613E158FC61D00F66A3B /* SocializeNewCommentsNotificationDisplayControllerTests.m in Sources */,
-				AA0C613F158FC61D00F66A3B /* SocializeNotificationDisplayControllerTests.m in Sources */,
-				AA0C6140158FC61D00F66A3B /* SocializeNotificationHandlerTests.m in Sources */,
 				AA0C6141158FC61D00F66A3B /* SocializeNotificationToggleBubbleContentViewTests.m in Sources */,
 				AA0C6142158FC61D00F66A3B /* SocializeObjectFormatterTests.m in Sources */,
 				AA0C6143158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.m in Sources */,
 				AA0C6144158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.m in Sources */,
 				AA0C6145158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.m in Sources */,
 				AA0C6146158FC61D00F66A3B /* SocializeRequestTests.m in Sources */,
-				AA0C6147158FC61D00F66A3B /* SocializeRichPushNotificationDisplayControllerTests.m in Sources */,
 				AA0C6148158FC61D00F66A3B /* SocializeService+Testing.m in Sources */,
 				AA0C6149158FC61D00F66A3B /* SocializeServiceTests.m in Sources */,
 				AA0C614B158FC61D00F66A3B /* SocializeShareFormatterTests.m in Sources */,
@@ -6281,8 +6208,6 @@
 				AAB5E4A4159044E600D3EBDF /* SocializeDeviceTokenJSONFormatter.m in Sources */,
 				AAB5E4A5159044E600D3EBDF /* SocializeDeviceTokenSender.m in Sources */,
 				AAB5E4A6159044E600D3EBDF /* SocializeDeviceTokenService.m in Sources */,
-				AAB5E4A7159044E600D3EBDF /* SocializeDirectEntityNotificationDisplayController.m in Sources */,
-				AAB5E4A8159044E600D3EBDF /* SocializeDirectURLNotificationDisplayController.m in Sources */,
 				AAB5E4A9159044E600D3EBDF /* SocializeDummyViewController.m in Sources */,
 				AAB5E4AA159044E600D3EBDF /* SocializeDynamicTest.m in Sources */,
 				AAB5E4AB159044E600D3EBDF /* SocializeEditValueTableViewCell.m in Sources */,
@@ -6305,9 +6230,6 @@
 				AAB5E4BD159044E600D3EBDF /* SocializeListFormatter.m in Sources */,
 				AAB5E4BE159044E600D3EBDF /* SocializeLoadingView.m in Sources */,
 				AAB5E4BF159044E600D3EBDF /* SocializeLocationManager.m in Sources */,
-				AAB5E4C0159044E600D3EBDF /* SocializeNewCommentsNotificationDisplayController.m in Sources */,
-				AAB5E4C1159044E600D3EBDF /* SocializeNotificationDisplayController.m in Sources */,
-				AAB5E4C2159044E600D3EBDF /* SocializeNotificationHandler.m in Sources */,
 				AAB5E4C3159044E600D3EBDF /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				AAB5E4C4159044E600D3EBDF /* SocializeObject.m in Sources */,
 				AAB5E4C5159044E600D3EBDF /* SocializeObjectFactory.m in Sources */,

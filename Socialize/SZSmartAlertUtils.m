@@ -36,11 +36,11 @@
 }
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
-    return [Socialize handleNotification:userInfo];
+    return [[SZNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
 }
 
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo {
-    return [Socialize isSocializeNotification:userInfo];
+    return [SZNotificationHandler isSocializeNotification:userInfo];
 }
 
 + (void)registerDeviceToken:(NSData*)deviceToken {

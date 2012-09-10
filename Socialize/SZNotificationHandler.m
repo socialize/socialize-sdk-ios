@@ -90,6 +90,21 @@ static SZNotificationHandler *sharedNotificationHandler;
     }];
 }
 
+- (BOOL)applicationInForeground {
+    return [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
+}
+
+- (BOOL)handleSocializeNotification:(NSDictionary*)userInfo {
+    NSString *notificationType = [[userInfo objectForKey:@"socialize"] objectForKey:@"notification_type"];
+    
+    if ([notificationType isEqualToString:@"new_comments"] && [self applicationInForeground]) {
+        // Legacy behavior for new_comments
+        return NO;
+    }
+    
+    return [self openSocializeNotification:userInfo];
+}
+
 - (BOOL)openSocializeNotification:(NSDictionary*)userInfo {
     
     NSLog(@"Handling notification: %@", userInfo);
