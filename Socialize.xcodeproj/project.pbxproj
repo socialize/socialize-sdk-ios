@@ -1167,6 +1167,10 @@
 		AAA92908159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA928CA159A370300BE83F3 /* socialize-activity-details-top-back@2x.png */; };
 		AAA92909159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA928CA159A370300BE83F3 /* socialize-activity-details-top-back@2x.png */; };
 		AAA9290A159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA928CA159A370300BE83F3 /* socialize-activity-details-top-back@2x.png */; };
+		AAAA3CBB15FE5DA2003E08AF /* UIViewController+Display.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAA3CB915FE5DA2003E08AF /* UIViewController+Display.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAA3CBC15FE5DA2003E08AF /* UIViewController+Display.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAA3CB915FE5DA2003E08AF /* UIViewController+Display.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAA3CBD15FE5DA2003E08AF /* UIViewController+Display.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAA3CBA15FE5DA2003E08AF /* UIViewController+Display.m */; };
+		AAAA3CBE15FE5DA2003E08AF /* UIViewController+Display.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAA3CBA15FE5DA2003E08AF /* UIViewController+Display.m */; };
 		AAAC15C6159328A800804916 /* SocializeActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00862C158D35BD00480399 /* SocializeActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAC1641159328FF00804916 /* SocializeError.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008673158D35BD00480399 /* SocializeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAC1642159328FF00804916 /* SocializeEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00866D158D35BD00480399 /* SocializeEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2717,6 +2721,8 @@
 		AAA928C8159A370300BE83F3 /* socialize-activity-details-profile-pic-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-profile-pic-small@2x.png"; path = "Socialize/Resources/socialize-activity-details-profile-pic-small@2x.png"; sourceTree = SOURCE_ROOT; };
 		AAA928C9159A370300BE83F3 /* socialize-activity-details-top-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-top-back.png"; path = "Socialize/Resources/socialize-activity-details-top-back.png"; sourceTree = SOURCE_ROOT; };
 		AAA928CA159A370300BE83F3 /* socialize-activity-details-top-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-top-back@2x.png"; path = "Socialize/Resources/socialize-activity-details-top-back@2x.png"; sourceTree = SOURCE_ROOT; };
+		AAAA3CB915FE5DA2003E08AF /* UIViewController+Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Display.h"; sourceTree = "<group>"; };
+		AAAA3CBA15FE5DA2003E08AF /* UIViewController+Display.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Display.m"; sourceTree = "<group>"; };
 		AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-noarc-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-profiling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB73D541597C01800220492 /* ButtonExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonExampleViewController.h; sourceTree = "<group>"; };
@@ -4165,6 +4171,8 @@
 				AADB364415F0378E000264D6 /* SZDisplay.h */,
 				AA0F10A015FC133E00391CFE /* SZWindowDisplay.h */,
 				AA0F10A115FC133E00391CFE /* SZWindowDisplay.m */,
+				AAAA3CB915FE5DA2003E08AF /* UIViewController+Display.h */,
+				AAAA3CBA15FE5DA2003E08AF /* UIViewController+Display.m */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -4284,6 +4292,7 @@
 				AADB363F15F0350A000264D6 /* SZNotificationHandler.h in Headers */,
 				AADB364515F0378E000264D6 /* SZDisplay.h in Headers */,
 				AA0F10A215FC133E00391CFE /* SZWindowDisplay.h in Headers */,
+				AAAA3CBB15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4385,6 +4394,7 @@
 				AADB364015F0350A000264D6 /* SZNotificationHandler.h in Headers */,
 				AADB364615F0378E000264D6 /* SZDisplay.h in Headers */,
 				AA0F10A315FC133E00391CFE /* SZWindowDisplay.h in Headers */,
+				AAAA3CBC15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5857,6 +5867,7 @@
 				AA84654915EBE52B00065678 /* SZStatusView.m in Sources */,
 				AADB364115F0350A000264D6 /* SZNotificationHandler.m in Sources */,
 				AA0F10A415FC133E00391CFE /* SZWindowDisplay.m in Sources */,
+				AAAA3CBD15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6347,6 +6358,7 @@
 				AA84654A15EBE52B00065678 /* SZStatusView.m in Sources */,
 				AADB364215F0350A000264D6 /* SZNotificationHandler.m in Sources */,
 				AA0F10A515FC133E00391CFE /* SZWindowDisplay.m in Sources */,
+				AAAA3CBE15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

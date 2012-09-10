@@ -27,6 +27,7 @@
 #import "SZActionButton.h"
 #import "SDKHelpers.h"
 #import "NSError+Socialize.h"
+#import "UIViewController+Display.h"
 
 // SDK Utils Toplevel Classes
 #import "SZActionBarUtils.h"

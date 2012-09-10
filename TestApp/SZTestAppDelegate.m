@@ -50,6 +50,8 @@
         [self handleNotification:userInfo];
     }
     
+    [SZSmartAlertUtils setNotificationDisplay:sample];
+    
 #if RUN_KIF_TESTS
     [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];
     [[TestAppKIFTestController sharedInstance] startTestingWithCompletionBlock:^{
