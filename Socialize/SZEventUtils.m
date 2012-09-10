@@ -19,7 +19,6 @@
         return;
     }
 
-    NSLog (@"TRYING TO RECORD EVT");
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] trackEventWithBucket:bucket values:values success:success failure:failure];
     }, failure);

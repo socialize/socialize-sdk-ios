@@ -8,10 +8,12 @@
 
 #import "SZNavigationController.h"
 #import "SocializeObjects.h"
+#import "_SZCommentsListViewController.h"
 
 @interface SZCommentsListViewController : SZNavigationController
 - (id)initWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, strong, readonly) id<SZEntity> entity;
+@property (nonatomic, strong) _SZCommentsListViewController *_commentsListViewController;
 
 @end

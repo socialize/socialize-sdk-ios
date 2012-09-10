@@ -10,14 +10,11 @@
 #import "_SZCommentsListViewController.h"
 
 @interface SZCommentsListViewController ()
-@property (nonatomic, strong) _SZCommentsListViewController *commentsList;
 @property (nonatomic, strong) id<SZEntity> entity;
 
 @end
 
 @implementation SZCommentsListViewController
-@synthesize commentsList = _commentsList;
-@synthesize entity = _entity;
 @dynamic completionBlock;
 
 - (id)init {
@@ -32,15 +29,15 @@
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;
-        self.commentsList = [[_SZCommentsListViewController alloc] initWithEntity:self.entity];
-        [self pushViewController:self.commentsList animated:NO];
+        self._commentsListViewController = [[_SZCommentsListViewController alloc] initWithEntity:self.entity];
+        [self pushViewController:self._commentsListViewController animated:NO];
     }
     
     return self;
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    return self.commentsList;
+    return self._commentsListViewController;
 }
 
 @end

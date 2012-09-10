@@ -9,8 +9,19 @@
 #import "SZSmartAlertUtils.h"
 #import "_Socialize.h"
 #import "SDKHelpers.h"
+#import "SZDisplay.h"
+#import "SZWindowDisplay.h"
+#import "SZNotificationHandler.h"
 
 @implementation SZSmartAlertUtils
+
++ (void)setNotificationDisplay:(id<SZDisplay>)display {
+    [[SZNotificationHandler sharedNotificationHandler] setDisplay:display];
+}
+
++ (id<SZDisplay>)notificationDisplay {
+    return [[SZNotificationHandler sharedNotificationHandler] display];
+}
 
 + (BOOL)isAvailable {
     BOOL available = [[Socialize sharedSocialize] notificationsAreConfigured];
@@ -21,7 +32,7 @@
 }
 
 + (BOOL)openNotification:(NSDictionary*)userInfo {
-    return [Socialize openNotification:userInfo];
+    return [[SZNotificationHandler sharedNotificationHandler] openSocializeNotification:userInfo];
 }
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {

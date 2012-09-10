@@ -13,6 +13,14 @@
 @synthesize entityNameLabel = entityNameLabel_;
 @synthesize entityKeyLabel = entityKeyLabel_;
 
+- (void)dealloc {
+    self.entity = nil;
+    self.entityNameLabel = nil;
+    self.entityKeyLabel = nil;
+    
+    [super dealloc];
+}
+
 - (id)initWithEntity:(id<SocializeEntity>)entity
 {
     self = [super init];

@@ -42,6 +42,7 @@ NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
+NSString *kHandleDirectEntitySmartAlertRow = @"kHandleDirectEntitySmartAlertRow";
 NSString *kShowActionBarExampleRow = @"kShowActionBarExampleRow";
 NSString *kShowButtonsExampleRow = @"kShowButtonsExampleRow";
 
@@ -225,6 +226,21 @@ static TestAppListViewController *sharedSampleListViewController;
                                                @"new_comments", @"notification_type",
                                                @"comment", @"activity_type",
                                                [NSNumber numberWithInteger:[comment objectID]], @"activity_id",
+                                               nil];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+                
+                [SZSmartAlertUtils openNotification:userInfo];
+            }
+        } failure:nil];
+    }]];
+
+    [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectEntitySmartAlertRow text:@"Entity SmartAlert" executionBlock:^{
+        [SZEntityUtils getEntitiesWithFirst:nil last:[NSNumber numberWithInteger:1] success:^(NSArray *entities) {
+            if ([entities count] > 0) {
+                id<SZEntity> entity = [entities objectAtIndex:0];
+                NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               @"developer_direct_entity", @"notification_type",
+                                               @([entity objectID]), @"entity_id",
                                                nil];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
                 
