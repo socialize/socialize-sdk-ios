@@ -15,6 +15,7 @@
 #import "UIButton+Socialize.h"
 #import "SZNavigationController.h"
 #import "NSOperationQueue+Socialize.h"
+#import "UIViewController+Display.h"
 
 #import "SocializeObjects.h"
 #import "SocializeCommonDefinitions.h"

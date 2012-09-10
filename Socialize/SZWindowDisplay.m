@@ -9,6 +9,7 @@
 #import "SZWindowDisplay.h"
 #import "socialize_globals.h"
 #import "SDKHelpers.h"
+#import "SZStatusView.h"
 
 static NSTimeInterval ModalTransitionInterval = 0.3;
 
@@ -107,6 +108,19 @@ static SZWindowDisplay *sharedWindowDisplay;
 
 - (void)failWithError:(NSError *)error {
     SZEmitUIError(nil, error);
+}
+
+- (void)showStatusUpdateForContext:(SZStatusContext)context {
+    SZStatusView *status = nil;
+    CGRect frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
+    switch (context) {
+        case SZStatusContextCommentPostSucceeded:
+        case SZStatusContextSocializeShareCompleted:
+            status = [SZStatusView successStatusViewWithFrame:frame];
+            break;
+    }
+    
+    [status showAndHideInKeyWindow];
 }
 
 @end

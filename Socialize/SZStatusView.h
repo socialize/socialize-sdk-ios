@@ -11,7 +11,9 @@
 @interface SZStatusView : UIView
 
 - (id)initWithFrame:(CGRect)frame contentNibName:(NSString*)contentNibName;
-- (void)showAndHideInKeyWindowWithDuration:(NSTimeInterval)duration;
+- (void)showAndHideInKeyWindow;
+- (void)showAndHideInView:(UIView*)view withDuration:(NSTimeInterval)duration;
+- (void)showAndHideInView:(UIView*)view;
 
 @property (strong, nonatomic) IBOutlet UIView *centerContentView;
 @property (nonatomic, strong) UIView *centerView;

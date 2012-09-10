@@ -28,6 +28,8 @@
 #import "SDKHelpers.h"
 #import "NSError+Socialize.h"
 #import "UIViewController+Display.h"
+#import "SZStatusView.h"
+#import "SZWindowDisplay.h"
 
 // SDK Utils Toplevel Classes
 #import "SZActionBarUtils.h"

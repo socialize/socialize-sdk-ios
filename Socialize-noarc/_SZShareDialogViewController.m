@@ -68,7 +68,7 @@
             BLOCK_CALL_1(self.completionBlock, self.createdShares);
             
             SZStatusView *status = [SZStatusView successStatusViewWithFrame:CGRectZero];
-            [status showAndHideInKeyWindowWithDuration:2.];
+            [status showAndHideInKeyWindow];
             
         } failure:^(NSError *error) {
             [self stopLoading];

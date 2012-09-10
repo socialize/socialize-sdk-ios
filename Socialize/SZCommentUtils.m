@@ -58,6 +58,8 @@
         }];
     };
     
+    composer.display = viewController;
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         composer.modalPresentationStyle = UIModalPresentationFormSheet;
     }

@@ -17,12 +17,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        // Center container
         CGSize centerSize = [[self class] centerSize];
         self.centerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, centerSize.width, centerSize.height)];
         self.centerView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
         self.centerView.layer.cornerRadius = 12.f;
+        self.centerView.center = CGPointMake(self.bounds.size.width / 2.f, self.bounds.size.height / 2.f);
+        self.centerView.autoresizingMask = UIViewAutoresizingNone;
         [self addSubview:self.centerView];
 
+        // Actual center content
         if ([contentNibName length] > 0) {
             [[NSBundle mainBundle] loadNibNamed:contentNibName owner:self options:nil];
             [self.centerView addSubview:self.centerContentView];
@@ -36,7 +42,7 @@
 }
 
 - (void)layoutSubviews {
-    self.centerView.center = self.center;
+    self.centerView.center = CGPointMake(self.bounds.size.width / 2.f, self.bounds.size.height / 2.f);
 }
 
 + (SZStatusView*)successStatusViewWithFrame:(CGRect)frame {
@@ -44,12 +50,15 @@
     return statusView;
 }
 
-- (void)showAndHideInKeyWindowWithDuration:(NSTimeInterval)duration {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    self.frame = [[UIScreen mainScreen] applicationFrame];
++ (NSTimeInterval)defaultDuration {
+    return 2.0;
+}
+
+- (void)showAndHideInView:(UIView*)view withDuration:(NSTimeInterval)duration {
     
-    [window addSubview:self];
-    
+    self.frame = CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height);
+    [view addSubview:self];
+
     self.alpha = 1.f;
     
     double delayInSeconds = duration;
@@ -61,7 +70,17 @@
             [self removeFromSuperview];
         }];
     });
+    
+}
 
+- (void)showAndHideInView:(UIView*)view {
+    [self showAndHideInView:view withDuration:[[self class] defaultDuration]];
+}
+
+
+- (void)showAndHideInKeyWindow {
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    [self showAndHideInView:window];
 }
 
 /*

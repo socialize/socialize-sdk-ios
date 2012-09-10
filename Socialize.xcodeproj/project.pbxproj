@@ -246,8 +246,8 @@
 		AA0F103F15FAB61900391CFE /* SZEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F103C15FAB61900391CFE /* SZEventUtils.m */; };
 		AA0F104015FAB61900391CFE /* SZEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F103C15FAB61900391CFE /* SZEventUtils.m */; };
 		AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F104215FAB90B00391CFE /* TestEventUtils.m */; };
-		AA0F10A215FC133E00391CFE /* SZWindowDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F10A015FC133E00391CFE /* SZWindowDisplay.h */; };
-		AA0F10A315FC133E00391CFE /* SZWindowDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F10A015FC133E00391CFE /* SZWindowDisplay.h */; };
+		AA0F10A215FC133E00391CFE /* SZWindowDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F10A015FC133E00391CFE /* SZWindowDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA0F10A315FC133E00391CFE /* SZWindowDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0F10A015FC133E00391CFE /* SZWindowDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0F10A415FC133E00391CFE /* SZWindowDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F10A115FC133E00391CFE /* SZWindowDisplay.m */; };
 		AA0F10A515FC133E00391CFE /* SZWindowDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F10A115FC133E00391CFE /* SZWindowDisplay.m */; };
 		AA1505FA159CDE0E00F639E7 /* users.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1505F9159CDE0E00F639E7 /* users.m */; };

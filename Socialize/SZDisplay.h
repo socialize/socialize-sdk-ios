@@ -14,11 +14,16 @@ typedef enum SZLoadingContext {
     SZLoadingContextFetchingCommentForNewCommentsNotification,
 } SZLoadingContext;
 
+typedef enum SZStatusContext {
+    SZStatusContextCommentPostSucceeded,
+    SZStatusContextSocializeShareCompleted,
+} SZStatusContext;
+
 @protocol SZDisplay <NSObject>
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion;
 - (void)dismissToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion;
-//- (void)showStatusUpdateForDisplayEvent:(SZDisplayEvent)displayEvent;
+- (void)showStatusUpdateForContext:(SZStatusContext)context;
 - (void)startLoadingForContext:(SZLoadingContext)context;
 - (void)stopLoadingForContext:(SZLoadingContext)context;
 - (void)failWithError:(NSError*)error;

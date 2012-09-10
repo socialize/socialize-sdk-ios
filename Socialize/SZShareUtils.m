@@ -66,6 +66,8 @@
         }];
      };
     
+    shareDialog.display = viewController;
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         shareDialog.modalPresentationStyle = UIModalPresentationFormSheet;
     }

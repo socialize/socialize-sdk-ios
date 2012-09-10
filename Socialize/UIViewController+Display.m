@@ -9,6 +9,7 @@
 #import "UIViewController+Display.h"
 #import <objc/runtime.h>
 #import "SDKHelpers.h"
+#import "SZStatusView.h"
 
 static char *kUIViewControllerLoadingViewKey = "kUIViewControllerLoadingViewKey";
 
@@ -43,6 +44,20 @@ static char *kUIViewControllerLoadingViewKey = "kUIViewControllerLoadingViewKey"
 
 - (void)failWithError:(NSError *)error {
     SZEmitUIError(nil, error);
+}
+
+- (void)showStatusUpdateForContext:(SZStatusContext)context {
+    SZStatusView *status = nil;
+    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+
+    switch (context) {
+        case SZStatusContextCommentPostSucceeded:
+        case SZStatusContextSocializeShareCompleted:
+            status = [SZStatusView successStatusViewWithFrame:frame];
+            break;
+    }
+    
+    [status showAndHideInView:self.view];
 }
 
 @end

@@ -138,9 +138,8 @@
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
         
-        SZStatusView *status = [SZStatusView successStatusViewWithFrame:CGRectZero];
-        [status showAndHideInKeyWindowWithDuration:2.];
-
+        [self.display showStatusUpdateForContext:SZStatusContextCommentPostSucceeded];
+        
     } failure:^(NSError *error) {
         [self stopLoading];
         

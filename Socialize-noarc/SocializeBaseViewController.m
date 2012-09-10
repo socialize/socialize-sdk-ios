@@ -79,6 +79,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     self.cancellationBlock = nil;
     self.completionBlock = nil;
     self.formsheetDismissGestureRecognizer = nil;
+    self.display = nil;
 
     [super dealloc];
 }
