@@ -227,10 +227,6 @@
     self.tableView.tableHeaderView = self.activityDetailsView;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
-}
-
 - (IBAction)showEntityButtonPressed:(id)sender {
     SocializeEntityLoaderBlock entityLoader = [Socialize entityLoaderBlock];
     if (entityLoader != nil) {
@@ -253,5 +249,12 @@
     }
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return toInterfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+    }
+}
 
 @end
