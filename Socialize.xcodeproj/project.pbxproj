@@ -555,6 +555,10 @@
 		AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */; };
 		AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */; };
 		AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */; };
+		AA6221F51600065100262E15 /* socialize-checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6221F41600065100262E15 /* socialize-checkmark@2x.png */; };
+		AA6221F61600065100262E15 /* socialize-checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6221F41600065100262E15 /* socialize-checkmark@2x.png */; };
+		AA6221F71600065100262E15 /* socialize-checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6221F41600065100262E15 /* socialize-checkmark@2x.png */; };
+		AA6221F81600065100262E15 /* socialize-checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA6221F41600065100262E15 /* socialize-checkmark@2x.png */; };
 		AA65A266159CD43600613E5A /* entities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA65A265159CD43600613E5A /* entities.m */; };
 		AA67143A159CC5D60000E3BE /* actions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA671439159CC5D60000E3BE /* actions.m */; };
 		AA6C63CE158F0EB0005E5632 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
@@ -2381,6 +2385,7 @@
 		AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewController.m; sourceTree = "<group>"; };
 		AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SZOARequest+Socialize.h"; sourceTree = "<group>"; };
 		AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SZOARequest+Socialize.m"; sourceTree = "<group>"; };
+		AA6221F41600065100262E15 /* socialize-checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-checkmark@2x.png"; path = "Socialize/Resources/socialize-checkmark@2x.png"; sourceTree = SOURCE_ROOT; };
 		AA65A264159CD43600613E5A /* entities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entities.h; sourceTree = "<group>"; };
 		AA65A265159CD43600613E5A /* entities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = entities.m; sourceTree = "<group>"; };
 		AA671438159CC5D60000E3BE /* actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = actions.h; sourceTree = "<group>"; };
@@ -3569,6 +3574,7 @@
 		AA5807E4158E994D005B9F6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA6221F41600065100262E15 /* socialize-checkmark@2x.png */,
 				AA84655615EBFE4A00065678 /* socialize-checkmark.png */,
 				AAA928BB159A370300BE83F3 /* socialize-activity-details-back-entry-x.png */,
 				AAA928BC159A370300BE83F3 /* socialize-activity-details-back-entry-x@2x.png */,
@@ -4971,6 +4977,7 @@
 				AAA92907159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
 				AA84655715EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D015EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
+				AA6221F51600065100262E15 /* socialize-checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5205,6 +5212,7 @@
 				AAEC2B1015B4DA5400C9C65A /* example-distribution.embedded.mobileprovision in Resources */,
 				AA84655A15EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D315EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
+				AA6221F81600065100262E15 /* socialize-checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5436,6 +5444,7 @@
 				AAA92908159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
 				AA84655815EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D115EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
+				AA6221F61600065100262E15 /* socialize-checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5666,6 +5675,7 @@
 				AAA92909159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
 				AA84655915EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D215EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
+				AA6221F71600065100262E15 /* socialize-checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
