@@ -67,8 +67,7 @@
             [self.createdShares addObject:share];
             BLOCK_CALL_1(self.completionBlock, self.createdShares);
             
-            SZStatusView *status = [SZStatusView successStatusViewWithFrame:CGRectZero];
-            [status showAndHideInKeyWindow];
+            [self.display showStatusUpdateForContext:SZStatusContextSocializeShareCompleted];
             
         } failure:^(NSError *error) {
             [self stopLoading];

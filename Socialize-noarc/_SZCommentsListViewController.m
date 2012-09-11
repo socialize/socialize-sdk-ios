@@ -34,6 +34,7 @@
 #import "SZSmartAlertUtils.h"
 #import "SZCommentUtils.h"
 #import "SZComposeCommentViewController.h"
+#import "socialize_globals.h"
 
 @interface _SZCommentsListViewController()
 @end
@@ -302,6 +303,8 @@
     composer.cancellationBlock = ^{
         [self dismissModalViewControllerAnimated:YES];
     };
+    
+    composer.display = self;
     
     [self presentModalViewController:composer animated:YES];
 }
