@@ -20,10 +20,26 @@
 static SZNotificationHandler *sharedNotificationHandler;
 
 @interface SZNotificationHandler ()
-@property (nonatomic, strong) NSMutableSet *windowDisplays;
+@property (nonatomic, strong) id<SZDisplay> defaultDisplay;
 @end
 
 @implementation SZNotificationHandler
+
+- (id)init {
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissAllNotifications:) name:SocializeShouldDismissAllNotificationControllersNotification object:nil];
+    }
+    
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dismissAllNotifications:(NSNotification*)notification {
+    [self.defaultDisplay dismissToViewController:nil animated:YES completion:nil];
+}
 
 + (SZNotificationHandler*)sharedNotificationHandler {
     if (sharedNotificationHandler == nil) {
@@ -42,12 +58,12 @@ static SZNotificationHandler *sharedNotificationHandler;
     return NO;
 }
 
-- (NSMutableSet*)windowDisplays {
-    if (_windowDisplays == nil) {
-        _windowDisplays = [[NSMutableSet alloc] init];
+- (id<SZDisplay>)defaultDisplay {
+    if (_defaultDisplay == nil) {
+        _defaultDisplay = [[SZWindowDisplay alloc] init];
     }
     
-    return _windowDisplays;
+    return _defaultDisplay;
 }
 
 - (void)showDirectEntityNotificationForDisplay:(id<SZDisplay>)display socializeDictionary:(NSDictionary*)socializeDictionary {
@@ -126,8 +142,7 @@ static SZNotificationHandler *sharedNotificationHandler;
     }
     
     if (display == nil) {
-        display = [[SZWindowDisplay alloc] init];
-        [self.windowDisplays addObject:display];
+        display = self.defaultDisplay;
     }
     
     // Track the event

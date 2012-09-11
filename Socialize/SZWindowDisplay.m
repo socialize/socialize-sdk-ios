@@ -80,7 +80,12 @@ static SZWindowDisplay *sharedWindowDisplay;
 }
 
 - (void)dismissToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+    if (self.rootViewController == nil) {
+        return;
+    }
+    
     if (viewController == nil) {
+        [self.rootViewController dismissModalViewControllerAnimated:NO];
         [UIView animateWithDuration:ModalTransitionInterval
                          animations:^{
                              CGRect frame = self.rootViewController.view.frame;
