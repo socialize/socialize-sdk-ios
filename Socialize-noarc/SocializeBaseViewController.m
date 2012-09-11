@@ -90,6 +90,10 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userSettingsChanged:) name:SZUserSettingsDidChangeNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userChanged:) name:SocializeAuthenticatedUserDidChangeNotification object:nil];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            self.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
     }
     return self;
 }

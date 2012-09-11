@@ -154,10 +154,6 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
             }];
         };
         
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            link.modalPresentationStyle = UIModalPresentationFormSheet;
-        }
-        
         [viewController presentModalViewController:link animated:YES];
     } else {
         
@@ -178,10 +174,6 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
                     BLOCK_CALL(cancellation);
                 }];
             };
-            
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-                selectNetwork.modalPresentationStyle = UIModalPresentationFormSheet;
-            }
             
             switch (context) {
                 case SZLinkContextComment:

@@ -1397,6 +1397,10 @@
 		AAB86D6515FEABEF0029F157 /* SZDisplayUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB86D6215FEABEF0029F157 /* SZDisplayUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB86D6615FEABEF0029F157 /* SZDisplayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB86D6315FEABEF0029F157 /* SZDisplayUtils.m */; };
 		AAB86D6715FEABEF0029F157 /* SZDisplayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB86D6315FEABEF0029F157 /* SZDisplayUtils.m */; };
+		AAB86D6A15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB86D6815FEBC510029F157 /* SZViewControllerWrapper.h */; };
+		AAB86D6B15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB86D6815FEBC510029F157 /* SZViewControllerWrapper.h */; };
+		AAB86D6C15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB86D6915FEBC510029F157 /* SZViewControllerWrapper.m */; };
+		AAB86D6D15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB86D6915FEBC510029F157 /* SZViewControllerWrapper.m */; };
 		AAB9D35315D2783700004E77 /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB9D35115D2783700004E77 /* Facebook+Socialize.h */; };
 		AAB9D35415D2783700004E77 /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB9D35115D2783700004E77 /* Facebook+Socialize.h */; };
 		AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
@@ -2734,6 +2738,8 @@
 		AAB73D561597C01800220492 /* ButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonExampleViewController.xib; sourceTree = "<group>"; };
 		AAB86D6215FEABEF0029F157 /* SZDisplayUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDisplayUtils.h; sourceTree = "<group>"; };
 		AAB86D6315FEABEF0029F157 /* SZDisplayUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDisplayUtils.m; sourceTree = "<group>"; };
+		AAB86D6815FEBC510029F157 /* SZViewControllerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZViewControllerWrapper.h; sourceTree = "<group>"; };
+		AAB86D6915FEBC510029F157 /* SZViewControllerWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZViewControllerWrapper.m; sourceTree = "<group>"; };
 		AAB9D35115D2783700004E77 /* Facebook+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Facebook+Socialize.h"; sourceTree = "<group>"; };
 		AAB9D35215D2783700004E77 /* Facebook+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Facebook+Socialize.m"; sourceTree = "<group>"; };
 		AABCC67515C08181005FA860 /* SZSessionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTracker.h; sourceTree = "<group>"; };
@@ -3488,6 +3494,8 @@
 		AA2FC23A1592873A00B52772 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
+				AAB86D6815FEBC510029F157 /* SZViewControllerWrapper.h */,
+				AAB86D6915FEBC510029F157 /* SZViewControllerWrapper.m */,
 				AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */,
 				AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */,
 				AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */,
@@ -4302,6 +4310,7 @@
 				AA0F10A215FC133E00391CFE /* SZWindowDisplay.h in Headers */,
 				AAAA3CBB15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 				AAB86D6415FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
+				AAB86D6A15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4405,6 +4414,7 @@
 				AA0F10A315FC133E00391CFE /* SZWindowDisplay.h in Headers */,
 				AAAA3CBC15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 				AAB86D6515FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
+				AAB86D6B15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5879,6 +5889,7 @@
 				AA0F10A415FC133E00391CFE /* SZWindowDisplay.m in Sources */,
 				AAAA3CBD15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 				AAB86D6615FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
+				AAB86D6C15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6371,6 +6382,7 @@
 				AA0F10A515FC133E00391CFE /* SZWindowDisplay.m in Sources */,
 				AAAA3CBE15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 				AAB86D6715FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
+				AAB86D6D15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

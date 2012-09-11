@@ -44,10 +44,6 @@
         }];
     };
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        linkDialog.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-
     [viewController presentModalViewController:linkDialog animated:YES];
 }
 
@@ -63,10 +59,6 @@
         }];
     };
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        profile.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-
     [viewController presentModalViewController:profile animated:YES];
 }
 
@@ -77,10 +69,6 @@
             BLOCK_CALL(completion);
         }];
     };
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        settings.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
     
     [viewController presentModalViewController:settings animated:YES];
 }

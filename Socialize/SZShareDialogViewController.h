@@ -10,8 +10,9 @@
 #import "SocializeObjects.h"
 #import "_SZShareDialogViewController.h"
 #import "SZDisplay.h"
+#import "SZViewControllerWrapper.h"
 
-@interface SZShareDialogViewController : SZNavigationController
+@interface SZShareDialogViewController : SZViewControllerWrapper
 - (id)initWithEntity:(id<SZEntity>)entity;
 @property (nonatomic, retain) NSArray *shares;
 @property (nonatomic, copy) void (^completionBlock)(NSArray *shares);

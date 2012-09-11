@@ -8,10 +8,11 @@
 
 #import "SZNavigationController.h"
 #import "SocializeCommonDefinitions.h"
+#import "SZViewControllerWrapper.h"
 
 @class _SZSelectNetworkViewController;
 
-@interface SZSelectNetworkViewController : SZNavigationController
+@interface SZSelectNetworkViewController : SZViewControllerWrapper
 @property (nonatomic, strong) _SZSelectNetworkViewController *selectNetwork;
 @property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetworks);
 @property (nonatomic, copy) void (^cancellationBlock)();
