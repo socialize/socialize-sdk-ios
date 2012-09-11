@@ -313,6 +313,10 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)cancel {
+    [self notifyDelegateOfCompletion];
+}
+
 - (void)postCommentViewController:(_SZComposeCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
     
