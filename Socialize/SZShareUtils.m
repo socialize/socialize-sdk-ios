@@ -118,6 +118,8 @@
     }
     
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
+    composer.modalPresentationStyle = UIModalPresentationFormSheet;
+    
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
         switch (result) {
             case MFMailComposeResultSent: {
