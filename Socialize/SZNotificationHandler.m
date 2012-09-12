@@ -88,17 +88,17 @@ static SZNotificationHandler *sharedNotificationHandler;
             return;
         }
         
-        SZNavigationController *navigationController = [[SZNavigationController alloc] init];
-        [Socialize entityLoaderBlock](navigationController, entity);
-        UIViewController *loaderController = [navigationController topViewController];
+//        SZNavigationController *navigationController = [[SZNavigationController alloc] init];
+        [Socialize entityLoaderBlock](nil, entity);
+//        UIViewController *loaderController = [navigationController topViewController];
+//
+//        if (loaderController.navigationItem.leftBarButtonItem == nil) {
+//            loaderController.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
+//                [display dismissToViewController:nil animated:YES completion:nil];
+//            }];
+//        }
         
-        if (loaderController.navigationItem.leftBarButtonItem == nil) {
-            loaderController.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
-                [display dismissToViewController:nil animated:YES completion:nil];
-            }];
-        }
-        
-        [display presentViewController:navigationController fromViewController:nil animated:YES completion:nil];
+//        [display presentViewController:navigationController fromViewController:nil animated:YES completion:nil];
         
     } failure:^(NSError *error) {
         [display stopLoadingForContext:loadingContext];
