@@ -60,7 +60,7 @@ static SZNotificationHandler *sharedNotificationHandler;
 
 - (id<SZDisplay>)defaultDisplay {
     if (_defaultDisplay == nil) {
-        _defaultDisplay = [[SZWindowDisplay alloc] init];
+        _defaultDisplay = [SZWindowDisplay sharedWindowDisplay];
     }
     
     return _defaultDisplay;

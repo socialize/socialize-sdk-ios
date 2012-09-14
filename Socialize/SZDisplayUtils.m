@@ -8,6 +8,7 @@
 
 #import "SZDisplayUtils.h"
 #import "SZNotificationHandler.h"
+#import "SZWindowDisplay.h"
 
 static id<SZDisplay>(^globalDisplayBlock)();
 
@@ -16,9 +17,9 @@ static id<SZDisplay>(^globalDisplayBlock)();
 + (id<SZDisplay>)globalDisplay {
     if (globalDisplayBlock != nil) {
         return globalDisplayBlock();
+    } else {
+        return [SZWindowDisplay sharedWindowDisplay];
     }
-    
-    return nil;
 }
 
 + (void)setGlobalDisplayBlock:(id<SZDisplay>(^)())displayBlock {
