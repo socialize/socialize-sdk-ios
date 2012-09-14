@@ -38,7 +38,7 @@ static SZNotificationHandler *sharedNotificationHandler;
 }
 
 - (void)dismissAllNotifications:(NSNotification*)notification {
-    [self.defaultDisplay dismissToViewController:nil animated:YES completion:nil];
+    [self.defaultDisplay socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
 }
 
 + (SZNotificationHandler*)sharedNotificationHandler {
@@ -77,11 +77,10 @@ static SZNotificationHandler *sharedNotificationHandler;
         loadingContext = SZLoadingContextFetchingEntityForEntitySubscriptionNotification;
     }
     
-    [display startLoadingForContext:loadingContext];
+    [display socializeDidStartLoadingForContext:loadingContext];
     
     [SZEntityUtils getEntitiesWithIds:@[ entityId ] success:^(NSArray *entities) {
-        [display stopLoadingForContext:loadingContext];
-        
+        [display socializeDidStopLoadingForContext:loadingContext];
         id<SZEntity> entity = [entities lastObject];
         if (![Socialize canLoadEntity:entity]) {
             NSLog(@"Socialize Warning: canLoadEntity returned NO for entity in received notification");
@@ -94,15 +93,15 @@ static SZNotificationHandler *sharedNotificationHandler;
         
         if (loaderController.navigationItem.leftBarButtonItem == nil) {
             loaderController.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
-                [display dismissToViewController:nil animated:YES completion:nil];
+                [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
             }];
         }
         
-        [display presentViewController:navigationController fromViewController:nil animated:YES completion:nil];
+        [display socializeRequiresPresentationOfViewController:navigationController fromViewController:nil animated:YES completion:nil];
         
     } failure:^(NSError *error) {
-        [display stopLoadingForContext:loadingContext];
-        [display failWithError:error];
+        [display socializeDidStopLoadingForContext:loadingContext];
+        [display socializeRequiresIndicationOfFailureForError:error];
     }];
 }
 
@@ -163,8 +162,7 @@ static SZNotificationHandler *sharedNotificationHandler;
             return YES;
         }
         
-        [display startLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
-        
+        [display socializeDidStartLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
         [SZCommentUtils getCommentsWithIds:@[ activityID ] success:^(NSArray *comments) {
             id<SZComment> comment = [comments lastObject];
             if (comment == nil) {
@@ -172,12 +170,12 @@ static SZNotificationHandler *sharedNotificationHandler;
                 return;
             }
             
-            [display stopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
+            [display socializeDidStartLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
 
             SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:comment.entity];
             
             commentsList.completionBlock = ^{
-                [display dismissToViewController:nil animated:YES completion:nil];
+                [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
             };
             
             commentsList._commentsListViewController.showNotificationHintOnAppear = YES;
@@ -185,25 +183,25 @@ static SZNotificationHandler *sharedNotificationHandler;
             SocializeActivityDetailsViewController *details = [[SocializeActivityDetailsViewController alloc] initWithActivity:comment];
             [commentsList pushViewController:details animated:YES];
             
-            [display presentViewController:commentsList fromViewController:nil animated:YES completion:nil];
+            [display socializeRequiresPresentationOfViewController:commentsList fromViewController:nil animated:YES completion:nil];
 
         } failure:^(NSError *error) {
-            [display failWithError:error];
-            [display stopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
+            [display socializeRequiresIndicationOfFailureForError:error];
+            [display socializeDidStopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
         }];
     } else if ([notificationType isEqualToString:@"developer_direct_url"]) {
         SocializeRichPushNotificationViewController *richPush = [[SocializeRichPushNotificationViewController alloc] init];
         richPush.title = [socializeDictionary objectForKey:@"title"];
         richPush.url = [socializeDictionary objectForKey:@"url"];
         richPush.completionBlock = ^{
-            [display dismissToViewController:nil animated:YES completion:nil];
+            [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
         };
         richPush.cancellationBlock = ^{
-            [display dismissToViewController:nil animated:YES completion:nil];
+            [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
         };
 
         SZNavigationController *nav = [[SZNavigationController alloc] initWithRootViewController:richPush];
-        [display presentViewController:nav fromViewController:nil animated:YES completion:nil];
+        [display socializeRequiresPresentationOfViewController:nav fromViewController:nil animated:YES completion:nil];
     } else if ([notificationType isEqualToString:@"developer_direct_entity"]) {
         if ([Socialize entityLoaderBlock] == nil) {
             NSLog(@"Socialize Warning: Received direct entity notification, but no entity loader defined");

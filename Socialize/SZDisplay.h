@@ -21,11 +21,13 @@ typedef enum SZStatusContext {
 
 @protocol SZDisplay <NSObject>
 
-- (void)presentViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion;
-- (void)dismissToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion;
-- (void)showStatusUpdateForContext:(SZStatusContext)context;
-- (void)startLoadingForContext:(SZLoadingContext)context;
-- (void)stopLoadingForContext:(SZLoadingContext)context;
-- (void)failWithError:(NSError*)error;
+- (void)socializeRequiresPresentationOfViewController:(UIViewController*)v fromViewController:(UIViewController*)u animated:(BOOL)flag completion:(void (^)(void))completion;
+- (void)socializeRequiresDismissalToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion;
+//- (void)socializeRequiresTransitionToViewController:(UIViewController*)v fromViewController:(UIViewController*)u animated:(BOOL)flag completion:(void (^)(void))completion;
+
+- (void)socializeRequiresIndicationOfStatusForContext:(SZStatusContext)context;
+- (void)socializeDidStartLoadingForContext:(SZLoadingContext)context;
+- (void)socializeDidStopLoadingForContext:(SZLoadingContext)context;
+- (void)socializeRequiresIndicationOfFailureForError:(NSError*)error;
 
 @end

@@ -15,11 +15,11 @@ static char *kUIViewControllerLoadingViewKey = "kUIViewControllerLoadingViewKey"
 
 @implementation UIViewController (Display)
 
-- (void)presentViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresPresentationOfViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
     [self presentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
-- (void)dismissToViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresDismissalToViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
     [self dismissViewControllerAnimated:flag completion:completion];
 }
 
@@ -31,22 +31,22 @@ static char *kUIViewControllerLoadingViewKey = "kUIViewControllerLoadingViewKey"
     objc_setAssociatedObject(self, kUIViewControllerLoadingViewKey, loadingView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)startLoadingForContext:(SZLoadingContext)context {
+- (void)socializeDidStartLoadingForContext:(SZLoadingContext)context {
     if (self.loadingView == nil) {
         self.loadingView = [SocializeLoadingView loadingViewInView:self.view];
     }
 }
 
-- (void)stopLoadingForContext:(SZLoadingContext)context {
+- (void)socializeDidStopLoadingForContext:(SZLoadingContext)context {
     [self.loadingView removeView];
     self.loadingView = nil;
 }
 
-- (void)failWithError:(NSError *)error {
+- (void)socializeRequiresIndicationOfFailureForError:(NSError *)error {
     SZEmitUIError(nil, error);
 }
 
-- (void)showStatusUpdateForContext:(SZStatusContext)context {
+- (void)socializeRequiresIndicationOfStatusForContext:(SZStatusContext)context {
     SZStatusView *status = nil;
     CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
 

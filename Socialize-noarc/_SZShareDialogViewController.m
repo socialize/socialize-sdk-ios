@@ -67,7 +67,7 @@
             [self.createdShares addObject:share];
             BLOCK_CALL_1(self.completionBlock, self.createdShares);
             
-            [self.display showStatusUpdateForContext:SZStatusContextSocializeShareCompleted];
+            [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextSocializeShareCompleted];
             
         } failure:^(NSError *error) {
             [self stopLoading];

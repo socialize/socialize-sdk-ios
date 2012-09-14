@@ -138,7 +138,7 @@
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
         
-        [self.display showStatusUpdateForContext:SZStatusContextCommentPostSucceeded];
+        [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextCommentPostSucceeded];
         
     } failure:^(NSError *error) {
         [self stopLoading];

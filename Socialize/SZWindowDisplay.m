@@ -56,7 +56,7 @@ static SZWindowDisplay *sharedWindowDisplay;
     return _window;
 }
 
-- (void)presentViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresPresentationOfViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
     if (self.rootViewController == nil) {
         self.rootViewController = viewControllerToPresent;
         CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
@@ -79,7 +79,7 @@ static SZWindowDisplay *sharedWindowDisplay;
     }
 }
 
-- (void)dismissToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresDismissalToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
     if (self.rootViewController == nil) {
         return;
     }
@@ -100,22 +100,22 @@ static SZWindowDisplay *sharedWindowDisplay;
     }
 }
 
-- (void)startLoadingForContext:(SZLoadingContext)context {
+- (void)socializeDidStartLoadingForContext:(SZLoadingContext)context {
     if (self.loadingView == nil) {
         self.loadingView = [SocializeLoadingView loadingViewInView:self.window];
     }
 }
 
-- (void)stopLoadingForContext:(SZLoadingContext)context {
+- (void)socializeDidStopLoadingForContext:(SZLoadingContext)context {
     [self.loadingView removeView];
     self.loadingView = nil;
 }
 
-- (void)failWithError:(NSError *)error {
+- (void)socializeRequiresIndicationOfFailureForError:(NSError *)error {
     SZEmitUIError(nil, error);
 }
 
-- (void)showStatusUpdateForContext:(SZStatusContext)context {
+- (void)socializeRequiresIndicationOfStatusForContext:(SZStatusContext)context {
     SZStatusView *status = nil;
     CGRect frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     switch (context) {
