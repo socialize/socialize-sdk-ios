@@ -10,17 +10,18 @@
 #import <objc/runtime.h>
 #import "SDKHelpers.h"
 #import "SZStatusView.h"
+#import "UIViewController+Socialize.h"
 
 static char *kUIViewControllerLoadingViewKey = "kUIViewControllerLoadingViewKey";
 
 @implementation UIViewController (Display)
 
 - (void)socializeRequiresPresentationOfViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
-    [self presentViewController:viewControllerToPresent animated:flag completion:completion];
+    [self SZPresentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
 - (void)socializeRequiresDismissalToViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
-    [self dismissViewControllerAnimated:flag completion:completion];
+    [self SZDismissViewControllerAnimated:flag completion:completion];
 }
 
 - (SocializeLoadingView *)loadingView {

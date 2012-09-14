@@ -74,8 +74,7 @@ static SZWindowDisplay *sharedWindowDisplay;
                              BLOCK_CALL(completion);
                          }];
     } else {
-        [self.rootViewController presentModalViewController:viewControllerToPresent animated:flag];
-        BLOCK_CALL(completion);
+        [self.rootViewController SZPresentViewController:viewControllerToPresent animated:flag completion:completion];
     }
 }
 
@@ -96,7 +95,7 @@ static SZWindowDisplay *sharedWindowDisplay;
                              BLOCK_CALL(completion);
                          }];
     } else {
-        [viewController dismissViewControllerAnimated:flag completion:completion];
+        [viewController SZDismissViewControllerAnimated:flag completion:completion];
     }
 }
 
