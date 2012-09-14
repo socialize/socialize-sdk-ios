@@ -49,7 +49,7 @@
 // begin-handle-snippet
 
 - (void)handleNotification:(NSDictionary*)userInfo {
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+    if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
         if ([SZSmartAlertUtils openNotification:userInfo]) {
             NSLog(@"Socialize handled the notification (background).");
             
