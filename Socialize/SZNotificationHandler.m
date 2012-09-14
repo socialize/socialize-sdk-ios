@@ -170,7 +170,7 @@ static SZNotificationHandler *sharedNotificationHandler;
                 return;
             }
             
-            [display socializeDidStartLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
+            [display socializeDidStopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
 
             SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:comment.entity];
             
@@ -186,8 +186,8 @@ static SZNotificationHandler *sharedNotificationHandler;
             [display socializeRequiresPresentationOfViewController:commentsList fromViewController:nil animated:YES completion:nil];
 
         } failure:^(NSError *error) {
-            [display socializeRequiresIndicationOfFailureForError:error];
             [display socializeDidStopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
+            [display socializeRequiresIndicationOfFailureForError:error];
         }];
     } else if ([notificationType isEqualToString:@"developer_direct_url"]) {
         SocializeRichPushNotificationViewController *richPush = [[SocializeRichPushNotificationViewController alloc] init];
