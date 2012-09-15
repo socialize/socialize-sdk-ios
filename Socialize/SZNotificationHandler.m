@@ -41,7 +41,7 @@ static SZNotificationHandler *sharedNotificationHandler;
 }
 
 - (void)dismissAllNotifications:(NSNotification*)notification {
-    [self.activeOuterDisplay socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+    [self.activeOuterDisplay socializeRequiresDismissModalViewControllerAnimated:YES completion:nil];
     self.activeOuterDisplay = nil;
     self.currentStack = nil;
 }
@@ -73,11 +73,11 @@ static SZNotificationHandler *sharedNotificationHandler;
 
 - (void)presentViewController:(UIViewController*)viewController inDisplay:(id<SZDisplay>)display {
     [self.currentStack addObject:viewController];
-    [display socializeRequiresPresentationOfViewController:viewController fromViewController:nil animated:YES completion:nil];
+    [display socializeRequiresPresentModalViewController:viewController animated:YES completion:nil];
 }
 
 - (void)dismissViewControllerInDisplay:(id<SZDisplay>)display {
-    [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+    [display socializeRequiresDismissModalViewControllerAnimated:YES completion:nil];
     [self.currentStack removeLastObject];
     
     if (display == self.activeOuterDisplay) {

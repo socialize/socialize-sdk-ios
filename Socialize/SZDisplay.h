@@ -21,8 +21,8 @@ typedef enum SZStatusContext {
 
 @protocol SZDisplay <NSObject>
 
-- (void)socializeRequiresPresentationOfViewController:(UIViewController*)v fromViewController:(UIViewController*)u animated:(BOOL)flag completion:(void (^)(void))completion;
-- (void)socializeRequiresDismissalToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion;
+- (void)socializeRequiresPresentModalViewController:(UIViewController*)v animated:(BOOL)flag completion:(void (^)(void))completion;
+- (void)socializeRequiresDismissModalViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion;
 //- (void)socializeRequiresTransitionToViewController:(UIViewController*)v fromViewController:(UIViewController*)u animated:(BOOL)flag completion:(void (^)(void))completion;
 
 - (void)socializeRequiresIndicationOfStatusForContext:(SZStatusContext)context;

@@ -16,11 +16,11 @@ static char *kUIViewControllerLoadingViewKey = "kUIViewControllerLoadingViewKey"
 
 @implementation UIViewController (Display)
 
-- (void)socializeRequiresPresentationOfViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresPresentModalViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
     [self SZPresentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
-- (void)socializeRequiresDismissalToViewController:(UIViewController *)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresDismissModalViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     [self SZDismissViewControllerAnimated:flag completion:completion];
 }
 

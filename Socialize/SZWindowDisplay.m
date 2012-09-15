@@ -56,47 +56,40 @@ static SZWindowDisplay *sharedWindowDisplay;
     return _window;
 }
 
-- (void)socializeRequiresPresentationOfViewController:(UIViewController *)viewControllerToPresent fromViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
-    if (self.rootViewController == nil) {
-        self.rootViewController = viewControllerToPresent;
-        CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
-        CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+- (void)socializeRequiresPresentModalViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    self.rootViewController = viewControllerToPresent;
+    CGRect statusFrame = [[UIApplication sharedApplication] statusBarFrame];
+    CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 
-        CGRect startFrame = CGRectMake(0, statusFrame.size.height + applicationFrame.size.height, applicationFrame.size.width, applicationFrame.size.height);
-        CGRect endFrame = CGRectMake(0, statusFrame.size.height, applicationFrame.size.width, applicationFrame.size.height);
-        self.rootViewController.view.frame = startFrame;
-        [self.window addSubview:self.rootViewController.view];
+    CGRect startFrame = CGRectMake(0, statusFrame.size.height + applicationFrame.size.height, applicationFrame.size.width, applicationFrame.size.height);
+    CGRect endFrame = CGRectMake(0, statusFrame.size.height, applicationFrame.size.width, applicationFrame.size.height);
+    self.rootViewController.view.frame = startFrame;
+    [self.window addSubview:self.rootViewController.view];
 
-        [UIView animateWithDuration:ModalTransitionInterval
-                         animations:^{
-                             self.rootViewController.view.frame = endFrame;
-                         } completion:^(BOOL finished) {
-                             BLOCK_CALL(completion);
-                         }];
-    } else {
-        [self.rootViewController SZPresentViewController:viewControllerToPresent animated:flag completion:completion];
-    }
+    [UIView animateWithDuration:ModalTransitionInterval
+                     animations:^{
+                         self.rootViewController.view.frame = endFrame;
+                     } completion:^(BOOL finished) {
+                         BLOCK_CALL(completion);
+                     }];
 }
 
-- (void)socializeRequiresDismissalToViewController:(UIViewController*)viewController animated:(BOOL)flag completion:(void (^)(void))completion {
+- (void)socializeRequiresDismissModalViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     if (self.rootViewController == nil) {
         return;
     }
     
-    if (viewController == nil) {
-        [self.rootViewController dismissModalViewControllerAnimated:NO];
-        [UIView animateWithDuration:ModalTransitionInterval
-                         animations:^{
-                             CGRect frame = self.rootViewController.view.frame;
-                             frame.origin.y = frame.origin.y + frame.size.height;
-                             self.rootViewController.view.frame = frame;
-                         } completion:^(BOOL finished) {
-                             self.rootViewController = nil;
-                             BLOCK_CALL(completion);
-                         }];
-    } else {
-        [viewController SZDismissViewControllerAnimated:flag completion:completion];
-    }
+    [self.rootViewController dismissModalViewControllerAnimated:NO];
+    [UIView animateWithDuration:ModalTransitionInterval
+                     animations:^{
+                         CGRect frame = self.rootViewController.view.frame;
+                         frame.origin.y = frame.origin.y + frame.size.height;
+                         self.rootViewController.view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         self.rootViewController = nil;
+                         BLOCK_CALL(completion);
+                     }];
+    self.rootViewController = nil;
 }
 
 - (void)socializeDidStartLoadingForContext:(SZLoadingContext)context {
