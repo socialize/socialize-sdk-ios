@@ -4,6 +4,22 @@
 Upgrading Socialize
 =====================
 
+Important Notes on Upgrading to v2.4
+-----------------
+
+Entity loader events that occur when Socialize does not have a preexisting
+navigation controller on the screen no longer automatically push a new
+UINavigationController. This was made the default since the old behavior was
+intrusive for apps that might not want to display a navigation controller at
+all for this case. The UINavigationController parameter of the entity loader is
+now passed as nil, and it is left up to you to choose how to handle this
+situation.
+
+.. literalinclude:: snippets/configure_notifications.m
+  :start-after: begin-entity-loader-snippet
+  :end-before: end-entity-loader-snippet
+  :emphasize-lines: 14-25
+
 Overview
 ------------------
 

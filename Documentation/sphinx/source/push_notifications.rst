@@ -148,7 +148,7 @@ Copy the lines below to add an entity loader
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-entity-loader-snippet
   :end-before: end-entity-loader-snippet
-  :emphasize-lines: 14-18
+  :emphasize-lines: 14-25
 
 .. image:: images/entity_loader.png
 
