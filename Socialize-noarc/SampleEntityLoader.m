@@ -36,8 +36,13 @@
     
     self.entityKeyLabel.text = self.entity.key;
     self.entityNameLabel.text = self.entity.name;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
     self.title = self.entity.name;
+}
+
+- (void)cancel:(id)sender {
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload

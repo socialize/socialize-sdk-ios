@@ -35,9 +35,15 @@
 //     NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
 //     [Socialize registerDeviceToken:testToken];
     
-    [Socialize setEntityLoaderBlock:^(UINavigationController *nav, id<SZEntity> entity) {
-        SampleEntityLoader *sample = [[SampleEntityLoader alloc] initWithEntity:entity];
-        [nav pushViewController:sample animated:YES];
+    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SZEntity> entity) {
+        SampleEntityLoader *entityLoader = [[SampleEntityLoader alloc] initWithEntity:entity];
+        
+        if (navigationController == nil) {
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:entityLoader];
+            [self.window.rootViewController presentModalViewController:navigationController animated:YES];
+        } else {
+            [navigationController pushViewController:entityLoader animated:YES];
+        }
     }];
      
     TestAppListViewController *sample = [TestAppListViewController sharedSampleListViewController];
