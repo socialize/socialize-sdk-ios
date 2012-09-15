@@ -16,11 +16,14 @@
 #import "SocializeActivityDetailsViewController.h"
 #import "SZActionUtils.h"
 #import "SZCommentUtils.h"
+#import "SZDisplayUtils.h"
 
 static SZNotificationHandler *sharedNotificationHandler;
 
 @interface SZNotificationHandler ()
 @property (nonatomic, strong) id<SZDisplay> defaultDisplay;
+@property (nonatomic, strong) NSMutableArray *currentStack;
+@property (nonatomic, strong) id<SZDisplay> activeOuterDisplay;
 @end
 
 @implementation SZNotificationHandler
@@ -38,7 +41,17 @@ static SZNotificationHandler *sharedNotificationHandler;
 }
 
 - (void)dismissAllNotifications:(NSNotification*)notification {
-    [self.defaultDisplay socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+    [self.activeOuterDisplay socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+    self.activeOuterDisplay = nil;
+    self.currentStack = nil;
+}
+
+- (NSMutableArray*)currentStack {
+    if (_currentStack == nil) {
+        _currentStack = [NSMutableArray array];
+    }
+    
+    return _currentStack;
 }
 
 + (SZNotificationHandler*)sharedNotificationHandler {
@@ -58,9 +71,23 @@ static SZNotificationHandler *sharedNotificationHandler;
     return NO;
 }
 
+- (void)presentViewController:(UIViewController*)viewController inDisplay:(id<SZDisplay>)display {
+    [self.currentStack addObject:viewController];
+    [display socializeRequiresPresentationOfViewController:viewController fromViewController:nil animated:YES completion:nil];
+}
+
+- (void)dismissViewControllerInDisplay:(id<SZDisplay>)display {
+    [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+    [self.currentStack removeLastObject];
+    
+    if (display == self.activeOuterDisplay) {
+        self.activeOuterDisplay = nil;
+    }
+}
+
 - (id<SZDisplay>)defaultDisplay {
     if (_defaultDisplay == nil) {
-        _defaultDisplay = [SZWindowDisplay sharedWindowDisplay];
+        _defaultDisplay = [SZDisplayUtils globalDisplay];
     }
     
     return _defaultDisplay;
@@ -93,12 +120,12 @@ static SZNotificationHandler *sharedNotificationHandler;
         
         if (loaderController.navigationItem.leftBarButtonItem == nil) {
             loaderController.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
-                [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+                [self dismissViewControllerInDisplay:display];
             }];
         }
         
-        [display socializeRequiresPresentationOfViewController:navigationController fromViewController:nil animated:YES completion:nil];
-        
+        [self presentViewController:navigationController inDisplay:display];
+
     } failure:^(NSError *error) {
         [display socializeDidStopLoadingForContext:loadingContext];
         [display socializeRequiresIndicationOfFailureForError:error];
@@ -134,15 +161,27 @@ static SZNotificationHandler *sharedNotificationHandler;
     if (notificationType == nil) {
         return NO;
     }
-    
+
     id<SZDisplay> display = nil;
-    if ([self displayBlock] != nil) {
-        display = [self displayBlock]();
+    if (self.activeOuterDisplay != nil) {
+        
+        // Send display events to the top view controller
+        display = [self.currentStack lastObject];
+    } else {
+        
+        // Try to find a developer-defined outer display, since we don't have a top controller to work with
+        if ([self displayBlock] != nil) {
+            display = [self displayBlock]();
+        }
+        
+        // Fall back to our default outer display
+        if (display == nil) {
+            display = self.defaultDisplay;
+        }
+        
+        self.activeOuterDisplay = display;
     }
     
-    if (display == nil) {
-        display = self.defaultDisplay;
-    }
     
     // Track the event
     NSMutableDictionary *eventParams = [NSMutableDictionary dictionaryWithDictionary:socializeDictionary];
@@ -175,7 +214,7 @@ static SZNotificationHandler *sharedNotificationHandler;
             SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:comment.entity];
             
             commentsList.completionBlock = ^{
-                [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+                [self dismissViewControllerInDisplay:display];
             };
             
             commentsList._commentsListViewController.showNotificationHintOnAppear = YES;
@@ -183,7 +222,8 @@ static SZNotificationHandler *sharedNotificationHandler;
             SocializeActivityDetailsViewController *details = [[SocializeActivityDetailsViewController alloc] initWithActivity:comment];
             [commentsList pushViewController:details animated:YES];
             
-            [display socializeRequiresPresentationOfViewController:commentsList fromViewController:nil animated:YES completion:nil];
+            
+            [self presentViewController:commentsList inDisplay:display];
 
         } failure:^(NSError *error) {
             [display socializeDidStopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
@@ -194,14 +234,15 @@ static SZNotificationHandler *sharedNotificationHandler;
         richPush.title = [socializeDictionary objectForKey:@"title"];
         richPush.url = [socializeDictionary objectForKey:@"url"];
         richPush.completionBlock = ^{
-            [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+            [self dismissViewControllerInDisplay:display];
         };
         richPush.cancellationBlock = ^{
-            [display socializeRequiresDismissalToViewController:nil animated:YES completion:nil];
+            [self dismissViewControllerInDisplay:display];
         };
 
         SZNavigationController *nav = [[SZNavigationController alloc] initWithRootViewController:richPush];
-        [display socializeRequiresPresentationOfViewController:nav fromViewController:nil animated:YES completion:nil];
+        [self presentViewController:nav inDisplay:display];
+
     } else if ([notificationType isEqualToString:@"developer_direct_entity"]) {
         if ([Socialize entityLoaderBlock] == nil) {
             NSLog(@"Socialize Warning: Received direct entity notification, but no entity loader defined");
