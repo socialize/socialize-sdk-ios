@@ -206,6 +206,14 @@ functionality, but if you wish, you can handle the subscription on your own.
 
 .. note:: Socialize v2.2.1 or later is required to receive subscriber-only smart alerts
 
+Overriding the Notification Display Process
+-------------------------------------------
+
+Because of the asynchronous nature of notifications, Socialize displays the
+associated view controllers is the main window of the application by default.
+If you'd like to override this behavior, you can do so by specifying a global
+display object. See :ref:`global_display` for more info.
+
 Programmatically Dismissing Notification Popups
 ----------------------------------------
 

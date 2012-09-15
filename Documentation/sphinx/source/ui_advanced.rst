@@ -56,3 +56,22 @@ completely disable location sharing
 .. literalinclude:: snippets/ui_advanced.m
   :start-after: begin-disable-location-snippet
   :end-before: end-disable-location-snippet
+
+.. _global_display:
+
+Overriding Global Display Behavior
+----------------------------------
+
+For asynchronous events such as notifications, Socialize needs a way to display UI elements
+to the screen. By default, it will attempt to discover the topmost view controller in the app.
+If this fails, it will resort to manual UIView management in the application's root window.
+Should you need to override this behavior, you can do so by implementing the SZDisplay protocol
+and returning it dynamically using [SZDisplayUtils setGlobalDisplayBlock:], as below
+
+.. literalinclude:: snippets/ui_advanced.m
+  :start-after: begin-define-global-display-snippet
+  :end-before: end-define-global-display-snippet
+
+.. note:: A default implementation of the SZDisplay protocol for UIViewControllers is provided
+  for you. If you wish, you can also provide your own SZDisplay implementation. See the SZDisplay.h
+  header for the full list of messages you should define.
