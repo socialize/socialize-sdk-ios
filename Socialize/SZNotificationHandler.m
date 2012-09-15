@@ -114,18 +114,7 @@ static SZNotificationHandler *sharedNotificationHandler;
             return;
         }
         
-        SZNavigationController *navigationController = [[SZNavigationController alloc] init];
-        [Socialize entityLoaderBlock](navigationController, entity);
-        UIViewController *loaderController = [navigationController topViewController];
-        
-        if (loaderController.navigationItem.leftBarButtonItem == nil) {
-            loaderController.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
-                [self dismissViewControllerInDisplay:display];
-            }];
-        }
-        
-        [self presentViewController:navigationController inDisplay:display];
-
+        [Socialize entityLoaderBlock](nil, entity);
     } failure:^(NSError *error) {
         [display socializeDidStopLoadingForContext:loadingContext];
         [display socializeRequiresIndicationOfFailureForError:error];
