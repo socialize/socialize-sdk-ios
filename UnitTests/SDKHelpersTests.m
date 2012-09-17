@@ -30,28 +30,28 @@
     return [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"embedded.mobileprovision"];
 }
 
-- (void)testExampleDevProvisioningIsNotProduction {
-    NSString *mobileprovision = [[NSBundle mainBundle] pathForResource:@"example-dev.embedded.mobileprovision" ofType:nil];
-    [self copyFileFromPath:mobileprovision toPath:[self embeddedPath]];
-    
-    BOOL isProduction = SZIsProduction();
-    GHAssertFalse(isProduction, @"Should not be prod");
-}
-
-- (void)testExampleDistributionProvisioningIsProduction {
-    NSString *mobileprovision = [[NSBundle mainBundle] pathForResource:@"example-distribution.embedded.mobileprovision" ofType:nil];
-    [self copyFileFromPath:mobileprovision toPath:[self embeddedPath]];
-    
-    BOOL isProduction = SZIsProduction();
-    GHAssertTrue(isProduction, @"Should be prod");
-}
-
-- (void)testNilProvisioningIsNotProduction {
-    NSError *error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:[self embeddedPath] error:&error];
-
-    BOOL isProduction = SZIsProduction();
-    GHAssertFalse(isProduction, @"Should not be prod");
-}
+//- (void)testExampleDevProvisioningIsNotProduction {
+//    NSString *mobileprovision = [[NSBundle mainBundle] pathForResource:@"example-dev.embedded.mobileprovision" ofType:nil];
+//    [self copyFileFromPath:mobileprovision toPath:[self embeddedPath]];
+//    
+//    BOOL isProduction = SZIsProduction();
+//    GHAssertFalse(isProduction, @"Should not be prod");
+//}
+//
+//- (void)testExampleDistributionProvisioningIsProduction {
+//    NSString *mobileprovision = [[NSBundle mainBundle] pathForResource:@"example-distribution.embedded.mobileprovision" ofType:nil];
+//    [self copyFileFromPath:mobileprovision toPath:[self embeddedPath]];
+//    
+//    BOOL isProduction = SZIsProduction();
+//    GHAssertTrue(isProduction, @"Should be prod");
+//}
+//
+//- (void)testNilProvisioningIsNotProduction {
+//    NSError *error = nil;
+//    [[NSFileManager defaultManager] removeItemAtPath:[self embeddedPath] error:&error];
+//
+//    BOOL isProduction = SZIsProduction();
+//    GHAssertFalse(isProduction, @"Should not be prod");
+//}
 
 @end

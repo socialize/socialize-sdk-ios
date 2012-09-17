@@ -89,7 +89,7 @@ If you've added a password to your p12 make sure to put that in.
 .. image:: images/notification_p12_upload.png
 
 .. note:: Only one p12 can be configured at a time for any given Socialize app. If you need to test
-  both production and development push tokens, it is recommended that you create separate
+  both production and development (sandbox) push tokens, it is recommended that you create separate
   Socialize apps (one for Development, and one for Production).
 
 
@@ -224,6 +224,17 @@ programatically by posting a SocializeShouldDismissAllNotificationControllersNot
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-dismiss-notifications-snippet
   :end-before: end-dismiss-notifications-snippet
+
+Forcing Use of Development (Sandbox) or Production Certificates
+------------------------------------------
+
+The Socialize servers need to know whether the app is using a production or
+development mobileprovision and associated push credentials. By default,
+Socialize will assume a production environment unless a DEBUG preprocessor is
+both present and nonzero. You can override this behavior by defining
+SZ_USE_DEBUG_PUSH=0 or SZ_USE_DEBUG_PUSH=1 in your projects 'Preprocessor
+Macros' section. Use of SZ_USE_DEBUG_PUSH should not be necessary under normal
+conditions.
 
 Troubleshooting Notifications
 ----------------------------------------

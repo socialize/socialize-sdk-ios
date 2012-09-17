@@ -79,26 +79,12 @@ NSString *SZGetProvisioningProfile() {
     return profileAsString;
 }
 
-BOOL SZIsProduction() {
-    NSString *profileAsString = SZGetProvisioningProfile();
-    if ([profileAsString length] == 0) {
-        return NO;
-    }
-    
-    profileAsString = [[profileAsString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
-    NSRange range = [profileAsString rangeOfString:@"<key>get-task-allow</key><true/>" options:NSCaseInsensitiveSearch];
-    BOOL isProduction = range.location == NSNotFound;
-    
-    return isProduction;
-}
-
-
 NSString *SZAPINSStringForCurrentProvisioningState() {
-    if (SZIsProduction()) {
-        return @"APNS_PRODUCTION";
-    } else {
-        return @"APNS_DEVELOPMENT";
-    }
+#if SZ_USE_DEBUG_PUSH
+    return @"APNS_DEVELOPMENT";
+#else
+    return @"APNS_PRODUCTION";
+#endif
 }
 
 NSString *SZBase64EncodedUDID() {
