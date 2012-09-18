@@ -32,6 +32,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "socialize_globals.h"
 #import "SZNotificationHandler.h"
+#import "SZOpenURLHandler.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -368,6 +369,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {
+    if ([[SZOpenURLHandler sharedOpenURLHandler] handleOpenURL:url]) {
+        return YES;
+    }
+    
     return [[SocializeFacebookAuthHandler sharedFacebookAuthHandler] handleOpenURL:url];
 }
 

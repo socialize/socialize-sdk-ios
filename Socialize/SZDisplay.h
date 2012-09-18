@@ -11,6 +11,7 @@
 typedef enum SZLoadingContext {
     SZLoadingContextFetchingEntityForDirectEntityNotification,
     SZLoadingContextFetchingEntityForEntitySubscriptionNotification,
+    SZLoadingContextFetchingEntityForSmartDownloadsURLOpen,
     SZLoadingContextFetchingCommentForNewCommentsNotification,
 } SZLoadingContext;
 

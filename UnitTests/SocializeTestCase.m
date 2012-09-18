@@ -13,6 +13,7 @@
 #import <OCMock/ClassMockRegistry.h>
 #import "_Socialize.h"
 #import <OCMock/OCMock.h>
+#import "SZEntityUtils.h"
 
 id testSelf;
 
@@ -272,6 +273,21 @@ id testSelf;
     }] getCurrentLocationWithSuccess:OCMOCK_ANY failure:OCMOCK_ANY];
     
     return mockLocation;
+}
+
+- (void)succeedGetEntityWithResultBlock:(id<SZEntity>(^)(NSString *key))resultBlock {
+    [[[SZEntityUtils expect] andDo3:^(id key, id success, id _3) {
+        id<SZEntity> entity = resultBlock(key);
+        void (^successBlock)(id) = success;
+        successBlock(entity);
+    }] getEntityWithKey:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
+}
+
+- (void)failGetEntityWithError:(NSError*)error {
+    [[[SZEntityUtils expect] andDo3:^(id _1, id _2, id failure) {
+        void (^failureBlock)(NSError *error) = failure;
+        failureBlock(error);
+    }] getEntityWithKey:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
 @end

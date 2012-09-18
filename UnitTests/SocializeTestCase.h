@@ -56,5 +56,7 @@ extern id testSelf;
 - (void)stubOGLikeEnabled;
 - (void)stubOGLikeDisabled;
 - (void)stubLocationSharingDisabled:(BOOL)disabled;
+- (void)succeedGetEntityWithResultBlock:(id<SZEntity>(^)(NSString *key))resultBlock;
+- (void)failGetEntityWithError:(NSError*)error;
 
 @end

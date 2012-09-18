@@ -1665,6 +1665,11 @@
 		AADFE5FA1596973D00FE2B61 /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
 		AADFE6031596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
 		AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */; };
+		AAE2168E1607D6DD0049850E /* SZOpenURLHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE2168C1607D6DD0049850E /* SZOpenURLHandler.h */; };
+		AAE2168F1607D6DE0049850E /* SZOpenURLHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE2168C1607D6DD0049850E /* SZOpenURLHandler.h */; };
+		AAE216901607D6DE0049850E /* SZOpenURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2168D1607D6DD0049850E /* SZOpenURLHandler.m */; };
+		AAE216911607D6DE0049850E /* SZOpenURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2168D1607D6DD0049850E /* SZOpenURLHandler.m */; };
+		AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */; };
 		AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */; };
@@ -2780,6 +2785,10 @@
 		AADFE5F51596973C00FE2B61 /* SZActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton.h; sourceTree = "<group>"; };
 		AADFE5F61596973C00FE2B61 /* SZActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionButton.m; sourceTree = "<group>"; };
 		AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButton_Private.h; sourceTree = "<group>"; };
+		AAE2168C1607D6DD0049850E /* SZOpenURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZOpenURLHandler.h; sourceTree = "<group>"; };
+		AAE2168D1607D6DD0049850E /* SZOpenURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOpenURLHandler.m; sourceTree = "<group>"; };
+		AAE216961607F6AE0049850E /* SZOpenURLHandlerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZOpenURLHandlerTests.h; sourceTree = "<group>"; };
+		AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOpenURLHandlerTests.m; sourceTree = "<group>"; };
 		AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseShareViewControllerTests.h; sourceTree = "<group>"; };
 		AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseShareViewControllerTests.m; sourceTree = "<group>"; };
 		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
@@ -3292,6 +3301,8 @@
 				AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */,
 				AAC7CB7C15C9C1630064C5FD /* SZLikeUtilsTests.h */,
 				AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */,
+				AAE216961607F6AE0049850E /* SZOpenURLHandlerTests.h */,
+				AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -4195,6 +4206,8 @@
 				AA0F10A115FC133E00391CFE /* SZWindowDisplay.m */,
 				AAAA3CB915FE5DA2003E08AF /* UIViewController+Display.h */,
 				AAAA3CBA15FE5DA2003E08AF /* UIViewController+Display.m */,
+				AAE2168C1607D6DD0049850E /* SZOpenURLHandler.h */,
+				AAE2168D1607D6DD0049850E /* SZOpenURLHandler.m */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -4317,6 +4330,7 @@
 				AAAA3CBB15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 				AAB86D6415FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
 				AAB86D6A15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
+				AAE2168E1607D6DD0049850E /* SZOpenURLHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4421,6 +4435,7 @@
 				AAAA3CBC15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 				AAB86D6515FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
 				AAB86D6B15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
+				AAE2168F1607D6DE0049850E /* SZOpenURLHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5900,6 +5915,7 @@
 				AAAA3CBD15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 				AAB86D6615FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
 				AAB86D6C15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
+				AAE216901607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6145,6 +6161,7 @@
 				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
 				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
 				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
+				AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6393,6 +6410,7 @@
 				AAAA3CBE15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 				AAB86D6715FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
 				AAB86D6D15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
+				AAE216911607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
