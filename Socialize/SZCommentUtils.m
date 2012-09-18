@@ -54,6 +54,8 @@
         }];
     };
     
+    composer.display = viewController;
+    
     [viewController presentModalViewController:composer animated:YES];
 }
 
@@ -74,7 +76,7 @@
 }
 
 + (void)addCommentWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
-    SZLinkAndGetPreferredNetworks(viewController, ^(SZSocialNetwork preferredNetworks) {
+    SZLinkAndGetPreferredNetworks(viewController, SZLinkContextComment, ^(SZSocialNetwork preferredNetworks) {
         
         // Determined users preferred networks, create the comment ...
         [self addCommentWithEntity:entity text:text options:options networks:preferredNetworks success:success failure:failure];

@@ -29,6 +29,7 @@
 #import "_Socialize.h"
 #import "SocializeKeyboardListener.h"
 #import "_SZUserSettingsViewControllerDelegate.h"
+#import "SZDisplay.h"
 
 @class SocializeLoadingView;
 @class ImagesCache;
@@ -51,7 +52,10 @@
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, copy) void (^cancellationBlock)();
+@property (nonatomic, retain) UITapGestureRecognizer *formsheetDismissGestureRecognizer;
+@property (nonatomic, retain) id<SZDisplay> display;
 
+- (BOOL)isFormsheetModal;
 -(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title;
 -(void) startLoading;
 -(void) stopLoading;
@@ -75,6 +79,7 @@
 - (void)failWithError:(NSError*)error;
 - (void)userSettingsChanged:(id<SZFullUser>)updatedSettings;
 - (void)userChanged:(id<SZFullUser>)newUser;
+- (void)cancel;
 
 @end
 

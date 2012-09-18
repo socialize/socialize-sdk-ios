@@ -13,6 +13,14 @@
 @synthesize entityNameLabel = entityNameLabel_;
 @synthesize entityKeyLabel = entityKeyLabel_;
 
+- (void)dealloc {
+    self.entity = nil;
+    self.entityNameLabel = nil;
+    self.entityKeyLabel = nil;
+    
+    [super dealloc];
+}
+
 - (id)initWithEntity:(id<SocializeEntity>)entity
 {
     self = [super init];
@@ -28,8 +36,13 @@
     
     self.entityKeyLabel.text = self.entity.key;
     self.entityNameLabel.text = self.entity.name;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
     self.title = self.entity.name;
+}
+
+- (void)cancel:(id)sender {
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -37,6 +50,14 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return toInterfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+    }
 }
 
 @end

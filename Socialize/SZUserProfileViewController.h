@@ -8,8 +8,9 @@
 
 #import "SZNavigationController.h"
 #import "SocializeObjects.h"
+#import "SZViewControllerWrapper.h"
 
-@interface SZUserProfileViewController : SZNavigationController
+@interface SZUserProfileViewController : SZViewControllerWrapper
 - (id)initWithUser:(id<SZUser>)user;
 @property (nonatomic, copy) void (^completionBlock)(id<SZFullUser> user);
 @property (nonatomic, readonly, strong) id<SZUser> user;

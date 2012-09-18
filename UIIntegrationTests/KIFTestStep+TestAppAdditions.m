@@ -78,6 +78,20 @@
 
 #import "TestAppListViewController.h"
 
++ (KIFTestStep*)stepToOpenSocializeDirectURLNotificationWithURL:(NSString*)url {
+    return [KIFTestStep stepWithDescription:@"Open direct url" executionBlock:^(KIFTestStep *step, NSError **error) {
+        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       url, @"url",
+                                       @"developer_direct_url", @"notification_type",
+                                       nil];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+        
+        [Socialize handleNotification:userInfo];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
+
 + (KIFTestStep*)stepToDumpAccessibilityElementsMatchingBlock:(BOOL(^)(UIAccessibilityElement*))block {
     return [KIFTestStep stepWithDescription:@"Dump" executionBlock:^(KIFTestStep *step, NSError **error) {
         [[UIApplication sharedApplication] accessibilityElementMatchingBlock:^(UIAccessibilityElement *e) {

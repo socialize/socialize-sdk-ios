@@ -89,7 +89,7 @@ If you've added a password to your p12 make sure to put that in.
 .. image:: images/notification_p12_upload.png
 
 .. note:: Only one p12 can be configured at a time for any given Socialize app. If you need to test
-  both production and development push tokens, it is recommended that you create separate
+  both production and development (sandbox) push tokens, it is recommended that you create separate
   Socialize apps (one for Development, and one for Production).
 
 
@@ -148,7 +148,7 @@ Copy the lines below to add an entity loader
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-entity-loader-snippet
   :end-before: end-entity-loader-snippet
-  :emphasize-lines: 14-18
+  :emphasize-lines: 14-25
 
 .. image:: images/entity_loader.png
 
@@ -206,6 +206,14 @@ functionality, but if you wish, you can handle the subscription on your own.
 
 .. note:: Socialize v2.2.1 or later is required to receive subscriber-only smart alerts
 
+Overriding the Notification Display Process
+-------------------------------------------
+
+Because of the asynchronous nature of notifications, Socialize displays the
+associated view controllers is the main window of the application by default.
+If you'd like to override this behavior, you can do so by specifying a global
+display object. See :ref:`global_display` for more info.
+
 Programmatically Dismissing Notification Popups
 ----------------------------------------
 
@@ -216,6 +224,17 @@ programatically by posting a SocializeShouldDismissAllNotificationControllersNot
 .. literalinclude:: snippets/configure_notifications.m
   :start-after: begin-dismiss-notifications-snippet
   :end-before: end-dismiss-notifications-snippet
+
+Forcing Use of Development (Sandbox) or Production Certificates
+------------------------------------------
+
+The Socialize servers need to know whether the app is using a production or
+development mobileprovision and associated push credentials. By default,
+Socialize will assume a production environment unless a DEBUG preprocessor is
+both present and nonzero. You can override this behavior by defining
+SZ_USE_DEBUG_PUSH=0 or SZ_USE_DEBUG_PUSH=1 in your projects 'Preprocessor
+Macros' section. Use of SZ_USE_DEBUG_PUSH should not be necessary under normal
+conditions.
 
 Troubleshooting Notifications
 ----------------------------------------

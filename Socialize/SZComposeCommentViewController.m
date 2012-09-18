@@ -10,16 +10,14 @@
 #import "_SZComposeCommentViewController.h"
 
 @interface SZComposeCommentViewController ()
-@property (nonatomic, strong) _SZComposeCommentViewController *composeComment;
 @property (nonatomic, strong) id<SZEntity> entity;
 
 @end
 
 @implementation SZComposeCommentViewController
-@synthesize composeComment = _composeComment;
-@synthesize entity = _entity;
 @dynamic completionBlock;
 @dynamic cancellationBlock;
+@dynamic display;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];
@@ -29,15 +27,19 @@
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;
-        self.composeComment = [[_SZComposeCommentViewController alloc] initWithEntity:self.entity];
-        [self pushViewController:self.composeComment animated:NO];
+        self._composeCommentViewController = [[_SZComposeCommentViewController alloc] initWithEntity:self.entity];
+        [self pushViewController:self._composeCommentViewController animated:NO];
     }
     
     return self;
 }
 
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    return self.composeComment;
+    return self._composeCommentViewController;
 }
 
 @end

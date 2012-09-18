@@ -20,6 +20,7 @@
 #import "SDKHelpers.h"
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
+#import "SZEventUtils.h"
 
 #define LINK_DIALOG_BUCKET @"LINK_DIALOG"
 
@@ -108,11 +109,14 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return SocializeAuthTableViewRowHeight;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return toInterfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+    }
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.navigationItem.rightBarButtonItem = [self createSkipButton];
@@ -126,7 +130,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     }
     
     // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
-    [self.tableView setBackgroundView:nil];
+    [self.tableView setBackgroundView:nil];    
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
@@ -279,7 +283,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         [fullValues addEntriesFromDictionary:values];  
     }
     
-    [[Socialize sharedSocialize] trackEventWithBucket:LINK_DIALOG_BUCKET values:fullValues];
+    [SZEventUtils trackEventWithBucket:LINK_DIALOG_BUCKET values:fullValues success:nil failure:nil];
 }
     
 - (void)finish {

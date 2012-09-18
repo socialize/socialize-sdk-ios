@@ -30,4 +30,5 @@
 @property (nonatomic, assign) BOOL dontRequireNetworkSelection;
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, retain) UIView *footerView;
+@property (nonatomic, copy) NSString *continueText;
 @end

@@ -3,6 +3,7 @@
 #import <Socialize/Socialize.h>
 
 @interface ConfigureNotifications
+@property (nonatomic, retain) UIWindow *window;
 @end
 
 @implementation ConfigureNotifications
@@ -49,7 +50,7 @@
 // begin-handle-snippet
 
 - (void)handleNotification:(NSDictionary*)userInfo {
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+    if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
         if ([SZSmartAlertUtils openNotification:userInfo]) {
             NSLog(@"Socialize handled the notification (background).");
             
@@ -119,8 +120,15 @@
 
     // Specify a Socialize entity loader block
     [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity>entity) {
-        SampleEntityLoader *entityLoader = [[[SampleEntityLoader alloc] initWithEntity:entity] autorelease];
-        [navigationController pushViewController:entityLoader animated:YES];
+        
+        SampleEntityLoader *entityLoader = [[SampleEntityLoader alloc] initWithEntity:entity];
+
+        if (navigationController == nil) {
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:entityLoader];
+            [self.window.rootViewController presentModalViewController:navigationController animated:YES];
+        } else {
+            [navigationController pushViewController:entityLoader animated:YES];
+        }
     }];
     
     return YES;

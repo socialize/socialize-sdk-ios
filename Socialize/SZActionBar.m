@@ -80,6 +80,7 @@
         [self addSubview:self.activityIndicator];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidChange:) name:SocializeAuthenticatedUserDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(entityDidChange:) name:SZEntityDidChangeNotification object:nil];
     }
     return self;
 }
@@ -183,10 +184,7 @@
     [self setNeedsDisplay];
 }
 
-- (void)configureForNewServerEntity:(id<SZEntity>)entity {
-    entity.views = entity.views + 1;
-    [SZViewUtils viewEntity:entity success:nil failure:nil];
-    
+- (void)configureForServerEntity:(id<SZEntity>)entity {
     self.serverEntity = entity;
     
     [UIView animateWithDuration:0.3 animations:^{
@@ -201,11 +199,17 @@
                 [item actionBar:self didLoadEntity:entity];
             }
         }
-
+        
         [self.buttonsContainerRight layoutColumns];
         [self.buttonsContainerLeft layoutColumns];
     }];
-    
+}
+
+- (void)configureForNewServerEntity:(id<SZEntity>)entity {
+    entity.views = entity.views + 1;
+    [SZViewUtils viewEntity:entity success:nil failure:nil];
+
+    [self configureForServerEntity:entity];
 }
 
 - (void)hideButtons {
@@ -268,7 +272,12 @@
 }
 
 - (void)setEntity:(id<SocializeEntity>)entity {
+    if ([entity isEqual:_entity]) {
+        return;
+    }
+    
     _entity = entity;
+    
     [self initializeEntity];
 }
 
@@ -279,6 +288,13 @@
 
 - (void)userDidChange:(NSNotification*)notification {
     [self refresh];
+}
+
+- (void)entityDidChange:(NSNotification*)notification {
+    id<SZEntity> entity = [notification object];
+    if ([self.entity isEqual:entity] && [entity isFromServer]) {
+        [self configureForServerEntity:entity];
+    }
 }
 
 - (void)drawRect:(CGRect)rect 

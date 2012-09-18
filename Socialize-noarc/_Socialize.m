@@ -21,7 +21,6 @@
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
 #import <Blockskit/Blockskit.h>
-#import "SocializeNotificationHandler.h"
 #import "StringHelper.h"
 #import "SocializeDeviceTokenSender.h"
 #import "SocializeFacebookAuthHandler.h"
@@ -32,6 +31,8 @@
 #import "SZFacebookUtils.h"
 #import "SocializePrivateDefinitions.h"
 #import "socialize_globals.h"
+#import "SZNotificationHandler.h"
+#import "SZOpenURLHandler.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -76,6 +77,7 @@ NSString *const SocializeAuthenticatedUserDidChangeNotification = @"SocializeAut
 NSString *const SZUserSettingsDidChangeNotification = @"SZUserSettingsDidChangeNotification";
 NSString *const kSZUpdatedUserSettingsKey = @"kSZUpdatedUserSettingsKey";
 NSString *const kSZUpdatedUserKey = @"kSZUpdatedUserKey";
+NSString *const SZEntityDidChangeNotification = @"SZEntityDidChangeNotification";
 
 NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";
 
@@ -353,20 +355,24 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 }
 
 + (BOOL)isSocializeNotification:(NSDictionary*)userInfo {
-    return [SocializeNotificationHandler isSocializeNotification:userInfo];
+    return [SZNotificationHandler isSocializeNotification:userInfo];
 }
 
 + (BOOL)openNotification:(NSDictionary*)userInfo {
-    return [[SocializeNotificationHandler sharedNotificationHandler] openSocializeNotification:userInfo];
+    return [[SZNotificationHandler sharedNotificationHandler] openSocializeNotification:userInfo];
 }
 
 + (BOOL)handleNotification:(NSDictionary*)userInfo {
-    return [[SocializeNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
+    return [[SZNotificationHandler sharedNotificationHandler] handleSocializeNotification:userInfo];
 }
 
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {
+    if ([[SZOpenURLHandler sharedOpenURLHandler] handleOpenURL:url]) {
+        return YES;
+    }
+    
     return [[SocializeFacebookAuthHandler sharedFacebookAuthHandler] handleOpenURL:url];
 }
 
@@ -937,6 +943,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
     [_eventsService trackEventWithBucket:bucket values:values];
+}
+
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
+    [_eventsService trackEventWithBucket:bucket values:values success:success failure:failure];
 }
 
 - (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {

@@ -20,6 +20,7 @@
 @synthesize initialized = initialized_;
 
 - (void)dealloc {
+    self.webView.delegate = nil;
     self.webView = nil;
     self.url = nil;
     

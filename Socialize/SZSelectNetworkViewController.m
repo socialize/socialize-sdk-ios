@@ -10,13 +10,13 @@
 #import "_SZSelectNetworkViewController.h"
 
 @interface SZSelectNetworkViewController ()
-@property (nonatomic, strong) _SZSelectNetworkViewController *selectNetwork;
 @end
 
 @implementation SZSelectNetworkViewController
 @dynamic completionBlock;
 @dynamic cancellationBlock;
 @synthesize selectNetwork = _selectNetwork;
+@dynamic continueText;
 
 - (id)init {
     if (self = [super init]) {
@@ -27,6 +27,10 @@
     return self;
 }
 
+- (void)setTitle:(NSString *)title {
+    [self.selectNetwork setTitle:title];
+}
+     
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     return self.selectNetwork;
 }

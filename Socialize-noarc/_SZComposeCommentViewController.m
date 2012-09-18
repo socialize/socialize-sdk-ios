@@ -18,6 +18,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SZSmartAlertUtils.h"
 #import "socialize_globals.h"
+#import "SZStatusView.h"
 
 @implementation _SZComposeCommentViewController
 @synthesize commentObject = commentObject_;
@@ -136,6 +137,9 @@
     [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
+        
+        [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextCommentPostSucceeded];
+        
     } failure:^(NSError *error) {
         [self stopLoading];
         
@@ -174,7 +178,8 @@
         [self setDontSubscribeToDiscussion:NO];
         [self setSubviewForLowerContainer:self.subscribeContainer];
     } else {
-        if ([commentTextView isFirstResponder]) 
+        [self enableLowerContainer];
+        if ([commentTextView isFirstResponder])
         {
             [self setSubviewForLowerContainer:self.subscribeContainer];
             [commentTextView resignFirstResponder];          
@@ -182,13 +187,15 @@
         else
         {
             [commentTextView becomeFirstResponder];
-        }            
+        }
     }
 }
 
 -(IBAction)unsubscribeButtonPressed:(id)sender {
     [self setDontSubscribeToDiscussion:YES];
     [commentTextView becomeFirstResponder];
+    
+    [self disableLowerContainer];
 }
 
 -(void)authorizationSkipped {

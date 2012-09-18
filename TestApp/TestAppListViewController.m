@@ -42,6 +42,7 @@ NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
+NSString *kHandleDirectEntitySmartAlertRow = @"kHandleDirectEntitySmartAlertRow";
 NSString *kShowActionBarExampleRow = @"kShowActionBarExampleRow";
 NSString *kShowButtonsExampleRow = @"kShowButtonsExampleRow";
 
@@ -233,6 +234,21 @@ static TestAppListViewController *sharedSampleListViewController;
         } failure:nil];
     }]];
 
+    [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectEntitySmartAlertRow text:@"Entity SmartAlert" executionBlock:^{
+        [SZEntityUtils getEntitiesWithFirst:nil last:[NSNumber numberWithInteger:1] success:^(NSArray *entities) {
+            if ([entities count] > 0) {
+                id<SZEntity> entity = [entities objectAtIndex:0];
+                NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               @"developer_direct_entity", @"notification_type",
+                                               @([entity objectID]), @"entity_id",
+                                               nil];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+                
+                [SZSmartAlertUtils openNotification:userInfo];
+            }
+        } failure:nil];
+    }]];
+
     NSMutableArray *actionBarRows = [NSMutableArray array];
     [actionBarRows addObject:[self rowWithIdentifier:kShowActionBarExampleRow text:@"Show Action Bar Example" executionBlock:^{
         ActionBarExampleViewController *actionBarExample = [[ActionBarExampleViewController alloc] initWithEntity:self.entity];
@@ -299,7 +315,6 @@ static TestAppListViewController *sharedSampleListViewController;
     imageView.alpha = 0.25;
     self.tableView.backgroundView = imageView;
     self.tableView.accessibilityLabel = @"tableView";
-    
 //    [self createSections];
 }
 
@@ -310,6 +325,8 @@ static TestAppListViewController *sharedSampleListViewController;
 //        NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowCommentsListRow];
 //        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 //    });
+    
+//    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
 
 //- (NSArray*)sections {
@@ -410,6 +427,14 @@ static TestAppListViewController *sharedSampleListViewController;
     NSDictionary *rowData = [self rowDataForIndexPath:indexPath];
     void (^executionBlock)() = [rowData objectForKey:kRowExecutionBlock];
     executionBlock();
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return toInterfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+    }
 }
 
 @end

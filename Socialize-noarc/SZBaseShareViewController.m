@@ -18,6 +18,7 @@
 #import "socialize_globals.h"
 #import "SZLocationUtils.h"
 #import <JSONKit/JSONKit.h>
+#import "SZEventUtils.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -138,6 +139,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Continue" handler:^(id sender) {
         [weakSelf continueButtonPressed:nil];
     }];
+    
+    if ([self.continueText length]) {
+        [self.navigationItem.rightBarButtonItem changeTitleOnCustomButtonToText:self.continueText];
+    }
                                               
     if (self.headerView != nil) {
         self.shareDialogView.headerView = self.headerView;
@@ -166,15 +171,19 @@ static NSString *kAutopostSection = @"kAutopostSection";
     });
 }
 
+- (void)deselectSelectedRow {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if (indexPath != nil) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [self syncInterfaceWithThirdPartyState];
 
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    if (indexPath != nil) {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-    }
+    [self deselectSelectedRow];
 }
 
 #define COPIED_BLOCK(identifier) [[identifier copy] autorelease]
@@ -386,7 +395,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if ([networkNames count]) {
         NSString *jsonNetworks = [networkNames JSONString];
         NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:@"share", @"action", jsonNetworks, @"networks", nil];
-        [[Socialize sharedSocialize] trackEventWithBucket:SHARE_DIALOG_BUCKET values:values];
+        [SZEventUtils trackEventWithBucket:SHARE_DIALOG_BUCKET values:values success:nil failure:nil];
     }
 }
 
@@ -409,9 +418,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
         
         [SZShareUtils shareViaSMSWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
+            [self deselectSelectedRow];
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
+            [self deselectSelectedRow];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];
@@ -441,9 +451,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
 
         [SZShareUtils shareViaEmailWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
+            [self deselectSelectedRow];
+
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [weakSelf.tableView deselectRowAtIndexPath:weakSelf.tableView.indexPathForSelectedRow animated:YES];
+            [self deselectSelectedRow];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];

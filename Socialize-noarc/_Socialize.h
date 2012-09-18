@@ -906,6 +906,7 @@ otherwise you will get a failure.
  Track an event
  */
 - (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values;
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure;
 
 - (void)updateUserProfile:(id<SocializeFullUser>)user
              profileImage:(UIImage*)image

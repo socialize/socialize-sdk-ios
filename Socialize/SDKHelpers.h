@@ -12,6 +12,11 @@
 
 @class SZShareOptions;
 
+typedef enum {
+    SZLinkContextComment,
+    SZLinkContextLike,
+} SZLinkContext;
+
 void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)());
 SZSocialNetwork SZLinkedSocialNetworks();
 SZSocialNetwork SZAvailableSocialNetworks();
@@ -28,7 +33,7 @@ BOOL SZShouldShowNetworkSelection();
 BOOL SZErrorsAreDisabled();
 void SZEmitUIError(id object, NSError *error);
 void SZAuthWrapper(void (^success)(), void (^failure)(NSError *error));
-void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)());
+void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkContext context, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)());
 BOOL SZShouldShareLocation();
 void SZFBAuthWrapper( void (^success)(), void (^failure)(NSError *error));
 void SZTWAuthWrapper(UIViewController *viewController, void (^success)(), void (^failure)(NSError *error));

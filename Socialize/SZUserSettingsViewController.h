@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SZNavigationController.h"
 #import "SocializeObjects.h"
+#import "SZViewControllerWrapper.h"
 
-@interface SZUserSettingsViewController : SZNavigationController
+@interface SZUserSettingsViewController : SZViewControllerWrapper
 - (id)init;
 
 @property (nonatomic, assign) BOOL hideLogoutButtons;

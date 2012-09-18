@@ -4,6 +4,48 @@
 Changelog
 =============================================
 
+v2.4
+----
+[feature] Comment composer supports iPad formsheet modal [ ]
+
+[bug] SDK should stop trying to autopost when autopost enabled and credentials expire [ ]
+
+[feature] Share completion should show success message [ ]
+
+[feature] Tapping outside of iPad modal should dismiss modal [ publicize ]
+
+[bug] Email/SMS rows remain illuminated after returning to share dialog on iPad [ sharing ]
+
+[feature] Post Comment reverse geocoding should retry on failure [ ]
+
+[feature] Enable landscape in profile, settings, link [ ]
+
+[bug] comments list not refreshed after adding new comment [ ]
+
+[bug] comments count not refreshed after adding new comment [ actionbar ]
+
+[feature] action buttons receive event if entity modified [ ]
+
+[feature] 'Continue' should have context-sensitive text (comment and share, like and share) [ ]
+
+[feature] Propagation screen for like, comment have more descriptive title than 'Share' [ ui ]
+
+[bug] Event logging now autoauths [ ]
+
+[feature] UI behavior is more configurable during notification handling [ ]
+
+[bug] Activity Details should always support landscape [ ]
+
+[bug] Doc logic for distinguishing foreground/background notification is reversed [ ]
+
+[bug] Socialize should never automatically present a new navigation controller during the entity load process [ ]
+
+[bug] New push registrations on live apps are being incorrectly flagged as debug [ ]
+
+[bug] Add note to docs on forcing production or development push [ ]
+
+[feature] Socialize should automatically handle SmartDownloads [ ]
+
 v2.3.5
 ------
 [bug] Fix nonarc / iOS 4 crash when building with latest Xcode [ ]

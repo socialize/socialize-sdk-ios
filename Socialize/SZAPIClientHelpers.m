@@ -10,6 +10,7 @@
 #import "socialize_globals.h"
 #import "SocializePrivateDefinitions.h"
 #import "SocializeObjectFactory.h"
+#import "NSData+Base64.h"
 
 void SZHandleUserChange(id<SZFullUser> fullUser) {
     NSDictionary *fullUserDictionary = [fullUser serverDictionary];
@@ -46,6 +47,17 @@ NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting) {
     return nil;
 }
 
+void SZPostActivityEntityDidChangeNotifications(NSArray *activities) {
+    NSMutableSet *entities = [NSMutableSet set];
+    for (id<SZActivity> activity in activities) {
+        [entities addObject:activity.entity];
+    }
+    
+    for (id<SZEntity> entity in entities) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SZEntityDidChangeNotification object:entity];
+    }
+}
+
 NSString *SZGetProvisioningProfile() {
     NSString * profilePath = [[NSBundle mainBundle] pathForResource:@"embedded.mobileprovision" ofType:nil];
     if (profilePath == nil) {
@@ -67,24 +79,26 @@ NSString *SZGetProvisioningProfile() {
     return profileAsString;
 }
 
-BOOL SZIsProduction() {
-    NSString *profileAsString = SZGetProvisioningProfile();
-    if ([profileAsString length] == 0) {
-        return NO;
-    }
-    
-    profileAsString = [[profileAsString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
-    NSRange range = [profileAsString rangeOfString:@"<key>get-task-allow</key><true/>" options:NSCaseInsensitiveSearch];
-    BOOL isProduction = range.location == NSNotFound;
-    
-    return isProduction;
+NSString *SZAPINSStringForCurrentProvisioningState() {
+#if SZ_USE_DEBUG_PUSH
+    return @"APNS_DEVELOPMENT";
+#else
+    return @"APNS_PRODUCTION";
+#endif
 }
 
+NSString *SZBase64EncodedUDID() {
+    NSString *udid = [[UIDevice currentDevice] uniqueIdentifier];
+    NSData *udidData = [udid dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *encoded = [udidData base64Encoding];
+    return encoded;
+}
 
-NSString *SZAPINSStringForCurrentProvisioningState() {
-    if (SZIsProduction()) {
-        return @"APNS_PRODUCTION";
-    } else {
-        return @"APNS_DEVELOPMENT";
+BOOL SZEventTrackingDisabled() {
+    const char *disabled = getenv("SZEventTrackingDisabled");
+    if (disabled != NULL && strncmp("1", disabled, 1) == 0) {
+        return YES;
     }
+    
+    return NO;
 }

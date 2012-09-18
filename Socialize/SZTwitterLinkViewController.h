@@ -7,8 +7,9 @@
 //
 
 #import "SZNavigationController.h"
+#import "SZViewControllerWrapper.h"
 
-@interface SZTwitterLinkViewController : SZNavigationController
+@interface SZTwitterLinkViewController : SZViewControllerWrapper
 - (id)initWithConsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, copy) void (^cancellationBlock)();

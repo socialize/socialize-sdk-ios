@@ -8,8 +8,9 @@
 
 #import "SZNavigationController.h"
 #import "SocializeObjects.h"
+#import "SZViewControllerWrapper.h"
 
-@interface SZLinkDialogViewController : SZNavigationController
+@interface SZLinkDialogViewController : SZViewControllerWrapper
 @property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetwork);
 @property (nonatomic, copy) void (^cancellationBlock)();
 

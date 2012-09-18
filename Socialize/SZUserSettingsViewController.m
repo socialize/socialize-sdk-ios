@@ -47,11 +47,6 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (void)setCompletionBlock:(void (^)(BOOL, id<SocializeFullUser>))completionBlock {
     self.settings.userSettingsCompletionBlock = completionBlock;
     _completionBlock = [completionBlock copy];

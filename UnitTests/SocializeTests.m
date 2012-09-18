@@ -237,7 +237,7 @@
     [activity verify];
     
 
-    id<SocializeEntity> viewedEntity = [socialize createObjectForProtocol:@protocol(SocializeEntity)];
+    id<SocializeEntity> viewedEntity = [SZEntity entityWithKey:@"blah"];
     [[view expect] createViewForEntity:viewedEntity longitude:nil latitude:nil];
     [socialize viewEntity:viewedEntity longitude:nil latitude:nil];
     [view verify];

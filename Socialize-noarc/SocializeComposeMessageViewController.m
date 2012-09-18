@@ -22,20 +22,22 @@
 #import "SZHorizontalContainerView.h"
 #import "socialize_globals.h"
 #import "SZLocationUtils.h"
+#import "SDKHelpers.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 
 #define PORTRAIT_KEYBOARD_HEIGHT 216
 #define LANDSCAPE_KEYBOARD_HEIGHT 162
 
-@interface SocializeComposeMessageViewController ()
+static NSTimeInterval ReverseGeocodeRetryInterval = 10;
 
--(void)setShareLocation:(BOOL)enableLocation;
--(void)configureLocationText; 
--(void)configureDoNotShareLocationButton;
--(void)updateViewWithNewLocation: (CLLocation*)userLocation;
+@interface SocializeComposeMessageViewController () {
+    BOOL _succeededReverseGeocode;
+}
 
-@end 
+@property (nonatomic, retain) NSTimer *reverseGeocodeTimer;
+
+@end
 
 @implementation SocializeComposeMessageViewController
 
@@ -54,6 +56,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 @synthesize messageActionButtons = messageActionButtons_;
 @synthesize currentLocationDescription = currentLocationDescription_;
 @synthesize locationManager = locationManager_;
+@synthesize bottomContainerDisabledView;
 
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
@@ -89,7 +92,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [messageActionButtons_ release];
     [currentLocationDescription_ release];
     [locationManager_ release];
+    [_currentLocation release];
+    [_reverseGeocodeTimer release];
     
+    [bottomContainerDisabledView release];
     [super dealloc];
 }
 
@@ -122,28 +128,63 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [self updateSendButton];
 }
 
+- (void)attemptReverseGeocode {
+    __block id geocoder = [[SocializeGeocoderAdapter alloc]init];
+    
+    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray*placemarks, NSError *error)
+     {
+         if(error)
+         {
+             self.currentLocationDescription = NO_CITY_MSG;
+         }
+         else
+         {
+             self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
+             _succeededReverseGeocode = YES;
+         }
+         [self configureLocationText];
+         [geocoder autorelease];
+     }
+     ];
+}
+
+- (void)stopReverseGeocodeTimer {
+    [self.reverseGeocodeTimer invalidate];
+    self.reverseGeocodeTimer = nil;
+}
+
+- (void)startReverseGeocodeTimer {
+    if (_succeededReverseGeocode) {
+        return;
+    }
+    
+    if (self.reverseGeocodeTimer != nil) {
+        return;
+    }
+    
+    __block __typeof__(self) weakSelf = self;
+    self.reverseGeocodeTimer = [NSTimer scheduledTimerWithTimeInterval:ReverseGeocodeRetryInterval block:^(NSTimeInterval time) {
+        if (_succeededReverseGeocode) {
+            [weakSelf stopReverseGeocodeTimer];
+        } else {
+            [weakSelf attemptReverseGeocode];
+        }
+    } repeats:YES];
+}
+
+- (void)startReverseGeocode {
+    [self attemptReverseGeocode];
+    [self startReverseGeocodeTimer];
+}
+
 -(void)updateViewWithNewLocation: (CLLocation*)userLocation
-{   
+{
     if (userLocation) {
+        self.currentLocation = userLocation;
         
         [mapOfUserLocation setFitLocation: userLocation.coordinate withSpan: [CommentMapView coordinateSpan]];
         
-        __block id geocoder = [[SocializeGeocoderAdapter alloc]init];
-        
-        [geocoder reverseGeocodeLocation:userLocation completionHandler:^(NSArray*placemarks, NSError *error)
-         {
-             if(error)
-             {
-                 self.currentLocationDescription = NO_CITY_MSG;
-             }
-             else
-             {
-                 self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
-             }
-             [self configureLocationText];
-             [geocoder autorelease];
-         }
-         ];
+        [self startReverseGeocode];
     }
 }
 
@@ -243,6 +284,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 {  
     [self setShareLocation:NO];
     [commentTextView becomeFirstResponder];
+    
+    [self disableLowerContainer];
 }
 
 #pragma mark - SocializeServiceDelegate
@@ -276,6 +319,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
     self.navigationItem.rightBarButtonItem = self.sendButton;
+    
+    if (SZShouldShowNetworkSelection()) {
+        [self.sendButton changeTitleOnCustomButtonToText:@"Continue"];
+    }
+    
     [self updateSendButton];
     
     [self.commentTextView becomeFirstResponder];    
@@ -303,6 +351,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
         self.mapOfUserLocation.showsUserLocation = YES;
         self.activateLocationButton.hidden = NO;
         self.locationText.hidden = NO;
+        [self setSubviewForLowerContainer:self.mapContainer];
+        
+        if (![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue]) {
+            [self disableLowerContainer];
+        }
     }
     
 
@@ -310,6 +363,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 - (void)viewDidUnload
 {
+    [self setBottomContainerDisabledView:nil];
     [super viewDidUnload];
         
     self.commentTextView = nil;
@@ -332,15 +386,26 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     return self.upperContainer;
 }
 
+- (void)disableLowerContainer {
+    self.bottomContainerDisabledView.hidden = NO;
+    [self.lowerContainer addSubview:self.bottomContainerDisabledView];
+}
+
+- (void)enableLowerContainer {
+    self.bottomContainerDisabledView.hidden = YES;
+}
+
 - (void)keyboardListener:(SocializeKeyboardListener *)keyboardListener keyboardWillShowWithWithBeginFrame:(CGRect)beginFrame endFrame:(CGRect)endFrame animationCurve:(UIViewAnimationCurve)animationCurve animationDuration:(NSTimeInterval)animationDuration {
     CGRect newKeyboardFrame = [self.keyboardListener convertKeyboardRect:endFrame toView:self.view];
     
-    // The lower container is just the same size as the keyboard
-    self.lowerContainer.frame = newKeyboardFrame;
-    // The upper container covers the rest of our view
-    CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
-    CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
-    self.upperContainer.frame = upperFrame;
+    if (![self isFormsheetModal]) {
+        // The lower container is just the same size as the keyboard
+        self.lowerContainer.frame = newKeyboardFrame;
+        // The upper container covers the rest of our view
+        CGFloat upperHeight = self.view.frame.size.height - newKeyboardFrame.size.height;
+        CGRect upperFrame = CGRectMake(0, 0, self.view.frame.size.width, upperHeight);
+        self.upperContainer.frame = upperFrame;
+    }
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

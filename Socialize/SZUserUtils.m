@@ -58,6 +58,7 @@
             BLOCK_CALL_1(completion, user);
         }];
     };
+    
     [viewController presentModalViewController:profile animated:YES];
 }
 

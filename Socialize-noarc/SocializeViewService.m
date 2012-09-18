@@ -8,6 +8,7 @@
 
 #import "SocializeViewService.h"
 #import "SocializeEntity.h"
+#import "socialize_globals.h"
 
 #define VIEW_METHOD @"view/"
 #define ENTRY_KEY @"key"
@@ -27,7 +28,10 @@
 }
 
 - (void)callViewPostWithParams:(id)params success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure {
-    [self callEndpointWithPath:VIEW_METHOD method:@"POST" params:params success:success failure:failure];
+    [self callEndpointWithPath:VIEW_METHOD method:@"POST" params:params success:^(NSArray *views) {
+        SZPostActivityEntityDidChangeNotifications(views);
+        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:views];
+    }failure:failure];
 }
 
 - (void)createViews:(NSArray*)views success:(void(^)(NSArray *views))success failure:(void(^)(NSError *error))failure {

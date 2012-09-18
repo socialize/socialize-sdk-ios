@@ -26,6 +26,11 @@
 #import "SZLocationUtils.h"
 #import "socialize_globals.h"
 
+#define SHARE_COMMENT_COMPLETE_TEXT @"Post"
+#define SHARE_COMMENT_TITLE @"Share Comment"
+#define SHARE_LIKE_COMPLETE_TEXT @"Like"
+#define SHARE_LIKE_TITLE @"Share Like"
+
 SZSocialNetwork SZLinkedSocialNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
     
@@ -58,7 +63,7 @@ SZSocialNetwork SZAutoPostNetworks() {
     SZSocialNetwork networks = SZSocialNetworkNone;
     
     for (Class<SocializeThirdParty> thirdParty in [SocializeThirdParty allThirdParties]) {
-        if ([thirdParty shouldAutopost]) {
+        if ([thirdParty shouldAutopost] && [thirdParty isLinkedToSocialize]) {
             networks |= [thirdParty socialNetworkFlag];
         }
     }
@@ -78,12 +83,21 @@ BOOL SZShouldShowLinkDialog() {
 void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)()) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required" message:@"Link to Facebook?"];
     [alertView addButtonWithTitle:@"Cancel" handler:cancelBlock];
-    [alertView addButtonWithTitle:@"Ok" handler:okBlock];
+    [alertView addButtonWithTitle:@"Ok" handler:^{
+        
+        // This is a hack for the cases that require a fallback to in-app modal fb login dialog. It does not
+        // like being displayed immediately after dismissal of a UIAlertView.
+        double delayInSeconds = 0.3;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            BLOCK_CALL(okBlock);
+        });
+    }];
 
     [alertView show];
 }
 
-void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)()) {
+void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkContext context, void (^completion)(SZSocialNetwork preferredNetworks), void (^cancellation)()) {
     
     // No Social Networks available
     if (SZAvailableSocialNetworks() == SZSocialNetworkNone) {
@@ -110,6 +124,17 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                 selectNetwork.cancellationBlock = ^{
                     [link popToRootViewControllerAnimated:YES];
                 };
+                
+                switch (context) {
+                    case SZLinkContextComment:
+                        selectNetwork.title = SHARE_COMMENT_TITLE;
+                        selectNetwork.continueText = SHARE_COMMENT_COMPLETE_TEXT;
+                        break;
+                    case SZLinkContextLike:
+                        selectNetwork.title = SHARE_LIKE_TITLE;
+                        selectNetwork.continueText = SHARE_LIKE_COMPLETE_TEXT;
+                        break;
+                }
                 
                 [weakLink pushViewController:selectNetwork animated:YES];
             } else {
@@ -149,6 +174,17 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, void (^comp
                     BLOCK_CALL(cancellation);
                 }];
             };
+            
+            switch (context) {
+                case SZLinkContextComment:
+                    selectNetwork.title = SHARE_COMMENT_TITLE;
+                    selectNetwork.continueText = SHARE_COMMENT_COMPLETE_TEXT;
+                    break;
+                case SZLinkContextLike:
+                    selectNetwork.title = SHARE_LIKE_TITLE;
+                    selectNetwork.continueText = SHARE_LIKE_COMPLETE_TEXT;
+                    break;
+            }
             
             [viewController presentModalViewController:selectNetwork animated:YES];
         }

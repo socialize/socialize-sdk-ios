@@ -75,4 +75,9 @@
     [self layoutColumns];
 }
 
+- (void)setRightJustified:(BOOL)rightJustified {
+    _rightJustified = rightJustified;
+    [self layoutColumns];
+}
+
 @end

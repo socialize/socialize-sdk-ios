@@ -36,17 +36,12 @@
     [super tearDownClass];
 }
 
--(void)testAuthParams{   
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [UIDevice currentDevice].uniqueGlobalDeviceIdentifier], @"jsonData",
-                                   nil];
-    
-    [[_mockService expect] executeRequest:
-     [SocializeRequest secureRequestWithHttpMethod:@"POST"
-                                      resourcePath:@"authenticate/"
-                                expectedJSONFormat:SocializeDictionary
-                                            params:params]];
-    
+-(void)testAuthParams{
+    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+        GHAssertEqualStrings(request.resourcePath, @"authenticate/", @"Bad path");
+        GHAssertNotNil(request.params, @"Missing params");
+    }] executeRequest:OCMOCK_ANY];
+
     [_mockService authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
     [_mockService verify];
 }

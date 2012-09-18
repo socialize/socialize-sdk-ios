@@ -7,27 +7,31 @@
 //
 
 #import "SZSessionTrackerTests.h"
+#import "SZEventUtils.h"
 
 @implementation SZSessionTrackerTests
 
 - (void)setUp {
     [super setUp];
     [self startMockingSharedSocialize];
+    
+    [SZEventUtils startMockingClass];
 }
 
 - (void)tearDown {
     [super tearDown];
     
     [self stopMockingSharedSocialize];
+    [SZEventUtils stopMockingClassAndVerify];
 }
 
 - (void)testActiveNotificationLogsEvent {
-    [[self.mockSharedSocialize expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY];
+    [[SZEventUtils expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)testResignActiveNotificationLogsEvent {
-    [[self.mockSharedSocialize expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY];
+    [[SZEventUtils expect] trackEventWithBucket:OCMOCK_ANY values:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
     [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationWillResignActiveNotification object:nil];
 }
 

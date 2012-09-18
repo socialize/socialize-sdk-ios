@@ -65,6 +65,9 @@
             BLOCK_CALL(cancellation);
         }];
      };
+    
+    shareDialog.display = viewController;
+
     [viewController presentModalViewController:shareDialog animated:YES];
 }
 
@@ -115,6 +118,8 @@
     }
     
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
+    composer.modalPresentationStyle = UIModalPresentationFormSheet;
+    
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
         switch (result) {
             case MFMailComposeResultSent: {
@@ -158,6 +163,7 @@
         [viewController hideSocializeLoadingView];
         [composer setSubject:emailData.subject];
         [composer setMessageBody:emailData.messageBody isHTML:emailData.isHTML];
+        
         [viewController presentModalViewController:composer animated:YES];
     } failure:^(NSError *error) {
         [viewController hideSocializeLoadingView];

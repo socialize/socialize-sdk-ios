@@ -10,6 +10,7 @@
 
 @interface KIFTestStep (TestAppAdditions)
 
++ (KIFTestStep*)stepToOpenSocializeDirectURLNotificationWithURL:(NSString*)url;
 + (NSArray*)stepsToReturnToList;
 + (NSString *)getRandomURL;
 + (NSArray*)stepsToShowTabbedActionBarForURL:(NSString*)url;

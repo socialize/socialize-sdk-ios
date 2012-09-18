@@ -32,6 +32,9 @@
 #import "SocializePrivateDefinitions.h"
 #import "SDKHelpers.h"
 #import "SZSmartAlertUtils.h"
+#import "SZCommentUtils.h"
+#import "SZComposeCommentViewController.h"
+#import "socialize_globals.h"
 
 @interface _SZCommentsListViewController()
 @end
@@ -292,12 +295,26 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    UINavigationController * pcNavController = [_SZComposeCommentViewController postCommentViewControllerInNavigationControllerWithEntityURL:_entity.key delegate:self];
-    [self presentModalViewController:pcNavController animated:YES];
+    SZComposeCommentViewController *composer = [[[SZComposeCommentViewController alloc] initWithEntity:_entity] autorelease];
+    composer.completionBlock = ^(id<SZComment> comment) {
+        [self postCommentViewController:composer._composeCommentViewController didCreateComment:comment];
+    };
+    
+    composer.cancellationBlock = ^{
+        [self dismissModalViewControllerAnimated:YES];
+    };
+    
+    composer.display = self;
+    
+    [self presentModalViewController:composer animated:YES];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)cancel {
+    [self notifyDelegateOfCompletion];
 }
 
 - (void)postCommentViewController:(_SZComposeCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {

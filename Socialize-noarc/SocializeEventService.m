@@ -7,6 +7,8 @@
 //
 
 #import "SocializeEventService.h"
+#import <Socialize/Socialize.h>
+#import "socialize_globals.h"
 
 #define EVENT_METHOD @"private/sdk_event/"
 
@@ -17,10 +19,10 @@
 //    return  @protocol(SocializeSubscription);
 //}
 //
-- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
 
-    const char *disabled = getenv("SZEventTrackingDisabled");
-    if (disabled != NULL && strncmp("1", disabled, 1) == 0) {
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id result))success failure:(void(^)(NSError *error))failure {
+
+    if (SZEventTrackingDisabled()) {
         return;
     }
     
@@ -31,12 +33,19 @@
                             bucket, @"bucket",
                             values, @"values",
                             nil];
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:EVENT_METHOD
-                          expectedJSONFormat:SocializeAny
-                                      params:params]
-     ];
+    
+    SocializeRequest *request =      [SocializeRequest requestWithHttpMethod:@"POST"
+                                                                resourcePath:EVENT_METHOD
+                                                          expectedJSONFormat:SocializeAny
+                                                                      params:params];
+    request.successBlock = success;
+    request.failureBlock = failure;
+
+    [self executeRequest:request];
+}
+
+- (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values {
+    [self trackEventWithBucket:bucket values:values success:nil failure:nil];
 }
 
 @end

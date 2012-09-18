@@ -52,7 +52,8 @@
             tokenObject = [[OAToken alloc] initWithKey:token secret:tokenSecret];
         }
         
-        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@://%@%@", scheme, host, path]];
+        NSString *trimmedPath = [path stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@://%@/%@", scheme, host, trimmedPath]];
         self.request = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:tokenObject realm:@"" signatureProvider:nil];
         
         [self.request setHTTPMethod:method];
@@ -60,7 +61,13 @@
 
         NSMutableArray *oaParams = [NSMutableArray arrayWithCapacity:[parameters count]];
         [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            [oaParams addObject:[OARequestParameter requestParameterWithName:key value:obj]];
+            if ([obj conformsToProtocol:@protocol(NSFastEnumeration)]) {
+                for (id subobject in obj) {
+                    [oaParams addObject:[OARequestParameter requestParameterWithName:key value:[subobject description]]];
+                }
+            } else {
+                [oaParams addObject:[OARequestParameter requestParameterWithName:key value:[obj description]]];
+            }
         }];
         [self.request setOAParameters:oaParams];
         

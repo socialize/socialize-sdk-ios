@@ -10,6 +10,7 @@
 #import "NSString+UUID.h"
 #import "socialize_globals.h"
 #import "_Socialize.h"
+#import "SZEventUtils.h"
 
 #define SESSION_BUCKET @"SESSION"
 #define SESSION_BEGIN_ACTION @"begin"
@@ -60,7 +61,8 @@ static SZSessionTracker *sharedSessionTracker;
                             self.currentSessionIdentifier, @"session_id",
                             action, @"action",
                             nil];
-    [[Socialize sharedSocialize] trackEventWithBucket:SESSION_BUCKET values:values];
+    
+    [SZEventUtils trackEventWithBucket:SESSION_BUCKET values:values success:nil failure:nil];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification*)notification {

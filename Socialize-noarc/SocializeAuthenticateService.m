@@ -15,6 +15,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "SocializeFullUser.h"
 #import "socialize_globals.h"
+#import "NSData+Base64.h"
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
@@ -33,7 +34,7 @@
 #define ASSOCIATE_METHOD @"third_party_authenticate/"
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier]];
+    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\", \"d\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier], SZBase64EncodedUDID()];
     NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        payloadJson, @"jsonData",
                                        nil];
@@ -110,7 +111,8 @@
     NSString *authType = [NSString stringWithFormat :@"%d", type];
 
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-                                   [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid", 
+                                   [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
+                                   SZBase64EncodedUDID(), @"d",
                                    authType, @"auth_type",
                                    thirdPartyAuthToken, @"auth_token",
                                    thirdPartyAuthTokenSecret, @"auth_token_secret",

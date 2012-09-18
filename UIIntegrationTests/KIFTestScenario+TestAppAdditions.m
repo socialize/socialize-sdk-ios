@@ -372,7 +372,7 @@
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
 
     [steps addObject:[KIFTestStep stepToEnterText:@"Anonymous Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Skip"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
 
@@ -389,7 +389,7 @@
     [steps addObject:[KIFTestStep stepToScrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView" atIndexPath:indexPath]];
     
     [steps addObject:[KIFTestStep stepToEnterText:@"Twitter Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"twitter"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Share"]];
@@ -397,7 +397,7 @@
     [steps addObject:[KIFTestStep stepToVerifyViewWithAccessibilityLabel:@"Twitter Switch" passesTest:^(UISwitch *sw) {
         return sw.isOn;
     }]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Post"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
 
     [scenario addStepsFromArray:steps];
@@ -415,7 +415,7 @@
     
     // Type in a test message
     [steps addObject:[KIFTestStep stepToEnterText:@"Facebook Comment" intoViewWithAccessibilityLabel:@"Comment Entry"]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Send"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
     
     // Mock out the facebook flow
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
@@ -438,7 +438,7 @@
     }]];
     
     // Finish posting the comment
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Post"]];
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
     
     [scenario addStepsFromArray:steps];
@@ -473,7 +473,7 @@
     
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"twitter"]];
     [steps addObjectsFromArray:[KIFTestStep stepsToAuthWithTestTwitterInfo]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Continue"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Like"]];
 
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"tableView"]];;
     
@@ -488,19 +488,12 @@
     
     [steps addObjectsFromArray:[KIFTestStep stepsToReturnToList]];
     
-    [steps addObject:[KIFTestStep stepWithDescription:@"Open multiple notifications" executionBlock:^(KIFTestStep *step, NSError **error) {
-        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       @"http://www.getsocialize.com/", @"url",
-                                       @"developer_direct_url", @"notification_type",
-                                       nil];
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];     
-        
-        [Socialize handleNotification:userInfo];
-        [Socialize handleNotification:userInfo];
-        
-        return KIFTestStepResultSuccess;
-    }]];
+    [steps addObject:[KIFTestStep stepToOpenSocializeDirectURLNotificationWithURL:@"http://www.getsocialize.com"]];
     
+    [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Done"]];
+
+    [steps addObject:[KIFTestStep stepToOpenSocializeDirectURLNotificationWithURL:@"http://www.getsocialize.com"]];
+
     [steps addObject:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Done"]];
     [steps addObject:[KIFTestStep stepToWaitForTimeInterval:1 description:@"Delay"]];
     

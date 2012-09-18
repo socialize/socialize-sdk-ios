@@ -1,7 +1,7 @@
 .PHONY: tags framework bundle integration-tests ui-integration-tests clean test package release
 
 test:
-	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
 
 default: build buildsample test package
 

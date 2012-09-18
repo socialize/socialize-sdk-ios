@@ -12,5 +12,8 @@
 id SZUnarchiveUser(Protocol* protocol);
 void SZHandleUserChange(id<SZFullUser> fullUser);
 NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
-BOOL SZIsProduction();
+BOOL SZUseProductionPush();
 NSString *SZAPINSStringForCurrentProvisioningState();
+void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
+NSString *SZBase64EncodedUDID();
+BOOL SZEventTrackingDisabled();
