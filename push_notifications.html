@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.3.5 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.3.5',
+        VERSION:     '2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.3.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4 documentation" href="index.html" />
     <link rel="next" title="Entities" href="entities.html" />
     <link rel="prev" title="Facebook" href="facebook.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -141,7 +141,7 @@ provisioning profile for your changes to take effect.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Only one p12 can be configured at a time for any given Socialize app. If you need to test
-both production and development push tokens, it is recommended that you create separate
+both production and development (sandbox) push tokens, it is recommended that you create separate
 Socialize apps (one for Development, and one for Production).</p>
 </div>
 </div>
@@ -182,7 +182,7 @@ Socialize apps (one for Development, and one for Production).</p>
 <li>Add the lines below to allow Socialize to handle the notification.</li>
 </ul>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">handleNotification:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
-</span><span class="hll">    <span class="k">if</span> <span class="p">([[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="n">applicationState</span><span class="p">]</span> <span class="o">==</span> <span class="n">UIApplicationStateActive</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">    <span class="k">if</span> <span class="p">([[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="n">applicationState</span><span class="p">]</span> <span class="o">!=</span> <span class="n">UIApplicationStateActive</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">openNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
 </span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification (background).&quot;</span><span class="p">);</span>
 </span><span class="hll">            
@@ -264,8 +264,15 @@ loader called <strong>SampleEntityLoader</strong>. This class is not intended fo
 
 <span class="hll">    <span class="c1">// Specify a Socialize entity loader block</span>
 </span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">setEntityLoaderBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
-</span><span class="hll">        <span class="p">[</span><span class="n">navigationController</span> <span class="nl">pushViewController:</span><span class="n">entityLoader</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        
+</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">navigationController</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRootViewController:</span><span class="n">entityLoader</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="nl">presentModalViewController:</span><span class="n">navigationController</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="nl">pushViewController:</span><span class="n">entityLoader</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        <span class="p">}</span>
 </span><span class="hll">    <span class="p">}];</span>
 </span>    
     <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
@@ -340,6 +347,13 @@ functionality, but if you wish, you can handle the subscription on your own.</p>
 <p class="last">Socialize v2.2.1 or later is required to receive subscriber-only smart alerts</p>
 </div>
 </div>
+<div class="section" id="overriding-the-notification-display-process">
+<h2>Overriding the Notification Display Process<a class="headerlink" href="#overriding-the-notification-display-process" title="Permalink to this headline">¶</a></h2>
+<p>Because of the asynchronous nature of notifications, Socialize displays the
+associated view controllers is the main window of the application by default.
+If you&#8217;d like to override this behavior, you can do so by specifying a global
+display object. See <a class="reference internal" href="ui_advanced.html#global-display"><em>Overriding Global Display Behavior</em></a> for more info.</p>
+</div>
 <div class="section" id="programmatically-dismissing-notification-popups">
 <h2>Programmatically Dismissing Notification Popups<a class="headerlink" href="#programmatically-dismissing-notification-popups" title="Permalink to this headline">¶</a></h2>
 <p>You might find that you&#8217;d like to dismiss all Socialize notifications outside of the normal
@@ -354,6 +368,16 @@ programatically by posting a SocializeShouldDismissAllNotificationControllersNot
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="forcing-use-of-development-sandbox-or-production-certificates">
+<h2>Forcing Use of Development (Sandbox) or Production Certificates<a class="headerlink" href="#forcing-use-of-development-sandbox-or-production-certificates" title="Permalink to this headline">¶</a></h2>
+<p>The Socialize servers need to know whether the app is using a production or
+development mobileprovision and associated push credentials. By default,
+Socialize will assume a production environment unless a DEBUG preprocessor is
+both present and nonzero. You can override this behavior by defining
+SZ_USE_DEBUG_PUSH=0 or SZ_USE_DEBUG_PUSH=1 in your projects &#8216;Preprocessor
+Macros&#8217; section. Use of SZ_USE_DEBUG_PUSH should not be necessary under normal
+conditions.</p>
 </div>
 <div class="section" id="troubleshooting-notifications">
 <h2>Troubleshooting Notifications<a class="headerlink" href="#troubleshooting-notifications" title="Permalink to this headline">¶</a></h2>
@@ -425,7 +449,9 @@ web interface.</p>
 <li class="toctree-l2"><a class="reference internal" href="#testing-smartalerts">Testing SmartAlerts™</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sending-targeted-smartalerts">Sending Targeted SmartAlerts™</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subscribing-to-entity-subscribers-without-comments">Subscribing to Entity Subscribers (Without Comments)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overriding-the-notification-display-process">Overriding the Notification Display Process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#programmatically-dismissing-notification-popups">Programmatically Dismissing Notification Popups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forcing-use-of-development-sandbox-or-production-certificates">Forcing Use of Development (Sandbox) or Production Certificates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-notifications">Troubleshooting Notifications</a></li>
 </ul>
 </li>
@@ -467,7 +493,7 @@ web interface.</p>
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

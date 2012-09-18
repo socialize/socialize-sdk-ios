@@ -104,7 +104,30 @@ at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Clic
   :start-after: begin-snippet
   :end-before: end-snippet
 
-Step 5: Include Socialize in your App!
+Step 5: Add Socialize URL Scheme Entry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to allow Socialize to direct users back into your app, you should add
+a custom URL scheme to your apps settings. The URL Scheme is based on your
+Socialize app id, which can be found on the right side of your apps dashboard
+at http://getsocialize.com/apps/ under the heading "*oAuth Keys, URL, & ID*". 
+
+.. image:: images/obtain_app_id.png	
+
+Once you have the appid, you should add it to your apps 'URL Types' section. The
+scheme is **szYOURAPPID**. That is, a lower case sz followed immediately by your numeric
+Socialize app id from the dashboard, defined as below:
+
+.. image:: images/add_smartdownloads_scheme.png	
+
+You currently must also take the final step of enabling SmartDownloads in the web dashboard.
+Scroll to the bottom of your app's dashboard and enter the following url
+into the 'iOS Schema URL' field: **szYOURAPPID:///smart_url/?entity_key={{entity_key}}&entity_id={{entity_id}}**
+
+.. image:: images/enable_smartdownloads_dashboard.png	
+
+
+Step 6: Include Socialize in your App!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have your environment all setup, it’s time to include Socialize.

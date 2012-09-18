@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upgrading Socialize &mdash; Socialize iOS SDK 2.3.5 documentation</title>
+    <title>Upgrading Socialize &mdash; Socialize iOS SDK 2.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.3.5',
+        VERSION:     '2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.3.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4 documentation" href="index.html" />
     <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Upgrading to Socialize v2" href="upgrading_2_0.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -73,6 +73,46 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="upgrading-socialize">
 <h1>Upgrading Socialize<a class="headerlink" href="#upgrading-socialize" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="important-notes-on-upgrading-to-v2-4">
+<h2>Important Notes on Upgrading to v2.4<a class="headerlink" href="#important-notes-on-upgrading-to-v2-4" title="Permalink to this headline">¶</a></h2>
+<p>Entity loader events that occur when Socialize does not have a preexisting
+navigation controller on the screen no longer automatically push a new
+UINavigationController. This was made the default since the old behavior was
+intrusive for apps that might not want to display a navigation controller at
+all for this case. The UINavigationController parameter of the entity loader is
+now passed as nil, and it is left up to you to choose how to handle this
+situation.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="c1">// Register for Apple Push Notification Service</span>
+    <span class="p">[</span><span class="n">application</span> <span class="nl">registerForRemoteNotificationTypes:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
+
+    <span class="c1">// Handle Socialize notification at launch</span>
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="c1">// Specify a Socialize entity loader block</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">setEntityLoaderBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        
+</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">navigationController</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRootViewController:</span><span class="n">entityLoader</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="nl">presentModalViewController:</span><span class="n">navigationController</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="nl">pushViewController:</span><span class="n">entityLoader</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        <span class="p">}</span>
+</span><span class="hll">    <span class="p">}];</span>
+</span>    
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This document highlights the process you should use for updating your project to use a new
@@ -143,6 +183,7 @@ delete it before performing this step</p>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 </ul>
 </li>
@@ -189,7 +230,7 @@ delete it before performing this step</p>
         <li class="right" >
           <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

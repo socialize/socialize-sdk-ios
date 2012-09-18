@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 2.3.5 documentation</title>
+    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 2.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.3.5',
+        VERSION:     '2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.3.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4 documentation" href="index.html" />
     <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
     <link rel="prev" title="Views" href="views.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="views.html" title="Views"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -154,6 +154,40 @@ completely disable location sharing</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="overriding-global-display-behavior">
+<span id="global-display"></span><h2>Overriding Global Display Behavior<a class="headerlink" href="#overriding-global-display-behavior" title="Permalink to this headline">¶</a></h2>
+<p>For asynchronous events such as notifications, Socialize needs a way to display UI elements
+to the screen. By default, it will attempt to discover the topmost view controller in the app.
+If this fails, it will resort to manual UIView management in the application&#8217;s root window.
+Should you need to override this behavior, you can do so by implementing the SZDisplay protocol
+and returning it dynamically using [SZDisplayUtils setGlobalDisplayBlock:], as below</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="c1">// This example assumes a custom view controller is set as the window&#39;s rootViewController property as part of application startup</span>
+
+    <span class="p">[</span><span class="n">SZDisplayUtils</span> <span class="nl">setGlobalDisplayBlock:</span><span class="o">^</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZDisplay</span><span class="o">&gt;</span><span class="p">{</span>
+        <span class="n">UIViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">controller</span><span class="p">.</span><span class="n">presentedViewController</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">controller</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">presentedViewController</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">controller</span><span class="p">;</span>
+    <span class="p">}];</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A default implementation of the SZDisplay protocol for UIViewControllers is provided
+for you. If you wish, you can also provide your own SZDisplay implementation. See the SZDisplay.h
+header for the full list of messages you should define.</p>
+</div>
+</div>
 </div>
 
 
@@ -184,6 +218,7 @@ completely disable location sharing</p>
 <li class="toctree-l2"><a class="reference internal" href="#automatic-third-party-linking">Automatic Third Party Linking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#standalone-share">Standalone Share</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#disabling-location">Disabling Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overriding-global-display-behavior">Overriding Global Display Behavior</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
@@ -216,7 +251,7 @@ completely disable location sharing</p>
         <li class="right" >
           <a href="views.html" title="Views"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.3.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
