@@ -36,9 +36,18 @@
     
     self.entityKeyLabel.text = self.entity.key;
     self.entityNameLabel.text = self.entity.name;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
     self.title = self.entity.name;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.navigationController == nil || self == [self.navigationController.viewControllers objectAtIndex:0]) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+    }
+    
+
 }
 
 - (void)cancel:(id)sender {
