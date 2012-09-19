@@ -72,6 +72,12 @@ static SZNotificationHandler *sharedNotificationHandler;
 }
 
 - (void)presentViewController:(UIViewController*)viewController inDisplay:(id<SZDisplay>)display {
+    
+    // Keep track of the very first (outmost) display used in case we need to dismiss everything
+    if (self.activeOuterDisplay == nil) {
+        self.activeOuterDisplay = display;
+    }
+    
     [self.currentStack addObject:viewController];
     [display socializeRequiresPresentModalViewController:viewController animated:YES completion:nil];
 }
@@ -152,7 +158,7 @@ static SZNotificationHandler *sharedNotificationHandler;
     }
 
     id<SZDisplay> display = nil;
-    if (self.activeOuterDisplay != nil) {
+    if ([self.currentStack count] > 0) {
         
         // Send display events to the top view controller
         display = [self.currentStack lastObject];
