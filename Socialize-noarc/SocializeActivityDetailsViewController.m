@@ -215,7 +215,8 @@
     [super viewDidLoad];
     [self configureDetailsView];
     [self startLoadAnimationForView:self.activityDetailsView];   
-    self.tableView.tableHeaderView = self.activityDetailsView;
+    self.activityViewController.tableView.tableHeaderView = self.activityDetailsView;
+    [self.view addSubview:self.activityViewController.view];
 
     [self configureSettingsButton];
 
@@ -224,7 +225,7 @@
 
 - (void)activityDetailsViewDidFinishLoad:(SocializeActivityDetailsView *)activityDetailsView {
     // This needs to be reset if its size changes
-    self.tableView.tableHeaderView = self.activityDetailsView;
+    self.activityViewController.tableView.tableHeaderView = self.activityDetailsView;
 }
 
 - (IBAction)showEntityButtonPressed:(id)sender {
