@@ -441,7 +441,7 @@
 	return NO;
 }
 
-#pragma -
+#pragma mark -
 
 #pragma mark UITableViewDelegate
 // Variable height support

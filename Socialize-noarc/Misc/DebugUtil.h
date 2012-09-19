@@ -25,7 +25,7 @@ static inline int SocializeDebugLevel() {
     
     int level = (int)strtol(var, NULL, 10);
     return level;
-};
+}
 
 
 #define SDebugLog0( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )

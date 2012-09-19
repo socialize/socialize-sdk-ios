@@ -115,7 +115,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     self.sendButton.enabled = [self canSend];
 }
 
-#pragma Location enable/disable button callbacks
+#pragma mark Location enable/disable button callbacks
 -(void) startLoadAnimationForView: (UIView*) view
 {
     [super startLoadAnimationForView:view];

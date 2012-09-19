@@ -247,7 +247,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [self stopLoading];
 }
 
-#pragma Location enable/disable button callbacks
+#pragma mark Location enable/disable button callbacks
 -(void) startLoadAnimationForView: (UIView*) view
 {
     if (_loadingIndicatorView == nil) {

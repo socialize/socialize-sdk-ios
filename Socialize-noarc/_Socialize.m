@@ -579,7 +579,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [SocializeThirdPartyTwitter removeLocalCredentials];
 }
 
-#pragma object creation
+#pragma mark object creation
 
 -(id)createObjectForProtocol:(Protocol *)protocol{
     return [_objectFactory createObjectForProtocol:protocol];
@@ -614,7 +614,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_likeService getLikesForEntityKey:key first:first last:last] ;
 }
 
-#pragma comment related  stuff
+#pragma mark comment related  stuff
 
 -(void)getCommentById: (int) commentId{
     [_commentsService getCommentById:commentId];
@@ -667,7 +667,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_commentsService createComment:comment success:success failure:failure];
 }
 
-#pragma entity related stuff
+#pragma mark entity related stuff
 
 -(void)getEntityByKey:(NSString *)entitykey{
     [_entityService entityWithKey:entitykey];
@@ -681,7 +681,6 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_entityService createEntityWithKey:entityKey andName:name];
 }
 
-#pragma mark view related stuff
 -(void)createEntityWithUrl:(NSString*)entityKey andName:(NSString*)name{
     [self createEntityWithKey:entityKey name:name];
 }
@@ -690,7 +689,7 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_entityService createEntities:entities success:success failure:failure];
 }
 
-#pragma view related stuff
+#pragma mark view related stuff
 
 -(void)viewEntityWithKey:(NSString*)url longitude:(NSNumber*)lng latitude: (NSNumber*)lat {
     [_viewService createViewForEntityKey:url longitude:lng latitude:lat];

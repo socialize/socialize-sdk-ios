@@ -199,7 +199,7 @@
 -(void)socializeActionViewWillDisappear:(SocializeActionView *)socializeActionView {
 }
 
-#pragma Socialize Action view delefate
+#pragma mark Socialize Action view delefate
 
 -(void)commentButtonTouched:(id)sender
 {

@@ -157,6 +157,6 @@
 @property (nonatomic, copy) NSDictionary *propagationInfoRequest;
 
 /* Propagation info response dictionary */
-@property (nonatomic, copy) NSArray *propagationInfoResponse;
+@property (nonatomic, copy) NSDictionary *propagationInfoResponse;
 
 @end

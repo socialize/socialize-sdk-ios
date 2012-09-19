@@ -379,7 +379,7 @@
 }
 
 
-#pragma -
+#pragma mark -
 - (void)drawRect:(CGRect)rect 
 {	
 	[super drawRect:rect];   
