@@ -4,6 +4,18 @@
 Changelog
 =============================================
 
+v2.4.1
+------
+[feature] Socialize Binary Release should include armv7s slice [ ios6 ]
+
+[bug] Fix iOS6 ActivityDetails crash (doubly referenced view log message) [ ios6 ]
+
+[bug] Fix a bug where a direct entity notification could prevent further notifications from displaying correctly [ ]
+
+[feature] Socialize should support nonstandard phone sizes [ ]
+
+[bug] Some code paths do not respect canLoadEntity [ ]
+
 v2.4
 ----
 [feature] Comment composer supports iPad formsheet modal [ ]
