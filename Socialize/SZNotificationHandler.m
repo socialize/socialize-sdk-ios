@@ -115,12 +115,12 @@ static SZNotificationHandler *sharedNotificationHandler;
     [SZEntityUtils getEntitiesWithIds:@[ entityId ] success:^(NSArray *entities) {
         [display socializeDidStopLoadingForContext:loadingContext];
         id<SZEntity> entity = [entities lastObject];
-        if (![Socialize canLoadEntity:entity]) {
-            NSLog(@"Socialize Warning: canLoadEntity returned NO for entity in received notification");
+
+        if (![SZEntityUtils showEntityLoaderForEntity:entity]) {
+            NSLog(@"Socialize Warning: Could not show entity %@ when handling entity notification", entity);
             return;
         }
         
-        [Socialize entityLoaderBlock](nil, entity);
     } failure:^(NSError *error) {
         [display socializeDidStopLoadingForContext:loadingContext];
         [display socializeRequiresIndicationOfFailureForError:error];
