@@ -61,8 +61,8 @@
     return [NSValue valueWithBytes:&curve objCType:@encode(UIViewAnimationCurve)];
 }
 
-CGRect testBeginFrame = { 1.f, 2.f, 3.f, 4.f };
-CGRect testEndFrame = { 5.f, 6.f, 7.f, 8.f };
+CGRect testBeginFrame = { { 1.f, 2.f }, { 3.f, 4.f } };
+CGRect testEndFrame = { { 5.f, 6.f }, { 7.f, 8.f } };
 
 NSTimeInterval testDuration = 1234.f;
 UIViewAnimationCurve testCurve = UIViewAnimationCurveEaseOut;
