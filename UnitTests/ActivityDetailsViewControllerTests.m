@@ -59,6 +59,11 @@
     [[self.mockTableView stub] setDelegate:nil];
     [[self.mockTableView stub] setDataSource:nil];
     self.activityDetailsViewController.tableView = self.mockTableView;
+    
+    [[[self.mockActivityViewController stub] andReturn:self.mockTableView] tableView];
+    id mockView = [OCMockObject niceMockForClass:[UIView class]];
+    [[[self.mockActivityViewController stub] andReturn:mockView] view];
+
 }
 
 -(void)tearDown
