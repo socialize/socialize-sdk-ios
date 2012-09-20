@@ -9,6 +9,7 @@
 #import "SZEntityUtils.h"
 #import "_Socialize.h"
 #import "SDKHelpers.h"
+#import "socialize_globals.h"
 
 static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
 static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
@@ -77,12 +78,14 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
                                 if ([self showEntityLoaderForEntity:entity]) {
                                     BLOCK_CALL_1(success, entity);                                    
                                 } else {
-                                    BLOCK_CALL_1(failure, nil);
+                                    BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorEntityLoadRejected]);
                                 }
                             } failure:failure];
 }
 
 + (BOOL)showEntityLoaderForEntity:(id<SZEntity>)entity {
+    if (entity == nil) return NO;
+    
     return [self showEntityLoaderForNavigationController:nil entity:entity];
 }
 

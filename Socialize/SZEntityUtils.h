@@ -19,12 +19,14 @@
 
 + (void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock;
 + (SocializeEntityLoaderBlock)entityLoaderBlock;
-+ (BOOL)canLoadEntity:(id<SZEntity>)entity;
-+ (void)fetchEntityAndShowEntityLoaderForEntityWithKey:(NSString*)entityKey success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure;
-+ (BOOL)showEntityLoaderForEntity:(id<SZEntity>)entity;
-+ (BOOL)showEntityLoaderForNavigationController:(UINavigationController*)navigationController entity:(id<SZEntity>)entity;
-
 + (void)setCanLoadEntityBlock:(SocializeCanLoadEntityBlock)canLoadEntityBlock;
 + (SocializeCanLoadEntityBlock)canLoadEntityBlock;
+
++ (BOOL)canLoadEntity:(id<SZEntity>)entity;
+
++ (void)fetchEntityAndShowEntityLoaderForEntityWithKey:(NSString*)entityKey success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure;
+
++ (BOOL)showEntityLoaderForEntity:(id<SZEntity>)entity;
++ (BOOL)showEntityLoaderForNavigationController:(UINavigationController*)navigationController entity:(id<SZEntity>)entity;
 
 @end
