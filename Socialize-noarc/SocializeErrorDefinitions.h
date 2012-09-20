@@ -43,6 +43,7 @@ typedef enum {
     SocializeErrorSMSSendFailure,
     SocializeErrorLikeCancelledByUser,
     SocializeErrorRequestCancelled,
+    SocializeErrorEntityLoadRejected,
     SocializeNumErrors,
 } SocializeErrorCode;
 

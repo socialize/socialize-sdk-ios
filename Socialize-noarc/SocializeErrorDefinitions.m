@@ -44,6 +44,7 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Failed to send SMS",
     @"Like creation cancelled by user",
     @"The request was cancelled",
+    @"Entity cannot be loaded",
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

@@ -19,6 +19,8 @@
     self.openURLHandler = [[SZOpenURLHandler alloc] init];
     self.mockDisplay = [OCMockObject mockForProtocol:@protocol(SZDisplay)];
     self.openURLHandler.display = self.mockDisplay;
+    
+    [[[SZEntityUtils stub] andForwardToObject:[SZEntityUtils origClass]] fetchEntityAndShowEntityLoaderForEntityWithKey:OCMOCK_ANY success:OCMOCK_ANY failure:OCMOCK_ANY];
 }
 
 - (void)tearDown {
@@ -36,8 +38,10 @@
     
     [[self.mockDisplay expect] socializeDidStartLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
     [[self.mockDisplay expect] socializeDidStopLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
+
+    [[[SZEntityUtils stub] andReturnBool:YES] canLoadEntity:OCMOCK_ANY];
     
-    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity> entity) {
+    [[SZEntityUtils origClass] setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity> entity) {
         [self notify:kGHUnitWaitStatusSuccess];
     }];
     
@@ -57,7 +61,9 @@
     [[self.mockDisplay expect] socializeDidStartLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
     [[self.mockDisplay expect] socializeDidStopLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
     
-    [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity> entity) {
+    [[[SZEntityUtils stub] andReturnBool:YES] canLoadEntity:OCMOCK_ANY];
+
+    [[SZEntityUtils origClass] setEntityLoaderBlock:^(UINavigationController *navigationController, id<SocializeEntity> entity) {
         [self notify:kGHUnitWaitStatusSuccess];
     }];
     

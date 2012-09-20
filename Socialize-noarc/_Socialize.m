@@ -33,6 +33,7 @@
 #import "socialize_globals.h"
 #import "SZNotificationHandler.h"
 #import "SZOpenURLHandler.h"
+#import "SZEntityUtils.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -143,8 +144,6 @@ NSString *const SocializeShouldDismissAllNotificationControllersNotification = @
 @synthesize eventsService = _eventsService;
 
 static Socialize *_sharedSocialize;
-static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
-static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
 + (void)initialize {
     if (self == [Socialize class]) {
@@ -217,29 +216,23 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 }
 
 +(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock {
-    SocializeEntityLoaderBlock copied = [[entityLoaderBlock copy] autorelease];
-    NonatomicRetainedSetToFrom(_sharedEntityLoaderBlock, copied);
+    [SZEntityUtils setEntityLoaderBlock:entityLoaderBlock];
 }
 
 +(SocializeEntityLoaderBlock)entityLoaderBlock {
-    return _sharedEntityLoaderBlock;
+    return [SZEntityUtils entityLoaderBlock];
 }
 
 + (void)setCanLoadEntityBlock:(SocializeCanLoadEntityBlock)canLoadEntityBlock {
-    SocializeCanLoadEntityBlock copied = [[canLoadEntityBlock copy] autorelease];
-    NonatomicRetainedSetToFrom(_sharedCanLoadEntityBlock, copied);
+    return [SZEntityUtils setCanLoadEntityBlock:canLoadEntityBlock];
 }
 
-+(SocializeCanLoadEntityBlock)canLoadEntityBlock {
-    return _sharedCanLoadEntityBlock;
++ (SocializeCanLoadEntityBlock)canLoadEntityBlock {
+    return [SZEntityUtils canLoadEntityBlock];
 }
 
 + (BOOL)canLoadEntity:(id<SocializeEntity>)entity {
-    BOOL haveEntityLoader = [Socialize entityLoaderBlock] != nil;
-    BOOL entityLoadRejected = [self canLoadEntityBlock] != nil && ![self canLoadEntityBlock](entity);
-    BOOL canLoadEntity = haveEntityLoader && !entityLoadRejected;
-    
-    return canLoadEntity;
+    return [SZEntityUtils canLoadEntity:entity];
 }
 
 +(void)storeSocializeApiKey:(NSString*) key andSecret: (NSString*)secret;

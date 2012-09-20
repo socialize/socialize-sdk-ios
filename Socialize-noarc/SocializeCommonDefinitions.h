@@ -125,6 +125,10 @@ typedef _SZComposeCommentViewController SocializeComposeCommentViewController __
 //#define SocializeActionBarDelegate SocializeActionBarDelegate
 typedef SZLikeButton SocializeLikeButton __attribute__((deprecated("Please use SZLikeButton")));
 
+@protocol SocializeEntity;
+typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
+typedef BOOL(^SocializeCanLoadEntityBlock)(id<SocializeEntity>entity);
+
 #define SZActivity SocializeActivity
 #define SZApplication SocializeApplication
 #define SZComment SocializeComment

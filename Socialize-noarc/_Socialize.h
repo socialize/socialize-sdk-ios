@@ -51,9 +51,6 @@
 
 extern NSString *const kSocializeDisableBrandingKey;
 
-typedef void(^SocializeEntityLoaderBlock)(UINavigationController *navigationController, id<SocializeEntity>entity);
-typedef BOOL(^SocializeCanLoadEntityBlock)(id<SocializeEntity>entity);
-
 /**
 This is a general facade of the   SDK`s API. Through it a third party developers could use the API.
  

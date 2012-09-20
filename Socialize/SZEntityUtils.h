@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "_Socialize.h"
+#import "SocializeCommonDefinitions.h"
 
 @interface SZEntityUtils : NSObject
 
@@ -16,5 +16,15 @@
 + (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure;
 + (void)getEntityWithKey:(NSString*)key success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure;
 + (void)addEntity:(id<SZEntity>)entity success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure;
+
++ (void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock;
++ (SocializeEntityLoaderBlock)entityLoaderBlock;
++ (BOOL)canLoadEntity:(id<SZEntity>)entity;
++ (void)fetchEntityAndShowEntityLoaderForEntityWithKey:(NSString*)entityKey success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure;
++ (BOOL)showEntityLoaderForEntity:(id<SZEntity>)entity;
++ (BOOL)showEntityLoaderForNavigationController:(UINavigationController*)navigationController entity:(id<SZEntity>)entity;
+
++ (void)setCanLoadEntityBlock:(SocializeCanLoadEntityBlock)canLoadEntityBlock;
++ (SocializeCanLoadEntityBlock)canLoadEntityBlock;
 
 @end

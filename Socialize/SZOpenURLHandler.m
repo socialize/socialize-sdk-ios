@@ -53,47 +53,50 @@ static SZOpenURLHandler *sharedOpenURLHandler;
 }
 
 - (BOOL)handleOpenURL:(NSURL*)url {
-    if ([[url scheme] startsWith:@"sz"]) {
+    if (![[url scheme] startsWith:@"sz"]) {
+        return NO;
+    }
         
-        NSString *path = [[url path] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
-        
-        // In case the dev forgets the third slash in szXXX:///
-        if ([path length] == 0) {
-            path = [url host];
-        }
-        
-        if ([path isEqualToString:[[self class] defaultSmartDownloadURLPath]]) {
-            SocializeEntityLoaderBlock entityLoaderBlock = [Socialize entityLoaderBlock];
-            
-            if (entityLoaderBlock == nil) {
-                NSLog(@"Socialize Warning: Smart Download open, but no entity loader defined. Doing Nothing.");
-                return YES;
-            }
-            
-            NSDictionary *params = [url queryParameters];
-            NSString* entityKey = [[params objectForKey:@"entity_key"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            if ([entityKey length] > 0) {
-                
-                [self.display socializeDidStartLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
-                
-                [SZEntityUtils getEntityWithKey:entityKey success:^(id<SocializeEntity> entity) {
-
-                    entityLoaderBlock(nil, entity);
-                    
-                    [self.display socializeDidStopLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
-                } failure:^(NSError *error) {
-                    
-                    [self.display socializeDidStopLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
-                    [self.display socializeRequiresIndicationOfFailureForError:error];
-                }];
-                return YES;
-            }
-        } else {
-            NSLog(@"Socialize Warning: Unrecognized path in URL %@, ignoring", url);
-        }
+    NSString *path = [[url path] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+    
+    // In case the dev forgets the third slash in szXXX:///
+    if ([path length] == 0) {
+        path = [url host];
     }
     
-    return NO;
+    //  --- Smart Downloads URL ---
+    if ([path isEqualToString:[[self class] defaultSmartDownloadURLPath]]) {
+        
+        NSDictionary *params = [url queryParameters];
+        NSString* entityKey = [[params objectForKey:@"entity_key"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        if (![SZEntityUtils canLoadEntity:[SZEntity entityWithKey:entityKey]]) {
+            NSLog(@"Socialize Warning: Smart Download open, but cannot load entity. Doing Nothing.");
+            return YES;
+        }
+        
+        if ([entityKey length] == 0) {
+            NSLog(@"Socialize Warning: Smart Download open, but missing url parameters. Doing Nothing.");
+            return YES;
+        }
+        
+        [self.display socializeDidStartLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
+        
+        [SZEntityUtils fetchEntityAndShowEntityLoaderForEntityWithKey:entityKey
+                                                              success:^(id<SocializeEntity> entity) {
+                                                                  [self.display socializeDidStopLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
+                                                                  
+                                                              } failure:^(NSError *error) {
+                                                                  [self.display socializeDidStopLoadingForContext:SZLoadingContextFetchingEntityForSmartDownloadsURLOpen];
+                                                                  [self.display socializeRequiresIndicationOfFailureForError:error];
+                                                                  
+                                                              }];
+        return YES;
+        
+    } else {
+        NSLog(@"Socialize Warning: Unrecognized path in URL %@, ignoring", url);
+        return NO;
+    }
 }
 
 @end

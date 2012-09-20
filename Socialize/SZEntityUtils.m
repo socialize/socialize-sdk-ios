@@ -10,6 +10,9 @@
 #import "_Socialize.h"
 #import "SDKHelpers.h"
 
+static SocializeEntityLoaderBlock _sharedEntityLoaderBlock;
+static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
+
 @implementation SZEntityUtils
 
 + (void)getEntityWithKey:(NSString*)key success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure {
@@ -42,6 +45,54 @@
             BLOCK_CALL_1(success, [entities lastObject]);
         } failure:failure];
     }, failure);
+}
+
++ (void)setCanLoadEntityBlock:(SocializeCanLoadEntityBlock)canLoadEntityBlock {
+    _sharedCanLoadEntityBlock = [canLoadEntityBlock copy];
+}
+
++ (SocializeCanLoadEntityBlock)canLoadEntityBlock {
+    return _sharedCanLoadEntityBlock;
+}
+
++ (void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock {
+    _sharedEntityLoaderBlock = [entityLoaderBlock copy];
+}
+
++ (SocializeEntityLoaderBlock)entityLoaderBlock {
+    return _sharedEntityLoaderBlock;
+}
+
++ (BOOL)canLoadEntity:(id<SZEntity>)entity {
+    BOOL haveEntityLoader = [self entityLoaderBlock] != nil;
+    BOOL entityLoadRejected = [self canLoadEntityBlock] != nil && ![self canLoadEntityBlock](entity);
+    BOOL canLoadEntity = haveEntityLoader && !entityLoadRejected;
+    
+    return canLoadEntity;
+}
+
++ (void)fetchEntityAndShowEntityLoaderForEntityWithKey:(NSString*)entityKey success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure {
+    [SZEntityUtils getEntityWithKey:entityKey
+                            success:^(id<SocializeEntity> entity) {
+                                if ([self showEntityLoaderForEntity:entity]) {
+                                    BLOCK_CALL_1(success, entity);                                    
+                                } else {
+                                    BLOCK_CALL_1(failure, nil);
+                                }
+                            } failure:failure];
+}
+
++ (BOOL)showEntityLoaderForEntity:(id<SZEntity>)entity {
+    return [self showEntityLoaderForNavigationController:nil entity:entity];
+}
+
++ (BOOL)showEntityLoaderForNavigationController:(UINavigationController*)navigationController entity:(id<SZEntity>)entity {
+    if (![self canLoadEntity:entity]) {
+        return NO;
+    }
+    
+    BLOCK_CALL_2([self entityLoaderBlock], navigationController, entity);
+    return YES;
 }
 
 @end
