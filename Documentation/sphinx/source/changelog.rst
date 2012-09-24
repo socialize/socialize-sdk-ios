@@ -4,6 +4,14 @@
 Changelog
 =============================================
 
+v2.4.2
+------
+[bug] Cancel during comment creation does not properly abort [ ]
+
+[bug] Comment showing share dialog when no social networks configured [ ]
+
+[bug] Comments double posting when no social networks configured [ ]
+
 v2.4.1
 ------
 [feature] Socialize Binary Release should include armv7s slice [ ios6 ]
