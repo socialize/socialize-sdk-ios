@@ -210,6 +210,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 - (void)cancel {
+    self.cancelled = YES;
     [self notifyDelegateOfCancellation];
 }
 

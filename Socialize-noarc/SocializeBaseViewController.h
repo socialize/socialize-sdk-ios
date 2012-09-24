@@ -54,6 +54,7 @@
 @property (nonatomic, copy) void (^cancellationBlock)();
 @property (nonatomic, retain) UITapGestureRecognizer *formsheetDismissGestureRecognizer;
 @property (nonatomic, retain) id<SZDisplay> display;
+@property (nonatomic, assign) BOOL cancelled;
 
 - (BOOL)isFormsheetModal;
 -(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title;

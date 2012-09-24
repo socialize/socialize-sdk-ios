@@ -135,12 +135,20 @@
     options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
     
     [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {
+        if (self.cancelled) {
+            return;
+        }
+        
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
         
         [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextCommentPostSucceeded];
         
     } failure:^(NSError *error) {
+        if (self.cancelled) {
+            return;
+        }
+
         [self stopLoading];
         
         if (![error isSocializeErrorWithCode:SocializeErrorCommentCancelledByUser]) {
