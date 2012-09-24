@@ -102,6 +102,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
     // No Social Networks available
     if (SZAvailableSocialNetworks() == SZSocialNetworkNone) {
         BLOCK_CALL_1(completion, SZSocialNetworkNone);
+        return;
     }
     
     if (SZShouldShowLinkDialog()) {
