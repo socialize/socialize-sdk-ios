@@ -51,6 +51,10 @@
 }
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion cancellation:(void(^)())cancellation {
+    [self showShareDialogWithViewController:viewController options:nil entity:entity completion:completion cancellation:cancellation];
+}
+
++ (void)showShareDialogWithViewController:(UIViewController*)viewController options:(SZShareOptions*)options entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion cancellation:(void(^)())cancellation {
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     
@@ -67,6 +71,7 @@
      };
     
     shareDialog.display = viewController;
+    shareDialog._shareDialogViewController.shareOptions = options;
 
     [viewController presentModalViewController:shareDialog animated:YES];
 }
