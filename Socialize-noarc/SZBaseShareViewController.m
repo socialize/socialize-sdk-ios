@@ -130,7 +130,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [super viewDidLoad];
 
     // Fire off a first-time location request as soon as this view shows
-    if ([SZLocationUtils lastKnownLocation] == nil && ![Socialize locationSharingDisabled]) {
+    if ([SZLocationUtils lastKnownLocation] == nil && ![Socialize locationSharingDisabled] && !self.shareOptions.dontShareLocation) {
         [SZLocationUtils getCurrentLocationWithSuccess:nil failure:nil];
     }
          
