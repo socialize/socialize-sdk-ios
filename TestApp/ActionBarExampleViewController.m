@@ -52,7 +52,30 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.actionBar == nil) {
+        
+        SZShareOptions *options = [[SZShareOptions alloc] init];
+        options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+            NSLog(@"Sharing SMS");
+        };
+        
+        options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+            NSLog(@"Sharing Email");
+        };
+        
+        options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+            NSLog(@"Posting to %d", network);
+        };
+        
+        options.didSucceedPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
+            NSLog(@"Posted %@ to %d", result, network);
+        };
+        
+        options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
+            NSLog(@"Failed posting to %d", network);
+        };
+
         self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
+        self.actionBar.shareOptions = options;
         [self.view addSubview:self.actionBar];
 //        [self customizeButtons];
 //        [self makeActionBarVertical];
