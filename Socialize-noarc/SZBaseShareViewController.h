@@ -7,6 +7,7 @@
 //
 
 #import "SocializeBaseViewController.h"
+#import "SZShareOptions.h"
 
 #define SHARE_DIALOG_BUCKET @"SHARE_DIALOG"
 
@@ -19,6 +20,7 @@
 - (void)persistSelection;
 - (void)trackShareEventsForNetworks:(SZSocialNetwork)networks;
 - (void)trackShareEventsForNetworkNames:(NSArray*)networkNames;
+- (SZShareOptions*)optionsForShare;
 
 @property (nonatomic, retain) NSMutableArray *createdShares;
 @property (nonatomic, retain) id<SZEntity> entity;
@@ -31,4 +33,6 @@
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, retain) UIView *footerView;
 @property (nonatomic, copy) NSString *continueText;
+@property (nonatomic, retain) SZShareOptions *shareOptions;
+
 @end

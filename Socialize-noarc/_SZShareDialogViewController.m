@@ -27,7 +27,6 @@
 - (void)dealloc {
     self.completionBlock = nil;
     self.cancellationBlock = nil;
-    self.shareOptions = nil;
     
     [super dealloc];
 }
@@ -65,13 +64,10 @@
         [UIAlertView showAlertWithTitle:@"Select a Network" message:@"One or more networks must be selected to perform a share" buttonTitle:@"Ok" handler:nil];
     } else {
         
-        SZShareOptions *shareOptions = self.shareOptions;
-        if (shareOptions == nil) shareOptions = [SZShareUtils userShareOptions];
-        
         [self startLoading];
         __block id mySelf = self;
         (void)mySelf;
-        [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:shareOptions success:^(id<SZShare> share) {
+        [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:[self optionsForShare] success:^(id<SZShare> share) {
             
             [self stopLoading];
             [self.createdShares addObject:share];

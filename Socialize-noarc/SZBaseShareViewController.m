@@ -85,6 +85,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.facebookSwitch = nil;
     self.twitterSwitch = nil;
     self.completionBlock = nil;
+    self.shareOptions = nil;
     
     [SZFacebookUtils cancelLink];
 
@@ -410,6 +411,13 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [self trackShareEventsForNetworkNames:networkNames];
 }
 
+- (SZShareOptions*)optionsForShare {
+    SZShareOptions *shareOptions = self.shareOptions;
+    if (shareOptions == nil) shareOptions = [SZShareUtils userShareOptions];
+    
+    return shareOptions;
+}
+
 - (NSDictionary*)SMSRow {
     
     __block __typeof__(self) weakSelf = self;
@@ -417,7 +425,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
         
-        [SZShareUtils shareViaSMSWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
+        [SZShareUtils shareViaSMSWithViewController:weakSelf options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
             [self deselectSelectedRow];
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
@@ -450,7 +458,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
 
-        [SZShareUtils shareViaEmailWithViewController:weakSelf options:nil entity:weakSelf.entity success:^(id<SZShare> share) {
+        [SZShareUtils shareViaEmailWithViewController:weakSelf options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
             [self deselectSelectedRow];
 
             [weakSelf.createdShares addObject:share];
