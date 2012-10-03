@@ -117,7 +117,28 @@ static TestAppListViewController *sharedSampleListViewController;
     NSMutableArray *shareRows = [NSMutableArray array];
     
     [shareRows addObject:[self rowWithText:@"Show Share Dialog" executionBlock:^{
-        [SZShareUtils showShareDialogWithViewController:self entity:self.entity completion:nil cancellation:nil];
+        SZShareOptions *options = [[SZShareOptions alloc] init];
+        options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+            NSLog(@"Sharing SMS");
+        };
+        
+        options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+            NSLog(@"Sharing Email");            
+        };
+        
+        options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+            NSLog(@"Posting to %d", network);
+        };
+        
+        options.didSucceedPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
+            NSLog(@"Posted %@ to %d", result, network);
+        };
+        
+        options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
+            NSLog(@"Failed posting to %d", network);
+        };
+
+        [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];
 
     }]];
          
