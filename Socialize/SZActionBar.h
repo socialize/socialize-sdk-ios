@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SZLikeButton.h"
+#import "SZShareOptions.h"
 
 @interface SZActionBar : UIView
 
@@ -29,5 +30,7 @@
 // Visual customization
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, assign) CGFloat betweenButtonsPadding;
+
+@property (nonatomic, strong) SZShareOptions *shareOptions;
 
 @end
