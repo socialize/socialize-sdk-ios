@@ -673,6 +673,7 @@
 		AA815C8E15DACDCC00A31E39 /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
 		AA815C8F15DACDCC00A31E39 /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
 		AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */; };
+		AA840C54161CEF5700494EE4 /* SZTwitterUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA840C53161CEF5700494EE4 /* SZTwitterUtilsTests.m */; };
 		AA84654715EBE52B00065678 /* SZStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA84654515EBE52B00065678 /* SZStatusView.h */; };
 		AA84654815EBE52B00065678 /* SZStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA84654515EBE52B00065678 /* SZStatusView.h */; };
 		AA84654915EBE52B00065678 /* SZStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84654615EBE52B00065678 /* SZStatusView.m */; };
@@ -2495,6 +2496,8 @@
 		AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZEmailShareData.m; sourceTree = "<group>"; };
 		AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTrackerTests.h; sourceTree = "<group>"; };
 		AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTrackerTests.m; sourceTree = "<group>"; };
+		AA840C52161CEF5700494EE4 /* SZTwitterUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTwitterUtilsTests.h; sourceTree = "<group>"; };
+		AA840C53161CEF5700494EE4 /* SZTwitterUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterUtilsTests.m; sourceTree = "<group>"; };
 		AA84654515EBE52B00065678 /* SZStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZStatusView.h; sourceTree = "<group>"; };
 		AA84654615EBE52B00065678 /* SZStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZStatusView.m; sourceTree = "<group>"; };
 		AA84655615EBFE4A00065678 /* socialize-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-checkmark.png"; path = "Socialize/Resources/socialize-checkmark.png"; sourceTree = SOURCE_ROOT; };
@@ -3303,6 +3306,8 @@
 				AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */,
 				AAE216961607F6AE0049850E /* SZOpenURLHandlerTests.h */,
 				AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */,
+				AA840C52161CEF5700494EE4 /* SZTwitterUtilsTests.h */,
+				AA840C53161CEF5700494EE4 /* SZTwitterUtilsTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -6162,6 +6167,7 @@
 				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
 				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
 				AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */,
+				AA840C54161CEF5700494EE4 /* SZTwitterUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

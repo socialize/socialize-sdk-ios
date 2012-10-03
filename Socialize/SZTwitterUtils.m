@@ -15,6 +15,28 @@
 #import "socialize_globals.h"
 #import "SZOARequest+Twitter.h"
 
+#define TWITTER_MAX_LENGTH 140
+#define DISPLAYNAME_MAX_LENGTH 50
+
+@implementation NSString (SZTwitterUtils)
+
+- (NSString*)truncateForTwitterWithExtraCharacters:(NSUInteger)extraCharacters {
+    NSInteger maxLength = TWITTER_MAX_LENGTH - extraCharacters;
+    
+    return [self truncateToMaxLength:maxLength];
+}
+
+- (NSString*)truncateToMaxLength:(NSUInteger)maxLength {
+    NSString *text = self;
+    if ([text length] > maxLength) {
+        text = [text substringToIndex:maxLength];
+    }
+    
+    return text;
+}
+
+@end
+
 @implementation SZTwitterUtils
 
 + (void)setConsumerKey:(NSString*)accessToken consumerSecret:(NSString*)consumerSecret {
@@ -115,19 +137,29 @@
     NSAssert([activity isFromServer], @"Must be server activity");
     
     NSString *entityURL = [[[activity propagationInfoResponse] objectForKey:@"twitter"] objectForKey:@"entity_url"];
+    NSString *displayName = [[activity entity] displayName];
+    displayName = [displayName truncateToMaxLength:DISPLAYNAME_MAX_LENGTH];
+    
     if ([activity conformsToProtocol:@protocol(SZShare)]) {
         id<SZShare> share = (id<SZShare>)activity;
         NSString *text = [share text];
         if ([text length] == 0) {
             text = @"Shared";
         }
-        return [NSString stringWithFormat:@"%@, %@ %@", text, [[activity entity] displayName], entityURL];
+        
+        text = [text truncateForTwitterWithExtraCharacters:[displayName length] + [entityURL length] + 3];
+        
+        return [NSString stringWithFormat:@"%@, %@ %@", text, displayName, entityURL];
     } else if ([activity conformsToProtocol:@protocol(SZComment)]) {
         id<SZComment> comment = (id<SZComment>)activity;
         NSString *text = [comment text];
-        return [NSString stringWithFormat:@"%@, %@ %@", text, [[activity entity] displayName], entityURL];
+        
+        text = [text truncateForTwitterWithExtraCharacters:[displayName length] + [entityURL length] + 3];
+
+        return [NSString stringWithFormat:@"%@, %@ %@", text, displayName, entityURL];
     } else if ([activity conformsToProtocol:@protocol(SZLike)]) {
-        return [NSString stringWithFormat:@"♥ Likes %@ %@", [[activity entity] displayName], entityURL];
+        
+        return [NSString stringWithFormat:@"♥ Likes %@ %@", displayName, entityURL];
     }
     
     return nil;
