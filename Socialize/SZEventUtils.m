@@ -15,7 +15,7 @@
 
 + (void)trackEventWithBucket:(NSString*)bucket values:(NSDictionary*)values success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     
-    if (SZEventTrackingDisabled()) {
+    if (SZEventTrackingDisabled() || [[Socialize consumerKey] length] == 0 || [[Socialize consumerSecret] length] == 0) {
         return;
     }
 
