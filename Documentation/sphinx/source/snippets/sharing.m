@@ -25,6 +25,45 @@
 
 // end-show-share-dialog-snippet
 
+// begin-show-share-dialog-with-options-snippet
+
+- (void)showShareDialogWithOptions {
+    id<SZEntity> entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
+    
+    SZShareOptions *options = [SZShareUtils userShareOptions];
+    
+    options.dontShareLocation = YES;
+    
+    options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
+        NSLog(@"Sharing SMS");
+    };
+    
+    options.willShowEmailComposerBlock = ^(SZEmailShareData *emailData) {
+        NSLog(@"Sharing Email");
+    };
+    
+    options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        NSLog(@"Posting to %d", network);
+    };
+    
+    options.didSucceedPostingToSocialNetworkBlock = ^(SZSocialNetwork network, id result) {
+        NSLog(@"Posted %@ to %d", result, network);
+    };
+    
+    options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
+        NSLog(@"Failed posting to %d", network);
+    };
+
+    [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {
+        // `shares` is a list of all shares created during the lifetime of the share dialog
+        NSLog(@"Created %d shares: %@", [shares count], shares);
+    } cancellation:^{
+        NSLog(@"Share creation cancelled");
+    }];
+}
+
+// end-show-share-dialog-with-options-snippet
+
 // begin-manual-show-share-dialog-snippet
 
 - (void)manuallyShowShareDialog {
