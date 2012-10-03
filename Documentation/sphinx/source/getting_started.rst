@@ -120,9 +120,12 @@ Socialize app id from the dashboard, defined as below:
 
 .. image:: images/add_smartdownloads_scheme.png	
 
-You currently must also take the final step of enabling SmartDownloads in the web dashboard.
-Scroll to the bottom of your app's dashboard and enter the following url
-into the 'iOS Schema URL' field: **szYOURAPPID:///smart_url/?entity_key={{entity_key}}&entity_id={{entity_id}}**
+You currently must also take the final step of enabling SmartDownloads in the
+web dashboard.  Select your app from the list of apps at
+http://getsocialize.com/apps/, select 'SmartDownloads' on the right, then
+Scroll to the bottom until you see the 'iOS Schema URL' field. Enter the
+following:
+**szYOURAPPID:///smart_url/?entity_key={{entity_key}}&entity_id={{entity_id}}**
 
 .. image:: images/enable_smartdownloads_dashboard.png	
 
