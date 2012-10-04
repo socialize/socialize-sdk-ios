@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Entities &mdash; Socialize iOS SDK 2.4.2 documentation</title>
+    <title>Entities &mdash; Socialize iOS SDK 2.4.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.2',
+        VERSION:     '2.4.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4.3 documentation" href="index.html" />
     <link rel="next" title="Users" href="users.html" />
     <link rel="prev" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -73,16 +73,36 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="entities">
 <h1>Entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>An entity is a single item of content in your app</p>
-<p>Throughout the documentation and the code snippets we refer to an “entity”.
-This is simply a generic term for something that can be view, shared, liked or
-commented on. Generally this will correspond to a single item of content in
-your app.</p>
-<p>Entities in Socialize MUST be associated with a unique key. It is recommended
+</div>
+<div class="section" id="socialize-entities">
+<h1>Socialize Entities<a class="headerlink" href="#socialize-entities" title="Permalink to this headline">¶</a></h1>
+<p>An <em>Entity</em> is the term Socialize uses to describe any item of content within
+your app.  This could be anything from a News Article to a Hamburger and simply
+provides a reference point from which your users can perform social actions
+such as liking, commenting and sharing.</p>
+<p>For example, imagine your app is a photography app where users can share photos
+they take with their device.  In this scenario each photo would be an <em>entity</em>
+and users can then perform social actions on this entity.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended that where possible an HTTP URL be used for your entity key</p>
+</div>
+<p>Entities in Socialize MUST be associated with a unique key.  It is recommended
 that where possible an HTTP URL be used (i.e. one that corresponds to an active
-web page).</p>
+web page).  If your entities do not have web addressable URLs Socialize can
+automatically generate an Entity Page for you.  Refer to the
+<a class="reference internal" href="#entity-no-url"><em>Entities Without URLs</em></a> section on this page for more information.</p>
+<div class="section" id="auto-creation-of-entities">
+<h2>Auto-Creation of Entities<a class="headerlink" href="#auto-creation-of-entities" title="Permalink to this headline">¶</a></h2>
+<p>In most cases Socialize will automatically create an entity for you based on
+the information you provide to a particular call in the SDK.</p>
+<p>For example, if you are using the <a class="reference internal" href="action_bar.html"><em>Socialize Action Bar</em></a> the entity that you pass to
+the Action Bar will be automatically created for you if it does not already
+exist.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You should always specify a name when creating an entity, however if you have previously created the entity with a name and do not want to specify the name every time you can provide a &#8220;null&#8221; argument for the name.  This will instruct Socialize to ignore the name attribute and the name of the entity will NOT be updated.</p>
+</div>
 </div>
 <div class="section" id="working-with-entities">
 <h2>Working with Entities<a class="headerlink" href="#working-with-entities" title="Permalink to this headline">¶</a></h2>
@@ -282,8 +302,9 @@ taken from your entity meta data.</p>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Entities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#socialize-entities">Socialize Entities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#auto-creation-of-entities">Auto-Creation of Entities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-with-entities">Working with Entities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#entities-without-urls">Entities Without URLs</a></li>
 </ul>
@@ -325,7 +346,7 @@ taken from your entity meta data.</p>
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

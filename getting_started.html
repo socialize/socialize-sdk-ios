@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.4.2 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.4.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.2',
+        VERSION:     '2.4.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4.3 documentation" href="index.html" />
     <link rel="next" title="Upgrading to Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -210,9 +210,12 @@ at <a class="reference external" href="http://getsocialize.com/apps/">http://get
 scheme is <strong>szYOURAPPID</strong>. That is, a lower case sz followed immediately by your numeric
 Socialize app id from the dashboard, defined as below:</p>
 <img alt="images/add_smartdownloads_scheme.png" src="images/add_smartdownloads_scheme.png" />
-<p>You currently must also take the final step of enabling SmartDownloads in the web dashboard.
-Scroll to the bottom of your app&#8217;s dashboard and enter the following url
-into the &#8216;iOS Schema URL&#8217; field: <strong>szYOURAPPID:///smart_url/?entity_key={{entity_key}}&amp;entity_id={{entity_id}}</strong></p>
+<p>You currently must also take the final step of enabling SmartDownloads in the
+web dashboard.  Select your app from the list of apps at
+<a class="reference external" href="http://getsocialize.com/apps/">http://getsocialize.com/apps/</a>, select &#8216;SmartDownloads&#8217; on the right, then
+Scroll to the bottom until you see the &#8216;iOS Schema URL&#8217; field. Enter the
+following:
+<strong>szYOURAPPID:///smart_url/?entity_key={{entity_key}}&amp;entity_id={{entity_id}}</strong></p>
 <img alt="images/enable_smartdownloads_dashboard.png" src="images/enable_smartdownloads_dashboard.png" />
 </div>
 <div class="section" id="step-6-include-socialize-in-your-app">
@@ -250,6 +253,10 @@ It is not necessary to explicitly create an Entity object when rendering the Act
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="nl">showActionBarWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span><span class="p">];</span>
+        
+        <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">shareOptions</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
+        <span class="n">shareOptions</span><span class="p">.</span><span class="n">dontShareLocation</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">shareOptions</span> <span class="o">=</span> <span class="n">shareOptions</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -297,6 +304,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#socialize-entities">Socialize Entities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
@@ -334,7 +342,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

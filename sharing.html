@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 2.4.2 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 2.4.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.2',
+        VERSION:     '2.4.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4.3 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -95,6 +95,50 @@ in your app as easy as possible.</p>
 </pre></div>
 </div>
 <img alt="images/share_dialog.png" src="images/share_dialog.png" />
+</div>
+<div class="section" id="custom-share-dialog-behavior">
+<h3>Custom Share Dialog Behavior<a class="headerlink" href="#custom-share-dialog-behavior" title="Permalink to this headline">¶</a></h3>
+<p>If you&#8217;d like, you can override some of Socialize&#8217;s share functionality</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showShareDialogWithOptions</span> <span class="p">{</span>
+    <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+    
+    <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="n">dontShareLocation</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="n">willShowSMSComposerBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSMSShareData</span> <span class="o">*</span><span class="n">smsData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Sharing SMS&quot;</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="n">willShowEmailComposerBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZEmailShareData</span> <span class="o">*</span><span class="n">emailData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Sharing Email&quot;</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Posting to %d&quot;</span><span class="p">,</span> <span class="n">network</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="n">didSucceedPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="kt">id</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Posted %@ to %d&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">network</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="n">didFailPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed posting to %d&quot;</span><span class="p">,</span> <span class="n">network</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">showShareDialogWithViewController:</span><span class="n">self</span> <span class="nl">options:</span><span class="n">options</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">completion:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// `shares` is a list of all shares created during the lifetime of the share dialog</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created %d shares: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">shares</span> <span class="n">count</span><span class="p">],</span> <span class="n">shares</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">cancellation:</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Share creation cancelled&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Refer to <a class="reference internal" href="#custom-wall-post"><em>Customizing the Content of Facebook Posts</em></a> and <a class="reference internal" href="#show-sms"><em>Directly Opening an SMS or Email Composer</em></a> for more details on customizing Facebook and SMS functionality</p>
+</div>
+<div class="section" id="manually-instantiating-the-share-dialog-controller">
+<h3>Manually instantiating the share dialog controller<a class="headerlink" href="#manually-instantiating-the-share-dialog-controller" title="Permalink to this headline">¶</a></h3>
 <p>If you need to, you can directly instantiate the share dialog and manage its lifecycle on your own.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">manuallyShowShareDialog</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
@@ -144,7 +188,7 @@ the share options, the default share options from the user profile will be used.
 </div>
 </div>
 <div class="section" id="customizing-the-content-of-facebook-posts">
-<h3>Customizing the Content of Facebook Posts<a class="headerlink" href="#customizing-the-content-of-facebook-posts" title="Permalink to this headline">¶</a></h3>
+<span id="custom-wall-post"></span><h3>Customizing the Content of Facebook Posts<a class="headerlink" href="#customizing-the-content-of-facebook-posts" title="Permalink to this headline">¶</a></h3>
 <p>Before your share is sent off to Facebook, you are given an opportunity to modify
 the parameters used to post to the user&#8217;s wall</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">customizeFacebook</span> <span class="p">{</span>
@@ -174,7 +218,7 @@ the parameters used to post to the user&#8217;s wall</p>
 </div>
 </div>
 <div class="section" id="directly-opening-an-sms-or-email-composer">
-<h3>Directly Opening an SMS or Email Composer<a class="headerlink" href="#directly-opening-an-sms-or-email-composer" title="Permalink to this headline">¶</a></h3>
+<span id="show-sms"></span><h3>Directly Opening an SMS or Email Composer<a class="headerlink" href="#directly-opening-an-sms-or-email-composer" title="Permalink to this headline">¶</a></h3>
 <p>If you&#8217;d like to skip the share dialog and just present an email or SMS share dialog, you
 can do so</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showSMS</span> <span class="p">{</span>
@@ -296,6 +340,7 @@ can do so</p>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#socialize-entities">Socialize Entities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Sharing</a><ul>
@@ -338,7 +383,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
