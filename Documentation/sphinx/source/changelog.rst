@@ -4,6 +4,18 @@
 Changelog
 =============================================
 
+v2.4.3
+------
+[feature] Allow overriding share options when showing share dialog [ ]
+
+[feature] Expose share options override on action bar [ ]
+
+[bug] Add missing smartdownload config step to docs [ ]
+
+[bug] Twitter posts should autotruncate to 140 characters for long text or name [ ]
+
+[bug] Fix imagescache crash [ ]
+
 v2.4.2
 ------
 [bug] Cancel during comment creation does not properly abort [ ]
