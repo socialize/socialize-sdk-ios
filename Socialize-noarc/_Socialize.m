@@ -241,6 +241,14 @@ static Socialize *_sharedSocialize;
     [self storeConsumerSecret:secret];
 }
 
++ (NSString*)consumerKey {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeConsumerKey];
+}
+
++ (NSString*)consumerSecret {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeConsumerSecret];
+}
+
 +(void)storeConsumerKey:(NSString*)consumerKey {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     consumerKey = [consumerKey trim];
@@ -443,8 +451,8 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     NSString *apiKey = [Socialize apiKey];
     NSString *apiSecret = [Socialize apiSecret];
     
-    NSAssert(apiKey != nil, @"Missing api key. API key must be configured before using socialize. [Socialize storeApiKey:Secret]");
-    NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.[Socialize storeApiKey:Secret]");
+    NSAssert(apiKey != nil, @"Missing api key. API key must be configured before using socialize. [Socialize storeConsumerKey:]");
+    NSAssert(apiSecret != nil, @"Missing api secret. API secret must be configured before using socialize.[Socialize storeConsumerSecret:]");
     
     [self authenticateWithApiKey:apiKey apiSecret:apiSecret success:success failure:failure];
 }

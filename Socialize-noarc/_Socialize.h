@@ -174,6 +174,9 @@ otherwise you will get a failure.
  */
 +(void)storeConsumerKey:(NSString*)consumerKey;
 
++ (NSString*)consumerKey;
++ (NSString*)consumerSecret;
+
 /**
  Save API consumer secret
  

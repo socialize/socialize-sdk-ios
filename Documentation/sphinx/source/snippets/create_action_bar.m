@@ -15,6 +15,10 @@
     if (self.actionBar == nil) {
         self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
         self.actionBar = [SZActionBarUtils showActionBarWithViewController:self entity:self.entity options:nil];
+        
+        SZShareOptions *shareOptions = [SZShareUtils userShareOptions];
+        shareOptions.dontShareLocation = YES;
+        self.actionBar.shareOptions = shareOptions;
     }
 }
 
