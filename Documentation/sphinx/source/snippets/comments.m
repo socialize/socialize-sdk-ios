@@ -74,7 +74,12 @@
     
     SZCommentOptions *options = [SZCommentUtils userCommentOptions];
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
-        [postData.params setObject:@"Custom message" forKey:@"message"];
+        
+        if (network == SZSocialNetworkFacebook) {
+            [postData.params setObject:@"Custom message" forKey:@"message"];
+        } else if (network == SZSocialNetworkTwitter) {
+            [postData.params setObject:@"Custom status" forKey:@"status"];            
+        }
     };
     
     [SZCommentUtils addCommentWithEntity:entity text:@"A Comment!" options:options networks:SZAvailableSocialNetworks() success:^(id<SZComment> comment) {

@@ -43,6 +43,25 @@
     };
     
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
+        if (network == SZSocialNetworkTwitter) {
+            NSString *entityURL = [[postData.propagationInfo objectForKey:@"twitter"] objectForKey:@"entity_url"];
+            NSString *displayName = [postData.entity displayName];
+            NSString *customStatus = [NSString stringWithFormat:@"Custom status for %@ with url %@", displayName, entityURL];
+            
+            [postData.params setObject:customStatus forKey:@"status"];
+            
+        } else if (network == SZSocialNetworkFacebook) {
+            NSString *entityURL = [[postData.propagationInfo objectForKey:@"facebook"] objectForKey:@"entity_url"];
+            NSString *displayName = [postData.entity displayName];
+            NSString *customMessage = [NSString stringWithFormat:@"Custom status for %@ ", displayName];
+            
+            [postData.params setObject:customMessage forKey:@"message"];
+            [postData.params setObject:entityURL forKey:@"link"];
+            [postData.params setObject:@"A caption" forKey:@"caption"];
+            [postData.params setObject:@"Custom Name" forKey:@"name"];
+            [postData.params setObject:@"A Site" forKey:@"description"];
+        }
+        
         NSLog(@"Posting to %d", network);
     };
     
@@ -118,11 +137,13 @@
     // http://developers.facebook.com/docs/reference/api/link/
     
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
-        [postData.params setObject:@"Hey check out this site i found" forKey:@"message"];
-        [postData.params setObject:@"http://www.facebook.com" forKey:@"link"];
-        [postData.params setObject:@"A caption" forKey:@"caption"];
-        [postData.params setObject:@"Facebook" forKey:@"name"];
-        [postData.params setObject:@"A Site" forKey:@"description"];
+        if (network == SZSocialNetworkFacebook) {
+            [postData.params setObject:@"Hey check out this site i found" forKey:@"message"];
+            [postData.params setObject:@"http://www.facebook.com" forKey:@"link"];
+            [postData.params setObject:@"A caption" forKey:@"caption"];
+            [postData.params setObject:@"Facebook" forKey:@"name"];
+            [postData.params setObject:@"A Site" forKey:@"description"];
+        }
     };
     
     [SZShareUtils shareViaSocialNetworksWithEntity:entity networks:SZAvailableSocialNetworks() options:options success:^(id<SZShare> share) {
