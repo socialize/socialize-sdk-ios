@@ -9,5 +9,5 @@
 #import "SocializeService.h"
 
 @interface SocializeDeviceTokenService : SocializeService
-- (void)registerDeviceTokenString:(NSString *)deviceToken;
+- (void)registerDeviceTokenString:(NSString *)deviceToken development:(BOOL)development;
 @end

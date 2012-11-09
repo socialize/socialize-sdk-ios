@@ -79,14 +79,6 @@ NSString *SZGetProvisioningProfile() {
     return profileAsString;
 }
 
-NSString *SZAPINSStringForCurrentProvisioningState() {
-#if SZ_USE_DEBUG_PUSH
-    return @"APNS_DEVELOPMENT";
-#else
-    return @"APNS_PRODUCTION";
-#endif
-}
-
 NSString *SZBase64EncodedUDID() {
     NSString *udid = [[UIDevice currentDevice] uniqueIdentifier];
     NSData *udidData = [udid dataUsingEncoding:NSUTF8StringEncoding];

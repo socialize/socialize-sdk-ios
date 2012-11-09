@@ -734,6 +734,7 @@ otherwise you will get a failure.
 /** Socialize Notification Service **/
 //registers a device token.  Call this method when the developer gets the callback for:
 //didRegisterForRemoteNotificationsWithDeviceToken from the system
++(void)registerDeviceToken:(NSData *)deviceToken development:(BOOL)development;
 +(void)registerDeviceToken:(NSData *)deviceToken;
 
 /** @name View stuff */
@@ -847,7 +848,7 @@ otherwise you will get a failure.
 /** Send device token (string) to Socialize servers using the REST API
  You should not require this function for normal use. Use registerDeviceToken: instead
  */
-- (void)_registerDeviceTokenString:(NSString*)deviceTokenString;
+- (void)_registerDeviceTokenString:(NSString*)deviceTokenString development:(BOOL)development;
 
 -(BOOL)isAuthenticatedWithAuthType:(NSString*)authType;
 

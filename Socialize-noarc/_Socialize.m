@@ -866,9 +866,13 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 
 
 #pragma mark notification service stuff
-+(void)registerDeviceToken:(NSData *)deviceToken {
-    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken:deviceToken];
++(void)registerDeviceToken:(NSData *)deviceToken development:(BOOL)development {
+    [[SocializeDeviceTokenSender sharedDeviceTokenSender] registerDeviceToken:deviceToken development:development];
 }   
+
++(void)registerDeviceToken:(NSData *)deviceToken {
+    [self registerDeviceToken:deviceToken development:NO];
+}
 
 #pragma mark subscription types
 - (void)subscribeToCommentsForEntityKey:(NSString*)entityKey {
@@ -902,8 +906,12 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     return entityLoaderDefined && tokenAvailable;
 }
 
+- (void)_registerDeviceTokenString:(NSString*)deviceTokenString development:(BOOL)development {
+    [_deviceTokenService registerDeviceTokenString:deviceTokenString development:development];
+}
+
 - (void)_registerDeviceTokenString:(NSString*)deviceTokenString {
-    [_deviceTokenService registerDeviceTokenString:deviceTokenString];
+    [self _registerDeviceTokenString:deviceTokenString development:NO];
 }
 
 /*

@@ -68,7 +68,7 @@
         return YES;
     }]];
     
-    [self.deviceTokenService registerDeviceTokenString:@"FFFF"];
+    [self.deviceTokenService registerDeviceTokenString:@"FFFF" development:YES];
 }
 
 @end

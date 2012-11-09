@@ -15,9 +15,14 @@
 
 @implementation SocializeDeviceTokenService
 
-- (void)registerDeviceTokens:(NSArray *)tokens {
+- (void)registerDeviceTokens:(NSArray *)tokens development:(BOOL)development {
     NSMutableArray *params = [NSMutableArray array];
-    NSString *serviceType = SZAPINSStringForCurrentProvisioningState();
+    
+    NSString *serviceType = @"APNS_PRODUCTION";
+    if (development) {
+        serviceType = @"APNS_DEVELOPMENT";
+    }
+
     for ( NSString *token in tokens ) {
         
         NSDictionary *deviceToken = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -25,7 +30,6 @@
                                      @"iOS", @"device_type",
                                      serviceType, @"service_type",
                                      nil];
-        NSLog(@"Registering with string %@", serviceType);
         [params addObject:deviceToken];
        
     }
@@ -36,8 +40,8 @@
     [self executeRequest:request];
 }
 
-- (void)registerDeviceTokenString:(NSString *)deviceToken {
-    [self registerDeviceTokens:[NSArray arrayWithObject:deviceToken]];
+- (void)registerDeviceTokenString:(NSString *)deviceToken development:(BOOL)development {
+    [self registerDeviceTokens:[NSArray arrayWithObject:deviceToken] development:development];
 }
 
 -(Protocol *)ProtocolType

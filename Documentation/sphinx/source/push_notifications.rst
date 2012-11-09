@@ -225,17 +225,6 @@ programatically by posting a SocializeShouldDismissAllNotificationControllersNot
   :start-after: begin-dismiss-notifications-snippet
   :end-before: end-dismiss-notifications-snippet
 
-Forcing Use of Development (Sandbox) or Production Certificates
-------------------------------------------
-
-The Socialize servers need to know whether the app is using a production or
-development mobileprovision and associated push credentials. By default,
-Socialize will assume a production environment unless a DEBUG preprocessor is
-both present and nonzero. You can override this behavior by defining
-SZ_USE_DEBUG_PUSH=0 or SZ_USE_DEBUG_PUSH=1 in your projects 'Preprocessor
-Macros' section. Use of SZ_USE_DEBUG_PUSH should not be necessary under normal
-conditions.
-
 Troubleshooting Notifications
 ----------------------------------------
 
