@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 2.4.3 documentation</title>
+    <title>Advanced UI Configuration &mdash; Socialize iOS SDK 2.4.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.3',
+        VERSION:     '2.4.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.3 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4.4 documentation" href="index.html" />
     <link rel="next" title="SDK Pro Tips" href="sdk_pro_tips.html" />
     <link rel="prev" title="Views" href="views.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="views.html" title="Views"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -78,14 +78,14 @@
 <p>If the error alert messages that the default Socialize UI objects emit do not fit your needs,
 you can remove them using [Socialize storeUIErrorAlertsDisabled:YES].</p>
 <p>In addition, a notification will be posted for all Socialize UI errors.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeUIErrorAlertsDisabled:</span><span class="n">YES</span><span class="p">];</span>
     <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">addObserver:</span><span class="n">self</span> <span class="nl">selector:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">errorNotification:</span><span class="p">)</span> <span class="nl">name:</span><span class="n">SocializeUIControllerDidFailWithErrorNotification</span> <span class="nl">object:</span><span class="nb">nil</span><span class="p">];</span>
     
     <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">errorNotification:</span><span class="p">(</span><span class="n">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="n">notification</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">errorNotification:</span><span class="p">(</span><span class="n">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">notification</span> <span class="p">{</span>
     <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="p">[[</span><span class="n">notification</span> <span class="n">userInfo</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="n">SocializeUIControllerErrorUserInfoKey</span><span class="p">];</span>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
 <span class="p">}</span>
@@ -106,7 +106,7 @@ onwards the Socialize SDK will default to requiring users authenticate with a
 3rd party prior to performing any social action (e.g. Comment or Like).</p>
 <p>This default behavior can be overridden by the developer (you) with the
 following settings:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
     <span class="c1">// User can opt out of third party linking (default NO)</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeAnonymousAllowed:</span><span class="n">YES</span><span class="p">];</span>
@@ -129,7 +129,7 @@ to your app.</p>
 </div>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">StandaloneShareViewController</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nl">shareButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">shareButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
 <span class="c1">//    SocializeEntity *entity = [SocializeEntity entityWithKey:@&quot;my_key&quot; name:@&quot;An Entity&quot;];</span>
 <span class="c1">//    [Socialize showShareActionSheetWithViewController:self entity:entity success:^{</span>
 <span class="c1">//        NSLog(@&quot;Share created successfully&quot;);</span>
@@ -148,7 +148,7 @@ to your app.</p>
 <h2>Disabling Location<a class="headerlink" href="#disabling-location" title="Permalink to this headline">¶</a></h2>
 <p>If do not wish for Socialize to ask for the user&#8217;s location under any circumstances, you can
 completely disable location sharing</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">disableLocationSharing</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">disableLocationSharing</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeLocationSharingDisabled:</span><span class="n">YES</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
@@ -161,7 +161,7 @@ to the screen. By default, it will attempt to discover the topmost view controll
 If this fails, it will resort to manual UIView management in the application&#8217;s root window.
 Should you need to override this behavior, you can do so by implementing the SZDisplay protocol
 and returning it dynamically using [SZDisplayUtils setGlobalDisplayBlock:], as below</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     
     <span class="c1">// ...</span>
     
@@ -252,7 +252,7 @@ header for the full list of messages you should define.</p>
         <li class="right" >
           <a href="views.html" title="Views"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

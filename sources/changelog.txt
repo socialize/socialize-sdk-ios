@@ -4,6 +4,20 @@
 Changelog
 =============================================
 
+v2.4.4
+------
+[bug] Clarify older -fobjc-arc xcode setting in docs [ ]
+
+[bug] Like button docs missing property section [ ]
+
+[bug] Remove ifdef DEBUG from smartalerts setup guide (no longer needed) [ ]
+
+[feature] Add docs for customizing twitter propagations [ ]
+
+[bug] Fix 'not configured' message when using fb but not twitter [ ]
+
+[feature] Add explicit parameter for sending sandbox tokens [ ]
+
 v2.4.3
 ------
 [feature] Allow overriding share options when showing share dialog [ ]

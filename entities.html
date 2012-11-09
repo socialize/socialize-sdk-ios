@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Entities &mdash; Socialize iOS SDK 2.4.3 documentation</title>
+    <title>Entities &mdash; Socialize iOS SDK 2.4.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.3',
+        VERSION:     '2.4.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.3 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.4.4 documentation" href="index.html" />
     <link rel="next" title="Users" href="users.html" />
     <link rel="prev" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -112,7 +112,7 @@ exist.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">You do necessarily need to create an entity on your own. The <a class="reference external" href="comments.html#working-with-comments">Comment</a>, <a class="reference external" href="likes.html#working-with-likes">Like</a>, and <a class="reference external" href="sharing.html#working-with-shares">Share</a> utility functions will automatically create any specified entities.</p>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntity</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntity</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">addEntity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>
@@ -129,7 +129,7 @@ exist.</p>
 in this way will also provide aggregate data on comments, likes, shares and
 views. Refer to the <a class="reference external" href="http://api.getsocialize.com/docs/v1/#entity-object">Entity Object Structure</a>  in the API Docs. for more detail on
 these aggregate values.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getEntity</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getEntity</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>
     <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
@@ -139,7 +139,7 @@ these aggregate values.</p>
 </pre></div>
 </div>
 <p>You can also retrieve several entities in one call:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getMultipleEntitiesById</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getMultipleEntitiesById</span> <span class="p">{</span>
     <span class="n">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObjects:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">3</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithIds:</span><span class="n">ids</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
@@ -152,7 +152,7 @@ these aggregate values.</p>
 </pre></div>
 </div>
 <p>Or page through entities for the entire application</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getAllEntitiesForApplication</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getAllEntitiesForApplication</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithFirst:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">0</span><span class="p">]</span> <span class="nl">last:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">50</span><span class="p">]</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>            
@@ -164,7 +164,7 @@ these aggregate values.</p>
 </pre></div>
 </div>
 <p>You can select a sort order for listed entities</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getPopularEntitiesForApplication</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getPopularEntitiesForApplication</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithSorting:</span><span class="n">SZResultSortingPopularity</span> <span class="nl">first:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>            
@@ -180,7 +180,7 @@ these aggregate values.</p>
 <h3>Entity Stats<a class="headerlink" href="#entity-stats" title="Permalink to this headline">¶</a></h3>
 <p>Each entity object retrieved from the server contains aggregate statistics
 about the number of comments,likes,views and shares:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getUserStats</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getUserStats</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="nl">getEntitiesWithFirst:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">0</span><span class="p">]</span> <span class="nl">last:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">50</span><span class="p">]</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="k">in</span> <span class="n">entities</span><span class="p">)</span> <span class="p">{</span>
             
@@ -202,7 +202,7 @@ about the number of comments,likes,views and shares:</p>
 <p>Entities stored in Socialize can optionally include meta data. This is for any
 additional information you want to store about the entity.</p>
 <p>Meta data is stored with the entity and returned then the entity is requested.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithMeta</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithMeta</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
     <span class="n">entity</span><span class="p">.</span><span class="n">meta</span> <span class="o">=</span> <span class="s">@&quot;123&quot;</span><span class="p">;</span>
     
@@ -218,7 +218,7 @@ additional information you want to store about the entity.</p>
 <p>If you want a more complex data structure, we recommend using JSON as an object
 notation. To do this, you will need to use a third party library such as the
 excellent <a class="reference external" href="https://github.com/johnezang/JSONKit/">JSONKit</a></p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithJSONMeta</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithJSONMeta</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
     
     <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">dictionary</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObject:</span><span class="s">@&quot;123&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;key&quot;</span><span class="p">];</span>
@@ -258,7 +258,7 @@ taken from your entity meta data.</p>
 </pre></div>
 </div>
 <p>In code this would look something like this</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createEntityWithCustomPageInfo</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithCustomPageInfo</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;my_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
 
     <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys:</span>
@@ -346,7 +346,7 @@ taken from your entity meta data.</p>
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
