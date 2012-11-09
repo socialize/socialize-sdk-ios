@@ -15,7 +15,7 @@
 + (SocializeDeviceTokenSender*)sharedDeviceTokenSender;
 
 /** Register token with server */
-- (void)registerDeviceToken:(NSData*)deviceToken;
+- (void)registerDeviceToken:(NSData*)deviceToken development:(BOOL)development;
 
 /* The app developer has made us aware of their push token */
 - (BOOL)tokenAvailable;
@@ -27,5 +27,6 @@
 @property (nonatomic, retain) Socialize *socialize;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, assign, readonly) BOOL tokenOnServer;
+@property (nonatomic, assign, readonly) BOOL tokenIsDevelopment;
 
 @end

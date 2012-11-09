@@ -17,6 +17,7 @@
 - (void)sendDeviceTokenIfNecessary;
 - (void)resendDeviceToken;
 @property (nonatomic, assign) BOOL tokenOnServer;
+@property (nonatomic, assign) BOOL tokenIsDevelopment;
 @end
 
 static SocializeDeviceTokenSender *sharedDeviceTokenSender;
@@ -72,11 +73,14 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
     return deviceTokenString;
 }
 
-- (void)registerDeviceToken:(NSData*)deviceToken {
+- (void)registerDeviceToken:(NSData*)deviceToken development:(BOOL)development {
+    self.tokenIsDevelopment = development;
+
     if (deviceToken == nil) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSocializeDeviceTokenKey];
         return;
     }
+
     NSString *deviceTokenString = [self stringForToken:deviceToken];
     NSAssert([deviceTokenString length] > 0, @"Bad token");
     [[NSUserDefaults standardUserDefaults] setObject:deviceTokenString forKey:kSocializeDeviceTokenKey];
@@ -90,7 +94,7 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
         if (![self.socialize isAuthenticated]) {
             [self.socialize authenticateAnonymously];
         } else {
-            [self.socialize _registerDeviceTokenString:existingToken];
+            [self.socialize _registerDeviceTokenString:existingToken development:self.tokenIsDevelopment];
         }
     }
 }

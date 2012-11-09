@@ -31,7 +31,7 @@ Customizing the Like Button
 All of the images on the like button can be changed. To do this, just set the appropriate property.
 The full list of image properties is:
 
-.. literalinclude:: Socialize/Classes/SocializeLikeButton.h
+.. literalinclude:: Socialize/SZLikeButton.h
   :start-after: begin-image-properties
   :end-before: end-image-properties
 

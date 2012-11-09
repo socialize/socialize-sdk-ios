@@ -76,7 +76,7 @@
 }
 
 + (BOOL)isLinkedToSocialize {
-    return [self hasLocalCredentials] && [[Socialize sharedSocialize] isAuthenticatedWithAuthType:kSocializeTwitterStringForAPI];
+    return [self available] && [self hasLocalCredentials] && [[Socialize sharedSocialize] isAuthenticatedWithAuthType:kSocializeTwitterStringForAPI];
 }
 
 + (BOOL)hasLocalCredentials {
@@ -108,9 +108,10 @@
 }
 
 + (BOOL)shouldAutopost {
+    BOOL linked = [self isLinkedToSocialize];
     BOOL userPrefersPost = [self userPrefersPost];
     BOOL autopost = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeAutoPostToSocialNetworksKey] boolValue];
-    return autopost && userPrefersPost;
+    return linked && autopost && userPrefersPost;
 }
 
 @end

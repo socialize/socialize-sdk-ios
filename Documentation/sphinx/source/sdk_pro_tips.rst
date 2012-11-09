@@ -7,6 +7,9 @@ SDK Pro Tips
 Building the SDK from source
 --------------------------------
 
+Before using the Socialize source, you should be sure you initialize the submodules with
+'git submodule update --init --recursive'.
+
 The framework can be built with the command "make framework". The output of
 this command’s execution will be the embedded static framework in the
 build/Socialize.embeddedframework directory of the project

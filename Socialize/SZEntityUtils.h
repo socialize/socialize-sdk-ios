@@ -11,6 +11,7 @@
 
 @interface SZEntityUtils : NSObject
 
++ (void)getEntitiesWithKeys:(NSArray*)keys success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure;
 + (void)getEntitiesWithIds:(NSArray*)entityIds success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure;
 + (void)getEntitiesWithSorting:(SZResultSorting)sorting first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure;
 + (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entity))success failure:(void(^)(NSError *error))failure;

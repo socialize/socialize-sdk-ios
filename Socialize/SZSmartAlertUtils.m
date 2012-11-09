@@ -35,8 +35,12 @@
     return [SZNotificationHandler isSocializeNotification:userInfo];
 }
 
++ (void)registerDeviceToken:(NSData*)deviceToken development:(BOOL)development {
+    [Socialize registerDeviceToken:deviceToken development:development];
+}
+
 + (void)registerDeviceToken:(NSData*)deviceToken {
-    [Socialize registerDeviceToken:deviceToken];
+    [self registerDeviceToken:deviceToken development:YES];
 }
 
 @end

@@ -15,6 +15,7 @@
 - (void)startTimer;
 - (void)timerCheck;
 @property (nonatomic, assign) BOOL tokenOnServer;
+@property (nonatomic, assign) BOOL tokenIsDevelopment;
 @end
 
 @implementation SocializeDeviceTokenSenderTests
@@ -48,8 +49,9 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:testToken forKey:kSocializeDeviceTokenKey];
     self.deviceTokenSender.tokenOnServer = YES;
+    self.deviceTokenSender.tokenIsDevelopment = YES;
     
-    [[self.mockSocialize expect] _registerDeviceTokenString:testToken];
+    [[self.mockSocialize expect] _registerDeviceTokenString:testToken development:YES];
     [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SocializeAuthenticatedUserDidChangeNotification object:nil];
@@ -104,16 +106,16 @@
     [[[self.mockSocialize stub] andReturnBool:NO] isAuthenticated];
     [[self.mockSocialize expect] authenticateAnonymously];
     
-    [self.deviceTokenSender registerDeviceToken:self.testTokenData];    
+    [self.deviceTokenSender registerDeviceToken:self.testTokenData development:YES];
 }
 
 - (void)testDeviceTokenRegistrationWithUserDoesSend {
     self.deviceTokenSender.tokenOnServer = NO;
 
     [[[self.mockSocialize stub] andReturnBool:YES] isAuthenticated];
-    [[self.mockSocialize expect] _registerDeviceTokenString:self.testTokenString];
+    [[self.mockSocialize expect] _registerDeviceTokenString:self.testTokenString development:YES];
     
-    [self.deviceTokenSender registerDeviceToken:self.testTokenData];
+    [self.deviceTokenSender registerDeviceToken:self.testTokenData development:YES];
 }
 
 - (void)testTokenAvailableWhenSet {
@@ -145,7 +147,7 @@
         SocializeDeviceToken *deviceToken = [[[SocializeDeviceToken alloc] init] autorelease];
         [deviceToken setDevice_token:deviceTokenString];
         [self.deviceTokenSender service:nil didCreate:deviceToken];
-    }] _registerDeviceTokenString:OCMOCK_ANY];
+    }] _registerDeviceTokenString:OCMOCK_ANY development:YES];
 }
 
 - (void)testSendingMultipleTokens {
@@ -160,10 +162,10 @@
     
     [self expectRegistrationAndSucceed];
     
-    [[self.mockSocialize expect] _registerDeviceTokenString:testTokenString2];
+    [[self.mockSocialize expect] _registerDeviceTokenString:testTokenString2 development:YES];
     
-    [self.deviceTokenSender registerDeviceToken:testToken1];
-    [self.deviceTokenSender registerDeviceToken:testToken2];
+    [self.deviceTokenSender registerDeviceToken:testToken1 development:YES];
+    [self.deviceTokenSender registerDeviceToken:testToken2 development:YES];
 }
 
 @end

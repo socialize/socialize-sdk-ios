@@ -27,9 +27,8 @@
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
 {
-#if !DEBUG
-    [SZSmartAlertUtils registerDeviceToken:deviceToken];
-#endif
+    // If you are testing development (sandbox) notifications, you should instead pass development:YES
+    [SZSmartAlertUtils registerDeviceToken:deviceToken development:NO];
 }
 
 // end-register-snippet

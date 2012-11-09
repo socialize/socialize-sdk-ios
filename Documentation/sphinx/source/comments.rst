@@ -57,7 +57,7 @@ To create a comment programmatically you simply call the **addComment** method
 on **CommentUtils**
 
 Similar to shares, you can specify how the comment is to be propagated to 3rd party
-networks (currently, customization is only possible for Facebook)
+networks
 
 .. literalinclude:: snippets/comments.m
   :start-after: begin-add-comment-snippet
