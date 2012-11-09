@@ -16,6 +16,15 @@ static SocializeCanLoadEntityBlock _sharedCanLoadEntityBlock;
 
 @implementation SZEntityUtils
 
++ (void)getEntitiesWithKeys:(NSArray*)keys success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] getEntityWithKey:(id)keys success:^(NSArray *entities) {
+            BLOCK_CALL_1(success, entities);
+        } failure:failure];
+        
+    }, failure);
+}
+
 + (void)getEntityWithKey:(NSString*)key success:(void(^)(id<SZEntity> entity))success failure:(void(^)(NSError *error))failure {
     SZAuthWrapper(^{
         [[Socialize sharedSocialize] getEntityWithKey:key success:^(NSArray *entities) {
