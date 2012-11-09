@@ -27,9 +27,7 @@
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken
 {
-#if !DEBUG
     [SZSmartAlertUtils registerDeviceToken:deviceToken];
-#endif
 }
 
 // end-register-snippet
