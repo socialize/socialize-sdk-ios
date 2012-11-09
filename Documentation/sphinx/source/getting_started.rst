@@ -80,7 +80,7 @@ Step 3: Set Project Linker Flags
    			:width: 700
    			:height: 410
 
-- For older versions of Xcode where the project is not arc, also add **-fobjc-arc** to the Other Linker flags.
+- For older versions of Xcode (4.3 and newer), if your app is not arc-enabled, you MUST also add **-fobjc-arc** to the Other Linker flags.
 
 If you need more detail configuring the SDK in your app please see our `Getting Started Video`_.
 
