@@ -34,7 +34,7 @@
 
 - (NSInteger)indexOf:(NSString*)substring from:(NSInteger)starts;
 
-- (NSString*)trim;
+- (NSString*)socializeTrim;
 
 - (BOOL)startsWith:(NSString*)s;
 
