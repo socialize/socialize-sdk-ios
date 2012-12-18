@@ -409,6 +409,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     // The keyboard must be shown before rotation, or we won't get events to be able to recompute our container frames.
     // Static definition of frames does not work well because different languages have different keyboard sizes
     if (![commentTextView isFirstResponder]) {

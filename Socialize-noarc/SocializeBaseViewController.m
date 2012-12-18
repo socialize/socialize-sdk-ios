@@ -83,6 +83,47 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
     [super dealloc];
 }
 
+- (BOOL) needNestedModalHack {
+    return [UIDevice currentDevice].systemVersion.floatValue >= 6;
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                          duration:(NSTimeInterval)duration {
+    
+    // We are the top modal, make to sure that parent modals use our size
+    if ([self needNestedModalHack] && self.presentedViewController == nil && self.presentingViewController != nil) {
+        for (UIViewController* parent = self.presentingViewController; parent.presentingViewController != nil; parent = parent.presentingViewController) {
+            parent.view.superview.frame = parent.presentedViewController.view.superview.frame;
+        }
+    }
+    
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+}
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                 duration:(NSTimeInterval)duration {
+    
+    // We are the top modal, make to sure that parent modals are hidden during transition
+    if ([self needNestedModalHack] && self.presentedViewController == nil && self.presentingViewController != nil) {
+        for (UIViewController* parent = self.presentingViewController; parent.presentingViewController != nil; parent = parent.presentingViewController) {
+            parent.view.superview.hidden = YES;
+        }
+    }
+    
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    // We are the top modal, make to sure that parent modals are shown after animation
+    if ([self needNestedModalHack] && self.presentedViewController == nil && self.presentingViewController != nil) {
+        for (UIViewController* parent = self.presentingViewController; parent.presentingViewController != nil; parent = parent.presentingViewController) {
+            parent.view.superview.hidden = NO;
+        }
+    }
+    
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         (void)self.keyboardListener;
