@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 2.4.4 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 2.5 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.4',
+        VERSION:     '2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.4 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.5 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -83,7 +83,7 @@ in your app as easy as possible.</p>
 <div class="section" id="share-dialog">
 <h3>Share Dialog<a class="headerlink" href="#share-dialog" title="Permalink to this headline">¶</a></h3>
 <p>The simplest way to allow users to share an entity (your content) is via the share dialog</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showShareDialog</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showShareDialog</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">showShareDialogWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">completion:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// `shares` is a list of all shares created during the lifetime of the share dialog</span>
@@ -99,7 +99,7 @@ in your app as easy as possible.</p>
 <div class="section" id="custom-share-dialog-behavior">
 <h3>Custom Share Dialog Behavior<a class="headerlink" href="#custom-share-dialog-behavior" title="Permalink to this headline">¶</a></h3>
 <p>If you&#8217;d like, you can override some of Socialize&#8217;s share functionality</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showShareDialogWithOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showShareDialogWithOptions</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     
     <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
@@ -159,7 +159,7 @@ in your app as easy as possible.</p>
 <div class="section" id="manually-instantiating-the-share-dialog-controller">
 <h3>Manually instantiating the share dialog controller<a class="headerlink" href="#manually-instantiating-the-share-dialog-controller" title="Permalink to this headline">¶</a></h3>
 <p>If you need to, you can directly instantiate the share dialog and manage its lifecycle on your own.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowShareDialog</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">manuallyShowShareDialog</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
     <span class="n">SZShareDialogViewController</span> <span class="o">*</span><span class="n">share</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZShareDialogViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
     
@@ -187,7 +187,7 @@ in your app as easy as possible.</p>
 <h3>Programmatic Sharing<a class="headerlink" href="#programmatic-sharing" title="Permalink to this headline">¶</a></h3>
 <p>Should you need to create a share programatically, you can do so. If you specify nil for
 the share options, the default share options from the user profile will be used.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createShare</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">createShare</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
     
@@ -210,7 +210,7 @@ the share options, the default share options from the user profile will be used.
 <span id="custom-wall-post"></span><h3>Customizing the Content of Facebook Posts<a class="headerlink" href="#customizing-the-content-of-facebook-posts" title="Permalink to this headline">¶</a></h3>
 <p>Before your share is sent off to Facebook, you are given an opportunity to modify
 the parameters used to post to the user&#8217;s wall</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">customizeFacebook</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">customizeFacebook</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
     
@@ -242,7 +242,7 @@ the parameters used to post to the user&#8217;s wall</p>
 <span id="show-sms"></span><h3>Directly Opening an SMS or Email Composer<a class="headerlink" href="#directly-opening-an-sms-or-email-composer" title="Permalink to this headline">¶</a></h3>
 <p>If you&#8217;d like to skip the share dialog and just present an email or SMS share dialog, you
 can do so</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showSMS</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showSMS</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
 
     <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZShareOptions</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
@@ -267,7 +267,7 @@ can do so</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showEmail</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">showEmail</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     
     <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZShareOptions</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
@@ -294,7 +294,7 @@ can do so</p>
 </pre></div>
 </div>
 <p>You can retrieve information about what has been shared in your application.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getSharesForEntity</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getSharesForEntity</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">getSharesWithEntity:</span><span class="n">entity</span> <span class="nl">first:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
@@ -305,7 +305,7 @@ can do so</p>
     <span class="p">}];</span>
 <span class="p">}</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getSharesById</span> <span class="p">{</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getSharesById</span> <span class="p">{</span>
     
     <span class="n">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObject:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInteger:</span><span class="mi">10</span><span class="p">]];</span>
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">getSharesWithIds:</span><span class="n">ids</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
@@ -316,7 +316,7 @@ can do so</p>
     <span class="p">}];</span>
 <span class="p">}</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getSharesByUser</span> <span class="p">{</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getSharesByUser</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">getSharesWithUser:</span><span class="nb">nil</span> <span class="nl">first:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
         
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;SHARES!!! %@&quot;</span><span class="p">,</span> <span class="n">shares</span><span class="p">);</span>
@@ -326,7 +326,7 @@ can do so</p>
     <span class="p">}];</span>
 <span class="p">}</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getSharesByUserAndEntity</span> <span class="p">{</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getSharesByUserAndEntity</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
 
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">getSharesWithUser:</span><span class="nb">nil</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">first:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
@@ -404,7 +404,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

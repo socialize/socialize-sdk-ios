@@ -4,6 +4,20 @@
 Changelog
 =============================================
 
+v2.5
+----
+[bug] Add prefix to [NSString trim] (conflict with another library) [ ]
+
+[feature] Add custom thirdparty share to action bar section [ docs ]
+
+[bug] Fix auth screen iPad landscape dismissal crash [ ]
+
+[bug] Fix iOS6 formsheet modal (iPad) parent resize issue [ ]
+
+[bug] deleteLikeForUser can crash when called with createLikes... [ ]
+
+[feature] Action bar draws as normal view hierarchy (allow transparency, custom UIImageView) [ ]
+
 v2.4.4
 ------
 [bug] Clarify older -fobjc-arc xcode setting in docs [ ]

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Views &mdash; Socialize iOS SDK 2.4.4 documentation</title>
+    <title>Views &mdash; Socialize iOS SDK 2.5 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4.4',
+        VERSION:     '2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.4.4 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.5 documentation" href="index.html" />
     <link rel="next" title="Advanced UI Configuration" href="ui_advanced.html" />
     <link rel="prev" title="Likes" href="likes.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="likes.html" title="Likes"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,7 +76,7 @@
 <p>A &#8220;view&#8221; represents the action of a user viewing an entity and is an extremely useful analytics tool</p>
 <div class="section" id="recording-views">
 <h2>Recording Views<a class="headerlink" href="#recording-views" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">recordView</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">recordView</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
 
     <span class="p">[</span><span class="n">SZViewUtils</span> <span class="nl">viewEntity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeView</span><span class="o">&gt;</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
@@ -92,7 +92,7 @@
 <h2>Retrieving Views<a class="headerlink" href="#retrieving-views" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="by-user-all-entities">
 <h3>By User (all entities)<a class="headerlink" href="#by-user-all-entities" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getViewForUser</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getViewForUser</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZViewUtils</span> <span class="nl">getViewsByUser:</span><span class="nb">nil</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">views</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Got views %@&quot;</span><span class="p">,</span> <span class="n">views</span><span class="p">);</span>
     <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
@@ -104,7 +104,7 @@
 </div>
 <div class="section" id="by-user-specific-entity">
 <h3>By User (Specific entity)<a class="headerlink" href="#by-user-specific-entity" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getViewsForUserOnEntity</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getViewsForUserOnEntity</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZViewUtils</span> <span class="nl">getViewsByUser:</span><span class="nb">nil</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">views</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Got views %@&quot;</span><span class="p">,</span> <span class="n">views</span><span class="p">);</span>
@@ -177,7 +177,7 @@
         <li class="right" >
           <a href="likes.html" title="Likes"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.4.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
