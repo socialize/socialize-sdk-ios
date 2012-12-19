@@ -40,6 +40,7 @@
 @synthesize testView = _testView;
 @synthesize betweenButtonsPadding = _betweenButtonsPadding;
 @synthesize activityIndicator = _activityIndicator;
+@synthesize backgroundImageView = _backgroundImageView;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -75,6 +76,9 @@
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         
+        [self setBackgroundColor:[UIColor clearColor]];
+        
+        [self addSubview:self.backgroundImageView];
         [self addSubview:self.buttonsContainerRight];
         [self addSubview:self.buttonsContainerLeft];
         [self addSubview:self.activityIndicator];
@@ -171,6 +175,26 @@
     }
 }
 
+- (void)setBackgroundImageView:(UIImageView *)backgroundImageView {
+    if (_backgroundImageView != nil) {
+        [_backgroundImageView removeFromSuperview];
+    }
+    
+    _backgroundImageView = backgroundImageView;
+    [self addSubview:_backgroundImageView];
+    [self sendSubviewToBack:_backgroundImageView];
+}
+
+- (UIImageView*)backgroundImageView {
+    if (_backgroundImageView == nil) {
+        _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        _backgroundImageView.image = self.backgroundImage;
+        _backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+    }
+    return _backgroundImageView;
+}
+
 - (UIImage*)backgroundImage {
     if (_backgroundImage == nil) {
         _backgroundImage = [[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
@@ -181,6 +205,7 @@
 
 - (void)setBackgroundImage:(UIImage *)backgroundImage {
     _backgroundImage = backgroundImage;
+    self.backgroundImageView.image = _backgroundImage;
     [self setNeedsDisplay];
 }
 
@@ -295,12 +320,6 @@
     if ([self.entity isEqual:entity] && [entity isFromServer]) {
         [self configureForServerEntity:entity];
     }
-}
-
-- (void)drawRect:(CGRect)rect 
-{	
-	[super drawRect:rect];   
-	[self.backgroundImage drawInRect:CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height) blendMode:kCGBlendModeMultiply alpha:1.0];
 }
 
 @end

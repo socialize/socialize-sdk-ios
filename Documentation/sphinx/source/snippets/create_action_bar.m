@@ -132,3 +132,26 @@
 
 @end
 
+@implementation CreateActionBarViewController (CustomImage)
+
+// begin-customize-background-snippet
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.actionBar == nil) {
+        self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
+        self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
+        
+        UIImage *customBackground = [[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
+        self.actionBar.backgroundImageView.image = customBackground;
+        self.actionBar.backgroundImageView.alpha = 0.3f;
+        
+        [self.view addSubview:self.actionBar];
+    }
+}
+
+// end-customize-background-snippet
+
+@end
+

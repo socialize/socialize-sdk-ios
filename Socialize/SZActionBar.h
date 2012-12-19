@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIView *testView;
 
 // Visual customization
+@property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, assign) CGFloat betweenButtonsPadding;
 
