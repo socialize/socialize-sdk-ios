@@ -434,6 +434,7 @@ tokenRequest = _tokenRequest;
 #endif
     
     SDebugLog(2, @"----- Received Response -----");
+    SDebugLog(2, @"Method: %@", [request HTTPMethod]);
     SDebugLog(2, @"URL: %@", urlString);
     SDebugLog(2, @"Code: %d", [response statusCode]);
     SDebugLog(2, @"Headers: %@", [response allHeaderFields]);

@@ -181,7 +181,11 @@
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                                                  params:params];
     request.successBlock = ^(NSArray *likes) {
-        BLOCK_CALL_1(success, [likes objectAtIndex:0]);
+        id<SZLike> like = nil;
+        if ([likes count] > 0) {
+            like = [likes objectAtIndex:0];
+        }
+        BLOCK_CALL_1(success, like);
     };
     request.failureBlock = failure;
 

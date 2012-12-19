@@ -79,3 +79,12 @@ both an email and a panic button to the action bar.
 
 .. image:: images/action_bar_custom_buttons.png
   :align: center
+
+Custom Background
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can change the background image and transparency of the bar.
+
+.. literalinclude:: snippets/create_action_bar.m
+  :start-after: begin-customize-background-snippet
+  :end-before: end-customize-background-snippet

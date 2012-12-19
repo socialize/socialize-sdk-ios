@@ -51,7 +51,7 @@
 	return index.location + index.length;
 }
 
-- (NSString*)trim {
+- (NSString*)socializeTrim {
 	return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 

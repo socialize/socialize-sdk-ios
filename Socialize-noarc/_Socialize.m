@@ -251,7 +251,7 @@ static Socialize *_sharedSocialize;
 
 +(void)storeConsumerKey:(NSString*)consumerKey {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    consumerKey = [consumerKey trim];
+    consumerKey = [consumerKey socializeTrim];
     
     NSString *existingKey = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_KEY];
     if (![existingKey isEqualToString:consumerKey]) {
@@ -263,7 +263,7 @@ static Socialize *_sharedSocialize;
 
 +(void)storeConsumerSecret:(NSString*)consumerSecret {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    consumerSecret = [consumerSecret trim];
+    consumerSecret = [consumerSecret socializeTrim];
     
     NSString *existingSecret = [[NSUserDefaults standardUserDefaults] objectForKey:SOCIALIZE_API_SECRET];
     if (![existingSecret isEqualToString:consumerSecret]) {
