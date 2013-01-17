@@ -100,6 +100,12 @@
         [self dismissModalViewControllerAnimated:NO];
     };
     
+    // You can hide individual share types
+//    share.hideEmail = YES;
+//    share.hideSMS = YES;
+//    share.hideFacebook = YES;
+//    share.hideTwitter = YES;
+    
     // Present however you want here
     [self presentModalViewController:share animated:NO];
 }

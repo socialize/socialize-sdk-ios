@@ -359,14 +359,17 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (BOOL)showFacebook {
-    return [SZFacebookUtils isAvailable] && !(self.hideUnlinkedNetworks && ![SZFacebookUtils isLinked]);
+    return [SZFacebookUtils isAvailable] && !(self.hideUnlinkedNetworks && ![SZFacebookUtils isLinked]) && !self.hideFacebook;
 }
 
 - (BOOL)showTwitter {
-    return [SZTwitterUtils isAvailable] && !(self.hideUnlinkedNetworks && ![SZTwitterUtils isLinked]);
+    return [SZTwitterUtils isAvailable] && !(self.hideUnlinkedNetworks && ![SZTwitterUtils isLinked]) && !self.hideTwitter;
 }
 
-                                              
+- (BOOL)showSocialNetworkSection {
+    return [self showFacebook] || [self showTwitter];
+}
+
 - (NSDictionary*)socialNetworkSection {
     NSMutableArray *rows = [NSMutableArray array];
 
@@ -486,13 +489,13 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (NSDictionary*)otherSection {
     NSMutableArray *rows = [NSMutableArray array];
-    if ([SZShareUtils canShareViaEmail]) {
+    if ([self showEmail]) {
         [rows addObject:[self emailRow]];
     }
 
-//    if ([SZShareUtils canShareViaSMS]) {
+    if ([self showSMS]) {
         [rows addObject:[self SMSRow]];
-//    }
+    }
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         
@@ -553,15 +556,15 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (BOOL)showSMS {
-    return self.showOtherShareTypes && [SZShareUtils canShareViaSMS];
+    return self.showOtherShareTypes && [SZShareUtils canShareViaSMS] && !self.hideSMS;
 }
 
 - (BOOL)showEmail {
-    return self.showOtherShareTypes && [SZShareUtils canShareViaEmail];
+    return self.showOtherShareTypes && [SZShareUtils canShareViaEmail] && !self.hideEmail;
 }
 
 - (BOOL)showOtherShareTypesSection {
-    return [self showSMS] || [self showEmail];
+    return self.showOtherShareTypes && ([self showSMS] || [self showEmail]);
 }
 
 - (BOOL)showAutopost {
@@ -571,8 +574,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (NSMutableArray*)sections {
     if (sections_ == nil) {
         sections_ = [[NSMutableArray alloc] init];
-        [sections_ addObject:[self socialNetworkSection]];
-        if ([self showOtherShareTypes]) {
+        
+        if ([self showSocialNetworkSection]) {
+            [sections_ addObject:[self socialNetworkSection]];
+        }
+        
+        if ([self showOtherShareTypesSection]) {
             [sections_ addObject:[self otherSection]];
         }
         if ([self showAutopost]) {

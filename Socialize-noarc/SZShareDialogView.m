@@ -52,7 +52,10 @@
         self.containerView.rows = [NSArray arrayWithObjects:self.headerView, self.tableView, self.footerView, nil];
     }
     
-    [self.tableView sizeToCells];
+    if ([self.tableView numberOfSections] > 0) {
+        [self.tableView sizeToCells];
+    }
+    
     [self.containerView layoutRows];
 }
 

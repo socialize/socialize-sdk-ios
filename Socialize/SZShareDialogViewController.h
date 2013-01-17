@@ -25,4 +25,9 @@
 @property (nonatomic, strong) _SZShareDialogViewController *_shareDialogViewController;
 @property (nonatomic, strong) id<SZDisplay> display;
 
+@property (nonatomic, assign) BOOL hideSMS;
+@property (nonatomic, assign) BOOL hideEmail;
+@property (nonatomic, assign) BOOL hideFacebook;
+@property (nonatomic, assign) BOOL hideTwitter;
+
 @end

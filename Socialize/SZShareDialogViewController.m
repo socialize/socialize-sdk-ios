@@ -21,6 +21,10 @@
 @dynamic continueText;
 @synthesize title = __title;
 @dynamic display;
+@dynamic hideTwitter;
+@dynamic hideFacebook;
+@dynamic hideSMS;
+@dynamic hideEmail;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

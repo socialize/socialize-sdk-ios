@@ -35,4 +35,9 @@
 @property (nonatomic, copy) NSString *continueText;
 @property (nonatomic, retain) SZShareOptions *shareOptions;
 
+@property (nonatomic, assign) BOOL hideSMS;
+@property (nonatomic, assign) BOOL hideEmail;
+@property (nonatomic, assign) BOOL hideFacebook;
+@property (nonatomic, assign) BOOL hideTwitter;
+
 @end
