@@ -778,10 +778,6 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_userService getActivityForUser:user entity:entity first:first last:last success:success failure:failure];    
 }
 
-- (void)getViewsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
-    [_userService getViewsForUser:user entity:entity first:first last:last success:success failure:failure];
-}
-
 - (void)getLikesWithIds:(NSArray*)likeIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     [_likeService getLikesWithIds:likeIds success:success failure:failure];
 }

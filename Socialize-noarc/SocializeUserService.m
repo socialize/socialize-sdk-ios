@@ -169,10 +169,6 @@
     [self getActivityForEndpoint:USER_ACTIVITY_ENDPOINT([user objectID]) protocol:@protocol(SocializeActivity) user:user entity:entity first:first last:last success:success failure:failure];
 }
 
-- (void)getViewsForUser:(id<SocializeUser>)user entity:(id<SocializeEntity>)entity first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *activity))success failure:(void(^)(NSError *error))failure {
-    [self getActivityForEndpoint:USER_VIEW_ENDPOINT([user objectID]) protocol:@protocol(SocializeView) user:user entity:entity first:first last:last success:success failure:failure];
-}
-
 - (void)deleteLikeForUser:(id<SZFullUser>)user entity:(id<SZEntity>)entity success:(void(^)(id<SZLike>))success failure:(void(^)(NSError *error))failure {
     NSDictionary *params = [NSDictionary dictionaryWithObject:[entity key] forKey:@"entity_key"];
     

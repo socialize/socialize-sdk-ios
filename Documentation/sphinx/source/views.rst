@@ -12,22 +12,3 @@ Recording Views
 .. literalinclude:: snippets/views.m
 	:start-after: begin-record-snippet
 	:end-before: end-record-snippet
-
-Retrieving Views
--------------------------
-
-
-By User (all entities)
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. literalinclude:: snippets/views.m
-	:start-after: begin-get-for-user-snippet
-	:end-before: end-get-for-user-snippet
-
-By User (Specific entity)
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. literalinclude:: snippets/views.m
-	:start-after: begin-get-for-user-and-entity-snippet
-	:end-before: end-get-for-user-and-entity-snippet
-

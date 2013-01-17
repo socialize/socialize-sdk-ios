@@ -25,29 +25,4 @@
 
 // end-record-snippet
 
-// begin-get-for-user-snippet
-
-- (void)getViewForUser {
-    [SZViewUtils getViewsByUser:nil start:nil end:nil success:^(NSArray *views) {
-        NSLog(@"Got views %@", views);
-    } failure:^(NSError *error) {
-        NSLog(@"Failed getting view: %@", [error localizedDescription]);
-    }];
-}
-
-// end-get-for-user-snippet
-
-// begin-get-for-user-and-entity-snippet
-
-- (void)getViewsForUserOnEntity {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
-    [SZViewUtils getViewsByUser:nil entity:entity start:nil end:nil success:^(NSArray *views) {
-        NSLog(@"Got views %@", views);
-    } failure:^(NSError *error) {
-        NSLog(@"Failed getting views: %@", [error localizedDescription]);
-    }];
-}
-
-// end-get-for-user-and-entity-snippet
-
 @end
