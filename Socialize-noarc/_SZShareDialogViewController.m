@@ -13,6 +13,7 @@
 #import "SZEventUtils.h"
 #import "SocializeLoadingView.h"
 #import "SZStatusView.h"
+#import "SocializeComposeMessageViewController.h"
 
 @interface _SZShareDialogViewController () {
     dispatch_once_t _initToken;
@@ -64,23 +65,42 @@
         [UIAlertView showAlertWithTitle:@"Select a Network" message:@"One or more networks must be selected to perform a share" buttonTitle:@"Ok" handler:nil];
     } else {
         
-        [self startLoading];
-        __block id mySelf = self;
-        (void)mySelf;
-        [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:[self optionsForShare] success:^(id<SZShare> share) {
+        SocializeComposeMessageViewController *message = [[[SocializeComposeMessageViewController alloc] initWithEntity:self.entity] autorelease];
+        __block __unsafe_unretained SocializeComposeMessageViewController *weakMessage = message;
+
+        message.completionBlock = ^{
+            [weakMessage startLoading];
             
-            [self stopLoading];
-            [self.createdShares addObject:share];
-            BLOCK_CALL_1(self.completionBlock, self.createdShares);
+            SZShareOptions *options = [self optionsForShare];
+            if ([options.text length] == 0) {
+                options.text = weakMessage.commentTextView.text;
+            }
+            options.dontShareLocation = !weakMessage.shouldShareLocation;
             
-            [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextSocializeShareCompleted];
+            [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:options success:^(id<SZShare> share) {
+                [weakMessage stopLoading];
+
+                [self.createdShares addObject:share];
+                BLOCK_CALL_1(self.completionBlock, self.createdShares);
+                
+                [self.SZPresentingViewController SZDismissViewControllerAnimated:YES completion:nil];
+                [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextSocializeShareCompleted];
+                
+
+            } failure:^(NSError *error) {
+                [weakMessage stopLoading];
+                [self failWithError:error];
+            }];
             
-        } failure:^(NSError *error) {
-            [self stopLoading];
-            [self failWithError:error];
-        }];
+            [self trackShareEventsForNetworks:networks];
+        };
+
+        message.cancellationBlock = ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        };
         
-        [self trackShareEventsForNetworks:networks];
+        [self.navigationController pushViewController:message animated:YES];
+        [message.navigationItem.leftBarButtonItem changeTitleOnCustomButtonToText:@"Back" type:AMSOCIALIZE_BUTTON_TYPE_BLUE];
     }
 }
 

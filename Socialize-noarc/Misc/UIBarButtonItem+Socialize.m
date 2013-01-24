@@ -18,6 +18,13 @@
     }
 }
 
+- (void)changeTitleOnCustomButtonToText:(NSString*)text type:(AMSocializeButtonType)type {
+    UIButton *button = (UIButton*)[self customView];
+    if ([button isKindOfClass:[UIButton class]]) {
+        [button configureWithTitle:text type:type];
+    }
+}
+
 + (UIBarButtonItem*)redSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler {
     UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:title];
     [button addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];

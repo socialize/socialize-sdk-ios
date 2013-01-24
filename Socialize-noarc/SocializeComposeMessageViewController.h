@@ -45,6 +45,7 @@
 @property (nonatomic, retain) SocializeLocationManager *locationManager;
 @property (retain, nonatomic) IBOutlet UIView *bottomContainerDisabledView;
 @property (nonatomic, retain) CLLocation *currentLocation;
+@property (nonatomic, assign) BOOL shouldShareLocation;
 
 - (void)disableLowerContainer;
 - (void)enableLowerContainer;

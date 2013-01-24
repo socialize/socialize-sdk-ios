@@ -19,6 +19,10 @@ static NSTimeInterval ModalDismissDelayHack = 0.5;
     return nav;
 }
 
+- (UIViewController*)SZPresentingViewController {
+    return (([self parentViewController] != nil || ![self respondsToSelector:@selector(presentingViewController)]) ? [self parentViewController] : [self presentingViewController]);
+}
+
 - (void)SZDismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     if (SZOSGTE(@"5.0")) {
         [self dismissViewControllerAnimated:flag completion:completion];

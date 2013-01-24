@@ -221,7 +221,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 }
 
 -(void)setShareLocation:(BOOL)enableLocation 
-{   
+{
+    self.shouldShareLocation = enableLocation;
+
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:enableLocation] forKey:kSocializeShouldShareLocationKey];
 
     if (enableLocation) {

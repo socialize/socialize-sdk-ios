@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIButton+Socialize.h"
 
 @interface UIBarButtonItem (Socialize)
 
@@ -14,5 +15,6 @@
 + (UIBarButtonItem*)blueSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler;
 
 - (void)changeTitleOnCustomButtonToText:(NSString*)text;
+- (void)changeTitleOnCustomButtonToText:(NSString*)text type:(AMSocializeButtonType)type;
 
 @end
