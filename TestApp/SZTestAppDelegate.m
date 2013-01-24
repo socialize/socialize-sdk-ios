@@ -45,7 +45,7 @@
             [navigationController pushViewController:entityLoader animated:YES];
         }
     }];
-     
+
     TestAppListViewController *sample = [TestAppListViewController sharedSampleListViewController];
     self.window.rootViewController = sample;
     [self.window makeKeyAndVisible];

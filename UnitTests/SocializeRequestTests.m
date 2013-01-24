@@ -47,7 +47,11 @@
     
     for(int i = 0; i< [actual count]; i++)
     {
-        if([[actual objectAtIndex:i] name] == [[expected objectAtIndex:i] name] && [(OARequestParameter*)[actual objectAtIndex:i] value] == [(OARequestParameter*)[expected objectAtIndex:i] value])
+        NSString *actualName = [[actual objectAtIndex:i] name];
+        NSString *actualValue = [(OARequestParameter*)[actual objectAtIndex:i] value];
+        NSString *expectedName = [[expected objectAtIndex:i] name];
+        NSString *expectedValue = [(OARequestParameter*)[expected objectAtIndex:i] value];
+        if(![actualName isEqual:expectedName] || ![actualValue isEqual:expectedValue])
         {
             return NO;
         }

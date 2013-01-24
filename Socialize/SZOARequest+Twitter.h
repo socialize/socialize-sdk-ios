@@ -16,4 +16,11 @@
                                  success:(void(^)(id result))success
                                  failure:(void(^)(NSError *error))failure;
 
++ (SZOARequest*)twitterRequestWithMethod:(NSString*)method
+                                    path:(NSString*)path
+                              parameters:(NSDictionary*)parameters
+                               multipart:(BOOL)multipart
+                                 success:(void(^)(id result))success
+                                 failure:(void(^)(NSError *error))failure;
+
 @end

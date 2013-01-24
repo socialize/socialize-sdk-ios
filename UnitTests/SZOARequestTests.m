@@ -23,7 +23,7 @@
     NSString *scheme = @"http";
     NSString *host = @"http://www.getsocialize.com";
     NSString *path = @"/path";
-    self.request = [[[SZOARequest alloc] initWithConsumerKey:nil consumerSecret:nil token:nil tokenSecret:nil method:method scheme:scheme host:host path:path parameters:nil success:nil failure:nil] autorelease];
+    self.request = [[[SZOARequest alloc] initWithConsumerKey:nil consumerSecret:nil token:nil tokenSecret:nil method:method scheme:scheme host:host path:path parameters:nil multipart:NO success:nil failure:nil] autorelease];
 }
 
 @end

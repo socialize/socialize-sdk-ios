@@ -84,6 +84,12 @@ authorize with twitter by calling the link methods directly.
   :start-after: begin-post-snippet
   :end-before: end-post-snippet
 
+Posting to twitter with media requires that you use an update_with_media endpoint.
+
+.. literalinclude:: snippets/twitter.m
+  :start-after: begin-status-with-media-snippet
+  :end-before: end-status-with-media-snippet
+
 Troubleshooting
 ---------------
 

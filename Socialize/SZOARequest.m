@@ -41,6 +41,7 @@
                      host:(NSString*)host
                      path:(NSString*)path
                parameters:(NSDictionary*)parameters
+                multipart:(BOOL)multipart
                   success:(void(^)(NSURLResponse*, NSData *data))success
                   failure:(void(^)(NSError *error))failure {
     
@@ -63,13 +64,13 @@
         [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             if ([obj conformsToProtocol:@protocol(NSFastEnumeration)]) {
                 for (id subobject in obj) {
-                    [oaParams addObject:[OARequestParameter requestParameterWithName:key value:[subobject description]]];
+                    [oaParams addObject:[OARequestParameter requestParameterWithName:key value:subobject]];
                 }
             } else {
-                [oaParams addObject:[OARequestParameter requestParameterWithName:key value:[obj description]]];
+                [oaParams addObject:[OARequestParameter requestParameterWithName:key value:obj]];
             }
         }];
-        [self.request setOAParameters:oaParams];
+        [self.request setOAParameters:oaParams multipart:multipart];
         
         self.fetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:self.request delegate:self didFinishSelector:@selector(fetcherDidFinishWithTicket:data:) didFailSelector:@selector(fetcherDidFailWithTicket:error:)];
         

@@ -61,4 +61,27 @@
 }
 
 // end-post-snippet
+
+// begin-status-with-media-snippet
+
+- (void)statusWithMedia {
+    
+    UIImage *image = [UIImage imageNamed:@"Smiley.png"];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    
+    NSDictionary *params = @{
+        @"status": @"Hello",
+        @"media[]": imageData
+    };
+    
+    [SZTwitterUtils postWithViewController:self path:@"1.1/statuses/update_with_media.json" params:params multipart:YES success:^(id result) {
+        NSLog(@"Posted %@", result);
+    } failure:^(NSError *error) {
+        NSLog(@"Failed %@", [error localizedDescription]);
+    }];
+    
+}
+
+// end-status-with-media-snippet
+
 @end

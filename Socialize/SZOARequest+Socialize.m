@@ -44,6 +44,7 @@
                                                                host:@"api.getsocialize.com"
                                                                path:path
                                                          parameters:parameters
+                                                          multipart:NO
                                                             success:^(NSURLResponse *response, NSData *data) {
                                                                 NSDictionary *dictionary = [data objectFromJSONData];
                                                                 NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

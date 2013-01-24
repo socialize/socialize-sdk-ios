@@ -117,8 +117,12 @@
 }
 
 + (void)postWithViewController:(UIViewController*)viewController path:(NSString*)path params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
+    [self postWithViewController:viewController path:path params:params multipart:NO success:success failure:failure];
+}
+
++ (void)postWithViewController:(UIViewController*)viewController path:(NSString*)path params:(NSDictionary*)params multipart:(BOOL)multipart success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
     SZTWAuthWrapper(viewController, ^{
-        SZOARequest *req = [SZOARequest twitterRequestWithMethod:@"POST" path:path parameters:params success:success failure:failure];
+        SZOARequest *req = [SZOARequest twitterRequestWithMethod:@"POST" path:path parameters:params multipart:multipart success:success failure:failure];
         [[NSOperationQueue socializeQueue] addOperation:req];
     }, failure);
 }

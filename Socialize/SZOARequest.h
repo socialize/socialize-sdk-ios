@@ -20,6 +20,7 @@
                      host:(NSString*)host
                      path:(NSString*)path
                parameters:(NSDictionary*)parameters
+                multipart:(BOOL)multipart
                   success:(void(^)(NSURLResponse*, NSData *data))success
                   failure:(void(^)(NSError *error))failure;
 

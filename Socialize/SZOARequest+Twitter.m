@@ -18,6 +18,16 @@
                                  success:(void(^)(id result))success
                                  failure:(void(^)(NSError *error))failure {
     
+    return [self twitterRequestWithMethod:method path:path parameters:parameters multipart:NO success:success failure:failure];
+}
+
++ (SZOARequest*)twitterRequestWithMethod:(NSString*)method
+                                    path:(NSString*)path
+                              parameters:(NSDictionary*)parameters
+                               multipart:(BOOL)multipart
+                                 success:(void(^)(id result))success
+                                 failure:(void(^)(NSError *error))failure {
+    
     NSString *accessToken = [SZTwitterUtils accessToken];
     NSString *accessTokenSecret = [SZTwitterUtils accessTokenSecret];
     NSString *consumerKey = [SZTwitterUtils consumerKey];
@@ -38,6 +48,7 @@
                                                                host:@"api.twitter.com"
                                                                path:path
                                                          parameters:parameters
+                                                          multipart:multipart
                                                             success:^(NSURLResponse *response, NSData *data) {
                                                                 BLOCK_CALL_1(success, [data objectFromJSONData]);
                                                             }
