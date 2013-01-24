@@ -34,7 +34,7 @@
 {
     id<SocializeEntity> fromEntity = (id<SocializeEntity>)fromObject;
     [JSONFormatDictionary setObject:[fromEntity key] forKey:@"key"];
-    [JSONFormatDictionary setObject:[fromEntity name] forKey:@"name"];
+    [JSONFormatDictionary setValue:[fromEntity name] forKey:@"name"];
     
     [JSONFormatDictionary setValue:[fromEntity type] forKey:@"type"];
     

@@ -96,6 +96,17 @@
 //    
 //}
 
+- (void)testFromEntityNoName {
+    SZEntity *entity = [SZEntity entityWithKey:@"something" name:nil];
+    
+    SocializeEntityJSONFormatter * entityFormatter = [[[SocializeEntityJSONFormatter alloc]initWithFactory:_factory] autorelease];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [entityFormatter doToDictionary:dictionary fromObject:entity];
+    
+    NSString *key = [dictionary objectForKey:@"key"];
+    GHAssertNotNil(key, @"Bad dict");
+}
+
 
 #pragma mark helper methods
 
