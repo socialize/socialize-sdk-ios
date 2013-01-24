@@ -390,18 +390,6 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     }];
 }
 
-- (NSArray*)getViewsByUser:(id<SZUser>)user {
-    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
-        [SZViewUtils getViewsByUser:user start:nil end:nil success:actionSuccess failure:actionFailure];
-    }];
-}
-
-- (NSArray*)getViewsByUser:(id<SZUser>)user entity:(id<SZEntity>)entity {
-    return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
-        [SZViewUtils getViewsByUser:user entity:entity start:nil end:nil success:actionSuccess failure:actionFailure];
-    }];
-}
-
 - (id<SZSubscription>)subscribeToEntity:(id<SZEntity>)entity subscriptionType:(SZSubscriptionType)subscriptionType {
     return [self callAsync1WithAction:^(void(^actionSuccess)(id), void(^actionFailure)(NSError*)) {
         [SZSubscriptionUtils subscribeToEntity:entity subscriptionType:subscriptionType success:actionSuccess failure:actionFailure];
