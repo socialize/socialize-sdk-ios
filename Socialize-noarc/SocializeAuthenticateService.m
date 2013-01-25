@@ -34,16 +34,18 @@
 #define ASSOCIATE_METHOD @"third_party_authenticate/"
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
-    NSString* payloadJson = [NSString stringWithFormat:@"{\"udid\":\"%@\", \"d\":\"%@\"}", [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier], SZBase64EncodedUDID()];
-    NSMutableDictionary* paramsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       payloadJson, @"jsonData",
-                                       nil];
     
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
+                                   SZBase64EncodedUDID(), @"d",
+                                   SZBase64EncodedAdsID(), @"a",
+                                   nil];
+
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
     SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
                                                                  resourcePath:AUTHENTICATE_METHOD
                                                            expectedJSONFormat:SocializeDictionary
-                                                                       params:paramsDict];
+                                                                       params:params];
     
     // Flag this as a token request so we do not send the existing token
     request.tokenRequest = YES;
@@ -113,6 +115,7 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                                    [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
                                    SZBase64EncodedUDID(), @"d",
+                                   SZBase64EncodedAdsID(), @"a",
                                    authType, @"auth_type",
                                    thirdPartyAuthToken, @"auth_token",
                                    thirdPartyAuthTokenSecret, @"auth_token_secret",

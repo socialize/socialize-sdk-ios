@@ -68,6 +68,7 @@ Step 2: Add Required Frameworks to Your Project
            MessageUI.framework
            QuartzCore.framework
            CoreGraphics.framework
+           AdSupport.framework
 
 .. image:: images/add_frameworks.png
 

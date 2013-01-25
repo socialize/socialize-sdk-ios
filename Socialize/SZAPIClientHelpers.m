@@ -11,6 +11,7 @@
 #import "SocializePrivateDefinitions.h"
 #import "SocializeObjectFactory.h"
 #import "NSData+Base64.h"
+#import <AdSupport/AdSupport.h>
 
 void SZHandleUserChange(id<SZFullUser> fullUser) {
     NSDictionary *fullUserDictionary = [fullUser serverDictionary];
@@ -83,6 +84,13 @@ NSString *SZBase64EncodedUDID() {
     NSString *udid = [[UIDevice currentDevice] uniqueIdentifier];
     NSData *udidData = [udid dataUsingEncoding:NSUTF8StringEncoding];
     NSString *encoded = [udidData base64Encoding];
+    return encoded;
+}
+
+NSString *SZBase64EncodedAdsID() {
+    NSString *adid = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSData *adidData = [adid dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *encoded = [adidData base64Encoding];
     return encoded;
 }
 
