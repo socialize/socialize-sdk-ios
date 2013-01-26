@@ -4,6 +4,27 @@
 Changelog
 =============================================
 
+v2.6
+----
+[bug] Socialize can interfere with developer's UIWebViewDelegates [ ]
+
+[feature] Dev can hide or show individual share dialog elements [ share ui ]
+
+[bug] Remove deprecated REST wrappers (/view/ GETs) [ ]
+
+[bug] Developer can use twitter multipart endpoints such as status_with_media [ getsat ]
+
+[bug] Fix crash when manually creating nil-named entity/entities [ crash ]
+
+[bug] Share link is generated for application and not entity SmartDownload page [ needed for ellen ]
+
+[feature] Share dialog now always shows a text composer [ ]
+
+[feature] the SDK should report the new iOS 6 advertiserIdentifier [ ]
+
+[bug] EntityLoader for DeepLinking is not clear in docs [ ]
+
+
 v2.5
 ----
 [bug] Add prefix to [NSString trim] (conflict with another library) [ ]
