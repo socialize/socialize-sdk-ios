@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Activity (Social Actions) &mdash; Socialize iOS SDK 2.5 documentation</title>
+    <title>Activity (Social Actions) &mdash; Socialize iOS SDK 2.6 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.6 documentation" href="index.html" />
     <link rel="next" title="Sharing" href="sharing.html" />
     <link rel="prev" title="Users" href="users.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="users.html" title="Users"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -81,7 +81,7 @@ of the activity-related functionality can be found in the <strong>SZActionUtils<
 <div class="section" id="working-with-actions">
 <h2>Working with Actions<a class="headerlink" href="#working-with-actions" title="Permalink to this headline">¶</a></h2>
 <p>To retrieve the raw list of actions performed by a user</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getActionsByUserOnAllEntities</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getActionsByUserOnAllEntities</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZActionUtils</span> <span class="nl">getActionsByUser:</span><span class="nb">nil</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">actions</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZActivity</span><span class="o">&gt;</span> <span class="n">action</span> <span class="k">in</span> <span class="n">actions</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Found action %d by user %@ %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">action</span> <span class="n">objectID</span><span class="p">],</span> <span class="p">[</span><span class="n">action</span><span class="p">.</span><span class="n">user</span> <span class="n">firstName</span><span class="p">],</span> <span class="p">[</span><span class="n">action</span><span class="p">.</span><span class="n">user</span> <span class="n">lastName</span><span class="p">]);</span>
@@ -94,7 +94,7 @@ of the activity-related functionality can be found in the <strong>SZActionUtils<
 </pre></div>
 </div>
 <p>Or get the list of actions by a single user on a single entity</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getActionsByUserOnSingleEntity</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getActionsByUserOnSingleEntity</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;interesting_key&quot;</span><span class="p">];</span>
     
     <span class="p">[</span><span class="n">SZActionUtils</span> <span class="nl">getActionsByUser:</span><span class="nb">nil</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">actions</span><span class="p">)</span> <span class="p">{</span>
@@ -109,7 +109,7 @@ of the activity-related functionality can be found in the <strong>SZActionUtils<
 </pre></div>
 </div>
 <p>Or get the list of actions by all users on a single entity</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getActionsForAllUsersOnASingleEntity</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getActionsForAllUsersOnASingleEntity</span> <span class="p">{</span>
     <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;interesting_key&quot;</span><span class="p">];</span>
     
     <span class="p">[</span><span class="n">SZActionUtils</span> <span class="nl">getActionsByEntity:</span><span class="n">entity</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">actions</span><span class="p">)</span> <span class="p">{</span>
@@ -124,7 +124,7 @@ of the activity-related functionality can be found in the <strong>SZActionUtils<
 </pre></div>
 </div>
 <p>Or list activity for the entire application</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getActionsByApplication</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getActionsByApplication</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">SZActionUtils</span> <span class="nl">getActionsByApplicationWithStart:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">actions</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZActivity</span><span class="o">&gt;</span> <span class="n">action</span> <span class="k">in</span> <span class="n">actions</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Found action %d by user %@ %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">action</span> <span class="n">objectID</span><span class="p">],</span> <span class="p">[</span><span class="n">action</span><span class="p">.</span><span class="n">user</span> <span class="n">firstName</span><span class="p">],</span> <span class="p">[</span><span class="n">action</span><span class="p">.</span><span class="n">user</span> <span class="n">lastName</span><span class="p">]);</span>
@@ -198,7 +198,7 @@ of the activity-related functionality can be found in the <strong>SZActionUtils<
         <li class="right" >
           <a href="users.html" title="Users"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

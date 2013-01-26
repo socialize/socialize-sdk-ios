@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.5 documentation</title>
+    <title>Enabling SmartAlerts™ Notifications &mdash; Socialize iOS SDK 2.6 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.6 documentation" href="index.html" />
     <link rel="next" title="Entities" href="entities.html" />
     <link rel="prev" title="Facebook" href="facebook.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -152,7 +152,7 @@ Socialize apps (one for Development, and one for Production).</p>
 <h3>Register for Notifications<a class="headerlink" href="#register-for-notifications" title="Permalink to this headline">¶</a></h3>
 <p>Add the following line to your application delegate:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     
     <span class="c1">// Register for Apple Push Notification Service</span>
     <span class="p">[</span><span class="n">application</span> <span class="nl">registerForRemoteNotificationTypes:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
@@ -167,7 +167,7 @@ Socialize apps (one for Development, and one for Production).</p>
 <div class="section" id="register-the-device-token">
 <h3>Register the Device Token<a class="headerlink" href="#register-the-device-token" title="Permalink to this headline">¶</a></h3>
 <p>To register your app&#8217;s device token add the following lines to your application&#8217;s delegate</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="n">deviceToken</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="n">deviceToken</span>
 <span class="p">{</span>
 <span class="cp">    // If you are testing development (sandbox) notifications, you should instead pass development:YES</span>
 <span class="cp">    </span>
@@ -185,7 +185,7 @@ Socialize apps (one for Development, and one for Production).</p>
 <ul class="simple">
 <li>Add the lines below to allow Socialize to handle the notification.</li>
 </ul>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">handleNotification:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="hll"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">handleNotification:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">userInfo</span> <span class="p">{</span>
 </span><span class="hll">    <span class="k">if</span> <span class="p">([[</span><span class="n">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="n">applicationState</span><span class="p">]</span> <span class="o">!=</span> <span class="n">UIApplicationStateActive</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="hll">        <span class="k">if</span> <span class="p">([</span><span class="n">SZSmartAlertUtils</span> <span class="nl">openNotification:</span><span class="n">userInfo</span><span class="p">])</span> <span class="p">{</span>
 </span><span class="hll">            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Socialize handled the notification (background).&quot;</span><span class="p">);</span>
@@ -208,13 +208,13 @@ Socialize apps (one for Development, and one for Production).</p>
 </span><span class="hll">    <span class="p">}</span>
 </span><span class="hll"><span class="p">}</span>
 </span>
-<span class="hll"><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didReceiveRemoteNotification:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">userInfo</span> <span class="p">{</span>
+<span class="hll"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didReceiveRemoteNotification:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">userInfo</span> <span class="p">{</span>
 </span><span class="hll">    
 </span><span class="hll">    <span class="c1">// Handle Socialize notification at foreground</span>
 </span><span class="hll">    <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
 </span><span class="hll"><span class="p">}</span>
 </span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
     <span class="c1">// ...</span>
 
@@ -253,7 +253,7 @@ app. You should push a view controller onto the stack.</p>
 <p>If you&#8217;d just like to see notifications in action, you can use the bundled entity example entity
 loader called <strong>SampleEntityLoader</strong>. This class is not intended for use in a production app.</p>
 <p>Copy the lines below to add an entity loader</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     
     <span class="c1">// ...</span>
     
@@ -288,7 +288,7 @@ loader called <strong>SampleEntityLoader</strong>. This class is not intended fo
 available. Socialize provides the ability to selectively disable loading for a
 given entity. Should you find you need this, you can do this by defining a &#8220;Can
 Load Entity&#8221; block, as follows</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     
     <span class="c1">// ...</span>
 
@@ -365,7 +365,7 @@ user flow. As a convenience, you can dismiss all Socialize notification popups
 programatically by posting a SocializeShouldDismissAllNotificationControllersNotification.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dismissSocializeNotifications</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dismissSocializeNotifications</span> <span class="p">{</span>
     
     <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">postNotificationName:</span><span class="n">SocializeShouldDismissAllNotificationControllersNotification</span> <span class="nl">object:</span><span class="nb">nil</span><span class="p">];</span>
 
@@ -391,7 +391,7 @@ are no errors with registration process, as described in the next section.</p>
 <h3>Logging Errors from Notifications Registrations<a class="headerlink" href="#logging-errors-from-notifications-registrations" title="Permalink to this headline">¶</a></h3>
 <p>You can implement the notifications delegate method which callbacks if any error occurs during registration.  This should log
 the value of the error to your console.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFailToRegisterForRemoteNotificationsWithError:</span><span class="p">(</span><span class="n">NSError</span><span class="o">*</span><span class="p">)</span><span class="n">error</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFailToRegisterForRemoteNotificationsWithError:</span><span class="p">(</span><span class="n">NSError</span><span class="o">*</span><span class="p">)</span><span class="nv">error</span>
 <span class="p">{</span>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error Register Notifications: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
 <span class="p">}</span>
@@ -487,7 +487,7 @@ web interface.</p>
         <li class="right" >
           <a href="facebook.html" title="Facebook"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

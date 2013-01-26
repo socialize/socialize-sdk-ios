@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.5 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.6 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.5 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.6 documentation" href="index.html" />
     <link rel="next" title="Upgrading to Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -83,13 +83,14 @@
 <li><a class="reference internal" href="#step-2-add-required-frameworks-to-your-project" id="id5">Step 2: Add Required Frameworks to Your Project</a></li>
 <li><a class="reference internal" href="#step-3-set-project-linker-flags" id="id6">Step 3: Set Project Linker Flags</a></li>
 <li><a class="reference internal" href="#step-4-import-header-and-set-up-your-socialize-keys" id="id7">Step 4: Import Header and Set up your Socialize Keys</a></li>
-<li><a class="reference internal" href="#step-5-add-socialize-url-scheme-entry" id="id8">Step 5: Add Socialize URL Scheme Entry</a></li>
-<li><a class="reference internal" href="#step-6-include-socialize-in-your-app" id="id9">Step 6: Include Socialize in your App!</a></li>
-<li><a class="reference internal" href="#optional-configure-your-app-for-facebook" id="id10">Optional: Configure Your App for Facebook</a></li>
-<li><a class="reference internal" href="#optional-configure-your-app-for-twitter" id="id11">Optional: Configure Your App for Twitter</a></li>
+<li><a class="reference internal" href="#step-5-defining-an-entity-loader" id="id8">Step 5: Defining an Entity Loader</a></li>
+<li><a class="reference internal" href="#step-6-add-socialize-url-scheme-entry" id="id9">Step 6: Add Socialize URL Scheme Entry</a></li>
+<li><a class="reference internal" href="#step-6-include-socialize-in-your-app" id="id10">Step 6: Include Socialize in your App!</a></li>
+<li><a class="reference internal" href="#optional-configure-your-app-for-facebook" id="id11">Optional: Configure Your App for Facebook</a></li>
+<li><a class="reference internal" href="#optional-configure-your-app-for-twitter" id="id12">Optional: Configure Your App for Twitter</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#next-steps" id="id12">Next Steps</a></li>
+<li><a class="reference internal" href="#next-steps" id="id13">Next Steps</a></li>
 </ul>
 </li>
 </ul>
@@ -155,6 +156,7 @@ and socialize will not be able to locate its resources.</p>
 <span class="n">MessageUI</span><span class="p">.</span><span class="n">framework</span>
 <span class="n">QuartzCore</span><span class="p">.</span><span class="n">framework</span>
 <span class="n">CoreGraphics</span><span class="p">.</span><span class="n">framework</span>
+<span class="n">AdSupport</span><span class="p">.</span><span class="n">framework</span>
 </pre></div>
 </div>
 <img alt="images/add_frameworks.png" src="images/add_frameworks.png" />
@@ -187,7 +189,7 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
 <p class="last">Make sure to import the Socialize header in the code snippet below</p>
 </div>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="n">launchOptions</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
@@ -199,9 +201,52 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
 </pre></div>
 </div>
 </div>
-<div class="section" id="step-5-add-socialize-url-scheme-entry">
-<h3><a class="toc-backref" href="#id8">Step 5: Add Socialize URL Scheme Entry</a><a class="headerlink" href="#step-5-add-socialize-url-scheme-entry" title="Permalink to this headline">¶</a></h3>
-<p>In order to allow Socialize to direct users back into your app, you should add
+<div class="section" id="step-5-defining-an-entity-loader">
+<h3><a class="toc-backref" href="#id8">Step 5: Defining an Entity Loader</a><a class="headerlink" href="#step-5-defining-an-entity-loader" title="Permalink to this headline">¶</a></h3>
+<p>Defining an Entity Loader allows Socialize&#8217;s UI objects to link back to your
+application&#8217;s objects. The entity loader block is called from certain builtin
+Socialize UI Controls (e.g. Comment Details) when they need to show information
+about an entity. It is also used when directing users back into your app.</p>
+<p>Typically, you should have your own view controller for showing detail on an entity in your
+app. You should push a view controller onto the stack.</p>
+<p>If you&#8217;d just like to see notifications in action, you can use the bundled entity example entity
+loader called <strong>SampleEntityLoader</strong>. This class is not intended for use in a production app.</p>
+<p>Copy the lines below to add an entity loader</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="c1">// Register for Apple Push Notification Service</span>
+    <span class="p">[</span><span class="n">application</span> <span class="nl">registerForRemoteNotificationTypes:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
+
+    <span class="c1">// Handle Socialize notification at launch</span>
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="c1">// Specify a Socialize entity loader block</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">setEntityLoaderBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">        
+</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">navigationController</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRootViewController:</span><span class="n">entityLoader</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="nl">presentModalViewController:</span><span class="n">navigationController</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="nl">pushViewController:</span><span class="n">entityLoader</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">        <span class="p">}</span>
+</span><span class="hll">    <span class="p">}];</span>
+</span>    
+    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="images/entity_loader.png" src="images/entity_loader.png" />
+</div>
+<div class="section" id="step-6-add-socialize-url-scheme-entry">
+<h3><a class="toc-backref" href="#id9">Step 6: Add Socialize URL Scheme Entry</a><a class="headerlink" href="#step-6-add-socialize-url-scheme-entry" title="Permalink to this headline">¶</a></h3>
+<p>In order to allow Socialize to direct web users back into your app, you should add
 a custom URL scheme to your apps settings. The URL Scheme is based on your
 Socialize app id, which can be found on the right side of your apps dashboard
 at <a class="reference external" href="http://getsocialize.com/apps/">http://getsocialize.com/apps/</a> under the heading &#8220;<em>oAuth Keys, URL, &amp; ID</em>&#8221;.</p>
@@ -219,7 +264,7 @@ following:
 <img alt="images/enable_smartdownloads_dashboard.png" src="images/enable_smartdownloads_dashboard.png" />
 </div>
 <div class="section" id="step-6-include-socialize-in-your-app">
-<h3><a class="toc-backref" href="#id9">Step 6: Include Socialize in your App!</a><a class="headerlink" href="#step-6-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">Step 6: Include Socialize in your App!</a><a class="headerlink" href="#step-6-include-socialize-in-your-app" title="Permalink to this headline">¶</a></h3>
 <p>Now that you have your environment all setup, it’s time to include Socialize.</p>
 <p>The core component of the Socialize SDK is the “Action Bar”</p>
 <img alt="images/action_bar_solo.png" src="images/action_bar_solo.png" />
@@ -247,7 +292,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
@@ -289,16 +334,16 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 <p>By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a></p>
 </div>
 <div class="section" id="optional-configure-your-app-for-facebook">
-<h3><a class="toc-backref" href="#id10">Optional: Configure Your App for Facebook</a><a class="headerlink" href="#optional-configure-your-app-for-facebook" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Optional: Configure Your App for Facebook</a><a class="headerlink" href="#optional-configure-your-app-for-facebook" title="Permalink to this headline">¶</a></h3>
 <p>See the <a class="reference external" href="facebook.html">Facebook section</a>.</p>
 </div>
 <div class="section" id="optional-configure-your-app-for-twitter">
-<h3><a class="toc-backref" href="#id11">Optional: Configure Your App for Twitter</a><a class="headerlink" href="#optional-configure-your-app-for-twitter" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Optional: Configure Your App for Twitter</a><a class="headerlink" href="#optional-configure-your-app-for-twitter" title="Permalink to this headline">¶</a></h3>
 <p>See the <a class="reference external" href="twitter.html">Twitter section</a>.</p>
 </div>
 </div>
 <div class="section" id="next-steps">
-<h2><a class="toc-backref" href="#id12">Next Steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Next Steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
 <p>Run the app in your simulator or device, have fun with the action bar, add comments, likes and shares. Then you can visit the app dashboard on the Socialize website to see new user actions show up in the analytics charts.  You can also enable additional features like Push Notifications.</p>
 <p><a class="reference external" href="http://www.getsocialize.com/apps/">http://www.getsocialize.com/apps/</a></p>
 </div>
@@ -364,7 +409,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
