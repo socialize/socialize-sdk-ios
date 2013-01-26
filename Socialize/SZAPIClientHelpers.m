@@ -88,6 +88,9 @@ NSString *SZBase64EncodedUDID() {
 }
 
 NSString *SZBase64EncodedAdsID() {
+    if (!NSClassFromString(@"ASIdentifierManager")) {
+        return nil;
+    }
     NSString *adid = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     NSData *adidData = [adid dataUsingEncoding:NSUTF8StringEncoding];
     NSString *encoded = [adidData base64Encoding];
