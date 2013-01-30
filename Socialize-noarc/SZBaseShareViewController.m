@@ -304,7 +304,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 // Switch just turned on, not already linked
                 
                 // Attempt link
-                [SZTwitterUtils linkWithViewController:weakSelf success:^(id<SZFullUser> fullUser) {
+                [SZTwitterUtils linkWithViewController:weakSelf.SZPresentationTarget success:^(id<SZFullUser> fullUser) {
                     
                     // Successfully linked
                     [weakSelf syncInterfaceWithThirdPartyState];
@@ -428,7 +428,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
         
-        [SZShareUtils shareViaSMSWithViewController:weakSelf options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
+        [SZShareUtils shareViaSMSWithViewController:weakSelf.SZPresentationTarget options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
             [self deselectSelectedRow];
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
@@ -461,7 +461,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
 
-        [SZShareUtils shareViaEmailWithViewController:weakSelf options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
+        [SZShareUtils shareViaEmailWithViewController:weakSelf.SZPresentationTarget options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
             [self deselectSelectedRow];
 
             [weakSelf.createdShares addObject:share];

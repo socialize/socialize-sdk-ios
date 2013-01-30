@@ -50,4 +50,16 @@ static NSTimeInterval ModalDismissDelayHack = 0.5;
 
 }
 
+- (UIViewController*)SZPresentationTarget {
+    if (SZOSGTE(@"5.0") && self.parentViewController != nil) {
+        return self.parentViewController;
+    }
+    
+    if (self.navigationController != nil) {
+        return self.navigationController;
+    }
+    
+    return self;
+}
+
 @end
