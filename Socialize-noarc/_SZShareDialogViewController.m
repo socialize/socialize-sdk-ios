@@ -65,42 +65,62 @@
         [UIAlertView showAlertWithTitle:@"Select a Network" message:@"One or more networks must be selected to perform a share" buttonTitle:@"Ok" handler:nil];
     } else {
         
-        SocializeComposeMessageViewController *message = [[[SocializeComposeMessageViewController alloc] initWithEntity:self.entity] autorelease];
-        __block __unsafe_unretained SocializeComposeMessageViewController *weakMessage = message;
+        __block __unsafe_unretained __typeof__(self) weakSelf = self;
 
-        message.completionBlock = ^{
-            [weakMessage startLoading];
+        void (^createShareBlock)(SZShareOptions *, SocializeBaseViewController *) = ^(SZShareOptions *options, SocializeBaseViewController *loadingController) {
+            [loadingController startLoading];
             
-            SZShareOptions *options = [self optionsForShare];
-            if ([options.text length] == 0) {
-                options.text = weakMessage.commentTextView.text;
-            }
-            options.dontShareLocation = !weakMessage.shouldShareLocation;
-            
-            [SZShareUtils shareViaSocialNetworksWithEntity:self.entity networks:networks options:options success:^(id<SZShare> share) {
-                [weakMessage stopLoading];
-
-                [self.createdShares addObject:share];
-                BLOCK_CALL_1(self.completionBlock, self.createdShares);
+            [SZShareUtils shareViaSocialNetworksWithEntity:weakSelf.entity networks:networks options:options success:^(id<SZShare> share) {
+                [loadingController stopLoading];
                 
-                [self.SZPresentingViewController SZDismissViewControllerAnimated:YES completion:nil];
-                [self.display socializeRequiresIndicationOfStatusForContext:SZStatusContextSocializeShareCompleted];
+                [weakSelf.createdShares addObject:share];
+                BLOCK_CALL_1(weakSelf.completionBlock, weakSelf.createdShares);
                 
-
+                [weakSelf.SZPresentingViewController SZDismissViewControllerAnimated:YES completion:nil];
+                [weakSelf.display socializeRequiresIndicationOfStatusForContext:SZStatusContextSocializeShareCompleted];
+                
+                
             } failure:^(NSError *error) {
-                [weakMessage stopLoading];
-                [self failWithError:error];
+                [loadingController stopLoading];
+                [weakSelf failWithError:error];
             }];
             
             [self trackShareEventsForNetworks:networks];
-        };
 
-        message.cancellationBlock = ^{
-            [self.navigationController popViewControllerAnimated:YES];
         };
         
-        [self.navigationController pushViewController:message animated:YES];
-        [message.navigationItem.leftBarButtonItem changeTitleOnCustomButtonToText:@"Back" type:AMSOCIALIZE_BUTTON_TYPE_BLUE];
+        if (!self.dontShowComposer) {
+            SocializeComposeMessageViewController *message = [[[SocializeComposeMessageViewController alloc] initWithEntity:self.entity] autorelease];
+            __block __unsafe_unretained SocializeComposeMessageViewController *weakMessage = message;
+
+            message.allowEmpty = YES;
+            message.title = @"Share";
+            
+            SZShareOptions *options = [weakSelf optionsForShare];
+            
+            if ([options.text length] > 0) {
+                message.initialText = options.text;
+            }
+            
+            message.completionBlock = ^{
+                if ([options.text length] == 0) {
+                    options.text = weakMessage.commentTextView.text;
+                }
+                options.dontShareLocation = !weakMessage.shouldShareLocation;
+                
+
+                createShareBlock(options, weakMessage);
+            };
+
+            message.cancellationBlock = ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            };
+            
+            [self.navigationController pushViewController:message animated:YES];
+            [message.navigationItem.leftBarButtonItem changeTitleOnCustomButtonToText:@"Back" type:AMSOCIALIZE_BUTTON_TYPE_BLUE];
+        } else {
+            createShareBlock([self shareOptions], self);
+        }
     }
 }
 

@@ -46,6 +46,8 @@
 @property (retain, nonatomic) IBOutlet UIView *bottomContainerDisabledView;
 @property (nonatomic, retain) CLLocation *currentLocation;
 @property (nonatomic, assign) BOOL shouldShareLocation;
+@property (nonatomic, retain) NSString *initialText;
+@property (nonatomic, assign) BOOL allowEmpty;
 
 - (void)disableLowerContainer;
 - (void)enableLowerContainer;
