@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol SZEntity;
+@class SZActivityOptions;
 
 @interface SZSocialNetworkPostData : NSObject
 
@@ -16,5 +17,6 @@
 @property (nonatomic, retain) NSDictionary *propagationInfo;
 @property (nonatomic, copy) NSString *path;
 @property (nonatomic, retain) NSMutableDictionary *params;
+@property (nonatomic, retain) SZActivityOptions *options;
 
 @end

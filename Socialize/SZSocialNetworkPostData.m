@@ -10,9 +10,4 @@
 
 @implementation SZSocialNetworkPostData
 
-@synthesize entity = _entity;
-@synthesize propagationInfo = _propagationInfo;
-@synthesize path = _path;
-@synthesize params = _params;
-
 @end

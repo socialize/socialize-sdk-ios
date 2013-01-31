@@ -323,6 +323,8 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
             if (networks & SZSocialNetworkFacebook) {
                 
                 SZSocialNetworkPostData *postData = defaultFacebookPostData(activity);
+                postData.options = options;
+                
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
                 BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkFacebook, postData.params);
@@ -368,6 +370,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
 #pragma GCC diagnostic pop
 
                 SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
+                postData.options = options;
                 postData.params = params;
                 postData.path = @"/1/statuses/update.json";
                 postData.entity = [activity entity];
