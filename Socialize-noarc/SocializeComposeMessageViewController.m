@@ -94,6 +94,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [locationManager_ release];
     [_currentLocation release];
     [_reverseGeocodeTimer release];
+    [_initialText release];
     
     [bottomContainerDisabledView release];
     [super dealloc];
@@ -108,7 +109,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 }
 
 - (BOOL)canSend {
-    return [commentTextView.text length] > 0;
+    return self.allowEmpty || [commentTextView.text length] > 0;
 }
 
 - (void)updateSendButton {
@@ -326,9 +327,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
         [self.sendButton changeTitleOnCustomButtonToText:@"Continue"];
     }
     
-    [self updateSendButton];
-    
-    [self.commentTextView becomeFirstResponder];    
+    self.commentTextView.text = self.initialText;
+    [self.commentTextView becomeFirstResponder];
     
     BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
     [self setShareLocation:shareLocation];
@@ -338,6 +338,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [self updateViewWithNewLocation: mapOfUserLocation.userLocation.location];
     
     self.messageActionButtonContainer.rightJustified = YES;
+    
+    [self updateSendButton];
     
 }
 

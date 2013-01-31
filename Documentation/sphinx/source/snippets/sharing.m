@@ -93,6 +93,11 @@
 //    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 //    headerView.backgroundColor = [UIColor greenColor];    
 //    share.headerView = headerView;
+//    
+//    SZShareOptions *options = [SZShareUtils userShareOptions];
+//    options.text = @"Some default share text";
+//    share.shareOptions = options;
+//    share.dontShowComposer = YES;
     
     share.completionBlock = ^(NSArray *shares) {
         

@@ -25,6 +25,8 @@
 @dynamic hideFacebook;
 @dynamic hideSMS;
 @dynamic hideEmail;
+@dynamic dontShowComposer;
+@dynamic shareOptions;
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

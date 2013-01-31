@@ -24,10 +24,12 @@
 @property (nonatomic, copy) NSString *continueText;
 @property (nonatomic, strong) _SZShareDialogViewController *_shareDialogViewController;
 @property (nonatomic, strong) id<SZDisplay> display;
+@property (nonatomic, strong) SZShareOptions *shareOptions;
 
 @property (nonatomic, assign) BOOL hideSMS;
 @property (nonatomic, assign) BOOL hideEmail;
 @property (nonatomic, assign) BOOL hideFacebook;
 @property (nonatomic, assign) BOOL hideTwitter;
+@property (nonatomic, assign) BOOL dontShowComposer;
 
 @end
