@@ -23,7 +23,12 @@
 - (NSString*)truncateForTwitterWithExtraCharacters:(NSUInteger)extraCharacters {
     NSInteger maxLength = TWITTER_MAX_LENGTH - extraCharacters;
     
-    return [self truncateToMaxLength:maxLength];
+    NSString *text = self;
+    if ([text length] > maxLength) {
+        text = [[text substringToIndex:maxLength - 1] stringByAppendingString:@"…"];
+    }
+
+    return text;
 }
 
 - (NSString*)truncateToMaxLength:(NSUInteger)maxLength {
