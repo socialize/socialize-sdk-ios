@@ -2,7 +2,7 @@
 //import the socialize header
 #import <Socialize/Socialize.h>
 
-@interface ConfigureNotifications
+@interface ConfigureNotifications : NSObject
 @property (nonatomic, retain) UIWindow *window;
 @end
 

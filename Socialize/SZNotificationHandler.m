@@ -108,6 +108,8 @@ static SZNotificationHandler *sharedNotificationHandler;
         loadingContext = SZLoadingContextFetchingEntityForDirectEntityNotification;
     } else if ([notificationType isEqualToString:@"entity_notification"]) {
         loadingContext = SZLoadingContextFetchingEntityForEntitySubscriptionNotification;
+    } else {
+        @throw [NSException exceptionWithName:@"SocializeException" reason:@"Bad Notification Type" userInfo:nil];
     }
     
     [display socializeDidStartLoadingForContext:loadingContext];

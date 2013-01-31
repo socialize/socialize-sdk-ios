@@ -23,7 +23,7 @@
 static NSString *CellIdentifier = @"CellIdentifier";
 
 static NSString *kSectionIdentifier = @"kSectionIdentifier";
-static NSString *kSectionTitle = @"kSectionTitle";
+//static NSString *kSectionTitle = @"kSectionTitle";
 static NSString *kSectionRows = @"kSectionRows";
 static NSString *kSectionCellConfigurationBlock = @"kSectionCellConfigurationBlock";
 

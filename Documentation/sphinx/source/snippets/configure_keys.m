@@ -1,7 +1,7 @@
 //import the socialize header
 #import <Socialize/Socialize.h>
 
-@interface ConfigureKeys
+@interface ConfigureKeys : NSObject
 @end
 
 @implementation ConfigureKeys
