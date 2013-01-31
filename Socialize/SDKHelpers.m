@@ -123,7 +123,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
                     }];
                 };
                 selectNetwork.cancellationBlock = ^{
-                    [link popToRootViewControllerAnimated:YES];
+                    [weakLink popToRootViewControllerAnimated:YES];
                 };
                 
                 switch (context) {
@@ -258,18 +258,6 @@ void CreateAndShareActivityPromptIfNeeded(id<SZActivity> activity, SZShareOption
     if (options == nil) {
         
     }
-}
-
-void SZAttemptAction(NSTimeInterval retryInterval, SZAttemptActionBlock attempt) {
-    __block void (^attemptBlock)() = ^{
-        attempt(^(NSError* error) {
-            [NSTimer scheduledTimerWithTimeInterval:retryInterval block:^(NSTimeInterval interval) {
-                attemptBlock();
-            } repeats:NO];
-        });
-    };
-    
-    attemptBlock();
 }
 
 SZPostDataBuilderBlock SZDefaultLinkPostData() {

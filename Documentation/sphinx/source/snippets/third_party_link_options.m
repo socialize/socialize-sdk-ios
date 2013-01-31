@@ -2,7 +2,7 @@
 //import the Socialize header
 #import <Socialize/Socialize.h>
 
-@interface ThirdPartyLinkOptions
+@interface ThirdPartyLinkOptions : NSObject
 @end
 
 @implementation ThirdPartyLinkOptions

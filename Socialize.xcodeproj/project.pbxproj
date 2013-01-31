@@ -525,8 +525,6 @@
 		AA3BC391158E866F0073AD50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC390158E866F0073AD50 /* CoreLocation.framework */; };
 		AA3BC393158E86770073AD50 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
 		AA3BC395158E868D0073AD50 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
-		AA3C62A315906FBE00386330 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
-		AA3C62A415906FBE00386330 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
 		AA41523115911E37003717AC /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086EE158D35BF00480399 /* SZActivityOptions.m */; };
 		AA41523215911E37003717AC /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F4158D35BF00480399 /* SZCommentOptions.m */; };
 		AA41523615911E37003717AC /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008707158D35BF00480399 /* SZLikeOptions.m */; };
@@ -663,7 +661,6 @@
 		AA7D041315A26CAA00EBB705 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7D03E015A26CAA00EBB705 /* SZViewUtils.h */; };
 		AA7D041415A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D041515A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
-		AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C62A115906FBE00386330 /* GHUnitIOS.framework */; };
 		AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
 		AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
 		AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */; };
@@ -1789,6 +1786,27 @@
 			remoteGlobalIDString = AACEDABA158FF61A0024EC43;
 			remoteInfo = "OAuthConsumer iOS";
 		};
+		AADFBFE116B9FB7400291167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0041C5EA13BA7B8A0015FC22;
+			remoteInfo = "GHUnitIOS (Simulator)";
+		};
+		AADFBFE316B9FB7400291167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0041C61313BA7C6C0015FC22;
+			remoteInfo = "GHUnitIOS (Device)";
+		};
+		AADFBFE516B9FB7400291167 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0097C4A813BA7FC800D3BEF0;
+			remoteInfo = Tests;
+		};
 		AAE9E1DF1590012B00B2B9FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
@@ -2384,7 +2402,6 @@
 		AA3BC392158E86770073AD50 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AA3BC394158E868D0073AD50 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AA3BC396158E87A60073AD50 /* hide_symbols_facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hide_symbols_facebook.h; path = "ThirdParty/facebook-ios-sdk/src/hide_symbols_facebook.h"; sourceTree = "<group>"; };
-		AA3C62A115906FBE00386330 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ThirdParty/GHUnitIOS.framework; sourceTree = "<group>"; };
 		AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareUtilsTests.h; sourceTree = "<group>"; };
 		AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareUtilsTests.m; sourceTree = "<group>"; };
 		AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Socialize/SZComposeCommentViewController.h; sourceTree = SOURCE_ROOT; };
@@ -2784,6 +2801,7 @@
 		AADB363D15F0350A000264D6 /* SZNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZNotificationHandler.h; path = Socialize/SZNotificationHandler.h; sourceTree = SOURCE_ROOT; };
 		AADB363E15F0350A000264D6 /* SZNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZNotificationHandler.m; path = Socialize/SZNotificationHandler.m; sourceTree = SOURCE_ROOT; };
 		AADB364415F0378E000264D6 /* SZDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDisplay.h; sourceTree = "<group>"; };
+		AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GHUnitIOS.xcodeproj; path = "ThirdParty/ghunit/Project-iOS/GHUnitIOS.xcodeproj"; sourceTree = "<group>"; };
 		AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeButton.h; sourceTree = "<group>"; };
 		AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButton.m; sourceTree = "<group>"; };
 		AADFE5E915967A7400FE2B61 /* SZActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBar.h; sourceTree = "<group>"; };
@@ -2861,7 +2879,6 @@
 				AACED947158FCDD20024EC43 /* QuartzCore.framework in Frameworks */,
 				AACED948158FCDD20024EC43 /* CoreLocation.framework in Frameworks */,
 				AACED949158FCDD20024EC43 /* MessageUI.framework in Frameworks */,
-				AA3C62A415906FBE00386330 /* GHUnitIOS.framework in Frameworks */,
 				AAA7C85116B207450041DFD0 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2880,7 +2897,6 @@
 				AA159D3E158FAD4B006E1CAE /* UIKit.framework in Frameworks */,
 				AA159D3F158FAD4B006E1CAE /* Foundation.framework in Frameworks */,
 				AA159D40158FAD4B006E1CAE /* CoreGraphics.framework in Frameworks */,
-				AA7D5DFF159072CD005B12A3 /* GHUnitIOS.framework in Frameworks */,
 				AAA7C85216B207470041DFD0 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2898,7 +2914,6 @@
 				AA6C63CE158F0EB0005E5632 /* UIKit.framework in Frameworks */,
 				AA6C63CF158F0EB0005E5632 /* Foundation.framework in Frameworks */,
 				AA6C63D0158F0EB0005E5632 /* CoreGraphics.framework in Frameworks */,
-				AA3C62A315906FBE00386330 /* GHUnitIOS.framework in Frameworks */,
 				AAA7C85016B207440041DFD0 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2961,7 +2976,6 @@
 			isa = PBXGroup;
 			children = (
 				AAA7C84E16B2073B0041DFD0 /* AdSupport.framework */,
-				AA3C62A115906FBE00386330 /* GHUnitIOS.framework */,
 				AA3BC394158E868D0073AD50 /* MapKit.framework */,
 				AA3BC392158E86770073AD50 /* QuartzCore.framework */,
 				AA3BC390158E866F0073AD50 /* CoreLocation.framework */,
@@ -3040,6 +3054,7 @@
 				AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */,
 				AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */,
 				AA3BC396158E87A60073AD50 /* hide_symbols_facebook.h */,
+				AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */,
 				AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */,
 				AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */,
 				AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */,
@@ -4227,6 +4242,16 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
+		AADFBFDB16B9FB7300291167 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */,
+				AADFBFE416B9FB7400291167 /* libGHUnitIOSDevice.a */,
+				AADFBFE616B9FB7400291167 /* Tests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AAE9E21315902B3E00B2B9FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -4639,6 +4664,10 @@
 					ProjectRef = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
 				},
 				{
+					ProductGroup = AADFBFDB16B9FB7300291167 /* Products */;
+					ProjectRef = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
+				},
+				{
 					ProductGroup = AA8766FB1590327B00E9B2C1 /* Products */;
 					ProjectRef = AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */;
 				},
@@ -4732,6 +4761,27 @@
 			fileType = archive.ar;
 			path = libOAuthConsumer.a;
 			remoteRef = AACEDAEB158FF7000024EC43 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGHUnitIOSSimulator.a;
+			remoteRef = AADFBFE116B9FB7400291167 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AADFBFE416B9FB7400291167 /* libGHUnitIOSDevice.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGHUnitIOSDevice.a;
+			remoteRef = AADFBFE316B9FB7400291167 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AADFBFE616B9FB7400291167 /* Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Tests.app;
+			remoteRef = AADFBFE516B9FB7400291167 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AAE9E21C15902B3E00B2B9FC /* BlocksKit.framework */ = {

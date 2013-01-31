@@ -62,7 +62,7 @@
 
 #else
 @interface SocializeGeocoderAdapter()
-@property(nonatomic, retain) CLGeocodeCompletionHandler handler;
+@property(nonatomic, copy) CLGeocodeCompletionHandler handler;
 @property(nonatomic, retain) MKReverseGeocoder* _geocoder;
 @end
 

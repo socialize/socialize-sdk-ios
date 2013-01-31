@@ -141,7 +141,7 @@ id testSelf;
     }
     [NSObject startObservingDeallocationsForClass:[object superclass]];
     NSValue *address = [[[NSValue valueWithPointer:object] copy] autorelease];
-    NSString *commentString = [NSString stringWithCString:(const char*)test encoding:NSASCIIStringEncoding];
+    NSString *commentString = [NSString stringWithCString:sel_getName(test) encoding:NSASCIIStringEncoding];
     [self.expectedDeallocations setObject:commentString forKey:address];
 }
 

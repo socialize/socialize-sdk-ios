@@ -1,7 +1,7 @@
 //import the socialize header
 #import <Socialize/Socialize.h>
 
-@interface DisableErrorAlerts
+@interface DisableErrorAlerts : NSObject
 @end
 
 @implementation DisableErrorAlerts
