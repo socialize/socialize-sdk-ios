@@ -46,7 +46,10 @@
         if (network == SZSocialNetworkTwitter) {
             NSString *entityURL = [[postData.propagationInfo objectForKey:@"twitter"] objectForKey:@"entity_url"];
             NSString *displayName = [postData.entity displayName];
-            NSString *customStatus = [NSString stringWithFormat:@"Custom status for %@ with url %@", displayName, entityURL];
+            SZShareOptions *shareOptions = (SZShareOptions*)postData.options;
+            NSString *text = shareOptions.text;
+            
+            NSString *customStatus = [NSString stringWithFormat:@"%@ / Custom status for %@ with url %@", text, displayName, entityURL];
             
             [postData.params setObject:customStatus forKey:@"status"];
             
