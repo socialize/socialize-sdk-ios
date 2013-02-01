@@ -58,14 +58,16 @@
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     
+    __block __unsafe_unretained __typeof__(viewController) weakViewController = viewController;
+    
     shareDialog.completionBlock = ^(NSArray *shares) {
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, shares);
         }];
     };
     
     shareDialog.cancellationBlock = ^{
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(cancellation);
         }];
      };
