@@ -52,7 +52,7 @@
 @property (nonatomic, retain) SocializeKeyboardListener *keyboardListener;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, copy) void (^cancellationBlock)();
-@property (nonatomic, retain) id<SZDisplay> display;
+@property (nonatomic, unsafe_unretained) id<SZDisplay> display;
 @property (nonatomic, assign) BOOL cancelled;
 
 - (BOOL)isFormsheetModal;
