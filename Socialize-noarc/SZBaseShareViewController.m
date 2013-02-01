@@ -429,10 +429,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
         
         [SZShareUtils shareViaSMSWithViewController:weakSelf.SZPresentationTarget options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
-            [self deselectSelectedRow];
+            [weakSelf deselectSelectedRow];
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [self deselectSelectedRow];
+            [weakSelf deselectSelectedRow];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];
@@ -461,12 +461,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
 
-        [SZShareUtils shareViaEmailWithViewController:weakSelf.SZPresentationTarget options:[self optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
-            [self deselectSelectedRow];
+        [SZShareUtils shareViaEmailWithViewController:weakSelf.SZPresentationTarget options:[weakSelf optionsForShare] entity:weakSelf.entity success:^(id<SZShare> share) {
+            [weakSelf deselectSelectedRow];
 
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
-            [self deselectSelectedRow];
+            [weakSelf deselectSelectedRow];
 
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];
