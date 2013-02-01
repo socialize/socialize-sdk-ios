@@ -109,7 +109,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
         
         // Link and possibly show network selection
         SZLinkDialogViewController *link = [[SZLinkDialogViewController alloc] init];
-        __block SZLinkDialogViewController *weakLink = link;
+        __block __unsafe_unretained SZLinkDialogViewController *weakLink = link;
         link.completionBlock = ^(SZSocialNetwork selectedNetwork) {
             
             if (selectedNetwork != SZSocialNetworkNone) {
