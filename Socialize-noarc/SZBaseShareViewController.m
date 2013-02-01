@@ -55,37 +55,45 @@ static NSString *kAutopostSection = @"kAutopostSection";
 @end
 
 @implementation SZBaseShareViewController
+@synthesize createdShares = createdShares_;
+@synthesize entity = entity_;
 @synthesize shareDialogView = shareDialogView_;
+@synthesize selectedNetworks = selectedNetworks_;
+@synthesize showOtherShareTypes = showOtherShareTypes_;
+@synthesize disableAutopostSelection = disableAutopostSelection_;
+@synthesize hideUnlinkedNetworks = hideUnlinkedNetworks_;
+@synthesize dontRequireNetworkSelection = dontRequireNetworkSelection_;
+@synthesize headerView = headerView_;
+@synthesize footerView = footerView_;
+@synthesize continueText = continueText_;
+@synthesize shareOptions = shareOptions_;
+
 @synthesize sections = sections_;
 @synthesize socialNetworkSection = socializeNetworkSection_;
-@synthesize entity = entity_;
 @synthesize facebookRow = facebookRow_;
 @synthesize twitterRow = twitterRow_;
 @synthesize facebookSwitch = facebookSwitch_;
 @synthesize twitterSwitch = twitterSwitch_;
 @synthesize autopostSwitch = autopostSwitch_;
-@synthesize selectedNetworks = selectedNetworks_;
-@synthesize showOtherShareTypes = showOtherShareTypes_;
-@synthesize disableAutopostSelection = disableAutopostSelection_;
-@synthesize completionBlock = completionBlock_;
-@synthesize hideUnlinkedNetworks = hideUnlinkedNetworks_;
-@synthesize dontRequireNetworkSelection = dontRequireNetworkSelection_;
-@synthesize createdShares = createdShares_;
-@synthesize headerView = headerView_;
-@synthesize footerView = footerView_;
 
 - (void)dealloc {
+    self.createdShares = nil;
+    self.entity = nil;
     self.shareDialogView = nil;
+    self.headerView = nil;
+    self.footerView = nil;
+    self.continueText = nil;
+    self.shareOptions = nil;
+    
     self.sections = nil;
     self.socialNetworkSection = nil;
-    self.entity = nil;
-    self.twitterRow = nil;
     self.facebookRow = nil;
-    self.autopostSwitch = nil;
+    self.twitterRow = nil;
     self.facebookSwitch = nil;
     self.twitterSwitch = nil;
-    self.completionBlock = nil;
-    self.shareOptions = nil;
+    self.autopostSwitch = nil;
+    
+//    self.tableView = nil;
     
     [SZFacebookUtils cancelLink];
 
