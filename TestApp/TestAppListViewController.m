@@ -137,14 +137,7 @@ static TestAppListViewController *sharedSampleListViewController;
         options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
             NSLog(@"Failed posting to %d", network);
         };
-        
-//        options.text = @"blah";
-        SZShareDialogViewController *share = [[SZShareDialogViewController alloc] initWithEntity:self.entity];
-//        share.dontShowComposer = YES;
-        share.shareOptions = options;
-        [self presentViewController:share animated:YES completion:nil];
-
-//        [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];
+        [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];
 
     }]];
          
