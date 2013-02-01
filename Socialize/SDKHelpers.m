@@ -110,6 +110,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
         // Link and possibly show network selection
         SZLinkDialogViewController *link = [[SZLinkDialogViewController alloc] init];
         __block __unsafe_unretained SZLinkDialogViewController *weakLink = link;
+        __block __unsafe_unretained __typeof__(viewController) weakViewController = viewController;
         link.completionBlock = ^(SZSocialNetwork selectedNetwork) {
             
             if (selectedNetwork != SZSocialNetworkNone) {
@@ -118,7 +119,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
                 
                 _SZSelectNetworkViewController *selectNetwork = [[_SZSelectNetworkViewController alloc] init];
                 selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
-                    [viewController SZDismissViewControllerAnimated:YES completion:^{
+                    [weakViewController SZDismissViewControllerAnimated:YES completion:^{
                         BLOCK_CALL_1(completion, selectedNetworks);
                     }];
                 };
@@ -141,7 +142,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
             } else {
                 
                 // Opted out of linking -- Don't show network selection
-                [viewController SZDismissViewControllerAnimated:YES completion:^{
+                [weakViewController SZDismissViewControllerAnimated:YES completion:^{
                     BLOCK_CALL_1(completion, SZSocialNetworkNone);
                 }];
             }
@@ -150,7 +151,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
         link.cancellationBlock = ^{
             
             // Explicitly cancelled link -- Dismiss and call cancellation
-            [viewController SZDismissViewControllerAnimated:YES completion:^{
+            [weakViewController SZDismissViewControllerAnimated:YES completion:^{
                 BLOCK_CALL(cancellation);                
             }];
         };
@@ -164,14 +165,16 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
             BLOCK_CALL_1(completion, SZAutoPostNetworks());
         } else {
             SZSelectNetworkViewController *selectNetwork = [[SZSelectNetworkViewController alloc] init];
+            __block __unsafe_unretained __typeof__(viewController) weakViewController = viewController;
+
             selectNetwork.completionBlock = ^(SZSocialNetwork selectedNetworks) {
-                [viewController SZDismissViewControllerAnimated:YES completion:^{
+                [weakViewController SZDismissViewControllerAnimated:YES completion:^{
                     BLOCK_CALL_1(completion, selectedNetworks);
                 }];
                 
             };
             selectNetwork.cancellationBlock = ^{
-                [viewController SZDismissViewControllerAnimated:YES completion:^{
+                [weakViewController SZDismissViewControllerAnimated:YES completion:^{
                     BLOCK_CALL(cancellation);
                 }];
             };
