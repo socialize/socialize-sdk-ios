@@ -536,11 +536,14 @@ static NSString *kAutopostSection = @"kAutopostSection";
 }
 
 - (NSDictionary*)autopostRow {
+    
+    __block __unsafe_unretained __typeof__(self) weakSelf = self;
+    
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         cell.imageView.image = nil;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.accessoryView = self.autopostSwitch;
+        cell.accessoryView = weakSelf.autopostSwitch;
         cell.textLabel.text = @"Remember Selection";
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
         cell.textLabel.textColor = [UIColor lightGrayColor];

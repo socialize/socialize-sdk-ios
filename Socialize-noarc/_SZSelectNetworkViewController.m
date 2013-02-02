@@ -16,6 +16,12 @@
 @implementation _SZSelectNetworkViewController
 @synthesize completionBlock = _completionBlock;
 
+- (void)dealloc {
+    self.completionBlock = nil;
+    
+    [super dealloc];
+}
+
 - (id)initWithEntity:(id<SocializeEntity>)entity {
     [self doesNotRecognizeSelector:_cmd];
     return nil;
