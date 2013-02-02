@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 2.6 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 2.6.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.6',
+        VERSION:     '2.6.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.6 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.6.1 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -118,7 +118,10 @@ in your app as easy as possible.</p>
         <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkTwitter</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="nl">objectForKey:</span><span class="s">@&quot;twitter&quot;</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
             <span class="n">NSString</span> <span class="o">*</span><span class="n">displayName</span> <span class="o">=</span> <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">entity</span> <span class="n">displayName</span><span class="p">];</span>
-            <span class="n">NSString</span> <span class="o">*</span><span class="n">customStatus</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;Custom status for %@ with url %@&quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">,</span> <span class="n">entityURL</span><span class="p">];</span>
+            <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">shareOptions</span> <span class="o">=</span> <span class="p">(</span><span class="n">SZShareOptions</span><span class="o">*</span><span class="p">)</span><span class="n">postData</span><span class="p">.</span><span class="n">options</span><span class="p">;</span>
+            <span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="n">shareOptions</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
+            
+            <span class="n">NSString</span> <span class="o">*</span><span class="n">customStatus</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;%@ / Custom status for %@ with url %@&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">displayName</span><span class="p">,</span> <span class="n">entityURL</span><span class="p">];</span>
             
             <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">customStatus</span> <span class="nl">forKey:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
             
@@ -167,6 +170,11 @@ in your app as easy as possible.</p>
 <span class="c1">//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];</span>
 <span class="c1">//    headerView.backgroundColor = [UIColor greenColor];    </span>
 <span class="c1">//    share.headerView = headerView;</span>
+<span class="c1">//    </span>
+<span class="c1">//    SZShareOptions *options = [SZShareUtils userShareOptions];</span>
+<span class="c1">//    options.text = @&quot;Some default share text&quot;;</span>
+<span class="c1">//    share.shareOptions = options;</span>
+<span class="c1">//    share.dontShowComposer = YES;</span>
     
     <span class="n">share</span><span class="p">.</span><span class="n">completionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
         
@@ -410,7 +418,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.6.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
