@@ -109,6 +109,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.saveButton = nil;
     self.facebookCells = nil;
     self.popover = nil;
+    self.userSettingsCompletionBlock = nil;
     
     [super dealloc];
 }
