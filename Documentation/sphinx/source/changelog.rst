@@ -4,6 +4,22 @@
 Changelog
 =============================================
 
+v2.6.1
+------
+[feature] Display of share composer can be disabled [ ]
+
+[feature] Share composer should adopt default text from share options [ ]
+
+[bug] Share composer should allow blank share [ ]
+
+[feature] Expose share options in social 'posting' callbacks [ ]
+
+[feature] Twitter text now shows ellipses when truncated [ ]
+
+[bug] Fix some additional memory leaks [ ]
+
+[bug] Fix circular ref that occured from action bar on first unauthed action [ ]
+
 v2.6
 ----
 [bug] Socialize can interfere with developer's UIWebViewDelegates [ ]
