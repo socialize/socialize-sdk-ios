@@ -1685,6 +1685,8 @@
 		AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; };
 		AAF098DC158FB4EA005726C2 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
+		AAF580ED16BC98820007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
+		AAF580EE16BC99610007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
 		AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB0B8115E70FB10091600C /* ui_advanced.m */; };
 /* End PBXBuildFile section */
 
@@ -2889,6 +2891,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF580ED16BC98820007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA6CE2EB15905AF800A4B074 /* libSocialize-profiling.a in Frameworks */,
 				AAF098DC158FB4EA005726C2 /* libOCMock.a in Frameworks */,
 				AA159E29158FAE2C006E1CAE /* libKIF.a in Frameworks */,
@@ -2907,6 +2910,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF580EE16BC99610007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA6CE2EC15905B0200A4B074 /* libSocialize-profiling.a in Frameworks */,
 				AA511230158F12D2007341AA /* CoreLocation.framework in Frameworks */,
 				AA51122F158F12CD007341AA /* MessageUI.framework in Frameworks */,
