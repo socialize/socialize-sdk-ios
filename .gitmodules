@@ -18,4 +18,4 @@
 	url = https://github.com/socialize/ocmock.git
 [submodule "ThirdParty/ghunit"]
 	path = ThirdParty/ghunit
-	url = git@github.com:socialize/gh-unit.git
+	url = https://github.com/socialize/gh-unit.git
