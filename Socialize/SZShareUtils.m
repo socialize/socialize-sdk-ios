@@ -60,7 +60,7 @@
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     
-    __block __unsafe_unretained __typeof__(viewController) weakViewController = viewController;
+    WEAK(viewController) weakViewController = viewController;
     
     shareDialog.completionBlock = ^(NSArray *shares) {
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{

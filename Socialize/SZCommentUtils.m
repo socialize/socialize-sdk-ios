@@ -31,7 +31,7 @@
 + (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
     SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:entity];
     
-    __block __unsafe_unretained UIViewController *weakViewController = viewController;
+    WEAK(viewController) weakViewController = viewController;
 
     commentsList.completionBlock = ^{
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
@@ -45,7 +45,7 @@
 // Compose and share (but no initial link)
 + (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(id<SZComment> comment))completion cancellation:(void(^)())cancellation {
     
-    __block __unsafe_unretained UIViewController *weakViewController = viewController;
+    WEAK(viewController) weakViewController = viewController;
     
     SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
     composer.completionBlock = ^(id<SZComment> comment) {
