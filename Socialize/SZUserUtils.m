@@ -31,15 +31,17 @@
 + (void)showLinkDialogWithViewController:(UIViewController*)viewController completion:(void(^)(SZSocialNetwork selectedNetwork))completion cancellation:(void(^)())cancellation {
     NSAssert(SZAvailableSocialNetworks() != SZSocialNetworkNone, @"Link not possible");
     
+    WEAK(viewController) weakViewController = viewController;
+    
     SZLinkDialogViewController *linkDialog = [[SZLinkDialogViewController alloc] init];
     linkDialog.completionBlock = ^(SZSocialNetwork selectedNetwork) {
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, selectedNetwork);
         }];
     };
     
     linkDialog.cancellationBlock = ^{
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(cancellation);
         }];
     };
@@ -52,9 +54,11 @@
         user = [self currentUser];
     }
     
+    WEAK(viewController) weakViewController = viewController;
+    
     SZUserProfileViewController *profile = [[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)user];
     profile.completionBlock = ^(id<SZFullUser> user) {
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, user);
         }];
     };
@@ -63,9 +67,11 @@
 }
 
 + (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion {
+    WEAK(viewController) weakViewController = viewController;
+
     SZUserSettingsViewController *settings = [[SZUserSettingsViewController alloc] init];
     settings.completionBlock = ^(BOOL didSave, id<SZFullUser> user) {
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(completion);
         }];
     };

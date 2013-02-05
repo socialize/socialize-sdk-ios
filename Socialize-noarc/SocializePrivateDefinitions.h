@@ -34,3 +34,4 @@ typedef enum {
     SocializeRequestStateFinished
 } SocializeRequestState;
 
+#define WEAK(v) __block __unsafe_unretained __typeof__(v)

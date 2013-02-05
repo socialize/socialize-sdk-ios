@@ -97,15 +97,16 @@
     NSString *consumerSecret = [SocializeThirdPartyTwitter consumerSecret];
     
     SZTwitterLinkViewController *link = [[SZTwitterLinkViewController alloc] initWithConsumerKey:consumerKey consumerSecret:consumerSecret];
+    WEAK(viewController) weakViewController = viewController;
 
     link.completionBlock = ^{
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(success, [SZUserUtils currentUser]);
         }];
     };
     
     link.cancellationBlock = ^{
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorTwitterCancelledByUser]);
         }];
     };
