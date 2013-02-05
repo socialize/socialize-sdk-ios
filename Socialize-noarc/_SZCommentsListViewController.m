@@ -295,13 +295,15 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
+    __block __unsafe_unretained __typeof__(self) weakSelf = self;
+    
     SZComposeCommentViewController *composer = [[[SZComposeCommentViewController alloc] initWithEntity:_entity] autorelease];
     composer.completionBlock = ^(id<SZComment> comment) {
-        [self postCommentViewController:composer._composeCommentViewController didCreateComment:comment];
+        [weakSelf postCommentViewController:composer._composeCommentViewController didCreateComment:comment];
     };
     
     composer.cancellationBlock = ^{
-        [self dismissModalViewControllerAnimated:YES];
+        [weakSelf dismissModalViewControllerAnimated:YES];
     };
     
     composer.display = self;
@@ -357,13 +359,15 @@
 }
 
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
+    __block __unsafe_unretained __typeof__(self) weakSelf = self;
+
     // TODO :  lets view the profile
     SocializeComment *comment = ((SocializeComment*)[self.content objectAtIndex:sender.tag]);
     
     _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
     profile.user = comment.user;
     profile.completionBlock = ^(id<SZFullUser> user) {
-        [self.navigationController popToViewController:self animated:YES];
+        [weakSelf.navigationController popToViewController:self animated:YES];
     };
     [self.navigationController pushViewController:profile animated:YES];
 }

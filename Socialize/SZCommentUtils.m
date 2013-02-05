@@ -30,8 +30,11 @@
 
 + (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
     SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:entity];
+    
+    __block __unsafe_unretained UIViewController *weakViewController = viewController;
+
     commentsList.completionBlock = ^{
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(completion);
         }];
     };
@@ -41,15 +44,18 @@
 
 // Compose and share (but no initial link)
 + (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(id<SZComment> comment))completion cancellation:(void(^)())cancellation {
+    
+    __block __unsafe_unretained UIViewController *weakViewController = viewController;
+    
     SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
     composer.completionBlock = ^(id<SZComment> comment) {
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL_1(completion, comment);
         }];
     };
     
     composer.cancellationBlock = ^{
-        [viewController SZDismissViewControllerAnimated:YES completion:^{
+        [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(cancellation);
         }];
     };
