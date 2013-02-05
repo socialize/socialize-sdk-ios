@@ -163,7 +163,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
         return;
     }
     
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     self.reverseGeocodeTimer = [NSTimer scheduledTimerWithTimeInterval:ReverseGeocodeRetryInterval block:^(NSTimeInterval time) {
         if (_succeededReverseGeocode) {
             [weakSelf stopReverseGeocodeTimer];

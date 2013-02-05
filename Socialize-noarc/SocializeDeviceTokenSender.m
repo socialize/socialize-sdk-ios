@@ -117,7 +117,7 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
 }
 
 - (void)startTimer {
-    __block id weakSelf = self;
+    WEAK(self) weakSelf = self;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:TimerCheckTimeInterval block:^(NSTimeInterval time) {
         [weakSelf timerCheck];
     } repeats:YES];

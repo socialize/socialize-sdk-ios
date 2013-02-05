@@ -52,7 +52,7 @@
         self.title = @"Share";
     }
     
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id sender) {
         [weakSelf cancel];
     }];
@@ -65,7 +65,7 @@
         [UIAlertView showAlertWithTitle:@"Select a Network" message:@"One or more networks must be selected to perform a share" buttonTitle:@"Ok" handler:nil];
     } else {
         
-        __block __unsafe_unretained __typeof__(self) weakSelf = self;
+        WEAK(self) weakSelf = self;
 
         void (^createShareBlock)(SZShareOptions *, SocializeBaseViewController *) = ^(SZShareOptions *options, SocializeBaseViewController *loadingController) {
             [loadingController startLoading];
@@ -91,7 +91,7 @@
         
         if (!self.dontShowComposer) {
             SocializeComposeMessageViewController *message = [[[SocializeComposeMessageViewController alloc] initWithEntity:self.entity] autorelease];
-            __block __unsafe_unretained SocializeComposeMessageViewController *weakMessage = message;
+            WEAK(message) weakMessage = message;
 
             message.allowEmpty = YES;
             message.title = @"Share";

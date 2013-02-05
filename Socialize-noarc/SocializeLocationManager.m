@@ -186,7 +186,7 @@ static CLLocationDistance SocializeLocationManagerFixRequiredAccuracy = 200.;
 }
 
 - (void)startWaitingForLocationTimer {
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     self.waitingForLocationTimer = [NSTimer scheduledTimerWithTimeInterval:SocializeLocationManagerWaitingForLocationTimeout
                                                                      block:^(NSTimeInterval t) {
                                                                          NSError *error = [NSError defaultSocializeErrorForCode:SocializeErrorLocationUpdateTimedOut];

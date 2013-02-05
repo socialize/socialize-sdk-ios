@@ -128,7 +128,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     
     self.tableView.accessibilityLabel = @"edit profile";
     
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id _) {
         [weakSelf cancel];
     }];
@@ -764,7 +764,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     
 	if (indexPath.section == [self imageSection]) 
 	{

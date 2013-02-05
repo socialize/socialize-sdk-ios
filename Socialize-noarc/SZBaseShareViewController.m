@@ -144,7 +144,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
          
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Continue" handler:^(id sender) {
         [weakSelf continueButtonPressed:nil];
     }];
@@ -231,7 +231,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
         facebookSwitch_.accessibilityLabel = @"Facebook Switch";
         
-        __block __typeof__(self) weakSelf = self;
+        WEAK(self) weakSelf = self;
 
         void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
             if (sw.on && ![SZFacebookUtils isLinked]) {
@@ -278,7 +278,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (NSMutableDictionary*)facebookRow {
     if (facebookRow_ == nil) {
         
-        __block __typeof__(self) weakSelf = self;
+        WEAK(self) weakSelf = self;
 
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
             if ([SZFacebookUtils isLinked]) {
@@ -305,7 +305,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
         
         twitterSwitch_.accessibilityLabel = @"Twitter Switch";
         
-        __block __typeof__(self) weakSelf = self;
+        WEAK(self) weakSelf = self;
         void (^controlChangedBlock)(UISwitch *sw) = ^(UISwitch *sw) {
             if (sw.on && ![SZTwitterUtils isLinked]) {
                 
@@ -345,7 +345,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 - (NSDictionary*)twitterRow {
     if (twitterRow_ == nil) {
 
-        __block __typeof__(self) weakSelf = self;
+        WEAK(self) weakSelf = self;
 
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
             if ([SZTwitterUtils isLinked]) {
@@ -431,7 +431,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (NSDictionary*)SMSRow {
     
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
 
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
@@ -464,7 +464,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (NSDictionary*)emailRow {
     
-    __block __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"SMS"]];
@@ -537,7 +537,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (NSDictionary*)autopostRow {
     
-    __block __unsafe_unretained __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         cell.imageView.image = nil;

@@ -295,7 +295,7 @@
 
 -(IBAction)addCommentButtonPressed:(id)sender 
 {
-    __block __unsafe_unretained __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
     
     SZComposeCommentViewController *composer = [[[SZComposeCommentViewController alloc] initWithEntity:_entity] autorelease];
     composer.completionBlock = ^(id<SZComment> comment) {
@@ -359,7 +359,7 @@
 }
 
 -(IBAction)viewProfileButtonTouched:(UIButton*)sender {
-    __block __unsafe_unretained __typeof__(self) weakSelf = self;
+    WEAK(self) weakSelf = self;
 
     // TODO :  lets view the profile
     SocializeComment *comment = ((SocializeComment*)[self.content objectAtIndex:sender.tag]);

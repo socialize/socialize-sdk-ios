@@ -205,7 +205,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     if (authTypeRowData_ == nil) {
         authTypeRowData_ = [[NSMutableArray alloc] init];
         
-        __block id weakSelf = self;
+        WEAK(self) weakSelf = self;
         
         if ([SocializeThirdPartyFacebook available]) {
             [authTypeRowData_ addObject:
