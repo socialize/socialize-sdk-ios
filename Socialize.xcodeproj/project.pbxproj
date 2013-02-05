@@ -661,6 +661,7 @@
 		AA7D041315A26CAA00EBB705 /* SZViewUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7D03E015A26CAA00EBB705 /* SZViewUtils.h */; };
 		AA7D041415A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D041515A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
+		AA7E63A616C1BC0E00A84E7A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7E63A516C1BC0E00A84E7A /* Default-568h@2x.png */; };
 		AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
 		AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
 		AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */; };
@@ -2514,6 +2515,7 @@
 		AA7D03DF15A26CAA00EBB705 /* SZUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserUtils.m; sourceTree = "<group>"; };
 		AA7D03E015A26CAA00EBB705 /* SZViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZViewUtils.h; sourceTree = "<group>"; };
 		AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZViewUtils.m; sourceTree = "<group>"; };
+		AA7E63A516C1BC0E00A84E7A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSMSShareData.h; sourceTree = "<group>"; };
 		AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSMSShareData.m; sourceTree = "<group>"; };
 		AA815C8A15DACDCC00A31E39 /* SZEmailShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZEmailShareData.h; sourceTree = "<group>"; };
@@ -2951,6 +2953,7 @@
 		AA008585158D2B1100480399 = {
 			isa = PBXGroup;
 			children = (
+				AA7E63A516C1BC0E00A84E7A /* Default-568h@2x.png */,
 				AA0085C2158D2EFC00480399 /* Socialize */,
 				AA0085F5158D358B00480399 /* Socialize-noarc */,
 				AA00859A158D2B1100480399 /* TestApp */,
@@ -5064,6 +5067,7 @@
 				AA84655715EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D015EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 				AA6221F51600065100262E15 /* socialize-checkmark@2x.png in Resources */,
+				AA7E63A616C1BC0E00A84E7A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
