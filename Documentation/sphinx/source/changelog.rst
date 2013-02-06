@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v2.6.2
+------
+[bug] Fix several memory issues [ critical ]
+
+[feature] Add Twitter dashboard config to Twitter section [ docs ]
+
 v2.6.1
 ------
 [feature] Display of share composer can be disabled [ ]
