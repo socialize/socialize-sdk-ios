@@ -50,8 +50,19 @@ If you **do not** already have a Twitter app just follow these simple steps:
     
 .. _propagate_tw:
 
-Configuring Twitter in Socialize
---------------------------------
+Updating your Socialize Application Settings (Web)
+--------------------------------------------------
+
+You must enter your Twitter consumer key and secret in the
+"App Settings" of your Socialize App Intelligence Dashboard at getsocialize.com
+
+This is a required step. For background info, see the blog post at
+http://blog.getsocialize.com/2012/twitter-update
+
+    .. image:: images/twitter_settings.png
+
+Configuring Twitter in Socialize (SDK)
+--------------------------------------
 
 Once you have a twitter application, simply tell Socialize about your consumer key and secret:
 
