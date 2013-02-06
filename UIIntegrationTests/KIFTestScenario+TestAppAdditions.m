@@ -134,7 +134,7 @@
     
     [scenario addStepsFromArray:[self stepsToInitializeTest]];
     
-    NSString *url = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", (char*)_cmd]];
+    NSString *url = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     NSString *commentText = [NSString stringWithFormat:@"comment for %@", [TestAppKIFTestController runID]];
     [scenario addStep:[KIFTestStep stepToExecuteBlock:^{
         id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
@@ -170,7 +170,7 @@
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
     // Set up a test entity
-    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", (char*)_cmd]];
+    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
         id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
         [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
@@ -201,7 +201,7 @@
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
     
     // Set up a test entity
-    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", (char*)_cmd]];
+    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     [steps addObject:[KIFTestStep stepToExecuteBlock:^{
         id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
         [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
@@ -309,7 +309,7 @@
     
     [steps addObjectsFromArray:[self stepsToInitializeTest]];
 
-    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", (char*)_cmd]];
+    NSString *entityKey = [TestAppKIFTestController testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
 
     // Set a specific entity for this test

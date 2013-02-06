@@ -13,7 +13,7 @@
 @implementation TestCommentUtils
 
 - (void)testCreateAndGetComments {
-    NSString *commentURL = [self testURL:[NSString stringWithFormat:@"%s/comment", (char*)_cmd]];
+    NSString *commentURL = [self testURL:[NSString stringWithFormat:@"%s/comment", sel_getName(_cmd)]];
     SZEntity *entity = [SZEntity entityWithKey:commentURL name:@"Comment"];
     NSString *commentText = @"Comment Text";
     

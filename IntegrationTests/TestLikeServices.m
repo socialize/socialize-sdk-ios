@@ -11,7 +11,7 @@
 @implementation TestLikeServices
 
 - (void)testCreateDeleteLike {
-    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", (char*)_cmd]];
+    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", sel_getName(_cmd)]];
     [self createLikeWithURL:likeURL latitude:nil longitude:nil];
     
     [self getLikesForURL:likeURL];
@@ -24,7 +24,7 @@
 }
 
 - (void)testCreateDeleteLikeNewFormat {
-    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", (char*)_cmd]];
+    NSString *likeURL = [self testURL:[NSString stringWithFormat:@"%s/like", sel_getName(_cmd)]];
     SocializeEntity *entity = [SocializeEntity entityWithKey:likeURL name:@"testEnt"];
     SocializeLike *like = [SocializeLike likeWithEntity:entity];
     [self createLike:like];

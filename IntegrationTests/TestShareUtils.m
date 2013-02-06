@@ -13,7 +13,7 @@
 @implementation TestShareUtils
 
 - (id<SZShare>)createTestShareForSelector:(SEL)selector {
-    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", (char*)selector]];
+    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", sel_getName(_cmd)]];
     SZEntity *entity = [SZEntity entityWithKey:shareURL name:@"Share"];
     
     SZShare *share = [SZShare shareWithEntity:entity text:@"some text" medium:SocializeShareMediumSMS];
@@ -24,7 +24,7 @@
 }
 
 - (void)testGetSharesByIds {
-    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", (char*)_cmd]];
+    NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", sel_getName(_cmd)]];
     SZEntity *entity = [SZEntity entityWithKey:shareURL name:@"Share"];
     
     SZShare *share1 = [SZShare shareWithEntity:entity text:@"some text" medium:SocializeShareMediumSMS];

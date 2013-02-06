@@ -11,7 +11,7 @@
 @implementation TestSubscriptionService
 
 - (void)testCreateSubscriptionOnComment {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity", (char*)_cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity", sel_getName(_cmd)]];
 
     // Get current subscriptions for the entity (should be empty)
     [self prepare];
@@ -60,7 +60,7 @@
 }
 
 - (void)testCreatingNewCommentWithSubscription {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity", (char*)_cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/entity", sel_getName(_cmd)]];
 
     [self createCommentWithURL:entityKey text:@"comment" latitude:nil longitude:nil subscribe:YES];
     

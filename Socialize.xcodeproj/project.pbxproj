@@ -662,6 +662,7 @@
 		AA7D041415A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7D041515A26CAA00EBB705 /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
 		AA7E63A616C1BC0E00A84E7A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7E63A516C1BC0E00A84E7A /* Default-568h@2x.png */; };
+		AA7E63E916C1F75200A84E7A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7E63A516C1BC0E00A84E7A /* Default-568h@2x.png */; };
 		AA815C8615DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
 		AA815C8715DACDBF00A31E39 /* SZSMSShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA815C8415DACDBE00A31E39 /* SZSMSShareData.h */; };
 		AA815C8815DACDBF00A31E39 /* SZSMSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */; };
@@ -5766,6 +5767,7 @@
 				AA84655915EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D215EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 				AA6221F71600065100262E15 /* socialize-checkmark@2x.png in Resources */,
+				AA7E63E916C1F75200A84E7A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

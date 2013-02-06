@@ -12,7 +12,7 @@
 @implementation TestLikeUtils
 
 - (void)testLikeHelpers {
-    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/like_target", (char*)_cmd]];
+    NSString *entityKey = [self testURL:[NSString stringWithFormat:@"%s/like_target", sel_getName(_cmd)]];
     SZEntity *entity = [SZEntity entityWithKey:entityKey name:@"Like target"];
 
     // Make sure there is no like
