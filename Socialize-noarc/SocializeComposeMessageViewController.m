@@ -108,6 +108,11 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     return locationManager_;
 }
 
+- (void)cancel {
+    [self stopReverseGeocodeTimer];
+    [super cancel];
+}
+
 - (BOOL)canSend {
     return self.allowEmpty || [commentTextView.text length] > 0;
 }
@@ -142,6 +147,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
          {
              self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
              _succeededReverseGeocode = YES;
+             [self stopReverseGeocodeTimer];
          }
          [self configureLocationText];
          [geocoder autorelease];

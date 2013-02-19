@@ -61,5 +61,7 @@
 - (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
 - (void)setSubviewForLowerContainer:(UIView*)newSubview;
 
+- (void)stopReverseGeocodeTimer;
+
 @end
 

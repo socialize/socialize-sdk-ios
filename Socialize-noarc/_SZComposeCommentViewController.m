@@ -139,6 +139,7 @@
             return;
         }
         
+        [self stopReverseGeocodeTimer];
         self.commentObject = comment;
         [self notifyDelegateOrDismissSelf];
         
