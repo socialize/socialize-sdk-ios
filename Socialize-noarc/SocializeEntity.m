@@ -28,6 +28,7 @@
     [_name release];
     [_meta release];
     [_userActionSummary release];
+    [_type release];
     
     [super dealloc];
 }
