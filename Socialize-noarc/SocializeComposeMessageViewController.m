@@ -39,6 +39,8 @@ static NSTimeInterval ReverseGeocodeRetryInterval = 10;
 
 @end
 
+static CommentMapView *sharedMapView;
+
 @implementation SocializeComposeMessageViewController
 
 @synthesize entity = entity_;
@@ -57,6 +59,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 @synthesize currentLocationDescription = currentLocationDescription_;
 @synthesize locationManager = locationManager_;
 @synthesize bottomContainerDisabledView;
+
++ (CommentMapView*)sharedMapView {
+    if (sharedMapView == nil) {
+        sharedMapView = [[CommentMapView alloc] initWithFrame:CGRectZero];
+    }
+    
+    return sharedMapView;
+}
 
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
@@ -95,6 +105,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [_currentLocation release];
     [_reverseGeocodeTimer release];
     [_initialText release];
+    [_mapViewContainer release];
     
     [bottomContainerDisabledView release];
     [super dealloc];
@@ -324,6 +335,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.mapOfUserLocation = [[self class] sharedMapView];
+    self.mapOfUserLocation.frame = CGRectMake(0, 0, self.mapViewContainer.frame.size.width, self.mapViewContainer.frame.size.height);
+    [self.mapViewContainer addSubview:self.mapOfUserLocation];
 
     self.navigationItem.leftBarButtonItem = self.cancelButton;
     
@@ -374,6 +389,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 - (void)viewDidUnload
 {
     [self setBottomContainerDisabledView:nil];
+    [self setMapViewContainer:nil];
     [super viewDidUnload];
         
     self.commentTextView = nil;

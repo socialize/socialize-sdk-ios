@@ -48,6 +48,7 @@
 @property (nonatomic, assign) BOOL shouldShareLocation;
 @property (nonatomic, retain) NSString *initialText;
 @property (nonatomic, assign) BOOL allowEmpty;
+@property (retain, nonatomic) IBOutlet UIView *mapViewContainer;
 
 - (void)disableLowerContainer;
 - (void)enableLowerContainer;
