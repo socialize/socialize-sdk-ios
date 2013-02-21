@@ -80,6 +80,9 @@ NSString *const kSZUpdatedUserSettingsKey = @"kSZUpdatedUserSettingsKey";
 NSString *const kSZUpdatedUserKey = @"kSZUpdatedUserKey";
 NSString *const SZEntityDidChangeNotification = @"SZEntityDidChangeNotification";
 
+NSString *const SZDidCreateCommentsNotification = @"SZDidCreateCommentsNotification";
+NSString *const kSZCreatedCommentsKey = @"kSZCreatedCommentsKey";
+
 NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";
 
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";

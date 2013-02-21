@@ -139,28 +139,30 @@ static const int singleCommentId = 1;
 
 
 -(void) testCreateCommentForNew
-{   
-    SocializeEntity *entity = [[SocializeEntity new] autorelease];  
+{
+    SocializeEntity *entity = [[SocializeEntity new] autorelease];
+    id expectedComment = [SZComment commentWithEntity:entity text:@"hi"];
+    
     entity.key = @"http://www.example.com/interesting-story/";
     entity.name = @"example";
     
-    NSArray* mockArray = [NSArray arrayWithObject:
-                          [NSDictionary dictionaryWithObjectsAndKeys:
-                           [NSDictionary dictionaryWithObjectsAndKeys:entity.key, @"key", entity.name, @"name", nil], @"entity",
-                           @"this was a great story", @"text",
-                           [NSNumber numberWithBool:NO], @"subscribe",
-                           nil]];
+    OCMockObserver *observer = [OCMockObject observerMock];
+    [[observer expect] notificationWithName:SZDidCreateCommentsNotification object:nil userInfo:@{kSZCreatedCommentsKey: @[ expectedComment ]} ];
+    [[NSNotificationCenter defaultCenter] addMockObserver:observer
+                                                     name:SZDidCreateCommentsNotification
+                                                   object:nil];
     
-    [[_mockService expect] executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:@"comment/"
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:mockArray
-      ]];
 
+    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+        BLOCK_CALL_1(request.successBlock, @[ expectedComment ]);
+    }] executeRequest:OCMOCK_ANY];
+    
     [_service createCommentForEntity:entity comment:@"this was a great story" longitude:nil latitude:nil];
     
     [_mockService verify];
+    [observer verify];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:observer];
 }
 
 -(void) testCreateCommentForNewWithGeo
