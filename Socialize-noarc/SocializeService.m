@@ -151,7 +151,9 @@
 - (void)invokeBlockOrDelegateCallbackForBlock:(void(^)(id object))block selector:(SEL)sel object:(id)object {
     if (block != nil) {
         block(object);
-    } else if ([self.delegate respondsToSelector:sel]) {
+    }
+    
+    if ([self.delegate respondsToSelector:sel]) {
         
         // Keep some legacy callback service:didCreate: special cases (just for backward compatibility)
         if (sel == @selector(service:didCreate:)) {
