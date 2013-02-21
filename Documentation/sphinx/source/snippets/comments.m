@@ -177,4 +177,21 @@
 
 // end-list-by-application-snippet
 
+// begin-observe-comments-snippet
+
+- (void)didCreate:(NSArray*)objects {
+    id<SZComment> comment = [objects lastObject];
+    if ([comment conformsToProtocol:@protocol(SZComment)]) {
+        NSLog(@"Commented on %@", comment.entity);
+    }
+}
+
+- (void)respondToComments {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreate:) name:SZDidCreateObjectsNotification object:nil];
+    
+}
+
+// end-observe-comments-snippet
+
 @end

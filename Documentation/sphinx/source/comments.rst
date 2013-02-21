@@ -108,3 +108,12 @@ List all comments in application
 .. literalinclude:: snippets/comments.m
   :start-after: begin-list-by-application-snippet
   :end-before: end-list-by-application-snippet
+
+Responding to changes in comment state
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can choose to be notified when comments are created
+
+.. literalinclude:: snippets/comments.m
+  :start-after: begin-observe-comments-snippet
+  :end-before: end-observe-comments-snippet

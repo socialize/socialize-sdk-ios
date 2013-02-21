@@ -100,4 +100,30 @@
 
 // end-list-by-application-snippet
 
+
+// begin-observe-likes-snippet
+
+- (void)didCreate:(NSArray*)objects {
+    id<SZLike> like = [objects lastObject];
+    if ([like conformsToProtocol:@protocol(SZLike)]) {
+        NSLog(@"Liked %@", like.entity);
+    }
+}
+
+- (void)didDelete:(NSArray*)objects {
+    id<SZLike> like = [objects lastObject];
+    if ([like conformsToProtocol:@protocol(SZLike)]) {
+        NSLog(@"Unliked %@", like.entity);
+    }
+}
+
+- (void)respondToLikeChanges {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreate:) name:SZDidCreateObjectsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDelete:) name:SZDidDeleteObjectsNotification object:nil];
+    
+}
+
+// end-observe-likes-snippet
+
 @end

@@ -67,3 +67,13 @@ List all likes in the application
 .. literalinclude:: snippets/likes.m
   :start-after: begin-list-by-application-snippet
   :end-before: end-list-by-application-snippet
+
+Responding to changes in like state
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can choose to be notified when likes change state
+
+.. literalinclude:: snippets/likes.m
+  :start-after: begin-observe-likes-snippet
+  :end-before: end-observe-likes-snippet
+
