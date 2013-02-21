@@ -60,11 +60,14 @@ extern NSString *const SZUserSettingsDidChangeNotification;
 extern NSString *const kSZUpdatedUserSettingsKey;
 extern NSString *const kSZUpdatedUserKey;
 
-extern NSString *const SZDidCreateCommentsNotification;
-extern NSString *const kSZCreatedCommentsKey;
+extern NSString *const SZDidCreateObjectsNotification;
+extern NSString *const kSZCreatedObjectsKey;
 
-extern NSString *const SZDidCreateLikesNotification;
-extern NSString *const kSZCreatedLikesKey;
+extern NSString *const SZDidDeleteObjectsNotification;
+extern NSString *const kSZDeletedObjectsKey;
+
+extern NSString *const SZDidFetchObjectsNotification;
+extern NSString *const kSZFetchedObjectsKey;
 
 extern NSString *const SocializeCLAuthorizationStatusDidChangeNotification;
 extern NSString *const kSocializeCLAuthorizationStatusKey;

@@ -148,10 +148,46 @@
     return array;
 }
 
+- (void)postDidCreateObjectsNotification:(NSArray*)objects {
+    NSDictionary *userInfo = @{ kSZCreatedObjectsKey: objects };
+    NSNotification *notification = [NSNotification notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+- (void)postDidDeleteObjectsNotification:(NSArray*)objects {
+    NSDictionary *userInfo = @{ kSZDeletedObjectsKey: objects };
+    NSNotification *notification = [NSNotification notificationWithName:SZDidDeleteObjectsNotification object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+- (void)postDidFetchObjectsNotification:(NSArray*)objects {
+    NSDictionary *userInfo = @{ kSZFetchedObjectsKey: objects };
+    NSNotification *notification = [NSNotification notificationWithName:SZDidFetchObjectsNotification object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+- (void)sendNotificationForSelector:(SEL)sel object:(id)object {
+    NSArray *objectsArray = object;
+    if (![objectsArray isKindOfClass:[NSArray class]]) {
+        objectsArray = @[ object ];
+    }
+    
+    if (sel == @selector(service:didCreate:)) {
+        [self postDidCreateObjectsNotification:objectsArray];
+    } else if (sel == @selector(service:didDelete:)) {
+        [self postDidDeleteObjectsNotification:objectsArray];
+    } else if (sel == @selector(service:didFetchElements:)) {
+        [self postDidFetchObjectsNotification:objectsArray];
+    }
+
+}
+
 - (void)invokeBlockOrDelegateCallbackForBlock:(void(^)(id object))block selector:(SEL)sel object:(id)object {
     if (block != nil) {
         block(object);
     }
+    
+    [self sendNotificationForSelector:sel object:object];
     
     if ([self.delegate respondsToSelector:sel]) {
         

@@ -80,11 +80,14 @@ NSString *const kSZUpdatedUserSettingsKey = @"kSZUpdatedUserSettingsKey";
 NSString *const kSZUpdatedUserKey = @"kSZUpdatedUserKey";
 NSString *const SZEntityDidChangeNotification = @"SZEntityDidChangeNotification";
 
-NSString *const SZDidCreateCommentsNotification = @"SZDidCreateCommentsNotification";
-NSString *const kSZCreatedCommentsKey = @"kSZCreatedCommentsKey";
+NSString *const SZDidCreateObjectsNotification = @"SZDidCreateObjectsNotification";
+NSString *const kSZCreatedObjectsKey = @"kSZCreatedObjectsKey";
 
-NSString *const SZDidCreateLikesNotification = @"SZDidCreateLikesNotification";
-NSString *const kSZCreatedLikesKey = @"kSZCreatedLikesKey";
+NSString *const SZDidDeleteObjectsNotification = @"SZDidDeleteObjectsNotification";
+NSString *const kSZDeletedObjectsKey = @"kSZDeletedObjectsKey";
+
+NSString *const SZDidFetchObjectsNotification = @"SZDidFetchObjectsNotification";
+NSString *const kSZFetchedObjectsKey = @"kSZFetchedObjectsKey";
 
 NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";
 

@@ -118,12 +118,6 @@
      ];
 }
 
-- (void)postDidCreateCommentsNotification:(NSArray*)comments {
-    NSDictionary *userInfo = @{ kSZCreatedCommentsKey: comments };
-    NSNotification *notification = [NSNotification notificationWithName:SZDidCreateCommentsNotification object:nil userInfo:userInfo];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
-}
-
 - (void)callCommentsPostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
                                resourcePath:COMMENTS_LIST_METHOD
@@ -132,7 +126,6 @@
 
     request.successBlock = ^(NSArray *comments) {
         SZPostActivityEntityDidChangeNotifications(comments);
-        [self postDidCreateCommentsNotification:comments];
         [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:comments];
     };
     
@@ -148,7 +141,7 @@
 
 - (void)createComment:(id<SZComment>)comment success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     [self createComments:[NSArray arrayWithObject:comment] success:^(NSArray *comments) {
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:[comments objectAtIndex:0]];
+        BLOCK_CALL_1(success, [comments objectAtIndex:0]);
     } failure:failure];
 }
 

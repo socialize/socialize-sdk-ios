@@ -52,16 +52,9 @@
     [self callLikeWithMethod:@"GET" params:params success:success failure:failure];
 }
 
-- (void)postDidCreateLikesNotification:(NSArray*)likes {
-    NSDictionary *userInfo = @{ kSZCreatedLikesKey: likes };
-    NSNotification *notification = [NSNotification notificationWithName:SZDidCreateLikesNotification object:nil userInfo:userInfo];
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
-}
-
 - (void)callLikePostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     [self callLikeWithMethod:@"POST" params:params success:^(NSArray *likes) {
         SZPostActivityEntityDidChangeNotifications(likes);
-        [self postDidCreateLikesNotification:likes];
         [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:likes];
     } failure:failure];
 }
@@ -94,7 +87,7 @@
 
 - (void)createLike:(id<SZLike>)like success:(void(^)(id<SZLike> like))success failure:(void(^)(NSError *error))failure {
     [self createLikes:[NSArray arrayWithObject:like] success:^(NSArray *likes) {
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:[likes objectAtIndex:0]];
+        BLOCK_CALL_1(success, [likes objectAtIndex:0]);
     } failure:failure];
 }
 

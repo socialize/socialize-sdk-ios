@@ -119,9 +119,9 @@
     SZLike *expectedLike = [SZLike likeWithEntity:mockEntity];
 
     OCMockObserver *observer = [OCMockObject observerMock];
-    [[observer expect] notificationWithName:SZDidCreateLikesNotification object:nil userInfo:@{kSZCreatedLikesKey: @[ expectedLike ]} ];
+    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:@{kSZCreatedObjectsKey: @[ expectedLike ]} ];
     [[NSNotificationCenter defaultCenter] addMockObserver:observer
-                                                     name:SZDidCreateLikesNotification
+                                                     name:SZDidCreateObjectsNotification
                                                    object:nil];
 
     [[[_mockService expect] andDo1:^(SocializeRequest *request) {

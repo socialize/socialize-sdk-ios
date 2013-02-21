@@ -147,9 +147,9 @@ static const int singleCommentId = 1;
     entity.name = @"example";
     
     OCMockObserver *observer = [OCMockObject observerMock];
-    [[observer expect] notificationWithName:SZDidCreateCommentsNotification object:nil userInfo:@{kSZCreatedCommentsKey: @[ expectedComment ]} ];
+    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:@{kSZCreatedObjectsKey: @[ expectedComment ]} ];
     [[NSNotificationCenter defaultCenter] addMockObserver:observer
-                                                     name:SZDidCreateCommentsNotification
+                                                     name:SZDidCreateObjectsNotification
                                                    object:nil];
     
 

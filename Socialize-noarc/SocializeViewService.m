@@ -41,8 +41,7 @@
 
 - (void)createView:(id<SZView>)view success:(void(^)(id<SZView>))success failure:(void(^)(NSError *error))failure {
     [self createViews:[NSArray arrayWithObject:view] success:^(NSArray *views) {
-        id<SZView> serverView = [views objectAtIndex:0];
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:serverView];
+        BLOCK_CALL_1(success, [views objectAtIndex:0]);
     } failure:failure];
 }
 
