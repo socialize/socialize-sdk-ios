@@ -83,6 +83,9 @@ NSString *const SZEntityDidChangeNotification = @"SZEntityDidChangeNotification"
 NSString *const SZDidCreateCommentsNotification = @"SZDidCreateCommentsNotification";
 NSString *const kSZCreatedCommentsKey = @"kSZCreatedCommentsKey";
 
+NSString *const SZDidCreateLikesNotification = @"SZDidCreateLikesNotification";
+NSString *const kSZCreatedLikesKey = @"kSZCreatedLikesKey";
+
 NSString *const SocializeEntityLoaderDidFinishNotification = @"SocializeEntityLoaderDidFinishNotification";
 
 NSString *const SocializeCLAuthorizationStatusDidChangeNotification = @"SocializeLocationManagerAuthorizationStatusDidChangeNotification";

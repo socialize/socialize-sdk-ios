@@ -115,19 +115,24 @@
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
     
     mockEntity.key = @"www.123.com";
+    
+    SZLike *expectedLike = [SZLike likeWithEntity:mockEntity];
 
-    NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:mockEntity.key, ENTITY, nil];
-    NSArray *params = [NSArray arrayWithObjects:entityParam, 
-                       nil];
+    OCMockObserver *observer = [OCMockObject observerMock];
+    [[observer expect] notificationWithName:SZDidCreateLikesNotification object:nil userInfo:@{kSZCreatedLikesKey: @[ expectedLike ]} ];
+    [[NSNotificationCenter defaultCenter] addMockObserver:observer
+                                                     name:SZDidCreateLikesNotification
+                                                   object:nil];
 
-    [[_mockService expect] executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:@"like/"
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:params]];
+    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+        BLOCK_CALL_1(request.successBlock, @[ expectedLike ]);
+    }] executeRequest:OCMOCK_ANY];
 
     [_mockService postLikeForEntity:mockEntity andLongitude:nil latitude:nil];
     [_mockService verify];
+    [observer verify];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:observer];
 }
 
 -(void)testpostLikeForEntityWithGeo{

@@ -52,9 +52,16 @@
     [self callLikeWithMethod:@"GET" params:params success:success failure:failure];
 }
 
+- (void)postDidCreateLikesNotification:(NSArray*)likes {
+    NSDictionary *userInfo = @{ kSZCreatedLikesKey: likes };
+    NSNotification *notification = [NSNotification notificationWithName:SZDidCreateLikesNotification object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
 - (void)callLikePostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     [self callLikeWithMethod:@"POST" params:params success:^(NSArray *likes) {
         SZPostActivityEntityDidChangeNotifications(likes);
+        [self postDidCreateLikesNotification:likes];
         [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:likes];
     } failure:failure];
 }
@@ -96,7 +103,7 @@
     SocializeLike *like = [SocializeLike likeWithEntity:entity];
     [like setLat:lat];
     [like setLng:lng];
-    [self createLike:like];
+    [self createLike:like success:nil failure:nil];
 }
 
 -(void)postLikeForEntityKey:(NSString*)key andLongitude:(NSNumber*)lng latitude: (NSNumber*)lat {
@@ -104,22 +111,12 @@
     [self postLikeForEntity:entity andLongitude:lat latitude:lng];
 }
 
-- (void)createLikesForParams:(NSArray*)params {
-    [self executeRequest:
-     [SocializeRequest requestWithHttpMethod:@"POST"
-                                resourcePath:LIKE_METHOD
-                          expectedJSONFormat:SocializeDictionaryWithListAndErrors
-                                      params:params]
-     ];
-}
-
 - (void)createLikes:(NSArray*)likes {
-    NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:likes];
-    [self createLikesForParams:params];
+    [self createLikes:likes success:nil failure:nil];
 }
 
 - (void)createLike:(id<SocializeLike>)like {
-    [self createLikes:[NSArray arrayWithObject:like]];
+    [self createLike:like success:nil failure:nil];
 }
 
 -(void)deleteLike:(id<SocializeLike>)like{
