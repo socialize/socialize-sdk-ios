@@ -422,7 +422,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 
 - (void)assertObject:(id<SZObject>)object inCollection:(id)collection {
     id<SZObject> foundObject = (id<SZObject>)[self findObjectWithId:[object objectID] inArray:collection];
-    GHAssertNotNil(foundObject, @"Should have object with id %@", [object objectID]);
+    GHAssertNotNil(foundObject, @"Should have object with id %d", [object objectID]);
 }
 
 - (void)getEntityWithURL:(NSString*)url {
