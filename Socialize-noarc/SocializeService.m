@@ -149,26 +149,26 @@
 }
 
 - (void)postDidCreateObjectsNotification:(NSArray*)objects {
-    NSDictionary *userInfo = @{ kSZCreatedObjectsKey: objects };
+    NSDictionary *userInfo = objects ? @{ kSZCreatedObjectsKey: objects } : nil;
     NSNotification *notification = [NSNotification notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)postDidDeleteObjectsNotification:(NSArray*)objects {
-    NSDictionary *userInfo = @{ kSZDeletedObjectsKey: objects };
+    NSDictionary *userInfo = objects ? @{ kSZDeletedObjectsKey: objects } : nil;
     NSNotification *notification = [NSNotification notificationWithName:SZDidDeleteObjectsNotification object:nil userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)postDidFetchObjectsNotification:(NSArray*)objects {
-    NSDictionary *userInfo = @{ kSZFetchedObjectsKey: objects };
+    NSDictionary *userInfo = objects ? @{ kSZFetchedObjectsKey: objects } : nil;
     NSNotification *notification = [NSNotification notificationWithName:SZDidFetchObjectsNotification object:nil userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)sendNotificationForSelector:(SEL)sel object:(id)object {
     NSArray *objectsArray = object;
-    if (![objectsArray isKindOfClass:[NSArray class]]) {
+    if (object != nil && ![objectsArray isKindOfClass:[NSArray class]]) {
         objectsArray = @[ object ];
     }
     
