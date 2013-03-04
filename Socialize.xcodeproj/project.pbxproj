@@ -534,6 +534,7 @@
 		AA41524715911E38003717AC /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008707158D35BF00480399 /* SZLikeOptions.m */; };
 		AA41524A15911E38003717AC /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008718158D35BF00480399 /* SZShareOptions.m */; };
 		AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */; };
+		AA4E427A16E5685700E476D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7E63A516C1BC0E00A84E7A /* Default-568h@2x.png */; };
 		AA51122D158F12C0007341AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
 		AA51122E158F12C8007341AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
 		AA51122F158F12CD007341AA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC38E158E866B0073AD50 /* MessageUI.framework */; };
@@ -5536,6 +5537,7 @@
 				AA84655815EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D115EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,
 				AA6221F61600065100262E15 /* socialize-checkmark@2x.png in Resources */,
+				AA4E427A16E5685700E476D9 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

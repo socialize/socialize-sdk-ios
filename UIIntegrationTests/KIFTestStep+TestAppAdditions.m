@@ -595,9 +595,12 @@
     [steps addObject:[KIFTestStep stepToWaitForTimeInterval:1 description:@"Waiting for web view"]];
 
     [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"mr_socialize" intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone]];
+//    [steps addObject:[KIFTestStep stepToWaitForTimeInterval:10 description:@"no"]];
+    
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Password"]];
     [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Password"]];
     [steps addObject:[KIFTestStep stepToNoCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone]];
-    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Sign In"]];
+    [steps addObject:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Authorize app"]];
     
     return steps;
 }
