@@ -74,7 +74,7 @@
         [self notify:kGHUnitWaitStatusFailure];
     }];
 
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
     
     GHAssertTrue(willPostCalled, @"willPost event not called");
     GHAssertTrue(didPostCalled, @"didPost event not called");
@@ -119,7 +119,7 @@
         [self notify:kGHUnitWaitStatusFailure];
     }];
     
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
     
     GHAssertTrue(willPostCalled, @"willPost");
     GHAssertFalse(didPostCalled, @"didPost");
@@ -169,7 +169,7 @@
         [self notify:kGHUnitWaitStatusFailure];
     }];
     
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
     
     GHAssertTrue(willPostCalled, @"willPost event not called");
     GHAssertTrue(didPostCalled, @"didPost event not called");
