@@ -27,10 +27,11 @@
 // Run before each test method
 - (void)setUp 
 { 
-    
-    _mockFactory = [OCMockObject niceMockForClass:[SocializeObjectFactory class]];   
-    _entityService = [[SocializeEntityService alloc] initWithObjectFactory:_mockFactory 
-                                                             delegate:nil];
+    @autoreleasepool {
+        _mockFactory = [OCMockObject niceMockForClass:[SocializeObjectFactory class]];
+        _entityService = [[SocializeEntityService alloc] initWithObjectFactory:_mockFactory
+                                                                      delegate:nil];
+    }
     _mockService = [[_entityService nonRetainingMock] retain];
 
 }

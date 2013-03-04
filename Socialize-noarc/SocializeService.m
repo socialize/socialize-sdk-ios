@@ -47,7 +47,8 @@
     return  @protocol(SocializeObject);
 }
 -(void) dealloc
-{   
+{
+    [_objectCreator release];
     _objectCreator = nil;
     self.delegate = nil;
     [self cancelAllRequests];
@@ -62,7 +63,7 @@
     self = [super init];
     if(self != nil)
     {
-        _objectCreator = objectFactory;
+        _objectCreator = [objectFactory retain];
         self.delegate = delegate;
     }
     
