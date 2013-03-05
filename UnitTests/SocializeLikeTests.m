@@ -14,10 +14,14 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeLike.h"
 #import "SocializeTestCase.h"
+#import <JSONKit/JSONKit.h>
 
 #define ENTITY @"entity_key"
 
-@interface SocializeLikeTests() 
+@interface SocializeLikeTests() {
+    BOOL _didCreateCalled;
+}
+
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
 @end
 
@@ -36,6 +40,11 @@
 {
     [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
+}
+
+- (void)tearDown {
+    [_mockService verify];
+    [super tearDown];
 }
 
 -(void) testGetAlike
@@ -109,30 +118,84 @@
     [_mockService verify];
 }
 
--(void)testpostLikeForEntity{
-    
-    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
-    SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
-    
-    mockEntity.key = @"www.123.com";
-    
-    SZLike *expectedLike = [SZLike likeWithEntity:mockEntity];
+- (void)respondToNextRequestWithData:(NSData*)data {
+    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+        [_service request:request didLoadRawResponse:data];
+    }] executeRequest:OCMOCK_ANY];
+}
 
++ (NSString*)testEntityKey {
+    return @"http://www.example.com/interesting-story/";
+}
+
++ (NSString*)testEntityName {
+    return @"Something";
+}
+
++ (SZEntity*)testEntity {
+    return [SZEntity entityWithKey:[self testEntityKey] name:[self testEntityName]];
+}
+
++ (SZLike*)testLike {
+    return [SZLike likeWithEntity:[self testEntity]];
+}
+
++ (NSDictionary*)fakeCreateLikeResponse {
+//    
+//    SZComment *testLike = [self testLike];
+//    
+    return
+    @{@"errors": @[],
+      @"items": @[@{@"application":
+                        @{@"id": @267189,
+                          @"name": @"MoviePal"
+                          },
+                    @"date": @"2013-03-05 19:18:09+0000",
+                    @"entity": @{
+                            @"comments": @891,
+                            @"id": @7573051,
+                            @"key": [self testEntityKey],
+                            @"name": [self testEntityName],
+                            @"likes": @414,
+                            @"meta": @"null",
+                            @"shares": @304,
+                            @"total_activity": @2821,
+                            @"type": @"article",
+                            @"views": @1212
+                            },
+                    @"id": @4158835,
+                    @"propagation_info_response": @{},
+                    @"user": @{
+                            @"first_name": @"null", @"id": @122634992, @"last_name": @"null", @"location": @"null", @"meta": @"null",
+                            @"small_image_uri": @"null", @"username": @"User122634992"}
+                    }]};
+}
+
+- (void)expectCreateObjectsNotification {
     OCMockObserver *observer = [OCMockObject observerMock];
-    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:@{kSZCreatedObjectsKey: @[ expectedLike ]} ];
+    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:OCMOCK_ANY ];
     [[NSNotificationCenter defaultCenter] addMockObserver:observer
                                                      name:SZDidCreateObjectsNotification
                                                    object:nil];
+    
+    [self atTearDown:^{
+        [observer verify];
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+    }];
+}
 
-    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
-        BLOCK_CALL_1(request.successBlock, @[ expectedLike ]);
-    }] executeRequest:OCMOCK_ANY];
+-(void)testpostLikeForEntity{
+    
+    SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
+    SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)];
+    
+    mockEntity.key = @"www.123.com";
+    
+    [self expectCreateObjectsNotification];
+    
+    [self respondToNextRequestWithData:[[[self class] fakeCreateLikeResponse] JSONData]];
 
     [_mockService postLikeForEntity:mockEntity andLongitude:nil latitude:nil];
-    [_mockService verify];
-    [observer verify];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:observer];
 }
 
 -(void)testpostLikeForEntityWithGeo{
@@ -201,7 +264,8 @@
     NSLog(@"didFail %@", error);
 }
 
--(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)objectCreated{
+-(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)objectCreated {
+    _didCreateCalled = YES;
     NSLog(@"didCreateWithElements %@", objectCreated);
 }
 

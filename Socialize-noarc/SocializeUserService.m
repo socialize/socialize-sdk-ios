@@ -115,7 +115,7 @@
         request.operationType = SocializeRequestOperationTypeUpdate;
         request.successBlock = ^(id<SZFullUser> newUser) {
             SZHandleUserChange(newUser);
-            [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didUpdate:) object:newUser];
+            BLOCK_CALL_1(success, newUser);
         };
         request.failureBlock = failure;
         

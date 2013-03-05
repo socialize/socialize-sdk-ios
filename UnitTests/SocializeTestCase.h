@@ -29,6 +29,7 @@ extern id testSelf;
 @property (nonatomic, retain) NSMutableDictionary *swizzledMethods;
 @property (nonatomic, retain) UIAlertView *lastShownAlert;
 @property (nonatomic, retain) NSMutableDictionary *expectedDeallocations;
+@property (nonatomic, retain) NSMutableArray *cleanupBlocks;
 @property (nonatomic, retain) NSException *lastException;
 @property (nonatomic, retain) id mockSharedSocialize;
 
@@ -58,5 +59,6 @@ extern id testSelf;
 - (void)stubLocationSharingDisabled:(BOOL)disabled;
 - (void)succeedGetEntityWithResultBlock:(id<SZEntity>(^)(NSString *key))resultBlock;
 - (void)failGetEntityWithError:(NSError*)error;
+- (void)atTearDown:(void (^)())block;
 
 @end

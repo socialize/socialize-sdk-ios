@@ -30,9 +30,9 @@
 #import <GHUnitIOS/GHUnit.h>
 #import <UIKit/UIKit.h>
 #import "SocializeCommentsService.h"
+#import "SocializeTestCase.h"
 
-
-@interface SocializeCommentsServiceTests : GHTestCase <SocializeServiceDelegate> {
+@interface SocializeCommentsServiceTests : SocializeTestCase <SocializeServiceDelegate> {
     SocializeCommentsService* _service;
     id                        _mockService;
     NSError* _testError;

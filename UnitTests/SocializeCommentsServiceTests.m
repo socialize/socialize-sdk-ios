@@ -35,12 +35,15 @@
 #import <Foundation/Foundation.h>
 #import <JSONKit/JSONKit.h>
 #import "SocializeTestCase.h"
+#import <OAuthConsumer/OAuthConsumer.h>
 
 
 #define ENTITY @"entity_key"
 static const int singleCommentId = 1;
 
-@interface SocializeCommentsServiceTests()
+@interface SocializeCommentsServiceTests() {
+    BOOL _didCreateCalled;
+}
     -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName;
 @end
 
@@ -61,6 +64,18 @@ static const int singleCommentId = 1;
     NSLog(@"Tearing down %@", [self class]);
     [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
+}
+
+- (void)setUp {
+    _didCreateCalled = NO;
+    
+    [super setUp];
+}
+
+- (void)tearDown {
+    [_mockService verify];
+    
+    [super tearDown];
 }
 
 #pragma mark - Requests test
@@ -137,33 +152,136 @@ static const int singleCommentId = 1;
     [_mockService verify];
 }
 
++ (NSString*)testEntityKey {
+    return @"http://www.example.com/interesting-story/";
+}
 
--(void) testCreateCommentForNew
-{
-    SocializeEntity *entity = [[SocializeEntity new] autorelease];
-    id expectedComment = [SZComment commentWithEntity:entity text:@"hi"];
++ (NSString*)testEntityName {
+    return @"Something";
+}
+
++ (SZEntity*)testEntity {
+    return [SZEntity entityWithKey:[self testEntityKey] name:[self testEntityName]];
+}
+
++ (SZComment*)testComment {
+    SZComment *comment = [SZComment commentWithEntity:[[self class] testEntity] text:@"Nothing"];
+    comment.lat = @20;
+    comment.lng = @50;
     
-    entity.key = @"http://www.example.com/interesting-story/";
-    entity.name = @"example";
+    return comment;
+}
+
++ (NSDictionary*)fakeCreateCommentResponse {
     
+    SZComment *testComment = [self testComment];
+    
+    return
+             @{@"errors": @[],
+                 @"items": @[@{@"application":
+                                   @{@"id": @267189,
+                                       @"name": @"MoviePal"
+                                     },
+                               @"date": @"2013-03-05 19:18:09+0000",
+                               @"entity": @{
+                                       @"comments": @891,
+                                       @"id": @7573051,
+                                       @"key": [self testEntityKey],
+                                       @"name": [self testEntityName],
+                                       @"likes": @414,
+                                       @"meta": @"null",
+                                       @"shares": @304,
+                                       @"total_activity": @2821,
+                                       @"type": @"article",
+                                       @"views": @1212
+                                       },
+                 @"id": @4158835,
+                               @"lat": testComment.lat,
+                               @"lng": testComment.lng,
+                               @"propagation_info_response": @{},
+                               @"share_location": @YES,
+                               @"text": testComment.text,
+                               @"user": @{
+                                       @"first_name": @"null", @"id": @122634992, @"last_name": @"null", @"location": @"null", @"meta": @"null",
+                                       @"small_image_uri": @"null", @"username": @"User122634992"}
+                               }]};
+}
+
+
+- (void)expectCreateCommentsNotification {
     OCMockObserver *observer = [OCMockObject observerMock];
-    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:@{kSZCreatedObjectsKey: @[ expectedComment ]} ];
+    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:OCMOCK_ANY];
     [[NSNotificationCenter defaultCenter] addMockObserver:observer
                                                      name:SZDidCreateObjectsNotification
                                                    object:nil];
-    
-
-    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
-        BLOCK_CALL_1(request.successBlock, @[ expectedComment ]);
-    }] executeRequest:OCMOCK_ANY];
-    
-    [_service createCommentForEntity:entity comment:@"this was a great story" longitude:nil latitude:nil];
-    
-    [_mockService verify];
-    [observer verify];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:observer];
+    [self atTearDown:^{
+        [observer verify];
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+    }];
 }
+
+- (void)respondToNextRequestWithData:(NSData*)data {
+    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+        [_service request:request didLoadRawResponse:data];
+    }] executeRequest:OCMOCK_ANY];
+}
+
+- (void)testCreateCommentWithBlock {
+    [self respondToNextRequestWithData:[[[self class] fakeCreateCommentResponse] JSONData]];
+    
+    [self expectCreateCommentsNotification];
+
+    [self prepare];
+    [_service createComment:[[self class] testComment] success:^(id<SocializeComment> comment) {
+        [self notify:kGHUnitWaitStatusSuccess];
+    } failure:^(NSError *error) {
+        [self notify:kGHUnitWaitStatusFailure];
+    }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
+    
+    GHAssertTrue(_didCreateCalled, @"Should have called didCreate");
+}
+
+- (void)testCreateComment {
+    [self respondToNextRequestWithData:[[[self class] fakeCreateCommentResponse] JSONData]];
+    
+    [self expectCreateCommentsNotification];
+    
+    [_service createCommentForEntity:[[self class] testEntity] comment:@"this was a great story" longitude:nil latitude:nil];
+//    [_mockService verify];
+    
+    GHAssertTrue(_didCreateCalled, @"Should have called didCreate");
+
+
+}
+//-(void) testCreateCommentForNew
+//{
+//    SocializeEntity *entity = [[SocializeEntity new] autorelease];
+//    id expectedComment = [SZComment commentWithEntity:entity text:@"hi"];
+//    
+//    entity.key = @"http://www.example.com/interesting-story/";
+//    entity.name = @"example";
+//    
+//    OCMockObserver *observer = [OCMockObject observerMock];
+//    [[observer expect] notificationWithName:SZDidCreateObjectsNotification object:nil userInfo:@{kSZCreatedObjectsKey: @[ expectedComment ]} ];
+//    [[NSNotificationCenter defaultCenter] addMockObserver:observer
+//                                                     name:SZDidCreateObjectsNotification
+//                                                   object:nil];
+//    [self atTearDown:^{
+//        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+//    }];
+//    
+//
+//    [[[_mockService expect] andDo1:^(SocializeRequest *request) {
+//        BLOCK_CALL_1(request.successBlock, @[ expectedComment ]);
+//    }] executeRequest:OCMOCK_ANY];
+//    
+//    [_service createCommentForEntity:entity comment:@"this was a great story" longitude:nil latitude:nil];
+//    
+//    [_mockService verify];
+//    [observer verify];
+//    
+//}
 
 -(void) testCreateCommentForNewWithGeo
 {   
@@ -270,6 +388,7 @@ static const int singleCommentId = 1;
     return  JSONString;
 }
 -(void)service:(SocializeService*)service didCreate:(id<SocializeObject>)object{
+    _didCreateCalled = YES;
     NSLog(@"didCreate %@", object);
 }
 

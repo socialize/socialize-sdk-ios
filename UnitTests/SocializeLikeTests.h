@@ -11,10 +11,11 @@
 #import "SocializeCommonDefinitions.h"
 #import "SocializeRequest.h"
 #import "SocializeService.h"
+#import "SocializeTestCase.h"
 
 
 @class SocializeLikeService;
-@interface SocializeLikeTests : GHTestCase<SocializeServiceDelegate, SocializeRequestDelegate> {
+@interface SocializeLikeTests : SocializeTestCase <SocializeServiceDelegate, SocializeRequestDelegate> {
     
     SocializeLikeService    *_service;
     id                      _mockService;

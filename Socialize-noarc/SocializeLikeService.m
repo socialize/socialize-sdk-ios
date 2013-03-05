@@ -55,14 +55,14 @@
 - (void)callLikePostWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     [self callLikeWithMethod:@"POST" params:params success:^(NSArray *likes) {
         SZPostActivityEntityDidChangeNotifications(likes);
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:likes];
+        BLOCK_CALL_1(success, likes);
     } failure:failure];
 }
 
 - (void)callLikeDeleteWithParams:(NSArray*)params success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
     [self callLikeWithMethod:@"DELETE" params:params success:^(NSArray *likes) {
         SZPostActivityEntityDidChangeNotifications(likes);
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didDelete:) object:likes];
+        BLOCK_CALL_1(success, likes);
     } failure:failure];
 }
 

@@ -126,7 +126,7 @@
 
     request.successBlock = ^(NSArray *comments) {
         SZPostActivityEntityDidChangeNotifications(comments);
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:comments];
+        BLOCK_CALL_1(success, comments);
     };
     
     request.failureBlock = failure;

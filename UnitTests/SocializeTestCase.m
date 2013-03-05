@@ -78,6 +78,18 @@ id testSelf;
     return expectedDeallocations_;
 }
 
+- (NSMutableArray*)cleanupBlocks {
+    if (_cleanupBlocks == nil) {
+        _cleanupBlocks = [[NSMutableArray alloc] init];
+    }
+    
+    return _cleanupBlocks;
+}
+
+- (void)atTearDown:(void (^)())block {
+    [self.cleanupBlocks addObject:[[block copy] autorelease]];
+}
+
 - (void)handleException:(NSException *)exception {
     self.lastException = exception;
     [ClassMockRegistry stopMockingAllClasses];
@@ -95,6 +107,11 @@ id testSelf;
     self.uut = nil;
     [self.mockSharedSocialize verify];
     self.mockSharedSocialize = nil;
+    
+    for (void (^executionBlock)() in self.cleanupBlocks) {
+        executionBlock();
+    }
+    self.cleanupBlocks = nil;
     
     [super tearDown];
 }

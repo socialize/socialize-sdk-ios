@@ -33,7 +33,7 @@
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
                                                                  params:[NSArray arrayWithObject:params]];
     request.successBlock = ^(NSArray *shares) {
-        [self invokeBlockOrDelegateCallbackForBlock:success selector:@selector(service:didCreate:) object:[shares objectAtIndex:0]];
+        BLOCK_CALL_1(success, [shares objectAtIndex:0]);
     };
     
     request.failureBlock = failure;
