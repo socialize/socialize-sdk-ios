@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 2.6.2 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 2.7 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.6.2',
+        VERSION:     '2.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.6.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.7 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.6.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -82,7 +82,9 @@ in your app as easy as possible.</p>
 <h2>UI Elements<a class="headerlink" href="#ui-elements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="share-dialog">
 <h3>Share Dialog<a class="headerlink" href="#share-dialog" title="Permalink to this headline">¶</a></h3>
-<p>The simplest way to allow users to share an entity (your content) is via the share dialog</p>
+<p>The simplest way to allow users to share an entity (your content) is via the
+share dialog.  Note that if you need to set meta information on the entity, you
+must do so with a separate call to [SZEntityUtils addEntity:success:failure:]</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showShareDialog</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">showShareDialogWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">completion:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
@@ -418,7 +420,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.6.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

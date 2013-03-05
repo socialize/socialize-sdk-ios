@@ -4,6 +4,22 @@
 Changelog
 =============================================
 
+v2.7
+----
+[bug] Fix a crash that could occur when a socialize response arrived after a socialize instance has been deallocated [ crash critical ]
+
+[feature] Developer can receive notifications for api operations such as comment, like, share creation/deletion [ ]
+
+[bug] Add workaround for an MKMapView leak [ memory ]
+
+[bug] Comment composer deallocation could be delayed by up to 10 seconds [ memory ui ]
+
+[feature] Socialize Service Delegate now called for all cases (was not called for certain block operations) [ api-client regression ]
+
+[bug] Minor leak fixes [ memory ]
+
+[feature] documentation suggestion for meta/share [ documentation ]
+
 v2.6.2
 ------
 [bug] Fix several memory issues [ critical ]

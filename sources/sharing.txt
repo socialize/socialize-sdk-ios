@@ -16,7 +16,9 @@ UI Elements
 Share Dialog
 ~~~~~~~~~~~~
 
-The simplest way to allow users to share an entity (your content) is via the share dialog
+The simplest way to allow users to share an entity (your content) is via the
+share dialog.  Note that if you need to set meta information on the entity, you
+must do so with a separate call to [SZEntityUtils addEntity:success:failure:]
 
 .. literalinclude:: snippets/sharing.m
 	:start-after: begin-show-share-dialog-snippet
