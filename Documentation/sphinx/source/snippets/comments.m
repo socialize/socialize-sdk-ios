@@ -179,8 +179,9 @@
 
 // begin-observe-comments-snippet
 
-- (void)didCreate:(NSArray*)objects {
-    id<SZComment> comment = [objects lastObject];
+- (void)didCreate:(NSNotification*)notification {
+    NSArray *comments = [[notification userInfo] objectForKey:kSZCreatedObjectsKey];
+    id<SZComment> comment = [comments lastObject];
     if ([comment conformsToProtocol:@protocol(SZComment)]) {
         NSLog(@"Commented on %@", comment.entity);
     }

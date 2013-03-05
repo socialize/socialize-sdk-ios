@@ -103,14 +103,18 @@
 
 // begin-observe-likes-snippet
 
-- (void)didCreate:(NSArray*)objects {
+- (void)didCreate:(NSNotification*)notification {
+    NSArray *objects = [[notification userInfo] objectForKey:kSZCreatedObjectsKey];
+
     id<SZLike> like = [objects lastObject];
     if ([like conformsToProtocol:@protocol(SZLike)]) {
         NSLog(@"Liked %@", like.entity);
     }
 }
 
-- (void)didDelete:(NSArray*)objects {
+- (void)didDelete:(NSNotification*)notification {
+    NSArray *objects = [[notification userInfo] objectForKey:kSZDeletedObjectsKey];
+
     id<SZLike> like = [objects lastObject];
     if ([like conformsToProtocol:@protocol(SZLike)]) {
         NSLog(@"Unliked %@", like.entity);
