@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Likes &mdash; Socialize iOS SDK 2.7 documentation</title>
+    <title>Likes &mdash; Socialize iOS SDK 2.7.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.7',
+        VERSION:     '2.7.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.7.1 documentation" href="index.html" />
     <link rel="next" title="Views" href="views.html" />
     <link rel="prev" title="Comments" href="comments.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="comments.html" title="Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -177,14 +177,18 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 <h3>Responding to changes in like state<a class="headerlink" href="#responding-to-changes-in-like-state" title="Permalink to this headline">¶</a></h3>
 <p>You can choose to be notified when likes change state</p>
 <div class="highlight-objective-c"><pre>
-- (void)didCreate:(NSArray*)objects {
+- (void)didCreate:(NSNotification*)notification {
+    NSArray *objects = [[notification userInfo] objectForKey:kSZCreatedObjectsKey];
+
     id&lt;SZLike&gt; like = [objects lastObject];
     if ([like conformsToProtocol:@protocol(SZLike)]) {
         NSLog(@"Liked %@", like.entity);
     }
 }
 
-- (void)didDelete:(NSArray*)objects {
+- (void)didDelete:(NSNotification*)notification {
+    NSArray *objects = [[notification userInfo] objectForKey:kSZDeletedObjectsKey];
+
     id&lt;SZLike&gt; like = [objects lastObject];
     if ([like conformsToProtocol:@protocol(SZLike)]) {
         NSLog(@"Unliked %@", like.entity);
@@ -263,7 +267,7 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
         <li class="right" >
           <a href="comments.html" title="Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.7.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

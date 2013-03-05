@@ -4,6 +4,12 @@
 Changelog
 =============================================
 
+v2.7.1
+------
+[bug] Fix double called of SZDidCreateObjectsNotification [ ]
+
+[bug] Fix doc examples for SZDidCreateObjectsNotification [ ]
+
 v2.7
 ----
 [bug] Fix a crash that could occur when a socialize response arrived after a socialize instance has been deallocated [ crash critical ]
