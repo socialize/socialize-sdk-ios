@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "IntegrationTestsAppDelegate.h"
+#import "SZUnitTestAppHack.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([IntegrationTestsAppDelegate class]));
+        [SZUnitTestAppHack setDelegateClassName:NSStringFromClass([IntegrationTestsAppDelegate class])];
+        return UIApplicationMain(argc, argv, NSStringFromClass([SZUnitTestAppHack class]), NSStringFromClass([IntegrationTestsAppDelegate class]));
     }
 }
