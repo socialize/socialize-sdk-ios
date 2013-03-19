@@ -87,16 +87,6 @@ NSString *SZBase64EncodedUDID() {
     return encoded;
 }
 
-NSString *SZBase64EncodedAdsID() {
-    if (!NSClassFromString(@"ASIdentifierManager")) {
-        return nil;
-    }
-    NSString *adid = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    NSData *adidData = [adid dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *encoded = [adidData base64Encoding];
-    return encoded;
-}
-
 BOOL SZEventTrackingDisabled() {
     const char *disabled = getenv("SZEventTrackingDisabled");
     if (disabled != NULL && strncmp("1", disabled, 1) == 0) {

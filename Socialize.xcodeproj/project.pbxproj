@@ -498,6 +498,10 @@
 		AA1C1C25158EF43700A763CA /* SZShareOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008717158D35BF00480399 /* SZShareOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
+		AA2A2D2616F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2A2D2416F8D7720066111B /* ASIdentifierManager+Utilities.h */; };
+		AA2A2D2716F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AA2A2D2416F8D7720066111B /* ASIdentifierManager+Utilities.h */; };
+		AA2A2D2816F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A2D2516F8D7720066111B /* ASIdentifierManager+Utilities.m */; };
+		AA2A2D2916F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A2D2516F8D7720066111B /* ASIdentifierManager+Utilities.m */; };
 		AA2B1247159E475E00AD53D5 /* twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1246159E475E00AD53D5 /* twitter.m */; };
 		AA2B124A159E486E00AD53D5 /* facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1249159E486E00AD53D5 /* facebook.m */; };
 		AA2C7A43158EF4F3009A2370 /* Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008626158D35BD00480399 /* Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2385,6 +2389,8 @@
 		AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ThirdParty/KIF/KIF.xcodeproj; sourceTree = "<group>"; };
 		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
 		AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewController.m; sourceTree = "<group>"; };
+		AA2A2D2416F8D7720066111B /* ASIdentifierManager+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIdentifierManager+Utilities.h"; sourceTree = "<group>"; };
+		AA2A2D2516F8D7720066111B /* ASIdentifierManager+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIdentifierManager+Utilities.m"; sourceTree = "<group>"; };
 		AA2B1245159E475E00AD53D5 /* twitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twitter.h; sourceTree = "<group>"; };
 		AA2B1246159E475E00AD53D5 /* twitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twitter.m; sourceTree = "<group>"; };
 		AA2B1248159E486E00AD53D5 /* facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook.h; sourceTree = "<group>"; };
@@ -4070,6 +4076,8 @@
 				AAC194E615AF925200DDE42F /* NSOperationQueue+Socialize.m */,
 				AABCC67B15C083CD005FA860 /* NSString+UUID.h */,
 				AABCC67C15C083CD005FA860 /* NSString+UUID.m */,
+				AA2A2D2416F8D7720066111B /* ASIdentifierManager+Utilities.h */,
+				AA2A2D2516F8D7720066111B /* ASIdentifierManager+Utilities.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -4382,6 +4390,7 @@
 				AAB86D6415FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
 				AAB86D6A15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 				AAE2168E1607D6DD0049850E /* SZOpenURLHandler.h in Headers */,
+				AA2A2D2616F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4487,6 +4496,7 @@
 				AAB86D6515FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
 				AAB86D6B15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 				AAE2168F1607D6DE0049850E /* SZOpenURLHandler.h in Headers */,
+				AA2A2D2716F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5995,6 +6005,7 @@
 				AAB86D6615FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
 				AAB86D6C15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 				AAE216901607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
+				AA2A2D2816F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6491,6 +6502,7 @@
 				AAB86D6715FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
 				AAB86D6D15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 				AAE216911607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
+				AA2A2D2916F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

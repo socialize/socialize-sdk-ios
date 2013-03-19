@@ -15,5 +15,4 @@ NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
 BOOL SZUseProductionPush();
 void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
 NSString *SZBase64EncodedUDID();
-NSString *SZBase64EncodedAdsID();
 BOOL SZEventTrackingDisabled();

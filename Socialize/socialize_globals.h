@@ -21,3 +21,4 @@
 #import "SocializeCommonDefinitions.h"
 #import "SZAPIClientHelpers.h"
 #import "Facebook+Socialize.h"
+#import "ASIdentifierManager+Utilities.h"
