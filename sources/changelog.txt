@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.7.2
+------
+[bug] Fix a major issue with linking to a third party on iOS5 devices [ ]
+
 v2.7.1
 ------
 [bug] Fix double called of SZDidCreateObjectsNotification [ ]
