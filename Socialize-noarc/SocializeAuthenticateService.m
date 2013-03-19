@@ -38,8 +38,13 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
                                    SZBase64EncodedUDID(), @"d",
-                                   SZBase64EncodedAdsID(), @"a",
                                    nil];
+
+    
+    NSString *adsId = [ASIdentifierManager base64AdvertisingIdentifierString];
+    if ([adsId length] > 0) {
+        [params setObject:adsId forKey:@"a"];
+    }
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
     SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
@@ -115,11 +120,15 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                                    [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
                                    SZBase64EncodedUDID(), @"d",
-                                   SZBase64EncodedAdsID(), @"a",
                                    authType, @"auth_type",
                                    thirdPartyAuthToken, @"auth_token",
                                    thirdPartyAuthTokenSecret, @"auth_token_secret",
                                    nil];
+    
+    NSString *adsId = [ASIdentifierManager base64AdvertisingIdentifierString];
+    if ([adsId length] > 0) {
+        [params setObject:adsId forKey:@"a"];
+    }
     
     SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
                                                                  resourcePath:AUTHENTICATE_METHOD

@@ -16,24 +16,35 @@
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "UIDevice+IdentifierAddition.h"
 #import "SocializeTestCase.h"
-
+#import "ASIdentifierManager+Utilities.h"
 
 @implementation SocializeAuthTests
 
--(void) setUpClass
+-(void) setUp
 {
-    [super setUpClass];
+    [super setUp];
     _service = [[SocializeAuthenticateService alloc] init];
     _mockService = [[_service nonRetainingMock] retain];
     _testError = [NSError errorWithDomain:@"" code: 402 userInfo:nil];
 }
 
--(void) tearDownClass
+-(void) tearDown
 {
-    //[_service release]; 
-    _service = nil;
+    [_partial release]; _partial = nil;
+    [_service release]; _service = nil;
     [_mockService release]; _mockService = nil;
-    [super tearDownClass];
+    [super tearDown];
+}
+
+- (void)becomePartial {
+    if (_partial == nil) {
+        _partial = [[OCMockObject partialMockForObject:_service] retain];
+    }
+}
+
+- (void)expectRequest:(void(^)(SocializeRequest *request))verify {
+    [self becomePartial];
+    [[[_partial expect] andDo1:verify] executeRequest:OCMOCK_ANY];
 }
 
 -(void)testAuthParams{
@@ -80,6 +91,31 @@
     [mockDelegate verify];
 
    // [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
+}
+
+- (void)testThatNilAdvertisingIdentifierStillAuthenticatesWithThirdParty {
+    NSString *token = @"token";
+    NSString *secret = @"secret";
+    SocializeThirdPartyAuthType authType = SocializeThirdPartyAuthTypeFacebook;
+    NSString *authTypeString = [NSString stringWithFormat:@"%d", authType];
+    
+    [self becomePartial];
+    
+    [ASIdentifierManager startMockingClass];
+    [self atTearDown:^{
+        [ASIdentifierManager stopMockingClassAndVerify];
+    }];
+    
+    [self expectRequest:^(SocializeRequest *request) {
+        NSDictionary *params = request.params;
+        GHAssertEqualStrings([params objectForKey:@"auth_token"], token, @"Bad token");
+        GHAssertEqualStrings([params objectForKey:@"auth_token_secret"], secret, @"Bad secret");
+        GHAssertEqualObjects([params objectForKey:@"auth_type"], authTypeString, @"Bad type");
+    }];
+
+    [[[ASIdentifierManager stub] andReturn:nil] base64AdvertisingIdentifierString];
+
+    [_service authenticateWithThirdPartyAuthType:authType thirdPartyAuthToken:token thirdPartyAuthTokenSecret:secret];
 }
 
 -(void)didAuthenticate: (id<SocializeUser>)user{

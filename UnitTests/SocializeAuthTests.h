@@ -10,10 +10,12 @@
 #import <UIKit/UIKit.h>
 
 #import "SocializeAuthenticateService.h"
+#import "SocializeTestCase.h"
 
-@interface SocializeAuthTests : GHAsyncTestCase<SocializeServiceDelegate> {
+@interface SocializeAuthTests : SocializeTestCase <SocializeServiceDelegate> {
     SocializeAuthenticateService* _service;
     id                            _mockService;
+    id                            _partial;
     NSError*                      _testError;
 }
 

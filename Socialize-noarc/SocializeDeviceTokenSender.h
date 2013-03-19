@@ -13,6 +13,7 @@
 
 @interface SocializeDeviceTokenSender : NSObject <SocializeServiceDelegate>
 + (SocializeDeviceTokenSender*)sharedDeviceTokenSender;
++ (void)disableSender;
 
 /** Register token with server */
 - (void)registerDeviceToken:(NSData*)deviceToken development:(BOOL)development;

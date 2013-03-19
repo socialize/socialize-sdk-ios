@@ -10,11 +10,13 @@
 
 #import "SocializeUnitTestApplication.h"
 #import "SZUnitTestAppHack.h"
+#import "SocializeDeviceTokenSender.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
         [SZUnitTestAppHack setDelegateClassName:NSStringFromClass([SocializeUnitTestApplication class])];
         return UIApplicationMain(argc, argv, NSStringFromClass([SZUnitTestAppHack class]), NSStringFromClass([SocializeUnitTestApplication class]));
+        [SocializeDeviceTokenSender disableSender];
     }
 }

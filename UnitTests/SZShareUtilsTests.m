@@ -61,7 +61,7 @@
         [self notify:kGHUnitWaitStatusFailure];
         
     }];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:0.5];
 }
 
 - (void)testCombinedShareFailure {
@@ -82,7 +82,7 @@
         [self notify:kGHUnitWaitStatusFailure];
         
     }];
-    [self waitForStatus:kGHUnitWaitStatusFailure timeout:0.1];
+    [self waitForStatus:kGHUnitWaitStatusFailure timeout:0.5];
 }
 
 @end
