@@ -29,14 +29,15 @@ static NSTimeInterval TimerCheckTimeInterval = 30.0;
 @synthesize tokenOnServer = tokenOnServer_;
 
 + (void)load {
-    (void)[self sharedDeviceTokenSender];
+    sharedDeviceTokenSender = [[SocializeDeviceTokenSender alloc] init];
 }
 
 + (SocializeDeviceTokenSender*)sharedDeviceTokenSender {
-    if (sharedDeviceTokenSender == nil) {
-        sharedDeviceTokenSender = [[SocializeDeviceTokenSender alloc] init];
-    }
     return sharedDeviceTokenSender;
+}
+
++ (void)disableSender {
+    [sharedDeviceTokenSender release]; sharedDeviceTokenSender = nil;
 }
 
 - (void)dealloc {

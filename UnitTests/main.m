@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "SocializeUnitTestApplication.h"
+#import "SocializeDeviceTokenSender.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
+        [SocializeDeviceTokenSender disableSender];
+
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([SocializeUnitTestApplication class]));
     }
 }
