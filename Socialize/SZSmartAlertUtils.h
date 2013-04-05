@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SZDisplay.h"
+#import "SocializeCommonDefinitions.h"
 
 @interface SZSmartAlertUtils : NSObject
 
@@ -17,5 +18,7 @@
 + (void)registerDeviceToken:(NSData*)deviceToken;
 + (void)registerDeviceToken:(NSData*)deviceToken development:(BOOL)development;
 + (BOOL)openNotification:(NSDictionary*)userInfo;
++ (void)setNewCommentsNotificationBlock:(SocializeNewCommentsNotificationBlock)newCommentsBlock;
++ (SocializeNewCommentsNotificationBlock)newCommentsNotificationBlock;
 
 @end

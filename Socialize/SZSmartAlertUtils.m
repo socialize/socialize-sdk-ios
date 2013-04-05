@@ -13,6 +13,8 @@
 #import "SZWindowDisplay.h"
 #import "SZNotificationHandler.h"
 
+static SocializeNewCommentsNotificationBlock _sharedNewCommentsNotificationBlock;
+
 @implementation SZSmartAlertUtils
 
 + (BOOL)isAvailable {
@@ -41,6 +43,14 @@
 
 + (void)registerDeviceToken:(NSData*)deviceToken {
     [self registerDeviceToken:deviceToken development:YES];
+}
+
++ (void)setNewCommentsNotificationBlock:(SocializeNewCommentsNotificationBlock)newCommentsBlock {
+    _sharedNewCommentsNotificationBlock = [newCommentsBlock copy];
+}
+
++ (SocializeNewCommentsNotificationBlock)newCommentsNotificationBlock {
+    return _sharedNewCommentsNotificationBlock;
 }
 
 @end

@@ -144,6 +144,13 @@ otherwise you will get a failure.
 +(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock;
 
 /**
+ Set new comments notification block
+ 
+ @param newCommentsBlock This block will be called when Socialize wishes to load a new comments notification
+ */
++(void)setNewCommentsNotificationBlock:(SocializeNewCommentsNotificationBlock)newCommentsBlock;
+
+/**
  Provide access to the "don't load entity" block
  
  typedef BOOL(^SocializeCanLoadEntityBlock)(id<SocializeEntity>entity);

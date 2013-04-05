@@ -34,6 +34,7 @@
 #import "SZNotificationHandler.h"
 #import "SZOpenURLHandler.h"
 #import "SZEntityUtils.h"
+#import "SZSmartAlertUtils.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -230,6 +231,10 @@ static Socialize *_sharedSocialize;
 
 +(void)setEntityLoaderBlock:(SocializeEntityLoaderBlock)entityLoaderBlock {
     [SZEntityUtils setEntityLoaderBlock:entityLoaderBlock];
+}
+
++(void)setNewCommentsNotificationBlock:(SocializeNewCommentsNotificationBlock)newCommentsBlock {
+    [SZSmartAlertUtils setNewCommentsNotificationBlock:newCommentsBlock];
 }
 
 +(SocializeEntityLoaderBlock)entityLoaderBlock {

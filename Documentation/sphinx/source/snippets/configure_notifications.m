@@ -135,6 +135,12 @@
         }
     }];
     
+    // Optionally specify a new comments notification override (An SZCommentsListViewController plus comment detail will be shown by default)
+//    [Socialize setNewCommentsNotificationBlock:^(id<SocializeComment> comment) {
+//        NSLog(@"Received new comments notification. Doing nothing.");
+//    }];
+
+    
     return YES;
 }
 

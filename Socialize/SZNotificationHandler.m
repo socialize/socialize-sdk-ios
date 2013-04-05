@@ -17,6 +17,7 @@
 #import "SZActionUtils.h"
 #import "SZCommentUtils.h"
 #import "SZDisplayUtils.h"
+#import "SZSmartAlertUtils.h"
 
 static SZNotificationHandler *sharedNotificationHandler;
 
@@ -208,19 +209,25 @@ static SZNotificationHandler *sharedNotificationHandler;
             
             [display socializeDidStopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
 
-            SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:comment.entity];
+            SocializeNewCommentsNotificationBlock newComments = [SZSmartAlertUtils newCommentsNotificationBlock];
             
-            commentsList.completionBlock = ^{
-                [self dismissViewControllerInDisplay:display];
-            };
-            
-            commentsList._commentsListViewController.showNotificationHintOnAppear = YES;
+            if (newComments) {
+                newComments(comment);
+            } else {
+                SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:comment.entity];
+                
+                commentsList.completionBlock = ^{
+                    [self dismissViewControllerInDisplay:display];
+                };
+                
+                commentsList._commentsListViewController.showNotificationHintOnAppear = YES;
 
-            SocializeActivityDetailsViewController *details = [[SocializeActivityDetailsViewController alloc] initWithActivity:comment];
-            [commentsList pushViewController:details animated:YES];
-            
-            
-            [self presentViewController:commentsList inDisplay:display];
+                SocializeActivityDetailsViewController *details = [[SocializeActivityDetailsViewController alloc] initWithActivity:comment];
+                [commentsList pushViewController:details animated:YES];
+                
+                
+                [self presentViewController:commentsList inDisplay:display];
+            }
 
         } failure:^(NSError *error) {
             [display socializeDidStopLoadingForContext:SZLoadingContextFetchingCommentForNewCommentsNotification];
