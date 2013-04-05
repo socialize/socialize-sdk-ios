@@ -80,13 +80,6 @@ NSString *SZGetProvisioningProfile() {
     return profileAsString;
 }
 
-NSString *SZBase64EncodedUDID() {
-    NSString *udid = [[UIDevice currentDevice] uniqueIdentifier];
-    NSData *udidData = [udid dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *encoded = [udidData base64Encoding];
-    return encoded;
-}
-
 BOOL SZEventTrackingDisabled() {
     const char *disabled = getenv("SZEventTrackingDisabled");
     if (disabled != NULL && strncmp("1", disabled, 1) == 0) {

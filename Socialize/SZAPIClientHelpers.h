@@ -14,5 +14,4 @@ void SZHandleUserChange(id<SZFullUser> fullUser);
 NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
 BOOL SZUseProductionPush();
 void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
-NSString *SZBase64EncodedUDID();
 BOOL SZEventTrackingDisabled();

@@ -37,7 +37,6 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
-                                   SZBase64EncodedUDID(), @"d",
                                    nil];
 
     
@@ -119,7 +118,6 @@
 
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                                    [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
-                                   SZBase64EncodedUDID(), @"d",
                                    authType, @"auth_type",
                                    thirdPartyAuthToken, @"auth_token",
                                    thirdPartyAuthTokenSecret, @"auth_token_secret",
