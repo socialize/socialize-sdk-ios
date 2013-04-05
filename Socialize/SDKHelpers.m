@@ -380,7 +380,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                 postData.propagationInfo = [activity propagationInfoResponse];
                 BLOCK_CALL_2(options.willAttemptPostingToSocialNetworkBlock, SZSocialNetworkTwitter, postData);
 
-                [SZTwitterUtils postWithViewController:nil path:postData.path params:postData.params success:^(id result) {
+                [SZTwitterUtils postWithViewController:nil path:postData.path params:postData.params multipart:postData.useMultipart success:^(id result) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
                     BLOCK_CALL_1(options.didPostToSocialNetworkBlock, SZSocialNetworkTwitter);
