@@ -375,7 +375,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                 SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
                 postData.options = options;
                 postData.params = params;
-                postData.path = @"/1/statuses/update.json";
+                postData.path = @"/1.1/statuses/update.json";
                 postData.entity = [activity entity];
                 postData.propagationInfo = [activity propagationInfoResponse];
                 BLOCK_CALL_2(options.willAttemptPostingToSocialNetworkBlock, SZSocialNetworkTwitter, postData);

@@ -51,7 +51,7 @@
     NSString *text = @"The Status";
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObject:text forKey:@"status"];
 
-    [SZTwitterUtils postWithViewController:self path:@"/1/statuses/update.json" params:params success:^(id result) {
+    [SZTwitterUtils postWithViewController:self path:@"/1.1/statuses/update.json" params:params success:^(id result) {
         NSLog(@"Posted to Twitter feed: %@", result);
 
     } failure:^(NSError *error) {

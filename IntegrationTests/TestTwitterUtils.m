@@ -20,7 +20,7 @@
     NSDictionary *params = [NSDictionary dictionaryWithObject:runID forKey:@"status"];
     
     [self prepare];
-    [[SZTwitterUtils origClass] postWithPath:@"/1/statuses/update.json" params:params success:^(id result) {
+    [[SZTwitterUtils origClass] postWithPath:@"/1.1/statuses/update.json" params:params success:^(id result) {
         [self notify:kGHUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
@@ -31,7 +31,7 @@
     [NSThread sleepForTimeInterval:5];
 
     [self prepare];
-    [[SZTwitterUtils origClass] getWithPath:@"/1/statuses/user_timeline.json" params:nil success:^(id result) {
+    [[SZTwitterUtils origClass] getWithPath:@"/1.1/statuses/user_timeline.json" params:nil success:^(id result) {
         [self notify:kGHUnitWaitStatusSuccess];
         NSString *text = [[result objectAtIndex:0] objectForKey:@"text"];
         GHAssertEqualStrings(text, runID, @"Bad text");
