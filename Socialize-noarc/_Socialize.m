@@ -210,6 +210,10 @@ static Socialize *_sharedSocialize;
     return self;
 }
 
++ (NSString *)socializeVersion {
+    return SOCIALIZE_VERSION_STRING;
+}
+
 - (void)cancelAllRequests {
     [_authService cancelAllRequests];
     [_likeService cancelAllRequests];

@@ -125,6 +125,8 @@ otherwise you will get a failure.
 
 + (BOOL)openNotification:(NSDictionary*)userInfo;
 
++ (NSString *)socializeVersion;
+
 /**
  Provide access to the entity loader block
  
