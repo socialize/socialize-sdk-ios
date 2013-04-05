@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SZLikeButton.h"
 #import "SZShareOptions.h"
+#import "SZLikeOptions.h"
 
 @interface SZActionBar : UIView
 
@@ -33,5 +34,6 @@
 @property (nonatomic, assign) CGFloat betweenButtonsPadding;
 
 @property (nonatomic, strong) SZShareOptions *shareOptions;
+@property (nonatomic, strong) SZLikeOptions *likeOptions;
 
 @end

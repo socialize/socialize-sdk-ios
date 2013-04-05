@@ -182,7 +182,7 @@
 - (void)likeOnServer {
     self.actualButton.enabled = NO;
 
-    [SZLikeUtils likeWithViewController:self.viewController options:nil entity:self.entity success:^(id<SZLike> like) {
+    [SZLikeUtils likeWithViewController:self.viewController options:self.likeOptions entity:self.entity success:^(id<SZLike> like) {
 
         // Like succeeded
         self.liked = YES;

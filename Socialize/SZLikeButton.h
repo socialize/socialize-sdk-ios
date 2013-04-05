@@ -10,6 +10,7 @@
 #import "SocializeObjects.h"
 #import "SZActionButton.h"
 #import "SZActionBarItem.h"
+#import "SZLikeOptions.h"
 
 @interface SZLikeButton : SZActionButton <SZActionBarItem>
 
@@ -40,6 +41,8 @@
 @property (nonatomic, retain) id<SZEntity> entity;
 
 @property (nonatomic, assign) NSTimeInterval failureRetryInterval;
+
+@property (nonatomic, strong) SZLikeOptions *likeOptions;
 
 + (NSTimeInterval)defaultFailureRetryInterval;
 

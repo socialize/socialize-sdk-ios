@@ -25,6 +25,7 @@
 @property (nonatomic, strong) SZHorizontalContainerView *buttonsContainerLeft;
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) SZLikeButton *likeButton;
 
 @end
 
@@ -60,6 +61,7 @@
     SZActionBar *actionBar = [[self alloc] initWithFrame:frame entity:entity viewController:viewController];
     actionBar.itemsLeft = itemsLeft;
     actionBar.itemsRight = itemsRight;
+    actionBar.likeButton = likeButton;
     
     return actionBar;
 }
@@ -100,6 +102,11 @@
 
 + (CGFloat)defaultBetweenButtonsPadding {
     return 10;
+}
+
+- (void)setLikeOptions:(SZLikeOptions *)likeOptions {
+    _likeOptions = likeOptions;
+    self.likeButton.likeOptions = likeOptions;
 }
 
 - (void)setBetweenButtonsPadding:(CGFloat)betweenButtonsPadding {
