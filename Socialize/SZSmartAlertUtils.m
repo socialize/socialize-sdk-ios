@@ -42,7 +42,7 @@ static SocializeNewCommentsNotificationBlock _sharedNewCommentsNotificationBlock
 }
 
 + (void)registerDeviceToken:(NSData*)deviceToken {
-    [self registerDeviceToken:deviceToken development:YES];
+    [self registerDeviceToken:deviceToken development:NO];
 }
 
 + (void)setNewCommentsNotificationBlock:(SocializeNewCommentsNotificationBlock)newCommentsBlock {
