@@ -76,7 +76,6 @@
                 [weakSelf.createdShares addObject:share];
                 BLOCK_CALL_1(weakSelf.completionBlock, weakSelf.createdShares);
                 
-                [weakSelf.SZPresentingViewController SZDismissViewControllerAnimated:YES completion:nil];
                 [weakSelf.display socializeRequiresIndicationOfStatusForContext:SZStatusContextSocializeShareCompleted];
                 
                 
