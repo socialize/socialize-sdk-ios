@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.7.2 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 2.8 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.7.2',
+        URL_ROOT:    './',
+        VERSION:     '2.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.7.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.8 documentation" href="index.html" />
     <link rel="next" title="Upgrading to Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" /> 
   </head>
@@ -39,7 +38,7 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.7.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -166,7 +165,7 @@ and socialize will not be able to locate its resources.</p>
 <ul>
 <li><p class="first">Add <strong>-ObjC</strong> and <strong>-all_load</strong> flag to the Other Linker Flags in the build settings of your application target. <em>Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.</em></p>
 <blockquote>
-<div><img alt="images/image00.png" src="images/image00.png" style="width: 700px; height: 410px;" />
+<div><a class="reference internal image-reference" href="images/image00.png"><img alt="images/image00.png" src="images/image00.png" style="width: 700px; height: 410px;" /></a>
 </div></blockquote>
 </li>
 <li><p class="first">For older versions of Xcode (4.3 and newer), if your app is not arc-enabled, you MUST also add <strong>-fobjc-arc</strong> to the Other Linker flags.</p>
@@ -191,12 +190,12 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
 <span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerKey</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerSecret</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
     
     <span class="c1">//your application specific code</span>
     
-    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -217,28 +216,34 @@ loader called <strong>SampleEntityLoader</strong>. This class is not intended fo
     <span class="c1">// ...</span>
     
     <span class="c1">// Register for Apple Push Notification Service</span>
-    <span class="p">[</span><span class="n">application</span> <span class="nl">registerForRemoteNotificationTypes:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
+    <span class="p">[</span><span class="n">application</span> <span class="n">registerForRemoteNotificationTypes</span><span class="o">:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
 
     <span class="c1">// Handle Socialize notification at launch</span>
-    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
+    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="n">objectForKey</span><span class="o">:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">self</span> <span class="nl">handleNotification:</span><span class="n">userInfo</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span> <span class="n">handleNotification</span><span class="o">:</span><span class="n">userInfo</span><span class="p">];</span>
     <span class="p">}</span>
 
 <span class="hll">    <span class="c1">// Specify a Socialize entity loader block</span>
-</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">setEntityLoaderBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="n">setEntityLoaderBlock</span><span class="o">:^</span><span class="p">(</span><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="hll">        
-</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity:</span><span class="n">entity</span><span class="p">];</span>
+</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithEntity</span><span class="o">:</span><span class="n">entity</span><span class="p">];</span>
 </span><span class="hll">
 </span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">navigationController</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRootViewController:</span><span class="n">entityLoader</span><span class="p">];</span>
-</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="nl">presentModalViewController:</span><span class="n">navigationController</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithRootViewController</span><span class="o">:</span><span class="n">entityLoader</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="n">presentModalViewController</span><span class="o">:</span><span class="n">navigationController</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
 </span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="nl">pushViewController:</span><span class="n">entityLoader</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="n">pushViewController</span><span class="o">:</span><span class="n">entityLoader</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
 </span><span class="hll">        <span class="p">}</span>
 </span><span class="hll">    <span class="p">}];</span>
 </span>    
-    <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+    <span class="c1">// Optionally specify a new comments notification override (An SZCommentsListViewController plus comment detail will be shown by default)</span>
+<span class="c1">//    [Socialize setNewCommentsNotificationBlock:^(id&lt;SocializeComment&gt; comment) {</span>
+<span class="c1">//        NSLog(@&quot;Received new comments notification. Doing nothing.&quot;);</span>
+<span class="c1">//    }];</span>
+
+    
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -278,7 +283,7 @@ components individually please go see the SDK user guide.</p>
 It is not necessary to explicitly create an Entity object when rendering the Action bar as this will be done for you, however entities can be created manually.</p>
 <p>Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller.</p>
 <p>In your View controller&#8217;s header file place the following code:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Store the action bar in a property on your view controller</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Store the action bar in a property on your view controller</span>
 
 <span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
@@ -293,33 +298,33 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
 <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="nl">showActionBarWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="n">showActionBarWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
         
         <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">shareOptions</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
-        <span class="n">shareOptions</span><span class="p">.</span><span class="n">dontShareLocation</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+        <span class="n">shareOptions</span><span class="p">.</span><span class="n">dontShareLocation</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
         
         <span class="n">shareOptions</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkTwitter</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="nl">objectForKey:</span><span class="s">@&quot;twitter&quot;</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;twitter&quot;</span><span class="p">]</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
                 <span class="n">NSString</span> <span class="o">*</span><span class="n">displayName</span> <span class="o">=</span> <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">entity</span> <span class="n">displayName</span><span class="p">];</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">customStatus</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;Custom status for %@ with url %@&quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">,</span> <span class="n">entityURL</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">customStatus</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;Custom status for %@ with url %@&quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">,</span> <span class="n">entityURL</span><span class="p">];</span>
                 
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">customStatus</span> <span class="nl">forKey:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">customStatus</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
                 
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkFacebook</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="nl">objectForKey:</span><span class="s">@&quot;facebook&quot;</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;facebook&quot;</span><span class="p">]</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
                 <span class="n">NSString</span> <span class="o">*</span><span class="n">displayName</span> <span class="o">=</span> <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">entity</span> <span class="n">displayName</span><span class="p">];</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">customMessage</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;Custom status for %@ &quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">customMessage</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;Custom status for %@ &quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">];</span>
                 
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">customMessage</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">entityURL</span> <span class="nl">forKey:</span><span class="s">@&quot;link&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A caption&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Custom Name&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A Site&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;description&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">customMessage</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">entityURL</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;link&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;A caption&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;Custom Name&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;A Site&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;description&quot;</span><span class="p">];</span>
             <span class="p">}</span>
         <span class="p">};</span>
         
@@ -409,7 +414,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.7.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

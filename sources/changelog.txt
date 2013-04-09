@@ -4,6 +4,26 @@
 Changelog
 =============================================
 
+v2.8
+----
+[feature] Update twitter to use 1.1 API instead of 1.0 [ ]
+
+[feature] Remove use of UDID (Only send Advertiser ID) [ ]
+
+[feature] Expose Like Options on action bar [ ui ]
+
+[feature] Add call to get SDK version [ sdk ]
+
+[feature] Add hook to override comments notification behavior [ ui ]
+
+[bug] Default for token registration should be production [ ]
+
+[feature] Add ability to post multipart in share calbacks [ twitter ]
+
+[feature] Share options have 'image' helper property for adding image to share/like (Twitter only) [ ]
+
+[bug] Fix a possible crash at share dialog dismissal time (modified after being freed) [ ]
+
 v2.7.2
 ------
 [bug] Fix a major issue with linking to a third party on iOS5 devices [ ]

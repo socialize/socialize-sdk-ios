@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Likes &mdash; Socialize iOS SDK 2.7.2 documentation</title>
+    <title>Likes &mdash; Socialize iOS SDK 2.8 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.7.2',
+        URL_ROOT:    './',
+        VERSION:     '2.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.7.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.8 documentation" href="index.html" />
     <link rel="next" title="Views" href="views.html" />
     <link rel="prev" title="Comments" href="comments.html" /> 
   </head>
@@ -39,7 +38,7 @@
         <li class="right" >
           <a href="comments.html" title="Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.7.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -90,16 +89,16 @@
 <p>As with comments and shares, you can also manually specify how the like is to
 be propagated to 3rd party networks such as Facebook and Twitter</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">like</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
     <span class="n">SZLikeOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">userLikeOptions</span><span class="p">];</span>
     <span class="n">options</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Custom message&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;Custom message&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
     <span class="p">};</span>
 
-    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">likeWithEntity:</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span> <span class="nl">networks:</span><span class="n">SZAvailableSocialNetworks</span><span class="p">()</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">likeWithEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">networks</span><span class="o">:</span><span class="n">SZAvailableSocialNetworks</span><span class="p">()</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created like: %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">like</span> <span class="n">objectID</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed creating like: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -110,11 +109,11 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 <h3>Unliking<a class="headerlink" href="#unliking" title="Permalink to this headline">¶</a></h3>
 <p>You can also remove a previous like from an entity</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">unlike</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">unlike:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">unlike</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Deleted like: %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">like</span> <span class="n">objectID</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed deleting like: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -126,9 +125,9 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 <p>You can retrieve existing likes by User or Entity</p>
 <p>List likes by User</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getLikesByUser</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">getLikesForUser:</span><span class="nb">nil</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">getLikesForUser</span><span class="o">:</span><span class="nb">nil</span> <span class="n">start</span><span class="o">:</span><span class="nb">nil</span> <span class="n">end</span><span class="o">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Got likes: %@&quot;</span><span class="p">,</span> <span class="n">likes</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed getting likes: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -136,14 +135,14 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 </div>
 <p>Get the like for a user on a given an entity, if it exists</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getLikeForUserOnEntity</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">getLikeForUser:</span><span class="nb">nil</span> <span class="nl">entity:</span><span class="n">entity</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">getLikeForUser</span><span class="o">:</span><span class="nb">nil</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZLike</span><span class="o">&gt;</span> <span class="n">like</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">like</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Liked with like descriptor: %@&quot;</span><span class="p">,</span> <span class="n">like</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Not liked&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed getting like: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -151,11 +150,11 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 </div>
 <p>Get likes by all users on a specific entity</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getLikesByEntity</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_key&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">getLikesForEntity:</span><span class="n">entity</span> <span class="nl">start:</span><span class="nb">nil</span> <span class="nl">end:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">getLikesForEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">start</span><span class="o">:</span><span class="nb">nil</span> <span class="n">end</span><span class="o">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Got likes: %@&quot;</span><span class="p">,</span> <span class="n">likes</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed getting likes: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -164,9 +163,9 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
 <p>List all likes in the application</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listLikesByApplication</span> <span class="p">{</span>
     
-    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="nl">getLikesByApplicationWithFirst:</span><span class="nb">nil</span> <span class="nl">last:</span><span class="nb">nil</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZLikeUtils</span> <span class="n">getLikesByApplicationWithFirst</span><span class="o">:</span><span class="nb">nil</span> <span class="n">last</span><span class="o">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">likes</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched likes: %@&quot;</span><span class="p">,</span> <span class="n">likes</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -267,7 +266,7 @@ be propagated to 3rd party networks such as Facebook and Twitter</p>
         <li class="right" >
           <a href="comments.html" title="Comments"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.7.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
