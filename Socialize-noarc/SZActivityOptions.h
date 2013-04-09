@@ -14,6 +14,7 @@
 
 + (id)defaultOptions;
 
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) BOOL dontShareLocation;
 @property (nonatomic, copy) void (^willPostToSocialNetworkBlock)(SZSocialNetwork network, NSMutableDictionary *params)  __attribute__((deprecated("Please use willAttemptPostingToSocialNetworkBlock, which allows for more complete customization")));
 @property (nonatomic, copy) void (^didPostToSocialNetworkBlock)(SZSocialNetwork network) __attribute__((deprecated("Please use didSucceedPostingToSocialNetworkBlock, which allows for more complete customization")));

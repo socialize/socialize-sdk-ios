@@ -130,6 +130,9 @@
     // Optionally disable location sharing
 //    options.dontShareLocation = YES;
     
+    // Optionally add an image (Twitter only)
+//    options.image = [UIImage imageNamed:@"Smiley.png"];
+    
     [SZShareUtils shareViaSocialNetworksWithEntity:entity networks:SZAvailableSocialNetworks() options:options success:^(id<SZShare> share) {
         
         NSLog(@"Created share: %@", share);

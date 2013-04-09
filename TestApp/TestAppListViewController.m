@@ -137,6 +137,8 @@ static TestAppListViewController *sharedSampleListViewController;
         options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
             NSLog(@"Failed posting to %d", network);
         };
+        options.image = [UIImage imageNamed:@"Smiley.png"];
+        
         [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];
 
     }]];

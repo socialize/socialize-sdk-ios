@@ -378,6 +378,14 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                 postData.path = @"/1.1/statuses/update.json";
                 postData.entity = [activity entity];
                 postData.propagationInfo = [activity propagationInfoResponse];
+                
+                if (options.image != nil) {
+                    postData.useMultipart = YES;
+                    postData.path = @"/1.1/statuses/update_with_media.json";
+                    NSData *imageData = UIImagePNGRepresentation(options.image);
+                    [postData.params setObject:imageData forKey:@"media[]"];
+                }
+
                 BLOCK_CALL_2(options.willAttemptPostingToSocialNetworkBlock, SZSocialNetworkTwitter, postData);
 
                 [SZTwitterUtils postWithViewController:nil path:postData.path params:postData.params multipart:postData.useMultipart success:^(id result) {

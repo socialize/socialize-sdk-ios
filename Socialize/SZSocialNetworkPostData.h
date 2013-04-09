@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSMutableDictionary *params;
 @property (nonatomic, retain) SZActivityOptions *options;
 @property (nonatomic, assign) BOOL useMultipart;
+@property (nonatomic, retain) UIImage *image;
 
 @end
