@@ -26,6 +26,8 @@ must do so with a separate call to [SZEntityUtils addEntity:success:failure:]
 
 .. image:: images/share_dialog.png
 
+.. _custom_share_dialog:
+
 Custom Share Dialog Behavior
 ~~~~~~~~~~~~
 
