@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Views &mdash; Socialize iOS SDK 2.8.1 documentation</title>
+    <title>Frequently Asked Questions &mdash; Socialize iOS SDK 2.8.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -25,18 +25,18 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="Socialize iOS SDK 2.8.1 documentation" href="index.html" />
-    <link rel="next" title="Advanced UI Configuration" href="ui_advanced.html" />
-    <link rel="prev" title="Likes" href="likes.html" /> 
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="SDK Pro Tips" href="sdk_pro_tips.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="ui_advanced.html" title="Advanced UI Configuration"
+          <a href="changelog.html" title="Changelog"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="likes.html" title="Likes"
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 2.8.1 documentation</a> &raquo;</li> 
       </ul>
@@ -70,22 +70,33 @@
   GSFN.feedback_widget.prototype.local_ssl_base_url = "http://support.getsocialize.com";
 
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
-</script><div class="section" id="views">
-<h1>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h1>
-<p>A &#8220;view&#8221; represents the action of a user viewing an entity and is an extremely useful analytics tool</p>
-<div class="section" id="recording-views">
-<h2>Recording Views<a class="headerlink" href="#recording-views" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">recordView</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
-
-    <span class="p">[</span><span class="n">SZViewUtils</span> <span class="n">viewEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeView</span><span class="o">&gt;</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;View created: %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">view</span> <span class="n">objectID</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed recording view: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
-    <span class="p">}];</span>
-<span class="p">}</span>
-</pre></div>
+</script><div class="section" id="frequently-asked-questions">
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-can-i-determine-the-version-of-socialize-i-am-using">
+<h2>How can i determine the version of Socialize I am using?<a class="headerlink" href="#how-can-i-determine-the-version-of-socialize-i-am-using" title="Permalink to this headline">¶</a></h2>
+<p>Use +[Socialize socializeVersion]</p>
 </div>
+<div class="section" id="how-can-i-change-the-text-that-is-shared-to-twitter-or-facebook">
+<h2>How can i change the text that is shared to Twitter or Facebook?<a class="headerlink" href="#how-can-i-change-the-text-that-is-shared-to-twitter-or-facebook" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="sharing.html#custom-share-dialog"><em>Custom Share Dialog Behavior</em></a></p>
+</div>
+<div class="section" id="project-will-not-build-missing-symbols">
+<h2>Project will not build, missing symbols<a class="headerlink" href="#project-will-not-build-missing-symbols" title="Permalink to this headline">¶</a></h2>
+<p>Most missing symbol errors are caused by a missing framework.
+You should check that you are linking with all of the required frameworks.
+You can also try googling for the missing symbol names to see if they are a part
+of an apple-provided framework.</p>
+</div>
+<div class="section" id="sdk-crashes-on-startup">
+<h2>SDK Crashes on startup<a class="headerlink" href="#sdk-crashes-on-startup" title="Permalink to this headline">¶</a></h2>
+<p>The most common cause of this is missing Socialize Resources. Please ensure you&#8217;ve
+dragged the entire Socialize.embeddedframework directory into your project. This should
+include the Resources directory. Please check that SocializeConfigurationInfo.plist shows
+up in the &#8220;Copy Bundle Resources&#8221; of your target&#8217;s Build Phases</p>
+</div>
+<div class="section" id="sdk-download-size-footprint">
+<h2>SDK download size footprint<a class="headerlink" href="#sdk-download-size-footprint" title="Permalink to this headline">¶</a></h2>
+<p>The Socialize SDK and its resources will add about 1.75MB to your project.</p>
 </div>
 </div>
 
@@ -112,13 +123,17 @@
 <li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Views</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#recording-views">Recording Views</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-determine-the-version-of-socialize-i-am-using">How can i determine the version of Socialize I am using?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-change-the-text-that-is-shared-to-twitter-or-facebook">How can i change the text that is shared to Twitter or Facebook?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-will-not-build-missing-symbols">Project will not build, missing symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdk-crashes-on-startup">SDK Crashes on startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdk-download-size-footprint">SDK download size footprint</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
@@ -143,10 +158,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="ui_advanced.html" title="Advanced UI Configuration"
+          <a href="changelog.html" title="Changelog"
              >next</a></li>
         <li class="right" >
-          <a href="likes.html" title="Likes"
+          <a href="sdk_pro_tips.html" title="SDK Pro Tips"
              >previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 2.8.1 documentation</a> &raquo;</li> 
       </ul>

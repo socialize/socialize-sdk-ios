@@ -26,4 +26,5 @@ Contents:
    ui_advanced
    sdk_user_guide
    sdk_pro_tips
+   faq
    changelog
