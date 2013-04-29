@@ -154,7 +154,6 @@
 		AA00884B158D424100480399 /* NSString+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00883B158D424100480399 /* NSString+QueryString.m */; };
 		AA00884C158D424100480399 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00883D158D424100480399 /* StringHelper.m */; };
 		AA00884D158D424100480399 /* UIBarButtonItem+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00883F158D424100480399 /* UIBarButtonItem+Socialize.m */; };
-		AA00884E158D424100480399 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008841158D424100480399 /* UIDevice+IdentifierAddition.m */; };
 		AA00884F158D424100480399 /* UITableView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008843158D424100480399 /* UITableView+Resize.m */; };
 		AA008850158D424100480399 /* UITableView+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008845158D424100480399 /* UITableView+Socialize.m */; };
 		AA0089AC158D6F4E00480399 /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0089AB158D6F4E00480399 /* DataHelper.m */; };
@@ -1373,7 +1372,6 @@
 		AAB5E50E159044E600D3EBDF /* NSString+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00883B158D424100480399 /* NSString+QueryString.m */; };
 		AAB5E50F159044E600D3EBDF /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00883D158D424100480399 /* StringHelper.m */; };
 		AAB5E510159044E600D3EBDF /* UIBarButtonItem+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00883F158D424100480399 /* UIBarButtonItem+Socialize.m */; };
-		AAB5E511159044E600D3EBDF /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008841158D424100480399 /* UIDevice+IdentifierAddition.m */; };
 		AAB5E512159044E600D3EBDF /* UITableView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008843158D424100480399 /* UITableView+Resize.m */; };
 		AAB5E513159044E600D3EBDF /* UITableView+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008845158D424100480399 /* UITableView+Socialize.m */; };
 		AAB5E514159044E600D3EBDF /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0089AB158D6F4E00480399 /* DataHelper.m */; };
@@ -2198,8 +2196,6 @@
 		AA00883D158D424100480399 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		AA00883E158D424100480399 /* UIBarButtonItem+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Socialize.h"; sourceTree = "<group>"; };
 		AA00883F158D424100480399 /* UIBarButtonItem+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Socialize.m"; sourceTree = "<group>"; };
-		AA008840158D424100480399 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
-		AA008841158D424100480399 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		AA008842158D424100480399 /* UITableView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Resize.h"; sourceTree = "<group>"; };
 		AA008843158D424100480399 /* UITableView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Resize.m"; sourceTree = "<group>"; };
 		AA008844158D424100480399 /* UITableView+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Socialize.h"; sourceTree = "<group>"; };
@@ -3139,8 +3135,6 @@
 				AA00883D158D424100480399 /* StringHelper.m */,
 				AA00883E158D424100480399 /* UIBarButtonItem+Socialize.h */,
 				AA00883F158D424100480399 /* UIBarButtonItem+Socialize.m */,
-				AA008840158D424100480399 /* UIDevice+IdentifierAddition.h */,
-				AA008841158D424100480399 /* UIDevice+IdentifierAddition.m */,
 				AA008842158D424100480399 /* UITableView+Resize.h */,
 				AA008843158D424100480399 /* UITableView+Resize.m */,
 				AA008844158D424100480399 /* UITableView+Socialize.h */,
@@ -6142,7 +6136,6 @@
 				AA00884B158D424100480399 /* NSString+QueryString.m in Sources */,
 				AA00884C158D424100480399 /* StringHelper.m in Sources */,
 				AA00884D158D424100480399 /* UIBarButtonItem+Socialize.m in Sources */,
-				AA00884E158D424100480399 /* UIDevice+IdentifierAddition.m in Sources */,
 				AA00884F158D424100480399 /* UITableView+Resize.m in Sources */,
 				AA008850158D424100480399 /* UITableView+Socialize.m in Sources */,
 				AA0089AC158D6F4E00480399 /* DataHelper.m in Sources */,
@@ -6445,7 +6438,6 @@
 				AAB5E50E159044E600D3EBDF /* NSString+QueryString.m in Sources */,
 				AAB5E50F159044E600D3EBDF /* StringHelper.m in Sources */,
 				AAB5E510159044E600D3EBDF /* UIBarButtonItem+Socialize.m in Sources */,
-				AAB5E511159044E600D3EBDF /* UIDevice+IdentifierAddition.m in Sources */,
 				AAB5E512159044E600D3EBDF /* UITableView+Resize.m in Sources */,
 				AAB5E513159044E600D3EBDF /* UITableView+Socialize.m in Sources */,
 				AAB5E514159044E600D3EBDF /* DataHelper.m in Sources */,
