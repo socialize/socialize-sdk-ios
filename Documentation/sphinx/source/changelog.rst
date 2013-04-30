@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.8.2
+------
+[bug] Socialize should no longer send device MAC address [ ]
+
 v2.8.1
 ------
 [feature] Added FAQ to Documentation
