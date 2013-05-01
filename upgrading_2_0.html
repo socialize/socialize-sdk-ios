@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,15 +7,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upgrading to Socialize v2 &mdash; Socialize iOS SDK 2.8.2 documentation</title>
+    <title>Upgrading to Socialize v2 &mdash; Socialize iOS SDK 2.8.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '2.8.2',
+        URL_ROOT:    '',
+        VERSION:     '2.8.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.8.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.8.3 documentation" href="index.html" />
     <link rel="next" title="Upgrading Socialize" href="upgrading.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" /> 
   </head>
@@ -38,7 +39,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.8.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -125,13 +126,13 @@ can read more about using the new action bar in the <a class="reference external
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectNull</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -202,7 +203,7 @@ can read more about using the new action bar in the <a class="reference external
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.8.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

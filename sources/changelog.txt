@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.8.3
+------
+[bug] New user authentications failing due to bug in v2.8.2 [ ]
+
 v2.8.2
 ------
 [bug] Socialize should no longer send device MAC address [ ]

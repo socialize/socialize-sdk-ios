@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,15 +7,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Action Bar &mdash; Socialize iOS SDK 2.8.2 documentation</title>
+    <title>Socialize Action Bar &mdash; Socialize iOS SDK 2.8.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '2.8.2',
+        URL_ROOT:    '',
+        VERSION:     '2.8.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.8.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 2.8.3 documentation" href="index.html" />
     <link rel="next" title="Socialize Like Button" href="like_button.html" />
     <link rel="prev" title="Upgrading Socialize" href="upgrading.html" /> 
   </head>
@@ -38,7 +39,7 @@
         <li class="right" >
           <a href="upgrading.html" title="Upgrading Socialize"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.8.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -92,7 +93,7 @@ displayed.</p>
 <p>The simplest way to use the action bar is just by calling
 <strong>showActionBarInViewController:entity:options:</strong> on the <strong>SZActionBarUtils</strong>
 class.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">// Store the action bar in a property on your view controller</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">// Store the action bar in a property on your view controller</span>
 
 <span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
@@ -106,34 +107,34 @@ class.</p>
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="n">showActionBarWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBarUtils</span> <span class="nl">showActionBarWithViewController:</span><span class="n">self</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">options:</span><span class="nb">nil</span><span class="p">];</span>
         
         <span class="n">SZShareOptions</span> <span class="o">*</span><span class="n">shareOptions</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">userShareOptions</span><span class="p">];</span>
-        <span class="n">shareOptions</span><span class="p">.</span><span class="n">dontShareLocation</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+        <span class="n">shareOptions</span><span class="p">.</span><span class="n">dontShareLocation</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
         
         <span class="n">shareOptions</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkTwitter</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;twitter&quot;</span><span class="p">]</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="nl">objectForKey:</span><span class="s">@&quot;twitter&quot;</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
                 <span class="n">NSString</span> <span class="o">*</span><span class="n">displayName</span> <span class="o">=</span> <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">entity</span> <span class="n">displayName</span><span class="p">];</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">customStatus</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;Custom status for %@ with url %@&quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">,</span> <span class="n">entityURL</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">customStatus</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;Custom status for %@ with url %@&quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">,</span> <span class="n">entityURL</span><span class="p">];</span>
                 
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">customStatus</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">customStatus</span> <span class="nl">forKey:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
                 
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkFacebook</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;facebook&quot;</span><span class="p">]</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">entityURL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">postData</span><span class="p">.</span><span class="n">propagationInfo</span> <span class="nl">objectForKey:</span><span class="s">@&quot;facebook&quot;</span><span class="p">]</span> <span class="nl">objectForKey:</span><span class="s">@&quot;entity_url&quot;</span><span class="p">];</span>
                 <span class="n">NSString</span> <span class="o">*</span><span class="n">displayName</span> <span class="o">=</span> <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">entity</span> <span class="n">displayName</span><span class="p">];</span>
-                <span class="n">NSString</span> <span class="o">*</span><span class="n">customMessage</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span><span class="s">@&quot;Custom status for %@ &quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">];</span>
+                <span class="n">NSString</span> <span class="o">*</span><span class="n">customMessage</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;Custom status for %@ &quot;</span><span class="p">,</span> <span class="n">displayName</span><span class="p">];</span>
                 
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">customMessage</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">entityURL</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;link&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;A caption&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;Custom Name&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
-                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;A Site&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;description&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">customMessage</span> <span class="nl">forKey:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="n">entityURL</span> <span class="nl">forKey:</span><span class="s">@&quot;link&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A caption&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;Custom Name&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+                <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject:</span><span class="s">@&quot;A Site&quot;</span> <span class="nl">forKey:</span><span class="s">@&quot;description&quot;</span><span class="p">];</span>
             <span class="p">}</span>
         <span class="p">};</span>
         
@@ -155,13 +156,13 @@ at the bottom of its superview and adjust to rotation.</p>
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectNull</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -180,14 +181,14 @@ adjust the autoresizing mask accordingly, as below.</p>
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectZero</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectZero</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="n">UIViewAutoresizingFlexibleWidth</span> <span class="o">|</span> <span class="n">UIViewAutoresizingFlexibleBottomMargin</span><span class="p">;</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -202,32 +203,32 @@ type UIView. You can also take advantage of the SZActionButton class, which
 allows you to specify both an <strong>actionBlock</strong> and an
 <strong>entityConfigurationBlock</strong>.  The following example shows how you might add
 both an email and a panic button to the action bar.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">emailButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">shareViaEmailWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">success</span><span class="o">:</span><span class="nb">nil</span> <span class="n">failure</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">emailButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZShareUtils</span> <span class="nl">shareViaEmailWithViewController:</span><span class="n">self</span> <span class="nl">options:</span><span class="nb">nil</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">success:</span><span class="nb">nil</span> <span class="nl">failure:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="p">}</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectNull</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
         
-        <span class="n">SZActionButton</span> <span class="o">*</span><span class="n">panicButton</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">actionButtonWithIcon</span><span class="o">:</span><span class="nb">nil</span> <span class="n">title</span><span class="o">:</span><span class="s">@&quot;Panic&quot;</span><span class="p">];</span>
+        <span class="n">SZActionButton</span> <span class="o">*</span><span class="n">panicButton</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="nl">actionButtonWithIcon:</span><span class="nb">nil</span> <span class="nl">title:</span><span class="s">@&quot;Panic&quot;</span><span class="p">];</span>
         <span class="n">panicButton</span><span class="p">.</span><span class="n">actionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZActionButton</span> <span class="o">*</span><span class="n">button</span><span class="p">,</span> <span class="n">SZActionBar</span> <span class="o">*</span><span class="n">bar</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="o">:</span><span class="s">@&quot;Oh no!&quot;</span> <span class="n">message</span><span class="o">:</span><span class="nb">nil</span> <span class="n">delegate</span><span class="o">:</span><span class="nb">nil</span> <span class="n">cancelButtonTitle</span><span class="o">:</span><span class="nb">nil</span> <span class="n">otherButtonTitles</span><span class="o">:</span><span class="s">@&quot;Ok&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+            <span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTitle:</span><span class="s">@&quot;Oh no!&quot;</span> <span class="nl">message:</span><span class="nb">nil</span> <span class="nl">delegate:</span><span class="nb">nil</span> <span class="nl">cancelButtonTitle:</span><span class="nb">nil</span> <span class="nl">otherButtonTitles:</span><span class="s">@&quot;Ok&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
             <span class="p">[</span><span class="n">alertView</span> <span class="n">show</span><span class="p">];</span>
         <span class="p">};</span>
         
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsRight</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="n">panicButton</span><span class="p">,</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">commentButton</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsRight</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObjects:</span><span class="n">panicButton</span><span class="p">,</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">commentButton</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
         
-        <span class="n">UIButton</span> <span class="o">*</span><span class="n">emailButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectZero</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">emailButton</span> <span class="n">setImage</span><span class="o">:</span><span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;socialize-selectnetwork-email-icon.png&quot;</span><span class="p">]</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+        <span class="n">UIButton</span> <span class="o">*</span><span class="n">emailButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame:</span><span class="n">CGRectZero</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">emailButton</span> <span class="nl">setImage:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;socialize-selectnetwork-email-icon.png&quot;</span><span class="p">]</span> <span class="nl">forState:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
         <span class="p">[</span><span class="n">emailButton</span> <span class="n">sizeToFit</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">emailButton</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">emailButtonPressed</span><span class="o">:</span><span class="p">)</span> <span class="n">forControlEvents</span><span class="o">:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsLeft</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="p">[</span><span class="n">SZActionButton</span> <span class="n">viewsButton</span><span class="p">],</span> <span class="n">emailButton</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">emailButton</span> <span class="nl">addTarget:</span><span class="n">self</span> <span class="nl">action:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">emailButtonPressed:</span><span class="p">)</span> <span class="nl">forControlEvents:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsLeft</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObjects:</span><span class="p">[</span><span class="n">SZActionButton</span> <span class="n">viewsButton</span><span class="p">],</span> <span class="n">emailButton</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
         
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -237,18 +238,18 @@ both an email and a panic button to the action bar.</p>
 <div class="section" id="custom-background">
 <h3>Custom Background<a class="headerlink" href="#custom-background" title="Permalink to this headline">¶</a></h3>
 <p>You can change the background image and transparency of the bar.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nl">viewWillAppear:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectNull</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame:</span><span class="n">CGRectNull</span> <span class="nl">entity:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController:</span><span class="n">self</span><span class="p">];</span>
         
-        <span class="n">UIImage</span> <span class="o">*</span><span class="n">customBackground</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;action-bar-bg.png&quot;</span><span class="p">]</span> <span class="n">stretchableImageWithLeftCapWidth</span><span class="o">:</span><span class="mf">0.5</span> <span class="n">topCapHeight</span><span class="o">:</span><span class="mf">0.5</span><span class="p">];</span>
+        <span class="n">UIImage</span> <span class="o">*</span><span class="n">customBackground</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;action-bar-bg.png&quot;</span><span class="p">]</span> <span class="nl">stretchableImageWithLeftCapWidth:</span><span class="mf">0.5</span> <span class="nl">topCapHeight:</span><span class="mf">0.5</span><span class="p">];</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">backgroundImageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">customBackground</span><span class="p">;</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">backgroundImageView</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3f</span><span class="p">;</span>
         
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -317,7 +318,7 @@ both an email and a panic button to the action bar.</p>
         <li class="right" >
           <a href="upgrading.html" title="Upgrading Socialize"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.8.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 2.8.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
