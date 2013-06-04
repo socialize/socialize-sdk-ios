@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		84FCF451175E706B009AD5C1 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FCF44E175E706B009AD5C1 /* Pinterest.framework */; };
+		84FCF452175E706C009AD5C1 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FCF44E175E706B009AD5C1 /* Pinterest.framework */; };
 		AA008595158D2B1100480399 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA008597158D2B1100480399 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AA008599158D2B1100480399 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
@@ -1908,6 +1910,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84FCF44E175E706B009AD5C1 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
+		84FCF450175E706B009AD5C1 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
 		AA008590158D2B1100480399 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA008594158D2B1100480399 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA008596158D2B1100480399 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2876,6 +2880,7 @@
 				AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */,
 				AA00882D158D3E5C00480399 /* libfacebook_ios_sdk.a in Frameworks */,
 				AA0085F4158D358B00480399 /* Foundation.framework in Frameworks */,
+				84FCF451175E706B009AD5C1 /* Pinterest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2943,6 +2948,7 @@
 				AAB5E518159044E600D3EBDF /* libOAuthConsumer.a in Frameworks */,
 				AAB5E519159044E600D3EBDF /* libfacebook_ios_sdk.a in Frameworks */,
 				AAB5E51A159044E600D3EBDF /* Foundation.framework in Frameworks */,
+				84FCF452175E706C009AD5C1 /* Pinterest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2958,6 +2964,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				84FCF44E175E706B009AD5C1 /* Pinterest.framework */,
+				84FCF44F175E706B009AD5C1 /* Resources */,
+			);
+			name = Pinterest.embeddedframework;
+			path = ThirdParty/Pinterest.embeddedframework;
+			sourceTree = "<group>";
+		};
+		84FCF44F175E706B009AD5C1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84FCF450175E706B009AD5C1 /* PinterestSDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		AA008585158D2B1100480399 = {
 			isa = PBXGroup;
 			children = (
@@ -3071,6 +3095,7 @@
 				AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */,
 				AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */,
 				AA3BC396158E87A60073AD50 /* hide_symbols_facebook.h */,
+				84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */,
 				AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */,
 				AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */,
 				AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */,
@@ -6634,6 +6659,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -6654,6 +6680,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -6672,6 +6699,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6689,6 +6720,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6707,6 +6742,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6724,6 +6763,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6746,6 +6789,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdParty",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -6775,6 +6819,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThirdParty",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -6797,6 +6842,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6822,6 +6868,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6849,6 +6896,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -6873,6 +6921,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -6907,6 +6956,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6928,6 +6981,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/Socialize_noarc.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6944,6 +7001,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6965,6 +7026,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
+				);
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
