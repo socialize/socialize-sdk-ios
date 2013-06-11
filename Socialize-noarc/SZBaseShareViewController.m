@@ -19,6 +19,7 @@
 #import "SZLocationUtils.h"
 #import <JSONKit/JSONKit.h>
 #import "SZEventUtils.h"
+#import <Pinterest/Pinterest.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -33,6 +34,7 @@ static NSString *kRowIdentifier = @"kRowIdentifier";
 
 static NSString *kFacebookRow = @"kRowFacebook";
 static NSString *kTwitterRow = @"kTwitterRow";
+static NSString *kPinterestRow = @"kPinterestRow";
 static NSString *kSMSRow = @"kSMSRow";
 static NSString *kEmailRow = @"kEmailRow";
 static NSString *kAutopostRow = @"kAutopostRow";
@@ -136,7 +138,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // Fire off a first-time location request as soon as this view shows
     if ([SZLocationUtils lastKnownLocation] == nil && ![Socialize locationSharingDisabled] && !self.shareOptions.dontShareLocation) {
         [SZLocationUtils getCurrentLocationWithSuccess:nil failure:nil];
@@ -160,7 +162,6 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if (self.footerView != nil) {
         self.shareDialogView.footerView = self.footerView;
     }
-
 }
 
 - (void)updateContinueButtonState {
@@ -429,6 +430,37 @@ static NSString *kAutopostSection = @"kAutopostSection";
     return shareOptions;
 }
 
+- (NSDictionary*)PinterestRow {
+    
+    WEAK(self) weakSelf = self;
+    
+    void (^executionBlock)() = ^{
+        [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"Pinterest"]];
+        
+        Pinterest* pinterest = [[Pinterest alloc]initWithClientId:@"1431852"];
+        NSLog(@"%d", pinterest.canPinWithSDK);
+        [pinterest createPinWithImageURL:[NSURL URLWithString: @"http://revealapp.com/img/icon-large.png"]
+                                    sourceURL:[NSURL URLWithString:@"http://revealapp.com/img/icon-large.png"]
+                                  description: @"revealapp.com"];
+        
+        [weakSelf deselectSelectedRow];
+    };
+    
+    void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
+        cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-pinterest-icon"];
+        cell.textLabel.text = @"Pinterest";
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    };
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            kPinterestRow, kRowIdentifier,
+            COPIED_BLOCK(cellConfigurationBlock), kRowCellConfigurationBlock,
+            COPIED_BLOCK(executionBlock), kRowExecutionBlock,
+            nil];
+}
+
+
 - (NSDictionary*)SMSRow {
     
     WEAK(self) weakSelf = self;
@@ -505,6 +537,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [rows addObject:[self SMSRow]];
     }
     
+    if(YES){
+        [rows addObject:[self PinterestRow]];
+    }
+        
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         
         if (![cell.accessoryView isKindOfClass:[UIImageView class]]) {
