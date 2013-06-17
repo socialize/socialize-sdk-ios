@@ -6682,7 +6682,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty\"/**",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
@@ -6701,9 +6701,10 @@
 		AA0085AA158D2B1100480399 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ThirdParty\"",
+					"\"$(SRCROOT)/ThirdParty\"/**",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
@@ -6715,6 +6716,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
