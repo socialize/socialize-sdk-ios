@@ -19,6 +19,7 @@
 #import "SZLocationUtils.h"
 #import <JSONKit/JSONKit.h>
 #import "SZEventUtils.h"
+#import "SZPinterestUtils.h"
 #import <Pinterest/Pinterest.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
@@ -437,13 +438,18 @@ static NSString *kAutopostSection = @"kAutopostSection";
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"Pinterest"]];
         
-        Pinterest* pinterest = [[Pinterest alloc]initWithClientId:@"1431852"];
-        NSLog(@"%d", pinterest.canPinWithSDK);
-        [pinterest createPinWithImageURL:[NSURL URLWithString: @"http://revealapp.com/img/icon-large.png"]
-                                    sourceURL:[NSURL URLWithString:@"http://revealapp.com/img/icon-large.png"]
-                                  description: @"revealapp.com"];
-        
-        [weakSelf deselectSelectedRow];
+        [SZPinterestUtils shareViaPinterestWithViewController:weakSelf.SZPresentationTarget options:[weakSelf shareOptions] entity:weakSelf.entity success:^(id<SocializeShare> share) {
+            [weakSelf deselectSelectedRow];
+    //#warning check this. not sure why store share obkects.
+            [weakSelf.createdShares addObject:share];
+        } failure:^(NSError *error) {
+            [weakSelf deselectSelectedRow];
+
+    //#warning probably we could not track situation if user click cancel or it was error from pinterest. Let's try and we will see.
+            if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                [weakSelf failWithError:error];
+            };
+        }];
     };
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
@@ -537,7 +543,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
         [rows addObject:[self SMSRow]];
     }
     
-    if(YES){
+    if ([self showPinterest]) {
         [rows addObject:[self PinterestRow]];
     }
         
@@ -608,6 +614,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (BOOL)showEmail {
     return self.showOtherShareTypes && [SZShareUtils canShareViaEmail] && !self.hideEmail;
+}
+
+- (BOOL)showPinterest {
+    return self.showOtherShareTypes && [SZPinterestUtils isAvailable] && !self.hidePinterest;
 }
 
 - (BOOL)showOtherShareTypesSection {

@@ -35,6 +35,7 @@
 #import "SZOpenURLHandler.h"
 #import "SZEntityUtils.h"
 #import "SZSmartAlertUtils.h"
+#import "SZPinterestEngine.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -389,6 +390,10 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 
 +(BOOL)handleOpenURL:(NSURL *)url {
     if ([[SZOpenURLHandler sharedOpenURLHandler] handleOpenURL:url]) {
+        return YES;
+    }
+    
+    if ([[SZPinterestEngine sharedInstance] handleOpenURL:url]) {
         return YES;
     }
     

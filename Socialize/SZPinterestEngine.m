@@ -1,0 +1,71 @@
+//
+//  SZPinterestEngine.m
+//  Socialize
+//
+//  Created by Sergey Popenko on 6/24/13.
+//  Copyright (c) 2013 Socialize. All rights reserved.
+//
+
+#import "SZPinterestEngine.h"
+#import "StringHelper.h"
+#import <Pinterest/Pinterest.h>
+
+static SZPinterestEngine *sharedInstance;
+
+@interface SZPinterestEngine()
+@property(nonatomic, strong) Pinterest* pinterest;
+@property(nonatomic, copy) void (^success)(void);
+@property(nonatomic, copy) void (^failure)(void);
+@end
+
+@implementation SZPinterestEngine
+
+- (BOOL) isAvailable
+{
+    return self.pinterest ? [self.pinterest canPinWithSDK] : NO;
+}
+
+- (BOOL) handleOpenURL:(NSURL*)url
+{
+    if (![[url scheme] startsWith:@"pinterest"]) {
+        return NO;
+    }
+    
+//#warning fire success/fail notification that pin was posted
+    if (self.success) {
+        self.success();
+    }
+    return YES;
+}
+
+- (void) setApplicationId: (NSString*) appID
+{
+    self.pinterest = [[Pinterest alloc] initWithClientId:appID];
+}
+
+- (void) share:(NSString*) message imageURL:(NSURL*) url
+       success:(void(^)())success
+       failure:(void(^)())failure
+{
+    if(![self isAvailable])
+        return;
+
+    self.success = success;
+    self.failure = failure;
+    
+    [self.pinterest createPinWithImageURL:url sourceURL:url description: message];
+}
+
++ (SZPinterestEngine*) sharedInstance
+{
+    @synchronized(self)
+    {
+        if (sharedInstance == nil) {
+            sharedInstance = [[SZPinterestEngine alloc] init];
+        }
+
+        return sharedInstance;
+    }
+}
+
+@end

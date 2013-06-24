@@ -22,6 +22,18 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
+		4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
+		4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
+		4810FF311778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
+		4810FF451778D3F600109630 /* SZPinterestShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF431778D3F500109630 /* SZPinterestShareData.h */; };
+		4810FF461778D3F600109630 /* SZPinterestShareData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF431778D3F500109630 /* SZPinterestShareData.h */; };
+		4810FF471778D3F600109630 /* SZPinterestShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF441778D3F600109630 /* SZPinterestShareData.m */; };
+		4810FF481778D3F600109630 /* SZPinterestShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF441778D3F600109630 /* SZPinterestShareData.m */; };
+		4810FF4B1778DA2F00109630 /* SZPinterestEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF491778DA2D00109630 /* SZPinterestEngine.h */; };
+		4810FF4C1778DA2F00109630 /* SZPinterestEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF491778DA2D00109630 /* SZPinterestEngine.h */; };
+		4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
+		4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7D817633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -1920,6 +1932,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestUtils.h; sourceTree = "<group>"; };
+		4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestUtils.m; sourceTree = "<group>"; };
+		4810FF431778D3F500109630 /* SZPinterestShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestShareData.h; sourceTree = "<group>"; };
+		4810FF441778D3F600109630 /* SZPinterestShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestShareData.m; sourceTree = "<group>"; };
+		4810FF491778DA2D00109630 /* SZPinterestEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestEngine.h; sourceTree = "<group>"; };
+		4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestEngine.m; sourceTree = "<group>"; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		84AEF7DD176341CE006DB43A /* socialize-selectnetwork-pinterest-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon.png"; sourceTree = SOURCE_ROOT; };
 		84FCF44E175E706B009AD5C1 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
@@ -3643,6 +3661,8 @@
 				AA7D03CF15A26CAA00EBB705 /* SZEntityUtils.m */,
 				AA7D03D015A26CAA00EBB705 /* SZFacebookUtils.h */,
 				AA7D03D115A26CAA00EBB705 /* SZFacebookUtils.m */,
+				4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */,
+				4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */,
 				AA7D03D215A26CAA00EBB705 /* SZLikeUtils.h */,
 				AA7D03D315A26CAA00EBB705 /* SZLikeUtils.m */,
 				AA7D03D415A26CAA00EBB705 /* SZLocationUtils.h */,
@@ -3664,6 +3684,8 @@
 				AA0F103B15FAB61900391CFE /* SZEventUtils.h */,
 				AA0F103C15FAB61900391CFE /* SZEventUtils.m */,
 				AA6D5A821592F31E00058669 /* Options */,
+				4810FF491778DA2D00109630 /* SZPinterestEngine.h */,
+				4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -3994,6 +4016,8 @@
 				AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */,
 				AA815C8A15DACDCC00A31E39 /* SZEmailShareData.h */,
 				AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */,
+				4810FF431778D3F500109630 /* SZPinterestShareData.h */,
+				4810FF441778D3F600109630 /* SZPinterestShareData.m */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -4432,6 +4456,9 @@
 				AAB86D6A15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 				AAE2168E1607D6DD0049850E /* SZOpenURLHandler.h in Headers */,
 				AA2A2D2616F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */,
+				4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */,
+				4810FF451778D3F600109630 /* SZPinterestShareData.h in Headers */,
+				4810FF4B1778DA2F00109630 /* SZPinterestEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4538,6 +4565,9 @@
 				AAB86D6B15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 				AAE2168F1607D6DE0049850E /* SZOpenURLHandler.h in Headers */,
 				AA2A2D2716F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */,
+				4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */,
+				4810FF461778D3F600109630 /* SZPinterestShareData.h in Headers */,
+				4810FF4C1778DA2F00109630 /* SZPinterestEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6055,6 +6085,9 @@
 				AAB86D6C15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 				AAE216901607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 				AA2A2D2816F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
+				4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */,
+				4810FF471778D3F600109630 /* SZPinterestShareData.m in Sources */,
+				4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6552,6 +6585,9 @@
 				AAB86D6D15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 				AAE216911607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 				AA2A2D2916F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
+				4810FF311778C6CA00109630 /* SZPinterestUtils.m in Sources */,
+				4810FF481778D3F600109630 /* SZPinterestShareData.m in Sources */,
+				4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
