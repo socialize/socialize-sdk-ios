@@ -12,6 +12,7 @@
 
 @interface SZPinterestUtils : NSObject
 
++ (void) setApplicationId: (NSString*) appID;
 + (BOOL) isAvailable;
 
 + (void) shareViaPinterestWithViewController:(UIViewController*)viewController

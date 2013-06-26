@@ -16,7 +16,7 @@
 - (BOOL) handleOpenURL: (NSURL*)url;
 - (void) setApplicationId: (NSString*) appID;
 
-- (void) share:(NSString*) message imageURL:(NSURL*) url
+- (void) share:(NSString*) message imageURL:(NSURL*) imageUrl sourceUrl:(NSURL*)sourceUrl
        success:(void(^)())success
        failure:(void(^)())failure;
 

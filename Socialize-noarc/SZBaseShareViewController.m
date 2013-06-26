@@ -437,15 +437,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
     
     void (^executionBlock)() = ^{
         [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"Pinterest"]];
-        
         [SZPinterestUtils shareViaPinterestWithViewController:weakSelf.SZPresentationTarget options:[weakSelf shareOptions] entity:weakSelf.entity success:^(id<SocializeShare> share) {
             [weakSelf deselectSelectedRow];
-    //#warning check this. not sure why store share obkects.
             [weakSelf.createdShares addObject:share];
         } failure:^(NSError *error) {
             [weakSelf deselectSelectedRow];
-
-    //#warning probably we could not track situation if user click cancel or it was error from pinterest. Let's try and we will see.
+            
             if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
                 [weakSelf failWithError:error];
             };

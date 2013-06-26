@@ -27,14 +27,21 @@ static SZPinterestEngine *sharedInstance;
 
 - (BOOL) handleOpenURL:(NSURL*)url
 {
-    if (![[url scheme] startsWith:@"pinterest"]) {
+    if (![[url scheme] startsWith:@"pin"]) {
         return NO;
     }
     
-//#warning fire success/fail notification that pin was posted
-    if (self.success) {
+    NSInteger index = [[url absoluteString] indexOf:@"pin_success=" from:0];
+    NSString* paramsString = [[url absoluteString] substringFrom:index to:[url absoluteString].length];
+    
+    if ([paramsString isEqual:@"1"] && self.success) {
         self.success();
     }
+    
+    if ([paramsString isEqual:@"0"] && self.failure) {
+        self.failure();
+    }
+
     return YES;
 }
 
@@ -43,7 +50,7 @@ static SZPinterestEngine *sharedInstance;
     self.pinterest = [[Pinterest alloc] initWithClientId:appID];
 }
 
-- (void) share:(NSString*) message imageURL:(NSURL*) url
+- (void) share:(NSString*) message imageURL:(NSURL*) imageUrl sourceUrl:(NSURL*)sourceUrl
        success:(void(^)())success
        failure:(void(^)())failure
 {
@@ -53,7 +60,7 @@ static SZPinterestEngine *sharedInstance;
     self.success = success;
     self.failure = failure;
     
-    [self.pinterest createPinWithImageURL:url sourceURL:url description: message];
+    [self.pinterest createPinWithImageURL:imageUrl sourceURL:sourceUrl description: message];
 }
 
 + (SZPinterestEngine*) sharedInstance

@@ -44,9 +44,9 @@ typedef enum {
     SocializeErrorLikeCancelledByUser,
     SocializeErrorRequestCancelled,
     SocializeErrorEntityLoadRejected,
-    SocializeNumErrors,
     SocializePinterestNotAvailable,
     SocializePinterestShareFailed,
+    SocializeNumErrors,
 } SocializeErrorCode;
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code);

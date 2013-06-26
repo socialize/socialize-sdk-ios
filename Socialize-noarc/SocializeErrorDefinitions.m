@@ -45,6 +45,8 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Like creation cancelled by user",
     @"The request was cancelled",
     @"Entity cannot be loaded",
+    @"Pinterest sharing not available",
+    @"Pinterest application failed share entity",
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

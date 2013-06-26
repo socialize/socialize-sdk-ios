@@ -77,9 +77,9 @@ static TestAppListViewController *sharedSampleListViewController;
         
         // until tests are arc-enabled
 #if __has_feature(objc_arc)
-        entity_ = [SZEntity entityWithKey:@"Something" name:@"Something"];
+        entity_ = [SZEntity entityWithKey:@"http://cs303404.vk.me/v303404440/1ae3/ZkKQLEFGeyY.jpg" name:@"Something"];
 #else
-        entity_ = [[SZEntity entityWithKey:@"Something" name:@"Something"] retain];
+        entity_ = [[SZEntity entityWithKey:@"http://cs303404.vk.me/v303404440/1ae3/ZkKQLEFGeyY.jpg" name:@"Something"] retain];
 #endif
         
     }
