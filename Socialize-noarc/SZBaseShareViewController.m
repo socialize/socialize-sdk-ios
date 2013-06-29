@@ -20,7 +20,6 @@
 #import <JSONKit/JSONKit.h>
 #import "SZEventUtils.h"
 #import "SZPinterestUtils.h"
-#import <Pinterest/Pinterest.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 

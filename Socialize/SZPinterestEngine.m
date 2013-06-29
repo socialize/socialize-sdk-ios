@@ -8,12 +8,11 @@
 
 #import "SZPinterestEngine.h"
 #import "StringHelper.h"
-#import <Pinterest/Pinterest.h>
 
 static SZPinterestEngine *sharedInstance;
 
 @interface SZPinterestEngine()
-@property(nonatomic, strong) Pinterest* pinterest;
+@property(nonatomic, strong) id pinterest;
 @property(nonatomic, copy) void (^success)(void);
 @property(nonatomic, copy) void (^failure)(void);
 @end
@@ -22,7 +21,8 @@ static SZPinterestEngine *sharedInstance;
 
 - (BOOL) isAvailable
 {
-    return self.pinterest ? [self.pinterest canPinWithSDK] : NO;
+    return self.pinterest ? (BOOL)[self.pinterest performSelector:@selector(canPinWithSDK) withObject:nil] : NO;
+    return YES;
 }
 
 - (BOOL) handleOpenURL:(NSURL*)url
@@ -47,7 +47,12 @@ static SZPinterestEngine *sharedInstance;
 
 - (void) setApplicationId: (NSString*) appID
 {
-    self.pinterest = [[Pinterest alloc] initWithClientId:appID];
+    Class PinterestClass = NSClassFromString(@"Pinterest");
+    if (PinterestClass) {
+        self.pinterest = [[PinterestClass alloc] performSelector:@selector(initWithClientId:) withObject:appID];
+    }
+    else
+        self.pinterest = nil;
 }
 
 - (void) share:(NSString*) message imageURL:(NSURL*) imageUrl sourceUrl:(NSURL*)sourceUrl
@@ -60,7 +65,16 @@ static SZPinterestEngine *sharedInstance;
     self.success = success;
     self.failure = failure;
     
-    [self.pinterest createPinWithImageURL:imageUrl sourceURL:sourceUrl description: message];
+    NSMethodSignature *signature = [self.pinterest methodSignatureForSelector:@selector(createPinWithImageURL:sourceURL:description:)];
+    if(signature) {
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        [invocation setSelector:@selector(createPinWithImageURL:sourceURL:description:)];
+        [invocation setArgument:&imageUrl atIndex:2];
+        [invocation setArgument:&sourceUrl atIndex:3];
+        [invocation setArgument:&message atIndex:4];
+        [invocation setTarget:self.pinterest];
+        [invocation invoke];
+    }
 }
 
 + (SZPinterestEngine*) sharedInstance
