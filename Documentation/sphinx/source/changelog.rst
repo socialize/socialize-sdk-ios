@@ -4,7 +4,7 @@
 Changelog
 =============================================
 
-v2.8.3
+v2.8.4
 ------
 [feature] Added Pinterest sharing support
 
