@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.getsocialize.samplesdk</string>
+	<string>com.getsocialize.sample-sdk</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -40,6 +40,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>sz267189</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Pinterest</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>pin1431852</string>
 			</array>
 		</dict>
 	</array>

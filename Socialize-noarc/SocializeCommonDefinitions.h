@@ -35,6 +35,7 @@ typedef enum {
     SocializeShareMediumFacebook = 2,
     SocializeShareMediumEmail = 3,
     SocializeShareMediumSMS = 4,
+    SocializeShareMediumPinterest = 5,
     SocializeShareMediumOther = 101
 } SocializeShareMedium;
 

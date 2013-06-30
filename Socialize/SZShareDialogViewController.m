@@ -25,6 +25,7 @@
 @dynamic hideFacebook;
 @dynamic hideSMS;
 @dynamic hideEmail;
+@dynamic hidePinterest;
 @dynamic dontShowComposer;
 @dynamic shareOptions;
 
