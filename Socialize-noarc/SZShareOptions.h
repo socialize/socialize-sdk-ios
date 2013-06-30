@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) void (^willShowSMSComposerBlock)(SZSMSShareData *smsData);
 @property (nonatomic, copy) void (^willShowEmailComposerBlock)(SZEmailShareData *emailData);
-@property (nonatomic, copy) void (^willRedirectToPinterestBlock)(SZPinterestShareData *emailData);
+@property (nonatomic, copy) void (^willRedirectToPinterestBlock)(SZPinterestShareData *pinData);
 
 + (SZShareOptions*)defaultOptions;
 

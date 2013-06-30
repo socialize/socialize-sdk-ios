@@ -126,6 +126,11 @@ static TestAppListViewController *sharedSampleListViewController;
             NSLog(@"Sharing Email");            
         };
         
+        options.willRedirectToPinterestBlock = ^(SZPinterestShareData *pinData)
+        {
+            NSLog(@"Sharing pin");
+        };
+        
         options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
             NSLog(@"Posting to %d", network);
         };
@@ -138,7 +143,7 @@ static TestAppListViewController *sharedSampleListViewController;
             NSLog(@"Failed posting to %d", network);
         };
         options.image = [UIImage imageNamed:@"Smiley.png"];
-        
+
         [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];
 
     }]];

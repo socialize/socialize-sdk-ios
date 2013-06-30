@@ -15,6 +15,7 @@ Contents:
    like_button
    twitter
    facebook
+   pinterest
    push_notifications
    entities
    users

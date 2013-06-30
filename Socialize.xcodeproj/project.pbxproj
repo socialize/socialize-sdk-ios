@@ -34,6 +34,7 @@
 		4810FF4C1778DA2F00109630 /* SZPinterestEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF491778DA2D00109630 /* SZPinterestEngine.h */; };
 		4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
 		4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
+		48C069941780192C004E7843 /* pinterest-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C069931780192B004E7843 /* pinterest-snippets.m */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7D817633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -1938,6 +1939,8 @@
 		4810FF441778D3F600109630 /* SZPinterestShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestShareData.m; sourceTree = "<group>"; };
 		4810FF491778DA2D00109630 /* SZPinterestEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestEngine.h; sourceTree = "<group>"; };
 		4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestEngine.m; sourceTree = "<group>"; };
+		48C069921780192B004E7843 /* pinterest-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pinterest-snippets.h"; sourceTree = "<group>"; };
+		48C069931780192B004E7843 /* pinterest-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "pinterest-snippets.m"; sourceTree = "<group>"; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		84AEF7DD176341CE006DB43A /* socialize-selectnetwork-pinterest-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon.png"; sourceTree = SOURCE_ROOT; };
 		84FCF44E175E706B009AD5C1 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
@@ -4079,6 +4082,8 @@
 				AA2B1249159E486E00AD53D5 /* facebook.m */,
 				AAFB0B8015E70FB10091600C /* ui_advanced.h */,
 				AAFB0B8115E70FB10091600C /* ui_advanced.m */,
+				48C069921780192B004E7843 /* pinterest-snippets.h */,
+				48C069931780192B004E7843 /* pinterest-snippets.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -6335,6 +6340,7 @@
 				AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */,
 				AA840C54161CEF5700494EE4 /* SZTwitterUtilsTests.m in Sources */,
 				AA1759C216EEA1BF00550082 /* SZUnitTestAppHack.m in Sources */,
+				48C069941780192C004E7843 /* pinterest-snippets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

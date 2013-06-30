@@ -6,6 +6,10 @@ Changelog
 
 v2.8.3
 ------
+[feature] Added Pinterest sharing support
+
+v2.8.3
+------
 [bug] New user authentications failing due to bug in v2.8.2 [ ]
 
 v2.8.2
