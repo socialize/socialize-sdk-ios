@@ -2,6 +2,12 @@
 Pinterest
 =========
 
+Installation
+------------
+To avoid duplication issue the Socialize SDK doesn't include Pinterest SDK by default. 
+To use Pinterest sharing feature make sure to add Pinterest.embeddedframework in your project and link to appropriate target.
+The Pinterest.embeddedframework could be found in Socialize SDK distribution archive.
+
 Let Socialize know your Pinterest app id.  You can register or find your
 Pinterest app id here: http://developers.pinterest.com/manage/
 
