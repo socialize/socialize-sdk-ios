@@ -47,6 +47,7 @@
 #import "SZViewUtils.h"
 #import "SZEventUtils.h"
 #import "SZDisplayUtils.h"
+#import "SZPinterestUtils.h"
 
 #import "SZUserSettingsViewController.h"
 #import "SZUserProfileViewController.h"

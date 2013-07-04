@@ -159,7 +159,7 @@
     // Note that composers dismiss themselves
 
     [viewController showSocializeLoadingViewInSubview:nil];
-    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
+    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumEmail];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"email"] forKey:@"third_parties"]];
     [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
         SZEmailShareData *emailData = [[SZEmailShareData alloc] init];

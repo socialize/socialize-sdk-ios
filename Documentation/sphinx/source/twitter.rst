@@ -86,7 +86,7 @@ If you already have a Twitter access token of your own, you can link to Socializ
 
 Posting to Twitter on your own
 ---------------------------------------------
-Should you need to post to Facebook on your own, you can do so by using the
+Should you need to post to Twitter on your own, you can do so by using the
 direct Twitter access methods on the utils classes. A viewcontroller must be specified
 so that Socialize can prompt the user for twitter authentication if needed. You can also preemptively
 authorize with twitter by calling the link methods directly.

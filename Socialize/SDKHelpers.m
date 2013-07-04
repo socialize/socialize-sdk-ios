@@ -370,7 +370,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
                 BLOCK_CALL_2(options.willPostToSocialNetworkBlock, SZSocialNetworkTwitter, params);
-#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop`
 
                 SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
                 postData.options = options;

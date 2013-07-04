@@ -30,6 +30,7 @@
 @property (nonatomic, assign) BOOL hideEmail;
 @property (nonatomic, assign) BOOL hideFacebook;
 @property (nonatomic, assign) BOOL hideTwitter;
+@property (nonatomic, assign) BOOL hidePinterest;
 @property (nonatomic, assign) BOOL dontShowComposer;
 
 @end
