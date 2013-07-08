@@ -25,10 +25,10 @@ Once you have a pinterest application, simply tell Socialize about your applicat
 Posting to Pinterest on your own
 ---------------------------------
 
-Should you need to post to Twitter on your own, you can do so by using the
-direct Twitter access methods on the utils classes. A viewcontroller must be specified
-so that Socialize can prompt the user for twitter authentication if needed. You can also preemptively
-authorize with twitter by calling the link methods directly.
+Should you need to post to Pinterest on your own, you can do so by using the
+direct Pintrest access methods on the utils classes. A viewcontroller must be specified
+so that Socialize can prompt the user for Pinterest authentication if needed. You can also preemptively
+authorize with Pinterest by calling the link methods directly.
 
 .. literalinclude:: snippets/pinterest-snippets.m
   :start-after: begin-share-snippet
