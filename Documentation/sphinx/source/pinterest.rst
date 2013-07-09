@@ -26,9 +26,7 @@ Posting to Pinterest on your own
 ---------------------------------
 
 Should you need to post to Pinterest on your own, you can do so by using the
-direct Pintrest access methods on the utils classes. A viewcontroller must be specified
-so that Socialize can prompt the user for Pinterest authentication if needed. You can also preemptively
-authorize with Pinterest by calling the link methods directly.
+direct Pintrest access methods on the utils classes.
 
 .. literalinclude:: snippets/pinterest-snippets.m
   :start-after: begin-share-snippet
