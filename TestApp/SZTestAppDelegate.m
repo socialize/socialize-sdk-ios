@@ -26,8 +26,8 @@
     
     [Socialize storeOGLikeEnabled:YES];
     [Socialize storeAnonymousAllowed:YES];
-    [Socialize storeConsumerKey:@"0a3bc7cd-c269-4587-8687-cd02db56d57f"];
-    [Socialize storeConsumerSecret:@"8ee55515-4f1f-42ea-b25e-c4eddebf6c02"];
+    [Socialize storeConsumerKey:@"976421bd-0bc9-44c8-a170-bd12376123a3"];
+    [Socialize storeConsumerSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
     [SZTwitterUtils setConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ" consumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
     [SZFacebookUtils setAppId:@"268891373224435"];
     [SZPinterestUtils setApplicationId:@"1431852"];
