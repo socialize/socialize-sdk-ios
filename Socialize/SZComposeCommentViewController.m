@@ -8,6 +8,7 @@
 
 #import "SZComposeCommentViewController.h"
 #import "_SZComposeCommentViewController.h"
+#import "SZCommentUtils.h"
 
 @interface SZComposeCommentViewController ()
 @property (nonatomic, strong) id<SZEntity> entity;
@@ -24,15 +25,37 @@
     return nil;
 }
 
+- (SZCommentOptions*)optionsForComments {
+    SZCommentOptions *commentOptions = self.commentOptions;
+
+    if (commentOptions == nil) commentOptions = [SZCommentUtils userCommentOptions];
+    
+    return commentOptions;
+}
+
+
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super init]) {
         self.entity = entity;
         self._composeCommentViewController = [[_SZComposeCommentViewController alloc] initWithEntity:self.entity];
-        [self pushViewController:self._composeCommentViewController animated:NO];
     }
     
     return self;
 }
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+   
+    SZCommentOptions *options = [self optionsForComments];
+    
+    if ([options.text length] > 0) {
+        self._composeCommentViewController.initialText = options.text;
+    }
+    
+    [self pushViewController:self._composeCommentViewController animated:NO];
+}
+
 
 - (BOOL)disablesAutomaticKeyboardDismissal {
     return NO;

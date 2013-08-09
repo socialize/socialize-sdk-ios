@@ -11,6 +11,7 @@
 
 @interface SZCommentOptions : SZActivityOptions
 @property (nonatomic, assign) BOOL dontSubscribeToNotifications;
+@property (nonatomic, copy) NSString *text;
 
 + (SZCommentOptions*)defaultOptions;
 

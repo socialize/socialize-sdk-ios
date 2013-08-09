@@ -16,5 +16,6 @@
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic, strong, readonly) id<SZEntity> entity;
 @property (nonatomic, strong) _SZCommentsListViewController *_commentsListViewController;
+@property (nonatomic, strong) SZCommentOptions* commentOptions;
 
 @end
