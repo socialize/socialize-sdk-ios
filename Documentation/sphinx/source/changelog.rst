@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.8.5
+------
+[bug] SMS & Email share creates two entries for  one share
+
 v2.8.4
 ------
 [feature] Added Pinterest sharing support
