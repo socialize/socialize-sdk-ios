@@ -4,6 +4,10 @@
 Changelog
 =============================================
 
+v2.8.6
+------
+[feature] prefill comment message with custom text
+
 v2.8.5
 ------
 [bug] SMS & Email share creates two entries for  one share

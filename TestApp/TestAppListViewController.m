@@ -196,7 +196,6 @@ static TestAppListViewController *sharedSampleListViewController;
     [commentRows addObject:[self rowWithIdentifier:kShowCommentsListRow text:@"Show Comments List" executionBlock:^{
         SZCommentOptions* options = [SZCommentUtils userCommentOptions];
         options.text = @"Hello world";
-//        [SZCommentUtils showCommentsListWithViewController:self entity:self.entity completion:nil];
     
         SZCommentsListViewController *comments = [[SZCommentsListViewController alloc] initWithEntity:self.entity];
         comments.completionBlock = ^{

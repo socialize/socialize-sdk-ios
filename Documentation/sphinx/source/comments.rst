@@ -24,6 +24,8 @@ lines of code
 
 If you need to, you can directly instantiate the comments list and manage its lifecycle on your own.
 
+.. note:: You could use comments options to prefill comment with custom message.
+
 .. literalinclude:: snippets/comments.m
 	:start-after: begin-manual-show-comments-list-snippet
 	:end-before: end-manual-show-comments-list-snippet
@@ -42,6 +44,8 @@ controller is also provided:
 .. image:: images/select_network.png	
 
 You can also directly instantiate the comment composer
+
+.. note:: You could use comments options to prefill comment with custom message.
 
 .. literalinclude:: snippets/comments.m
 	:start-after: begin-manual-show-comment-composer-snippet

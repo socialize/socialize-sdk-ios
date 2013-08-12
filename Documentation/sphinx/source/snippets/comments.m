@@ -23,14 +23,18 @@
 // begin-manual-show-comments-list-snippet
 
 - (void)manuallyShowCommentsList {
-    SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
+    SZCommentOptions* options = [SZCommentUtils userCommentOptions];
+    options.text = @"Hello world";
+
+    SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];   
     SZCommentsListViewController *comments = [[SZCommentsListViewController alloc] initWithEntity:entity];
     comments.completionBlock = ^{
         
         // Dismiss however you want here
         [self dismissModalViewControllerAnimated:NO];
     };
-    
+    comments.commentOptions = options;
+
     // Present however you want here
     [self presentModalViewController:comments animated:NO];
 }
