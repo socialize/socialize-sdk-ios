@@ -307,6 +307,7 @@
     };
     
     composer.display = self;
+    composer.commentOptions = self.commentOptions;
     
     [self presentModalViewController:composer animated:YES];
 }

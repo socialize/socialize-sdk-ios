@@ -194,7 +194,22 @@ static TestAppListViewController *sharedSampleListViewController;
 
     NSMutableArray *commentRows = [NSMutableArray array];
     [commentRows addObject:[self rowWithIdentifier:kShowCommentsListRow text:@"Show Comments List" executionBlock:^{
-        [SZCommentUtils showCommentsListWithViewController:self entity:self.entity completion:nil];
+        SZCommentOptions* options = [SZCommentUtils userCommentOptions];
+        options.text = @"Hello world";
+    
+        SZCommentsListViewController *comments = [[SZCommentsListViewController alloc] initWithEntity:self.entity];
+        comments.completionBlock = ^{
+            
+            // Dismiss however you want here
+            [self dismissModalViewControllerAnimated:NO];
+        };
+        comments.commentOptions = options;
+        
+        // Present however you want here
+        [self presentModalViewController:comments animated:NO];
+        
+        
+        
     }]];
 
     [commentRows addObject:[self rowWithIdentifier:kShowCommentComposerRow text:@"Show Comment Composer" executionBlock:^{
