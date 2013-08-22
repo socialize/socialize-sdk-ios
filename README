@@ -18,4 +18,4 @@ be found at http://socialize.github.com/socialize-sdk-ios/
 
 !Important: You must initialize and update the Git submodules first to get all the dependancies in the project. To do so:
 $ git submodule init
-$ git submoudle update
+$ git submodule update
