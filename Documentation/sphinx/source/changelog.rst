@@ -4,6 +4,30 @@
 Changelog
 =============================================
 
+v2.8.6
+------
+[feature] prefill comment message with custom text
+
+v2.8.5
+------
+[bug] SMS & Email share creates two entries for  one share
+
+v2.8.4
+------
+[feature] Added Pinterest sharing support
+
+v2.8.3
+------
+[bug] New user authentications failing due to bug in v2.8.2 [ ]
+
+v2.8.2
+------
+[bug] Socialize should no longer send device MAC address [ ]
+
+v2.8.1
+------
+[feature] Added FAQ to Documentation
+
 v2.8
 ----
 [feature] Update twitter to use 1.1 API instead of 1.0 [ ]

@@ -30,10 +30,17 @@
     if (self = [super init]) {
         self.entity = entity;
         self._commentsListViewController = [[_SZCommentsListViewController alloc] initWithEntity:self.entity];
-        [self pushViewController:self._commentsListViewController animated:NO];
     }
     
     return self;
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self._commentsListViewController.commentOptions = self.commentOptions;
+    [self pushViewController:self._commentsListViewController animated:NO];
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {

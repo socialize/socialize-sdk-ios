@@ -11,6 +11,8 @@
 #import "SZDisplay.h"
 #import "SZViewControllerWrapper.h"
 
+@class SZCommentOptions;
+
 @interface SZComposeCommentViewController : SZViewControllerWrapper
 @property (nonatomic, strong) _SZComposeCommentViewController *_composeCommentViewController;
 - (id)initWithEntity:(id<SZEntity>)entity;
@@ -18,5 +20,6 @@
 @property (nonatomic, copy) void (^cancellationBlock)();
 @property (nonatomic, strong, readonly) id<SZEntity> entity;
 @property (nonatomic, strong) id<SZDisplay> display;
+@property (nonatomic, strong) SZCommentOptions* commentOptions;
 
 @end

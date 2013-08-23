@@ -38,6 +38,10 @@
 
         curY += view.frame.size.height;
     }
+    
+    CGRect frame = self.frame;
+    frame.size.height = ((UIView*)self.rows.lastObject).frame.size.height + ((UIView*)self.rows.lastObject).frame.origin.y;
+    self.frame = frame;
 }
 
 @end

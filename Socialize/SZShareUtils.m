@@ -129,21 +129,11 @@
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
     composer.modalPresentationStyle = UIModalPresentationFormSheet;
     
+    __block id<SZShare> createdShare = nil;
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
         switch (result) {
             case MFMailComposeResultSent: {
-                
-                SZAuthWrapper(^{
-                    SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumEmail];
-                    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
-                        BLOCK_CALL_1(success, createdShare);
-                    } failure:^(NSError *error) {
-                        BLOCK_CALL_1(failure, error);
-                    }];
-                }, ^(NSError *error) {
-                    BLOCK_CALL_1(failure, error);
-                });
-                
+                BLOCK_CALL_1(success, createdShare);
                 break;
             }
             case MFMailComposeResultFailed:
@@ -159,26 +149,32 @@
     // Note that composers dismiss themselves
 
     [viewController showSocializeLoadingViewInSubview:nil];
-    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
+    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumEmail];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"email"] forKey:@"third_parties"]];
-    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
-        SZEmailShareData *emailData = [[SZEmailShareData alloc] init];
-        emailData.share = serverShare;
-        emailData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"email"];
-        emailData.messageBody = [self defaultMessageForShare:serverShare];
-        emailData.subject = [[serverShare entity] displayName];
-        BLOCK_CALL_1(options.willShowEmailComposerBlock, emailData);
-
-        [viewController hideSocializeLoadingView];
-        [composer setSubject:emailData.subject];
-        [composer setMessageBody:emailData.messageBody isHTML:emailData.isHTML];
-        
-        [viewController presentModalViewController:composer animated:YES];
-    } failure:^(NSError *error) {
-        [viewController hideSocializeLoadingView];
-    }];
-     
     
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
+            createdShare = serverShare;
+            SZEmailShareData *emailData = [[SZEmailShareData alloc] init];
+            emailData.share = serverShare;
+            emailData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"email"];
+            emailData.messageBody = [self defaultMessageForShare:serverShare];
+            emailData.subject = [[serverShare entity] displayName];
+            BLOCK_CALL_1(options.willShowEmailComposerBlock, emailData);
+            
+            [viewController hideSocializeLoadingView];
+            [composer setSubject:emailData.subject];
+            [composer setMessageBody:emailData.messageBody isHTML:emailData.isHTML];
+            
+            [viewController presentModalViewController:composer animated:YES];
+        } failure:^(NSError *error) {
+            [viewController hideSocializeLoadingView];
+            BLOCK_CALL_1(failure, error);
+        }];
+        
+    }, ^(NSError *error) {
+        BLOCK_CALL_1(failure, error);
+    });
 }
 
 + (void)shareViaSMSWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
@@ -193,21 +189,11 @@
     }
     
     MFMessageComposeViewController *composer = [[MFMessageComposeViewController alloc] init];
+    __block id<SZShare> createdShare = nil;
     composer.sz_completionBlock = ^(MessageComposeResult result) {
         switch (result) {
             case MessageComposeResultSent: {
-                
-                SZAuthWrapper(^{
-                    SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumSMS];
-                    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
-                        BLOCK_CALL_1(success, createdShare);
-                    } failure:^(NSError *error) {
-                        BLOCK_CALL_1(failure, error);
-                    }];
-                }, ^(NSError *error) {
-                    BLOCK_CALL_1(failure, error);
-                });
-
+                BLOCK_CALL_1(success, createdShare);
                 break;
             }
             case MessageComposeResultFailed:
@@ -224,19 +210,27 @@
     [viewController showSocializeLoadingViewInSubview:nil];
     SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"sms"] forKey:@"third_parties"]];
-    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
-        SZSMSShareData *shareData = [[SZSMSShareData alloc] init];
-        shareData.share = serverShare;
-        shareData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"sms"];
-        shareData.body = [self defaultMessageForShare:serverShare];
-        BLOCK_CALL_1(options.willShowSMSComposerBlock, shareData);
-        
-        [viewController hideSocializeLoadingView];
-        [composer setBody:shareData.body];
-        [viewController presentModalViewController:composer animated:YES];
-    } failure:^(NSError *error) {
-        [viewController hideSocializeLoadingView];
-    }];
+    
+    SZAuthWrapper(^{
+        [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
+            createdShare = serverShare;
+            SZSMSShareData *shareData = [[SZSMSShareData alloc] init];
+            shareData.share = serverShare;
+            shareData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"sms"];
+            shareData.body = [self defaultMessageForShare:serverShare];
+            BLOCK_CALL_1(options.willShowSMSComposerBlock, shareData);
+            
+            [viewController hideSocializeLoadingView];
+            [composer setBody:shareData.body];
+            [viewController presentModalViewController:composer animated:YES];
+        } failure:^(NSError *error) {
+            [viewController hideSocializeLoadingView];
+            BLOCK_CALL_1(failure, error);
+        }];
+
+    }, ^(NSError *error) {
+        BLOCK_CALL_1(failure, error);
+    });
 }
 
 

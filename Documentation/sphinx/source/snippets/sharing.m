@@ -42,6 +42,11 @@
         NSLog(@"Sharing Email");
     };
     
+    options.willRedirectToPinterestBlock = ^(SZPinterestShareData *pinData)
+    {
+        NSLog(@"Sharing pin");
+    };
+    
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         if (network == SZSocialNetworkTwitter) {
             NSString *entityURL = [[postData.propagationInfo objectForKey:@"twitter"] objectForKey:@"entity_url"];
@@ -113,6 +118,7 @@
 //    share.hideSMS = YES;
 //    share.hideFacebook = YES;
 //    share.hideTwitter = YES;
+//    share.hidePinterest = YES;
     
     // Present however you want here
     [self presentModalViewController:share animated:NO];

@@ -45,17 +45,17 @@
 }
 
 - (void)layoutSubviews {
+    if ([self.tableView numberOfSections] > 0) {
+        [self.tableView sizeToCells];
+    }
+    
     if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]) && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         // Hide upper image on phone, in landscape
         self.containerView.rows = [NSArray arrayWithObjects:self.tableView, self.footerView, nil];
     } else {
         self.containerView.rows = [NSArray arrayWithObjects:self.headerView, self.tableView, self.footerView, nil];
     }
-    
-    if ([self.tableView numberOfSections] > 0) {
-        [self.tableView sizeToCells];
-    }
-    
+
     [self.containerView layoutRows];
 }
 

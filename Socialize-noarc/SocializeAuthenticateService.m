@@ -12,10 +12,11 @@
 #import <UIKit/UIKit.h>
 #import <JSONKit/JSONKit.h>
 #import "SocializePrivateDefinitions.h"
-#import "UIDevice+IdentifierAddition.h"
 #import "SocializeFullUser.h"
 #import "socialize_globals.h"
 #import "NSData+Base64.h"
+
+static NSString *SZDefaultUDID = @"105105105105";
 
 @interface SocializeAuthenticateService()
 -(NSString*)getSocializeToken;
@@ -35,10 +36,8 @@
 
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
-                                   nil];
-
+    NSMutableDictionary* params = [NSMutableDictionary dictionary];
+    [params setObject:SZDefaultUDID forKey:@"udid"];
     
     NSString *adsId = [ASIdentifierManager base64AdvertisingIdentifierString];
     if ([adsId length] > 0) {
@@ -98,6 +97,7 @@
                                    authType, @"auth_type",
                                    token, @"auth_token",
                                    tokenSecret, @"auth_token_secret",
+                                   SZDefaultUDID, @"udid",
                                    nil];
 
     SocializeRequest *request = [SocializeRequest secureRequestWithHttpMethod:@"POST"
@@ -117,12 +117,15 @@
     NSString *authType = [NSString stringWithFormat :@"%d", type];
 
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-                                   [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier],@"udid",
                                    authType, @"auth_type",
                                    thirdPartyAuthToken, @"auth_token",
-                                   thirdPartyAuthTokenSecret, @"auth_token_secret",
+                                   SZDefaultUDID, @"udid",
                                    nil];
     
+    if (thirdPartyAuthTokenSecret != nil) {
+        [params setObject:thirdPartyAuthTokenSecret forKey:@"auth_token_secret"];
+    }
+
     NSString *adsId = [ASIdentifierManager base64AdvertisingIdentifierString];
     if ([adsId length] > 0) {
         [params setObject:adsId forKey:@"a"];

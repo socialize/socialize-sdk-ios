@@ -15,6 +15,7 @@ Contents:
    like_button
    twitter
    facebook
+   pinterest
    push_notifications
    entities
    users
@@ -26,4 +27,5 @@ Contents:
    ui_advanced
    sdk_user_guide
    sdk_pro_tips
+   faq
    changelog
