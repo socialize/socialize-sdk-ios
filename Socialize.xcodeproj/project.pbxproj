@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CC6264517CFFC8D00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
@@ -1933,6 +1935,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
+		2CC6263217CFFC3A00896610 /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
 		4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestUtils.h; sourceTree = "<group>"; };
 		4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestUtils.m; sourceTree = "<group>"; };
 		4810FF431778D3F500109630 /* SZPinterestShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestShareData.h; sourceTree = "<group>"; };
@@ -3177,6 +3181,8 @@
 		AA00882F158D424100480399 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				2CC6263117CFFC3A00896610 /* UserHelper.h */,
+				2CC6263217CFFC3A00896610 /* UserHelper.m */,
 				AA0089AA158D6F4E00480399 /* DataHelper.h */,
 				AA0089AB158D6F4E00480399 /* DataHelper.m */,
 				AA008830158D424100480399 /* DebugUtil.h */,
@@ -6229,6 +6235,7 @@
 				AA6C99821591634600E24658 /* _SZSelectNetworkViewController.m in Sources */,
 				AAD98F9C1591682000845FC9 /* _SZShareDialogViewController.m in Sources */,
 				AA3A9E2D15E5909E00CD2F75 /* SZSessionTracker.m in Sources */,
+				2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6236,6 +6243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC6264517CFFC8D00896610 /* UserHelper.m in Sources */,
 				AA0C6074158FC5D000F66A3B /* TestUtils.m in Sources */,
 				AA0C6075158FC5D000F66A3B /* JRSwizzle.m in Sources */,
 				AA0C6076158FC5D000F66A3B /* UIAlertView+Observer.m in Sources */,

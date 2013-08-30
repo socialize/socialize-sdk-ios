@@ -225,13 +225,18 @@
     NSString *userName = @"userName";
     NSString *firstName = @"firstName";
     NSString *lastName = @"lastName";
+    NSString *displayName = @"firstName lastName";
     NSString *smallImageUrl = @"smallImageURL";
     NSInteger testUserID = 1234;
     [[[mockFullUser stub] andReturn:userName] userName];
     [[[mockFullUser stub] andReturn:firstName] firstName];
     [[[mockFullUser stub] andReturn:lastName] lastName];
+    [[[mockFullUser stub] andReturn:displayName] displayName];
     [[[mockFullUser stub] andReturn:smallImageUrl] smallImageUrl];
     [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    
+    //TODO test different displayName configurations...
+    
     
     // protocol's 'description' collides with an nsobject method
     [self.mockUserDescriptionLabel makeNice];
@@ -239,7 +244,7 @@
     self.profileViewController.fullUser = mockFullUser;
     
     // Labels should be configured
-    [[self.mockUserNameLabel expect] setText:userName];
+    [[self.mockUserNameLabel expect] setText:displayName];
     
     // Image should be loaded
     [[(id)self.profileViewController expect] setProfileImageFromURL:smallImageUrl];

@@ -37,6 +37,9 @@
 
 #define TEST_COMMENT @"test comment"
 #define TEST_USER_NAME @"test_user"
+#define TEST_FIRST_NAME @"firstName"
+#define TEST_LAST_NAME @"lastName"
+#define TEST_DISPLAY_NAME @"firstName lastName"
 
 /*
 @interface SocializeCommentDetailsViewController(public)
@@ -101,8 +104,13 @@
     
     id mockUser = [OCMockObject mockForProtocol: @protocol(SocializeUser)];
     [[[mockUser stub] andReturn:TEST_USER_NAME] userName];
+    [[[mockUser stub] andReturn:TEST_FIRST_NAME] firstName];
+    [[[mockUser stub] andReturn:TEST_LAST_NAME] lastName];
+    [[[mockUser stub] andReturn:TEST_DISPLAY_NAME] displayName];
     [[[mockUser stub] andReturn:url] smallImageUrl];
-    
+
+    //TODO test different displayName configurations...
+
     [[[mockComment stub] andReturn: mockUser]user];
     return mockComment;
 }
@@ -147,25 +155,26 @@
     [[mockSocialize stub] setDelegate:nil];
     commentDetails.socialize = mockSocialize;
     
+    //TODO test different displayName configurations...
     id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
     commentDetails.comment = mockComment;
     
-     id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect] setShowMap: NO];
-    [[mockDeteailView expect] updateLocationText: @"No location associated with this comment." color:[UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] fontName:@"Helvetica-Oblique" fontSize:12];
+     id mockDetailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDetailView expect] setShowMap: NO];
+    [[mockDetailView expect] updateLocationText: @"No location associated with this comment." color:[UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] fontName:@"Helvetica-Oblique" fontSize:12];
    
-    [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
-    [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
-    [[mockDeteailView expect] configurateView];
+    [[mockDetailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
+    [[mockDetailView expect] updateUserName:TEST_DISPLAY_NAME];
+    [[mockDetailView expect] configurateView];
         
-     commentDetails.commentDetailsView = mockDeteailView;
-    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
+     commentDetails.commentDetailsView = mockDetailView;
+    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDetailView] view];
     
     [self.partialMockCommentDetailsViewController viewDidLoad]; 
     [self.partialMockCommentDetailsViewController viewWillAppear:YES];
     
     [mockComment verify];
-    [mockDeteailView verify];
+    [mockDetailView verify];
     
     [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
 }

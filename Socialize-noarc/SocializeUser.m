@@ -7,19 +7,24 @@
 //
 
 #import "SocializeUser.h"
-
+#import "UserHelper.h"
 
 @implementation SocializeUser
 
 @synthesize firstName = _firstName;
 @synthesize lastName =  _lastName;
 @synthesize userName = _userName;
+@synthesize displayName;
 @synthesize smallImageUrl = _smallInageUrl;
 @synthesize city = _city;
 @synthesize state = _state;
 @synthesize meta = _meta;
 
 @synthesize thirdPartyAuth = _thirdPartyAuth;
+
+-(NSString*)displayName {
+    return [UserHelper getDisplayName:self.userName firstName:self.firstName lastName:self.lastName];
+}
 
 -(void)dealloc
 {
