@@ -25,6 +25,10 @@
 		2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		2CC6264517CFFC8D00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		2CDB7D4B17D6840000E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CDB7D5D17D68A3C00E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CDB7D5F17D68AFE00E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CDB7D6017D68B0F00E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
@@ -6045,6 +6049,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDB7D6017D68B0F00E0BEC2 /* UserHelper.m in Sources */,
 				AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41523115911E37003717AC /* SZActivityOptions.m in Sources */,
 				AA41523215911E37003717AC /* SZCommentOptions.m in Sources */,
@@ -6368,6 +6373,7 @@
 				AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */,
 				AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */,
 				AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */,
+				2CDB7D5D17D68A3C00E0BEC2 /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6375,7 +6381,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CDB7D4B17D6840000E0BEC2 /* UserHelper.m in Sources */,
 				AA6C63D8158F0EB0005E5632 /* main.m in Sources */,
 				AA6C640E158F0EE6005E5632 /* SZIntegrationTestCase.m in Sources */,
 				AA6C640F158F0EE6005E5632 /* TestEntityServices.m in Sources */,
@@ -6406,6 +6411,7 @@
 				AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */,
 				AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */,
 				AA1759D416EEA2F700550082 /* SZUnitTestAppHack.m in Sources */,
+				2CDB7D4B17D6840000E0BEC2 /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6413,6 +6419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */,
 				AAB5E479159044E600D3EBDF /* _Socialize.m in Sources */,
 				AAB5E47A159044E600D3EBDF /* CommentDetailsView.m in Sources */,
 				AAB5E47B159044E600D3EBDF /* CommentMapView.m in Sources */,
@@ -6549,6 +6556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDB7D5F17D68AFE00E0BEC2 /* UserHelper.m in Sources */,
 				AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41524215911E38003717AC /* SZActivityOptions.m in Sources */,
 				AA41524315911E38003717AC /* SZCommentOptions.m in Sources */,
