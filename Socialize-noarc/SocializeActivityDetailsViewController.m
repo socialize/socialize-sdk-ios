@@ -174,7 +174,7 @@
 
 -(void)configureDetailsView {
     self.activityViewController.currentUser = self.socializeActivity.user.objectID;
-    self.activityDetailsView.username = self.socializeActivity.user.displayName;//self.socializeActivity.user.userName;
+    self.activityDetailsView.username = self.socializeActivity.user.displayName;
 }
 
 -(void)setSocializeActivity:(id<SocializeActivity>)socializeActivity {
