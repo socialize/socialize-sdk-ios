@@ -137,7 +137,7 @@
 
 -(void)testdidSelectRowAtIndexPath{
     [self makeTableViewNice];
-    self.commentsTableViewController.content = [NSArray arrayWithObject:[NSNumber numberWithInt:45]];
+    self.commentsTableViewController.content = [NSMutableArray arrayWithObject:[NSNumber numberWithInt:45]];
     
     NSIndexPath *indexSet = [NSIndexPath indexPathForRow:0 inSection:0];//[NSIndexPath indexPathWithIndexes:indexArr length:4];
     
@@ -163,7 +163,7 @@
     id mockUser = [OCMockObject niceMockForProtocol:@protocol(SocializeUser)];
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
     [[[mockComment expect] andReturn:mockUser] user];
-    self.commentsTableViewController.content = [NSArray arrayWithObject:mockComment];
+    self.commentsTableViewController.content = [NSMutableArray arrayWithObject:mockComment];
     
     //mock out creation of profile controller and present
     [[self.mockNavigationController expect] pushViewController:OCMOCK_ANY animated:YES];
@@ -176,7 +176,7 @@
     id mockTableView = [OCMockObject niceMockForClass:[UITableView class]];
     id mockCell = [OCMockObject niceMockForClass:[CommentsTableViewCell class]];
     id mockComment = [OCMockObject niceMockForProtocol:@protocol(SocializeComment)]; 
-    self.commentsTableViewController.content = [NSArray arrayWithObject:mockComment];
+    self.commentsTableViewController.content = [NSMutableArray arrayWithObject:mockComment];
 
     [[[mockTableView expect] andReturn:mockCell] dequeueReusableCellWithIdentifier:OCMOCK_ANY];
     

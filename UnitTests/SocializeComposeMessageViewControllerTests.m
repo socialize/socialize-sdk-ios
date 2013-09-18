@@ -234,7 +234,7 @@
     
     id mockMKUserLocation = [OCMockObject niceMockForClass:[MKUserLocation class]];
     id mockLocation = [OCMockObject niceMockForClass:[CLLocation class]];
-    [[[mockMKUserLocation stub] andReturn:mockLocation] location];
+    [(MKUserLocation *)[[mockMKUserLocation stub] andReturn:mockLocation] location];
 //    [[self.mockLocationManager expect] setLastLocation:mockLocation];
     
     [self.composeMessageViewController mapView:nil didUpdateUserLocation:mockMKUserLocation];
