@@ -45,6 +45,11 @@
 
 - (void)createShareDialog {
     self._shareDialogViewController = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     [self pushViewController:self._shareDialogViewController animated:NO];
 }
 

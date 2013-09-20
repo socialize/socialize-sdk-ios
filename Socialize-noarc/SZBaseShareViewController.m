@@ -288,7 +288,9 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
             }
             cell.textLabel.text = @"Facebook";
-            cell.accessoryView = weakSelf.facebookSwitch;
+            UIView* holder = [[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)];
+            [holder addSubview:weakSelf.facebookSwitch];
+            cell.accessoryView = holder;
         };
 
         facebookRow_ = [[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -355,7 +357,9 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
             }
             cell.textLabel.text = @"Twitter";
-            cell.accessoryView = weakSelf.twitterSwitch;
+            UIView* holder = [[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)];
+            [holder addSubview:weakSelf.twitterSwitch];
+            cell.accessoryView = holder;
         };
 
         twitterRow_ = [[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -695,16 +699,6 @@ static NSString *kAutopostSection = @"kAutopostSection";
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
     
     return cell;
-}
-
-- (UIControl*)controlForRowIdentifier:(NSString*)identifier {
-    UITableViewCell *cell = [self cellForRowIdentifier:identifier];
-    UIView *accessoryView = cell.accessoryView;
-    if ([accessoryView isKindOfClass:[UIControl class]]) {
-        return (UIControl*)accessoryView;
-    }
-    
-    return nil;
 }
 
 - (void)reloadRowWithIdentifier:(NSString*)identifier {
