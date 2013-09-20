@@ -360,6 +360,12 @@ static TestAppListViewController *sharedSampleListViewController;
 //    [self createSections];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.tableView.frame = CGRectMake(0, 20, 320, 460);
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 //    static dispatch_once_t onceToken;
