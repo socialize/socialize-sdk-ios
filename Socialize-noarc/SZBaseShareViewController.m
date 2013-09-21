@@ -288,7 +288,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
             }
             cell.textLabel.text = @"Facebook";
-            UIView* holder = [[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)];
+            UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)] autorelease];
             [holder addSubview:weakSelf.facebookSwitch];
             cell.accessoryView = holder;
         };
@@ -357,7 +357,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
             }
             cell.textLabel.text = @"Twitter";
-            UIView* holder = [[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)];
+            UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)] autorelease];
             [holder addSubview:weakSelf.twitterSwitch];
             cell.accessoryView = holder;
         };
