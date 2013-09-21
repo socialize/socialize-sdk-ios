@@ -6872,10 +6872,6 @@
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_CFLAGS = (
-					"-fprofile-arcs",
-					"-ftest-coverage",
-				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -7039,10 +7035,6 @@
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_CFLAGS = (
-					"-ftest-coverage",
-					"-fprofile-arcs",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -7084,10 +7076,6 @@
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_CFLAGS = (
-					"-fprofile-arcs",
-					"-ftest-coverage",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
