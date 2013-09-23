@@ -77,4 +77,23 @@
     [tester tapViewWithAccessibilityLabel:@"Done"];
 }
 
+- (void)testLikeButton
+{
+    // Set up a test entity
+    NSString *entityKey = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
+    id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
+    [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
+    
+    
+    [tester showButtonExample];
+    
+    [tester tapViewWithAccessibilityLabel:@"like button"];
+    [tester tapViewWithAccessibilityLabel:@"Skip"];
+    
+    [tester verifyActionBarLikesAtCount:1];
+    
+    [tester tapViewWithAccessibilityLabel:@"like button"];
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+}
+
 @end

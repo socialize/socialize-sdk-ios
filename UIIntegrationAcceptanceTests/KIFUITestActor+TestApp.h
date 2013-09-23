@@ -13,6 +13,7 @@
 - (void)openActionBarExample;
 - (void)showUserProfile;
 - (void)openEditProfile;
+- (void)showButtonExample;
 @end
 
 

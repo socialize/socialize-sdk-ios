@@ -103,9 +103,15 @@
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)openEditProfile;
+- (void)openEditProfile
 {
     [self tapViewWithAccessibilityLabel:@"Settings"];
+}
+
+- (void)showButtonExample
+{
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowButtonsExampleRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
 @end
