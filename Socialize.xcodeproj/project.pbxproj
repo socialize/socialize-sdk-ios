@@ -36,7 +36,6 @@
 		4810FF4C1778DA2F00109630 /* SZPinterestEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF491778DA2D00109630 /* SZPinterestEngine.h */; };
 		4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
 		4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
-		487047C617EEFB04008D5741 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4870478017EEF94B008D5741 /* XCTest.framework */; };
 		487047C717EEFB04008D5741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		487047C817EEFB04008D5741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		487047CE17EEFB04008D5741 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487047CC17EEFB04008D5741 /* InfoPlist.strings */; };
@@ -44,6 +43,8 @@
 		487047ED17EEFF29008D5741 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1D1098158EFBCF000C8A44 /* libKIF.a */; };
 		487047EE17EF001E008D5741 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
 		487047F017EF0030008D5741 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487047EF17EF0030008D5741 /* SenTestingKit.framework */; };
+		487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */; };
+		487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F617F01ACE008D5741 /* TestAppHelper.m */; };
 		48C069941780192C004E7843 /* pinterest-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C069931780192B004E7843 /* pinterest-snippets.m */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7D817633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -1974,12 +1975,16 @@
 		4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestEngine.m; sourceTree = "<group>"; };
 		4870478017EEF94B008D5741 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		487047AF17EEFA90008D5741 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIIntegrationAcceptanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIIntegrationAcceptanceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		487047CB17EEFB04008D5741 /* UIIntegrationAcceptanceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIIntegrationAcceptanceTests-Info.plist"; sourceTree = "<group>"; };
 		487047CD17EEFB04008D5741 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		487047CF17EEFB04008D5741 /* UIIntegrationAcceptanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIIntegrationAcceptanceTests.m; sourceTree = "<group>"; };
 		487047D117EEFB04008D5741 /* UIIntegrationAcceptanceTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIIntegrationAcceptanceTests-Prefix.pch"; sourceTree = "<group>"; };
 		487047EF17EF0030008D5741 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		487047F217F01530008D5741 /* KIFUITestActor+TestApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+TestApp.h"; sourceTree = "<group>"; };
+		487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+TestApp.m"; sourceTree = "<group>"; };
+		487047F517F01ACE008D5741 /* TestAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppHelper.h; sourceTree = "<group>"; };
+		487047F617F01ACE008D5741 /* TestAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppHelper.m; sourceTree = "<group>"; };
 		48C069921780192B004E7843 /* pinterest-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pinterest-snippets.h"; sourceTree = "<group>"; };
 		48C069931780192B004E7843 /* pinterest-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "pinterest-snippets.m"; sourceTree = "<group>"; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -2927,7 +2932,6 @@
 				487047F017EF0030008D5741 /* SenTestingKit.framework in Frameworks */,
 				487047EE17EF001E008D5741 /* CoreGraphics.framework in Frameworks */,
 				487047ED17EEFF29008D5741 /* libKIF.a in Frameworks */,
-				487047C617EEFB04008D5741 /* XCTest.framework in Frameworks */,
 				487047C817EEFB04008D5741 /* UIKit.framework in Frameworks */,
 				487047C717EEFB04008D5741 /* Foundation.framework in Frameworks */,
 			);
@@ -3057,7 +3061,11 @@
 			isa = PBXGroup;
 			children = (
 				487047CF17EEFB04008D5741 /* UIIntegrationAcceptanceTests.m */,
+				487047F217F01530008D5741 /* KIFUITestActor+TestApp.h */,
+				487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */,
 				487047CA17EEFB04008D5741 /* Supporting Files */,
+				487047F517F01ACE008D5741 /* TestAppHelper.h */,
+				487047F617F01ACE008D5741 /* TestAppHelper.m */,
 			);
 			path = UIIntegrationAcceptanceTests;
 			sourceTree = "<group>";
@@ -3118,7 +3126,7 @@
 				AA0C6014158FC4F000F66A3B /* UnitTests.app */,
 				AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */,
 				AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */,
-				487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.xctest */,
+				487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4676,7 +4684,7 @@
 			);
 			name = UIIntegrationAcceptanceTests;
 			productName = UIIntegrationAcceptanceTests;
-			productReference = 487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.xctest */;
+			productReference = 487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.octest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AA00858F158D2B1100480399 /* TestApp */ = {
@@ -6154,6 +6162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */,
+				487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */,
 				487047D017EEFB04008D5741 /* UIIntegrationAcceptanceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6851,7 +6861,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -6891,7 +6901,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -7344,6 +7354,7 @@
 				487047D617EEFB04008D5741 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA00858A158D2B1100480399 /* Build configuration list for PBXProject "Socialize" */ = {
 			isa = XCConfigurationList;
