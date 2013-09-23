@@ -8,6 +8,7 @@
 #import "KIFUITestActor+TestApp.h"
 #import "TestAppHelper.h"
 #import "TestAppListViewController.h"
+#import "SZTestHelper.h"
 
 @interface UIIntegrationAcceptanceTests : KIFTestCase
 
@@ -30,16 +31,13 @@
 
 - (void)testActionBar
 {
-    NSLog(@"Test the action bar");
-    
     // Set up a test entity
     NSString *entityKey = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
     [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
+
+    [tester openActionBarExample];
     
-    
-    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowActionBarExampleRow];
-    [tester scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
     [tester tapViewWithAccessibilityLabel:@"comment button"];
     [tester tapViewWithAccessibilityLabel:@"Close"];
     
@@ -60,4 +58,23 @@
     [tester waitForAbsenceOfViewWithAccessibilityLabel:@"In progress"];
     [tester tapViewWithAccessibilityLabel:@"Cancel"];
 }
+
+- (void)testUserProfile
+{
+    NSString *url = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
+    NSString *commentText = [NSString stringWithFormat:@"comment for %@", [TestAppHelper runID]];
+    
+    id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
+    id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
+    [[SZTestHelper sharedTestHelper] createComment:comment];
+    
+    [tester showUserProfile];
+    [tester waitForViewWithAccessibilityLabel:commentText];
+    
+    [tester openEditProfile];
+
+    [tester tapViewWithAccessibilityLabel:@"Back"];
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+}
+
 @end

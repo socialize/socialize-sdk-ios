@@ -9,7 +9,14 @@
 #import <KIF/KIF.h>
 
 @interface KIFUITestActor (TestApp)
+- (void)verifyActionBarLikesAtCount:(NSInteger)count;
+- (void)openActionBarExample;
+- (void)showUserProfile;
+- (void)openEditProfile;
+@end
+
+
+@interface KIFUITestActor (Utils)
 - (void)initializeTest;
 - (void)scrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath;
-- (void)verifyActionBarLikesAtCount:(NSInteger)count;
 @end

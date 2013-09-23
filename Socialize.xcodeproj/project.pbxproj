@@ -46,6 +46,10 @@
 		487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */; };
 		487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F617F01ACE008D5741 /* TestAppHelper.m */; };
 		48C069941780192C004E7843 /* pinterest-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C069931780192B004E7843 /* pinterest-snippets.m */; };
+		48E1378817F0B2F200EB3633 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
+		48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		48E1378A17F0BCB200EB3633 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
+		48E1378C17F0BD6D00EB3633 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7D817633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -2929,6 +2933,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E1378A17F0BCB200EB3633 /* libOCMock.a in Frameworks */,
+				48E1378817F0B2F200EB3633 /* libGHUnitIOSSimulator.a in Frameworks */,
 				487047F017EF0030008D5741 /* SenTestingKit.framework in Frameworks */,
 				487047EE17EF001E008D5741 /* CoreGraphics.framework in Frameworks */,
 				487047ED17EEFF29008D5741 /* libKIF.a in Frameworks */,
@@ -6164,7 +6170,9 @@
 			files = (
 				487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */,
 				487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */,
+				48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */,
 				487047D017EEFB04008D5741 /* UIIntegrationAcceptanceTests.m in Sources */,
+				48E1378C17F0BD6D00EB3633 /* SZIntegrationTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6839,6 +6847,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"\"$(SRCROOT)/ThirdParty\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Prefix.pch";
@@ -6846,10 +6855,16 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
 				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -6884,13 +6899,20 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"\"$(SRCROOT)/ThirdParty\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
 				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (

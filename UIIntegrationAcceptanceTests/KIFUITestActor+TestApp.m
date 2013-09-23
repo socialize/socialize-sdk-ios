@@ -59,14 +59,14 @@
 - (void)initializeTest
 {
     [self popNavigationControllerToIndex:0];
-    [tester waitForViewWithAccessibilityLabel:@"tableView"];
+    [self waitForViewWithAccessibilityLabel:@"tableView"];
 }
 
 - (void)scrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Tap row %d in tableView with label %@", [indexPath row], tableViewLabel);
 
-    [tester runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
+    [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
         UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:tableViewLabel accessibilityValue:nil traits:UIAccessibilityTraitNone];
         
         KIFTestCondition(element, error, @"View with label %@ not found", tableViewLabel);
@@ -89,6 +89,23 @@
 {
     NSString *countString = [NSString stringWithFormat:@"%d", count];
     [self checkAccessibilityLabel:@"like button" hasValue:countString];
+}
+
+- (void)openActionBarExample
+{
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowActionBarExampleRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
+
+- (void)showUserProfile
+{
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowUserProfileRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
+
+- (void)openEditProfile;
+{
+    [self tapViewWithAccessibilityLabel:@"Settings"];
 }
 
 @end
