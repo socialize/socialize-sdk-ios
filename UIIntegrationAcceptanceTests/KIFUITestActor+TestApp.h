@@ -14,6 +14,8 @@
 - (void)showUserProfile;
 - (void)openEditProfile;
 - (void)showButtonExample;
+- (void)showLinkToFacebook;
+- (void)wipeAuthData;
 @end
 
 

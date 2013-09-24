@@ -77,6 +77,20 @@
     [tester tapViewWithAccessibilityLabel:@"Done"];
 }
 
+- (void)testFacebookAuth
+{
+    [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuthWithDidAuth:nil];
+    
+    [tester showLinkToFacebook];
+    
+    [tester waitForViewWithAccessibilityLabel:@"Facebook link successful"];
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
+    
+    [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
+    
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"In progress"];
+}
+
 - (void)testLikeButton
 {
     // Set up a test entity
@@ -84,7 +98,7 @@
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
     [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
     
-    
+    [tester wipeAuthData];
     [tester showButtonExample];
     
     [tester tapViewWithAccessibilityLabel:@"like button"];

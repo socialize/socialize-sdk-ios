@@ -36,6 +36,8 @@
 		4810FF4C1778DA2F00109630 /* SZPinterestEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF491778DA2D00109630 /* SZPinterestEngine.h */; };
 		4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
 		4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
+		485BD8B717F192A80076FF93 /* SZTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */; };
+		485BD8B817F193370076FF93 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
 		487047C717EEFB04008D5741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		487047C817EEFB04008D5741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		487047CE17EEFB04008D5741 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487047CC17EEFB04008D5741 /* InfoPlist.strings */; };
@@ -5065,6 +5067,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				487047CE17EEFB04008D5741 /* InfoPlist.strings in Resources */,
+				485BD8B817F193370076FF93 /* SocializeApiInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6169,6 +6172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */,
+				485BD8B717F192A80076FF93 /* SZTestAppDelegate.m in Sources */,
 				487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */,
 				48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */,
 				487047D017EEFB04008D5741 /* UIIntegrationAcceptanceTests.m in Sources */,
@@ -6873,6 +6877,7 @@
 					"-framework",
 					XCTest,
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -6920,6 +6925,7 @@
 					"-framework",
 					XCTest,
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
