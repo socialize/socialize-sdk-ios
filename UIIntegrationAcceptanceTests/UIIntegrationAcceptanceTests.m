@@ -26,6 +26,7 @@
 
 - (void)beforeEach
 {
+    [[Socialize sharedSocialize] removeAuthenticationInfo];
     [tester initializeTest];
 }
 
@@ -98,7 +99,6 @@
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
     [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
     
-    [tester wipeAuthData];
     [tester showButtonExample];
     
     [tester tapViewWithAccessibilityLabel:@"like button"];
