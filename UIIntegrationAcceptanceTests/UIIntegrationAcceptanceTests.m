@@ -110,4 +110,27 @@
     [tester tapViewWithAccessibilityLabel:@"Done"];
 }
 
+- (void) testTwitterAuth
+{
+    [tester showLinkToTwitter];
+    [tester authWithTwitter];
+}
+
+- (void) testLikeNoAuth
+{
+    [tester showLikeEntityRow];
+    [tester tapViewWithAccessibilityLabel:@"Skip"];
+    [tester waitForViewWithAccessibilityLabel:@"tableView"];
+}
+
+- (void) testLikeTwitterAuth
+{
+    [tester showLikeEntityRow];
+    [tester tapViewWithAccessibilityLabel:@"twitter"];
+    [tester authWithTwitter];
+    
+    [tester tapViewWithAccessibilityLabel:@"Like"];
+    [tester waitForViewWithAccessibilityLabel:@"tableView"];
+}
+
 @end

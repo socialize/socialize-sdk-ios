@@ -16,10 +16,14 @@
 - (void)showButtonExample;
 - (void)showLinkToFacebook;
 - (void)wipeAuthData;
+- (void)showLinkToTwitter;
+- (void)showLikeEntityRow;
 @end
 
 
 @interface KIFUITestActor (Utils)
 - (void)initializeTest;
+- (void)authWithTwitter;
 - (void)scrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath;
+- (void)noCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits;
 @end
