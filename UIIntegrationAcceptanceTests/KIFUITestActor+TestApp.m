@@ -8,6 +8,7 @@
 
 #import "KIFUITestActor+TestApp.h"
 #import "TestAppListViewController.h"
+#import "SZTestHelper.h"
 #import <KIF/UIApplication-KIFAdditions.h>
 #import <KIF/UIAccessibilityElement-KIFAdditions.h>
 #import <KIF/CGGeometry-KIFAdditions.h>
@@ -16,6 +17,7 @@
 @interface KIFUITestActor(private)
 - (void)popNavigationControllerToIndex:(NSInteger)index;
 - (void)checkAccessibilityLabel:(NSString *)label hasValue:(NSString *)hasValue;
+- (UIView*)viewWithAccessibilityLabel:(NSString*)label;
 @end
 
 @implementation KIFUITestActor (TestApp)
@@ -59,8 +61,15 @@
 
 - (void)initializeTest
 {
+
     [self popNavigationControllerToIndex:0];
     [self waitForViewWithAccessibilityLabel:@"tableView"];
+    
+
+    [[SZTestHelper sharedTestHelper] removeAuthenticationInfo];
+    [SZTwitterUtils unlink];
+    [SZFacebookUtils unlink];
+    [[TestAppListViewController sharedSampleListViewController] setEntity:nil];
 }
 
 - (void)authWithTwitter
@@ -119,6 +128,41 @@
 //                }
 //            }
         }
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
+
+- (void)openSocializeDirectURLNotificationWithURL:(NSString*)url
+{
+    NSLog(@"Open direct url");
+    [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
+        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       url, @"url",
+                                       @"developer_direct_url", @"notification_type",
+                                       nil];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+        
+        [Socialize handleNotification:userInfo];
+        
+        return KIFTestStepResultSuccess;
+    }];
+}
+
+- (UIView*)viewWithAccessibilityLabel:(NSString*)label
+{
+    UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label accessibilityValue:nil traits:UIAccessibilityTraitNone];
+    UIView *view = (UIView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
+    return view;
+}
+
+- (void)scrollTableViewWithAccessibilityLabel:(NSString*)label toRowAtIndexPath:(NSIndexPath*)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+    NSLog(@"Scroll UITableView %@ to indexPath %@", label, indexPath);
+    [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
+        UITableView *tableView = (UITableView*)[self viewWithAccessibilityLabel:label];
+        KIFTestCondition([tableView isKindOfClass:[UITableView class]], error, @"Element with label %@ not UITableView", label);
+        
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
         
         return KIFTestStepResultSuccess;
     }];
@@ -197,9 +241,25 @@
 
 - (void)showLikeEntityRow
 {
-    // Select composer in test list
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
+- (void)showDirectUrlNotifications
+{
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kHandleDirectURLSmartAlertRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
+
+- (void)showCommentComposer
+{
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
+
+- (void)showCommentsList
+{
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentsListRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
 @end
