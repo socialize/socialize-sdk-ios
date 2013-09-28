@@ -52,6 +52,7 @@
 		48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		48E1378A17F0BCB200EB3633 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		48E1378C17F0BD6D00EB3633 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7D817633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -202,7 +203,6 @@
 		AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA081873159046670046D661 /* libSocialize-noarc-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */; };
-		AA0C6016158FC4F000F66A3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
 		AA0C601E158FC4F000F66A3B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0C601C158FC4F000F66A3B /* InfoPlist.strings */; };
@@ -645,10 +645,8 @@
 		AA6C99871591653900E24658 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6C99881591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
 		AA6C99891591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
-		AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AA6CE2EB15905AF800A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA6CE2EC15905B0200A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
-		AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AA6D5A851592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A861592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
@@ -1686,7 +1684,6 @@
 		AACEDA13158FCE770024EC43 /* SZBaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */; };
 		AACEDA15158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles in Resources */ = {isa = PBXBuildFile; fileRef = AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */; };
 		AACEDA16158FCFDA0024EC43 /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
-		AACEDA1A158FD4D50024EC43 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AAD98F9C1591682000845FC9 /* _SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */; };
 		AAD98F9D1591682000845FC9 /* _SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */; };
 		AAD98FA115916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2987,10 +2984,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
 				AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA5624CD159046000052FCFD /* libSocialize-profiling.a in Frameworks */,
 				AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */,
-				AA0C6016158FC4F000F66A3B /* UIKit.framework in Frameworks */,
 				AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */,
 				AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */,
 				AACED946158FCDD20024EC43 /* MapKit.framework in Frameworks */,
@@ -6147,7 +6144,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Scripts/generate-coverage-report.sh";
+			shellScript = "#./Scripts/generate-coverage-report.sh";
 			showEnvVarsInLog = 0;
 		};
 		AACEDAB2158FE8B00024EC43 /* ShellScript */ = {
@@ -6468,7 +6465,6 @@
 				AA0C6162158FC61D00F66A3B /* UserUtilsTests.m in Sources */,
 				AA0C6165158FC6D400F66A3B /* SocializeUnitTestApplication.m in Sources */,
 				AACED945158FCDC70024EC43 /* main.m in Sources */,
-				AACEDA1A158FD4D50024EC43 /* GCDAProfiling.c in Sources */,
 				AA90FFED159065C400AFD8A2 /* api_client.m in Sources */,
 				AA90FFEF159065C400AFD8A2 /* configure_keys.m in Sources */,
 				AA90FFF0159065C400AFD8A2 /* configure_notifications.m in Sources */,
@@ -6516,7 +6512,6 @@
 				AA159E28158FAE11006E1CAE /* TestAppKIFTestController.m in Sources */,
 				AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */,
 				AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */,
-				AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */,
 				AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6552,7 +6547,6 @@
 				AA6C6427158F0F49005E5632 /* IntegrationTestsAppDelegate.m in Sources */,
 				AA6C642E158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 				AA6C6432158F10D7005E5632 /* SZTestHelper.m in Sources */,
-				AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */,
 				AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */,
 				AA1759D416EEA2F700550082 /* SZUnitTestAppHack.m in Sources */,
 			);
@@ -6873,9 +6867,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
 					"-ObjC",
 					"-all_load",
 				);
@@ -6921,9 +6912,6 @@
 				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
 					"-ObjC",
 					"-all_load",
 				);
@@ -7044,6 +7032,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7065,6 +7055,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7087,6 +7078,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7108,6 +7101,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7132,6 +7126,8 @@
 					"$(PROJECT_DIR)/ThirdParty",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
@@ -7158,6 +7154,8 @@
 					"$(PROJECT_DIR)/ThirdParty",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";

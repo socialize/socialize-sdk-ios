@@ -1,7 +1,7 @@
 .PHONY: tags framework bundle integration-tests ui-integration-tests clean test package release
 
 test:
-	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
 
 default: build buildsample test package
 
@@ -28,7 +28,8 @@ integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	RUN_CLI=1 xcodebuild -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
+	#RUN_CLI=1 xcodebuild -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
+	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=7.0,name="iPhone Retina (3.5-inch)" test
 
 doc:
 	cd Socialize && appledoc ./DocSettings.plist
@@ -47,4 +48,3 @@ sphinx_doc: subst
 
 tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
-
