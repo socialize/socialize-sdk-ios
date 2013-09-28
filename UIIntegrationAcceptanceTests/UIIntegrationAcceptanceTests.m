@@ -59,23 +59,23 @@
     [tester tapViewWithAccessibilityLabel:@"Cancel"];
 }
 
-- (void)testUserProfile
-{
-    NSString *url = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
-    NSString *commentText = [NSString stringWithFormat:@"comment for %@", [TestAppHelper runID]];
-    
-    id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
-    id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
-    [[SZTestHelper sharedTestHelper] createComment:comment];
-    
-    [tester showUserProfile];
-    [tester waitForViewWithAccessibilityLabel:commentText];
-    
-    [tester openEditProfile];
-
-    [tester tapViewWithAccessibilityLabel:@"Back"];
-    [tester tapViewWithAccessibilityLabel:@"Done"];
-}
+//- (void)testUserProfile
+//{
+//    NSString *url = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
+//    NSString *commentText = [NSString stringWithFormat:@"comment for %@", [TestAppHelper runID]];
+//    
+//    id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
+//    id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
+//    [[SZTestHelper sharedTestHelper] createComment:comment];
+//    
+//    [tester showUserProfile];
+//    [tester waitForViewWithAccessibilityLabel:commentText];
+//    
+//    [tester openEditProfile];
+//
+//    [tester tapViewWithAccessibilityLabel:@"Back"];
+//    [tester tapViewWithAccessibilityLabel:@"Done"];
+//}
 
 - (void)testFacebookAuth
 {
