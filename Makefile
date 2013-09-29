@@ -29,6 +29,7 @@ integration-tests:
 
 ui-integration-tests:
 	#RUN_CLI=1 xcodebuild -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
+	killall "iPhone Simulator" >/dev/null 2>&1
 	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=7.0,name="iPhone Retina (3.5-inch)" test
 
 doc:
