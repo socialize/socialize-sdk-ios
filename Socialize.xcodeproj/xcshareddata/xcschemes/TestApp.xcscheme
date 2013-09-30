@@ -37,38 +37,6 @@
                BlueprintName = "UIIntegrationAcceptanceTests"
                ReferencedContainer = "container:Socialize.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testCommentsList">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testComposeCommentNoAuth">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testDirectURLNotification">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testFacebookAuth">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testLikeButton">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testLikeNoAuth">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testLikeTwitterAuth">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testProgrammaticNotificationDismissal">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testTwitterAuth">
-               </Test>
-               <Test
-                  Identifier = "UIIntegrationAcceptanceTests/testUserProfile">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
