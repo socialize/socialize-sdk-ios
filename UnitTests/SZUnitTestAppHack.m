@@ -12,6 +12,7 @@
 #import <Socialize/Socialize.h>
 
 static NSString *delegateClassName;
+extern void __gcov_flush(void);
 
 @implementation SZUnitTestAppHack
 
@@ -45,6 +46,7 @@ static NSString *delegateClassName;
                     NSString *reason = [NSString stringWithFormat:@"Failed to test with status: %d", status];
                     @throw [NSException exceptionWithName:@"TestFailure" reason:reason userInfo:nil];
                 }
+                __gcov_flush();
                 done = YES;
             }];
             

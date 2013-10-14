@@ -6099,7 +6099,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#./Scripts/generate-coverage-report.sh";
+			shellScript = "./Scripts/generate-coverage-report.sh";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E61590594700A4B074 /* Run Tests (Command-line only) */ = {
@@ -6144,7 +6144,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#./Scripts/generate-coverage-report.sh";
+			shellScript = "./Scripts/generate-coverage-report.sh";
 			showEnvVarsInLog = 0;
 		};
 		AACEDAB2158FE8B00024EC43 /* ShellScript */ = {
@@ -6159,6 +6159,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GHUNIT_CLI=1 ./Scripts/run-headless-simulator.sh";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -6987,7 +6988,10 @@
 					"\"$(SRCROOT)/ThirdParty\"/**",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7009,7 +7013,10 @@
 					"\"$(SRCROOT)/ThirdParty\"/**",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7031,9 +7038,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7054,8 +7062,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7077,9 +7087,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7100,8 +7111,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7129,6 +7142,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7157,6 +7171,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -7178,11 +7193,14 @@
 					"\"$(SRCROOT)/ThirdParty\"",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"RUN_KIF_TESTS=1",
 				);
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(CONFIGURATION_BUILD_DIR)",
 					"$(PROJECT_DIR)/ThirdParty/KIF/**",
@@ -7204,11 +7222,14 @@
 					"\"$(SRCROOT)/ThirdParty\"",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"RUN_KIF_TESTS=1",
 				);
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(CONFIGURATION_BUILD_DIR)",
 					"$(PROJECT_DIR)/ThirdParty/KIF/**",
@@ -7236,6 +7257,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -7263,6 +7285,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -7298,9 +7321,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7321,7 +7345,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7341,9 +7368,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7364,9 +7392,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (

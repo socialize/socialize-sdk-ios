@@ -138,6 +138,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    //TODO may need to put gcov_flush here...
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

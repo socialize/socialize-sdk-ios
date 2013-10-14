@@ -22,7 +22,8 @@ clean:
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
-	./Scripts/generate-combined-coverage-report.sh build/test-coverage/UIIntegrationTests-Coverage.info build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info
+	# TODO put back UIIntegrationTests once it's outputting stuff again (need to add gcov flush to its app delegate)
+	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info
 
 integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
