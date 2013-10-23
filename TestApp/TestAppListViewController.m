@@ -35,6 +35,7 @@ NSString *kActionBarSection = @"kActionBarSection";
 NSString *kButtonsExampleSection = @"kButtonsExampleSection";
 
 // Rows
+NSString *kShowLinkDialogRow = @"kShowLinkDialogRow";
 NSString *kShowUserProfileRow = @"kShowUserProfileRow";
 NSString *kShowCommentComposerRow = @"kShowCommentComposerRow";
 NSString *kShowCommentsListRow = @"kShowCommentsListRow";
@@ -100,7 +101,7 @@ static TestAppListViewController *sharedSampleListViewController;
     // User Utilities
     NSMutableArray *userRows = [NSMutableArray array];
     
-    [userRows addObject:[self rowWithText:@"Show Link Dialog" executionBlock:^{
+    [userRows addObject:[self rowWithIdentifier:kShowLinkDialogRow text:@"Show Link Dialog" executionBlock:^{
         [SZUserUtils showLinkDialogWithViewController:self completion:nil cancellation:nil];
     }]];
 

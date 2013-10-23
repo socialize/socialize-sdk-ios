@@ -16,26 +16,32 @@
 
 @implementation UIIntegrationAcceptanceTests
 
-- (void)beforeAll
-{
+- (void)beforeAll {
 }
 
-- (void)afterAll
-{
+- (void)afterAll {
 }
 
-- (void)beforeEach
-{
+- (void)beforeEach {
     [tester initializeTest];
 }
 
-- (void)testActionBar
-{
+- (void)testActionBar {
     // Set up a test entity
     NSString *entityKey = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
     [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
-
+    
+    //device rotation and link dialog
+    //TODO this should be in its own test
+    [tester rotateDevice];
+    [tester openLinkDialogExample];
+    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
+    [tester rotateDevice];
+    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
+    [tester tapViewWithAccessibilityLabel:@"Cancel"];
+    
     [tester openActionBarExample];
     
     [tester tapViewWithAccessibilityLabel:@"comment button"];
@@ -59,26 +65,7 @@
     [tester tapViewWithAccessibilityLabel:@"Cancel"];
 }
 
-//- (void)testUserProfile
-//{
-//    NSString *url = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
-//    NSString *commentText = [NSString stringWithFormat:@"comment for %@", [TestAppHelper runID]];
-//    
-//    id<SZEntity> entity = [SZEntity entityWithKey:url name:@"Test"];
-//    id<SZComment> comment = [SZComment commentWithEntity:entity text:commentText];
-//    [[SZTestHelper sharedTestHelper] createComment:comment];
-//    
-//    [tester showUserProfile];
-//    [tester waitForViewWithAccessibilityLabel:commentText];
-//    
-//    [tester openEditProfile];
-//
-//    [tester tapViewWithAccessibilityLabel:@"Back"];
-//    [tester tapViewWithAccessibilityLabel:@"Done"];
-//}
-
-- (void)testFacebookAuth
-{
+- (void)testFacebookAuth {
     [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuthWithDidAuth:nil];
     
     [tester showLinkToFacebook];
@@ -91,8 +78,7 @@
     [tester waitForAbsenceOfViewWithAccessibilityLabel:@"In progress"];
 }
 
-- (void)testLikeButton
-{
+- (void)testLikeButton {
     // Set up a test entity
     NSString *entityKey = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
@@ -109,21 +95,18 @@
     [tester tapViewWithAccessibilityLabel:@"Done"];
 }
 
-- (void) testTwitterAuth
-{
+- (void) testTwitterAuth {
     [tester showLinkToTwitter];
     [tester authWithTwitter];
 }
 
-- (void) testLikeNoAuth
-{
+- (void) testLikeNoAuth {
     [tester showLikeEntityRow];
     [tester tapViewWithAccessibilityLabel:@"Skip"];
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
 
-- (void) testLikeTwitterAuth
-{
+- (void) testLikeTwitterAuth {
     [tester showLikeEntityRow];
     [tester tapViewWithAccessibilityLabel:@"twitter"];
     [tester authWithTwitter];
@@ -132,8 +115,7 @@
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
 
-- (void) testDirectURLNotification
-{
+- (void) testDirectURLNotification {
     [tester showDirectUrlNotifications];
     
     [tester waitForTappableViewWithAccessibilityLabel:@"Done"];
@@ -141,8 +123,7 @@
     [tester tapViewWithAccessibilityLabel:@"Done"];
 }
 
-- (void) testComposeCommentNoAuth
-{
+- (void) testComposeCommentNoAuth {
     [tester showCommentComposer];
     [tester enterText:@"Anonymous Comment"  intoViewWithAccessibilityLabel:@"Comment Entry"];
     [tester tapViewWithAccessibilityLabel:@"Continue"];
@@ -150,8 +131,7 @@
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
 
-- (void) testCommentsList
-{
+- (void) testCommentsList {
     NSUInteger numRows = 50;
     
     
@@ -197,8 +177,7 @@
     [tester tapViewWithAccessibilityLabel:@"Close"];
 }
 
-- (void)testProgrammaticNotificationDismissal
-{
+- (void)testProgrammaticNotificationDismissal {
     [tester openSocializeDirectURLNotificationWithURL:@"http://www.getsocialize.com"];
     [tester waitForViewWithAccessibilityLabel:@"Done"];
     [tester openSocializeDirectURLNotificationWithURL:@"http://www.getsocialize.com"];

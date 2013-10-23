@@ -21,6 +21,7 @@
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
 #import "SZEventUtils.h"
+#import "SZLinkDialogView.h"
 
 #define LINK_DIALOG_BUCKET @"LINK_DIALOG"
 
@@ -49,6 +50,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 
 @synthesize tableView;
+@synthesize topImage;
 @synthesize skipButton = skipButton_;
 @synthesize delegate = _delegate;
 @synthesize user = _user;
@@ -58,6 +60,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 -(void) dealloc {
     self.tableView = nil;
+    self.topImage = nil;
     self.delegate = nil;
     self.user = nil;
     self.authTypeRowData = nil;
@@ -119,6 +122,11 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if([self.view isKindOfClass:[SZLinkDialogView class]]) {
+        SZLinkDialogView *linkDialogView = (SZLinkDialogView *)self.view;
+        linkDialogView.topImageView = self.topImage;
+        linkDialogView.topImageView.accessibilityLabel = @"topImageView";
+    }
     //self.navigationItem.rightBarButtonItem = [self createSkipButton];
     self.view.backgroundColor = [UIColor colorWithRed:50/255.0f green:58/255.0f blue:67/255.0f alpha:1.0];
     self.tableView.backgroundColor = [UIColor clearColor];

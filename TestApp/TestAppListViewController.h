@@ -18,6 +18,7 @@ extern NSString *kTwitterSection;
 extern NSString *kSmartAlertsSection;
 extern NSString *kActionBarSection;
 
+extern NSString *kShowLinkDialogRow;
 extern NSString *kShowUserProfileRow;
 extern NSString *kShowCommentComposerRow;
 extern NSString *kShowCommentsListRow;

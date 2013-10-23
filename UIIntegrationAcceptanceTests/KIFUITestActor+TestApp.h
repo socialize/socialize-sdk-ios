@@ -10,6 +10,8 @@
 
 @interface KIFUITestActor (TestApp)
 - (void)verifyActionBarLikesAtCount:(NSInteger)count;
+- (void)rotateDevice;
+- (void)openLinkDialogExample;
 - (void)openActionBarExample;
 - (void)showUserProfile;
 - (void)openEditProfile;

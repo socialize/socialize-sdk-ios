@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
+		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
+		2CAB845C1815ECEB00790B5F /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
@@ -1968,6 +1971,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogView.h; sourceTree = "<group>"; };
+		2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogView.m; sourceTree = "<group>"; };
 		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
 		2CC6263217CFFC3A00896610 /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
 		4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestUtils.h; sourceTree = "<group>"; };
@@ -4346,6 +4351,8 @@
 				AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */,
 				AA008713158D35BF00480399 /* SZShareDialogView.h */,
 				AA008714158D35BF00480399 /* SZShareDialogView.m */,
+				2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */,
+				2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */,
 				AA008715158D35BF00480399 /* SZBaseShareViewController.h */,
 				AA008716158D35BF00480399 /* SZBaseShareViewController.m */,
 				AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */,
@@ -6287,6 +6294,7 @@
 				AA00875A158D35BF00480399 /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AA00875B158D35BF00480399 /* SocializeAuthTableViewCell.m in Sources */,
 				AA00875C158D35BF00480399 /* _SZLinkDialogViewController.m in Sources */,
+				2CAB845C1815ECEB00790B5F /* SZLinkDialogView.m in Sources */,
 				AA00875D158D35BF00480399 /* SocializeBaseViewController.m in Sources */,
 				AA00875E158D35BF00480399 /* SocializeBubbleView.m in Sources */,
 				AA00875F158D35BF00480399 /* SocializeComment.m in Sources */,
@@ -6392,6 +6400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */,
 				AA0C6074158FC5D000F66A3B /* TestUtils.m in Sources */,
 				AA0C6075158FC5D000F66A3B /* JRSwizzle.m in Sources */,
 				AA0C6076158FC5D000F66A3B /* UIAlertView+Observer.m in Sources */,
@@ -6520,6 +6529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */,
 				AA6C63D8158F0EB0005E5632 /* main.m in Sources */,
 				AA6C640E158F0EE6005E5632 /* SZIntegrationTestCase.m in Sources */,
 				AA6C640F158F0EE6005E5632 /* TestEntityServices.m in Sources */,

@@ -21,8 +21,8 @@
 @end
 
 @implementation KIFUITestActor (TestApp)
-- (void)popNavigationControllerToIndex:(NSInteger)index
-{
+
+- (void)popNavigationControllerToIndex:(NSInteger)index {
     NSLog(@"Reset nav to level %d.", index);
     [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
         BOOL successfulReset = YES;
@@ -34,8 +34,7 @@
     }];
 }
 
-- (void)checkAccessibilityLabel:(NSString *)label hasValue:(NSString *)hasValue
-{
+- (void)checkAccessibilityLabel:(NSString *)label hasValue:(NSString *)hasValue {
     NSLog(@"Check value accessibility label: %@ has value: %@", label, hasValue);
 
     [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
@@ -59,8 +58,7 @@
     }];
 }
 
-- (void)initializeTest
-{
+- (void)initializeTest {
 
     [self popNavigationControllerToIndex:0];
     [self waitForViewWithAccessibilityLabel:@"tableView"];
@@ -72,8 +70,26 @@
     [[TestAppListViewController sharedSampleListViewController] setEntity:nil];
 }
 
-- (void)authWithTwitter
-{
+//toggles between portrait and landscape modes
+- (void)rotateDevice {
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIInterfaceOrientation newOrientation = currentOrientation == UIInterfaceOrientationLandscapeLeft ?
+                                            UIInterfaceOrientationPortrait :
+                                            UIInterfaceOrientationLandscapeLeft;
+    UIDevice* device = [UIDevice currentDevice];
+    SEL message = NSSelectorFromString(@"setOrientation:");
+    
+    if( [device respondsToSelector: message] ) {
+        NSMethodSignature* signature = [UIDevice instanceMethodSignatureForSelector: message];
+        NSInvocation* invocation = [NSInvocation invocationWithMethodSignature: signature];
+        [invocation setTarget: device];
+        [invocation setSelector: message];
+        [invocation setArgument: &newOrientation atIndex: 2];
+        [invocation invoke];
+    }
+}
+
+- (void)authWithTwitter {
     [self waitForViewWithAccessibilityLabel:@"Twitter"];
     [self waitForTappableViewWithAccessibilityLabel:@"Username or email"];
     [self waitForAbsenceOfViewWithAccessibilityLabel:@"In progress"];
@@ -89,8 +105,7 @@
     [self tapViewWithAccessibilityLabel:@"Authorize app"];
 }
 
-- (void)noCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits
-{
+- (void)noCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits {
     NSLog(@"Type the text \"%@\" into the view with accessibility label \"%@\"", text, label);
     [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
         
@@ -133,8 +148,7 @@
     }];
 }
 
-- (void)openSocializeDirectURLNotificationWithURL:(NSString*)url
-{
+- (void)openSocializeDirectURLNotificationWithURL:(NSString*)url {
     NSLog(@"Open direct url");
     [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
         NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -149,14 +163,16 @@
     }];
 }
 
-- (UIView*)viewWithAccessibilityLabel:(NSString*)label
-{
+- (UIView*)viewWithAccessibilityLabel:(NSString*)label {
     UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label accessibilityValue:nil traits:UIAccessibilityTraitNone];
     UIView *view = (UIView*)[UIAccessibilityElement viewContainingAccessibilityElement:element];
     return view;
 }
 
-- (void)scrollTableViewWithAccessibilityLabel:(NSString*)label toRowAtIndexPath:(NSIndexPath*)indexPath scrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+- (void)scrollTableViewWithAccessibilityLabel:(NSString*)label
+                             toRowAtIndexPath:(NSIndexPath*)indexPath
+                               scrollPosition:(UITableViewScrollPosition)scrollPosition
+                                     animated:(BOOL)animated {
     NSLog(@"Scroll UITableView %@ to indexPath %@", label, indexPath);
     [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
         UITableView *tableView = (UITableView*)[self viewWithAccessibilityLabel:label];
@@ -169,8 +185,7 @@
 }
 
 
-- (void)scrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath
-{
+- (void)scrollAndTapRowInTableViewWithAccessibilityLabel:(NSString*)tableViewLabel atIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Tap row %d in tableView with label %@", [indexPath row], tableViewLabel);
 
     [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
@@ -192,73 +207,66 @@
     }];
 }
 
-- (void)verifyActionBarLikesAtCount:(NSInteger)count
-{
+- (void)verifyActionBarLikesAtCount:(NSInteger)count {
     NSString *countString = [NSString stringWithFormat:@"%d", count];
     [self checkAccessibilityLabel:@"like button" hasValue:countString];
 }
 
-- (void)openActionBarExample
-{
+- (void)openLinkDialogExample {
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowLinkDialogRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
+
+- (void)openActionBarExample {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowActionBarExampleRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showUserProfile
-{
+- (void)showUserProfile {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowUserProfileRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)openEditProfile
-{
+- (void)openEditProfile {
     [self tapViewWithAccessibilityLabel:@"Settings"];
 }
 
-- (void)showButtonExample
-{
+- (void)showButtonExample {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowButtonsExampleRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showLinkToFacebook
-{
+- (void)showLinkToFacebook {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToFacebookRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)wipeAuthData
-{
+- (void)wipeAuthData {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:@"Wipe Auth Data"];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showLinkToTwitter
-{
+- (void)showLinkToTwitter {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLinkToTwitterRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showLikeEntityRow
-{
+- (void)showLikeEntityRow {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showDirectUrlNotifications
-{
+- (void)showDirectUrlNotifications {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kHandleDirectURLSmartAlertRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showCommentComposer
-{
+- (void)showCommentComposer {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentComposerRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
-- (void)showCommentsList
-{
+- (void)showCommentsList {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowCommentsListRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
