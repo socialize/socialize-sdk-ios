@@ -4,6 +4,15 @@
 Upgrading Socialize
 =====================
 
+Important Notes on Upgrading to v2.8.9
+-----------------
+
+For each of your application targets (or, if preferred, for the entire project), set the Debug setting of "Generate Test Coverage Files" and "Instrument Program Flow" in "Apple LLVM 5.0 - Code Generation" to "Yes":
+
+  .. image:: images/compiler_settings_289.png
+        :width: 529
+        :height: 278
+
 Important Notes on Upgrading to v2.4
 -----------------
 

@@ -72,7 +72,7 @@ Step 2: Add Required Frameworks to Your Project
 
 .. image:: images/add_frameworks.png
 
-Step 3: Set Project Linker Flags
+Step 3: Set Project Linker and Code Generation Flags
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Add **-ObjC** and **-all_load** flag to the Other Linker Flags in the build settings of your application target. *Please use the flag exactly as it is—the most common mistake here tends to be misspelling or incorrect capitalization.*
@@ -80,6 +80,13 @@ Step 3: Set Project Linker Flags
 	.. image:: images/image00.png
    			:width: 700
    			:height: 410
+
+- For each of your application targets (or, if preferred, for the entire project), set the Debug setting of "Generate Test Coverage Files" and "Instrument Program Flow" in "Apple LLVM 5.0 - Code Generation" to "Yes":
+
+  .. image:: images/compiler_settings_289.png
+        :width: 529
+        :height: 278
+
 
 - For older versions of Xcode (4.3 and newer), if your app is not arc-enabled, you MUST also add **-fobjc-arc** to the Other Linker flags.
 
