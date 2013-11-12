@@ -183,7 +183,7 @@
 { 
     [super viewWillAppear:animated];
     [self updateProfileImage];
-    [self.commentDetailsView updateUserName:comment.user.userName];
+    [self.commentDetailsView updateUserName:comment.user.displayName]; //comment.user.userName
     [self showComment];
     [self.commentDetailsView configurateView];
 }

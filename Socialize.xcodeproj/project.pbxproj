@@ -22,6 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
+		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
+		2CAB845C1815ECEB00790B5F /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
+		2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
@@ -34,7 +39,23 @@
 		4810FF4C1778DA2F00109630 /* SZPinterestEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF491778DA2D00109630 /* SZPinterestEngine.h */; };
 		4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
 		4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
+		485BD8B717F192A80076FF93 /* SZTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */; };
+		485BD8B817F193370076FF93 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
+		487047C717EEFB04008D5741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
+		487047C817EEFB04008D5741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
+		487047CE17EEFB04008D5741 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487047CC17EEFB04008D5741 /* InfoPlist.strings */; };
+		487047D017EEFB04008D5741 /* UIIntegrationAcceptanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047CF17EEFB04008D5741 /* UIIntegrationAcceptanceTests.m */; };
+		487047ED17EEFF29008D5741 /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1D1098158EFBCF000C8A44 /* libKIF.a */; };
+		487047EE17EF001E008D5741 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
+		487047F017EF0030008D5741 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487047EF17EF0030008D5741 /* SenTestingKit.framework */; };
+		487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */; };
+		487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F617F01ACE008D5741 /* TestAppHelper.m */; };
 		48C069941780192C004E7843 /* pinterest-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C069931780192B004E7843 /* pinterest-snippets.m */; };
+		48E1378817F0B2F200EB3633 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
+		48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		48E1378A17F0BCB200EB3633 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
+		48E1378C17F0BD6D00EB3633 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7D817633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -185,7 +206,6 @@
 		AA0602B415965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0602B315965A22002D2535 /* SZActionBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA081873159046670046D661 /* libSocialize-noarc-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */; };
-		AA0C6016158FC4F000F66A3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
 		AA0C601E158FC4F000F66A3B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0C601C158FC4F000F66A3B /* InfoPlist.strings */; };
@@ -628,10 +648,8 @@
 		AA6C99871591653900E24658 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6C99881591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
 		AA6C99891591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
-		AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AA6CE2EB15905AF800A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA6CE2EC15905B0200A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
-		AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AA6D5A851592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A861592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
@@ -1669,7 +1687,6 @@
 		AACEDA13158FCE770024EC43 /* SZBaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */; };
 		AACEDA15158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles in Resources */ = {isa = PBXBuildFile; fileRef = AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */; };
 		AACEDA16158FCFDA0024EC43 /* Smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = AA935C05158F1C2600B5B2BC /* Smiley.png */; };
-		AACEDA1A158FD4D50024EC43 /* GCDAProfiling.c in Sources */ = {isa = PBXBuildFile; fileRef = AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */; };
 		AAD98F9C1591682000845FC9 /* _SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */; };
 		AAD98F9D1591682000845FC9 /* _SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */; };
 		AAD98FA115916C6900845FC9 /* SZShareDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1723,6 +1740,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4870479F17EEF94B008D5741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB60ECC1177F8C83005A041A;
+			remoteInfo = "Test Host";
+		};
+		487047A117EEF94B008D5741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1D1090158EFBCE000C8A44 /* KIF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB60ECEB177F8DB3005A041A;
+			remoteInfo = "KIF Tests";
+		};
+		487047D217EEFB04008D5741 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA008587158D2B1100480399 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA00858F158D2B1100480399;
+			remoteInfo = TestApp;
+		};
 		AA0085B9158D2E2C00480399 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
@@ -1933,12 +1971,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogView.h; sourceTree = "<group>"; };
+		2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogView.m; sourceTree = "<group>"; };
+		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
+		2CC6263217CFFC3A00896610 /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
 		4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestUtils.h; sourceTree = "<group>"; };
 		4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestUtils.m; sourceTree = "<group>"; };
 		4810FF431778D3F500109630 /* SZPinterestShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestShareData.h; sourceTree = "<group>"; };
 		4810FF441778D3F600109630 /* SZPinterestShareData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestShareData.m; sourceTree = "<group>"; };
 		4810FF491778DA2D00109630 /* SZPinterestEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestEngine.h; sourceTree = "<group>"; };
 		4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestEngine.m; sourceTree = "<group>"; };
+		4870478017EEF94B008D5741 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		487047AF17EEFA90008D5741 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIIntegrationAcceptanceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		487047CB17EEFB04008D5741 /* UIIntegrationAcceptanceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIIntegrationAcceptanceTests-Info.plist"; sourceTree = "<group>"; };
+		487047CD17EEFB04008D5741 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		487047CF17EEFB04008D5741 /* UIIntegrationAcceptanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIIntegrationAcceptanceTests.m; sourceTree = "<group>"; };
+		487047D117EEFB04008D5741 /* UIIntegrationAcceptanceTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIIntegrationAcceptanceTests-Prefix.pch"; sourceTree = "<group>"; };
+		487047EF17EF0030008D5741 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		487047F217F01530008D5741 /* KIFUITestActor+TestApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+TestApp.h"; sourceTree = "<group>"; };
+		487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+TestApp.m"; sourceTree = "<group>"; };
+		487047F517F01ACE008D5741 /* TestAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppHelper.h; sourceTree = "<group>"; };
+		487047F617F01ACE008D5741 /* TestAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppHelper.m; sourceTree = "<group>"; };
 		48C069921780192B004E7843 /* pinterest-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pinterest-snippets.h"; sourceTree = "<group>"; };
 		48C069931780192B004E7843 /* pinterest-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "pinterest-snippets.m"; sourceTree = "<group>"; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -2879,6 +2933,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		487047C217EEFB03008D5741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E1378A17F0BCB200EB3633 /* libOCMock.a in Frameworks */,
+				48E1378817F0B2F200EB3633 /* libGHUnitIOSSimulator.a in Frameworks */,
+				487047F017EF0030008D5741 /* SenTestingKit.framework in Frameworks */,
+				487047EE17EF001E008D5741 /* CoreGraphics.framework in Frameworks */,
+				487047ED17EEFF29008D5741 /* libKIF.a in Frameworks */,
+				487047C817EEFB04008D5741 /* UIKit.framework in Frameworks */,
+				487047C717EEFB04008D5741 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA00858D158D2B1100480399 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2921,10 +2989,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
 				AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA5624CD159046000052FCFD /* libSocialize-profiling.a in Frameworks */,
 				AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */,
-				AA0C6016158FC4F000F66A3B /* UIKit.framework in Frameworks */,
 				AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */,
 				AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */,
 				AACED946158FCDD20024EC43 /* MapKit.framework in Frameworks */,
@@ -2999,6 +3067,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				487047CF17EEFB04008D5741 /* UIIntegrationAcceptanceTests.m */,
+				487047F217F01530008D5741 /* KIFUITestActor+TestApp.h */,
+				487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */,
+				487047CA17EEFB04008D5741 /* Supporting Files */,
+				487047F517F01ACE008D5741 /* TestAppHelper.h */,
+				487047F617F01ACE008D5741 /* TestAppHelper.m */,
+			);
+			path = UIIntegrationAcceptanceTests;
+			sourceTree = "<group>";
+		};
+		487047CA17EEFB04008D5741 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				487047CB17EEFB04008D5741 /* UIIntegrationAcceptanceTests-Info.plist */,
+				487047CC17EEFB04008D5741 /* InfoPlist.strings */,
+				487047D117EEFB04008D5741 /* UIIntegrationAcceptanceTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -3028,6 +3119,7 @@
 				AA159E15158FADD1006E1CAE /* UIIntegrationTests */,
 				AA0085CC158D2F4600480399 /* ThirdParty */,
 				AA0C6019158FC4F000F66A3B /* UnitTests */,
+				487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */,
 				AA008593158D2B1100480399 /* Frameworks */,
 				AA008591158D2B1100480399 /* Products */,
 			);
@@ -3044,6 +3136,7 @@
 				AA0C6014158FC4F000F66A3B /* UnitTests.app */,
 				AAB5E51F159044E600D3EBDF /* libSocialize-noarc-profiling.a */,
 				AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */,
+				487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3051,6 +3144,7 @@
 		AA008593158D2B1100480399 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				487047EF17EF0030008D5741 /* SenTestingKit.framework */,
 				AAA7C84E16B2073B0041DFD0 /* AdSupport.framework */,
 				AA3BC394158E868D0073AD50 /* MapKit.framework */,
 				AA3BC392158E86770073AD50 /* QuartzCore.framework */,
@@ -3059,6 +3153,8 @@
 				AA008594158D2B1100480399 /* UIKit.framework */,
 				AA008596158D2B1100480399 /* Foundation.framework */,
 				AA008598158D2B1100480399 /* CoreGraphics.framework */,
+				4870478017EEF94B008D5741 /* XCTest.framework */,
+				487047AF17EEFA90008D5741 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3177,6 +3273,8 @@
 		AA00882F158D424100480399 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				2CC6263117CFFC3A00896610 /* UserHelper.h */,
+				2CC6263217CFFC3A00896610 /* UserHelper.m */,
 				AA0089AA158D6F4E00480399 /* DataHelper.h */,
 				AA0089AB158D6F4E00480399 /* DataHelper.m */,
 				AA008830158D424100480399 /* DebugUtil.h */,
@@ -3255,6 +3353,8 @@
 				AA0C607B158FC61D00F66A3B /* ActivityDetailsViewTests.m */,
 				AA0C607C158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.h */,
 				AA0C607D158FC61D00F66A3B /* _SZLinkDialogViewControllerTests.m */,
+				AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */,
+				AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */,
 				AA0C607E158FC61D00F66A3B /* CommentDetailsViewControllerTests.h */,
 				AA0C607F158FC61D00F66A3B /* CommentDetailsViewControllerTests.m */,
 				AA0C6080158FC61D00F66A3B /* CommentDetailsViewForTest.h */,
@@ -3358,8 +3458,6 @@
 				AA0C60EF158FC61D00F66A3B /* SocializeTestCase.m */,
 				AA0C60F0158FC61D00F66A3B /* SocializeTests.h */,
 				AA0C60F1158FC61D00F66A3B /* SocializeTests.m */,
-				AA0C60F2158FC61D00F66A3B /* _SZTwitterLinkViewControllerTests.h */,
-				AA0C60F3158FC61D00F66A3B /* _SZTwitterLinkViewControllerTests.m */,
 				AA0C60F6158FC61D00F66A3B /* SocializeUserJSONFormatterTests.h */,
 				AA0C60F7158FC61D00F66A3B /* SocializeUserJSONFormatterTests.m */,
 				AA0C60F8158FC61D00F66A3B /* SocializeUserServiceTests.h */,
@@ -3372,8 +3470,26 @@
 				AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */,
 				AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */,
 				AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */,
+				AACC19F0159B9B1900800576 /* SZActionBarTests.h */,
+				AACC19F1159B9B1900800576 /* SZActionBarTests.m */,
+				AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */,
 				AA0C6102158FC61D00F66A3B /* SZLikeButtonTests.h */,
 				AA0C6103158FC61D00F66A3B /* SZLikeButtonTests.m */,
+				AAC7CB7C15C9C1630064C5FD /* SZLikeUtilsTests.h */,
+				AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */,
+				AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */,
+				AAE216961607F6AE0049850E /* SZOpenURLHandlerTests.h */,
+				AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */,
+				AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */,
+				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
+				AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */,
+				AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */,
+				AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */,
+				AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */,
+				AA0C60F2158FC61D00F66A3B /* _SZTwitterLinkViewControllerTests.h */,
+				AA0C60F3158FC61D00F66A3B /* _SZTwitterLinkViewControllerTests.m */,
+				AA840C52161CEF5700494EE4 /* SZTwitterUtilsTests.h */,
+				AA840C53161CEF5700494EE4 /* SZTwitterUtilsTests.m */,
 				AA0C6104158FC61D00F66A3B /* _SZUserProfileViewControllerTests.h */,
 				AA0C6105158FC61D00F66A3B /* _SZUserProfileViewControllerTests.m */,
 				AA0C6106158FC61D00F66A3B /* _SZUserSettingsViewControllerTest.h */,
@@ -3392,24 +3508,6 @@
 				AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */,
 				AA9701A715953942006CDC8E /* FacebookUtilsTests.h */,
 				AA9701A815953942006CDC8E /* FacebookUtilsTests.m */,
-				AACC19F0159B9B1900800576 /* SZActionBarTests.h */,
-				AACC19F1159B9B1900800576 /* SZActionBarTests.m */,
-				AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */,
-				AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */,
-				AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */,
-				AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */,
-				AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */,
-				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
-				AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */,
-				AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */,
-				AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */,
-				AA823CD615C09D8900F83091 /* SZSessionTrackerTests.m */,
-				AAC7CB7C15C9C1630064C5FD /* SZLikeUtilsTests.h */,
-				AAC7CB7D15C9C1640064C5FD /* SZLikeUtilsTests.m */,
-				AAE216961607F6AE0049850E /* SZOpenURLHandlerTests.h */,
-				AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */,
-				AA840C52161CEF5700494EE4 /* SZTwitterUtilsTests.h */,
-				AA840C53161CEF5700494EE4 /* SZTwitterUtilsTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -3600,6 +3698,8 @@
 			isa = PBXGroup;
 			children = (
 				AA1D1098158EFBCF000C8A44 /* libKIF.a */,
+				487047A017EEF94B008D5741 /* Test Host.app */,
+				487047A217EEF94B008D5741 /* KIF Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4251,6 +4351,8 @@
 				AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */,
 				AA008713158D35BF00480399 /* SZShareDialogView.h */,
 				AA008714158D35BF00480399 /* SZShareDialogView.m */,
+				2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */,
+				2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */,
 				AA008715158D35BF00480399 /* SZBaseShareViewController.h */,
 				AA008716158D35BF00480399 /* SZBaseShareViewController.m */,
 				AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */,
@@ -4579,6 +4681,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		487047C417EEFB03008D5741 /* UIIntegrationAcceptanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 487047D417EEFB04008D5741 /* Build configuration list for PBXNativeTarget "UIIntegrationAcceptanceTests" */;
+			buildPhases = (
+				487047C117EEFB03008D5741 /* Sources */,
+				487047C217EEFB03008D5741 /* Frameworks */,
+				487047C317EEFB03008D5741 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				487047D317EEFB04008D5741 /* PBXTargetDependency */,
+			);
+			name = UIIntegrationAcceptanceTests;
+			productName = UIIntegrationAcceptanceTests;
+			productReference = 487047C517EEFB03008D5741 /* UIIntegrationAcceptanceTests.octest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AA00858F158D2B1100480399 /* TestApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA0085A8158D2B1100480399 /* Build configuration list for PBXNativeTarget "TestApp" */;
@@ -4740,6 +4860,11 @@
 				CLASSPREFIX = SZ;
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = Socialize;
+				TargetAttributes = {
+					487047C417EEFB03008D5741 = {
+						TestTargetID = AA00858F158D2B1100480399;
+					};
+				};
 			};
 			buildConfigurationList = AA00858A158D2B1100480399 /* Build configuration list for PBXProject "Socialize" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4792,11 +4917,26 @@
 				AA6C63CB158F0EB0005E5632 /* IntegrationTests */,
 				AA0C6013158FC4F000F66A3B /* UnitTests */,
 				AA6CE2DE1590536800A4B074 /* Socialize Framework */,
+				487047C417EEFB03008D5741 /* UIIntegrationAcceptanceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		487047A017EEF94B008D5741 /* Test Host.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Test Host.app";
+			remoteRef = 4870479F17EEF94B008D5741 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		487047A217EEF94B008D5741 /* KIF Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "KIF Tests.octest";
+			remoteRef = 487047A117EEF94B008D5741 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -4926,6 +5066,15 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		487047C317EEFB03008D5741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487047CE17EEFB04008D5741 /* InfoPlist.strings in Resources */,
+				485BD8B817F193370076FF93 /* SocializeApiInfo.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA00858E158D2B1100480399 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6007,7 +6156,7 @@
 		};
 		AACEDAB2158FE8B00024EC43 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -6022,6 +6171,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		487047C117EEFB03008D5741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */,
+				485BD8B717F192A80076FF93 /* SZTestAppDelegate.m in Sources */,
+				487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */,
+				48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */,
+				487047D017EEFB04008D5741 /* UIIntegrationAcceptanceTests.m in Sources */,
+				48E1378C17F0BD6D00EB3633 /* SZIntegrationTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA00858C158D2B1100480399 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6132,6 +6294,7 @@
 				AA00875A158D35BF00480399 /* SocializeAuthInfoTableViewCell.m in Sources */,
 				AA00875B158D35BF00480399 /* SocializeAuthTableViewCell.m in Sources */,
 				AA00875C158D35BF00480399 /* _SZLinkDialogViewController.m in Sources */,
+				2CAB845C1815ECEB00790B5F /* SZLinkDialogView.m in Sources */,
 				AA00875D158D35BF00480399 /* SocializeBaseViewController.m in Sources */,
 				AA00875E158D35BF00480399 /* SocializeBubbleView.m in Sources */,
 				AA00875F158D35BF00480399 /* SocializeComment.m in Sources */,
@@ -6229,6 +6392,7 @@
 				AA6C99821591634600E24658 /* _SZSelectNetworkViewController.m in Sources */,
 				AAD98F9C1591682000845FC9 /* _SZShareDialogViewController.m in Sources */,
 				AA3A9E2D15E5909E00CD2F75 /* SZSessionTracker.m in Sources */,
+				2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6236,6 +6400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */,
 				AA0C6074158FC5D000F66A3B /* TestUtils.m in Sources */,
 				AA0C6075158FC5D000F66A3B /* JRSwizzle.m in Sources */,
 				AA0C6076158FC5D000F66A3B /* UIAlertView+Observer.m in Sources */,
@@ -6309,7 +6474,6 @@
 				AA0C6162158FC61D00F66A3B /* UserUtilsTests.m in Sources */,
 				AA0C6165158FC6D400F66A3B /* SocializeUnitTestApplication.m in Sources */,
 				AACED945158FCDC70024EC43 /* main.m in Sources */,
-				AACEDA1A158FD4D50024EC43 /* GCDAProfiling.c in Sources */,
 				AA90FFED159065C400AFD8A2 /* api_client.m in Sources */,
 				AA90FFEF159065C400AFD8A2 /* configure_keys.m in Sources */,
 				AA90FFF0159065C400AFD8A2 /* configure_notifications.m in Sources */,
@@ -6357,7 +6521,6 @@
 				AA159E28158FAE11006E1CAE /* TestAppKIFTestController.m in Sources */,
 				AAF098DA158FB447005726C2 /* SZTestHelper.m in Sources */,
 				AAF098DB158FB4DD005726C2 /* SZIntegrationTestCase.m in Sources */,
-				AA6CE2ED15905BBD00A4B074 /* GCDAProfiling.c in Sources */,
 				AAB73D581597C01800220492 /* ButtonExampleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6366,6 +6529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */,
 				AA6C63D8158F0EB0005E5632 /* main.m in Sources */,
 				AA6C640E158F0EE6005E5632 /* SZIntegrationTestCase.m in Sources */,
 				AA6C640F158F0EE6005E5632 /* TestEntityServices.m in Sources */,
@@ -6393,7 +6557,6 @@
 				AA6C6427158F0F49005E5632 /* IntegrationTestsAppDelegate.m in Sources */,
 				AA6C642E158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.m in Sources */,
 				AA6C6432158F10D7005E5632 /* SZTestHelper.m in Sources */,
-				AA6CE2EA15905AE800A4B074 /* GCDAProfiling.c in Sources */,
 				AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */,
 				AA1759D416EEA2F700550082 /* SZUnitTestAppHack.m in Sources */,
 			);
@@ -6532,6 +6695,7 @@
 				AA6C99831591634600E24658 /* _SZSelectNetworkViewController.m in Sources */,
 				AAD98F9D1591682000845FC9 /* _SZShareDialogViewController.m in Sources */,
 				AA3A9E2E15E5909F00CD2F75 /* SZSessionTracker.m in Sources */,
+				2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6600,6 +6764,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		487047D317EEFB04008D5741 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA00858F158D2B1100480399 /* TestApp */;
+			targetProxy = 487047D217EEFB04008D5741 /* PBXContainerItemProxy */;
+		};
 		AA008964158D634300480399 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "facebook-ios-sdk";
@@ -6633,6 +6802,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		487047CC17EEFB04008D5741 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				487047CD17EEFB04008D5741 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		AA00859D158D2B1100480399 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -6660,6 +6837,100 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		487047D517EEFB04008D5741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TestApp.app/TestApp";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"\"$(SRCROOT)/ThirdParty\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
+				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		487047D617EEFB04008D5741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TestApp.app/TestApp";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"\"$(SRCROOT)/ThirdParty\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
+				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		AA0085A6158D2B1100480399 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6727,7 +6998,10 @@
 					"\"$(SRCROOT)/ThirdParty\"/**",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6749,7 +7023,10 @@
 					"\"$(SRCROOT)/ThirdParty\"/**",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6771,7 +7048,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -6792,7 +7072,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -6814,7 +7097,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -6835,7 +7121,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -6859,15 +7148,14 @@
 					"$(PROJECT_DIR)/ThirdParty",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_CFLAGS = (
-					"-fprofile-arcs",
-					"-ftest-coverage",
-				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -6889,8 +7177,11 @@
 					"$(PROJECT_DIR)/ThirdParty",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -6912,11 +7203,14 @@
 					"\"$(SRCROOT)/ThirdParty\"",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"RUN_KIF_TESTS=1",
 				);
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(CONFIGURATION_BUILD_DIR)",
 					"$(PROJECT_DIR)/ThirdParty/KIF/**",
@@ -6938,11 +7232,14 @@
 					"\"$(SRCROOT)/ThirdParty\"",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "TestApp/TestApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"RUN_KIF_TESTS=1",
 				);
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(CONFIGURATION_BUILD_DIR)",
 					"$(PROJECT_DIR)/ThirdParty/KIF/**",
@@ -6966,8 +7263,11 @@
 					"\"$(SRCROOT)/ThirdParty\"",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -6991,8 +7291,11 @@
 					"\"$(SRCROOT)/ThirdParty\"",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -7028,13 +7331,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_CFLAGS = (
-					"-ftest-coverage",
-					"-fprofile-arcs",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -7053,7 +7355,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7073,13 +7378,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
-				OTHER_CFLAGS = (
-					"-fprofile-arcs",
-					"-ftest-coverage",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -7098,7 +7402,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				OTHER_LDFLAGS = (
@@ -7114,6 +7421,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		487047D417EEFB04008D5741 /* Build configuration list for PBXNativeTarget "UIIntegrationAcceptanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487047D517EEFB04008D5741 /* Debug */,
+				487047D617EEFB04008D5741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AA00858A158D2B1100480399 /* Build configuration list for PBXProject "Socialize" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -17,6 +17,7 @@
 
 @implementation SZTestAppDelegate
 @synthesize window = window_;
+extern void __gcov_flush(void);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -69,6 +70,7 @@
         int failureCount = [[TestAppKIFTestController sharedInstance] failureCount];
         if (getenv("RUN_CLI")) {
             NSLog(@"Exiting with %i failures", failureCount);
+            __gcov_flush();
             exit(failureCount);
         }
     }];
@@ -138,6 +140,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    //TODO may need to put gcov_flush here...
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

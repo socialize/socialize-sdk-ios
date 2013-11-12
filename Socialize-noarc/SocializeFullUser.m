@@ -26,13 +26,14 @@
  */
 
 #import "SocializeFullUser.h"
-
+#import "UserHelper.h"
 
 @implementation SocializeFullUser
 
 @synthesize firstName = _firstName;
 @synthesize lastName =  _lastName;
 @synthesize userName = _userName;
+@synthesize displayName;
 @synthesize smallImageUrl = _smallInageUrl;
 @synthesize description = _description;
 @synthesize location = _location;
@@ -47,6 +48,10 @@
 @synthesize share = _share;
 
 @synthesize thirdPartyAuth = _thirdPartyAuth;
+
+-(NSString*)displayName {
+    return [UserHelper getDisplayName:self.userName firstName:self.firstName lastName:self.lastName];
+}
 
 - (id)copyWithZone:(NSZone *)zone {
     SocializeFullUser *copy = [super copyWithZone:zone];

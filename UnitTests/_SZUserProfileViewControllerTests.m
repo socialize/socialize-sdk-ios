@@ -14,6 +14,12 @@
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
 
+NSString * const USER_NAME = @"userName";
+NSString * const FIRST_NAME = @"firstName";
+NSString * const LAST_NAME = @"lastName";
+NSString * const DISPLAY_NAME_FULL = @"firstName lastName";
+NSString * const SMALL_IMAGE_URL = @"smallImageURL";
+
 @interface _SZUserProfileViewController ()
 - (void)editButtonPressed:(UIBarButtonItem*)button;
 - (void)showEditController;
@@ -95,29 +101,13 @@
     [super tearDown];
 }
 
-//-(void)testHideEditController {
-//    [[(id)self.profileViewController expect] dismissModalViewControllerAnimated:YES];
-//    [[(id)self.profileViewController expect] stopLoading];
-//    [self.profileViewController hideEditController];
-//}
-//
 - (void)testBasicViewDidLoad {
-//    [[self.mockNavigationBar expect] setBackgroundImage:[UIImage imageNamed:@"socialize-navbar-bg.png"]];
     [self.mockNavigationItem makeNice];
     [[(id)self.profileViewController expect] addActivityControllerToView];
     [[(id)self.profileViewController expect] setProfileImageFromImage:self.profileViewController.defaultProfileImage];
     [self.profileViewController viewDidLoad];
 }
 
-//- (void)testAfterLoginWithNoUserGetsCurrentUser {
-//    
-//    // Expect we get full user for current user from server
-//    [[(id)self.profileViewController expect] startLoading];
-//    [[self.mockSocialize expect] getCurrentUser];
-//    
-//    [self.profileViewController afterLoginAction:YES];
-//}
-//
 - (void)testAfterLoginWithPartialUser {
     // Set up a mock partial user
     NSInteger userID = 123;
@@ -155,11 +145,6 @@
     UIImage *defaultProfile = self.profileViewController.defaultProfileImage;
     GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
 }
-
-//- (void)testSettingsButtonShowsSettings {
-//    [[(id)self.profileViewController expect] showEditController];
-//    [self.profileViewController settingsButtonPressed:nil];
-//}
 
 - (void)testSetProfileImageWithNilImage {
     [[self.mockProfileImageView expect] setImage:self.mockDefaultProfileImage];
@@ -220,18 +205,28 @@
     [self.profileViewController setProfileImageFromURL:testURL];
 }
 
+//configure views will all different displayName permutations
 - (void)testConfigureViews {
-    id mockFullUser = [OCMockObject niceMockForProtocol:@protocol(SocializeFullUser)];
-    NSString *userName = @"userName";
-    NSString *firstName = @"firstName";
-    NSString *lastName = @"lastName";
-    NSString *smallImageUrl = @"smallImageURL";
-    NSInteger testUserID = 1234;
-    [[[mockFullUser stub] andReturn:userName] userName];
-    [[[mockFullUser stub] andReturn:firstName] firstName];
-    [[[mockFullUser stub] andReturn:lastName] lastName];
-    [[[mockFullUser stub] andReturn:smallImageUrl] smallImageUrl];
-    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    [self configureViewsWithDisplayName:DISPLAY_NAME_FULL andID:1234];
+    [self configureViewsWithDisplayName:FIRST_NAME andID:1235];
+    [self configureViewsWithDisplayName:LAST_NAME andID:1236];
+    [self configureViewsWithDisplayName:USER_NAME andID:1237];
+}
+
+- (void)configureViewsWithDisplayName:(NSString *)displayName andID:(NSInteger)testUserID {
+    id mockFullUser = nil;
+    if([displayName isEqualToString:DISPLAY_NAME_FULL]) {
+        mockFullUser = [self mockFullUserWithFullNameAndID:testUserID];
+    }
+    else if([displayName isEqualToString:FIRST_NAME]) {
+        mockFullUser = [self mockFullUserWithFirstOnlyAndID:testUserID];
+    }
+    else if([displayName isEqualToString:LAST_NAME]) {
+        mockFullUser = [self mockFullUserWithLastOnlyAndID:testUserID];
+    }
+    else if([displayName isEqualToString:USER_NAME]) {
+        mockFullUser = [self mockFullUserWithNoneAndID:testUserID];
+    }
     
     // protocol's 'description' collides with an nsobject method
     [self.mockUserDescriptionLabel makeNice];
@@ -239,10 +234,10 @@
     self.profileViewController.fullUser = mockFullUser;
     
     // Labels should be configured
-    [[self.mockUserNameLabel expect] setText:userName];
+    [[self.mockUserNameLabel expect] setText:displayName];
     
     // Image should be loaded
-    [[(id)self.profileViewController expect] setProfileImageFromURL:smallImageUrl];
+    [[(id)self.profileViewController expect] setProfileImageFromURL:SMALL_IMAGE_URL];
     
     // Edit button config
     [[(id)self.profileViewController expect] configureEditButton];
@@ -254,6 +249,46 @@
     [[self.mockActivityViewController expect] initializeContent];
     
     [self.profileViewController configureViews];
+}
+
+- (id)mockFullUserWithFullNameAndID:(NSInteger)testUserID {
+    id mockFullUser = [OCMockObject niceMockForProtocol:@protocol(SocializeFullUser)];
+    [[[mockFullUser stub] andReturn:USER_NAME] userName];
+    [[[mockFullUser stub] andReturn:FIRST_NAME] firstName];
+    [[[mockFullUser stub] andReturn:LAST_NAME] lastName];
+    [[[mockFullUser stub] andReturn:DISPLAY_NAME_FULL] displayName];
+    [[[mockFullUser stub] andReturn:SMALL_IMAGE_URL] smallImageUrl];
+    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    return mockFullUser;
+}
+
+- (id)mockFullUserWithNoneAndID:(NSInteger)testUserID {
+    id mockFullUser = [OCMockObject niceMockForProtocol:@protocol(SocializeFullUser)];
+    [[[mockFullUser stub] andReturn:USER_NAME] userName];
+    [[[mockFullUser stub] andReturn:USER_NAME] displayName];
+    [[[mockFullUser stub] andReturn:SMALL_IMAGE_URL] smallImageUrl];
+    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    return mockFullUser;
+}
+
+- (id)mockFullUserWithFirstOnlyAndID:(NSInteger)testUserID {
+    id mockFullUser = [OCMockObject niceMockForProtocol:@protocol(SocializeFullUser)];
+    [[[mockFullUser stub] andReturn:USER_NAME] userName];
+    [[[mockFullUser stub] andReturn:FIRST_NAME] firstName];
+    [[[mockFullUser stub] andReturn:FIRST_NAME] displayName];
+    [[[mockFullUser stub] andReturn:SMALL_IMAGE_URL] smallImageUrl];
+    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    return mockFullUser;
+}
+
+- (id)mockFullUserWithLastOnlyAndID:(NSInteger)testUserID {
+    id mockFullUser = [OCMockObject niceMockForProtocol:@protocol(SocializeFullUser)];
+    [[[mockFullUser stub] andReturn:USER_NAME] userName];
+    [[[mockFullUser stub] andReturn:LAST_NAME] lastName];
+    [[[mockFullUser stub] andReturn:LAST_NAME] displayName];
+    [[[mockFullUser stub] andReturn:SMALL_IMAGE_URL] smallImageUrl];
+    [[[mockFullUser stub] andReturnInteger:testUserID] objectID];
+    return mockFullUser;
 }
 
 - (void)testConfigureEditButtonForAuthenticatedUser {
@@ -272,54 +307,6 @@
     
     [self.profileViewController configureEditButton];
 }
-
-/*
-- (void)testNavigationControllerForEdit {
-    @autoreleasepool {
-    self.profileViewController.navigationControllerForEdit = nil;
-    
-    // Temporarily a nice mock because it needs to pass through UIKit's UINavigationController init
-    self.profileViewController.profileEditViewController = [OCMockObject niceMockForClass:[_SZUserSettingsViewController class]];
-    
-    UINavigationController *defaultNavigationControllerForEdit = self.profileViewController.navigationControllerForEdit;
-    GHAssertEquals(defaultNavigationControllerForEdit.delegate, self.origViewController, @"delegate not configured");
-    GHAssertNotNil([UIImage imageNamed:@"socialize-navbar-bg.png"], @"image not found");
-    GHAssertEquals([defaultNavigationControllerForEdit.navigationBar backgroundImage], [UIImage imageNamed:@"socialize-navbar-bg.png"], @"bad image");
-    }
-}
- */
-
-//- (void)testShowEditProfile {
-//    id mockImage = [OCMockObject mockForClass:[UIImage class]];
-//    [[[self.mockProfileImageView stub] andReturn:mockImage] image];
-//    
-//    id mockUser = [OCMockObject mockForClass:[SocializeFullUser class]];
-//    [[[mockUser expect] andReturn:@"joe"] firstName];
-//    [[[mockUser expect] andReturn:@"toe"] lastName];
-//    [[[mockUser expect] andReturn:@"big toed joe"] description];
-//    self.profileViewController.fullUser = mockUser;
-//
-//    [[self.mockProfileEditViewController expect] setProfileImage:mockImage];
-//    [[self.mockProfileEditViewController expect] setFullUser:mockUser];
-//    
-//    id mockNavigationControllerForEdit = [OCMockObject mockForClass:[UINavigationController class]];
-//    [[[(id)self.profileViewController stub] andReturn:mockNavigationControllerForEdit] navigationControllerForEdit];
-//    
-//    [[(id)self.profileViewController expect] presentModalViewController:mockNavigationControllerForEdit animated:YES];
-//    [self.profileViewController showEditController];
-//}
-
-//- (void)testUpdateProfileComplete {
-//    id mockUser = [OCMockObject mockForProtocol:@protocol(SocializeFullUser)];
-//    id mockImage = [OCMockObject mockForClass:[UIImage class]];
-//    [[[self.mockProfileEditViewController stub] andReturn:mockImage] profileImage];
-//    [[[self.mockProfileEditViewController stub] andReturn:mockUser] fullUser];
-//    [[(id)self.profileViewController expect] configureViews];
-//    [[(id)self.profileViewController expect] hideEditController];
-//    [[self.mockActivityViewController expect] fullUserChanged:mockUser];
-//    [self.profileViewController profileEditViewController:self.mockProfileEditViewController didUpdateProfileWithUser:mockUser];
-//    
-//}
 
 - (void)testEntityLoaderIsCalledWhenActivityTapped {
     id mockActivity = [OCMockObject mockForProtocol:@protocol(SocializeActivity)];

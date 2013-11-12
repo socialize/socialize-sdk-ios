@@ -44,9 +44,8 @@ Make sure "Enable for Apple Push Notification service" is checked.
 Step 3: Keys/Certificates for your App ID for APNS
 --------------------------------------------------------------------------------
 
-* Click the 'configure' button for your desired certificate ('Production Push
-  SSL Certificate' or 'Development Push SSL Certificate') on the right hand
-  side.  Follow the directions given to you by Apple **very carefully**.  
+* Click the 'Create Certificate...' button for 'Production Push
+  SSL Certificate' on the right hand side.  Follow the directions given to you by Apple **very carefully**.  
 
 .. note:: 
 

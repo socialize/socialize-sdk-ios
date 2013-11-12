@@ -52,9 +52,9 @@ mkdir "$CFFIXED_USER_HOME/Documents"
 mkdir -p "$CFFIXED_USER_HOME/Library/Caches"
 
 # securityd for keychain / auth
-LAUNCHNAME="RunIPhoneLaunchDaemons"
-launchctl submit -l $LAUNCHNAME -- "${THISDIR}/RunIPhoneLaunchDaemons.sh" $IPHONE_SIMULATOR_ROOT $CFFIXED_USER_HOME
-trap "launchctl remove $LAUNCHNAME" INT TERM EXIT
+#LAUNCHNAME="RunIPhoneLaunchDaemons"
+#launchctl submit -l $LAUNCHNAME -- "${THISDIR}/RunIPhoneLaunchDaemons.sh" $IPHONE_SIMULATOR_ROOT $CFFIXED_USER_HOME
+#trap "launchctl remove $LAUNCHNAME" INT TERM EXIT
 
 killall "iPhone Simulator" >/dev/null 2>&1
 #RUN_CMD="gdb --args \"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"

@@ -25,6 +25,8 @@
 -(void) setUserName: (NSString*) userName;
 -(NSString*) userName;
 
+-(NSString*) displayName;
+
 -(void) setSmallImageUrl: (NSString*) smallImageUrl;
 -(NSString*)smallImageUrl;
 
@@ -59,6 +61,7 @@
 @property (nonatomic, copy) NSString* firstName;
 @property (nonatomic, copy) NSString* lastName;
 @property (nonatomic, copy) NSString* userName;
+@property (nonatomic, readonly) NSString* displayName;
 @property (nonatomic, copy) NSString* smallImageUrl;
 @property (nonatomic, copy) NSString* city;
 @property (nonatomic, copy) NSString* state;

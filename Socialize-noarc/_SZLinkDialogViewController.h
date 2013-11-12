@@ -28,6 +28,7 @@ typedef enum {
 @protocol _SZLinkDialogViewControllerDelegate;
 
 @interface _SZLinkDialogViewController : SocializeBaseViewController<_SZUserSettingsViewControllerDelegate> {
+    UIImageView                 *topImage;
     UITableView                 *tableView;
     NSString                    *_facebookUsername;
     UIButton                    *skipButton;
@@ -35,6 +36,7 @@ typedef enum {
     BOOL boolErrorStatus;
 }
 
+@property (nonatomic, retain) IBOutlet UIImageView     *topImage;
 @property (nonatomic, retain) IBOutlet UITableView     *tableView;
 @property (nonatomic, retain) IBOutlet UIButton        *skipButton;
 @property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetwork);

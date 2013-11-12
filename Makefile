@@ -1,7 +1,7 @@
 .PHONY: tags framework bundle integration-tests ui-integration-tests clean test package release
 
 test:
-	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -scheme UnitTests -configuration Debug -sdk iphonesimulator
 
 default: build buildsample test package
 
@@ -22,13 +22,16 @@ clean:
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
-	./Scripts/generate-combined-coverage-report.sh build/test-coverage/UIIntegrationTests-Coverage.info build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info
+	# TODO put back UIIntegrationTests once it's outputting stuff again (need to add gcov flush to its app delegate)
+	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info
 
 integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	RUN_CLI=1 xcodebuild -scheme UIIntegrationTests -configuration Debug -sdk iphonesimulator build
+	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone" test
+	#killall "iPhone Simulator" >/dev/null 2>&1
+	./Scripts/generate-ui-coverage-report.sh
 
 doc:
 	cd Socialize && appledoc ./DocSettings.plist
@@ -47,4 +50,3 @@ sphinx_doc: subst
 
 tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
-

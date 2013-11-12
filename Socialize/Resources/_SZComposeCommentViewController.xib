@@ -1,1043 +1,212 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
-	<data>
-		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">2083</string>
-		</object>
-		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBProxyObject</string>
-			<string>IBUIButton</string>
-			<string>IBUIImageView</string>
-			<string>IBUILabel</string>
-			<string>IBUITextView</string>
-			<string>IBUIView</string>
-		</array>
-		<array key="IBDocument.PluginDependencies">
-			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-		</array>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
-		</object>
-		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
-			<object class="IBProxyObject" id="372490531">
-				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBProxyObject" id="975951072">
-				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUIView" id="191373211">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">310</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="432544801">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">306</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUITextView" id="29659908">
-								<reference key="NSNextResponder" ref="432544801"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{320, 161}</string>
-								<reference key="NSSuperview" ref="432544801"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="227796856"/>
-								<object class="NSColor" key="IBUIBackgroundColor" id="374181023">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAxIDEAA</bytes>
-								</object>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
-									<string key="IBUIAccessibilityLabel">Comment Entry</string>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText"/>
-								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
-									<int key="IBUIAutocapitalizationType">2</int>
-									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								</object>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<string key="name">Helvetica</string>
-									<string key="family">Helvetica</string>
-									<int key="traits">0</int>
-									<double key="pointSize">14</double>
-								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
-									<double key="NSSize">14</double>
-									<int key="NSfFlags">16</int>
-								</object>
-							</object>
-							<object class="IBUIView" id="227796856">
-								<reference key="NSNextResponder" ref="432544801"/>
-								<int key="NSvFlags">271</int>
-								<array class="NSMutableArray" key="NSSubviews">
-									<object class="IBUIImageView" id="56684777">
-										<reference key="NSNextResponder" ref="227796856"/>
-										<int key="NSvFlags">294</int>
-										<string key="NSFrameSize">{320, 39}</string>
-										<reference key="NSSuperview" ref="227796856"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="344864061"/>
-										<object class="NSColor" key="IBUIBackgroundColor" id="614180762">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MCAwAA</bytes>
-										</object>
-										<bool key="IBUIUserInteractionEnabled">NO</bool>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<object class="NSCustomResource" key="IBUIImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">socialize-comment-location-bar-background.png</string>
-										</object>
-									</object>
-									<object class="IBUILabel" id="239884168">
-										<reference key="NSNextResponder" ref="227796856"/>
-										<int key="NSvFlags">294</int>
-										<string key="NSFrame">{{41, 11}, {175, 21}}</string>
-										<reference key="NSSuperview" ref="227796856"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="35417833"/>
-										<bool key="IBUIOpaque">NO</bool>
-										<bool key="IBUIClipsSubviews">YES</bool>
-										<int key="IBUIContentMode">7</int>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">South Beach, San Fransisco</string>
-										<object class="NSColor" key="IBUITextColor" id="24603512">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MCAwIDAAA</bytes>
-											<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
-										</object>
-										<nil key="IBUIHighlightedColor"/>
-										<int key="IBUIBaselineAdjustment">1</int>
-										<float key="IBUIMinimumFontSize">10</float>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="1024014318">
-											<string key="name">Helvetica</string>
-											<string key="family">Helvetica</string>
-											<int key="traits">0</int>
-											<double key="pointSize">12</double>
-										</object>
-										<object class="NSFont" key="IBUIFont" id="160740273">
-											<string key="NSName">Helvetica</string>
-											<double key="NSSize">12</double>
-											<int key="NSfFlags">16</int>
-										</object>
-									</object>
-									<object class="IBUIButton" id="344864061">
-										<reference key="NSNextResponder" ref="227796856"/>
-										<int key="NSvFlags">294</int>
-										<string key="NSFrame">{{0, 6}, {197, 30}}</string>
-										<reference key="NSSuperview" ref="227796856"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="239884168"/>
-										<reference key="IBUIBackgroundColor" ref="614180762"/>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<double key="IBUIImageEdgeInsets.top">0.0</double>
-										<double key="IBUIImageEdgeInsets.bottom">0.0</double>
-										<double key="IBUIImageEdgeInsets.left">10</double>
-										<double key="IBUIImageEdgeInsets.right">0.0</double>
-										<object class="NSColor" key="IBUIHighlightedTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xMDU4ODIzNTI5IDAuNzE3NjQ3MDU4OCAwLjk1Njg2Mjc0NTEAA</bytes>
-										</object>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xMDU4ODIzNTI5IDAuNzE3NjQ3MDU4OCAwLjk1Njg2Mjc0NTEAA</bytes>
-										</object>
-										<reference key="IBUIHighlightedTitleShadowColor" ref="24603512"/>
-										<reference key="IBUINormalTitleShadowColor" ref="24603512"/>
-										<object class="NSCustomResource" key="IBUIHighlightedImage" id="742979649">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">socialize-comment-location-enabled.png</string>
-										</object>
-										<reference key="IBUINormalImage" ref="742979649"/>
-										<reference key="IBUIFontDescription" ref="1024014318"/>
-										<reference key="IBUIFont" ref="160740273"/>
-									</object>
-									<object class="IBUIView" id="35417833">
-										<reference key="NSNextResponder" ref="227796856"/>
-										<int key="NSvFlags">289</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="IBUIButton" id="494638508">
-												<reference key="NSNextResponder" ref="35417833"/>
-												<int key="NSvFlags">257</int>
-												<string key="NSFrame">{{82, 1}, {40, 40}}</string>
-												<reference key="NSSuperview" ref="35417833"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="396742091"/>
-												<string key="NSReuseIdentifierKey">_NS:225</string>
-												<bool key="IBUIOpaque">NO</bool>
-												<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-												<int key="IBUIContentHorizontalAlignment">0</int>
-												<int key="IBUIContentVerticalAlignment">0</int>
-												<object class="NSColor" key="IBUIHighlightedTitleColor" id="961440978">
-													<int key="NSColorSpace">3</int>
-													<bytes key="NSWhite">MQA</bytes>
-												</object>
-												<object class="NSColor" key="IBUINormalTitleColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-												</object>
-												<object class="NSColor" key="IBUINormalTitleShadowColor" id="877216864">
-													<int key="NSColorSpace">3</int>
-													<bytes key="NSWhite">MC41AA</bytes>
-												</object>
-												<object class="NSCustomResource" key="IBUISelectedImage">
-													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">socialize-comment-notification-enabled.png</string>
-												</object>
-												<object class="NSCustomResource" key="IBUINormalImage">
-													<string key="NSClassName">NSImage</string>
-													<string key="NSResourceName">socialize-comment-notification-disabled.png</string>
-												</object>
-												<object class="IBUIFontDescription" key="IBUIFontDescription">
-													<int key="type">2</int>
-													<double key="pointSize">15</double>
-												</object>
-												<object class="NSFont" key="IBUIFont" id="539295604">
-													<string key="NSName">Helvetica-Bold</string>
-													<double key="NSSize">15</double>
-													<int key="NSfFlags">16</int>
-												</object>
-											</object>
-										</array>
-										<string key="NSFrame">{{198, 0}, {122, 39}}</string>
-										<reference key="NSSuperview" ref="227796856"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="494638508"/>
-										<string key="NSReuseIdentifierKey">_NS:196</string>
-										<object class="NSColor" key="IBUIBackgroundColor">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MSAwAA</bytes>
-											<object class="NSColorSpace" key="NSCustomColorSpace">
-												<int key="NSID">2</int>
-											</object>
-										</object>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-									</object>
-								</array>
-								<string key="NSFrame">{{0, 161}, {320, 39}}</string>
-								<reference key="NSSuperview" ref="432544801"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="56684777"/>
-								<reference key="IBUIBackgroundColor" ref="961440978"/>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							</object>
-						</array>
-						<string key="NSFrameSize">{320, 200}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="29659908"/>
-						<string key="NSReuseIdentifierKey">_NS:196</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4zODY3NzAwMzE3IDEgMC4zMzQwODcwMzA3AA</bytes>
-						</object>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIView" id="396742091">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">286</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="447801653">
-								<reference key="NSNextResponder" ref="396742091"/>
-								<int key="NSvFlags">-2147483338</int>
-								<string key="NSFrameSize">{320, 216}</string>
-								<reference key="NSSuperview" ref="396742091"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
-								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MCAwLjUAA</bytes>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							</object>
-						</array>
-						<string key="NSFrame">{{0, 200}, {320, 216}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="447801653"/>
-						<string key="NSReuseIdentifierKey">_NS:196</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC4yNTA5ODA0MDcgMC4yOTgwMzkyMjc3IDAuMzMzMzMzMzQzMwA</bytes>
-						</object>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-				</array>
-				<string key="NSFrame">{{0, 64}, {320, 416}}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="432544801"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC4yNTQ5MDE5NjA4IDAuMzAxOTYwNzg0MyAwLjMzNzI1NDkwMgA</bytes>
-				</object>
-				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
-					<bool key="IBUIPrompted">NO</bool>
-				</object>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUIView" id="172670398">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">274</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="513079679">
-						<reference key="NSNextResponder" ref="172670398"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 216}</string>
-						<reference key="NSSuperview" ref="172670398"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="287532741"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage" id="200935286">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">socialize-comment-detail-bottom-shadow-background.png</string>
-						</object>
-					</object>
-					<object class="IBUIButton" id="623282184">
-						<reference key="NSNextResponder" ref="172670398"/>
-						<int key="NSvFlags">301</int>
-						<string key="NSFrame">{{40, 151}, {239, 47}}</string>
-						<reference key="NSSuperview" ref="172670398"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Unsubscribe</string>
-						<reference key="IBUIHighlightedTitleColor" ref="961440978"/>
-						<reference key="IBUINormalTitleColor" ref="961440978"/>
-						<reference key="IBUINormalTitleShadowColor" ref="877216864"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="783704552">
-							<string key="name">Helvetica-Bold</string>
-							<string key="family">Helvetica</string>
-							<int key="traits">2</int>
-							<double key="pointSize">15</double>
-						</object>
-						<reference key="IBUIFont" ref="539295604"/>
-					</object>
-					<object class="IBUIImageView" id="287532741">
-						<reference key="NSNextResponder" ref="172670398"/>
-						<int key="NSvFlags">319</int>
-						<string key="NSFrame">{{78, 17}, {165, 77}}</string>
-						<reference key="NSSuperview" ref="172670398"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="918964702"/>
-						<string key="NSReuseIdentifierKey">_NS:567</string>
-						<int key="IBUIContentMode">1</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">socialize-iphone-subcribe-notification-icon.png</string>
-						</object>
-					</object>
-					<object class="IBUILabel" id="796890926">
-						<reference key="NSNextResponder" ref="172670398"/>
-						<int key="NSvFlags">301</int>
-						<string key="NSFrame">{{59, 102}, {206, 20}}</string>
-						<reference key="NSSuperview" ref="172670398"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="623282184"/>
-						<string key="NSReuseIdentifierKey">_NS:328</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Subscribed to this discussion.</string>
-						<reference key="IBUITextColor" ref="374181023"/>
-						<nil key="IBUIHighlightedColor"/>
-						<object class="NSColor" key="IBUIShadowColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yNSAwLjI1IDAuMjUAA</bytes>
-						</object>
-						<string key="IBUIShadowOffset">{0, 1}</string>
-						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<string key="name">Helvetica-Bold</string>
-							<string key="family">Helvetica</string>
-							<int key="traits">2</int>
-							<double key="pointSize">14</double>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">14</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-					<object class="IBUILabel" id="918964702">
-						<reference key="NSNextResponder" ref="172670398"/>
-						<int key="NSvFlags">301</int>
-						<string key="NSFrame">{{51, 116}, {220, 21}}</string>
-						<reference key="NSSuperview" ref="172670398"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="796890926"/>
-						<string key="NSReuseIdentifierKey">_NS:328</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">We will notify you when someone replies.</string>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC42MDM5MjE1Njg2IDAuNjY2NjY2NjY2NyAwLjcxMzcyNTQ5MDIAA</bytes>
-						</object>
-						<nil key="IBUIHighlightedColor"/>
-						<reference key="IBUIShadowColor" ref="24603512"/>
-						<string key="IBUIShadowOffset">{0, 1}</string>
-						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
-						<reference key="IBUIFontDescription" ref="1024014318"/>
-						<reference key="IBUIFont" ref="160740273"/>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-				</array>
-				<string key="NSFrameSize">{320, 216}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="513079679"/>
-				<string key="NSReuseIdentifierKey">_NS:196</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC4yNTQ5MDE5NjA4IDAuMzAxOTYwNzg0MyAwLjMzNzI1NDkwMgA</bytes>
-				</object>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUIView" id="730674798">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">282</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="717419979">
-						<reference key="NSNextResponder" ref="730674798"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 217}</string>
-						<reference key="NSSuperview" ref="730674798"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="612607446"/>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIImage" ref="200935286"/>
-					</object>
-					<object class="IBUIButton" id="927157460">
-						<reference key="NSNextResponder" ref="730674798"/>
-						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{38, 151}, {239, 47}}</string>
-						<reference key="NSSuperview" ref="730674798"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Don't Share Location</string>
-						<reference key="IBUIHighlightedTitleColor" ref="961440978"/>
-						<reference key="IBUINormalTitleColor" ref="961440978"/>
-						<reference key="IBUINormalTitleShadowColor" ref="877216864"/>
-						<reference key="IBUIFontDescription" ref="783704552"/>
-						<reference key="IBUIFont" ref="539295604"/>
-					</object>
-					<object class="IBUIView" id="612607446">
-						<reference key="NSNextResponder" ref="730674798"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 20}, {280, 121}}</string>
-						<reference key="NSSuperview" ref="730674798"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="927157460"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<reference key="IBUIBackgroundColor" ref="614180762"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-				</array>
-				<string key="NSFrameSize">{320, 216}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="717419979"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC4yNTQ5MDE5NjA4IDAuMzAxOTYwNzg0MyAwLjMzNzI1NDkwMgA</bytes>
-				</object>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-		</array>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<array class="NSMutableArray" key="connectionRecords">
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">view</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="191373211"/>
-					</object>
-					<int key="connectionID">3</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">commentTextView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="29659908"/>
-					</object>
-					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">locationText</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="239884168"/>
-					</object>
-					<int key="connectionID">23</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">activateLocationButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="344864061"/>
-					</object>
-					<int key="connectionID">15</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">doNotShareLocationButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="927157460"/>
-					</object>
-					<int key="connectionID">16</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">mapContainer</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="730674798"/>
-					</object>
-					<int key="connectionID">29</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lowerContainer</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="396742091"/>
-					</object>
-					<int key="connectionID">46</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">upperContainer</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="432544801"/>
-					</object>
-					<int key="connectionID">47</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">unsubscribeButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="623282184"/>
-					</object>
-					<int key="connectionID">53</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">subscribeContainer</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="172670398"/>
-					</object>
-					<int key="connectionID">58</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">messageActionButtonContainer</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="35417833"/>
-					</object>
-					<int key="connectionID">61</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">enableSubscribeButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="494638508"/>
-					</object>
-					<int key="connectionID">54</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">bottomContainerDisabledView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="447801653"/>
-					</object>
-					<int key="connectionID">68</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">mapViewContainer</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="612607446"/>
-					</object>
-					<int key="connectionID">70</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="29659908"/>
-						<reference key="destination" ref="372490531"/>
-					</object>
-					<int key="connectionID">19</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">doNotShareLocationButtonPressed:</string>
-						<reference key="source" ref="927157460"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">17</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">activateLocationButtonPressed:</string>
-						<reference key="source" ref="344864061"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">18</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">enableSubscribeButtonPressed:</string>
-						<reference key="source" ref="494638508"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">57</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">unsubscribeButtonPressed:</string>
-						<reference key="source" ref="623282184"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">56</int>
-				</object>
-			</array>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<array key="orderedObjects">
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<array key="object" id="0"/>
-						<reference key="children" ref="1000"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1</int>
-						<reference key="object" ref="191373211"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="432544801"/>
-							<reference ref="396742091"/>
-						</array>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">View</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="372490531"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="975951072"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">37</int>
-						<reference key="object" ref="172670398"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="918964702"/>
-							<reference ref="796890926"/>
-							<reference ref="513079679"/>
-							<reference ref="623282184"/>
-							<reference ref="287532741"/>
-						</array>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Subscribe View Container</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">38</int>
-						<reference key="object" ref="513079679"/>
-						<reference key="parent" ref="172670398"/>
-						<string key="objectName">Image View - socialize-activity-bg.png</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">40</int>
-						<reference key="object" ref="918964702"/>
-						<reference key="parent" ref="172670398"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">41</int>
-						<reference key="object" ref="796890926"/>
-						<reference key="parent" ref="172670398"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">42</int>
-						<reference key="object" ref="287532741"/>
-						<reference key="parent" ref="172670398"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">44</int>
-						<reference key="object" ref="432544801"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="227796856"/>
-							<reference ref="29659908"/>
-						</array>
-						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Upper Container</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="29659908"/>
-						<reference key="parent" ref="432544801"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="227796856"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="344864061"/>
-							<reference ref="239884168"/>
-							<reference ref="56684777"/>
-							<reference ref="35417833"/>
-						</array>
-						<reference key="parent" ref="432544801"/>
-						<string key="objectName">locationStatusViewContainer</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">8</int>
-						<reference key="object" ref="56684777"/>
-						<reference key="parent" ref="227796856"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="239884168"/>
-						<reference key="parent" ref="227796856"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">12</int>
-						<reference key="object" ref="344864061"/>
-						<reference key="parent" ref="227796856"/>
-						<string key="objectName">Button - South Beach, San Francisco</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">9</int>
-						<reference key="object" ref="730674798"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="717419979"/>
-							<reference ref="927157460"/>
-							<reference ref="612607446"/>
-						</array>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">locationMapViewContainer</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">25</int>
-						<reference key="object" ref="717419979"/>
-						<reference key="parent" ref="730674798"/>
-						<string key="objectName">Image View - socialize-activity-bg.png</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">11</int>
-						<reference key="object" ref="927157460"/>
-						<reference key="parent" ref="730674798"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">45</int>
-						<reference key="object" ref="396742091"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="447801653"/>
-						</array>
-						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Lower Container</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">51</int>
-						<reference key="object" ref="623282184"/>
-						<reference key="parent" ref="172670398"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">60</int>
-						<reference key="object" ref="35417833"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="494638508"/>
-						</array>
-						<reference key="parent" ref="227796856"/>
-						<string key="objectName">Message Action Button Container</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">49</int>
-						<reference key="object" ref="494638508"/>
-						<reference key="parent" ref="35417833"/>
-						<string key="objectName">Notifications Button</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">66</int>
-						<reference key="object" ref="447801653"/>
-						<reference key="parent" ref="396742091"/>
-						<string key="objectName">Map Disabled View</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">69</int>
-						<reference key="object" ref="612607446"/>
-						<reference key="parent" ref="730674798"/>
-						<string key="objectName">Actual Map Container</string>
-					</object>
-				</array>
-			</object>
-			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.CustomClassName">_SZComposeCommentViewController</string>
-				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="-2.CustomClassName">UIResponder</string>
-				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="11.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="2" key="12.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<real value="0.0" key="12.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
-				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="38.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="44.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="3" key="49.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
-				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="51.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="51.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="60.CustomClassName">SZHorizontalContainerView</string>
-				<string key="60.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="66.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			</dictionary>
-			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
-			<nil key="activeLocalization"/>
-			<dictionary class="NSMutableDictionary" key="localizations"/>
-			<nil key="sourceID"/>
-			<int key="maxID">70</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">CommentMapView</string>
-					<string key="superclassName">MKMapView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CommentMapView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SZHorizontalContainerView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SZHorizontalContainerView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SocializeBaseViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">tableView</string>
-						<string key="NS.object.0">UITableView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">tableView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SocializeBaseViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SocializeComposeMessageViewController</string>
-					<string key="superclassName">SocializeBaseViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="activateLocationButtonPressed:">id</string>
-						<string key="doNotShareLocationButtonPressed:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="activateLocationButtonPressed:">
-							<string key="name">activateLocationButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="doNotShareLocationButtonPressed:">
-							<string key="name">doNotShareLocationButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activateLocationButton">UIButton</string>
-						<string key="bottomContainerDisabledView">UIView</string>
-						<string key="commentTextView">UITextView</string>
-						<string key="doNotShareLocationButton">UIButton</string>
-						<string key="locationText">UILabel</string>
-						<string key="lowerContainer">UIView</string>
-						<string key="mapContainer">UIView</string>
-						<string key="mapOfUserLocation">CommentMapView</string>
-						<string key="mapViewContainer">UIView</string>
-						<string key="messageActionButtonContainer">SZHorizontalContainerView</string>
-						<string key="upperContainer">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activateLocationButton">
-							<string key="name">activateLocationButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="bottomContainerDisabledView">
-							<string key="name">bottomContainerDisabledView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="commentTextView">
-							<string key="name">commentTextView</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="doNotShareLocationButton">
-							<string key="name">doNotShareLocationButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="locationText">
-							<string key="name">locationText</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lowerContainer">
-							<string key="name">lowerContainer</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mapContainer">
-							<string key="name">mapContainer</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mapOfUserLocation">
-							<string key="name">mapOfUserLocation</string>
-							<string key="candidateClassName">CommentMapView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mapViewContainer">
-							<string key="name">mapViewContainer</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="messageActionButtonContainer">
-							<string key="name">messageActionButtonContainer</string>
-							<string key="candidateClassName">SZHorizontalContainerView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="upperContainer">
-							<string key="name">upperContainer</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SocializeComposeMessageViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">_SZComposeCommentViewController</string>
-					<string key="superclassName">SocializeComposeMessageViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="enableSubscribeButtonPressed:">id</string>
-						<string key="unsubscribeButtonPressed:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="enableSubscribeButtonPressed:">
-							<string key="name">enableSubscribeButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="unsubscribeButtonPressed:">
-							<string key="name">unsubscribeButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="enableSubscribeButton">UIButton</string>
-						<string key="facebookButton">UIButton</string>
-						<string key="subscribeContainer">UIView</string>
-						<string key="twitterButton">UIButton</string>
-						<string key="unsubscribeButton">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="enableSubscribeButton">
-							<string key="name">enableSubscribeButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="facebookButton">
-							<string key="name">facebookButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="subscribeContainer">
-							<string key="name">subscribeContainer</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="twitterButton">
-							<string key="name">twitterButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="unsubscribeButton">
-							<string key="name">unsubscribeButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/_SZComposeCommentViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1552" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
-			<real value="4000" key="NS.object.0"/>
-		</object>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="socialize-comment-detail-bottom-shadow-background.png">{2, 213}</string>
-			<string key="socialize-comment-location-bar-background.png">{1, 39}</string>
-			<string key="socialize-comment-location-enabled.png">{24, 25}</string>
-			<string key="socialize-comment-notification-disabled.png">{30, 30}</string>
-			<string key="socialize-comment-notification-enabled.png">{30, 30}</string>
-			<string key="socialize-iphone-subcribe-notification-icon.png">{165, 77}</string>
-		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">2083</string>
-	</data>
-</archive>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="_SZComposeCommentViewController">
+            <connections>
+                <outlet property="activateLocationButton" destination="12" id="15"/>
+                <outlet property="bottomContainerDisabledView" destination="66" id="68"/>
+                <outlet property="commentTextView" destination="5" id="14"/>
+                <outlet property="doNotShareLocationButton" destination="11" id="16"/>
+                <outlet property="enableSubscribeButton" destination="49" id="54"/>
+                <outlet property="locationText" destination="22" id="23"/>
+                <outlet property="lowerContainer" destination="45" id="46"/>
+                <outlet property="mapContainer" destination="9" id="29"/>
+                <outlet property="mapViewContainer" destination="69" id="70"/>
+                <outlet property="messageActionButtonContainer" destination="60" id="61"/>
+                <outlet property="subscribeContainer" destination="37" id="58"/>
+                <outlet property="unsubscribeButton" destination="51" id="53"/>
+                <outlet property="upperContainer" destination="44" id="47"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" userLabel="View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="44" userLabel="Upper Container">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="191"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="Comment Entry"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="19"/>
+                            </connections>
+                        </textView>
+                        <view contentMode="scaleToFill" id="6" userLabel="locationStatusViewContainer">
+                            <rect key="frame" x="0.0" y="191" width="320" height="39"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="socialize-comment-location-bar-background.png" id="8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </imageView>
+                                <label opaque="NO" clipsSubviews="YES" contentMode="left" text="South Beach, San Fransisco" lineBreakMode="tailTruncation" minimumFontSize="10" id="22">
+                                    <rect key="frame" x="41" y="11" width="175" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="12" userLabel="Button - South Beach, San Francisco">
+                                    <rect key="frame" x="0.0" y="6" width="197" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="socialize-comment-location-enabled.png">
+                                        <color key="titleColor" red="0.1058823529" green="0.71764705880000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <state key="highlighted" image="socialize-comment-location-enabled.png">
+                                        <color key="titleColor" red="0.1058823529" green="0.71764705880000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="activateLocationButtonPressed:" destination="-1" eventType="touchUpInside" id="18"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" id="60" userLabel="Message Action Button Container" customClass="SZHorizontalContainerView">
+                                    <rect key="frame" x="198" y="0.0" width="122" height="39"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="49" userLabel="Notifications Button">
+                                            <rect key="frame" x="82" y="1" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="socialize-comment-notification-disabled.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="socialize-comment-notification-enabled.png"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="enableSubscribeButtonPressed:" destination="-1" eventType="touchUpInside" id="57"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.38677003170000002" green="1" blue="0.33408703070000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" id="45" userLabel="Lower Container">
+                    <rect key="frame" x="0.0" y="230" width="320" height="249"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view hidden="YES" contentMode="scaleToFill" id="66" userLabel="Map Disabled View">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.25098040700000002" green="0.29803922770000002" blue="0.33333334329999997" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.25490196079999999" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="37" userLabel="Subscribe View Container">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="socialize-comment-detail-bottom-shadow-background.png" id="38" userLabel="Image View - socialize-activity-bg.png">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="51">
+                    <rect key="frame" x="40" y="151" width="239" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                    <state key="normal" title="Unsubscribe">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="unsubscribeButtonPressed:" destination="-1" eventType="touchUpInside" id="56"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="socialize-iphone-subcribe-notification-icon.png" id="42">
+                    <rect key="frame" x="78" y="17" width="165" height="77"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subscribed to this discussion." lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="41">
+                    <rect key="frame" x="59" y="102" width="206" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.25" green="0.25" blue="0.25" alpha="1" colorSpace="calibratedRGB"/>
+                    <size key="shadowOffset" width="0.0" height="1"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="We will notify you when someone replies." lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="40">
+                    <rect key="frame" x="51" y="116" width="220" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
+                    <color key="textColor" red="0.60392156860000001" green="0.66666666669999997" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <size key="shadowOffset" width="0.0" height="1"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.25490196079999999" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="9" userLabel="locationMapViewContainer">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="socialize-comment-detail-bottom-shadow-background.png" id="25" userLabel="Image View - socialize-activity-bg.png">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="11">
+                    <rect key="frame" x="38" y="151" width="239" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                    <state key="normal" title="Don't Share Location">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="doNotShareLocationButtonPressed:" destination="-1" eventType="touchUpInside" id="17"/>
+                    </connections>
+                </button>
+                <view opaque="NO" contentMode="scaleToFill" id="69" userLabel="Actual Map Container">
+                    <rect key="frame" x="20" y="20" width="280" height="121"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.25490196079999999" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="socialize-comment-detail-bottom-shadow-background.png" width="2" height="213"/>
+        <image name="socialize-comment-location-bar-background.png" width="1" height="39"/>
+        <image name="socialize-comment-location-enabled.png" width="24" height="25"/>
+        <image name="socialize-comment-notification-disabled.png" width="30" height="30"/>
+        <image name="socialize-comment-notification-enabled.png" width="30" height="30"/>
+        <image name="socialize-iphone-subcribe-notification-icon.png" width="165" height="77"/>
+    </resources>
+</document>

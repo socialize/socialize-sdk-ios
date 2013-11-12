@@ -390,7 +390,7 @@
     SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
 
     NSString *commentText = entryComment.text;
-    NSString *commentHeadline = entryComment.user.userName;
+    NSString *commentHeadline = entryComment.user.displayName;//entryComment.user.userName;
     
     cell.locationPin.hidden = (entryComment.lat == nil);
     cell.btnViewProfile.tag = indexPath.row;

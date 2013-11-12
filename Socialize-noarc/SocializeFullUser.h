@@ -44,6 +44,8 @@
 -(void) setUserName: (NSString*) userName;
 -(NSString*) userName;
 
+-(NSString*) displayName;
+
 -(void) setDescription: (NSString*)description;
 -(NSString*)description;
 
@@ -108,6 +110,7 @@
 @property (nonatomic, copy) NSString* firstName;
 @property (nonatomic, copy) NSString* lastName;
 @property (nonatomic, copy) NSString* userName;
+@property (nonatomic, readonly) NSString* displayName;
 @property (nonatomic, copy) NSString* description;
 @property (nonatomic, copy) NSString* sex;
 @property (nonatomic, copy) NSString* location;

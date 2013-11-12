@@ -35,13 +35,11 @@
 #import "HtmlPageCreator.h"
 #import "URLDownload.h"
 
-#define TEST_COMMENT @"test comment"
-#define TEST_USER_NAME @"test_user"
-
-/*
-@interface SocializeCommentDetailsViewController(public)
--(_SZUserProfileViewController *)getProfileViewControllerForUser:(id<SocializeUser>)user;
-@end*/
+NSString * const TEST_COMMENT = @"test comment";
+NSString * const TEST_USER_NAME = @"test_user";
+NSString * const TEST_FIRST_NAME = @"firstName";
+NSString * const TEST_LAST_NAME = @"lastName";
+NSString * const TEST_DISPLAY_NAME_FULL = @"firstName lastName";
 
 @implementation CommentDetailsViewControllerTests
 
@@ -91,7 +89,7 @@
     return YES;
 }
 
--(id) mockCommentWithDate: (NSDate*) date lat: (NSNumber*)lat lng: (NSNumber*)lng profileUrl: (NSString*)url
+-(id) mockCommentWithDate:(NSDate*)date lat:(NSNumber*)lat lng:(NSNumber*)lng profileUrl:(NSString*)url displayName:(NSString*)displayName
 {
     id mockComment = [OCMockObject mockForProtocol:@protocol(SocializeComment)];
     [[[mockComment stub] andReturn:TEST_COMMENT]text];
@@ -99,12 +97,66 @@
     [[[mockComment stub] andReturn:lat]lat];
     [[[mockComment stub] andReturn:lng]lng];
     
-    id mockUser = [OCMockObject mockForProtocol: @protocol(SocializeUser)];
-    [[[mockUser stub] andReturn:TEST_USER_NAME] userName];
-    [[[mockUser stub] andReturn:url] smallImageUrl];
-    
+    id mockUser = nil;
+    if([displayName isEqualToString:TEST_DISPLAY_NAME_FULL]) {
+        mockUser = [self mockUserFullWithUrl:url];
+    }
+    else if([displayName isEqualToString:TEST_FIRST_NAME]) {
+        mockUser = [self mockUserFirstOnlyWithUrl:url];
+    }
+    else if([displayName isEqualToString:TEST_LAST_NAME]) {
+        mockUser = [self mockUserLastOnlyWithUrl:url];
+    }
+    else if([displayName isEqualToString:TEST_USER_NAME]) {
+        mockUser = [self mockUserNoneWithUrl:url];
+    }
+
     [[[mockComment stub] andReturn: mockUser]user];
     return mockComment;
+}
+
+-(id) mockUserFullWithUrl:(NSString*)url
+{
+    id mockUser = [OCMockObject mockForProtocol: @protocol(SocializeUser)];
+    [[[mockUser stub] andReturn:TEST_USER_NAME] userName];
+    [[[mockUser stub] andReturn:TEST_FIRST_NAME] firstName];
+    [[[mockUser stub] andReturn:TEST_LAST_NAME] lastName];
+    [[[mockUser stub] andReturn:TEST_DISPLAY_NAME_FULL] displayName];
+    [[[mockUser stub] andReturn:url] smallImageUrl];
+    
+    return mockUser;
+}
+
+-(id) mockUserNoneWithUrl:(NSString*)url
+{
+    id mockUser = [OCMockObject mockForProtocol: @protocol(SocializeUser)];
+    [[[mockUser stub] andReturn:TEST_USER_NAME] userName];
+    [[[mockUser stub] andReturn:TEST_USER_NAME] displayName];
+    [[[mockUser stub] andReturn:url] smallImageUrl];
+    
+    return mockUser;
+}
+
+-(id) mockUserFirstOnlyWithUrl:(NSString*)url
+{
+    id mockUser = [OCMockObject mockForProtocol: @protocol(SocializeUser)];
+    [[[mockUser stub] andReturn:TEST_USER_NAME] userName];
+    [[[mockUser stub] andReturn:TEST_FIRST_NAME] firstName];
+    [[[mockUser stub] andReturn:TEST_FIRST_NAME] displayName];
+    [[[mockUser stub] andReturn:url] smallImageUrl];
+    
+    return mockUser;
+}
+
+-(id) mockUserLastOnlyWithUrl:(NSString*)url
+{
+    id mockUser = [OCMockObject mockForProtocol: @protocol(SocializeUser)];
+    [[[mockUser stub] andReturn:TEST_USER_NAME] userName];
+    [[[mockUser stub] andReturn:TEST_LAST_NAME] lastName];
+    [[[mockUser stub] andReturn:TEST_LAST_NAME] displayName];
+    [[[mockUser stub] andReturn:url] smallImageUrl];
+    
+    return mockUser;
 }
 
 -(NSString*) showComment:(id<SocializeComment>)comment
@@ -139,7 +191,16 @@
     GHAssertNotNULL(commentDetails, @"Notice View Controller should not be NULL"); 
 } 
 
+//tests all permutations of displayName given first & last names
 -(void) testShowComment
+{
+    [self showCommentWithDisplayName:TEST_DISPLAY_NAME_FULL];
+    [self showCommentWithDisplayName:TEST_FIRST_NAME];
+    [self showCommentWithDisplayName:TEST_LAST_NAME];
+    [self showCommentWithDisplayName:TEST_USER_NAME];
+}
+
+-(void) showCommentWithDisplayName:(NSString *)displayName
 {
     id mockSocialize = [OCMockObject mockForClass:[Socialize class]];
     [[[mockSocialize stub] andReturnBool:YES] isAuthenticated];
@@ -147,25 +208,27 @@
     [[mockSocialize stub] setDelegate:nil];
     commentDetails.socialize = mockSocialize;
     
-    id mockComment = [self  mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil];
+    id mockComment = [self mockCommentWithDate:[NSDate date] lat:nil lng:nil profileUrl:nil displayName:displayName];
     commentDetails.comment = mockComment;
     
-     id mockDeteailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
-    [[mockDeteailView expect] setShowMap: NO];
-    [[mockDeteailView expect] updateLocationText: @"No location associated with this comment." color:[UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0] fontName:@"Helvetica-Oblique" fontSize:12];
-   
-    [[mockDeteailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
-    [[mockDeteailView expect] updateUserName:TEST_USER_NAME];
-    [[mockDeteailView expect] configurateView];
-        
-     commentDetails.commentDetailsView = mockDeteailView;
-    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDeteailView] view];
+    id mockDetailView = [OCMockObject niceMockForClass: [CommentDetailsView class]];
+    [[mockDetailView expect] setShowMap: NO];
+    [[mockDetailView expect] updateLocationText: @"No location associated with this comment."
+                                          color:[UIColor colorWithRed:127/ 255.f green:139/ 255.f blue:147/ 255.f alpha:1.0]
+                                       fontName:@"Helvetica-Oblique" fontSize:12];
     
-    [self.partialMockCommentDetailsViewController viewDidLoad]; 
+    [[mockDetailView expect] updateNavigationImage: [UIImage imageNamed:@"socialize-comment-details-icon-geo-disabled.png"]];
+    [[mockDetailView expect] updateUserName:displayName];
+    [[mockDetailView expect] configurateView];
+    
+    commentDetails.commentDetailsView = mockDetailView;
+    [[[self.partialMockCommentDetailsViewController stub] andReturn:mockDetailView] view];
+    
+    [self.partialMockCommentDetailsViewController viewDidLoad];
     [self.partialMockCommentDetailsViewController viewWillAppear:YES];
     
     [mockComment verify];
-    [mockDeteailView verify];
+    [mockDetailView verify];
     
     [self.partialMockCommentDetailsViewController viewWillDisappear:YES];
 }

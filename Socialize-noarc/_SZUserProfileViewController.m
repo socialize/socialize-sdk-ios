@@ -209,7 +209,7 @@
 
 - (void)configureViews {
     // Configure labels
-    self.userNameLabel.text = self.fullUser.userName;
+    self.userNameLabel.text = self.fullUser.displayName;
     if ([[self.fullUser description] length] > 0) {
         self.userDescriptionLabel.text = [self.fullUser description];
     }
