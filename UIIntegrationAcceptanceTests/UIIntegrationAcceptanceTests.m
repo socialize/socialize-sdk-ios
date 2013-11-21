@@ -20,10 +20,25 @@
 }
 
 - (void)afterAll {
+    [Socialize storeUIErrorAlertsDisabled:NO];
+    [Socialize storeLocationSharingDisabled:NO];
 }
 
 - (void)beforeEach {
+    [Socialize storeUIErrorAlertsDisabled:YES];
+    [Socialize storeLocationSharingDisabled:YES];
+    
     [tester initializeTest];
+}
+
+- (void)testRotation {
+    [system simulateDeviceRotationToOrientation:UIDeviceOrientationLandscapeLeft];
+    [tester openLinkDialogExample];
+    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
+    [system simulateDeviceRotationToOrientation:UIDeviceOrientationPortrait];
+    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
+    [tester tapViewWithAccessibilityLabel:@"Cancel"];
 }
 
 - (void)testActionBar {
@@ -31,16 +46,6 @@
     NSString *entityKey = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
     [[TestAppListViewController sharedSampleListViewController] setEntity:entity];
-    
-    //device rotation and link dialog
-    //TODO this should be in its own test
-    [tester rotateDevice];
-    [tester openLinkDialogExample];
-    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
-    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
-    [tester rotateDevice];
-    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
-    [tester tapViewWithAccessibilityLabel:@"Cancel"];
     
     [tester openActionBarExample];
     
@@ -67,6 +72,7 @@
 
 - (void)testFacebookAuth {
     [[SZTestHelper sharedTestHelper] startMockingSucceedingFacebookAuthWithDidAuth:nil];
+    [tester waitForTimeInterval:1];
     
     [tester showLinkToFacebook];
     
@@ -74,6 +80,7 @@
     [tester tapViewWithAccessibilityLabel:@"Ok"];
     
     [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
+    [tester waitForTimeInterval:1];
     
     [tester waitForAbsenceOfViewWithAccessibilityLabel:@"In progress"];
 }
@@ -132,8 +139,7 @@
 }
 
 - (void) testCommentsList {
-    NSUInteger numRows = 50;
-    
+    NSUInteger numRows = 11;
     
     NSString *entityKey = [TestAppHelper testURL:[NSString stringWithFormat:@"%s/entity1", sel_getName(_cmd)]];
     id<SZEntity> entity = [SZEntity entityWithKey:entityKey name:@"Test"];
@@ -161,13 +167,13 @@
     
     
     // Trigger a load
-    NSIndexPath *lastPath = [NSIndexPath indexPathForRow:19 inSection:0];
+    NSIndexPath *lastPath = [NSIndexPath indexPathForRow:3 inSection:0];
     [tester scrollTableViewWithAccessibilityLabel:@"Comments Table View" toRowAtIndexPath:lastPath scrollPosition:UITableViewScrollPositionTop animated:YES];
 
-    [tester waitForViewWithAccessibilityLabel:[NSString stringWithFormat:@"Comment%02d", 29]];
+    [tester waitForViewWithAccessibilityLabel:[NSString stringWithFormat:@"Comment%02d", 4]];
     
     // Trigger another load
-    lastPath = [NSIndexPath indexPathForRow:39 inSection:0];
+    lastPath = [NSIndexPath indexPathForRow:10 inSection:0];
     
     [tester scrollTableViewWithAccessibilityLabel:@"Comments Table View" toRowAtIndexPath:lastPath scrollPosition:UITableViewScrollPositionTop animated:YES];
     
