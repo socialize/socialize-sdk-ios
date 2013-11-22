@@ -17,7 +17,7 @@ clean:
 	xcodebuild -scheme "Socialize" -configuration Release -sdk iphoneos clean
 	xcodebuild -scheme "UnitTests" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -scheme "UIIntegrationTests" -configuration Debug -sdk iphonesimulator clean
+	# xcodebuild -scheme "UIIntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
 	rm -f $(SUBST_BUILD_FILES)
 
@@ -29,9 +29,9 @@ integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone" test
+	#xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone" test
 	#killall "iPhone Simulator" >/dev/null 2>&1
-	./Scripts/generate-ui-coverage-report.sh
+	#./Scripts/generate-ui-coverage-report.sh
 
 doc:
 	cd Socialize && appledoc ./DocSettings.plist
