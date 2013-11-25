@@ -17,7 +17,7 @@ clean:
 	xcodebuild -scheme "Socialize" -configuration Release -sdk iphoneos clean
 	xcodebuild -scheme "UnitTests" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -scheme "UIIntegrationTests" -configuration Debug -sdk iphonesimulator clean
+	#xcodebuild -scheme "UIIntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
 	rm -f $(SUBST_BUILD_FILES)
 
