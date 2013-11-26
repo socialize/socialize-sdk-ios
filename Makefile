@@ -29,9 +29,9 @@ integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	killall "iPhone Simulator" >/dev/null 2>&1
+	#killall "iPhone Simulator" >/dev/null 2>&1
 	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone" test
-	killall "iPhone Simulator" >/dev/null 2>&1
+	#killall "iPhone Simulator" >/dev/null 2>&1
 	#./Scripts/generate-ui-coverage-report.sh
 
 doc:
@@ -51,3 +51,10 @@ sphinx_doc: subst
 
 tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
+
+ci:
+	make clean
+	make test
+	make integration-tests
+	make ui-integration-tests
+	make coverage
