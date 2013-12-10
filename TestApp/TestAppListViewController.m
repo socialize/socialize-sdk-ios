@@ -42,6 +42,7 @@ NSString *kShowCommentsListRow = @"kShowCommentsListRow";
 NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
+NSString *kShowShareRow = @"kShowShareRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
 NSString *kHandleDirectEntitySmartAlertRow = @"kHandleDirectEntitySmartAlertRow";
 NSString *kShowActionBarExampleRow = @"kShowActionBarExampleRow";
@@ -117,7 +118,7 @@ static TestAppListViewController *sharedSampleListViewController;
     // Share Utilities
     NSMutableArray *shareRows = [NSMutableArray array];
     
-    [shareRows addObject:[self rowWithText:@"Show Share Dialog" executionBlock:^{
+    [shareRows addObject:[self rowWithIdentifier:kShowShareRow text:@"Show Share Dialog" executionBlock:^{
         SZShareOptions *options = [[SZShareOptions alloc] init];
         options.willShowSMSComposerBlock = ^(SZSMSShareData *smsData) {
             NSLog(@"Sharing SMS");
@@ -127,8 +128,7 @@ static TestAppListViewController *sharedSampleListViewController;
             NSLog(@"Sharing Email");            
         };
         
-        options.willRedirectToPinterestBlock = ^(SZPinterestShareData *pinData)
-        {
+        options.willRedirectToPinterestBlock = ^(SZPinterestShareData *pinData) {
             NSLog(@"Sharing pin");
         };
         
@@ -143,7 +143,6 @@ static TestAppListViewController *sharedSampleListViewController;
         options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
             NSLog(@"Failed posting to %d", network);
         };
-        options.image = [UIImage imageNamed:@"Smiley.png"];
 
         [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];
 
@@ -369,22 +368,7 @@ static TestAppListViewController *sharedSampleListViewController;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        NSIndexPath *indexPath = [self indexPathForRowIdentifier:kShowCommentsListRow];
-//        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-//    });
-    
-//    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
-
-//- (NSArray*)sections {
-//    if (sections_ == nil) {
-//        sections_ = [self createSections];
-//    }
-//    
-//    return sections_;
-//}
 
 - (NSUInteger)indexForSectionIdentifier:(NSString*)identifier {
     for (int i = 0; i < [self.sections count]; i++) {
@@ -462,7 +446,6 @@ static TestAppListViewController *sharedSampleListViewController;
     
     NSDictionary *rowData = [self rowDataForIndexPath:indexPath];
     cell.textLabel.text = [rowData objectForKey:kRowText];
-//    cell.textLabel.textColor = [UIColor whiteColor];
 
     return cell;
 }

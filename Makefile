@@ -28,7 +28,7 @@ integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone" test
+	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS="latest",name="iPhone Retina (4-inch)" test
 	./Scripts/generate-ui-coverage-report.sh
 
 doc:

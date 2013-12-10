@@ -293,7 +293,13 @@ SZPostDataBuilderBlock SZDefaultLinkPostData() {
     };
 }
 
-void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock defaultFacebookPostData, SZActivityOptions *options, SZSocialNetwork networks, ActivityCreatorBlock creator, void (^success)(id<SZActivity> activity), void (^failure)(NSError *error)) {
+void SZCreateAndShareActivity(id<SZActivity> activity,
+                              SZPostDataBuilderBlock defaultFacebookPostData,
+                              SZActivityOptions *options,
+                              SZSocialNetwork networks,
+                              ActivityCreatorBlock creator,
+                              void (^success)(id<SZActivity> activity),
+                              void (^failure)(NSError *error)) {
     if (networks & SZSocialNetworkFacebook && (![SZFacebookUtils isAvailable] || ![SZFacebookUtils isLinked])) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorFacebookUnavailable]);
         return;
@@ -321,6 +327,7 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
     void (^creationBlock)() = ^{
         
         NSConditionLock *finishedNetworksLock = [[NSConditionLock alloc] initWithCondition:0];
+        __block NSMutableDictionary *finishedNetworksErrors = [NSMutableDictionary dictionary];
         
         creator(activity, ^(id<SZActivity> activity) {
             if (networks & SZSocialNetworkFacebook) {
@@ -351,13 +358,16 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
                         NSLog(@"Socialize Warning: Failed to post to Facebook wall: %@ / %@", [error localizedDescription], [error userInfo]);
                     }
                     
-                    // Failed Wall post is still a success. Handle separately in options.
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated"
                     BLOCK_CALL_1(options.didFailToPostToSocialNetworkBlock, SZSocialNetworkFacebook);
 #pragma GCC diagnostic pop
                     BLOCK_CALL_2(options.didFailPostingToSocialNetworkBlock, SZSocialNetworkFacebook, error);
 
+                    //cache error in thread-safe block
+                    @synchronized(finishedNetworksErrors) {
+                        [finishedNetworksErrors setObject:error forKey:[NSNumber numberWithInt:SZSocialNetworkFacebook]];
+                    }
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
                 }];
@@ -405,24 +415,31 @@ void SZCreateAndShareActivity(id<SZActivity> activity, SZPostDataBuilderBlock de
 #pragma GCC diagnostic pop
 
                     NSLog(@"Socialize Warning: Failed to post to Twitter feed: %@ / %@", [error localizedDescription], [error userInfo]);
+
+                    //cache error in thread-safe block
+                    @synchronized(finishedNetworksErrors) {
+                        [finishedNetworksErrors setObject:error forKey:[NSNumber numberWithInt:SZSocialNetworkTwitter]];
+                    }
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
                 }];
             }
             
-
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                
                 // Wait for all networks to finish
                 [finishedNetworksLock lockWhenCondition:networks];
                 [finishedNetworksLock unlock];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    BLOCK_CALL_1(success, activity);
+                    if([finishedNetworksErrors count] > 0) {
+                        //FIXME more explicit error messaging
+                        BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorServerReturnedErrors]);
+                    }
+                    else {
+                        BLOCK_CALL_1(success, activity);
+                    }
                 });
             });
-            
-
         }, failure);
         
     };

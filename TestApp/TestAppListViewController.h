@@ -25,6 +25,7 @@ extern NSString *kShowCommentsListRow;
 extern NSString *kLinkToFacebookRow;
 extern NSString *kLinkToTwitterRow;
 extern NSString *kLikeEntityRow;
+extern NSString *kShowShareRow;
 extern NSString *kHandleDirectURLSmartAlertRow;
 extern NSString *kShowActionBarExampleRow;
 extern NSString *kShowButtonsExampleRow;

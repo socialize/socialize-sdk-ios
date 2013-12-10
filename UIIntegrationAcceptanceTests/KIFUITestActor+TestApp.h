@@ -20,6 +20,7 @@
 - (void)wipeAuthData;
 - (void)showLinkToTwitter;
 - (void)showLikeEntityRow;
+- (void)showShareDialog;
 - (void)showDirectUrlNotifications;
 - (void)showCommentComposer;
 - (void)showCommentsList;

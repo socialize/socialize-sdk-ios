@@ -39,12 +39,13 @@
     NSAssert(consumerKey != nil, credentialsMessage);
     NSAssert(consumerSecret != nil, credentialsMessage);
     
+    //This MUST be https per http://stackoverflow.com/questions/19655777/twitter-account-created-with-tokens-fails-on-ios7
     SZOARequest *request = [[SZOARequest alloc] initWithConsumerKey:consumerKey
                                                      consumerSecret:consumerSecret
                                                               token:accessToken
                                                         tokenSecret:accessTokenSecret
                                                              method:method
-                                                             scheme:@"http"
+                                                             scheme:@"https"
                                                                host:@"api.twitter.com"
                                                                path:path
                                                          parameters:parameters
