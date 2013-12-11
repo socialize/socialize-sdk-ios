@@ -366,7 +366,9 @@ void SZCreateAndShareActivity(id<SZActivity> activity,
 
                     //cache error in thread-safe block
                     @synchronized(finishedNetworksErrors) {
-                        [finishedNetworksErrors setObject:error forKey:[NSNumber numberWithInt:SZSocialNetworkFacebook]];
+                        if(error != nil) {
+                            [finishedNetworksErrors setObject:error forKey:[NSNumber numberWithInt:SZSocialNetworkFacebook]];
+                        }
                     }
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkFacebook];
@@ -418,7 +420,9 @@ void SZCreateAndShareActivity(id<SZActivity> activity,
 
                     //cache error in thread-safe block
                     @synchronized(finishedNetworksErrors) {
-                        [finishedNetworksErrors setObject:error forKey:[NSNumber numberWithInt:SZSocialNetworkTwitter]];
+                        if(error != nil) {
+                            [finishedNetworksErrors setObject:error forKey:[NSNumber numberWithInt:SZSocialNetworkFacebook]];
+                        }
                     }
                     [finishedNetworksLock lock];
                     [finishedNetworksLock unlockWithCondition:[finishedNetworksLock condition] | SZSocialNetworkTwitter];
