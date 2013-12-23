@@ -23,8 +23,30 @@
 #import "SZUserUtils.h"
 #import "SocializeLoadingView.h"
 #import "socialize_globals.h"
+#import <Loopy/Loopy.h>
 
 @implementation SZShareUtils
+
++ (id)sharedLoopySDK {
+    static STAPIClient *loopyAPIClient = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:@"hkg435723o4tho95fh29"
+                                               loopyKey: @"4q7cd6ngw3vu7gram5b9b9t6"];
+        [loopyAPIClient getSessionWithReferrer:@"www.facebook.com"
+                                   postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                       //any operations post-successful /install or /open
+                                   }
+                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                           //any failure operations
+                                       }];
+    });
+    return loopyAPIClient;
+}
+
++ (void)reportShareToLoopy {
+    
+}
 
 + (SZShareOptions*)userShareOptions {
     SZShareOptions *options = (SZShareOptions*)SZActivityOptionsFromUserDefaults([SZShareOptions class]);
@@ -81,14 +103,25 @@
 }
 
 
-+ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity networks:(SZSocialNetwork)networks options:(SZShareOptions*)options success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
++ (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity
+                                networks:(SZSocialNetwork)networks
+                                 options:(SZShareOptions*)options
+                                 success:(void(^)(id<SZShare> share))success
+                                 failure:(void(^)(NSError *error))failure {
+    //init Loopy
+    [SZShareUtils sharedLoopySDK];
+    
     SocializeShareMedium medium = SocializeShareMediumForSZSocialNetworks(networks);
-    
     SZShare *share = [SZShare shareWithEntity:entity text:options.text medium:medium];
-    
     ActivityCreatorBlock shareCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         SZAuthWrapper(^{
-            [[Socialize sharedSocialize] createShare:share success:createSuccess failure:createFailure];
+            [[Socialize sharedSocialize] createShare:share
+                                             success:^(id<SZShare> share) {
+                                                 //successful shares now report to Loopy SDK also
+                                                 [SZShareUtils reportShareToLoopy];
+                                                 createSuccess(share);
+                                             }
+                                             failure:createFailure];
         }, failure);
     };
                                      

@@ -12,6 +12,8 @@
 
 @interface SZShareUtils : NSObject
 
++ (id)sharedLoopySDK;
++ (void)reportShareToLoopy;
 + (SZShareOptions*)userShareOptions;
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))success __attribute__((deprecated("Please use showShareDialogWithViewController:entity:completion:cancellation:, instead")));
 
