@@ -6300,7 +6300,7 @@
 					"$(CONFIGURATION_BUILD_DIR)",
 				);
 				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6346,7 +6346,7 @@
 					"$(CONFIGURATION_BUILD_DIR)",
 				);
 				INFOPLIST_FILE = "UIIntegrationAcceptanceTests/UIIntegrationAcceptanceTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6432,7 +6432,7 @@
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6457,7 +6457,7 @@
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6481,7 +6481,7 @@
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6505,7 +6505,7 @@
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6530,7 +6530,7 @@
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6554,7 +6554,7 @@
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6583,7 +6583,7 @@
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -6612,7 +6612,7 @@
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -6640,7 +6640,7 @@
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6668,7 +6668,7 @@
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6681,6 +6681,7 @@
 		AA6CE2E01590536800A4B074 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -6688,6 +6689,7 @@
 		AA6CE2E11590536800A4B074 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -6706,7 +6708,7 @@
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6730,7 +6732,7 @@
 				GCC_PREFIX_HEADER = "Socialize-noarc/Socialize-noarc-Prefix.pch";
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6753,7 +6755,7 @@
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6777,7 +6779,7 @@
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = NO;
 				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
