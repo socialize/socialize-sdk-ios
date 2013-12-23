@@ -31,8 +31,6 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 profile
 *.moved-aside
 .DS_Store
