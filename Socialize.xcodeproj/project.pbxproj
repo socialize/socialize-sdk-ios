@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1B56F253C61C4722A2EE7960 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
 		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2CAB845C1815ECEB00790B5F /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
@@ -1486,6 +1487,7 @@
 		AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
 		AAF580EE16BC99610007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
 		AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB0B8115E70FB10091600C /* ui_advanced.m */; };
+		BBD5B5817D2A486688169A09 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1720,6 +1722,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		28052EE4EDAE4D3598062EF0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogView.h; sourceTree = "<group>"; };
 		2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogView.m; sourceTree = "<group>"; };
 		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
@@ -1744,6 +1747,7 @@
 		487047F617F01ACE008D5741 /* TestAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppHelper.m; sourceTree = "<group>"; };
 		48C069921780192B004E7843 /* pinterest-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pinterest-snippets.h"; sourceTree = "<group>"; };
 		48C069931780192B004E7843 /* pinterest-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "pinterest-snippets.m"; sourceTree = "<group>"; };
+		591BC9DD5AC34F3A94039250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		84AEF7DD176341CE006DB43A /* socialize-selectnetwork-pinterest-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon.png"; sourceTree = SOURCE_ROOT; };
 		84FCF44E175E706B009AD5C1 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
@@ -2718,6 +2722,7 @@
 			files = (
 				AA3BC36F158E7F170073AD50 /* libSocialize-noarc.a in Frameworks */,
 				AA0085C1158D2EFC00480399 /* Foundation.framework in Frameworks */,
+				1B56F253C61C4722A2EE7960 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2789,6 +2794,7 @@
 			files = (
 				AA081873159046670046D661 /* libSocialize-noarc-profiling.a in Frameworks */,
 				AAB5E525159044F900D3EBDF /* Foundation.framework in Frameworks */,
+				BBD5B5817D2A486688169A09 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2850,6 +2856,7 @@
 				487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */,
 				AA008593158D2B1100480399 /* Frameworks */,
 				AA008591158D2B1100480399 /* Products */,
+				591BC9DD5AC34F3A94039250 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2882,6 +2889,7 @@
 				AA008598158D2B1100480399 /* CoreGraphics.framework */,
 				4870478017EEF94B008D5741 /* XCTest.framework */,
 				487047AF17EEFA90008D5741 /* SenTestingKit.framework */,
+				28052EE4EDAE4D3598062EF0 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4447,10 +4455,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA0085C9158D2EFC00480399 /* Build configuration list for PBXNativeTarget "Socialize" */;
 			buildPhases = (
+				D870FD10D3FA41C6B2177B60 /* Check Pods Manifest.lock */,
 				AA0085BC158D2EFC00480399 /* Sources */,
 				AA0085BD158D2EFC00480399 /* Frameworks */,
 				AA0085BE158D2EFC00480399 /* CopyFiles */,
 				AA1C1C09158EF34800A763CA /* Headers */,
+				252F26F178864470A60BAFA4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4545,10 +4555,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAB5E54C159044F900D3EBDF /* Build configuration list for PBXNativeTarget "Socialize-profiling" */;
 			buildPhases = (
+				978025C3261D4A458E54C275 /* Check Pods Manifest.lock */,
 				AAB5E521159044F900D3EBDF /* Sources */,
 				AAB5E523159044F900D3EBDF /* Frameworks */,
 				AAB5E526159044F900D3EBDF /* CopyFiles */,
 				AAB5E527159044F900D3EBDF /* Headers */,
+				348EFA9349CA440BA62C84D8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5491,6 +5503,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		252F26F178864470A60BAFA4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		348EFA9349CA440BA62C84D8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		978025C3261D4A458E54C275 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		AA6CE2DC15904CC100A4B074 /* Perform Project Substitutions */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5608,6 +5665,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GHUNIT_CLI=1 ./Scripts/run-headless-simulator.sh";
+			showEnvVarsInLog = 0;
+		};
+		D870FD10D3FA41C6B2177B60 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6470,6 +6542,7 @@
 		};
 		AA0085CA158D2EFC00480399 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6480,11 +6553,15 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = Socialize;
@@ -6494,6 +6571,7 @@
 		};
 		AA0085CB158D2EFC00480399 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6504,11 +6582,15 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = NO;
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = Socialize;
@@ -6744,6 +6826,7 @@
 		};
 		AAB5E54D159044F900D3EBDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6754,11 +6837,15 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = Socialize;
@@ -6768,6 +6855,7 @@
 		};
 		AAB5E54E159044F900D3EBDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Socialize.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6778,11 +6866,15 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GENERATE_PROFILING_CODE = NO;
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = Socialize;
