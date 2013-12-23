@@ -31,7 +31,7 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-profile
+ profile
 *.moved-aside
 .DS_Store
 ThirdParty/include
