@@ -1,5 +1,8 @@
 .PHONY: tags framework bundle integration-tests ui-integration-tests clean test package release
 
+pods:
+	pod install
+
 test:
 	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator
 
@@ -50,6 +53,7 @@ tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
 
 ci:
+	make pods
 	make clean
 	make test
 	make integration-tests

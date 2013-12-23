@@ -4,7 +4,7 @@ set -o errexit
 
 PROJECT_DIR=$(PWD)
 PRODUCT_NAME='UIIntegrationTests'
-CONFIGURATION_TEMP_DIR=`xcodebuild -project Socialize.xcodeproj -target TestApp -configuration Debug -showBuildSettings -sdk iphonesimulator | grep CONFIGURATION_TEMP_DIR | cut -c30-`
+CONFIGURATION_TEMP_DIR=`xcodebuild -workspace Socialize.xcworkspace -scheme TestApp -configuration Debug -showBuildSettings -sdk iphonesimulator | grep CONFIGURATION_TEMP_DIR | cut -c30-`
 echo "CONFIGURATION_TEMP_DIR: ${CONFIGURATION_TEMP_DIR}"
 PROJECT_NAME='Socialize'
 
