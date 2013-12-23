@@ -1,7 +1,6 @@
 .PHONY: tags framework bundle integration-tests ui-integration-tests clean test package release
 
 pods:
-	cd socialize-sdk-ios
 	pod install
 
 test:
