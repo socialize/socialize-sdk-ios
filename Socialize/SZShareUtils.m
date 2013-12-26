@@ -32,20 +32,26 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:@"hkg435723o4tho95fh29"
-                                               loopyKey: @"4q7cd6ngw3vu7gram5b9b9t6"];
+                                                    loopyKey:@"4q7cd6ngw3vu7gram5b9b9t6"];
         [loopyAPIClient getSessionWithReferrer:@"www.facebook.com"
                                    postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                       //any operations post-successful /install or /open
                                    }
                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                           //any failure operations
                                        }];
     });
     return loopyAPIClient;
 }
 
-+ (void)reportShareToLoopy {
-    
++ (void)reportShareToLoopyWithText:(NSString *)shareText channel:(NSString *)channel {
+    STAPIClient *loopyAPIClient = (STAPIClient *)[SZShareUtils sharedLoopySDK];
+    NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
+    [loopyAPIClient reportShare:shareDict
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            //any operations post-successful /install or /open
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            //any failure operations
+                        }];
 }
 
 + (SZShareOptions*)userShareOptions {
@@ -102,7 +108,6 @@
     [viewController presentModalViewController:shareDialog animated:YES];
 }
 
-
 + (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity
                                 networks:(SZSocialNetwork)networks
                                  options:(SZShareOptions*)options
@@ -116,16 +121,36 @@
     ActivityCreatorBlock shareCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
         SZAuthWrapper(^{
             [[Socialize sharedSocialize] createShare:share
-                                             success:^(id<SZShare> share) {
-                                                 //successful shares now report to Loopy SDK also
-                                                 [SZShareUtils reportShareToLoopy];
-                                                 createSuccess(share);
-                                             }
+                                             success:createSuccess
                                              failure:createFailure];
         }, failure);
     };
-                                     
-    SZCreateAndShareActivity(share, SZDefaultLinkPostData(), options, networks, shareCreator, success, failure);
+    
+    //successful shares now report to Loopy SDK also
+    //for now, simply text-ify networks being shared
+    NSString *channel = @"";
+    switch (networks) {
+        case SZSocialNetworkTwitter:
+            channel = @"twitter";
+            break;
+            
+        case SZSocialNetworkFacebook:
+            channel = @"facebook";
+            break;
+            
+        case (SZSocialNetworkTwitter + SZSocialNetworkFacebook):
+            channel = @"facebook,twitter";
+            break;
+        
+        default:
+            break;
+    }
+    
+    void (^shareSuccess)(id<SZShare> share) = ^(id<SZShare> share) {
+        success(share);
+        [SZShareUtils reportShareToLoopyWithText:options.text channel:channel];
+    };
+    SZCreateAndShareActivity(share, SZDefaultLinkPostData(), options, networks, shareCreator, shareSuccess, failure);
 }
 
 + (NSString*)defaultMessageForShare:(id<SZShare>)share {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Loopy API info</key>
+	<dict>
+		<key>callTimeoutInMillis</key>
+		<integer>1000</integer>
+		<key>openTimeoutInMillis</key>
+		<integer>10000</integer>
+		<key>urlHttpsPrefix</key>
+		<string>https://ec2-54-226-117-50.compute-1.amazonaws.com:8443/loopy-mock/v1</string>
+		<key>urlPrefix</key>
+		<string>http://ec2-54-226-117-50.compute-1.amazonaws.com:8080/loopy-mock/v1</string>
+	</dict>
+</dict>
+</plist>
