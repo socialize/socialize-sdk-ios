@@ -9,12 +9,16 @@
 #import "SZShareOptions.h"
 
 @implementation SZShareOptions
+
+@synthesize loopyEnabled;
 @synthesize text = text_;
 @synthesize willShowSMSComposerBlock = _willShowSMSComposerBlock;
 @synthesize willShowEmailComposerBlock = _willShowEmailComposerBlock;
 
-+ (SZShareOptions*)defaultOptions {
-    return [[self alloc] init];
++ (SZShareOptions *)defaultOptions {
+    SZShareOptions *options = [[self alloc] init];
+    options.loopyEnabled = YES;
+    return options;
 }
 
 @end

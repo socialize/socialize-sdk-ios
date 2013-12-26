@@ -10,7 +10,17 @@
 #import <Socialize/Socialize.h>
 #import "integrationtests_globals.h"
 
+@interface TestShareUtils() {
+    id loopySDK;
+}
+
+@end
 @implementation TestShareUtils
+
+- (void)setUpClass {
+    //cannot be tested headlessly until import issues resolved to allow proper mocking
+//    loopySDK = [SZShareUtils sharedLoopySDK];
+}
 
 - (id<SZShare>)createTestShareForSelector:(SEL)selector {
     NSString *shareURL = [self testURL:[NSString stringWithFormat:@"%s/share", sel_getName(selector)]];
@@ -133,5 +143,31 @@
     GHAssertNotNil(fetchedComment, @"Comment not on user");
 }
 
+- (void)testReportShareToLoopy {
+    //cannot be tested headlessly until import issues resolved to allow proper mocking
+    
+//    [self prepare];
+//    __block BOOL operationSucceeded = NO;
+//    [SZShareUtils reportShareToLoopyWithText:@"test text"
+//                                     channel:@"facebook"
+//                                     success:^(id operation, id responseObject) {
+//                                         NSDictionary *responseDict = (NSDictionary *)responseObject;
+//                                         if([responseDict count] == 0) {
+//                                             operationSucceeded = YES;
+//                                             [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testReportShareToLoopy)];
+//                                         }
+//                                         else {
+//                                             operationSucceeded = NO;
+//                                             [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testReportShareToLoopy)];
+//                                         }
+//                                     }
+//                                     failure:^(id operation, NSError *error) {
+//                                         operationSucceeded = NO;
+//                                         [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testReportShareToLoopy)];
+//                                     }];
+//    
+//    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+//    GHAssertTrue(operationSucceeded, @"");
+}
 
 @end

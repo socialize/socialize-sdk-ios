@@ -27,7 +27,7 @@
 
 @implementation SZShareUtils
 
-+ (id)sharedLoopySDK {
++ (id)sharedLoopyAPIClient {
     static STAPIClient *loopyAPIClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -42,16 +42,19 @@
     return loopyAPIClient;
 }
 
-+ (void)reportShareToLoopyWithText:(NSString *)shareText channel:(NSString *)channel {
-    STAPIClient *loopyAPIClient = (STAPIClient *)[SZShareUtils sharedLoopySDK];
++ (void)reportShareToLoopyWithText:(NSString *)shareText
+                           channel:(NSString *)channel
+                           success:(id)success
+                           failure:(id)failure {
+    //cast callbacks until .h import failure issue fixed
+    void(^successCallback)(AFHTTPRequestOperation *operation, id responseObject) = (void(^)(AFHTTPRequestOperation *, id))success;
+    void(^failureCallback)(AFHTTPRequestOperation *operation, NSError *error) = (void(^)(AFHTTPRequestOperation *, NSError *))failure;
+    
+    STAPIClient *loopyAPIClient = (STAPIClient *)[SZShareUtils sharedLoopyAPIClient];
     NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
     [loopyAPIClient reportShare:shareDict
-                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            //any operations post-successful /install or /open
-                        }
-                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            //any failure operations
-                        }];
+                        success:successCallback
+                        failure:failureCallback];
 }
 
 + (SZShareOptions*)userShareOptions {
@@ -113,8 +116,12 @@
                                  options:(SZShareOptions*)options
                                  success:(void(^)(id<SZShare> share))success
                                  failure:(void(^)(NSError *error))failure {
-    //init Loopy
-    [SZShareUtils sharedLoopySDK];
+    //init Loopy if not done already
+    //only applies if options is not nil
+    BOOL useLoopy = options != nil && options.loopyEnabled;
+    if(useLoopy) {
+        [SZShareUtils sharedLoopyAPIClient];
+    }
     
     SocializeShareMedium medium = SocializeShareMediumForSZSocialNetworks(networks);
     SZShare *share = [SZShare shareWithEntity:entity text:options.text medium:medium];
@@ -125,31 +132,34 @@
                                              failure:createFailure];
         }, failure);
     };
-    
-    //successful shares now report to Loopy SDK also
+
+    //successful shares now report to Loopy SDK also if so configured
     //for now, simply text-ify networks being shared
-    NSString *channel = @"";
-    switch (networks) {
-        case SZSocialNetworkTwitter:
-            channel = @"twitter";
-            break;
+    void (^shareSuccess)(id<SZShare> share) = success;
+    if(useLoopy) {
+        NSString *channel = @"";
+        switch (networks) {
+            case SZSocialNetworkTwitter:
+                channel = @"twitter";
+                break;
+                
+            case SZSocialNetworkFacebook:
+                channel = @"facebook";
+                break;
+                
+            case (SZSocialNetworkTwitter + SZSocialNetworkFacebook):
+                channel = @"facebook,twitter";
+                break;
             
-        case SZSocialNetworkFacebook:
-            channel = @"facebook";
-            break;
-            
-        case (SZSocialNetworkTwitter + SZSocialNetworkFacebook):
-            channel = @"facebook,twitter";
-            break;
+            default:
+                break;
+        }
         
-        default:
-            break;
+        void (^shareSuccess)(id<SZShare> share) = ^(id<SZShare> share) {
+            success(share);
+            [SZShareUtils reportShareToLoopyWithText:options.text channel:channel success:nil failure:nil];
+        };
     }
-    
-    void (^shareSuccess)(id<SZShare> share) = ^(id<SZShare> share) {
-        success(share);
-        [SZShareUtils reportShareToLoopyWithText:options.text channel:channel];
-    };
     SZCreateAndShareActivity(share, SZDefaultLinkPostData(), options, networks, shareCreator, shareSuccess, failure);
 }
 
