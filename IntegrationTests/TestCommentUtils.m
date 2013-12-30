@@ -54,4 +54,22 @@
 
 }
 
+- (void)testCreateAndGetCommentsInvalidChars {
+    NSString *commentURL = [self testURL:[NSString stringWithFormat:@"%s/comment", sel_getName(_cmd)]];
+    SZEntity *entity = [SZEntity entityWithKey:commentURL name:@"Comment"];
+    NSString *commentTextNoUnicode = @"Comment Text Unicode:";
+    NSString *commentText = [NSString stringWithFormat:@"Comment Text Unicode:%C", (unichar)0x0000];
+    
+    id<SZComment> serverComment = [self addCommentWithEntity:entity text:commentText options:nil networks:SZSocialNetworkNone];
+    NSString *serverCommentText = [serverComment text];
+    
+    int commentTextLength = [commentText length];
+    int commentTextLengthNoUnicode = [commentTextNoUnicode length];
+    int serverCommentTextLength = [serverCommentText length];
+    
+    //ensure unicode got stripped out (length should be equal to String without Unicode in it)
+    GHAssertNotEquals(commentTextLength, serverCommentTextLength, @"");
+    GHAssertEquals(commentTextLengthNoUnicode, serverCommentTextLength, @"");
+}
+
 @end
