@@ -26,11 +26,6 @@
 		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2CAB845C1815ECEB00790B5F /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
-		2CB3CE52186CA364000B3CF3 /* LoopyApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */; };
-		2CB3CE54186CA37D000B3CF3 /* LoopyApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */; };
-		2CB3CE55186CA3FC000B3CF3 /* LoopyApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */; };
-		2CB3CE56186CA407000B3CF3 /* LoopyApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */; };
-		2CB3CE57186CA413000B3CF3 /* LoopyApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */; };
 		2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
@@ -4798,7 +4793,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB3CE52186CA364000B3CF3 /* LoopyApiInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4806,7 +4800,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB3CE54186CA37D000B3CF3 /* LoopyApiInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4823,7 +4816,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB3CE55186CA3FC000B3CF3 /* LoopyApiInfo.plist in Resources */,
 				AA00859F158D2B1100480399 /* InfoPlist.strings in Resources */,
 				AA3BC37B158E820B0073AD50 /* ActionBarExampleViewController.xib in Resources */,
 				AA935990158F187200B5B2BC /* action-bar-bg.png in Resources */,
@@ -5059,7 +5051,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB3CE57186CA413000B3CF3 /* LoopyApiInfo.plist in Resources */,
 				AA0C601E158FC4F000F66A3B /* InfoPlist.strings in Resources */,
 				AA0C606A158FC5B700F66A3B /* UnitTest-SocializeConfigurationInfo-EMPTY.plist in Resources */,
 				AA0C606B158FC5B700F66A3B /* UnitTest-SocializeConfigurationInfo.plist in Resources */,
@@ -5297,7 +5288,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CB3CE56186CA407000B3CF3 /* LoopyApiInfo.plist in Resources */,
 				AA6C63D6158F0EB0005E5632 /* InfoPlist.strings in Resources */,
 				AA6C642F158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.xib in Resources */,
 				AA935992158F187200B5B2BC /* action-bar-bg.png in Resources */,
