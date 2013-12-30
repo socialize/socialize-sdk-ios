@@ -5608,7 +5608,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -scheme Socialize -configuration ${CONFIGURATION} -sdk iphonesimulator\nxcodebuild -scheme Socialize -configuration ${CONFIGURATION} -sdk iphoneos";
+			shellScript = "xcodebuild -workspace Socialize.xcworkspace -scheme Socialize -configuration ${CONFIGURATION} -sdk iphonesimulator\nxcodebuild -workspace Socialize.xcworkspace -scheme Socialize -configuration ${CONFIGURATION} -sdk iphoneos";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E31590540400A4B074 /* Package Framework */ = {
