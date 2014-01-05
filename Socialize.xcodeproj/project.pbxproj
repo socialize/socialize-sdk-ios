@@ -4440,7 +4440,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA0085A8158D2B1100480399 /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
-				249A89A5B3134B09BC80F00B /* Check Pods Manifest.lock */,
 				AA00858C158D2B1100480399 /* Sources */,
 				AA00858D158D2B1100480399 /* Frameworks */,
 				AA00858E158D2B1100480399 /* Resources */,
@@ -4505,7 +4504,7 @@
 				AA0C6010158FC4F000F66A3B /* Sources */,
 				AA0C6011158FC4F000F66A3B /* Frameworks */,
 				AA0C6012158FC4F000F66A3B /* Resources */,
-				48A4AD791871CB6500C5D794 /* Copy Pods resources */,
+				3B19E4A8D7CB4B5AB864F6A5 /* Copy Pods Resources */,
 				AACEDAB2158FE8B00024EC43 /* ShellScript */,
 				AACEDAA9158FE5A30024EC43 /* Generate Coverage Report */,
 			);
@@ -4525,7 +4524,7 @@
 				AA6C63C8158F0EB0005E5632 /* Sources */,
 				AA6C63C9158F0EB0005E5632 /* Frameworks */,
 				AA6C63CA158F0EB0005E5632 /* Resources */,
-				48A4AD781871CB4700C5D794 /* Copy Pod resources */,
+				0BD245E7220848C59C87642E /* Copy Pods Resources */,
 				AA6CE2E4159057D900A4B074 /* Run Tests (Command-line only) */,
 				AA6CE2E51590592100A4B074 /* Generate Coverage (Command-line only) */,
 			);
@@ -5525,19 +5524,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		249A89A5B3134B09BC80F00B /* Check Pods Manifest.lock */ = {
+		0BD245E7220848C59C87642E /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		252F26F178864470A60BAFA4 /* Copy Pods Resources */ = {
@@ -5570,33 +5569,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		48A4AD781871CB4700C5D794 /* Copy Pod resources */ = {
+		3B19E4A8D7CB4B5AB864F6A5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pod resources";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"";
-		};
-		48A4AD791871CB6500C5D794 /* Copy Pods resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"";
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		978025C3261D4A458E54C275 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6730,6 +6716,7 @@
 		};
 		AA0C6026158FC4F000F66A3B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -6759,6 +6746,7 @@
 		};
 		AA0C6027158FC4F000F66A3B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -6788,6 +6776,7 @@
 		};
 		AA6C63DE158F0EB0005E5632 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -6816,6 +6805,7 @@
 		};
 		AA6C63DF158F0EB0005E5632 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
