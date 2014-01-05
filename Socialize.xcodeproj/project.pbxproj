@@ -2807,6 +2807,180 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CB81F2D18773122006CBC2C /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				AA00864E158D35BD00480399 /* SocializeCommentDetailsViewController.h */,
+				AA00864F158D35BD00480399 /* SocializeCommentDetailsViewController.m */,
+				AA0086F5158D35BF00480399 /* _SZCommentsListViewController.h */,
+				AA0086F6158D35BF00480399 /* _SZCommentsListViewController.m */,
+				AA93598B158F187200B5B2BC /* _SZCommentsListViewController.xib */,
+				AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */,
+				AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */,
+				AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */,
+				AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */,
+				AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */,
+				AA008602158D35BC00480399 /* CommentDetailsView.h */,
+				AA008603158D35BC00480399 /* CommentDetailsView.m */,
+				AA008604158D35BC00480399 /* CommentMapView.h */,
+				AA008605158D35BC00480399 /* CommentMapView.m */,
+				AA008606158D35BC00480399 /* CommentsTableFooterView.h */,
+				AA008607158D35BC00480399 /* CommentsTableFooterView.m */,
+				AA008608158D35BC00480399 /* CommentsTableViewCell.h */,
+				AA008609158D35BC00480399 /* CommentsTableViewCell.m */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
+		2CB81F4218773139006CBC2C /* ActionBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA008627158D35BD00480399 /* SocializeActionBar.h */,
+				AA008628158D35BD00480399 /* SocializeActionBar.m */,
+				AA008629158D35BD00480399 /* SocializeActionBarDelegate.h */,
+				AA00862A158D35BD00480399 /* SocializeActionView.h */,
+				AA00862B158D35BD00480399 /* SocializeActionView.m */,
+			);
+			name = ActionBar;
+			sourceTree = "<group>";
+		};
+		2CB81F43187732FD006CBC2C /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				AA00862E158D35BD00480399 /* SocializeActivityDetailsView.h */,
+				AA00862F158D35BD00480399 /* SocializeActivityDetailsView.m */,
+				AA008630158D35BD00480399 /* SocializeActivityDetailsViewController.h */,
+				AA008631158D35BD00480399 /* SocializeActivityDetailsViewController.m */,
+				AA008632158D35BD00480399 /* SocializeActivityDetailsViewControllerDelegate.h */,
+				AA008637158D35BD00480399 /* SocializeActivityTableViewCell.h */,
+				AA008638158D35BD00480399 /* SocializeActivityTableViewCell.m */,
+				AA008639158D35BD00480399 /* SocializeActivityViewController.h */,
+				AA00863A158D35BD00480399 /* SocializeActivityViewController.m */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		2CB81F4418773322006CBC2C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AA0086AA158D35BE00480399 /* SocializeProfileEditTableViewCell.h */,
+				AA0086AB158D35BE00480399 /* SocializeProfileEditTableViewCell.m */,
+				AA0086AC158D35BE00480399 /* SocializeProfileEditTableViewImageCell.h */,
+				AA0086AD158D35BE00480399 /* SocializeProfileEditTableViewImageCell.m */,
+				AA0086AE158D35BE00480399 /* SocializeProfileEditValueViewController.h */,
+				AA0086AF158D35BE00480399 /* SocializeProfileEditValueViewController.m */,
+				AA00870E158D35BF00480399 /* _SZUserProfileViewController.h */,
+				AA00870F158D35BF00480399 /* _SZUserProfileViewController.m */,
+				AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */,
+				AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */,
+				AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */,
+				AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		2CB81F4518773331006CBC2C /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				AA008713158D35BF00480399 /* SZShareDialogView.h */,
+				AA008714158D35BF00480399 /* SZShareDialogView.m */,
+				AA008715158D35BF00480399 /* SZBaseShareViewController.h */,
+				AA008716158D35BF00480399 /* SZBaseShareViewController.m */,
+				AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */,
+				AAD98F9A1591682000845FC9 /* _SZShareDialogViewController.h */,
+				AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */,
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
+		2CB81F4618773474006CBC2C /* General */ = {
+			isa = PBXGroup;
+			children = (
+				AA008683158D35BD00480399 /* SocializeGeocoderAdapter.h */,
+				AA008684158D35BD00480399 /* SocializeGeocoderAdapter.m */,
+				AA008687158D35BE00480399 /* SocializeKeyboardListener.h */,
+				AA008688158D35BE00480399 /* SocializeKeyboardListener.m */,
+				AA00868F158D35BE00480399 /* SocializeListFormatter.h */,
+				AA008690158D35BE00480399 /* SocializeListFormatter.m */,
+				AA0086DE158D35BF00480399 /* SocializeVerticalLayoutContainerView.h */,
+				AA0086DF158D35BF00480399 /* SocializeVerticalLayoutContainerView.m */,
+				AA008647158D35BD00480399 /* SocializeBaseViewController.h */,
+				AA008648158D35BD00480399 /* SocializeBaseViewController.m */,
+				AA008649158D35BD00480399 /* SocializeBaseViewControllerDelegate.h */,
+				AA00864A158D35BD00480399 /* SocializeBubbleView.h */,
+				AA00864B158D35BD00480399 /* SocializeBubbleView.m */,
+				AA008667158D35BD00480399 /* SocializeDummyViewController.h */,
+				AA008668158D35BD00480399 /* SocializeDummyViewController.m */,
+				AA0086C5158D35BE00480399 /* SocializeTableBGInfoView.h */,
+				AA0086C6158D35BE00480399 /* SocializeTableBGInfoView.m */,
+				AA0086C7158D35BE00480399 /* SocializeTableViewController.h */,
+				AA0086C8158D35BE00480399 /* SocializeTableViewController.m */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		2CB81F4718773582006CBC2C /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				AA008726158D35BF00480399 /* UIButton+Socialize.h */,
+				AA008727158D35BF00480399 /* UIButton+Socialize.m */,
+				AA00872A158D35BF00480399 /* UIImage+Resize.h */,
+				AA00872B158D35BF00480399 /* UIImage+Resize.m */,
+				AA00872C158D35BF00480399 /* UILabel-Additions.h */,
+				AA00872D158D35BF00480399 /* UILabel-Additions.m */,
+				AA00872E158D35BF00480399 /* UILabel+FormatedText.h */,
+				AA00872F158D35BF00480399 /* UILabel+FormatedText.m */,
+				AA008734158D35BF00480399 /* UIView+Layout.h */,
+				AA008735158D35BF00480399 /* UIView+Layout.m */,
+				AA008736158D35BF00480399 /* UIViewController+Socialize.h */,
+				AA008737158D35BF00480399 /* UIViewController+Socialize.m */,
+				AA0086B2158D35BE00480399 /* SocializeRichPushNotificationViewController.h */,
+				AA0086B3158D35BE00480399 /* SocializeRichPushNotificationViewController.m */,
+				AA008621158D35BD00480399 /* SampleEntityLoader.h */,
+				AA008622158D35BD00480399 /* SampleEntityLoader.m */,
+				AA008641158D35BD00480399 /* SocializeAuthInfoTableViewCell.h */,
+				AA008642158D35BD00480399 /* SocializeAuthInfoTableViewCell.m */,
+				AA008643158D35BD00480399 /* SocializeAuthTableViewCell.h */,
+				AA008644158D35BD00480399 /* SocializeAuthTableViewCell.m */,
+				AA008645158D35BD00480399 /* _SZLinkDialogViewController.h */,
+				AA008646158D35BD00480399 /* _SZLinkDialogViewController.m */,
+				AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */,
+				AA008655158D35BD00480399 /* SocializeComposeMessageViewController.h */,
+				AA008656158D35BD00480399 /* SocializeComposeMessageViewController.m */,
+				AA00866B158D35BD00480399 /* SocializeEditValueTableViewCell.h */,
+				AA00866C158D35BD00480399 /* SocializeEditValueTableViewCell.m */,
+				AA008691158D35BE00480399 /* SocializeLoadingView.h */,
+				AA008692158D35BE00480399 /* SocializeLoadingView.m */,
+				AA00869B158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.h */,
+				AA00869C158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.m */,
+				2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */,
+				2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */,
+				AA6C99801591634600E24658 /* _SZSelectNetworkViewController.h */,
+				AA6C99811591634600E24658 /* _SZSelectNetworkViewController.m */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		2CB81F4818774C8F006CBC2C /* iOS7 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iOS7;
+			sourceTree = "<group>";
+		};
+		2CB81F4918774CCF006CBC2C /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA00870C158D35BF00480399 /* SZNavigationController.h */,
+				AA00870D158D35BF00480399 /* SZNavigationController.m */,
+				AA008730158D35BF00480399 /* UINavigationBarBackground.h */,
+				AA008731158D35BF00480399 /* UINavigationBarBackground.m */,
+				AA008732158D35BF00480399 /* UINavigationController+Socialize.h */,
+				AA008733158D35BF00480399 /* UINavigationController+Socialize.m */,
+			);
+			name = NavigationBar;
+			sourceTree = "<group>";
+		};
 		487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -4007,101 +4181,15 @@
 		AAD1FF6C158EB21E00D908EC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AA008683158D35BD00480399 /* SocializeGeocoderAdapter.h */,
-				AA008684158D35BD00480399 /* SocializeGeocoderAdapter.m */,
-				AA008687158D35BE00480399 /* SocializeKeyboardListener.h */,
-				AA008688158D35BE00480399 /* SocializeKeyboardListener.m */,
-				AA00868F158D35BE00480399 /* SocializeListFormatter.h */,
-				AA008690158D35BE00480399 /* SocializeListFormatter.m */,
-				AA0086B2158D35BE00480399 /* SocializeRichPushNotificationViewController.h */,
-				AA0086B3158D35BE00480399 /* SocializeRichPushNotificationViewController.m */,
-				AA0086DE158D35BF00480399 /* SocializeVerticalLayoutContainerView.h */,
-				AA0086DF158D35BF00480399 /* SocializeVerticalLayoutContainerView.m */,
-				AA0086F5158D35BF00480399 /* _SZCommentsListViewController.h */,
-				AA0086F6158D35BF00480399 /* _SZCommentsListViewController.m */,
-				AA93598B158F187200B5B2BC /* _SZCommentsListViewController.xib */,
-				AA0086F9158D35BF00480399 /* _SZComposeCommentViewController.h */,
-				AA0086FA158D35BF00480399 /* _SZComposeCommentViewController.m */,
-				AA93598C158F187200B5B2BC /* _SZComposeCommentViewController.xib */,
-				AA0086FD158D35BF00480399 /* SZComposeCommentViewControllerDelegate.h */,
-				AA008712158D35BF00480399 /* _SZUserSettingsViewControllerDelegate.h */,
-				AA008602158D35BC00480399 /* CommentDetailsView.h */,
-				AA008603158D35BC00480399 /* CommentDetailsView.m */,
-				AA008604158D35BC00480399 /* CommentMapView.h */,
-				AA008605158D35BC00480399 /* CommentMapView.m */,
-				AA008606158D35BC00480399 /* CommentsTableFooterView.h */,
-				AA008607158D35BC00480399 /* CommentsTableFooterView.m */,
-				AA008608158D35BC00480399 /* CommentsTableViewCell.h */,
-				AA008609158D35BC00480399 /* CommentsTableViewCell.m */,
-				AA008621158D35BD00480399 /* SampleEntityLoader.h */,
-				AA008622158D35BD00480399 /* SampleEntityLoader.m */,
-				AA008627158D35BD00480399 /* SocializeActionBar.h */,
-				AA008628158D35BD00480399 /* SocializeActionBar.m */,
-				AA008629158D35BD00480399 /* SocializeActionBarDelegate.h */,
-				AA00862A158D35BD00480399 /* SocializeActionView.h */,
-				AA00862B158D35BD00480399 /* SocializeActionView.m */,
-				AA00862E158D35BD00480399 /* SocializeActivityDetailsView.h */,
-				AA00862F158D35BD00480399 /* SocializeActivityDetailsView.m */,
-				AA008630158D35BD00480399 /* SocializeActivityDetailsViewController.h */,
-				AA008631158D35BD00480399 /* SocializeActivityDetailsViewController.m */,
-				AA008632158D35BD00480399 /* SocializeActivityDetailsViewControllerDelegate.h */,
-				AA008637158D35BD00480399 /* SocializeActivityTableViewCell.h */,
-				AA008638158D35BD00480399 /* SocializeActivityTableViewCell.m */,
-				AA008639158D35BD00480399 /* SocializeActivityViewController.h */,
-				AA00863A158D35BD00480399 /* SocializeActivityViewController.m */,
-				AA008641158D35BD00480399 /* SocializeAuthInfoTableViewCell.h */,
-				AA008642158D35BD00480399 /* SocializeAuthInfoTableViewCell.m */,
-				AA008643158D35BD00480399 /* SocializeAuthTableViewCell.h */,
-				AA008644158D35BD00480399 /* SocializeAuthTableViewCell.m */,
-				AA008645158D35BD00480399 /* _SZLinkDialogViewController.h */,
-				AA008646158D35BD00480399 /* _SZLinkDialogViewController.m */,
-				AA93597E158F187200B5B2BC /* _SZLinkDialogViewController.xib */,
-				AA008647158D35BD00480399 /* SocializeBaseViewController.h */,
-				AA008648158D35BD00480399 /* SocializeBaseViewController.m */,
-				AA008649158D35BD00480399 /* SocializeBaseViewControllerDelegate.h */,
-				AA00864A158D35BD00480399 /* SocializeBubbleView.h */,
-				AA00864B158D35BD00480399 /* SocializeBubbleView.m */,
-				AA00864E158D35BD00480399 /* SocializeCommentDetailsViewController.h */,
-				AA00864F158D35BD00480399 /* SocializeCommentDetailsViewController.m */,
-				AA008655158D35BD00480399 /* SocializeComposeMessageViewController.h */,
-				AA008656158D35BD00480399 /* SocializeComposeMessageViewController.m */,
-				AA008667158D35BD00480399 /* SocializeDummyViewController.h */,
-				AA008668158D35BD00480399 /* SocializeDummyViewController.m */,
-				AA00866B158D35BD00480399 /* SocializeEditValueTableViewCell.h */,
-				AA00866C158D35BD00480399 /* SocializeEditValueTableViewCell.m */,
-				AA008691158D35BE00480399 /* SocializeLoadingView.h */,
-				AA008692158D35BE00480399 /* SocializeLoadingView.m */,
-				AA00869B158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.h */,
-				AA00869C158D35BE00480399 /* SocializeNotificationToggleBubbleContentView.m */,
-				AA0086AA158D35BE00480399 /* SocializeProfileEditTableViewCell.h */,
-				AA0086AB158D35BE00480399 /* SocializeProfileEditTableViewCell.m */,
-				AA0086AC158D35BE00480399 /* SocializeProfileEditTableViewImageCell.h */,
-				AA0086AD158D35BE00480399 /* SocializeProfileEditTableViewImageCell.m */,
-				AA0086AE158D35BE00480399 /* SocializeProfileEditValueViewController.h */,
-				AA0086AF158D35BE00480399 /* SocializeProfileEditValueViewController.m */,
-				AA0086C5158D35BE00480399 /* SocializeTableBGInfoView.h */,
-				AA0086C6158D35BE00480399 /* SocializeTableBGInfoView.m */,
-				AA0086C7158D35BE00480399 /* SocializeTableViewController.h */,
-				AA0086C8158D35BE00480399 /* SocializeTableViewController.m */,
-				AA00870C158D35BF00480399 /* SZNavigationController.h */,
-				AA00870D158D35BF00480399 /* SZNavigationController.m */,
-				AA00870E158D35BF00480399 /* _SZUserProfileViewController.h */,
-				AA00870F158D35BF00480399 /* _SZUserProfileViewController.m */,
-				AA93598D158F187200B5B2BC /* _SZUserProfileViewController.xib */,
-				AA008710158D35BF00480399 /* _SZUserSettingsViewController.h */,
-				AA008711158D35BF00480399 /* _SZUserSettingsViewController.m */,
-				AA93598E158F187200B5B2BC /* _SZUserSettingsViewController.xib */,
-				AA008713158D35BF00480399 /* SZShareDialogView.h */,
-				AA008714158D35BF00480399 /* SZShareDialogView.m */,
-				2CAB845A1815ECEB00790B5F /* SZLinkDialogView.h */,
-				2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */,
-				AA008715158D35BF00480399 /* SZBaseShareViewController.h */,
-				AA008716158D35BF00480399 /* SZBaseShareViewController.m */,
-				AA93598F158F187200B5B2BC /* SZBaseShareViewController.xib */,
-				AA6C99801591634600E24658 /* _SZSelectNetworkViewController.h */,
-				AA6C99811591634600E24658 /* _SZSelectNetworkViewController.m */,
-				AAD98F9A1591682000845FC9 /* _SZShareDialogViewController.h */,
-				AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */,
+				2CB81F4618773474006CBC2C /* General */,
+				2CB81F43187732FD006CBC2C /* Activity */,
+				2CB81F4218773139006CBC2C /* ActionBar */,
+				2CB81F2D18773122006CBC2C /* Comments */,
+				2CB81F4918774CCF006CBC2C /* NavigationBar */,
+				2CB81F4418773322006CBC2C /* Profile */,
+				2CB81F4518773331006CBC2C /* Share */,
+				2CB81F4818774C8F006CBC2C /* iOS7 */,
+				2CB81F4718773582006CBC2C /* Others */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -4113,24 +4201,8 @@
 				AA008739158D35BF00480399 /* URLDownload.m */,
 				AA00873A158D35BF00480399 /* URLDownloadOperation.h */,
 				AA00873B158D35BF00480399 /* URLDownloadOperation.m */,
-				AA008726158D35BF00480399 /* UIButton+Socialize.h */,
-				AA008727158D35BF00480399 /* UIButton+Socialize.m */,
 				AA008728158D35BF00480399 /* UIImage+Network.h */,
 				AA008729158D35BF00480399 /* UIImage+Network.m */,
-				AA00872A158D35BF00480399 /* UIImage+Resize.h */,
-				AA00872B158D35BF00480399 /* UIImage+Resize.m */,
-				AA00872C158D35BF00480399 /* UILabel-Additions.h */,
-				AA00872D158D35BF00480399 /* UILabel-Additions.m */,
-				AA00872E158D35BF00480399 /* UILabel+FormatedText.h */,
-				AA00872F158D35BF00480399 /* UILabel+FormatedText.m */,
-				AA008730158D35BF00480399 /* UINavigationBarBackground.h */,
-				AA008731158D35BF00480399 /* UINavigationBarBackground.m */,
-				AA008732158D35BF00480399 /* UINavigationController+Socialize.h */,
-				AA008733158D35BF00480399 /* UINavigationController+Socialize.m */,
-				AA008734158D35BF00480399 /* UIView+Layout.h */,
-				AA008735158D35BF00480399 /* UIView+Layout.m */,
-				AA008736158D35BF00480399 /* UIViewController+Socialize.h */,
-				AA008737158D35BF00480399 /* UIViewController+Socialize.m */,
 				AA008620158D35BD00480399 /* PropertyHelpers.h */,
 				AA008625158D35BD00480399 /* ShareProviderProtocol.h */,
 				AA00860A158D35BC00480399 /* HtmlPageCreator.h */,
@@ -6484,7 +6556,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
@@ -6509,7 +6581,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
