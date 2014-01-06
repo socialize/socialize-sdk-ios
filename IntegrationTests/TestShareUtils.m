@@ -143,9 +143,8 @@
     GHAssertNotNil(fetchedComment, @"Comment not on user");
 }
 
-- (void)testReportShareToLoopy {
-    //cannot be tested headlessly until import issues resolved to allow proper mocking
-    
+//Uncomment once integration complete
+//- (void)testReportShareToLoopy {
 //    [self prepare];
 //    __block BOOL operationSucceeded = NO;
 //    [SZShareUtils reportShareToLoopyWithText:@"test text"
@@ -168,6 +167,6 @@
 //    
 //    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 //    GHAssertTrue(operationSucceeded, @"");
-}
+//}
 
 @end

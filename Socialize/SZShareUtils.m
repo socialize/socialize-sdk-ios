@@ -31,9 +31,9 @@
     static STAPIClient *loopyAPIClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:@"hkg435723o4tho95fh29"
-                                                    loopyKey:@"4q7cd6ngw3vu7gram5b9b9t6"];
-        [loopyAPIClient getSessionWithReferrer:@"www.facebook.com"
+        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize consumerKey]
+                                                    loopyKey:[Socialize consumerSecret]];
+        [loopyAPIClient getSessionWithReferrer:@"www.facebook.com" //this is temporary until referred clarified
                                    postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                                    }
                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -62,13 +62,26 @@
     return options;
 }
 
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion {
++ (void)showShareDialogWithViewController:(UIViewController*)viewController
+                                   entity:(id<SZEntity>)entity
+                               completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
 
     WEAK(viewController) weakViewController = viewController;
+    WEAK(shareDialog) weakShareDialog = shareDialog;
 
     shareDialog.completionBlock = ^(NSArray *shares) {
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
+            SZSocialNetwork selectedNetworks = weakShareDialog._shareDialogViewController.selectedNetworks;
+            SZShareOptions *options = weakShareDialog.shareOptions;
+            BOOL useLoopy = options != nil && options.loopyEnabled;
+            if(useLoopy) {
+                [SZShareUtils reportShareToLoopyWithText:options.text
+                                                 channel:[SZShareUtils getNetworksForLoopy:selectedNetworks]
+                                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                 }
+                                                 failure:nil];
+            }
             BLOCK_CALL_1(completion, shares);
         }];
     };
@@ -83,18 +96,35 @@
     [viewController presentModalViewController:shareDialog animated:YES];
 }
 
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion cancellation:(void(^)())cancellation {
++ (void)showShareDialogWithViewController:(UIViewController*)viewController
+                                   entity:(id<SZEntity>)entity
+                               completion:(void(^)(NSArray *shares))completion
+                             cancellation:(void(^)())cancellation {
     [self showShareDialogWithViewController:viewController options:nil entity:entity completion:completion cancellation:cancellation];
 }
 
-+ (void)showShareDialogWithViewController:(UIViewController*)viewController options:(SZShareOptions*)options entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))completion cancellation:(void(^)())cancellation {
++ (void)showShareDialogWithViewController:(UIViewController*)viewController
+                                  options:(SZShareOptions*)options
+                                   entity:(id<SZEntity>)entity
+                               completion:(void(^)(NSArray *shares))completion
+                             cancellation:(void(^)())cancellation {
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
-    
     WEAK(viewController) weakViewController = viewController;
+    WEAK(shareDialog) weakShareDialog = shareDialog;
     
     shareDialog.completionBlock = ^(NSArray *shares) {
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
+            //This is handled in shareViaSocialNetworksWithEntity
+//            SZSocialNetwork selectedNetworks = weakShareDialog._shareDialogViewController.selectedNetworks;
+//            BOOL useLoopy = options != nil && options.loopyEnabled;
+//            if(useLoopy) {
+//                [SZShareUtils reportShareToLoopyWithText:options.text
+//                                                 channel:[SZShareUtils getNetworksForLoopy:selectedNetworks]
+//                                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                                                 }
+//                                                 failure:nil];
+//            }
             BLOCK_CALL_1(completion, shares);
         }];
     };
@@ -116,13 +146,6 @@
                                  options:(SZShareOptions*)options
                                  success:(void(^)(id<SZShare> share))success
                                  failure:(void(^)(NSError *error))failure {
-    //init Loopy if not done already
-    //only applies if options is not nil
-    BOOL useLoopy = options != nil && options.loopyEnabled;
-    if(useLoopy) {
-        [SZShareUtils sharedLoopyAPIClient];
-    }
-    
     SocializeShareMedium medium = SocializeShareMediumForSZSocialNetworks(networks);
     SZShare *share = [SZShare shareWithEntity:entity text:options.text medium:medium];
     ActivityCreatorBlock shareCreator = ^(id<SZShare> share, void(^createSuccess)(id), void(^createFailure)(NSError*)) {
@@ -134,33 +157,41 @@
     };
 
     //successful shares now report to Loopy SDK also if so configured
-    //for now, simply text-ify networks being shared
-    void (^shareSuccess)(id<SZShare> share) = success;
-    if(useLoopy) {
-        NSString *channel = @"";
-        switch (networks) {
-            case SZSocialNetworkTwitter:
-                channel = @"twitter";
-                break;
-                
-            case SZSocialNetworkFacebook:
-                channel = @"facebook";
-                break;
-                
-            case (SZSocialNetworkTwitter + SZSocialNetworkFacebook):
-                channel = @"facebook,twitter";
-                break;
-            
-            default:
-                break;
+    void (^shareSuccess)(id<SZShare> share) = ^(id<SZShare> share) {
+        success(share);
+        BOOL useLoopy = options != nil && options.loopyEnabled;
+        if(useLoopy) {
+            [SZShareUtils reportShareToLoopyWithText:options.text
+                                             channel:[SZShareUtils getNetworksForLoopy:networks]
+                                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                             }
+                                             failure:nil];
         }
-        
-        void (^shareSuccess)(id<SZShare> share) = ^(id<SZShare> share) {
-            success(share);
-            [SZShareUtils reportShareToLoopyWithText:options.text channel:channel success:nil failure:nil];
-        };
-    }
+    };
     SZCreateAndShareActivity(share, SZDefaultLinkPostData(), options, networks, shareCreator, shareSuccess, failure);
+}
+
+//for now, simply text-ify networks being shared
++ (NSString *)getNetworksForLoopy:(SZSocialNetwork)networks {
+    NSString *channel = @"";
+    switch (networks) {
+        case SZSocialNetworkTwitter:
+            channel = @"twitter";
+            break;
+            
+        case SZSocialNetworkFacebook:
+            channel = @"facebook";
+            break;
+            
+        case (SZSocialNetworkTwitter + SZSocialNetworkFacebook):
+            channel = @"facebook,twitter";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return channel;
 }
 
 + (NSString*)defaultMessageForShare:(id<SZShare>)share {
