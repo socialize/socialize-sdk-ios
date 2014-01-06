@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
+#import "UIDevice+VersionCheck.h"
 #import "SZNavigationController.h"
-#import "UINavigationBarBackground.h"
+#import "SZNavigationControllerIOS6.h"
+#import "SZNavigationControllerIOS7.h"
 
 @interface SZNavigationController ()
 
@@ -15,13 +17,15 @@
 
 @implementation SZNavigationController
 
-- (id)init {
-    if (self = [super init]) {
-        UIImage * socializeNavBarBackground = [UIImage imageNamed:@"socialize-navbar-bg.png"];
-        [self.navigationBar setBackgroundImage:socializeNavBarBackground];
++ (id)alloc {
+    if([self class] == [SZNavigationController class]) {
+        return [[UIDevice currentDevice] systemMajorVersion] < 7 ?
+                [SZNavigationControllerIOS6 alloc] :
+                [SZNavigationControllerIOS7 alloc];
     }
-    
-    return self;
+    else {
+        return [super alloc];
+    }
 }
 
 @end
