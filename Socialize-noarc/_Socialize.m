@@ -212,7 +212,11 @@ static Socialize *_sharedSocialize;
         
         //iOS 7 navbar standard init
         if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
-            [[UINavigationBar appearance] setBarTintColor:[UIColor greenColor]];
+            UIColor *barColor = [UIColor colorWithRed:(1.0f/255.0f)
+                                                green:(191.0f/255.0f)
+                                                 blue:(1.0f/255.0f)
+                                                alpha:1.0f];
+            [[UINavigationBar appearance] setBarTintColor:barColor];
             NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                        [UIColor blackColor], NSForegroundColorAttributeName,
                                                        nil];
