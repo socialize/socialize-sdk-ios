@@ -162,6 +162,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if (self.footerView != nil) {
         self.shareDialogView.footerView = self.footerView;
     }
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)updateContinueButtonState {

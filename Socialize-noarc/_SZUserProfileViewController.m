@@ -139,6 +139,12 @@
     [self setProfileImageFromImage:[self defaultProfileImage]];
     
     [self addActivityControllerToView];
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [super viewDidLoad];
 }
 
 #pragma mark - View lifecycle

@@ -289,6 +289,10 @@
     if (![SZSmartAlertUtils isAvailable]) {
         [self.footerView hideSubscribedButton];
     }
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark tableFooterViewDelegate

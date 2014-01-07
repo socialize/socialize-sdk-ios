@@ -139,6 +139,10 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     
     // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
     [self.tableView setBackgroundView:nil];    
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
