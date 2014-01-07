@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 ShareThis. All rights reserved.
 //
 
-#import "UIButtonIOS6.h"
+#import "UIButton+SocializeIOS6.h"
 #import "UILabel-Additions.h"
 
 @implementation UIButtonIOS6

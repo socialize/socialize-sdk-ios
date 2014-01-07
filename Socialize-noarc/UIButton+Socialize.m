@@ -8,7 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIButton+Socialize.h"
 #import "UILabel-Additions.h"
-#import "UIButtonIOS6.h"
+#import "UIButton+SocializeIOS6.h"
 #import "UIDevice+VersionCheck.h"
 
 @implementation UIButton (Socialize)
