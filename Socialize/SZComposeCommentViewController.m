@@ -9,6 +9,8 @@
 #import "SZComposeCommentViewController.h"
 #import "_SZComposeCommentViewController.h"
 #import "SZCommentUtils.h"
+#import "SZComposeCommentViewControllerIOS6.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface SZComposeCommentViewController ()
 @property (nonatomic, strong) id<SZEntity> entity;
@@ -19,6 +21,18 @@
 @dynamic completionBlock;
 @dynamic cancellationBlock;
 @dynamic display;
+
+//class cluster impl
+//used for navbar as this class is a subclass of SZNavigationBar
++ (id)alloc {
+    if([self class] == [SZComposeCommentViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZComposeCommentViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

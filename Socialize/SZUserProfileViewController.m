@@ -9,7 +9,6 @@
 #import "SZUserProfileViewController.h"
 #import "_SZUserProfileViewController.h"
 #import "SZUserProfileViewControllerIOS6.h"
-#import "SZUserProfileViewControllerIOS7.h"
 #import "UIDevice+VersionCheck.h"
 
 @interface SZUserProfileViewController ()
@@ -25,10 +24,9 @@
 //class cluster impl
 //used for navbar as this class is a subclass of SZNavigationBar
 + (id)alloc {
-    if([self class] == [SZUserProfileViewController class]) {
-        return [[UIDevice currentDevice] systemMajorVersion] < 7 ?
-        [SZUserProfileViewControllerIOS6 alloc] :
-        [SZUserProfileViewControllerIOS7 alloc];
+    if([self class] == [SZUserProfileViewController class] &&
+        [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZUserProfileViewControllerIOS6 alloc];
     }
     else {
         return [super alloc];

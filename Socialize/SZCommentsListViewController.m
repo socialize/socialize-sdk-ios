@@ -8,6 +8,8 @@
 
 #import "SZCommentsListViewController.h"
 #import "_SZCommentsListViewController.h"
+#import "SZCommentsListViewControllerIOS6.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface SZCommentsListViewController ()
 @property (nonatomic, strong) id<SZEntity> entity;
@@ -16,6 +18,18 @@
 
 @implementation SZCommentsListViewController
 @dynamic completionBlock;
+
+//class cluster impl
+//used for navbar as this class is a subclass of SZNavigationBar
++ (id)alloc {
+    if([self class] == [SZCommentsListViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZCommentsListViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

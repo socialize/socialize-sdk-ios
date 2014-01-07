@@ -9,7 +9,6 @@
 #import "SZLinkDialogViewController.h"
 #import "_SZLinkDialogViewController.h"
 #import "SZLinkDialogViewControllerIOS6.h"
-#import "SZLinkDialogViewControllerIOS7.h"
 #import "UIDevice+VersionCheck.h"
 
 @interface SZLinkDialogViewController ()
@@ -25,10 +24,9 @@
 //class cluster impl
 //used for navbar as this class is a subclass of SZNavigationBar
 + (id)alloc {
-    if([self class] == [SZLinkDialogViewController class]) {
-        return [[UIDevice currentDevice] systemMajorVersion] < 7 ?
-        [SZLinkDialogViewControllerIOS6 alloc] :
-        [SZLinkDialogViewControllerIOS7 alloc];
+    if([self class] == [SZLinkDialogViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZLinkDialogViewControllerIOS6 alloc];
     }
     else {
         return [super alloc];

@@ -9,7 +9,6 @@
 #import "SZUserSettingsViewController.h"
 #import "_SZUserSettingsViewController.h"
 #import "SZUserSettingsViewControllerIOS6.h"
-#import "SZUserSettingsViewControllerIOS7.h"
 #import "UIDevice+VersionCheck.h"
 
 @interface SZUserSettingsViewController ()
@@ -26,10 +25,9 @@
 //class cluster impl
 //used for navbar as this class is a subclass of SZNavigationBar
 + (id)alloc {
-    if([self class] == [SZUserSettingsViewController class]) {
-        return [[UIDevice currentDevice] systemMajorVersion] < 7 ?
-        [SZUserSettingsViewControllerIOS6 alloc] :
-        [SZUserSettingsViewControllerIOS7 alloc];
+    if([self class] == [SZUserSettingsViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZUserSettingsViewControllerIOS6 alloc];
     }
     else {
         return [super alloc];

@@ -9,7 +9,6 @@
 #import "UIDevice+VersionCheck.h"
 #import "SZNavigationController.h"
 #import "SZNavigationControllerIOS6.h"
-#import "SZNavigationControllerIOS7.h"
 
 @interface SZNavigationController ()
 
@@ -18,10 +17,9 @@
 @implementation SZNavigationController
 
 + (id)alloc {
-    if([self class] == [SZNavigationController class]) {
-        return [[UIDevice currentDevice] systemMajorVersion] < 7 ?
-                [SZNavigationControllerIOS6 alloc] :
-                [SZNavigationControllerIOS7 alloc];
+    if([self class] == [SZNavigationController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZNavigationControllerIOS6 alloc];
     }
     else {
         return [super alloc];

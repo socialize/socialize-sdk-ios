@@ -11,6 +11,7 @@
 
 @implementation SZUserSettingsViewControllerIOS6
 
+//navbar impl is set here, as this is a subclass of SZNavigationController
 - (id)init {
     if (self = [super init]) {
         [SZNavigationControllerIOS6 initNavigationBar:self];
