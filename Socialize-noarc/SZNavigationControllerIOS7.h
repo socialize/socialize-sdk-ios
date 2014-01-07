@@ -10,4 +10,6 @@
 
 @interface SZNavigationControllerIOS7 : SZNavigationController
 
++ (void)initNavigationBar:(UINavigationController *)controller;
+
 @end

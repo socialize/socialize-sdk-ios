@@ -11,7 +11,18 @@
 @implementation SZNavigationControllerIOS7
 
 - (id)init {
-    return [super init];
-    //TODO iOS7 impl
+    if (self = [super init]) {
+        [SZNavigationControllerIOS7 initNavigationBar:self];
+    }
+    
+    return self;
+}
+
++ (void)initNavigationBar:(UINavigationController *)controller {
+    [[UINavigationBar appearance] setBarTintColor:[UIColor greenColor]];
+    NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               [UIColor blackColor], NSForegroundColorAttributeName,
+                                               nil];
+    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
 }
 @end

@@ -8,6 +8,9 @@
 
 #import "SZUserProfileViewController.h"
 #import "_SZUserProfileViewController.h"
+#import "SZUserProfileViewControllerIOS6.h"
+#import "SZUserProfileViewControllerIOS7.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface SZUserProfileViewController ()
 @property (nonatomic, strong) id<SZUser> user;
@@ -18,6 +21,19 @@
 @dynamic completionBlock;
 @synthesize profile = _profile;
 @synthesize user = _user;
+
+//class cluster impl
+//used for navbar as this class is a subclass of SZNavigationBar
++ (id)alloc {
+    if([self class] == [SZUserProfileViewController class]) {
+        return [[UIDevice currentDevice] systemMajorVersion] < 7 ?
+        [SZUserProfileViewControllerIOS6 alloc] :
+        [SZUserProfileViewControllerIOS7 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

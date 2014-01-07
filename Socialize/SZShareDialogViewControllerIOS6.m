@@ -8,7 +8,6 @@
 
 #import "SZShareDialogViewControllerIOS6.h"
 #import "SZNavigationControllerIOS6.h"
-#import "UINavigationBarBackground.h"
 
 @implementation SZShareDialogViewControllerIOS6
 

@@ -7,13 +7,14 @@
 //
 
 #import "SZShareDialogViewControllerIOS7.h"
+#import "SZNavigationControllerIOS7.h"
 
 @implementation SZShareDialogViewControllerIOS7
 
 //navbar impl is set here, as share dialog is a subclass of SZNavigationController
 - (id)initWithEntity:(id<SZEntity>)entity {
     if (self = [super initWithEntity:entity]) {
-        //TODO iOS7 impl
+        [SZNavigationControllerIOS7 initNavigationBar:self];
     }
     
     return self;

@@ -33,6 +33,30 @@
 		2CB6C385187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C383187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.m */; };
 		2CB6C386187B2F5F008C0AAE /* SZShareDialogViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C383187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.m */; };
 		2CB6C387187B2F64008C0AAE /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
+		2CB6C3B6187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */; };
+		2CB6C3B7187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */; };
+		2CB6C3B8187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */; };
+		2CB6C3B9187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */; };
+		2CB6C3D0187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3CE187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h */; };
+		2CB6C3D1187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3CE187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h */; };
+		2CB6C3D2187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3CF187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m */; };
+		2CB6C3D3187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3CF187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m */; };
+		2CB6C3D6187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3D4187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h */; };
+		2CB6C3D7187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3D4187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h */; };
+		2CB6C3D8187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */; };
+		2CB6C3D9187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */; };
+		2CB6C3DC187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3DA187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h */; };
+		2CB6C3DD187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3DA187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h */; };
+		2CB6C3DE187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3DB187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m */; };
+		2CB6C3DF187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3DB187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m */; };
+		2CB6C3E2187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3E0187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h */; };
+		2CB6C3E3187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3E0187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h */; };
+		2CB6C3E4187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
+		2CB6C3E5187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
+		2CB6C3E8187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3E6187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h */; };
+		2CB6C3E9187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3E6187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h */; };
+		2CB6C3EA187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E7187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m */; };
+		2CB6C3EB187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E7187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m */; };
 		2CB7AF3D187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
 		2CC53216187A358500428A56 /* SZNavigationControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */; };
 		2CC5322B187A358E00428A56 /* SZNavigationControllerIOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C979103187A0671002C3268 /* SZNavigationControllerIOS7.m */; };
@@ -1744,6 +1768,18 @@
 		2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LoopyApiInfo.plist; path = Socialize/Resources/LoopyApiInfo.plist; sourceTree = SOURCE_ROOT; };
 		2CB6C382187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewControllerIOS7.h; sourceTree = "<group>"; };
 		2CB6C383187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewControllerIOS7.m; sourceTree = "<group>"; };
+		2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogViewControllerIOS6.h; sourceTree = "<group>"; };
+		2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewControllerIOS6.m; sourceTree = "<group>"; };
+		2CB6C3CE187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogViewControllerIOS7.h; sourceTree = "<group>"; };
+		2CB6C3CF187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewControllerIOS7.m; sourceTree = "<group>"; };
+		2CB6C3D4187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserProfileViewControllerIOS6.h; sourceTree = "<group>"; };
+		2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserProfileViewControllerIOS6.m; sourceTree = "<group>"; };
+		2CB6C3DA187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserProfileViewControllerIOS7.h; sourceTree = "<group>"; };
+		2CB6C3DB187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserProfileViewControllerIOS7.m; sourceTree = "<group>"; };
+		2CB6C3E0187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewControllerIOS6.h; sourceTree = "<group>"; };
+		2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewControllerIOS6.m; sourceTree = "<group>"; };
+		2CB6C3E6187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewControllerIOS7.h; sourceTree = "<group>"; };
+		2CB6C3E7187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewControllerIOS7.m; sourceTree = "<group>"; };
 		2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewControllerIOS6.m; sourceTree = "<group>"; };
 		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
@@ -2825,10 +2861,22 @@
 		2CB7AF25187B2B3A00BABE49 /* iOS7 */ = {
 			isa = PBXGroup;
 			children = (
+				2CB6C3E0187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h */,
+				2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */,
+				2CB6C3E6187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h */,
+				2CB6C3E7187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m */,
+				2CB6C3D4187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h */,
+				2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */,
+				2CB6C3DA187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h */,
+				2CB6C3DB187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m */,
 				2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */,
 				2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */,
 				2CB6C382187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.h */,
 				2CB6C383187B2F47008C0AAE /* SZShareDialogViewControllerIOS7.m */,
+				2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */,
+				2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */,
+				2CB6C3CE187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h */,
+				2CB6C3CF187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m */,
 			);
 			name = iOS7;
 			sourceTree = "<group>";
@@ -4342,6 +4390,7 @@
 				AAAC1647159328FF00804916 /* SocializeUser.h in Headers */,
 				AAAC1648159328FF00804916 /* SocializeView.h in Headers */,
 				AAAC1649159328FF00804916 /* SocializeDeviceToken.h in Headers */,
+				2CB6C3DC187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h in Headers */,
 				AAAC164A159328FF00804916 /* SocializeComment.h in Headers */,
 				AAAC164B159328FF00804916 /* SocializeApplication.h in Headers */,
 				AAAC16661593291900804916 /* SocializeCommonDefinitions.h in Headers */,
@@ -4360,6 +4409,7 @@
 				AAAC168015932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */,
 				AAAC16821593392D00804916 /* SocializeActivityDetailsView.h in Headers */,
 				AAAC16841593395300804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
+				2CB6C3B6187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */,
 				AAAC168A159339D800804916 /* SZUserSettingsViewController.h in Headers */,
 				AAAC168B159339D800804916 /* SZUserProfileViewController.h in Headers */,
 				AAAC168C159339D800804916 /* SZSelectNetworkViewController.h in Headers */,
@@ -4401,13 +4451,17 @@
 				AA815C8C15DACDCC00A31E39 /* SZEmailShareData.h in Headers */,
 				AA3A9E2B15E5909700CD2F75 /* SZSessionTracker.h in Headers */,
 				AA0F103D15FAB61900391CFE /* SZEventUtils.h in Headers */,
+				2CB6C3E2187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h in Headers */,
 				AA84654715EBE52B00065678 /* SZStatusView.h in Headers */,
 				AADB363F15F0350A000264D6 /* SZNotificationHandler.h in Headers */,
+				2CB6C3D6187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h in Headers */,
 				AADB364515F0378E000264D6 /* SZDisplay.h in Headers */,
 				AA0F10A215FC133E00391CFE /* SZWindowDisplay.h in Headers */,
 				AAAA3CBB15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 				AAB86D6415FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
+				2CB6C3D0187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h in Headers */,
 				AAB86D6A15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
+				2CB6C3E8187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h in Headers */,
 				AAE2168E1607D6DD0049850E /* SZOpenURLHandler.h in Headers */,
 				AA2A2D2616F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */,
 				4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */,
@@ -4422,6 +4476,7 @@
 			files = (
 				AAB5E528159044F900D3EBDF /* _Socialize.h in Headers */,
 				AAB5E529159044F900D3EBDF /* SocializeCommentDetailsViewController.h in Headers */,
+				2CB6C3B7187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */,
 				AAB5E52A159044F900D3EBDF /* _SZCommentsListViewController.h in Headers */,
 				AAB5E52B159044F900D3EBDF /* SocializeComposeMessageViewController.h in Headers */,
 				AAB5E52C159044F900D3EBDF /* _SZUserProfileViewController.h in Headers */,
@@ -4440,6 +4495,7 @@
 				AAB5E53C159044F900D3EBDF /* SZCommentOptions.h in Headers */,
 				AAB5E540159044F900D3EBDF /* SZLikeOptions.h in Headers */,
 				AAB5E543159044F900D3EBDF /* SZShareOptions.h in Headers */,
+				2CB6C3DD187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.h in Headers */,
 				AAB5E54B159044F900D3EBDF /* Socialize.h in Headers */,
 				AA15EFF115915300008F1237 /* SZUserProfileViewController.h in Headers */,
 				AA6C99871591653900E24658 /* SZSelectNetworkViewController.h in Headers */,
@@ -4468,6 +4524,7 @@
 				AAAC16701593298100804916 /* SocializeBaseViewController.h in Headers */,
 				AAAC1673159329A600804916 /* SocializeKeyboardListener.h in Headers */,
 				AAAC1675159329B800804916 /* _SZUserSettingsViewControllerDelegate.h in Headers */,
+				2CB6C3E3187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h in Headers */,
 				AAAC1677159329C400804916 /* SocializeBaseViewControllerDelegate.h in Headers */,
 				AAAC1679159329D000804916 /* SocializeProfileEditValueViewController.h in Headers */,
 				AAAC167B159329E100804916 /* SocializeActivityViewController.h in Headers */,
@@ -4487,9 +4544,11 @@
 				AAEEE62615A26B6B003566BA /* SDKHelpers.h in Headers */,
 				AA7D03E315A26CAA00EBB705 /* SZActionBarUtils.h in Headers */,
 				AA7D03E715A26CAA00EBB705 /* SZActionUtils.h in Headers */,
+				2CB6C3D1187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.h in Headers */,
 				AA7D03EB15A26CAA00EBB705 /* SZCommentUtils.h in Headers */,
 				AA7D03EF15A26CAA00EBB705 /* SZEntityUtils.h in Headers */,
 				AA7D03F315A26CAA00EBB705 /* SZFacebookUtils.h in Headers */,
+				2CB6C3E9187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.h in Headers */,
 				AA7D03F715A26CAA00EBB705 /* SZLikeUtils.h in Headers */,
 				AA7D03FB15A26CAA00EBB705 /* SZLocationUtils.h in Headers */,
 				AA7D03FF15A26CAA00EBB705 /* SZShareUtils.h in Headers */,
@@ -4516,6 +4575,7 @@
 				AA0F10A315FC133E00391CFE /* SZWindowDisplay.h in Headers */,
 				AAAA3CBC15FE5DA2003E08AF /* UIViewController+Display.h in Headers */,
 				AAB86D6515FEABEF0029F157 /* SZDisplayUtils.h in Headers */,
+				2CB6C3D7187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h in Headers */,
 				AAB86D6B15FEBC510029F157 /* SZViewControllerWrapper.h in Headers */,
 				AAE2168F1607D6DE0049850E /* SZOpenURLHandler.h in Headers */,
 				AA2A2D2716F8D7720066111B /* ASIdentifierManager+Utilities.h in Headers */,
@@ -5890,11 +5950,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB6C3EA187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m in Sources */,
+				2CB6C3E4187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */,
 				AA25FEAE159119F00067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41523115911E37003717AC /* SZActivityOptions.m in Sources */,
 				AA41523215911E37003717AC /* SZCommentOptions.m in Sources */,
 				AA41523615911E37003717AC /* SZLikeOptions.m in Sources */,
 				AA41523915911E37003717AC /* SZShareOptions.m in Sources */,
+				2CB6C3D2187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m in Sources */,
 				AA15EFF215915300008F1237 /* SZUserProfileViewController.m in Sources */,
 				AA6C99881591653900E24658 /* SZSelectNetworkViewController.m in Sources */,
 				AAD98FA215916C6900845FC9 /* SZShareDialogViewController.m in Sources */,
@@ -5912,6 +5975,7 @@
 				AAEEE62715A26B6B003566BA /* SDKHelpers.m in Sources */,
 				2CB7AF3D187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m in Sources */,
 				AA7D03E415A26CAA00EBB705 /* SZActionBarUtils.m in Sources */,
+				2CB6C3D8187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m in Sources */,
 				AA7D03E815A26CAA00EBB705 /* SZActionUtils.m in Sources */,
 				AA7D03EC15A26CAA00EBB705 /* SZCommentUtils.m in Sources */,
 				AA7D03F015A26CAA00EBB705 /* SZEntityUtils.m in Sources */,
@@ -5938,10 +6002,12 @@
 				AA84654915EBE52B00065678 /* SZStatusView.m in Sources */,
 				AADB364115F0350A000264D6 /* SZNotificationHandler.m in Sources */,
 				AA0F10A415FC133E00391CFE /* SZWindowDisplay.m in Sources */,
+				2CB6C3DE187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m in Sources */,
 				AAAA3CBD15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 				AAB86D6615FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
 				AAB86D6C15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
 				AAE216901607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
+				2CB6C3B8187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m in Sources */,
 				AA2A2D2816F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
 				4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */,
 				4810FF471778D3F600109630 /* SZPinterestShareData.m in Sources */,
@@ -6384,11 +6450,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB6C3EB187B81D8008C0AAE /* SZUserSettingsViewControllerIOS7.m in Sources */,
+				2CB6C3E5187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */,
 				AA25FEB015911ACC0067741A /* SZUserSettingsViewController.m in Sources */,
 				AA41524215911E38003717AC /* SZActivityOptions.m in Sources */,
 				AA41524315911E38003717AC /* SZCommentOptions.m in Sources */,
 				AA41524715911E38003717AC /* SZLikeOptions.m in Sources */,
 				AA41524A15911E38003717AC /* SZShareOptions.m in Sources */,
+				2CB6C3D3187B7B5B008C0AAE /* SZLinkDialogViewControllerIOS7.m in Sources */,
 				AA15EFF315915300008F1237 /* SZUserProfileViewController.m in Sources */,
 				AA6C99891591653900E24658 /* SZSelectNetworkViewController.m in Sources */,
 				AAD98FA315916C6900845FC9 /* SZShareDialogViewController.m in Sources */,
@@ -6406,6 +6475,7 @@
 				AAEEE62815A26B6B003566BA /* SDKHelpers.m in Sources */,
 				AA7D03E515A26CAA00EBB705 /* SZActionBarUtils.m in Sources */,
 				AA7D03E915A26CAA00EBB705 /* SZActionUtils.m in Sources */,
+				2CB6C3D9187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m in Sources */,
 				AA7D03ED15A26CAA00EBB705 /* SZCommentUtils.m in Sources */,
 				AA7D03F115A26CAA00EBB705 /* SZEntityUtils.m in Sources */,
 				AA7D03F515A26CAA00EBB705 /* SZFacebookUtils.m in Sources */,
@@ -6432,10 +6502,12 @@
 				AA0F104015FAB61900391CFE /* SZEventUtils.m in Sources */,
 				AA84654A15EBE52B00065678 /* SZStatusView.m in Sources */,
 				AADB364215F0350A000264D6 /* SZNotificationHandler.m in Sources */,
+				2CB6C3DF187B7E82008C0AAE /* SZUserProfileViewControllerIOS7.m in Sources */,
 				AA0F10A515FC133E00391CFE /* SZWindowDisplay.m in Sources */,
 				AAAA3CBE15FE5DA2003E08AF /* UIViewController+Display.m in Sources */,
 				AAB86D6715FEABEF0029F157 /* SZDisplayUtils.m in Sources */,
 				AAB86D6D15FEBC510029F157 /* SZViewControllerWrapper.m in Sources */,
+				2CB6C3B9187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m in Sources */,
 				AAE216911607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 				AA2A2D2916F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
 				4810FF311778C6CA00109630 /* SZPinterestUtils.m in Sources */,
