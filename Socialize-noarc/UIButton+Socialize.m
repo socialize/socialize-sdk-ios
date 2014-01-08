@@ -11,6 +11,11 @@
 #import "UIButton+SocializeIOS6.h"
 #import "UIDevice+VersionCheck.h"
 
+int const SocializeButtonFontSize = 16;
+int const SocializeButtonWidth = 100;
+int const SocializeButtonHeight = 31;
+int const SocializeButtonPadding = 5;
+
 @implementation UIButton (Socialize)
 
 //class cluster impl for legacy OS compatibility
@@ -35,42 +40,48 @@
 - (void)configureWithTitle:(NSString*)title {
     if ([title length] > 0) {
         [self setTitle:title forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:SocializeButtonFontSize];
     }
     
     if ([self.titleLabel.text length] > 0) {
-        CGSize buttonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
-        self.bounds = CGRectMake(0, 0, buttonSize.width+10, 29);
+        CGSize buttonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font
+                                             constrainedToSize:CGSizeMake(SocializeButtonWidth, SocializeButtonHeight)];
+        self.bounds = CGRectMake(0, 0, buttonSize.width+SocializeButtonPadding, SocializeButtonHeight);
     }
     else {
-        self.bounds = CGRectMake(0, 0, 50, 29); 
+        self.bounds = CGRectMake(0, 0, SocializeButtonWidth/2, SocializeButtonHeight);
     }
 }
 
 -(void)configureWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
-    //ShareThis gray
-    UIColor *disabledColor = [UIColor colorWithRed:187.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
-    [self setTitleColor:disabledColor forState:UIControlStateDisabled];
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self setTitleShadowColor:disabledColor forState:UIControlStateDisabled];
-    self.titleLabel.textColor = [UIColor whiteColor];
-    
+    [self configureWithoutResizingWithTitle:title type:type];
     [self configureWithTitle:title];
 }
 
 -(void)configureWithoutResizingWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
-    [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    //ShareThis gray
+    UIColor *disabledColor = [UIColor colorWithRed:187.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
+    //ShareThis med gray
+    UIColor *highlightColor = [UIColor colorWithRed:71.0/255.0 green:84.0/255.0 blue:93.0/255.0 alpha:1.0];
+    [self setTitleColor:disabledColor forState:UIControlStateDisabled];
+    [self setTitleColor:highlightColor forState:UIControlStateHighlighted];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self setTitleShadowColor:disabledColor forState:UIControlStateDisabled];
+    self.titleLabel.textColor = [UIColor whiteColor];
 }
 
 - (void)configureBackButtonWithTitle:(NSString *)title {
-	self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-	//the spacing in the string is need here so that it'll be centered when displayed
-	NSString * titleString = [NSString stringWithFormat:@"  %@", title];
-	[self setTitle:titleString forState:UIControlStateNormal];
-	CGSize backButtonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
+    //TODO iOS 7 back button image!!
+    UIImage *backImage = [UIImage imageNamed:@"socialize-navbar-button-back.png"];
+    [self setImage:backImage forState:UIControlStateNormal];
+
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:SocializeButtonFontSize];
+	[self setTitle:title forState:UIControlStateNormal];
+    [self configureWithoutResizingWithTitle:title type:nil];
+	CGSize backButtonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font
+                                             constrainedToSize:CGSizeMake(SocializeButtonWidth, SocializeButtonHeight)];
 	
-    self.frame = CGRectMake(0, 0, backButtonSize.width+10, 29);
+    self.frame = CGRectMake(0, 0, backButtonSize.width+backImage.size.width, SocializeButtonHeight);
 }
 
 //in iOS7+ this will not be a particular color
