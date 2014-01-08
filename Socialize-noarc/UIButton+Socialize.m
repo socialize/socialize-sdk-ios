@@ -76,7 +76,10 @@ int const SocializeButtonPadding = 5;
     [self setImage:backImage forState:UIControlStateNormal];
 
     self.titleLabel.font = [UIFont boldSystemFontOfSize:SocializeButtonFontSize];
-	[self setTitle:title forState:UIControlStateNormal];
+
+    //a crude yet effective way to insert a bit of padding before the image
+    NSString * titleString = [NSString stringWithFormat:@"  %@", title];
+	[self setTitle:titleString forState:UIControlStateNormal];
     [self configureWithoutResizingWithTitle:title type:nil];
 	CGSize backButtonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font
                                              constrainedToSize:CGSizeMake(SocializeButtonWidth, SocializeButtonHeight)];
