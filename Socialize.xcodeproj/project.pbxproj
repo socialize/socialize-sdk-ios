@@ -25,6 +25,12 @@
 		1B56F253C61C4722A2EE7960 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
 		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
+		2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
+		2C8427A0187DDA1C00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
+		2C8427A1187DDA1D00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
+		2C8427A3187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8427A2187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png */; };
+		2C8427A4187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8427A2187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png */; };
+		2C8427A5187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8427A2187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png */; };
 		2C9790ED187A042A002C3268 /* SZNavigationControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */; };
 		2C979107187A075B002C3268 /* UIDevice+VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C979106187A075B002C3268 /* UIDevice+VersionCheck.m */; };
 		2C9D08AF187A35B800AB2F8B /* UIDevice+VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C979106187A075B002C3268 /* UIDevice+VersionCheck.m */; };
@@ -1749,6 +1755,8 @@
 
 /* Begin PBXFileReference section */
 		28052EE4EDAE4D3598062EF0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-back-ios7.png"; path = "Socialize/Resources/socialize-navbar-button-back-ios7.png"; sourceTree = SOURCE_ROOT; };
+		2C8427A2187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-back-ios7@2x.png"; path = "Socialize/Resources/socialize-navbar-button-back-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNavigationControllerIOS6.m; sourceTree = "<group>"; };
 		2C979105187A075B002C3268 /* UIDevice+VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+VersionCheck.h"; sourceTree = "<group>"; };
 		2C979106187A075B002C3268 /* UIDevice+VersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+VersionCheck.m"; sourceTree = "<group>"; };
@@ -3929,6 +3937,8 @@
 				AA935948158F187200B5B2BC /* socialize-navbar-button-back-pressed@2x.png */,
 				AA935949158F187200B5B2BC /* socialize-navbar-button-back.png */,
 				AA93594A158F187200B5B2BC /* socialize-navbar-button-back@2x.png */,
+				2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */,
+				2C8427A2187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png */,
 				AA93594B158F187200B5B2BC /* socialize-navbar-button-blue-bg-highlighted.png */,
 				AA93594C158F187200B5B2BC /* socialize-navbar-button-blue-bg-highlighted@2x.png */,
 				AA93594D158F187200B5B2BC /* socialize-navbar-button-blue-bg-inactive.png */,
@@ -4975,6 +4985,7 @@
 				AA935993158F187200B5B2BC /* action-bar-bg@2x.png in Resources */,
 				AA935996158F187200B5B2BC /* action-bar-button-black-hover.png in Resources */,
 				AA935999158F187200B5B2BC /* action-bar-button-black-hover@2x.png in Resources */,
+				2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */,
 				AA93599C158F187200B5B2BC /* action-bar-button-black.png in Resources */,
 				AA93599F158F187200B5B2BC /* action-bar-button-black@2x.png in Resources */,
 				AA9359A2158F187200B5B2BC /* action-bar-button-red-hover.png in Resources */,
@@ -5181,6 +5192,7 @@
 				AAA928D7159A370300BE83F3 /* socialize-activity-details-back-section-x@2x.png in Resources */,
 				AAA928DB159A370300BE83F3 /* socialize-activity-details-btn-link.png in Resources */,
 				AAA928DF159A370300BE83F3 /* socialize-activity-details-btn-link@2x.png in Resources */,
+				2C8427A3187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */,
 				AAA928E3159A370300BE83F3 /* socialize-activity-details-categ_arrow.png in Resources */,
 				AAA928E7159A370300BE83F3 /* socialize-activity-details-categ_arrow@2x.png in Resources */,
 				AAA928EB159A370300BE83F3 /* socialize-activity-details-ico-chat.png in Resources */,
@@ -5284,6 +5296,7 @@
 				AACED994158FCE770024EC43 /* socialize-cell-bg.png in Resources */,
 				AACED995158FCE770024EC43 /* socialize-cell-bg@2x.png in Resources */,
 				AACED996158FCE770024EC43 /* socialize-cell-image-bg.png in Resources */,
+				2C8427A1187DDA1D00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */,
 				AACED997158FCE770024EC43 /* socialize-cell-image-bg@2x.png in Resources */,
 				AACED998158FCE770024EC43 /* socialize-cell-image-default.png in Resources */,
 				AACED999158FCE770024EC43 /* socialize-cell-image-default@2x.png in Resources */,
@@ -5312,6 +5325,7 @@
 				AACED9B0158FCE770024EC43 /* socialize-comment-location-bar-background.png in Resources */,
 				AACED9B1158FCE770024EC43 /* socialize-comment-location-bar-background@2x.png in Resources */,
 				AACED9B2158FCE770024EC43 /* socialize-comment-location-disabled.png in Resources */,
+				2C8427A5187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */,
 				AACED9B3158FCE770024EC43 /* socialize-comment-location-disabled@2x.png in Resources */,
 				AACED9B4158FCE770024EC43 /* socialize-comment-location-enabled.png in Resources */,
 				AACED9B5158FCE770024EC43 /* socialize-comment-location-enabled@2x.png in Resources */,
@@ -5473,6 +5487,7 @@
 				AA9359E3158F187200B5B2BC /* comment-sm-icon@2x.png in Resources */,
 				AA9359E6158F187200B5B2BC /* comments-cell-bg-borders.png in Resources */,
 				AA9359E9158F187200B5B2BC /* comments-cell-bg-borders@2x.png in Resources */,
+				2C8427A0187DDA1C00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */,
 				AA9359EC158F187200B5B2BC /* commentsNavBarLeftItemView.xib in Resources */,
 				AA9359EF158F187200B5B2BC /* CommentsTableViewCell.xib in Resources */,
 				AA9359F2158F187200B5B2BC /* SampleEntityLoader.xib in Resources */,
@@ -5661,6 +5676,7 @@
 				AAA928FD159A370300BE83F3 /* socialize-activity-details-profile-pic-small.png in Resources */,
 				AAA92901159A370300BE83F3 /* socialize-activity-details-profile-pic-small@2x.png in Resources */,
 				AAA92905159A370300BE83F3 /* socialize-activity-details-top-back.png in Resources */,
+				2C8427A4187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */,
 				AAA92909159A370300BE83F3 /* socialize-activity-details-top-back@2x.png in Resources */,
 				AA84655915EBFE4A00065678 /* socialize-checkmark.png in Resources */,
 				AA8468D215EC25C200065678 /* SZStatusImageLabelView.xib in Resources */,

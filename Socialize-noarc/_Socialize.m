@@ -217,6 +217,7 @@ static Socialize *_sharedSocialize;
                                                  blue:(1.0f/255.0f)
                                                 alpha:1.0f];
             [[UINavigationBar appearance] setBarTintColor:barColor];
+            [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
             NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                        [UIColor blackColor], NSForegroundColorAttributeName,
                                                        nil];

@@ -71,8 +71,8 @@ int const SocializeButtonPadding = 5;
 }
 
 - (void)configureBackButtonWithTitle:(NSString *)title {
-    //TODO iOS 7 back button image!!
-    UIImage *backImage = [UIImage imageNamed:@"socialize-navbar-button-back.png"];
+    //This defaults to iOS 7 look; for earlier iOS versions, see class cluster variants
+    UIImage *backImage = [UIImage imageNamed:@"socialize-navbar-button-back-ios7.png"];
     [self setImage:backImage forState:UIControlStateNormal];
 
     self.titleLabel.font = [UIFont boldSystemFontOfSize:SocializeButtonFontSize];
