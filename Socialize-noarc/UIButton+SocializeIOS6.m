@@ -11,6 +11,7 @@
 
 @implementation UIButtonIOS6
 
+//overrides superclass category method for legacy OS
 - (void)configureWithTitle:(NSString*)title {
     if ([title length] > 0) {
         [self setTitle:title forState:UIControlStateNormal];
@@ -31,7 +32,8 @@
 	self.titleLabel.layer.shadowOffset = CGSizeMake(0, -1.0);
 }
 
--(void)configureWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
+//overrides superclass category method for legacy OS
+- (void)configureWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
     NSString * normalImageURI = nil;
     NSString * highlightImageURI = nil;
     NSString * disabledImageURI = nil;
@@ -72,7 +74,8 @@
     [self configureWithTitle:title];
 }
 
--(void)configureWithoutResizingWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
+//overrides superclass category method for legacy OS
+- (void)configureWithoutResizingWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
     NSString * normalImageURI = nil;
     NSString * highlightImageURI = nil;
     switch (type) {
@@ -100,6 +103,7 @@
 	[self setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
 }
 
+//overrides superclass category method for legacy OS
 - (void)configureBackButtonWithTitle:(NSString *)title {
     UIImage* backImageNormal = [[UIImage imageNamed:@"socialize-navbar-button-back.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
 	UIImage* backImageHighligted = [[UIImage imageNamed:@"socialize-navbar-button-back-pressed.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
@@ -116,6 +120,7 @@
 	[self.titleLabel applyBlurAndShadowWithOffset:-1.0];
 }
 
+//overrides superclass category method for legacy OS
 - (void)addSocializeRoundedGrayButtonImages {
     UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
     UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];

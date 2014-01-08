@@ -35,25 +35,21 @@
 - (void)configureWithTitle:(NSString*)title {
     if ([title length] > 0) {
         [self setTitle:title forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     }
     
     if ([self.titleLabel.text length] > 0) {
         CGSize buttonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
-        self.bounds = CGRectMake(0, 0, buttonSize.width+20, 29);
+        self.bounds = CGRectMake(0, 0, buttonSize.width+10, 29);
     }
     else {
         self.bounds = CGRectMake(0, 0, 50, 29); 
     }
-    
-	self.titleLabel.layer.shadowOpacity = 1.0;
-	self.titleLabel.layer.shadowRadius = 0.0;
-	self.titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-	self.titleLabel.layer.shadowOffset = CGSizeMake(0, -1.0);
 }
 
 -(void)configureWithTitle:(NSString *)title type:(AMSocializeButtonType)type {
-    UIColor * disabledColor = [UIColor colorWithRed:220.0/255.0 green:220/255.0 blue:220/255.0 alpha:1.0];
+    //ShareThis gray
+    UIColor *disabledColor = [UIColor colorWithRed:187.0/255.0 green:191.0/255.0 blue:191.0/255.0 alpha:1.0];
     [self setTitleColor:disabledColor forState:UIControlStateDisabled];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self setTitleShadowColor:disabledColor forState:UIControlStateDisabled];
@@ -68,14 +64,13 @@
 }
 
 - (void)configureBackButtonWithTitle:(NSString *)title {
-	self.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+	self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
 	//the spacing in the string is need here so that it'll be centered when displayed
 	NSString * titleString = [NSString stringWithFormat:@"  %@", title];
 	[self setTitle:titleString forState:UIControlStateNormal];
 	CGSize backButtonSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(100, 29)];
 	
-    self.frame = CGRectMake(0, 0, backButtonSize.width+25, 29);
-	[self.titleLabel applyBlurAndShadowWithOffset:-1.0];
+    self.frame = CGRectMake(0, 0, backButtonSize.width+10, 29);
 }
 
 //in iOS7+ this will not be a particular color
