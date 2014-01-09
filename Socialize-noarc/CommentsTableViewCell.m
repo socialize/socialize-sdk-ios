@@ -7,6 +7,8 @@
 //
 
 #import	"CommentsTableViewCell.h"
+#import "UIDevice+VersionCheck.h"
+#import "CommentsTableViewCellIOS6.h"
 
 @implementation CommentsTableViewCell
 
@@ -18,27 +20,54 @@
 @synthesize btnViewProfile;
 @synthesize locationPin;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+//class cluster for iOS 6 compatibility
++ (id)alloc {
+    if([self class] == [CommentsTableViewCell class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [CommentsTableViewCellIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
-        
-		// Initialization code
+//separate nibs for iOS 6/7 compatibility
+//necessary as iOS 7 tables have "flat" look and legacy NIB displays artifacts in iOS 7
++ (NSString *)nibName {
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return @"CommentsTableViewCell";
+    }
+    else {
+        return @"CommentsTableViewCellIOS7";
+    }
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
 		self.autoresizesSubviews = YES;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
 
--(void)awakeFromNib{
-	self.bgImage.image = [[UIImage imageNamed:@"comments-cell-bg-borders.png"]  stretchableImageWithLeftCapWidth:0 topCapHeight:1];
+- (void)awakeFromNib {
+    //does nothing in this impl
 }
 
+- (UIImage *)defaultBackgroundImage {
+    return nil;
+}
+
+- (UIImage *)defaultProfileImage {
+    return [UIImage imageNamed:@"socialize-cell-image-default.png"];
+}
+
+//selected is not supported in this table cell
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    // Configure the view for the selected state
     [super setSelected:NO animated:animated];
 }
 
--(void)layoutSubviews{
+-(void)layoutSubviews {
 	[super layoutSubviews];
 
 	CGFloat totalHeightForCell = [CommentsTableViewCell getCellHeightForString:mycomment]; 
@@ -53,34 +82,24 @@
 	self.frame = cellFrame;
 }
 
--(void)setComment:(NSString*)mytext{
-	
+-(void)setComment:(NSString*)mytext {
     summaryLabel.numberOfLines = 0;
-    summaryLabel.textAlignment = UITextAlignmentLeft;
-    summaryLabel.lineBreakMode = UILineBreakModeWordWrap;
+    summaryLabel.textAlignment = NSTextAlignmentLeft;
+    summaryLabel.lineBreakMode = NSLineBreakByWordWrapping;
 	mycomment = mytext;	
 	
 	[self setNeedsLayout];
 }
 
-+(CGFloat)getCellHeightForString:(NSString*)comment{
-
-    CGSize expectedLabelSize = [comment sizeWithFont:[UIFont boldSystemFontOfSize:12.0] 
-								  constrainedToSize:CGSizeMake(250, CGFLOAT_MAX) 
-									  lineBreakMode:UILineBreakModeWordWrap];
++(CGFloat)getCellHeightForString:(NSString*)comment {
+    CGSize expectedLabelSize = [comment sizeWithFont:[UIFont boldSystemFontOfSize:12.0]
+                                   constrainedToSize:CGSizeMake(250, CGFLOAT_MAX)
+                                       lineBreakMode:NSLineBreakByWordWrapping];
 
 	if (expectedLabelSize.height > 200)
 		expectedLabelSize.height = 200;
 	
 	return expectedLabelSize.height;
-}
-
--(void)drawRect:(CGRect)rect{
-
-	[super drawRect:rect];
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,CGSizeMake(55,55)}, [[UIImage imageNamed:@"comment-cell-bg-tile.png"] CGImage]);
-
 }
 
 - (void)dealloc {

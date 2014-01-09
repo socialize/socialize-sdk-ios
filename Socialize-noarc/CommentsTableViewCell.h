@@ -31,7 +31,9 @@
 @property (retain, nonatomic) IBOutlet UIImageView *locationPin;
 @property (nonatomic, retain) IBOutlet UIButton * btnViewProfile;
 
--(void)setComment:(NSString*)mytext;
-+(CGFloat)getCellHeightForString:(NSString*)forThisString;
-
+- (void)setComment:(NSString*)mytext;
+- (UIImage *)defaultBackgroundImage;
+- (UIImage *)defaultProfileImage;
++ (CGFloat)getCellHeightForString:(NSString*)forThisString;
++ (NSString *)nibName;
 @end
