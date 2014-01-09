@@ -73,7 +73,8 @@
                 </subviews>
                 <color key="backgroundColor" red="0.27843137254901962" green="0.32941176470588235" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.2784313725" green="0.3294117647" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="btnViewProfile" destination="25" id="27"/>
                 <outlet property="dateLabel" destination="14" id="15"/>

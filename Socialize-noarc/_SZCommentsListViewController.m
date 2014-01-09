@@ -289,17 +289,11 @@
         [self.footerView hideSubscribedButton];
     }
     
-    //iOS 7 adjustments for nav bar
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+    //iOS 7 adjustments for nav bar and cell separator
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-//    //iOS 7 adjustments for table view
-//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    
-//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    [self.tableView setSeparatorColor:[UIColor blackColor]];
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    }
 }
 
 #pragma mark tableFooterViewDelegate
