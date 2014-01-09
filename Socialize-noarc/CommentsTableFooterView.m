@@ -8,35 +8,43 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "CommentsTableFooterView.h"
-
-
+#import "UIDevice+VersionCheck.h"
+#import "CommentsTableFooterViewIOS6.h"
 
 @implementation CommentsTableFooterView
 
+@synthesize backgroundImageView;
 @synthesize searchBarImageView;
 @synthesize addCommentButton;
 @synthesize addCommentView = addCommentView_;
 @synthesize subscribedButton = _subscribedButton;
 
-//- (void)adjustTableHeaderHeight:(NSInteger)diff{
-//
-//    self.frame = CGRectMake(self.frame.origin.x, 
-//							self.frame.origin.y + diff, 
-//							self.frame.size.width, 
-//							self.frame.size.height - diff);
-//	
-//	[delegate adjustAdjacentViewHeight:diff];
-//}
+//class cluster for iOS 6 compatibility
++ (id)alloc {
+    if([self class] == [CommentsTableFooterView class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [CommentsTableFooterViewIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
+//sets os version-appropriate background images
+- (void)layoutSubviews{
+    self.searchBarImageView.image = [[self searchBarImage] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+    self.backgroundImageView.image = [self backgroundImage];
+}
 
--(void)layoutSubviews{
-    
-    UIImage *sbImg = [[UIImage imageNamed:@"socialize-comment-background-text-input.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
-    self.searchBarImageView.image = sbImg;
+- (UIImage *)searchBarImage {
+    return [UIImage imageNamed:@"socialize-comment-background-text-input-ios7.png"];
+}
+
+- (UIImage *)backgroundImage {
+    return [UIImage imageNamed:@"comment-bg-ios7.png"];
 }
 
 - (void)hideSubscribedButton {
-    
     self.subscribedButton.hidden = YES;
     
     CGRect frame = self.addCommentView.frame;
@@ -48,7 +56,6 @@
 }
 
 - (void)dealloc {
-
     [searchBarImageView release];
     [addCommentButton release];
     [addCommentView_ release];
