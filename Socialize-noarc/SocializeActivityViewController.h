@@ -20,6 +20,7 @@
 @property (nonatomic, assign) BOOL dontShowDisclosure;
 
 - (IBAction)viewProfileButtonTouched:(UIButton*)button;
++ (NSString *)tableViewCellNibName;
 @end
 
 @protocol SocializeActivityViewControllerDelegate <NSObject>

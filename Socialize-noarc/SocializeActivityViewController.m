@@ -13,6 +13,7 @@
 #import "SocializeTableBGInfoView.h"
 #import "_Socialize.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
 
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;
@@ -37,15 +38,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.informationView.errorLabel.text = @"No Activity to Show";
+    
+    //iOS 7 adjustments for nav bar and cell separator
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    }
 }
 
 - (SocializeActivityTableViewCell*)createActivityTableViewCell {
-    [self.bundle loadNibNamed:@"SocializeActivityTableViewCell" owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:[SocializeActivityViewController tableViewCellNibName] owner:self options:nil];
     SocializeActivityTableViewCell *cell = [[self.activityTableViewCell retain] autorelease];
     self.activityTableViewCell = nil;
     
     return cell;
 }
+
+
+//separate nibs for iOS 6/7 compatibility
+//necessary as iOS 7 tables have "flat" look and legacy NIB displays artifacts in iOS 7
++ (NSString *)tableViewCellNibName {
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return @"SocializeActivityTableViewCell";
+    }
+    else {
+        return @"SocializeActivityTableViewCelIOS7";
+    }
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return SocializeActivityTableViewCellHeight;

@@ -78,9 +78,10 @@
 }
 
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
-    _SZCommentsListViewController* commentsController = [[[_SZCommentsListViewController alloc] initWithNibName:@"_SZCommentsListViewController"
-                                                                                                         bundle:nil
-                                                                                                 entryUrlString:entityName] autorelease];
+    _SZCommentsListViewController* commentsController =
+    [[[_SZCommentsListViewController alloc] initWithNibName:@"_SZCommentsListViewController"
+                                                     bundle:nil
+                                             entryUrlString:entityName] autorelease];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsController] autorelease];
     
     return nav;
