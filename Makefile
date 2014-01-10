@@ -17,20 +17,18 @@ clean:
 	xcodebuild -scheme "Socialize" -configuration Release -sdk iphoneos clean
 	xcodebuild -scheme "UnitTests" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
-	xcodebuild -scheme "UIIntegrationTests" -configuration Debug -sdk iphonesimulator clean
+	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
-	# TODO put back UIIntegrationTests once it's outputting stuff again (need to add gcov flush to its app delegate)
-	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info
+	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info build/test-coverage/UIIntegrationTests-Coverage.info
 
 integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
 
 ui-integration-tests:
-	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone" test
-	#killall "iPhone Simulator" >/dev/null 2>&1
+	xcodebuild -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS="latest",name="iPhone Retina (4-inch)" test
 	./Scripts/generate-ui-coverage-report.sh
 
 doc:
@@ -50,3 +48,10 @@ sphinx_doc: subst
 
 tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
+
+ci:
+	make clean
+	make test
+	make integration-tests
+	make ui-integration-tests
+	make coverage

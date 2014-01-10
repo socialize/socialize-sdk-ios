@@ -60,6 +60,10 @@
 
 - (void)initializeTest {
 
+    [self waitForTimeInterval:0.25];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SocializeShouldDismissAllNotificationControllersNotification object:nil];
+    [self waitForTimeInterval:0.25];
+    
     [self popNavigationControllerToIndex:0];
     [self waitForViewWithAccessibilityLabel:@"tableView"];
     
@@ -97,55 +101,21 @@
     NSLog(@"Waiting for web view");
     [self waitForTimeInterval:1];
     [self noCheckEnterText:@"mr_socialize"  intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone];
-    [self waitForTimeInterval:10];
-    
-    [self tapViewWithAccessibilityLabel:@"Password"];
-    [self tapViewWithAccessibilityLabel:@"Password"];
+
     [self noCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone];
     [self tapViewWithAccessibilityLabel:@"Authorize app"];
 }
 
+
 - (void)noCheckEnterText:(NSString *)text intoViewWithAccessibilityLabel:(NSString *)label traits:(UIAccessibilityTraits)traits {
     NSLog(@"Type the text \"%@\" into the view with accessibility label \"%@\"", text, label);
-    [self runBlock:^KIFTestStepResult(NSError *__autoreleasing *error) {
-        
-//        UIAccessibilityElement *element = [KIFTestStep _accessibilityElementWithLabel:label accessibilityValue:nil tappable:YES traits:traits error:error];
-                UIAccessibilityElement *element = [[UIApplication sharedApplication] accessibilityElementWithLabel:label accessibilityValue:Nil traits:traits];
-        if (!element) {
-            return KIFTestStepResultWait;
-        }
-        
-        UIView *view = [UIAccessibilityElement viewContainingAccessibilityElement:element];
-        KIFTestWaitCondition(view, error, @"Cannot find view with accessibility label \"%@\"", label);
-        
-        CGRect elementFrame = [view.window convertRect:element.accessibilityFrame toView:view];
-        CGPoint tappablePointInElement = [view tappablePointInRect:elementFrame];
-        
-        // This is mostly redundant of the test in _accessibilityElementWithLabel:
-        KIFTestCondition(!isnan(tappablePointInElement.x), error, @"The element with accessibility label %@ is not tappable", label);
-        [view tapAtPoint:tappablePointInElement];
-        
-        KIFTestWaitCondition([view isDescendantOfFirstResponder], error, @"Failed to make the view with accessibility label \"%@\" the first responder. First responder is %@", label, [[[UIApplication sharedApplication] keyWindow] firstResponder]);
-        
-        // Wait for the keyboard
-        CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.5, false);
-        
-        for (NSUInteger characterIndex = 0; characterIndex < [text length]; characterIndex++) {
-            NSString *characterString = [text substringWithRange:NSMakeRange(characterIndex, 1)];
-            [self enterTextIntoCurrentFirstResponder:characterString];
-//            if (![self enterTextIntoCurrentFirstResponder:characterString]) {
-//                // Attempt to cheat if we couldn't find the character
-//                if ([view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITextView class]]) {
-//                    NSLog(@"KIF: Unable to find keyboard key for %@. Inserting manually.", characterString);
-//                    [(UITextField *)view setText:[[(UITextField *)view text] stringByAppendingString:characterString]];
-//                } else {
-//                    KIFTestCondition(NO, error, @"Failed to find key for character \"%@\"", characterString);
-//                }
-//            }
-        }
-        
-        return KIFTestStepResultSuccess;
-    }];
+    
+    UIView *view = nil;
+    UIAccessibilityElement *element = nil;
+    
+    [self waitForAccessibilityElement:&element view:&view withLabel:label value:nil traits:traits tappable:YES];
+    [self tapAccessibilityElement:element inView:view];
+    [self enterTextIntoCurrentFirstResponder:text];
 }
 
 - (void)openSocializeDirectURLNotificationWithURL:(NSString*)url {
@@ -253,6 +223,11 @@
 
 - (void)showLikeEntityRow {
     NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kLikeEntityRow];
+    [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
+}
+
+- (void)showShareDialog {
+    NSIndexPath *indexPath = [[TestAppListViewController sharedSampleListViewController] indexPathForRowIdentifier:kShowShareRow];
     [self scrollAndTapRowInTableViewWithAccessibilityLabel:@"tableView"  atIndexPath:indexPath];
 }
 
