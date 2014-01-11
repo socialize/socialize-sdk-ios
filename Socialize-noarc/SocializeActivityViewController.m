@@ -62,7 +62,7 @@
         return @"SocializeActivityTableViewCell";
     }
     else {
-        return @"SocializeActivityTableViewCelIOS7";
+        return @"SocializeActivityTableViewCellIOS7";
     }
 }
 

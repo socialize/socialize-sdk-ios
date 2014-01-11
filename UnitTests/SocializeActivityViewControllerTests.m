@@ -12,6 +12,7 @@
 #import "SocializeTableBGInfoView.h"
 #import <objc/runtime.h>
 #import "SocializeActivityService.h"
+#import "UIDevice+VersionCheck.h"
 
 @implementation SocializeActivityViewControllerTests
 @synthesize activityViewController = activityViewController_;
@@ -75,43 +76,6 @@
                                             activity:SocializeAllActivity];
 
     [self.activityViewController loadContentForNextPageAtOffset:30];
-}
-
-//- (void)testFinishingGetActivityCallsReceiveNewContent {
-//    id mockActivityService = [OCMockObject mockForClass:[SocializeActivityService class]];
-//    [mockActivityService stubIsKindOfClass:[SocializeActivityService class]];
-//
-//    id mockElements = [OCMockObject mockForClass:[NSArray class]];
-//    
-//    [[(id)self.activityViewController expect] receiveNewContent:mockElements];
-//    [self.activityViewController service:mockActivityService didFetchElements:mockElements];
-//}
-
-//- (void)testFailingGetActivityFailsLoadingContent {
-//    id mockActivityService = [OCMockObject mockForClass:[SocializeActivityService class]];
-//    [mockActivityService stubIsKindOfClass:[SocializeActivityService class]];
-//    
-//    [[(id)self.activityViewController expect] failLoadingContent];
-//    [super expectServiceFailure];
-//    [self.activityViewController service:mockActivityService didFail:nil];
-//}
-
-- (void)testCellLoadsFromBundleWhenNotAvailable {
-    id mockComment = [OCMockObject niceMockForClass:[SocializeComment class]];
-    [mockComment stubIsMemberOfClass:[SocializeComment class]];
-    
-    [[[self.mockContent stub] andReturn:mockComment] objectAtIndex:0];
-
-    id mockCell = [OCMockObject niceMockForClass:[SocializeActivityTableViewCell class]];
-    [[[self.mockBundle stub] andDo:^(NSInvocation *inv) {
-        self.activityViewController.activityTableViewCell = mockCell;
-    }] loadNibNamed:@"SocializeActivityTableViewCell" owner:self.origViewController options:nil];
-    
-    [[[self.mockTableView expect] andReturn:nil] dequeueReusableCellWithIdentifier:SocializeActivityTableViewCellReuseIdentifier];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    SocializeActivityTableViewCell *cell = (SocializeActivityTableViewCell*)[self.activityViewController tableView:self.mockTableView cellForRowAtIndexPath:indexPath];
-    
-    GHAssertEquals(cell, mockCell, @"Bad cell");
 }
 
 - (void)stubForCellAtIndexPath:(NSIndexPath*)indexPath cell:(id)cell activity:(id)activity {
