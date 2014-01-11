@@ -120,15 +120,16 @@
                     <rect key="frame" x="0.0" y="255" width="320" height="28"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="socialize-activity-details-back-section-x.png" id="121" userLabel="Recent Activity Header Image">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="121" userLabel="Recent Activity Header Image">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.12156862745098039" green="0.16862745098039217" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Recent Activity" lineBreakMode="tailTruncation" minimumFontSize="10" id="122" userLabel="Recent Activity Label">
                             <rect key="frame" x="5" y="3" width="305" height="21"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                            <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.73333333333333328" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </label>
                     </subviews>
@@ -191,7 +192,6 @@
         </scrollView>
     </objects>
     <resources>
-        <image name="socialize-activity-details-back-section-x.png" width="20" height="30"/>
         <image name="socialize-activity-details-btn-link.png" width="20" height="38"/>
         <image name="socialize-activity-details-ico-location.png" width="13" height="16"/>
         <image name="socialize-activity-details-profile-pic-small.png" width="42" height="42"/>

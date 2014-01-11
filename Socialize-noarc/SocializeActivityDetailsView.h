@@ -20,7 +20,6 @@
     IBOutlet UIImageView*       profileImage;
     IBOutlet UIView*            recentActivityView;
     IBOutlet UILabel*           recentActivityLabel;
-    IBOutlet UIImageView*       recentActivityHeaderImage;
     NSString*                   activityMessage;
     NSDate*                     activityDate;
     NSString*                   username;
@@ -36,7 +35,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *showEntityButton;
 /* recent activity view is a container view for the tableview and headers */
 @property (nonatomic, retain) UIView *                  recentActivityView;
-@property (nonatomic, retain) UIView *                  recentActivityHeaderImage;
+@property (nonatomic, retain) IBOutlet UIImageView *    recentActivityHeaderImage;
 @property (nonatomic, retain) UILabel*                  recentActivityLabel;
 @property (nonatomic, retain) NSString*                 activityMessage;
 @property (nonatomic, retain) NSDate*                   activityDate;
