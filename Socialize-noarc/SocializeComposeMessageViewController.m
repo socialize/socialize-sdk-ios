@@ -23,6 +23,7 @@
 #import "socialize_globals.h"
 #import "SZLocationUtils.h"
 #import "SDKHelpers.h"
+#import "UIDevice+VersionCheck.h"
 
 #define NO_CITY_MSG @"Could not locate the place name."
 
@@ -72,19 +73,20 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     if (self = [super init]) {
         self.entity = entity;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coreLocationAuthorizationStatusDidChange:) name:SocializeCLAuthorizationStatusDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(coreLocationAuthorizationStatusDidChange:)
+                                                     name:SocializeCLAuthorizationStatusDidChangeNotification
+                                                   object:nil];
     }
     return self;
 }
 
-- (id)initWithEntityUrlString:(NSString*)entityUrlString 
-{
+- (id)initWithEntityUrlString:(NSString*)entityUrlString {
     SZEntity *entity = [SZEntity entityWithKey:entityUrlString name:nil];
     return [self initWithEntity:entity];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
      
     [commentTextView release];
@@ -133,14 +135,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 }
 
 #pragma mark Location enable/disable button callbacks
--(void) startLoadAnimationForView: (UIView*) view
-{
+-(void) startLoadAnimationForView: (UIView*)view {
     [super startLoadAnimationForView:view];
     self.sendButton.enabled = NO;
 }
 
--(void) stopLoadAnimation
-{
+-(void)stopLoadAnimation {
     [super  stopLoadAnimation];
     [self updateSendButton];
 }
@@ -148,22 +148,18 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 - (void)attemptReverseGeocode {
     __block id geocoder = [[SocializeGeocoderAdapter alloc]init];
     
-    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray*placemarks, NSError *error)
-     {
-         if(error)
-         {
+    [geocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray*placemarks, NSError *error) {
+         if(error) {
              self.currentLocationDescription = NO_CITY_MSG;
          }
-         else
-         {
+         else {
              self.currentLocationDescription = [NSString stringWithPlacemark:[placemarks objectAtIndex:0]];
              _succeededReverseGeocode = YES;
              [self stopReverseGeocodeTimer];
          }
          [self configureLocationText];
          [geocoder autorelease];
-     }
-     ];
+     }];
 }
 
 - (void)stopReverseGeocodeTimer {
@@ -195,8 +191,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [self startReverseGeocodeTimer];
 }
 
--(void)updateViewWithNewLocation: (CLLocation*)userLocation
-{
+-(void)updateViewWithNewLocation: (CLLocation*)userLocation {
     if (userLocation) {
         self.currentLocation = userLocation;
         
@@ -206,40 +201,44 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     }
 }
 
--(void)configureLocationText
-{
+-(void)configureLocationText {
     BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
     if (shareLocation) {
-        [self.locationText text: self.currentLocationDescription 
-                   withFontName: @"Helvetica" 
-                   withFontSize: 12.0 
-                      withColor: [UIColor colorWithRed:(35.0/255) green:(130.0/255) blue:(210.0/255) alpha:1]
+        [self.locationText text:self.currentLocationDescription
+                   withFontName:@"Helvetica"
+                   withFontSize:12.0
+                      withColor:[UIColor colorWithRed:(35.0/255) green:(130.0/255) blue:(210.0/255) alpha:1]
          ];
     }
     else {
-        [self.locationText text: @"Location will not be shared." 
-                   withFontName: @"Helvetica-Oblique" 
-                   withFontSize: 12.0 
-                      withColor: [UIColor colorWithRed:(167.0/255) green:(167.0/255) blue:(167.0/255) alpha:1]
+        [self.locationText text:@"Location will not be shared."
+                   withFontName:@"Helvetica-Oblique"
+                   withFontSize:12.0
+                      withColor:[UIColor colorWithRed:(167.0/255) green:(167.0/255) blue:(167.0/255) alpha:1]
          ];
     }
 }
 
-- (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button {
-    UIImage * normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
-    UIImage * highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
-    
-    [button setBackgroundImage:normalImage forState:UIControlStateNormal];
-	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];    
+//Normally a class cluster would be used for this logic, but class hierarchy here makes this simpler
+- (void)addSocializeGrayButtonLook:(UIButton*)button {
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        UIImage *normalImage = [[UIImage imageNamed:@"socialize-comment-button.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0] ;
+        UIImage *highlightImage = [[UIImage imageNamed:@"socialize-comment-button-active.png"]stretchableImageWithLeftCapWidth:14 topCapHeight:0];
+        
+        [button setBackgroundImage:normalImage forState:UIControlStateNormal];
+        [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];    
+    }
+    else {
+        UIImage *entityImage = [[UIImage imageNamed:@"socialize-activity-details-btn-link-ios7.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+        [button setBackgroundImage:entityImage forState:UIControlStateNormal];
+    }
 }
 
--(void)configureDoNotShareLocationButton
-{   
-    [self addSocializeRoundedGrayButtonImagesToButton:self.doNotShareLocationButton];
+-(void)configureDoNotShareLocationButton {
+    [self addSocializeGrayButtonLook:self.doNotShareLocationButton];
 }
 
--(void)setShareLocation:(BOOL)enableLocation 
-{
+-(void)setShareLocation:(BOOL)enableLocation {
     self.shouldShareLocation = enableLocation;
 
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:enableLocation] forKey:kSocializeShouldShareLocationKey];
@@ -247,10 +246,8 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     if (enableLocation) {
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateNormal];
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-enabled.png"] forState:UIControlStateHighlighted];
-        
     }
-    else
-    {   
+    else {
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateNormal];
         [activateLocationButton setImage:[UIImage imageNamed:@"socialize-comment-location-disabled.png"] forState:UIControlStateHighlighted];   
     }
@@ -270,38 +267,30 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     newSubview.frame = CGRectMake(0, 0, lowerFrame.size.width, lowerFrame.size.height);
 }
 
--(IBAction)activateLocationButtonPressed:(id)sender
-{
+-(IBAction)activateLocationButtonPressed:(id)sender {
     BOOL shareLocation = [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeShouldShareLocationKey] boolValue];
 
-    if (shareLocation)
-    {
-        if ([commentTextView isFirstResponder]) 
-        {
+    if (shareLocation) {
+        if ([commentTextView isFirstResponder]) {
             [commentTextView resignFirstResponder];          
             [self setSubviewForLowerContainer:self.mapContainer];
         }
-        else
-        {
+        else {
             [commentTextView becomeFirstResponder];
         }            
     }
-    else
-    {
-        if (![SocializeLocationManager locationServicesAvailable])
-        {
+    else {
+        if (![SocializeLocationManager locationServicesAvailable]) {
             [self showAlertWithText:@"Please Turn On Location Services in Settings to Allow This Application to Share Your Location." andTitle:nil];
             return;
         }
         
-
         [self setShareLocation:YES];
         [self setSubviewForLowerContainer:self.mapContainer];
     }
 }
 
--(IBAction)doNotShareLocationButtonPressed:(id)sender
-{  
+-(IBAction)doNotShareLocationButtonPressed:(id)sender {
     [self setShareLocation:NO];
     [commentTextView becomeFirstResponder];
     
@@ -310,16 +299,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 #pragma mark - SocializeServiceDelegate
 
--(void)service:(SocializeService *)service didFail:(NSError *)error
-{
-    if([service isKindOfClass:[SocializeAuthenticateService class]])
-    {
+-(void)service:(SocializeService *)service didFail:(NSError *)error {
+    if([service isKindOfClass:[SocializeAuthenticateService class]]) {
         [super service:service didFail:error];
     }
-    else
-    {   
+    else {
         [self stopLoadAnimation];
-        
         [self failWithError:error];
     }
 }
@@ -332,8 +317,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.mapOfUserLocation = [[self class] sharedMapView];
@@ -361,18 +345,17 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     self.messageActionButtonContainer.rightJustified = YES;
     
     [self updateSendButton];
-    
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if ([Socialize locationSharingDisabled]) {
         self.mapOfUserLocation.showsUserLocation = NO;
         self.activateLocationButton.hidden = YES;
         self.locationText.hidden = YES;
-    } else {
+    }
+    else {
         self.mapOfUserLocation.showsUserLocation = YES;
         self.activateLocationButton.hidden = NO;
         self.locationText.hidden = NO;
@@ -382,12 +365,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
             [self disableLowerContainer];
         }
     }
-    
-
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setBottomContainerDisabledView:nil];
     [self setMapViewContainer:nil];
     [super viewDidUnload];

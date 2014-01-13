@@ -64,7 +64,7 @@
     [super viewDidLoad];
 
     self.title = @"New Comment";
-    [self addSocializeRoundedGrayButtonImagesToButton:self.unsubscribeButton];
+    [self addSocializeGrayButtonLook:self.unsubscribeButton];
     self.dontSubscribeToDiscussion = NO;
     
     if ([self.socialize isAuthenticated]) {
