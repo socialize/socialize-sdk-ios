@@ -103,8 +103,8 @@
 }
 
 - (void) testTwitterAuth {
-//    [tester showLinkToTwitter];
-//    [tester authWithTwitter];
+    [tester showLinkToTwitter];
+    [tester authWithTwitter];
 }
 
 - (void) testLikeNoAuth {
@@ -123,17 +123,17 @@
 }
 
 - (void) testShareTwitterAuth {
-//    [tester showShareDialog];
-//    [tester setOn:YES forSwitchWithAccessibilityLabel:@"Twitter Switch"];
-//    [tester authWithTwitter];
-//    [tester tapViewWithAccessibilityLabel:@"Continue"];
-//    [tester waitForViewWithAccessibilityLabel:@"Comment Entry"];
-//    //unite test using date-time to avoid failed duplicate Twitter updates
-//    NSDate *date = [NSDate date];
-//    NSString *dateStr = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle];
-//    [tester enterText:[NSString stringWithFormat:@"Share to Twitter: %@", dateStr] intoViewWithAccessibilityLabel:@"Comment Entry"];
-//    [tester tapViewWithAccessibilityLabel:@"Continue"];
-//    [tester waitForViewWithAccessibilityLabel:@"tableView"];
+    [tester showShareDialog];
+    [tester setOn:YES forSwitchWithAccessibilityLabel:@"Twitter Switch"];
+    [tester authWithTwitter];
+    [tester tapViewWithAccessibilityLabel:@"Continue"];
+    [tester waitForViewWithAccessibilityLabel:@"Comment Entry"];
+    //unite test using date-time to avoid failed duplicate Twitter updates
+    NSDate *date = [NSDate date];
+    NSString *dateStr = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle];
+    [tester enterText:[NSString stringWithFormat:@"Share to Twitter: %@", dateStr] intoViewWithAccessibilityLabel:@"Comment Entry"];
+    [tester tapViewWithAccessibilityLabel:@"Continue"];
+    [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
 
 - (void) testDirectURLNotification {
