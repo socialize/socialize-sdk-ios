@@ -20,6 +20,7 @@
 #import <JSONKit/JSONKit.h>
 #import "SZEventUtils.h"
 #import "SZPinterestUtils.h"
+#import "SZNetworkImageProvider.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -286,11 +287,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
         WEAK(self) weakSelf = self;
 
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-            if ([SZFacebookUtils isLinked]) {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-icon.png"];
-            } else {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
-            }
+            cell.imageView.image = [SZNetworkImageProvider facebookSelectNetworkImage:[SZFacebookUtils isLinked]];
+//            if ([SZFacebookUtils isLinked]) {
+//                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-icon.png"];
+//            } else {
+//                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
+//            }
             cell.textLabel.text = @"Facebook";
             UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)] autorelease];
             [holder addSubview:weakSelf.facebookSwitch];
@@ -355,11 +357,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
         WEAK(self) weakSelf = self;
 
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-            if ([SZTwitterUtils isLinked]) {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-icon.png"];
-            } else {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
-            }
+            cell.imageView.image = [SZNetworkImageProvider twitterSelectNetworkImage:[SZTwitterUtils isLinked]];
+//            if ([SZTwitterUtils isLinked]) {
+//                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-icon.png"];
+//            } else {
+//                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
+//            }
             cell.textLabel.text = @"Twitter";
             UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)] autorelease];
             [holder addSubview:weakSelf.twitterSwitch];
