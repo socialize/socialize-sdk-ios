@@ -14,13 +14,16 @@
 #import "SZCommentUtils.h"
 #import "SZShareUtils.h"
 #import "SZUserUtils.h"
-
+#import "UIDevice+VersionCheck.h"
+#import "SZActionButtonIOS6.h"
+#import "UIColor+Socialize.h"
 
 #define PADDING_BETWEEN_TEXT_ICON 2
 #define BUTTON_PADDINGS 4
 #define DEFAULT_BUTTON_HEIGHT 30
 
 @implementation SZActionButton
+
 @synthesize actualButton = actualButton_;
 @synthesize disabledImage = disabledImage_;
 @synthesize icon = _icon;
@@ -32,6 +35,17 @@
 @synthesize entity = _entity;
 @synthesize entityConfigurationBlock = _entityConfigurationBlock;
 @synthesize actionBar = _actionBar;
+
+
++ (id)alloc {
+    if([self class] == [SZActionButton class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZActionButtonIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 + (SZActionButton*)actionButtonWithIcon:(UIImage*)icon title:(NSString*)title {
     SZActionButton *actionButton = [[SZActionButton alloc] initWithFrame:CGRectZero];
@@ -101,6 +115,7 @@
     self.image = [[self class] defaultImage];
     self.highlightedImage = [[self class] defaultHighlightedImage];
     self.disabledImage = [[self class] defaultDisabledImage];
+    [self.actualButton setTitleColor:[UIColor buttonTextHighlightColor] forState:UIControlStateHighlighted];
     [self configureButtonBackgroundImages];
 }
 
@@ -109,11 +124,11 @@
 }
 
 + (UIImage*)defaultImage {
-    return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return nil;
 }
 
 + (UIImage*)defaultHighlightedImage {
-    return [[UIImage imageNamed:@"action-bar-button-black-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return nil;
 }
 
 - (void)setImage:(UIImage *)image {
@@ -175,7 +190,6 @@
 
 - (void)configureButtonBackgroundImages {
     [self.actualButton setBackgroundImage:self.disabledImage forState:UIControlStateDisabled];
-    
     [self.actualButton setBackgroundImage:self.image forState:UIControlStateNormal];
     [self.actualButton setBackgroundImage:self.highlightedImage forState:UIControlStateHighlighted];
     [self.actualButton setImage:self.icon forState:UIControlStateNormal];

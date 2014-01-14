@@ -12,5 +12,6 @@
 
 + (UIColor *)navigationBarBackgroundColor;
 + (UIColor *)actionBarBackgroundColor;
++ (UIColor *)buttonTextHighlightColor;
 
 @end

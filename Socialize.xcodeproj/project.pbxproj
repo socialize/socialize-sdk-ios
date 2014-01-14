@@ -154,6 +154,14 @@
 		2CDB94E91885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */; };
 		2CDB94EC1885D4E90031CF54 /* UIColor+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */; };
 		2CDB94ED1885D4E90031CF54 /* UIColor+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */; };
+		2CDB94F01885F57E0031CF54 /* SZActionButtonIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDB94EE1885F57E0031CF54 /* SZActionButtonIOS6.h */; };
+		2CDB94F11885F57E0031CF54 /* SZActionButtonIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDB94EE1885F57E0031CF54 /* SZActionButtonIOS6.h */; };
+		2CDB94F21885F57E0031CF54 /* SZActionButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EF1885F57E0031CF54 /* SZActionButtonIOS6.m */; };
+		2CDB94F31885F57E0031CF54 /* SZActionButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EF1885F57E0031CF54 /* SZActionButtonIOS6.m */; };
+		2CDB94F61885FACC0031CF54 /* SZLikeButtonIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDB94F41885FACC0031CF54 /* SZLikeButtonIOS6.h */; };
+		2CDB94F71885FACC0031CF54 /* SZLikeButtonIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDB94F41885FACC0031CF54 /* SZLikeButtonIOS6.h */; };
+		2CDB94F81885FACC0031CF54 /* SZLikeButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94F51885FACC0031CF54 /* SZLikeButtonIOS6.m */; };
+		2CDB94F91885FACC0031CF54 /* SZLikeButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94F51885FACC0031CF54 /* SZLikeButtonIOS6.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
@@ -1914,6 +1922,10 @@
 		2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBarIOS6.m; sourceTree = "<group>"; };
 		2CDB94EA1885D4E90031CF54 /* UIColor+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Socialize.h"; sourceTree = "<group>"; };
 		2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Socialize.m"; sourceTree = "<group>"; };
+		2CDB94EE1885F57E0031CF54 /* SZActionButtonIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionButtonIOS6.h; sourceTree = "<group>"; };
+		2CDB94EF1885F57E0031CF54 /* SZActionButtonIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionButtonIOS6.m; sourceTree = "<group>"; };
+		2CDB94F41885FACC0031CF54 /* SZLikeButtonIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLikeButtonIOS6.h; sourceTree = "<group>"; };
+		2CDB94F51885FACC0031CF54 /* SZLikeButtonIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLikeButtonIOS6.m; sourceTree = "<group>"; };
 		4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestUtils.h; sourceTree = "<group>"; };
 		4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestUtils.m; sourceTree = "<group>"; };
 		4810FF431778D3F500109630 /* SZPinterestShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestShareData.h; sourceTree = "<group>"; };
@@ -2993,10 +3005,14 @@
 			children = (
 				2CDB94E41885CE0C0031CF54 /* SZActionBarIOS6.h */,
 				2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */,
+				2CDB94EE1885F57E0031CF54 /* SZActionButtonIOS6.h */,
+				2CDB94EF1885F57E0031CF54 /* SZActionButtonIOS6.m */,
 				2CBC69C0187C7FE50009F6F0 /* SZCommentsListViewControllerIOS6.h */,
 				2CBC69C1187C7FE50009F6F0 /* SZCommentsListViewControllerIOS6.m */,
 				2CBC69BC187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.h */,
 				2CBC69BD187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m */,
+				2CDB94F41885FACC0031CF54 /* SZLikeButtonIOS6.h */,
+				2CDB94F51885FACC0031CF54 /* SZLikeButtonIOS6.m */,
 				2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */,
 				2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */,
 				2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */,
@@ -4448,17 +4464,17 @@
 			children = (
 				AADFE5E915967A7400FE2B61 /* SZActionBar.h */,
 				AADFE5EA15967A7400FE2B61 /* SZActionBar.m */,
+				AADFE5F51596973C00FE2B61 /* SZActionButton.h */,
+				AADFE5F61596973C00FE2B61 /* SZActionButton.m */,
+				AA0602B315965A22002D2535 /* SZActionBarItem.h */,
+				AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */,
+				AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */,
+				AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */,
 				AA84654515EBE52B00065678 /* SZStatusView.h */,
 				AA84654615EBE52B00065678 /* SZStatusView.m */,
 				AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */,
 				AADFE5EB15967A7400FE2B61 /* SZHorizontalContainerView.h */,
 				AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */,
-				AADFE5F51596973C00FE2B61 /* SZActionButton.h */,
-				AADFE5F61596973C00FE2B61 /* SZActionButton.m */,
-				AADFE5E315967A0E00FE2B61 /* SZLikeButton.h */,
-				AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */,
-				AA0602B315965A22002D2535 /* SZActionBarItem.h */,
-				AADFE6011596A49000FE2B61 /* SZActionButton_Private.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -4634,6 +4650,7 @@
 				AAAC164B159328FF00804916 /* SocializeApplication.h in Headers */,
 				AAAC16661593291900804916 /* SocializeCommonDefinitions.h in Headers */,
 				AAAC16681593292B00804916 /* SocializeErrorDefinitions.h in Headers */,
+				2CDB94F01885F57E0031CF54 /* SZActionButtonIOS6.h in Headers */,
 				AAAC166A1593293600804916 /* SocializeVersion.h in Headers */,
 				AAAC166C1593294300804916 /* SocializeShare.h in Headers */,
 				AAAC166E1593297200804916 /* SocializeServiceDelegate.h in Headers */,
@@ -4646,6 +4663,7 @@
 				AAAC167C159329ED00804916 /* SocializeTableViewController.h in Headers */,
 				AAAC167E15932A2D00804916 /* _SZLinkDialogViewController.h in Headers */,
 				AAAC168015932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */,
+				2CDB94F61885FACC0031CF54 /* SZLikeButtonIOS6.h in Headers */,
 				2CDB94E61885CE0C0031CF54 /* SZActionBarIOS6.h in Headers */,
 				AAAC16821593392D00804916 /* SocializeActivityDetailsView.h in Headers */,
 				AAAC16841593395300804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
@@ -4781,6 +4799,7 @@
 				AADFE5F81596973D00FE2B61 /* SZActionButton.h in Headers */,
 				AADFE6041596A49100FE2B61 /* SZActionButton_Private.h in Headers */,
 				AA2D42EB159D4FFD00622210 /* SZUserSettings.h in Headers */,
+				2CDB94F71885FACC0031CF54 /* SZLikeButtonIOS6.h in Headers */,
 				AAEEE62615A26B6B003566BA /* SDKHelpers.h in Headers */,
 				AA7D03E315A26CAA00EBB705 /* SZActionBarUtils.h in Headers */,
 				AA7D03E715A26CAA00EBB705 /* SZActionUtils.h in Headers */,
@@ -4796,6 +4815,7 @@
 				AA7D040F15A26CAA00EBB705 /* SZUserUtils.h in Headers */,
 				AA7D041315A26CAA00EBB705 /* SZViewUtils.h in Headers */,
 				AA77C95715ACCE6B00745096 /* SZOARequest.h in Headers */,
+				2CDB94F11885F57E0031CF54 /* SZActionButtonIOS6.h in Headers */,
 				AAC194DB15AF712B00DDE42F /* SZOARequest+Twitter.h in Headers */,
 				AAC194E815AF925200DDE42F /* NSOperationQueue+Socialize.h in Headers */,
 				AA91F93915B0D2E800BC373E /* SZAPIClientHelpers.h in Headers */,
@@ -6316,6 +6336,7 @@
 				AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */,
 				2CBC69BF187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m in Sources */,
 				2CDB94E81885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */,
+				2CDB94F21885F57E0031CF54 /* SZActionButtonIOS6.m in Sources */,
 				AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */,
 				AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
@@ -6331,6 +6352,7 @@
 				AAE216901607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 				2CB6C3B8187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m in Sources */,
 				AA2A2D2816F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
+				2CDB94F81885FACC0031CF54 /* SZLikeButtonIOS6.m in Sources */,
 				4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */,
 				4810FF471778D3F600109630 /* SZPinterestShareData.m in Sources */,
 				4810FF4D1778DA2F00109630 /* SZPinterestEngine.m in Sources */,
@@ -6827,6 +6849,7 @@
 				AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				2CBC69CB187C83280009F6F0 /* SZComposeCommentViewControllerIOS6.m in Sources */,
 				2CDB94E91885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */,
+				2CDB94F31885F57E0031CF54 /* SZActionButtonIOS6.m in Sources */,
 				2CB6C387187B2F64008C0AAE /* SZShareDialogViewControllerIOS6.m in Sources */,
 				AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */,
 				AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
@@ -6842,6 +6865,7 @@
 				2CB6C3B9187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m in Sources */,
 				AAE216911607D6DE0049850E /* SZOpenURLHandler.m in Sources */,
 				AA2A2D2916F8D7720066111B /* ASIdentifierManager+Utilities.m in Sources */,
+				2CDB94F91885FACC0031CF54 /* SZLikeButtonIOS6.m in Sources */,
 				4810FF311778C6CA00109630 /* SZPinterestUtils.m in Sources */,
 				4810FF481778D3F600109630 /* SZPinterestShareData.m in Sources */,
 				4810FF4E1778DA2F00109630 /* SZPinterestEngine.m in Sources */,

@@ -23,4 +23,12 @@
                             blue:(51.0f/255.0f)
                            alpha:1.0f];
 }
+
+
++ (UIColor *)buttonTextHighlightColor {
+    return [UIColor colorWithRed:(187.0f/255.0f)
+                           green:(191.0f/255.0f)
+                            blue:(191.0f/255.0f)
+                           alpha:1.0f];
+}
 @end

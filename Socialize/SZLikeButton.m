@@ -16,6 +16,9 @@
 #import "SZActionButton_Private.h"
 #import "SZEntityUtils.h"
 #import "socialize_globals.h"
+#import "SZLikeButtonIOS6.h"
+#import "UIDevice+VersionCheck.h"
+#import "UIColor+Socialize.h"
 
 @interface SZLikeButton ()
 
@@ -25,6 +28,7 @@
 @end
 
 @implementation SZLikeButton
+
 @synthesize inactiveImage = inactiveImage_;
 @synthesize inactiveHighlightedImage = inactiveHighlightedImage_;
 @synthesize activeImage = activeImage_;
@@ -37,6 +41,16 @@
 @synthesize serverEntity = _serverEntity;
 @synthesize hideCount = hideCount_;
 @synthesize failureRetryInterval = _failureRetryInterval;
+
++ (id)alloc {
+    if([self class] == [SZLikeButton class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZLikeButtonIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
     self = [super initWithFrame:frame];
@@ -61,6 +75,7 @@
     self.activeHighlightedImage = [[self class] defaultActiveHighlightedImage];
     self.likedIcon = [[self class] defaultLikedIcon];
     self.unlikedIcon = [[self class] defaultUnlikedIcon];
+    [self.actualButton setTitleColor:[UIColor buttonTextHighlightColor] forState:UIControlStateHighlighted];
 }
 
 - (void)configureForNewServerEntity:(id<SocializeEntity>)serverEntity {
@@ -96,19 +111,19 @@
 }
 
 + (UIImage*)defaultInactiveImage {
-    return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return nil;
 }
 
 + (UIImage*)defaultInactiveHighlightedImage {
-    return [[UIImage imageNamed:@"action-bar-button-black-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return nil;
 }
 
 + (UIImage*)defaultActiveImage {
-    return [[UIImage imageNamed:@"action-bar-button-red.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return nil;
 }
 
 + (UIImage*)defaultActiveHighlightedImage {
-    return [[UIImage imageNamed:@"action-bar-button-red-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    return nil;
 }
 
 + (UIImage*)defaultLikedIcon {
