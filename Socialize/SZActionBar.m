@@ -16,6 +16,9 @@
 #import "NSNumber+Additions.h"
 #import "SZUserUtils.h"
 #import "SZViewUtils.h"
+#import "UIDevice+VersionCheck.h"
+#import "UIColor+Socialize.h"
+#import "SZActionBarIOS6.h"
 
 @interface SZActionBar () {
     BOOL _ignoreNextView;
@@ -43,6 +46,16 @@
 @synthesize activityIndicator = _activityIndicator;
 @synthesize backgroundImageView = _backgroundImageView;
 
++ (id)alloc {
+    if([self class] == [SZActionBar class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZActionBarIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -69,8 +82,6 @@
 - (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController *)viewController {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        
         self.betweenButtonsPadding = [[self class] defaultBetweenButtonsPadding];
         
         _entity = entity;
@@ -78,9 +89,11 @@
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         
-        [self setBackgroundColor:[UIColor clearColor]];
+        [self setBackgroundColor:[UIColor actionBarBackgroundColor]];
         
-        [self addSubview:self.backgroundImageView];
+        if(self.backgroundImageView) {
+            [self addSubview:self.backgroundImageView];
+        }
         [self addSubview:self.buttonsContainerRight];
         [self addSubview:self.buttonsContainerLeft];
         [self addSubview:self.activityIndicator];
@@ -192,7 +205,7 @@
     [self sendSubviewToBack:_backgroundImageView];
 }
 
-- (UIImageView*)backgroundImageView {
+- (UIImageView *)backgroundImageView {
     if (_backgroundImageView == nil) {
         _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
         _backgroundImageView.image = self.backgroundImage;
@@ -202,11 +215,7 @@
     return _backgroundImageView;
 }
 
-- (UIImage*)backgroundImage {
-    if (_backgroundImage == nil) {
-        _backgroundImage = [[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
-    }
-    
+- (UIImage *)backgroundImage {
     return _backgroundImage;
 }
 

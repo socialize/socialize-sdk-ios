@@ -37,6 +37,7 @@
 #import "SZSmartAlertUtils.h"
 #import "SZPinterestEngine.h"
 #import "UIDevice+VersionCheck.h"
+#import "UIColor+Socialize.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -212,10 +213,7 @@ static Socialize *_sharedSocialize;
         
         //iOS 7 navbar standard init
         if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
-            UIColor *barColor = [UIColor colorWithRed:(1.0f/255.0f)
-                                                green:(191.0f/255.0f)
-                                                 blue:(1.0f/255.0f)
-                                                alpha:1.0f];
+            UIColor *barColor = [UIColor navigationBarBackgroundColor];
             [[UINavigationBar appearance] setBarTintColor:barColor];
             [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
             NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:

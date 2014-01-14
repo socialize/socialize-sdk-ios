@@ -148,6 +148,12 @@
 		2CDB94E11885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDB94CB1885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png */; };
 		2CDB94E21885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDB94CB1885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png */; };
 		2CDB94E31885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDB94CB1885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png */; };
+		2CDB94E61885CE0C0031CF54 /* SZActionBarIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDB94E41885CE0C0031CF54 /* SZActionBarIOS6.h */; };
+		2CDB94E71885CE0C0031CF54 /* SZActionBarIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDB94E41885CE0C0031CF54 /* SZActionBarIOS6.h */; };
+		2CDB94E81885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */; };
+		2CDB94E91885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */; };
+		2CDB94EC1885D4E90031CF54 /* UIColor+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */; };
+		2CDB94ED1885D4E90031CF54 /* UIColor+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */; };
 		4810FF2E1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF2F1778C6CA00109630 /* SZPinterestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */; };
 		4810FF301778C6CA00109630 /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
@@ -1904,6 +1910,10 @@
 		2CDB94C91885C1300031CF54 /* socialize-authorize-twitter-disabled-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-twitter-disabled-icon-ios7@2x.png"; path = "Socialize/Resources/socialize-authorize-twitter-disabled-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CDB94CA1885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-twitter-enabled-icon-ios7.png"; path = "Socialize/Resources/socialize-authorize-twitter-enabled-icon-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2CDB94CB1885C1300031CF54 /* socialize-authorize-twitter-enabled-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-twitter-enabled-icon-ios7@2x.png"; path = "Socialize/Resources/socialize-authorize-twitter-enabled-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
+		2CDB94E41885CE0C0031CF54 /* SZActionBarIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarIOS6.h; sourceTree = "<group>"; };
+		2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBarIOS6.m; sourceTree = "<group>"; };
+		2CDB94EA1885D4E90031CF54 /* UIColor+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Socialize.h"; sourceTree = "<group>"; };
+		2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Socialize.m"; sourceTree = "<group>"; };
 		4810FF2C1778C6CA00109630 /* SZPinterestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestUtils.h; sourceTree = "<group>"; };
 		4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPinterestUtils.m; sourceTree = "<group>"; };
 		4810FF431778D3F500109630 /* SZPinterestShareData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPinterestShareData.h; sourceTree = "<group>"; };
@@ -2981,18 +2991,20 @@
 		2CB7AF25187B2B3A00BABE49 /* iOS6Compatibility */ = {
 			isa = PBXGroup;
 			children = (
-				2CB6C3E0187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h */,
-				2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */,
-				2CB6C3D4187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h */,
-				2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */,
-				2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */,
-				2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */,
-				2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */,
-				2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */,
-				2CBC69BC187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.h */,
-				2CBC69BD187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m */,
+				2CDB94E41885CE0C0031CF54 /* SZActionBarIOS6.h */,
+				2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */,
 				2CBC69C0187C7FE50009F6F0 /* SZCommentsListViewControllerIOS6.h */,
 				2CBC69C1187C7FE50009F6F0 /* SZCommentsListViewControllerIOS6.m */,
+				2CBC69BC187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.h */,
+				2CBC69BD187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m */,
+				2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */,
+				2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */,
+				2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */,
+				2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */,
+				2CB6C3D4187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.h */,
+				2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */,
+				2CB6C3E0187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.h */,
+				2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */,
 			);
 			name = iOS6Compatibility;
 			sourceTree = "<group>";
@@ -3114,6 +3126,8 @@
 			children = (
 				AA008726158D35BF00480399 /* UIButton+Socialize.h */,
 				AA008727158D35BF00480399 /* UIButton+Socialize.m */,
+				2CDB94EA1885D4E90031CF54 /* UIColor+Socialize.h */,
+				2CDB94EB1885D4E90031CF54 /* UIColor+Socialize.m */,
 				AA00872A158D35BF00480399 /* UIImage+Resize.h */,
 				AA00872B158D35BF00480399 /* UIImage+Resize.m */,
 				AA00872C158D35BF00480399 /* UILabel-Additions.h */,
@@ -4433,10 +4447,10 @@
 			isa = PBXGroup;
 			children = (
 				AADFE5E915967A7400FE2B61 /* SZActionBar.h */,
+				AADFE5EA15967A7400FE2B61 /* SZActionBar.m */,
 				AA84654515EBE52B00065678 /* SZStatusView.h */,
 				AA84654615EBE52B00065678 /* SZStatusView.m */,
 				AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */,
-				AADFE5EA15967A7400FE2B61 /* SZActionBar.m */,
 				AADFE5EB15967A7400FE2B61 /* SZHorizontalContainerView.h */,
 				AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */,
 				AADFE5F51596973C00FE2B61 /* SZActionButton.h */,
@@ -4632,6 +4646,7 @@
 				AAAC167C159329ED00804916 /* SocializeTableViewController.h in Headers */,
 				AAAC167E15932A2D00804916 /* _SZLinkDialogViewController.h in Headers */,
 				AAAC168015932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */,
+				2CDB94E61885CE0C0031CF54 /* SZActionBarIOS6.h in Headers */,
 				AAAC16821593392D00804916 /* SocializeActivityDetailsView.h in Headers */,
 				AAAC16841593395300804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
 				2CB6C3B6187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */,
@@ -4757,6 +4772,7 @@
 				AAAC168115932A3900804916 /* SZComposeCommentViewControllerDelegate.h in Headers */,
 				AAAC16831593392E00804916 /* SocializeActivityDetailsView.h in Headers */,
 				AAAC16851593395400804916 /* SocializeActivityDetailsViewControllerDelegate.h in Headers */,
+				2CDB94E71885CE0C0031CF54 /* SZActionBarIOS6.h in Headers */,
 				AAAC1692159339D900804916 /* SZUserSettingsViewController.h in Headers */,
 				AA0602B515965A22002D2535 /* SZActionBarItem.h in Headers */,
 				AADFE5E615967A0E00FE2B61 /* SZLikeButton.h in Headers */,
@@ -6299,6 +6315,7 @@
 				AA91F93A15B0D2E800BC373E /* SZAPIClientHelpers.m in Sources */,
 				AABCC67F15C083CD005FA860 /* NSString+UUID.m in Sources */,
 				2CBC69BF187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m in Sources */,
+				2CDB94E81885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */,
 				AAC7CB7A15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				AAB9D35515D2783700004E77 /* Facebook+Socialize.m in Sources */,
 				AA60845515D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
@@ -6397,6 +6414,7 @@
 				AA008782158D35BF00480399 /* SocializeLocationManager.m in Sources */,
 				AA008786158D35BF00480399 /* SocializeNotificationToggleBubbleContentView.m in Sources */,
 				2CBBFEB91880CBDD00A01EB2 /* SocializeActivityDetailsViewIOS6.m in Sources */,
+				2CDB94EC1885D4E90031CF54 /* UIColor+Socialize.m in Sources */,
 				AA008787158D35BF00480399 /* SocializeObject.m in Sources */,
 				AA008788158D35BF00480399 /* SocializeObjectFactory.m in Sources */,
 				AA008789158D35BF00480399 /* SocializeObjectFormatter.m in Sources */,
@@ -6713,6 +6731,7 @@
 				AAB5E4D4159044E600D3EBDF /* SocializeSubscriptionService.m in Sources */,
 				AAB5E4D5159044E600D3EBDF /* SocializeTableBGInfoView.m in Sources */,
 				AAB5E4D6159044E600D3EBDF /* SocializeTableViewController.m in Sources */,
+				2CDB94ED1885D4E90031CF54 /* UIColor+Socialize.m in Sources */,
 				AAB5E4D7159044E600D3EBDF /* SocializeThirdParty.m in Sources */,
 				AAB5E4D8159044E600D3EBDF /* SocializeThirdPartyFacebook.m in Sources */,
 				AAB5E4D9159044E600D3EBDF /* SocializeThirdPartyTwitter.m in Sources */,
@@ -6807,6 +6826,7 @@
 				AABCC68015C083CD005FA860 /* NSString+UUID.m in Sources */,
 				AAC7CB7B15C8A5D30064C5FD /* SZSocialNetworkPostData.m in Sources */,
 				2CBC69CB187C83280009F6F0 /* SZComposeCommentViewControllerIOS6.m in Sources */,
+				2CDB94E91885CE0C0031CF54 /* SZActionBarIOS6.m in Sources */,
 				2CB6C387187B2F64008C0AAE /* SZShareDialogViewControllerIOS6.m in Sources */,
 				AAB9D35615D2783700004E77 /* Facebook+Socialize.m in Sources */,
 				AA60845615D3015E0065C543 /* SZOARequest+Socialize.m in Sources */,
