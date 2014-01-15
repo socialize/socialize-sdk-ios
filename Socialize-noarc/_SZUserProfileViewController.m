@@ -15,6 +15,8 @@
 #import "SZNavigationController.h"
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
+#import "_SZUserProfileViewControllerIOS6.h"
 
 @interface _SZUserProfileViewController ()
 -(void)configureViews;
@@ -28,6 +30,8 @@
 @synthesize userNameLabel = userNameLabel_;
 @synthesize userDescriptionLabel = userDescriptionLabel_;
 @synthesize userLocationLabel = userLocationLabel_;
+@synthesize backgroundImageView = backgroundImageView_;
+@synthesize sectionHeaderView = sectionHeaderView_;
 @synthesize profileImageView = profileImageView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize imagesCache = imagesCache_;
@@ -36,6 +40,17 @@
 @synthesize activityViewController = activityViewController_;
 @synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
 @synthesize completionBlock = completionBlock_;
+
+
++ (id)alloc {
+    if([self class] == [_SZUserProfileViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [_SZUserProfileViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (void)dealloc {
     self.user = nil;
@@ -55,8 +70,7 @@
     [super dealloc];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
@@ -95,7 +109,7 @@
 }
 
 - (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    if (self = [super init]) {
+    if (self = [super initWithNibName:@"_SZUserProfileViewController" bundle:nil]) {
         self.delegate = delegate;
         self.user = user;
     }
@@ -117,15 +131,13 @@
     }
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Profile";
     
     //we will show a done button here if there is not left barbutton item already showing
     if (!self.navigationItem.leftBarButtonItem) {
-        
         WEAK(self) weakSelf = self;
         self.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
             if ([weakSelf.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
@@ -136,15 +148,14 @@
         }];
     }
 
+    self.backgroundImageView.image = [self defaultBackgroundImage];
+    self.sectionHeaderView.image = [self defaultHeaderBackgroundImage];
     [self setProfileImageFromImage:[self defaultProfileImage]];
-    
     [self addActivityControllerToView];
     
     //iOS 7 adjustments for nav bar
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    [super viewDidLoad];
 }
 
 #pragma mark - View lifecycle
@@ -155,6 +166,14 @@
     }
     
     return defaultProfileImage_;
+}
+
+- (UIImage *)defaultBackgroundImage {
+    return [UIImage imageNamed:@"background_plain.png"];
+}
+
+- (UIImage *)defaultHeaderBackgroundImage {
+    return [UIImage imageNamed:@"socialize-sectionheader-bg-ios7.png"];
 }
 
 - (void)setProfileImageFromImage:(UIImage*)image {
