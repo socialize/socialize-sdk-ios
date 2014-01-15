@@ -61,7 +61,10 @@
 }
 
 + (id)defaultActionBarWithFrame:(CGRect)frame entity:(id<SZEntity>)entity viewController:(UIViewController*)viewController {
-    SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero entity:nil viewController:viewController];
+    SZLikeButton *likeButton = [[SZLikeButton alloc] initWithFrame:CGRectZero
+                                                            entity:nil
+                                                    viewController:viewController
+                                                       tabBarStyle:YES];
 
     SZActionButton *commentButton = [SZActionButton commentButton];
     SZActionButton *shareButton = [SZActionButton shareButton];

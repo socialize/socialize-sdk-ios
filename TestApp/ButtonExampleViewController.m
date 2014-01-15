@@ -31,7 +31,10 @@ static CGRect likeFrame = { { 240.f, 120.f }, { 0.f, 0.f } };
         [weakSelf dismissModalViewControllerAnimated:YES];
     }];
         
-    self.likeButton = [[SZLikeButton alloc] initWithFrame:likeFrame entity:self.entity viewController:self];
+    self.likeButton = [[SZLikeButton alloc] initWithFrame:likeFrame
+                                                   entity:self.entity
+                                           viewController:self
+                                              tabBarStyle:NO];
     [self.view addSubview:self.likeButton];
 }
 

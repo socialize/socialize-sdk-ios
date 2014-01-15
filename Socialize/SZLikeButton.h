@@ -14,12 +14,15 @@
 
 @interface SZLikeButton : SZActionButton <SZActionBarItem>
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)controller;
+- (id)initWithFrame:(CGRect)frame
+             entity:(id<SocializeEntity>)entity
+     viewController:(UIViewController*)controller
+        tabBarStyle:(BOOL)buttonStyle;
 - (void)refresh;
 
 @property (nonatomic, readonly) BOOL initialized;
-
 @property (nonatomic, readonly, getter=isLiked) BOOL liked;
+@property (nonatomic, getter=isTabBarStyle) BOOL tabBarStyle;
 
 // begin-image-properties
 
@@ -35,14 +38,13 @@
 // end-image-properties
 
 @property (nonatomic, unsafe_unretained) UIViewController *viewController;
-
 @property (nonatomic, assign) BOOL hideCount;
-
 @property (nonatomic, retain) id<SZEntity> entity;
-
 @property (nonatomic, assign) NSTimeInterval failureRetryInterval;
-
 @property (nonatomic, strong) SZLikeOptions *likeOptions;
+
++ (UIImage *)defaultNonTabBarInactiveImage;
++ (UIImage *)defaultNonTabBarInactiveHighlightedImage;
 
 + (NSTimeInterval)defaultFailureRetryInterval;
 

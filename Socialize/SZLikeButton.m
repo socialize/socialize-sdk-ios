@@ -41,6 +41,7 @@
 @synthesize serverEntity = _serverEntity;
 @synthesize hideCount = hideCount_;
 @synthesize failureRetryInterval = _failureRetryInterval;
+@synthesize tabBarStyle = _tabBarStyle;
 
 + (id)alloc {
     if([self class] == [SZLikeButton class] &&
@@ -52,15 +53,17 @@
     }
 }
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
+- (id)initWithFrame:(CGRect)frame
+             entity:(id<SocializeEntity>)entity
+     viewController:(UIViewController*)viewController
+        tabBarStyle:(BOOL)buttonStyle {
     self = [super initWithFrame:frame];
+    
     if (self) {
+        self.tabBarStyle = buttonStyle;
         [self configureButtonBackgroundImages];
-        
         self.actualButton.accessibilityLabel = @"like button";
-
         self.viewController = viewController;
-        
         self.entity = entity;
         
     }
@@ -69,8 +72,15 @@
 
 - (void)resetButtonsToDefaults {
     [super resetButtonsToDefaults];
-    self.inactiveImage = [[self class] defaultInactiveImage];
-    self.inactiveHighlightedImage = [[self class] defaultInactiveHighlightedImage];
+    if(_tabBarStyle) {
+        self.inactiveImage = [[self class] defaultInactiveImage];
+        self.inactiveHighlightedImage = [[self class] defaultInactiveHighlightedImage];
+    }
+    else {
+        self.inactiveImage = [[self class] defaultNonTabBarInactiveImage];
+        self.inactiveHighlightedImage = [[self class] defaultNonTabBarInactiveHighlightedImage];
+    }
+    
     self.activeImage = [[self class] defaultActiveImage];
     self.activeHighlightedImage = [[self class] defaultActiveHighlightedImage];
     self.likedIcon = [[self class] defaultLikedIcon];
@@ -110,27 +120,35 @@
     return 10;
 }
 
-+ (UIImage*)defaultInactiveImage {
++ (UIImage *)defaultInactiveImage {
     return nil;
 }
 
-+ (UIImage*)defaultInactiveHighlightedImage {
++ (UIImage *)defaultInactiveHighlightedImage {
     return nil;
 }
 
-+ (UIImage*)defaultActiveImage {
++ (UIImage *)defaultNonTabBarInactiveImage {
+    return [[UIImage imageNamed:@"action-bar-button-black-ios7.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
++ (UIImage *)defaultNonTabBarInactiveHighlightedImage {
+    return [[UIImage imageNamed:@"action-bar-button-black-hover-ios7.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
++ (UIImage *)defaultActiveImage {
     return [[UIImage imageNamed:@"action-bar-button-red-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 }
 
-+ (UIImage*)defaultActiveHighlightedImage {
++ (UIImage *)defaultActiveHighlightedImage {
     return [[UIImage imageNamed:@"action-bar-button-red-hover-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 }
 
-+ (UIImage*)defaultLikedIcon {
++ (UIImage *)defaultLikedIcon {
     return [UIImage imageNamed:@"action-bar-icon-liked.png"];
 }
 
-+ (UIImage*)defaultUnlikedIcon {
++ (UIImage *)defaultUnlikedIcon {
     return [UIImage imageNamed:@"action-bar-icon-like.png"];
 }
 
