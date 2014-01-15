@@ -26,4 +26,9 @@
     return [[UIImage imageNamed:@"action-bar-button-red-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
 
+- (void)resetButtonsToDefaults {
+    [super resetButtonsToDefaults];
+    self.actualButton.backgroundColor = [UIColor clearColor];
+}
+
 @end

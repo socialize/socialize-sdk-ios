@@ -119,11 +119,11 @@
 }
 
 + (UIImage*)defaultActiveImage {
-    return nil;
+    return [[UIImage imageNamed:@"action-bar-button-red-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 }
 
 + (UIImage*)defaultActiveHighlightedImage {
-    return nil;
+    return [[UIImage imageNamed:@"action-bar-button-red-hover-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 }
 
 + (UIImage*)defaultLikedIcon {
