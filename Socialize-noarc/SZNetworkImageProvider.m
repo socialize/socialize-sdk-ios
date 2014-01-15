@@ -61,16 +61,30 @@
     return retVal;
 }
 
-//+ (UIImage *)pinterestSelectNetworkImage:(BOOL)enabled {
-//    
-//}
-//
-//+ (UIImage *)facebookCommentImage:(BOOL)enabled {
-//    
-//}
-//
-//+ (UIImage *)twitterCommentImage:(BOOL)enabled {
-//    
-//}
++ (UIImage *)emailSelectImage {
+    UIImage *retVal;
+    
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-email-icon.png"];
+    }
+    else {
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-email-icon-ios7.png"];
+    }
+    
+    return retVal;
+}
+
++ (UIImage *)smsSelectImage {
+    UIImage *retVal;
+    
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-sms-icon.png"];
+    }
+    else {
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-sms-icon-ios7.png"];
+    }
+    
+    return retVal;
+}
 
 @end

@@ -98,6 +98,12 @@
 		2CB0E503188731FF0080DF6B /* background_plain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E502188731FF0080DF6B /* background_plain@2x.png */; };
 		2CB0E504188731FF0080DF6B /* background_plain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E502188731FF0080DF6B /* background_plain@2x.png */; };
 		2CB0E505188731FF0080DF6B /* background_plain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E502188731FF0080DF6B /* background_plain@2x.png */; };
+		2CB0E51718874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51518874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png */; };
+		2CB0E51818874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51518874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png */; };
+		2CB0E51918874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51518874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png */; };
+		2CB0E51A18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
+		2CB0E51B18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
+		2CB0E51C18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
 		2CB6C387187B2F64008C0AAE /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
 		2CB6C3B6187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */; };
 		2CB6C3B7187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */; };
@@ -1925,6 +1931,8 @@
 		2CB0E4FA1887264C0080DF6B /* socialize-sectionheader-bg-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg-ios7.png"; path = "Socialize/Resources/socialize-sectionheader-bg-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2CB0E4FB1887264C0080DF6B /* socialize-sectionheader-bg-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-sectionheader-bg-ios7@2x.png"; path = "Socialize/Resources/socialize-sectionheader-bg-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CB0E502188731FF0080DF6B /* background_plain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_plain@2x.png"; path = "Socialize/Resources/background_plain@2x.png"; sourceTree = SOURCE_ROOT; };
+		2CB0E51518874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-email-icon-ios7@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-email-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
+		2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-SMS-icon-ios7@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-SMS-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CB3CE50186CA347000B3CF3 /* LoopyApiInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LoopyApiInfo.plist; path = Socialize/Resources/LoopyApiInfo.plist; sourceTree = SOURCE_ROOT; };
 		2CB6C3B4187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLinkDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLinkDialogViewControllerIOS6.m; sourceTree = "<group>"; };
@@ -3482,6 +3490,7 @@
 				AA935968158F187200B5B2BC /* socialize-selectnetwork-continue-btn@2x.png */,
 				AA935969158F187200B5B2BC /* socialize-selectnetwork-email-icon.png */,
 				AA93596A158F187200B5B2BC /* socialize-selectnetwork-email-icon@2x.png */,
+				2CB0E51518874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png */,
 				AA93596B158F187200B5B2BC /* socialize-selectnetwork-facebook-dis-icon.png */,
 				AA93596C158F187200B5B2BC /* socialize-selectnetwork-facebook-dis-icon@2x.png */,
 				2C6E52F71884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png */,
@@ -3494,6 +3503,7 @@
 				AA935970158F187200B5B2BC /* socialize-selectnetwork-illustration@2x.png */,
 				AA935971158F187200B5B2BC /* socialize-selectnetwork-SMS-icon.png */,
 				AA935972158F187200B5B2BC /* socialize-selectnetwork-SMS-icon@2x.png */,
+				2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */,
 				AA935973158F187200B5B2BC /* socialize-selectnetwork-table-back.png */,
 				AA935974158F187200B5B2BC /* socialize-selectnetwork-table-back@2x.png */,
 				AA935975158F187200B5B2BC /* socialize-selectnetwork-twitter-dis-icon.png */,
@@ -5415,11 +5425,13 @@
 				AA935A8F158F187200B5B2BC /* socialize-comment-button-active.png in Resources */,
 				AA935A92158F187200B5B2BC /* socialize-comment-button-active@2x.png in Resources */,
 				AA935A95158F187200B5B2BC /* socialize-comment-button.png in Resources */,
+				2CB0E51718874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */,
 				AA935A98158F187200B5B2BC /* socialize-comment-button@2x.png in Resources */,
 				AA935A9B158F187200B5B2BC /* socialize-comment-detail-bottom-shadow-background.png in Resources */,
 				AA935A9E158F187200B5B2BC /* socialize-comment-detail-bottom-shadow-background@2x.png in Resources */,
 				AA935AA1158F187200B5B2BC /* socialize-comment-details-icon-geo-disabled.png in Resources */,
 				AA935AA4158F187200B5B2BC /* socialize-comment-details-icon-geo-disabled@2x.png in Resources */,
+				2CB0E51A18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */,
 				AA935AA7158F187200B5B2BC /* socialize-comment-details-icon-geo-enabled.png in Resources */,
 				AA935AAA158F187200B5B2BC /* socialize-comment-details-icon-geo-enabled@2x.png in Resources */,
 				2C6E530B1884C293009C8F4F /* socialize-selectnetwork-twitter-dis-icon-ios7.png in Resources */,
@@ -5784,6 +5796,7 @@
 				AACED9F2158FCE770024EC43 /* socialize-selectnetwork-facebook-icon@2x.png in Resources */,
 				AACED9F3158FCE770024EC43 /* socialize-selectnetwork-illustration.png in Resources */,
 				AACED9F4158FCE770024EC43 /* socialize-selectnetwork-illustration@2x.png in Resources */,
+				2CB0E51C18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */,
 				AACED9F5158FCE770024EC43 /* socialize-selectnetwork-SMS-icon.png in Resources */,
 				AACED9F6158FCE770024EC43 /* socialize-selectnetwork-SMS-icon@2x.png in Resources */,
 				AACED9F7158FCE770024EC43 /* socialize-selectnetwork-table-back.png in Resources */,
@@ -5835,6 +5848,7 @@
 				2C6E530A1884C293009C8F4F /* socialize-selectnetwork-facebook-icon-ios7@2x.png in Resources */,
 				AAA928EE159A370300BE83F3 /* socialize-activity-details-ico-chat.png in Resources */,
 				AAA928F2159A370300BE83F3 /* socialize-activity-details-ico-chat@2x.png in Resources */,
+				2CB0E51918874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */,
 				2CBBFE3218808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AAA928F6159A370300BE83F3 /* socialize-activity-details-ico-location.png in Resources */,
 				AAA928FA159A370300BE83F3 /* socialize-activity-details-ico-location@2x.png in Resources */,
@@ -6096,11 +6110,13 @@
 				2C6E53091884C293009C8F4F /* socialize-selectnetwork-facebook-icon-ios7@2x.png in Resources */,
 				AA935C09158F1C2600B5B2BC /* Smiley.png in Resources */,
 				AA935C0C158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */,
+				2CB0E51818874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */,
 				2C6E53001884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png in Resources */,
 				AAA928CD159A370300BE83F3 /* socialize-activity-details-back-entry-x.png in Resources */,
 				AAA928D1159A370300BE83F3 /* socialize-activity-details-back-entry-x@2x.png in Resources */,
 				AAA928D5159A370300BE83F3 /* socialize-activity-details-back-section-x.png in Resources */,
 				AAA928D9159A370300BE83F3 /* socialize-activity-details-back-section-x@2x.png in Resources */,
+				2CB0E51B18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */,
 				AAA928DD159A370300BE83F3 /* socialize-activity-details-btn-link.png in Resources */,
 				AAA928E1159A370300BE83F3 /* socialize-activity-details-btn-link@2x.png in Resources */,
 				AAA928E5159A370300BE83F3 /* socialize-activity-details-categ_arrow.png in Resources */,

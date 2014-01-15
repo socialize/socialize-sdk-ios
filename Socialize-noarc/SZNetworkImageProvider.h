@@ -12,8 +12,7 @@
 
 + (UIImage *)facebookSelectNetworkImage:(BOOL)enabled;
 + (UIImage *)twitterSelectNetworkImage:(BOOL)enabled;
-//+ (UIImage *)pinterestSelectNetworkImage:(BOOL)enabled;
-//+ (UIImage *)facebookCommentImage:(BOOL)enabled;
-//+ (UIImage *)twitterCommentImage:(BOOL)enabled;
++ (UIImage *)emailSelectImage;
++ (UIImage *)smsSelectImage;
 
 @end
