@@ -150,6 +150,7 @@
 		2CBC6A39187CAF770009F6F0 /* UIButton+SocializeIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC6A37187CAF770009F6F0 /* UIButton+SocializeIOS6.m */; };
 		2CC53216187A358500428A56 /* SZNavigationControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */; };
 		2CC6263317CFFC3A00896610 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
+		2CCEA67A1887664B00B56C1C /* SocializeOSVersionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */; };
 		2CDB7D5E17D68A9800E0BEC2 /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6263217CFFC3A00896610 /* UserHelper.m */; };
 		2CDB94C21885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94C11885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.m */; };
 		2CDB94C31885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94C11885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.m */; };
@@ -1960,6 +1961,8 @@
 		2CBC6A37187CAF770009F6F0 /* UIButton+SocializeIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SocializeIOS6.m"; sourceTree = "<group>"; };
 		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
 		2CC6263217CFFC3A00896610 /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
+		2CCEA6781887664B00B56C1C /* SocializeOSVersionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeOSVersionTests.h; sourceTree = "<group>"; };
+		2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeOSVersionTests.m; sourceTree = "<group>"; };
 		2CDB94C01885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZLinkDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CDB94C11885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZLinkDialogViewControllerIOS6.m; sourceTree = "<group>"; };
 		2CDB94C41885C1300031CF54 /* socialize-authorize-facebook-disabled-icon-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-authorize-facebook-disabled-icon-ios7.png"; path = "Socialize/Resources/socialize-authorize-facebook-disabled-icon-ios7.png"; sourceTree = SOURCE_ROOT; };
@@ -3890,6 +3893,8 @@
 				AA0C6085158FC61D00F66A3B /* CommentsTableViewTests.m */,
 				AA0C6086158FC61D00F66A3B /* ComposeCommentViewControllerTests.h */,
 				AA0C6087158FC61D00F66A3B /* ComposeCommentViewControllerTests.m */,
+				AA9701A715953942006CDC8E /* FacebookUtilsTests.h */,
+				AA9701A815953942006CDC8E /* FacebookUtilsTests.m */,
 				AA0C6089158FC61D00F66A3B /* ImageLoaderTests.h */,
 				AA0C608A158FC61D00F66A3B /* ImageLoaderTests.m */,
 				AA0C608B158FC61D00F66A3B /* ImagesCacheTests.h */,
@@ -3959,6 +3964,8 @@
 				AA0C60D3158FC61D00F66A3B /* SocializeObjectFormatterTests.m */,
 				AA0C60D4158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.h */,
 				AA0C60D5158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.m */,
+				2CCEA6781887664B00B56C1C /* SocializeOSVersionTests.h */,
+				2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */,
 				AA0C60D6158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.h */,
 				AA0C60D7158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.m */,
 				AA0C60D8158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.h */,
@@ -4031,8 +4038,6 @@
 				AA0C6111158FC61D00F66A3B /* UrlSerializationTests.m */,
 				AA0C6112158FC61D00F66A3B /* UserUtilsTests.h */,
 				AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */,
-				AA9701A715953942006CDC8E /* FacebookUtilsTests.h */,
-				AA9701A815953942006CDC8E /* FacebookUtilsTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -6701,6 +6706,7 @@
 				AA90FFF2159065C400AFD8A2 /* create_action_bar.m in Sources */,
 				AA90FFF5159065C400AFD8A2 /* create_like_button.m in Sources */,
 				AA90FFF6159065C400AFD8A2 /* disable_error_alerts.m in Sources */,
+				2CCEA67A1887664B00B56C1C /* SocializeOSVersionTests.m in Sources */,
 				AA90FFF9159065C400AFD8A2 /* show_comments_list.m in Sources */,
 				AA90FFFA159065C400AFD8A2 /* third_party_link_options.m in Sources */,
 				AA9701A915953942006CDC8E /* FacebookUtilsTests.m in Sources */,
