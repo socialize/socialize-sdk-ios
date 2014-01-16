@@ -9,9 +9,9 @@
 		<key>openTimeoutInMillis</key>
 		<integer>10000</integer>
 		<key>urlHttpsPrefix</key>
-		<string>https://ec2-54-226-117-50.compute-1.amazonaws.com:8443/loopy-mock/v1</string>
+		<string>https://loopy.getsocialize.com</string>
 		<key>urlPrefix</key>
-		<string>http://ec2-54-226-117-50.compute-1.amazonaws.com:8080/loopy-mock/v1</string>
+		<string>http://loopy.getsocialize.com</string>
 	</dict>
 </dict>
 </plist>
