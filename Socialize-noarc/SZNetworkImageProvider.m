@@ -78,10 +78,10 @@
     UIImage *retVal;
     
     if([[UIDevice currentDevice] systemMajorVersion] < 7) {
-        retVal = [UIImage imageNamed:@"socialize-selectnetwork-sms-icon.png"];
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-SMS-icon.png"];
     }
     else {
-        retVal = [UIImage imageNamed:@"socialize-selectnetwork-sms-icon-ios7.png"];
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-SMS-icon-ios7.png"];
     }
     
     return retVal;
