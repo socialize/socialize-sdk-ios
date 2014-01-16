@@ -7,6 +7,7 @@
 //
 
 #import <GHUnitIOS/GHUnit.h>
+#import <OCMock/OCMock.h>
 
 @interface SocializeOSVersionTests : GHTestCase
 

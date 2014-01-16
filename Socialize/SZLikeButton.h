@@ -44,8 +44,14 @@
 @property (nonatomic, strong) SZLikeOptions *likeOptions;
 
 + (UIImage *)defaultDisabledImage;
++ (UIImage *)defaultInactiveImage;
++ (UIImage *)defaultInactiveHighlightedImage;
 + (UIImage *)defaultNonTabBarInactiveImage;
 + (UIImage *)defaultNonTabBarInactiveHighlightedImage;
++ (UIImage *)defaultActiveImage;
++ (UIImage *)defaultActiveHighlightedImage;
++ (UIImage *)defaultLikedIcon;
++ (UIImage *)defaultUnlikedIcon;
 
 + (NSTimeInterval)defaultFailureRetryInterval;
 

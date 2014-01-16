@@ -19,6 +19,7 @@
 #import "SZNavigationController.h"
 #import "SZActionBar.h"
 #import "SZActionButton.h"
+#import "SZLikeButton.h"
 #import "UIButton+Socialize.h"
 #import "UIDevice+VersionCheck.h"
 
@@ -68,6 +69,15 @@
     [self assertMatchClass:authViewController
              ios6ClassName:@"_SZLinkDialogViewControllerIOS6"
              ios7ClassName:@"_SZLinkDialogViewController"];
+    
+    //test OS version-variant code
+    //for UIImages, simply test they're not null unless expected
+    GHAssertNotNil([authViewController facebookIcon:YES], @"");
+    GHAssertNotNil([authViewController facebookIcon:NO], @"");
+    GHAssertNotNil([authViewController twitterIcon:YES], @"");
+    GHAssertNotNil([authViewController twitterIcon:NO], @"");
+    GHAssertNotNil([authViewController callOutArrow], @"");
+    GHAssertNotNil([authViewController authorizeUserIcon], @"");
 }
 
 - (void)testSZShareDialogViewControllerVersion {
@@ -83,6 +93,12 @@
     [self assertMatchClass:profileController
              ios6ClassName:@"_SZUserProfileViewControllerIOS6"
              ios7ClassName:@"_SZUserProfileViewController"];
+
+    //test OS version-variant code
+    //for UIImages, simply test they're not null unless expected
+    GHAssertNotNil([profileController defaultBackgroundImage], @"");
+    GHAssertNotNil([profileController defaultHeaderBackgroundImage], @"");
+    GHAssertNotNil([profileController defaultProfileImage], @"");
 }
 
 - (void)testSZActionBarVersion {
@@ -97,6 +113,54 @@
     [self assertMatchClass:button
              ios6ClassName:@"SZActionButtonIOS6"
              ios7ClassName:@"SZActionButton"];
+
+    //test OS version-variant code
+    //for UIImages, simply test they're not null unless expected
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        GHAssertNil([[button class] defaultDisabledImage], @"");
+        GHAssertNotNil([[button class] defaultImage], @"");
+        GHAssertNotNil([[button class] defaultHighlightedImage], @"");
+    }
+    else {
+        GHAssertNil([[button class] defaultDisabledImage], @"");
+        GHAssertNil([[button class] defaultImage], @"");
+        GHAssertNil([[button class] defaultHighlightedImage], @"");
+    }
+}
+
+- (void)testSZLikeButtonVersion {
+    SZLikeButton *likeButtonTabStyle = [[[SZLikeButton alloc] initWithFrame:CGRectZero
+                                                                     entity:nil
+                                                             viewController:nil
+                                                                tabBarStyle:YES] autorelease];
+    [self assertMatchClass:likeButtonTabStyle
+             ios6ClassName:@"SZLikeButtonIOS6"
+             ios7ClassName:@"SZLikeButton"];
+
+    //test OS version-variant code
+    //for UIImages, simply test they're not null unless expected
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        GHAssertNotNil([[likeButtonTabStyle class] defaultDisabledImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultInactiveImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultInactiveHighlightedImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultNonTabBarInactiveImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultNonTabBarInactiveHighlightedImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultActiveImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultActiveHighlightedImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultLikedIcon] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultUnlikedIcon] ,@"");
+    }
+    else {
+        GHAssertNil([[likeButtonTabStyle class] defaultDisabledImage] ,@"");
+        GHAssertNil([[likeButtonTabStyle class] defaultInactiveImage] ,@"");
+        GHAssertNil([[likeButtonTabStyle class] defaultInactiveHighlightedImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultNonTabBarInactiveImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultNonTabBarInactiveHighlightedImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultActiveImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultActiveHighlightedImage] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultLikedIcon] ,@"");
+        GHAssertNotNil([[likeButtonTabStyle class] defaultUnlikedIcon] ,@"");
+    }
 }
 
 - (void)testCommentsTableFooterViewVersion {
@@ -104,6 +168,11 @@
     [self assertMatchClass:actionBar
              ios6ClassName:@"CommentsTableFooterViewIOS6"
              ios7ClassName:@"CommentsTableFooterView"];
+
+    //test OS version-variant code
+    //for UIImages, simply test they're not null unless expected
+    GHAssertNotNil([actionBar searchBarImage], @"");
+    GHAssertNotNil([actionBar backgroundImage], @"");
 }
 
 - (void)testCommentsTableViewCellVersion {
@@ -118,6 +187,15 @@
                              @"CommentsTableViewCell" :
                              @"CommentsTableViewCellIOS7";
     GHAssertEqualStrings(cellNibName, matchNibName, @"");
+
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        GHAssertNotNil([cell defaultBackgroundImage], @"");
+        GHAssertNotNil([cell defaultProfileImage], @"");
+    }
+    else {
+        GHAssertNil([cell defaultBackgroundImage], @"");
+        GHAssertNotNil([cell defaultProfileImage], @"");
+    }
 }
 
 - (void)testSocializeActivityDetailsViewVersion {
@@ -134,6 +212,7 @@
              ios7ClassName:@"UIButton"];
 }
 
+//convenience method
 - (void)assertMatchClass:(NSObject *)obj ios6ClassName:(NSString *)ios6Name ios7ClassName:(NSString *)ios7Name {
     NSString *className = NSStringFromClass([obj class]);
     NSString *matchClassName = [[UIDevice currentDevice] systemMajorVersion] < 7 ? ios6Name : ios7Name;
