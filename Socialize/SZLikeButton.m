@@ -61,7 +61,7 @@
     
     if (self) {
         self.tabBarStyle = buttonStyle;
-        [self configureButtonBackgroundImages];
+        [self resetButtonsToDefaults];
         self.actualButton.accessibilityLabel = @"like button";
         self.viewController = viewController;
         self.entity = entity;
@@ -81,6 +81,7 @@
         self.inactiveHighlightedImage = [[self class] defaultNonTabBarInactiveHighlightedImage];
     }
     
+    self.disabledImage = [[self class] defaultDisabledImage];
     self.activeImage = [[self class] defaultActiveImage];
     self.activeHighlightedImage = [[self class] defaultActiveHighlightedImage];
     self.likedIcon = [[self class] defaultLikedIcon];
@@ -118,6 +119,10 @@
 
 + (NSTimeInterval)defaultFailureRetryInterval {
     return 10;
+}
+
++ (UIImage *)defaultDisabledImage {
+    return nil;
 }
 
 + (UIImage *)defaultInactiveImage {

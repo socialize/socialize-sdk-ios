@@ -43,6 +43,7 @@
 @property (nonatomic, assign) NSTimeInterval failureRetryInterval;
 @property (nonatomic, strong) SZLikeOptions *likeOptions;
 
++ (UIImage *)defaultDisabledImage;
 + (UIImage *)defaultNonTabBarInactiveImage;
 + (UIImage *)defaultNonTabBarInactiveHighlightedImage;
 

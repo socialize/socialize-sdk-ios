@@ -10,6 +10,10 @@
 
 @implementation SZLikeButtonIOS6
 
++ (UIImage*)defaultDisabledImage {
+    return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
 + (UIImage*)defaultInactiveImage {
     return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
