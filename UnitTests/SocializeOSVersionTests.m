@@ -8,6 +8,7 @@
 
 #import "SocializeOSVersionTests.h"
 #import "SZCommentsListViewController.h"
+#import "SZComposeCommentViewController.h"
 #import "SZNavigationController.h"
 #import "SZActionBar.h"
 #import "SZActionButton.h"
@@ -29,7 +30,11 @@
 }
 
 - (void)testSZComposeCommentViewControllerVersion {
-    
+    SZEntity *entity = [SZEntity entityWithKey:@"key" name:@"name"];
+    SZComposeCommentViewController *composer = [[SZComposeCommentViewController alloc] initWithEntity:entity];
+    [self assertMatchClass:composer
+             ios6ClassName:@"SZComposeCommentViewControllerIOS6"
+             ios7ClassName:@"SZComposeCommentViewController"];
 }
 
 - (void)testSocializeActivityViewControllerVersion {
