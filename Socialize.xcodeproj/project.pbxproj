@@ -71,6 +71,9 @@
 		2C84296F187E111400BD01AF /* comment-header-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */; };
 		2C842972187E236600BD01AF /* CommentsTableViewCellIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C842971187E236600BD01AF /* CommentsTableViewCellIOS6.m */; };
 		2C842973187E24E700BD01AF /* CommentsTableViewCellIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C842971187E236600BD01AF /* CommentsTableViewCellIOS6.m */; };
+		2C8D86B818875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
+		2C8D86B918875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
+		2C8D86BA18875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
 		2C9790ED187A042A002C3268 /* SZNavigationControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */; };
 		2C979107187A075B002C3268 /* UIDevice+VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C979106187A075B002C3268 /* UIDevice+VersionCheck.m */; };
 		2C9D08AF187A35B800AB2F8B /* UIDevice+VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C979106187A075B002C3268 /* UIDevice+VersionCheck.m */; };
@@ -118,9 +121,6 @@
 		2CB6C3E4187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CB6C3E5187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CB7AF3D187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
-		2CBBFE3018808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE2F18808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib */; };
-		2CBBFE3118808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE2F18808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib */; };
-		2CBBFE3218808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE2F18808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib */; };
 		2CBBFE561880BB8F00A01EB2 /* CommentsTableFooterViewIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC3B0B187F428400112F66 /* CommentsTableFooterViewIOS6.m */; };
 		2CBBFE9D1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
 		2CBBFE9E1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
@@ -1916,6 +1916,7 @@
 		2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-header-icon-ios7@2x.png"; path = "Socialize/Resources/comment-header-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C842970187E236600BD01AF /* CommentsTableViewCellIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCellIOS6.h; sourceTree = "<group>"; };
 		2C842971187E236600BD01AF /* CommentsTableViewCellIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCellIOS6.m; sourceTree = "<group>"; };
+		2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityTableViewCellIOS7.xib; path = Socialize/Resources/SocializeActivityTableViewCellIOS7.xib; sourceTree = SOURCE_ROOT; };
 		2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNavigationControllerIOS6.m; sourceTree = "<group>"; };
 		2C979105187A075B002C3268 /* UIDevice+VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+VersionCheck.h"; sourceTree = "<group>"; };
 		2C979106187A075B002C3268 /* UIDevice+VersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+VersionCheck.m"; sourceTree = "<group>"; };
@@ -1942,7 +1943,6 @@
 		2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewControllerIOS6.m; sourceTree = "<group>"; };
 		2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewControllerIOS6.m; sourceTree = "<group>"; };
-		2CBBFE2F18808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocializeActivityTableViewCellIOS7.xib; sourceTree = SOURCE_ROOT; };
 		2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-btn-link-ios7.png"; path = "Socialize/Resources/socialize-activity-details-btn-link-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2CBBFE9C1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-btn-link-ios7@2x.png"; path = "Socialize/Resources/socialize-activity-details-btn-link-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CBBFEB71880CBDD00A01EB2 /* SocializeActivityDetailsViewIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActivityDetailsViewIOS6.h; sourceTree = "<group>"; };
@@ -3269,9 +3269,9 @@
 		2CBBFE471880B78F00A01EB2 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */,
 				AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */,
 				AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */,
-				2CBBFE2F18808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib */,
 				AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */,
 				AA9358EA158F187200B5B2BC /* socialize-activity-bg.png */,
 				AA9358EB158F187200B5B2BC /* socialize-activity-bg@2x.png */,
@@ -5328,6 +5328,7 @@
 				AA93599C158F187200B5B2BC /* action-bar-button-black.png in Resources */,
 				AA93599F158F187200B5B2BC /* action-bar-button-black@2x.png in Resources */,
 				AA9359A2158F187200B5B2BC /* action-bar-button-red-hover.png in Resources */,
+				2C8D86B818875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AA9359A5158F187200B5B2BC /* action-bar-button-red-hover@2x.png in Resources */,
 				AA9359A8158F187200B5B2BC /* action-bar-button-red.png in Resources */,
 				AA9359AB158F187200B5B2BC /* action-bar-button-red@2x.png in Resources */,
@@ -5392,7 +5393,6 @@
 				2C23AACB187F598A00BA2FBA /* comment-bg-ios7.png in Resources */,
 				AA935A3E158F187200B5B2BC /* socialize-authorize-authenticate-badge-icon@2x.png in Resources */,
 				AA935A41158F187200B5B2BC /* socialize-authorize-facebook-disabled-icon.png in Resources */,
-				2CBBFE3018808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AA935A44158F187200B5B2BC /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */,
 				AA935A47158F187200B5B2BC /* socialize-authorize-facebook-enabled-icon.png in Resources */,
 				2C84296A187E110D00BD01AF /* comment-header-icon-ios7.png in Resources */,
@@ -5602,6 +5602,7 @@
 				AACED94C158FCE770024EC43 /* action-bar-bg@2x.png in Resources */,
 				AACED94D158FCE770024EC43 /* action-bar-button-black-hover.png in Resources */,
 				AACED94E158FCE770024EC43 /* action-bar-button-black-hover@2x.png in Resources */,
+				2C8D86BA18875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AACED94F158FCE770024EC43 /* action-bar-button-black.png in Resources */,
 				AACED950158FCE770024EC43 /* action-bar-button-black@2x.png in Resources */,
 				AACED951158FCE770024EC43 /* action-bar-button-red-hover.png in Resources */,
@@ -5849,7 +5850,6 @@
 				AAA928EE159A370300BE83F3 /* socialize-activity-details-ico-chat.png in Resources */,
 				AAA928F2159A370300BE83F3 /* socialize-activity-details-ico-chat@2x.png in Resources */,
 				2CB0E51918874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */,
-				2CBBFE3218808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AAA928F6159A370300BE83F3 /* socialize-activity-details-ico-location.png in Resources */,
 				AAA928FA159A370300BE83F3 /* socialize-activity-details-ico-location@2x.png in Resources */,
 				2C6E53011884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png in Resources */,
@@ -5948,6 +5948,7 @@
 				AA935A43158F187200B5B2BC /* socialize-authorize-facebook-disabled-icon.png in Resources */,
 				AA935A46158F187200B5B2BC /* socialize-authorize-facebook-disabled-icon@2x.png in Resources */,
 				AA935A49158F187200B5B2BC /* socialize-authorize-facebook-enabled-icon.png in Resources */,
+				2C8D86B918875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AA935A4C158F187200B5B2BC /* socialize-authorize-facebook-enabled-icon@2x.png in Resources */,
 				AA935A4F158F187200B5B2BC /* socialize-authorize-top-shadow-background.png in Resources */,
 				AA935A52158F187200B5B2BC /* socialize-authorize-top-shadow-background@2x.png in Resources */,
@@ -6010,7 +6011,6 @@
 				AA935AEB158F187200B5B2BC /* socialize-comment-twitter-enabled@2x.png in Resources */,
 				AA935AEE158F187200B5B2BC /* socialize-comment-user-background.png in Resources */,
 				AA935AF1158F187200B5B2BC /* socialize-comment-user-background@2x.png in Resources */,
-				2CBBFE3118808D8B00A01EB2 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AA935AF4158F187200B5B2BC /* socialize-comment-user-only-background.png in Resources */,
 				AA935AF7158F187200B5B2BC /* socialize-iphone-notification-button-highlighted.png in Resources */,
 				AA935AFA158F187200B5B2BC /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
