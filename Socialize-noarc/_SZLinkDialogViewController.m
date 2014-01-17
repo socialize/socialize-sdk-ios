@@ -237,7 +237,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
             [authTypeRowData_ addObject:
              [NSDictionary dictionaryWithObjectsAndKeys:
               
-              @"facebook", kAuthTypeRowText,
+              @"Facebook", kAuthTypeRowText,
               [self facebookIcon:YES], kAuthTypeRowImageName,
               [[^{ [weakSelf authenticateWithFacebook]; } copy] autorelease], kAuthTypeRowAction,
               nil]];
@@ -247,7 +247,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
             [authTypeRowData_ addObject:
              [NSDictionary dictionaryWithObjectsAndKeys:
               
-              @"twitter", kAuthTypeRowText,
+              @"Twitter", kAuthTypeRowText,
               [self twitterIcon:YES], kAuthTypeRowImageName,
               [[^{ [weakSelf authenticateWithTwitter]; } copy] autorelease], kAuthTypeRowAction,
               nil]];
