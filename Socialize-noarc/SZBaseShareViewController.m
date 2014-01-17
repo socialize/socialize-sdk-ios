@@ -453,7 +453,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     };
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-        cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-pinterest-icon"];
+        cell.imageView.image = [SZNetworkImageProvider pinterestSelectImage];
         cell.textLabel.text = @"Pinterest";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         cell.textLabel.textColor = [UIColor whiteColor];

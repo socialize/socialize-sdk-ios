@@ -61,6 +61,19 @@
     return retVal;
 }
 
++ (UIImage *)pinterestSelectImage {
+    UIImage *retVal;
+    
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-pinterest-icon.png"];
+    }
+    else {
+        retVal = [UIImage imageNamed:@"socialize-selectnetwork-pinterest-icon-ios7.png"];
+    }
+    
+    return retVal;
+}
+
 + (UIImage *)emailSelectImage {
     UIImage *retVal;
     
