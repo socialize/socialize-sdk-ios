@@ -11,9 +11,9 @@
 @implementation UIColor (Socialize)
 
 + (UIColor *)navigationBarBackgroundColor {
-    return [UIColor colorWithRed:(1.0f/255.0f)
-                           green:(191.0f/255.0f)
-                            blue:(1.0f/255.0f)
+    return [UIColor colorWithRed:(17.0f/255.0f)
+                           green:(97.0/255.0f)
+                            blue:(153.0f/255.0f)
                            alpha:1.0f];
 }
 
