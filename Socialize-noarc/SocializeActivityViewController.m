@@ -43,6 +43,7 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
 }
 
