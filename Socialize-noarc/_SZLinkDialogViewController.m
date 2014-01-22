@@ -404,7 +404,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 }
 
 - (UIImage *)authorizeUserIcon {
-    return [UIImage imageNamed:@"socialize-authorize-user-icon.png"];
+    return [UIImage imageNamed:@"socialize-authorize-user-icon-ios7.png"];
 }
 
 
