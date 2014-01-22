@@ -33,14 +33,13 @@
 @synthesize backgroundImageView = backgroundImageView_;
 @synthesize sectionHeaderView = sectionHeaderView_;
 @synthesize profileImageView = profileImageView_;
+@synthesize profileImageBackgroundView = profileImageBackgroundView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize imagesCache = imagesCache_;
-@synthesize defaultProfileImage = defaultProfileImage_;
 @synthesize alertView = alertView_;
 @synthesize activityViewController = activityViewController_;
 @synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
 @synthesize completionBlock = completionBlock_;
-
 
 + (id)alloc {
     if([self class] == [_SZUserProfileViewController class] &&
@@ -61,7 +60,6 @@
     self.profileImageView = nil;
     self.profileImageActivityIndicator = nil;
     self.imagesCache = nil;
-    self.defaultProfileImage = nil;
     self.alertView = nil;
     [activityViewController_ setDelegate:nil];
     self.activityViewController = nil;
@@ -78,7 +76,6 @@
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
-    self.defaultProfileImage = nil;
     self.activityViewController = nil;
 }
 
@@ -160,12 +157,13 @@
 
 #pragma mark - View lifecycle
 
+
 - (UIImage*)defaultProfileImage {
-    if (defaultProfileImage_ == nil) {
-        defaultProfileImage_ = [[UIImage imageNamed:@"socialize-profileimage-large-default.png"] retain];
-    }
-    
-    return defaultProfileImage_;
+    return nil;
+}
+
+- (UIImage*)defaultProfileBackgroundImage {
+    return [UIImage imageNamed:@"socialize-profileimage-large-bg-ios7.png"];
 }
 
 - (UIImage *)defaultBackgroundImage {
@@ -177,11 +175,12 @@
 }
 
 - (void)setProfileImageFromImage:(UIImage*)image {
+    self.profileImageView.image = nil; //in this variant, profile image and background are one and the same
     if (image == nil) {
-        self.profileImageView.image = self.defaultProfileImage;
+        self.profileImageBackgroundView.image = [self defaultProfileBackgroundImage];
     }
     else {
-        self.profileImageView.image = image;
+        self.profileImageBackgroundView.image = image;
     }
 }
 

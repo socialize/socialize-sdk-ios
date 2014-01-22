@@ -10,6 +10,7 @@
                 <outlet property="activityLoadingActivityIndicator" destination="36" id="37"/>
                 <outlet property="backgroundImageView" destination="27" id="Bf6-Ju-vZx"/>
                 <outlet property="profileImageActivityIndicator" destination="11" id="28"/>
+                <outlet property="profileImageBackgroundView" destination="20" id="bdp-77-olP"/>
                 <outlet property="profileImageView" destination="14" id="35"/>
                 <outlet property="sectionHeaderView" destination="17" id="X3g-uI-rhg"/>
                 <outlet property="userDescriptionLabel" destination="18" id="32"/>

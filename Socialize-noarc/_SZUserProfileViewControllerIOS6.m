@@ -18,11 +18,21 @@
     return [UIImage imageNamed:@"socialize-sectionheader-bg.png"];
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    
-//    self.backgroundImageView.image = [self defaultBackgroundImage];
-//    self.sectionHeaderView.image = [self defaultHeaderBackgroundImage];
-//}
+- (UIImage*)defaultProfileImage {
+    return [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
+}
+
+- (UIImage*)defaultProfileBackgroundImage {
+    return [UIImage imageNamed:@"socialize-profileimage-large-bg.png"];
+}
+
+- (void)setProfileImageFromImage:(UIImage*)image {
+    if (image == nil) {
+        self.profileImageView.image = nil;
+    }
+    else {
+        self.profileImageView.image = image;
+    }
+}
 
 @end
