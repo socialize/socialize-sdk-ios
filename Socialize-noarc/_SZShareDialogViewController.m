@@ -102,12 +102,8 @@
             }
             
             message.completionBlock = ^{
-                if ([options.text length] == 0) {
-                    options.text = weakMessage.commentTextView.text;
-                }
+                options.text = weakMessage.commentTextView.text;
                 options.dontShareLocation = !weakMessage.shouldShareLocation;
-                
-
                 createShareBlock(options, weakMessage);
             };
 
