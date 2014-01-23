@@ -128,6 +128,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.title = @"Settings";
     
     self.tableView.accessibilityLabel = @"edit profile";
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     WEAK(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id _) {
