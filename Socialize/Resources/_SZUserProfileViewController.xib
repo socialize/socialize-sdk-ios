@@ -43,7 +43,6 @@
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <color key="textColor" white="0.99635036499999996" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="12" adjustsFontSizeToFit="NO" id="18" userLabel="description">
@@ -52,7 +51,6 @@
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="11"/>
                     <color key="textColor" red="0.62745098040000002" green="0.68235294120000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <size key="shadowOffset" width="0.0" height="1"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="socialize-sectionheader-bg.png" id="17">
