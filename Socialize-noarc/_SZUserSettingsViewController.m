@@ -23,6 +23,7 @@
 #import "SZTwitterUtils.h"
 #import "SDKHelpers.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface _SZUserSettingsViewController () {
     BOOL _initialized;
@@ -154,8 +155,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)setProfileImageFromImage:(UIImage*)image {
     if (image == nil) {
-        self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
-    } else {
+        if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+            self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
+        }
+        else {
+            self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default-ios7.png"];
+        }
+    }
+    else {
         UIImage *resized = [image imageWithSameAspectRatioAndWidth:300.f];
         self.profileImage = resized;
     }
