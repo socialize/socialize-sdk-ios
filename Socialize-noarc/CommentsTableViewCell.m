@@ -59,7 +59,7 @@
 }
 
 - (UIImage *)defaultProfileImage {
-    return [UIImage imageNamed:@"socialize-cell-image-default.png"];
+    return [UIImage imageNamed:@"socialize-cell-image-default-ios7.png"];
 }
 
 //selected is not supported in this table cell
