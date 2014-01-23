@@ -213,6 +213,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //iOS 7 adjustments for nav bar and cell separator
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+
     [self configureDetailsView];
     [self startLoadAnimationForView:self.activityDetailsView];   
     self.activityViewController.tableView.tableHeaderView = self.activityDetailsView;

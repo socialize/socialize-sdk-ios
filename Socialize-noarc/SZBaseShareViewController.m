@@ -21,6 +21,7 @@
 #import "SZEventUtils.h"
 #import "SZPinterestUtils.h"
 #import "SZNetworkImageProvider.h"
+#import "UIDevice+VersionCheck.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -589,8 +590,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
         cell.textLabel.text = @"Remember Selection";
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
         cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.shadowOffset = CGSizeMake(0, -1);
-        cell.textLabel.shadowColor = [UIColor blackColor];
+        
+        //different text shadow rules for different versions
+        if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+            cell.textLabel.shadowOffset = CGSizeMake(0, -1);
+            cell.textLabel.shadowColor = [UIColor blackColor];
+        }
     };
     
     return [NSDictionary dictionaryWithObjectsAndKeys:
