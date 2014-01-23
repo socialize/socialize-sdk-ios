@@ -22,10 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="57" height="61"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socialize-cell-image-default.png" translatesAutoresizingMaskIntoConstraints="NO" id="d30-Yo-tOc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="socialize-cell-image-default-ios7.png" translatesAutoresizingMaskIntoConstraints="NO" id="d30-Yo-tOc">
                                 <rect key="frame" x="8" y="10" width="42" height="42"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9Fs-oh-jzu">
                                 <rect key="frame" x="10" y="12" width="37" height="37"/>
@@ -100,6 +100,6 @@
     <resources>
         <image name="socialize-activity-cell-icon-comment.png" width="15" height="15"/>
         <image name="socialize-activity-details-categ_arrow.png" width="10" height="15"/>
-        <image name="socialize-cell-image-default.png" width="34" height="34"/>
+        <image name="socialize-cell-image-default-ios7.png" width="44" height="44"/>
     </resources>
 </document>

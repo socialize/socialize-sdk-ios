@@ -3320,9 +3320,9 @@
 		2CBBFE471880B78F00A01EB2 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */,
 				AA935979158F187200B5B2BC /* SocializeActivityDetailsViewController.xib */,
 				AA93597A158F187200B5B2BC /* SocializeActivityTableViewCell.xib */,
+				2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */,
 				AA93597B158F187200B5B2BC /* SocializeActivityViewController.xib */,
 				AA9358EA158F187200B5B2BC /* socialize-activity-bg.png */,
 				AA9358EB158F187200B5B2BC /* socialize-activity-bg@2x.png */,
