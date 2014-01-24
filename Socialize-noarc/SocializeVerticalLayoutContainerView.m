@@ -24,16 +24,21 @@
 }
 
 - (void)layoutRows {
-    
     // Currently always lays out right-justified
-    
     CGFloat curY = 0;
-    
     [self removeAllSubviews];
 
     for (UIView *view in self.rows) {
         CGFloat centeredStart = self.frame.size.width / 2.f - view.frame.size.width / 2.f;
-        view.frame = CGRectMake(centeredStart, curY, view.frame.size.width, view.frame.size.height);
+        CGFloat originY = curY;
+        
+        //adjustments for landscape scenario
+        //FIXME none of this is ideal layout management
+        if([view isKindOfClass:[UITableView class]] && UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            originY -= 20;
+        }
+        CGRect viewFrame = CGRectMake(centeredStart, originY, view.frame.size.width, view.frame.size.height);
+        view.frame = viewFrame;
         [self addSubview:view];
 
         curY += view.frame.size.height;
