@@ -29,6 +29,12 @@
 		2C23AACE187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AACF187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AAD0187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
+		2C578C921891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
+		2C578C931891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
+		2C578C941891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
+		2C578C951891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
+		2C578C961891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
+		2C578C971891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
 		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C6E52E11884BE1C009C8F4F /* SZNetworkImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E52E01884BE1C009C8F4F /* SZNetworkImageProvider.m */; };
@@ -1937,6 +1943,8 @@
 		28052EE4EDAE4D3598062EF0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7.png"; path = "Socialize/Resources/comment-bg-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7@2x.png"; path = "Socialize/Resources/comment-bg-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
+		2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-mask-ios7.png"; path = "Socialize/Resources/socialize-cell-image-mask-ios7.png"; sourceTree = SOURCE_ROOT; };
+		2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-mask-ios7@2x.png"; path = "Socialize/Resources/socialize-cell-image-mask-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C6E52DF1884BE1B009C8F4F /* SZNetworkImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZNetworkImageProvider.h; sourceTree = "<group>"; };
 		2C6E52E01884BE1C009C8F4F /* SZNetworkImageProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNetworkImageProvider.m; sourceTree = "<group>"; };
 		2C6E52F71884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-facebook-dis-icon-ios7.png"; path = "Socialize/Resources/socialize-selectnetwork-facebook-dis-icon-ios7.png"; sourceTree = SOURCE_ROOT; };
@@ -3617,6 +3625,8 @@
 				AA935915158F187200B5B2BC /* socialize-cell-image-default@2x.png */,
 				2CE9D352189094CF00CE2D75 /* socialize-cell-image-default-ios7.png */,
 				2CE9D353189094CF00CE2D75 /* socialize-cell-image-default-ios7@2x.png */,
+				2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */,
+				2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */,
 				AA935916158F187200B5B2BC /* socialize-cell-image.png */,
 				AA935917158F187200B5B2BC /* socialize-cell-image@2x.png */,
 				AA935918158F187200B5B2BC /* socialize-cell-selected-bg.png */,
@@ -5611,6 +5621,7 @@
 				AA935BAC158F187200B5B2BC /* SocializeActivityViewController.xib in Resources */,
 				2CE9D34418908BAD00CE2D75 /* socialize-profileimage-large-bg-ios7.png in Resources */,
 				AA935BAF158F187200B5B2BC /* SocializeAuthInfoTableViewCell.xib in Resources */,
+				2C578C951891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */,
 				AA935BB2158F187200B5B2BC /* SocializeAuthTableViewCell.xib in Resources */,
 				AA935BB5158F187200B5B2BC /* _SZLinkDialogViewController.xib in Resources */,
 				AA935BB8158F187200B5B2BC /* SocializeCommentDetailsViewController.xib in Resources */,
@@ -5650,6 +5661,7 @@
 				AAA928EB159A370300BE83F3 /* socialize-activity-details-ico-chat.png in Resources */,
 				AAA928EF159A370300BE83F3 /* socialize-activity-details-ico-chat@2x.png in Resources */,
 				2CB0E4D6188713D30080DF6B /* action-bar-button-black-hover-ios7.png in Resources */,
+				2C578C921891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */,
 				AAA928F3159A370300BE83F3 /* socialize-activity-details-ico-location.png in Resources */,
 				AAA928F7159A370300BE83F3 /* socialize-activity-details-ico-location@2x.png in Resources */,
 				AAA928FB159A370300BE83F3 /* socialize-activity-details-profile-pic-small.png in Resources */,
@@ -5804,6 +5816,7 @@
 				AACED9AE158FCE770024EC43 /* socialize-comment-list-view-location-pin-icon.png in Resources */,
 				AACED9AF158FCE770024EC43 /* socialize-comment-list-view-location-pin-icon@2x.png in Resources */,
 				AACED9B0158FCE770024EC43 /* socialize-comment-location-bar-background.png in Resources */,
+				2C578C941891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */,
 				AACED9B1158FCE770024EC43 /* socialize-comment-location-bar-background@2x.png in Resources */,
 				AACED9B2158FCE770024EC43 /* socialize-comment-location-disabled.png in Resources */,
 				2C8427A5187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png in Resources */,
@@ -5932,6 +5945,7 @@
 				2C23AACD187F598A00BA2FBA /* comment-bg-ios7.png in Resources */,
 				2CDB9506188610370031CF54 /* action-bar-button-red-ios7.png in Resources */,
 				AAA928E6159A370300BE83F3 /* socialize-activity-details-categ_arrow.png in Resources */,
+				2C578C971891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */,
 				AAA928EA159A370300BE83F3 /* socialize-activity-details-categ_arrow@2x.png in Resources */,
 				2C6E530A1884C293009C8F4F /* socialize-selectnetwork-facebook-icon-ios7@2x.png in Resources */,
 				AAA928EE159A370300BE83F3 /* socialize-activity-details-ico-chat.png in Resources */,
@@ -6097,6 +6111,7 @@
 				AA935AD3158F187200B5B2BC /* socialize-comment-notification-disabled.png in Resources */,
 				AA935AD6158F187200B5B2BC /* socialize-comment-notification-disabled@2x.png in Resources */,
 				AA935AD9158F187200B5B2BC /* socialize-comment-notification-enabled.png in Resources */,
+				2C578C961891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */,
 				AA935ADC158F187200B5B2BC /* socialize-comment-notification-enabled@2x.png in Resources */,
 				AA935ADF158F187200B5B2BC /* socialize-comment-top-background.png in Resources */,
 				2C99518A18918E3A00A5E8B7 /* socialize-profileimage-large-default-ios7@2x.png in Resources */,
@@ -6210,6 +6225,7 @@
 				AA935C09158F1C2600B5B2BC /* Smiley.png in Resources */,
 				AA935C0C158F1C2600B5B2BC /* SocializeApiInfo.plist in Resources */,
 				2CB0E51818874B5A0080DF6B /* socialize-selectnetwork-email-icon-ios7@2x.png in Resources */,
+				2C578C931891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */,
 				2C6E53001884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png in Resources */,
 				AAA928CD159A370300BE83F3 /* socialize-activity-details-back-entry-x.png in Resources */,
 				AAA928D1159A370300BE83F3 /* socialize-activity-details-back-entry-x@2x.png in Resources */,
