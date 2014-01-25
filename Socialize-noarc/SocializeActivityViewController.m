@@ -101,9 +101,11 @@
     
     if ([activity isMemberOfClass:[SocializeLike class]]) {
         image = [UIImage imageNamed:@"socialize-activity-cell-icon-like.png"];
-    } else if ([activity isMemberOfClass:[SocializeComment class]]) {
+    }
+    else if ([activity isMemberOfClass:[SocializeComment class]]) {
         image = [UIImage imageNamed:@"socialize-activity-cell-icon-comment.png"];
-    } else if ([activity isMemberOfClass:[SocializeShare class]]) {
+    }
+    else if ([activity isMemberOfClass:[SocializeShare class]]) {
         switch ([(SocializeShare*)activity medium]) {
             case SocializeShareMediumFacebook:
                 image = [UIImage imageNamed:@"socialize-activity-cell-icon-facebook.png"];
@@ -112,6 +114,9 @@
                 image = [UIImage imageNamed:@"socialize-activity-cell-icon-twitter.png"];
                 break;
             case SocializeShareMediumOther:
+                image = [UIImage imageNamed:@"socialize-activity-cell-icon-share.png"];
+                break;
+            default:
                 image = [UIImage imageNamed:@"socialize-activity-cell-icon-share.png"];
                 break;
         }
