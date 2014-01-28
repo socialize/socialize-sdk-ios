@@ -99,10 +99,6 @@
 
 // begin-customize-buttons-create-snippet
 
-- (void)emailButtonPressed:(id)sender {
-    [SZShareUtils shareViaEmailWithViewController:self options:nil entity:self.entity success:nil failure:nil];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -115,17 +111,23 @@
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
             [alertView show];
         };
-        
         self.actionBar.itemsRight = [NSArray arrayWithObjects:panicButton, [SZActionButton commentButton], nil];
         
-        UIButton *emailButton = [[UIButton alloc] initWithFrame:CGRectZero];
-        [emailButton setImage:[UIImage imageNamed:@"socialize-selectnetwork-email-icon.png"] forState:UIControlStateNormal];
-        [emailButton sizeToFit];
-        [emailButton addTarget:self action:@selector(emailButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        self.actionBar.itemsLeft = [NSArray arrayWithObjects:[SZActionButton viewsButton], emailButton, nil];
+        UIButton *likeButton = [[UIButton alloc] initWithFrame:CGRectZero];
+        UIImage *backgroundImage = [[UIImage imageNamed:@"action-bar-button-red-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+        UIImage *buttonImage = [UIImage imageNamed:@"action-bar-icon-liked.png"];
+        [likeButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+        [likeButton setImage:buttonImage forState:UIControlStateNormal];
+        [likeButton sizeToFit];
+        [likeButton addTarget:self action:@selector(likeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        self.actionBar.itemsLeft = [NSArray arrayWithObjects:[SZActionButton viewsButton], likeButton, nil];
         
         [self.view addSubview:self.actionBar];
     }
+}
+
+- (void)likeButtonPressed:(id)sender {
+    //code for like button goes here
 }
 
 // end-customize-buttons-create-snippet
@@ -143,9 +145,14 @@
         self.entity = [SZEntity entityWithKey:@"some_entity" name:@"Some Entity"];
         self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
         
+        //iOS 6 and earlier
         UIImage *customBackground = [[UIImage imageNamed:@"action-bar-bg.png"] stretchableImageWithLeftCapWidth:0.5 topCapHeight:0.5];
         self.actionBar.backgroundImageView.image = customBackground;
         self.actionBar.backgroundImageView.alpha = 0.3f;
+
+        //iOS 7 and later
+        [self.actionBar setBackgroundColor:[UIColor blueColor]];
+        [self.actionBar setAlpha:0.5f];
         
         [self.view addSubview:self.actionBar];
     }
