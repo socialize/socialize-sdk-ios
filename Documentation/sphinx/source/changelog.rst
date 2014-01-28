@@ -4,6 +4,47 @@
 Changelog
 =============================================
 
+v2.9.0
+------
+
+[feature] ShareThis SDK can integrate CocoaPods (Loopy integration prep)
+
+[feature] Share events within Socialize use the Loopy SDK.
+
+[bug] Loopy integration issues
+
+[bug] GetSat: Pre-filling the share dialog text always overrides the user's text on iOS.
+
+v2.8.10
+-------
+
+[bug] GetSat: Undefined symbols linker error when upgrading to 2.8.9
+
+[bug] GetSat: Twitter authentication problem - iOS - SDK 2.8.8 
+
+[bug] GetSat: Can't post to Twitter in iOS7
+
+[bug] GetSat: _llvm_gcov_init
+
+v2.8.9
+------
+
+[bug] GetSat: Fix landscape orientation in Authenticate dialog
+
+[bug] GetSat: Version 2.8.8 issues with NavBar
+
+v2.8.8
+------
+
+[feature] SDK work with iOS7 [ ios 7 support ]
+
+v2.8.7
+------
+
+[feature] Posts appear wrong on iPhone but right on Android
+
+[feature] Pinterest not on ActionBar
+
 v2.8.6
 ------
 [feature] prefill comment message with custom text
