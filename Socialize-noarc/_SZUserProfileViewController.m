@@ -276,7 +276,7 @@
         _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
         profile.user = user;
         SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
-        [self presentModalViewController:nav animated:YES];
+        [self presentViewController:nav animated:YES completion:nil];
     }
 }
 

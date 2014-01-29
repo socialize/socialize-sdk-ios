@@ -111,7 +111,7 @@
     // we could also use for the previous dismissal, but this is a little simpler and lets us ignore version differences.
     [self executeAfterModalDismissDelay:^{
         [self stopLoadAnimation];
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 

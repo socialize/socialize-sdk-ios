@@ -129,7 +129,7 @@
 
         if (navigationController == nil) {
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:entityLoader];
-            [self.window.rootViewController presentModalViewController:navigationController animated:YES];
+            [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
         } else {
             [navigationController pushViewController:entityLoader animated:YES];
         }

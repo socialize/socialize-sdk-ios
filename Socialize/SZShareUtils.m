@@ -94,7 +94,7 @@
         }];
     };
     
-    [viewController presentModalViewController:shareDialog animated:YES];
+    [viewController presentViewController:shareDialog animated:YES completion:nil];
 }
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController

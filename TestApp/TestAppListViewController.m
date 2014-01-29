@@ -201,12 +201,12 @@ static TestAppListViewController *sharedSampleListViewController;
         comments.completionBlock = ^{
             
             // Dismiss however you want here
-            [self dismissModalViewControllerAnimated:NO];
+            [self dismissViewControllerAnimated:NO completion:nil];
         };
         comments.commentOptions = options;
         
         // Present however you want here
-        [self presentModalViewController:comments animated:NO];
+        [self presentViewController:comments animated:NO completion:nil];
         
         
         
@@ -295,14 +295,14 @@ static TestAppListViewController *sharedSampleListViewController;
     [actionBarRows addObject:[self rowWithIdentifier:kShowActionBarExampleRow text:@"Show Action Bar Example" executionBlock:^{
         ActionBarExampleViewController *actionBarExample = [[ActionBarExampleViewController alloc] initWithEntity:self.entity];
         SZNavigationController *nav = [[SZNavigationController alloc] initWithRootViewController:actionBarExample];
-        [self presentModalViewController:nav animated:YES];
+        [self presentViewController:nav animated:YES completion:nil];
     }]];
 
     NSMutableArray *buttonsRows = [NSMutableArray array];
     [buttonsRows addObject:[self rowWithIdentifier:kShowButtonsExampleRow text:@"Show Button Examples" executionBlock:^{
         ButtonExampleViewController *buttonsExample = [[ButtonExampleViewController alloc] initWithEntity:self.entity];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:buttonsExample];
-        [self presentModalViewController:nav animated:YES];
+        [self presentViewController:nav animated:YES completion:nil];
     }]];
 
     NSArray *sections = [NSArray arrayWithObjects:

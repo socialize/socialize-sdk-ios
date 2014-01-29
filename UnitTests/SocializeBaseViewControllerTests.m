@@ -315,7 +315,7 @@ SYNTH_BUTTON_TEST(viewController, settingsButton)
 }
 
 - (void)testDoneWithoutDelegateDismissesSelf {
-    [[(id)self.viewController expect] dismissModalViewControllerAnimated:YES];
+    [[(id)self.viewController expect] dismissViewControllerAnimated:YES completion:nil];
     self.viewController.delegate = nil;
     [self.viewController doneButtonPressed:nil];
 }

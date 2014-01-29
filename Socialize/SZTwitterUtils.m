@@ -112,7 +112,7 @@
     };
     
     
-    [viewController presentModalViewController:link animated:YES];
+    [viewController presentViewController:link animated:YES completion:nil];
 }
 
 + (void)getWithViewController:(UIViewController*)viewController path:(NSString*)path params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {

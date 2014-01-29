@@ -228,7 +228,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
             [self.delegate baseViewControllerDidFinish:self];
         } else {
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }    
     }
 }
@@ -244,7 +244,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
         if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancel:)]) {
             [self.delegate baseViewControllerDidCancel:self];
         } else {
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }

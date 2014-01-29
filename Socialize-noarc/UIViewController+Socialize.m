@@ -27,7 +27,7 @@ static NSTimeInterval ModalDismissDelayHack = 0.5;
     if (SZOSGTE(@"5.0")) {
         [self dismissViewControllerAnimated:flag completion:completion];
     } else {
-        [self dismissModalViewControllerAnimated:flag];
+        [self dismissViewControllerAnimated:flag completion:nil];
         double delayInSeconds = ModalDismissDelayHack;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -40,7 +40,7 @@ static NSTimeInterval ModalDismissDelayHack = 0.5;
     if (SZOSGTE(@"5.0")) {
         [self presentViewController:viewController animated:flag completion:completion];
     } else {
-        [self presentModalViewController:viewController animated:flag];
+        [self presentViewController:viewController animated:flag completion:nil];
         double delayInSeconds = ModalDismissDelayHack;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){

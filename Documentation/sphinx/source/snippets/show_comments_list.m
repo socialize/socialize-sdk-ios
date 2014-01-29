@@ -13,7 +13,7 @@
     
     _SZCommentsListViewController *commentsList = [_SZCommentsListViewController commentsListViewControllerWithEntityKey:entityURL];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsList] autorelease];
-    [self presentModalViewController:nav animated:YES];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end
