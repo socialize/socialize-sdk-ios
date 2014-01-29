@@ -34,7 +34,9 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
 @synthesize profileViewController = profileViewController_;
 @synthesize mockImagesCache = mockImagesCache_;
 @synthesize mockProfileImageView = mockProfileImageView_;
+@synthesize mockProfileImageBackgroundView = mockProfileImageBackgroundView_;
 @synthesize mockDefaultProfileImage = mockDefaultProfileImage_;
+@synthesize mockDefaultProfileBackgroundImage = mockDefaultProfileBackgroundImage_;
 @synthesize mockProfileImageActivityIndicator = mockProfileImageActivityIndicator_;
 @synthesize mockUserNameLabel = mockUserNameLabel_;
 @synthesize mockUserDescriptionLabel = mockUserDescriptionLabel_;
@@ -56,13 +58,12 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
 
     self.mockProfileImageView = [OCMockObject mockForClass:[UIImageView class]];
     self.profileViewController.profileImageView = self.mockProfileImageView;
-//    [[[(id)self.profileViewController stub] andReturn:self.mockProfileImageView] profileImageView];
+    
+    self.mockProfileImageBackgroundView = [OCMockObject mockForClass:[UIImageView class]];
+    self.profileViewController.profileImageBackgroundView = self.mockProfileImageBackgroundView;
     
     self.mockImagesCache = [OCMockObject mockForClass:[ImagesCache class]];
     self.profileViewController.imagesCache = self.mockImagesCache;
-    
-    self.mockDefaultProfileImage = [OCMockObject mockForClass:[UIImage class]];
-    self.profileViewController.defaultProfileImage = self.mockDefaultProfileImage;
     
     self.mockProfileImageActivityIndicator = [OCMockObject mockForClass:[UIActivityIndicatorView class]];
     self.profileViewController.profileImageActivityIndicator = self.mockProfileImageActivityIndicator;
@@ -84,6 +85,7 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
     [self.mockProfileImageView verify];
     [self.mockImagesCache verify];
     [self.mockDefaultProfileImage verify];
+    [self.mockDefaultProfileBackgroundImage verify];
     [self.mockProfileImageActivityIndicator verify];
     [self.mockUserNameLabel verify];
     [self.mockUserDescriptionLabel verify];
@@ -93,6 +95,7 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
     self.mockProfileImageView = nil;
     self.mockImagesCache = nil;
     self.mockDefaultProfileImage = nil;
+    self.mockDefaultProfileBackgroundImage = nil;
     self.mockProfileImageActivityIndicator = nil;
     self.mockUserNameLabel = nil;
     self.mockUserDescriptionLabel = nil;    
@@ -130,30 +133,34 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
     [self.profileViewController afterLoginAction:YES];
 }
 
-- (void)testViewDidUnload {
-    [[(id)self.profileViewController expect] setDoneButton:nil];
-    [[(id)self.profileViewController expect] setUserNameLabel:nil];
-    [[(id)self.profileViewController expect] setUserDescriptionLabel:nil];
-    [[(id)self.profileViewController expect] setUserLocationLabel:nil];
-    [[(id)self.profileViewController expect] setProfileImageView:nil];
-    [[(id)self.profileViewController expect] setDefaultProfileImage:nil];
-    [self.profileViewController viewDidUnload];
-}
+//viewDidUnload is deprecated as of iOS 6.0
+//- (void)testViewDidUnload {
+//    [[(id)self.profileViewController expect] setDoneButton:nil];
+//    [[(id)self.profileViewController expect] setUserNameLabel:nil];
+//    [[(id)self.profileViewController expect] setUserDescriptionLabel:nil];
+//    [[(id)self.profileViewController expect] setUserLocationLabel:nil];
+//    [[(id)self.profileViewController expect] setProfileImageView:nil];
+//}
 
 - (void)testDefaultProfileImage {
-    self.profileViewController.defaultProfileImage = nil;
     UIImage *defaultProfile = self.profileViewController.defaultProfileImage;
-    GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
+    //for iOS 7, this should be nil
+    GHAssertNil(defaultProfile, @"");
+//    GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
 }
 
 - (void)testSetProfileImageWithNilImage {
-    [[self.mockProfileImageView expect] setImage:self.mockDefaultProfileImage];
+    //for iOS 7, this should set to default background image
+    [[self.mockProfileImageView expect] setImage:nil];
+    [[self.mockProfileImageBackgroundView expect] setImage:[self.profileViewController defaultProfileBackgroundImage]];
     [self.profileViewController setProfileImageFromImage:nil];
 }
 
 - (void)testSetProfileImageWithImage {
+    //for iOS 7, the background view is the image view (part of flatter L&F)
     id mockImage = [OCMockObject mockForClass:[UIImage class]];
-    [[self.mockProfileImageView expect] setImage:mockImage];
+    [[self.mockProfileImageView expect] setImage:nil];
+    [[self.mockProfileImageBackgroundView expect] setImage:mockImage];
     [self.profileViewController setProfileImageFromImage:mockImage];
 }
 

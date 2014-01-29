@@ -138,11 +138,11 @@ BOOL isAuthenticatedWithFacebook = YES;
 }
 
 - (void) testRowForTwitter{
-    [self setupSectionAuthTypes:@"twitter" withType:_SZLinkDialogViewControllerRowTwitter];
+    [self setupSectionAuthTypes:@"Twitter" withType:_SZLinkDialogViewControllerRowTwitter];
 }
 
 - (void) testRowForFacebook{
-    [self setupSectionAuthTypes:@"facebook" withType:_SZLinkDialogViewControllerRowFacebook];
+    [self setupSectionAuthTypes:@"Facebook" withType:_SZLinkDialogViewControllerRowFacebook];
 }
 
 - (void) testRowForAuthInfo {

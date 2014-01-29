@@ -95,10 +95,12 @@
              ios7ClassName:@"_SZUserProfileViewController"];
 
     //test OS version-variant code
-    //for UIImages, simply test they're not null unless expected
+    //for UIImages, simply test they're not nil unless expected
+    //this is iOS 7 (_SZUserProfileViewController) expected output
     GHAssertNotNil([profileController defaultBackgroundImage], @"");
+    GHAssertNotNil([profileController defaultProfileBackgroundImage], @"");
     GHAssertNotNil([profileController defaultHeaderBackgroundImage], @"");
-    GHAssertNotNil([profileController defaultProfileImage], @"");
+    GHAssertNil([profileController defaultProfileImage], @"");
 }
 
 - (void)testSZActionBarVersion {

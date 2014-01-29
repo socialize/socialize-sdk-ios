@@ -13,8 +13,10 @@
 @interface _SZUserProfileViewControllerTests : SocializeBaseViewControllerTests
 @property (nonatomic, retain) _SZUserProfileViewController *profileViewController;
 @property (nonatomic, retain) id mockImagesCache;
+@property (nonatomic, retain) id mockProfileImageBackgroundView;
 @property (nonatomic, retain) id mockProfileImageView;
 @property (nonatomic, retain) id mockDefaultProfileImage;
+@property (nonatomic, retain) id mockDefaultProfileBackgroundImage;
 @property (nonatomic, retain) id mockProfileImageActivityIndicator;
 @property (nonatomic, retain) id mockUserNameLabel;
 @property (nonatomic, retain) id mockUserDescriptionLabel;
