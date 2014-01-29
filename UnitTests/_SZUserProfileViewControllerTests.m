@@ -13,6 +13,7 @@
 #import "SocializeProfileEditTableViewCell.h"
 #import "ImagesCache.h"
 #import "UINavigationBarBackground.h"
+#import "UIDevice+VersionCheck.h"
 
 NSString * const USER_NAME = @"userName";
 NSString * const FIRST_NAME = @"firstName";
@@ -144,9 +145,13 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
 
 - (void)testDefaultProfileImage {
     UIImage *defaultProfile = self.profileViewController.defaultProfileImage;
-    //for iOS 7, this should be nil
-    GHAssertNil(defaultProfile, @"");
-//    GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        GHAssertEqualObjects(defaultProfile, [UIImage imageNamed:@"socialize-profileimage-large-default.png"], @"bad profile");
+    }
+    else {
+        //for iOS 7, this should be nil
+        GHAssertNil(defaultProfile, @"");
+    }
 }
 
 - (void)testSetProfileImageWithNilImage {
@@ -157,11 +162,18 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
 }
 
 - (void)testSetProfileImageWithImage {
-    //for iOS 7, the background view is the image view (part of flatter L&F)
-    id mockImage = [OCMockObject mockForClass:[UIImage class]];
-    [[self.mockProfileImageView expect] setImage:nil];
-    [[self.mockProfileImageBackgroundView expect] setImage:mockImage];
-    [self.profileViewController setProfileImageFromImage:mockImage];
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        id mockImage = [OCMockObject mockForClass:[UIImage class]];
+        [[self.mockProfileImageView expect] setImage:mockImage];
+        [self.profileViewController setProfileImageFromImage:mockImage];
+    }
+    else {
+        //for iOS 7, the background view is the image view (part of flatter L&F)
+        id mockImage = [OCMockObject mockForClass:[UIImage class]];
+        [[self.mockProfileImageView expect] setImage:nil];
+        [[self.mockProfileImageBackgroundView expect] setImage:mockImage];
+        [self.profileViewController setProfileImageFromImage:mockImage];
+    }
 }
 
 - (void)testDefaultImagesCache {
@@ -171,7 +183,7 @@ NSString * const SMALL_IMAGE_URL = @"smallImageURL";
 }
 
 - (void)testSetProfileImageFromNilURL {
-    [[self.mockProfileImageView expect] setImage:self.mockDefaultProfileImage];
+    [[self.mockProfileImageView expect] setImage:[self.profileViewController defaultProfileImage]];
     [self.profileViewController setProfileImageFromURL:nil];
 }
 
