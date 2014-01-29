@@ -133,8 +133,6 @@
 		2CB6C3E4187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CB6C3E5187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CB7AF3D187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
-		2CBBB1231897323200DB5A38 /* CreateActionBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBB1211897323200DB5A38 /* CreateActionBarViewController.m */; };
-		2CBBB1241897323200DB5A38 /* CreateActionBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBB1221897323200DB5A38 /* CreateActionBarViewController.xib */; };
 		2CBBFE561880BB8F00A01EB2 /* CommentsTableFooterViewIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC3B0B187F428400112F66 /* CommentsTableFooterViewIOS6.m */; };
 		2CBBFE9D1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
 		2CBBFE9E1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
@@ -1992,9 +1990,6 @@
 		2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewControllerIOS6.m; sourceTree = "<group>"; };
 		2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewControllerIOS6.m; sourceTree = "<group>"; };
-		2CBBB1201897323200DB5A38 /* CreateActionBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActionBarViewController.h; sourceTree = "<group>"; };
-		2CBBB1211897323200DB5A38 /* CreateActionBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActionBarViewController.m; sourceTree = "<group>"; };
-		2CBBB1221897323200DB5A38 /* CreateActionBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActionBarViewController.xib; sourceTree = "<group>"; };
 		2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-btn-link-ios7.png"; path = "Socialize/Resources/socialize-activity-details-btn-link-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2CBBFE9C1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-btn-link-ios7@2x.png"; path = "Socialize/Resources/socialize-activity-details-btn-link-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CBBFEB71880CBDD00A01EB2 /* SocializeActivityDetailsViewIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActivityDetailsViewIOS6.h; sourceTree = "<group>"; };
@@ -3777,9 +3772,6 @@
 				AA0085A3158D2B1100480399 /* SZTestAppDelegate.h */,
 				AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */,
 				AA00859B158D2B1100480399 /* Supporting Files */,
-				2CBBB1201897323200DB5A38 /* CreateActionBarViewController.h */,
-				2CBBB1211897323200DB5A38 /* CreateActionBarViewController.m */,
-				2CBBB1221897323200DB5A38 /* CreateActionBarViewController.xib */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -5553,7 +5545,6 @@
 				AA935AEF158F187200B5B2BC /* socialize-comment-user-background@2x.png in Resources */,
 				AA935AF2158F187200B5B2BC /* socialize-comment-user-only-background.png in Resources */,
 				AA935AF5158F187200B5B2BC /* socialize-iphone-notification-button-highlighted.png in Resources */,
-				2CBBB1241897323200DB5A38 /* CreateActionBarViewController.xib in Resources */,
 				AA935AF8158F187200B5B2BC /* socialize-iphone-notification-button-highlighted@2x.png in Resources */,
 				AA935AFB158F187200B5B2BC /* socialize-iphone-notification-button-normal.png in Resources */,
 				AA935AFE158F187200B5B2BC /* socialize-iphone-notification-button-normal@2x.png in Resources */,
@@ -6516,7 +6507,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CBBB1231897323200DB5A38 /* CreateActionBarViewController.m in Sources */,
 				AA0085A1158D2B1100480399 /* main.m in Sources */,
 				AA0085A5158D2B1100480399 /* SZTestAppDelegate.m in Sources */,
 				AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */,
