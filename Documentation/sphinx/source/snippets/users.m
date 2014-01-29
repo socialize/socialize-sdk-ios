@@ -48,7 +48,7 @@
     };
     
     // Present however you want here
-    [self presentViewController:controller animated:NO completion:nil];
+    [self presentViewController:settings animated:NO completion:nil];
 
 }
 
