@@ -12,8 +12,7 @@ Like Button
 
 A standalone like button is provided. See the `like button section <like_button.html>`_ for more info.
 
-.. image:: images/like_button_unliked.png	
-.. image:: images/like_button_liked.png	
+.. image:: images/like_button_liked_unliked.png	
 
 Working with Likes
 -------------------------------
