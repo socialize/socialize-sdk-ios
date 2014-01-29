@@ -156,7 +156,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
             }];
         };
         
-        [viewController presentModalViewController:link animated:YES];
+        [viewController presentViewController:link animated:YES completion:nil];
     } else {
         
         // No link dialog required
@@ -190,7 +190,7 @@ void SZLinkAndGetPreferredNetworks(UIViewController *viewController, SZLinkConte
                     break;
             }
             
-            [viewController presentModalViewController:selectNetwork animated:YES];
+            [viewController presentViewController:selectNetwork animated:YES completion:nil];
         }
     }
 }

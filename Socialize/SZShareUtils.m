@@ -23,6 +23,7 @@
 #import "SZUserUtils.h"
 #import "SocializeLoadingView.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
 #import <Loopy/Loopy.h>
 
 @implementation SZShareUtils
@@ -93,7 +94,7 @@
         }];
     };
     
-    [viewController presentModalViewController:shareDialog animated:YES];
+    [viewController presentViewController:shareDialog animated:YES completion:nil];
 }
 
 + (void)showShareDialogWithViewController:(UIViewController*)viewController
@@ -138,7 +139,7 @@
     shareDialog.display = viewController;
     shareDialog._shareDialogViewController.shareOptions = options;
 
-    [viewController presentModalViewController:shareDialog animated:YES];
+    [viewController presentViewController:shareDialog animated:YES completion:nil];
 }
 
 + (void)shareViaSocialNetworksWithEntity:(id<SZEntity>)entity
@@ -228,6 +229,14 @@
     MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
     composer.modalPresentationStyle = UIModalPresentationFormSheet;
     
+    if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
+        [composer.navigationBar setTintColor:[UIColor whiteColor]];
+        NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                   [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                   nil];
+        [composer.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
+    }
+    
     __block id<SZShare> createdShare = nil;
     composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
         switch (result) {
@@ -265,7 +274,7 @@
             [composer setSubject:emailData.subject];
             [composer setMessageBody:emailData.messageBody isHTML:emailData.isHTML];
             
-            [viewController presentModalViewController:composer animated:YES];
+            [viewController presentViewController:composer animated:YES completion:nil];
         } failure:^(NSError *error) {
             [viewController hideSocializeLoadingView];
             BLOCK_CALL_1(failure, error);
@@ -288,6 +297,15 @@
     }
     
     MFMessageComposeViewController *composer = [[MFMessageComposeViewController alloc] init];
+    
+    if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
+        [composer.navigationBar setTintColor:[UIColor whiteColor]];
+        NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                   [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                   nil];
+        [composer.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
+    }
+
     __block id<SZShare> createdShare = nil;
     composer.sz_completionBlock = ^(MessageComposeResult result) {
         switch (result) {
@@ -321,7 +339,7 @@
             
             [viewController hideSocializeLoadingView];
             [composer setBody:shareData.body];
-            [viewController presentModalViewController:composer animated:YES];
+            [viewController presentViewController:composer animated:YES completion:nil];
         } failure:^(NSError *error) {
             [viewController hideSocializeLoadingView];
             BLOCK_CALL_1(failure, error);

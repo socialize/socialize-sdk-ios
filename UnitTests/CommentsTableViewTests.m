@@ -213,7 +213,7 @@
 -(void)testAddCommentButton{
     [self makeTableViewNice];
     
-    [[(id)self.commentsTableViewController expect] presentModalViewController:OCMOCK_ANY animated:YES];
+    [[(id)self.commentsTableViewController expect] presentViewController:OCMOCK_ANY animated:YES completion:nil];
     
     [self.commentsTableViewController addCommentButtonPressed:OCMOCK_ANY];
 }

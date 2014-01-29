@@ -46,7 +46,7 @@
         }];
     };
     
-    [viewController presentModalViewController:linkDialog animated:YES];
+    [viewController presentViewController:linkDialog animated:YES completion:nil];
 }
 
 + (void)showUserProfileInViewController:(UIViewController*)viewController user:(id)user completion:(void(^)(id<SZFullUser> user))completion {
@@ -63,7 +63,7 @@
         }];
     };
     
-    [viewController presentModalViewController:profile animated:YES];
+    [viewController presentViewController:profile animated:YES completion:nil];
 }
 
 + (void)showUserSettingsInViewController:(UIViewController*)viewController completion:(void(^)())completion {
@@ -76,7 +76,7 @@
         }];
     };
     
-    [viewController presentModalViewController:settings animated:YES];
+    [viewController presentViewController:settings animated:YES completion:nil];
 }
 
 + (SZUserSettings*)currentUserSettings {

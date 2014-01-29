@@ -23,6 +23,7 @@
 #import "SZTwitterUtils.h"
 #import "SDKHelpers.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface _SZUserSettingsViewController () {
     BOOL _initialized;
@@ -127,6 +128,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     self.title = @"Settings";
     
     self.tableView.accessibilityLabel = @"edit profile";
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     WEAK(self) weakSelf = self;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem redSocializeBarButtonWithTitle:@"Cancel" handler:^(id _) {
@@ -154,8 +156,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)setProfileImageFromImage:(UIImage*)image {
     if (image == nil) {
-        self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
-    } else {
+        if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+            self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default.png"];
+        }
+        else {
+            self.profileImage = [UIImage imageNamed:@"socialize-profileimage-large-default-ios7.png"];
+        }
+    }
+    else {
         UIImage *resized = [image imageWithSameAspectRatioAndWidth:300.f];
         self.profileImage = resized;
     }
@@ -249,7 +257,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     } else if ([self.delegate respondsToSelector:@selector(profileEditViewController:didUpdateProfileWithUser:)]) {
         [self.delegate profileEditViewController:self didUpdateProfileWithUser:self.fullUser];
     } else {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -643,7 +651,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         CGRect rect = self.profileImageCell.frame;
         [self.popover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     } else {
-        [self presentModalViewController:self.imagePicker animated:YES];
+        [self presentViewController:self.imagePicker animated:YES completion:nil];
     }
 }
 
@@ -660,7 +668,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         [self.popover dismissPopoverAnimated:YES];
     } else {
-        [picker dismissModalViewControllerAnimated:YES];
+        [picker dismissViewControllerAnimated:YES completion:nil];
     }
 	
     [self configureForAfterEdit];

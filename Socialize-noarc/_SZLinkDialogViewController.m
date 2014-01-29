@@ -22,6 +22,8 @@
 #import "socialize_globals.h"
 #import "SZEventUtils.h"
 #import "SZLinkDialogView.h"
+#import "_SZLinkDialogViewControllerIOS6.h"
+#import "UIDevice+VersionCheck.h"
 
 #define LINK_DIALOG_BUCKET @"LINK_DIALOG"
 
@@ -29,7 +31,7 @@ static NSString *const kAuthTypeRowText = @"kAuthTypeRowText";
 static NSString *const kAuthTypeRowImageName = @"kAuthTypeRowImageName";
 static NSString *const kAuthTypeRowAction = @"kAuthTypeRowAction";
 
-@interface  _SZLinkDialogViewController() {
+@interface _SZLinkDialogViewController() {
     dispatch_once_t _initToken;
 }
 -(SocializeAuthTableViewCell *)getAuthorizeTableViewCell;
@@ -47,8 +49,6 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 @implementation _SZLinkDialogViewController
 
-
-
 @synthesize tableView;
 @synthesize topImage;
 @synthesize skipButton = skipButton_;
@@ -57,6 +57,16 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 @synthesize authTypeRowData = authTypeRowData_;
 @synthesize completionBlock = completionBlock_;
 @synthesize selectedNetwork = selectedNetwork_;
+
++ (id)alloc {
+    if([self class] == [_SZLinkDialogViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [_SZLinkDialogViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 -(void) dealloc {
     self.tableView = nil;
@@ -80,8 +90,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     });
 }
 
-+(UINavigationController*)authViewControllerInNavigationController:(id<_SZLinkDialogViewControllerDelegate>)delegate;
-{
++ (UINavigationController*)authViewControllerInNavigationController:(id<_SZLinkDialogViewControllerDelegate>)delegate {
     _SZLinkDialogViewController *authController 
     = [[[_SZLinkDialogViewController alloc] initWithDelegate:delegate] autorelease];
                                                                                                               
@@ -108,14 +117,15 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return _SZLinkDialogViewControllerNumSections;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return SocializeAuthTableViewRowHeight;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         return YES;
-    } else {
+    }
+    else {
         return toInterfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
     }
 }
@@ -139,6 +149,10 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     
     // Remove default gray background (iPad / http://stackoverflow.com/questions/2688007/uitableview-backgroundcolor-always-gray-on-ipad)
     [self.tableView setBackgroundView:nil];    
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 -(IBAction)skipButtonPressed:(id)sender {
@@ -150,8 +164,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         if( [self.delegate respondsToSelector:@selector(authorizationSkipped)] ) {
             [self.delegate authorizationSkipped];
         }
-        [self dismissModalViewControllerAnimated:YES];
-    } 
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)cancelButtonPressed:(id)button {
@@ -162,7 +176,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 
 // Dismiss any SocializeAction controllers non-animated
 - (void)socializeObject:(id)object requiresDismissOfViewController:(UIViewController *)controller {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (NSDictionary*)authTypeRowForText:(NSString*)text imageName:(NSString*)imageName {
@@ -179,10 +193,12 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         [self startLoading];
     };
     
-    [SZFacebookUtils linkWithOptions:options success:^(id<SZFullUser> fullUser) {
+    [SZFacebookUtils linkWithOptions:options
+                             success:^(id<SZFullUser> fullUser) {
         [self stopLoading];
         [self authenticationComplete];
-    } foreground:nil failure:^(NSError *error) {
+    }
+                          foreground:nil failure:^(NSError *error) {
         [self stopLoading];
         if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
             [self failWithError:error];
@@ -200,9 +216,11 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 - (void)authenticateWithTwitter {
     self.selectedNetwork = SZSocialNetworkTwitter;
     
-    [SZTwitterUtils linkWithViewController:self success:^(id<SZFullUser> user) {
+    [SZTwitterUtils linkWithViewController:self
+                                   success:^(id<SZFullUser> user) {
         [self authenticationComplete];
-    } failure:^(NSError *error) {
+    }
+                                   failure:^(NSError *error) {
         if (![error isSocializeErrorWithCode:SocializeErrorTwitterCancelledByUser]) {
             [self failWithError:error];
         }
@@ -219,8 +237,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
             [authTypeRowData_ addObject:
              [NSDictionary dictionaryWithObjectsAndKeys:
               
-              @"facebook", kAuthTypeRowText,
-              @"socialize-authorize-facebook-enabled-icon.png", kAuthTypeRowImageName,
+              @"Facebook", kAuthTypeRowText,
+              [self facebookIcon:YES], kAuthTypeRowImageName,
               [[^{ [weakSelf authenticateWithFacebook]; } copy] autorelease], kAuthTypeRowAction,
               nil]];
         }
@@ -229,8 +247,8 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
             [authTypeRowData_ addObject:
              [NSDictionary dictionaryWithObjectsAndKeys:
               
-              @"twitter", kAuthTypeRowText,
-              @"socialize-authorize-twitter-enabled-icon.png", kAuthTypeRowImageName,
+              @"Twitter", kAuthTypeRowText,
+              [self twitterIcon:YES], kAuthTypeRowImageName,
               [[^{ [weakSelf authenticateWithTwitter]; } copy] autorelease], kAuthTypeRowAction,
               nil]];
         }
@@ -244,8 +262,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     // Return the number of rows in the section.
     // return 1;
     NSInteger noOfRows = 0;
-	switch (section) 
-	{
+	switch (section) {
 		case _SZLinkDialogViewControllerSectionAuthTypes:
             noOfRows = [self.authTypeRowData count];
             break;
@@ -256,21 +273,18 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     return noOfRows;
 }
 
--(SocializeAuthInfoTableViewCell *)getAuthorizeInfoTableViewCell
-{
+-(SocializeAuthInfoTableViewCell *)getAuthorizeInfoTableViewCell {
 	static NSString *authorizeInfoTableViewCellId = @"authorize_info_cell";
 	SocializeAuthInfoTableViewCell *cell =(SocializeAuthInfoTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:authorizeInfoTableViewCellId];
     
-	if (cell == nil) 
-	{
+	if (cell == nil) {
         cell = [self getCellFromNibNamed:@"SocializeAuthInfoTableViewCell" withClass:[SocializeAuthInfoTableViewCell class]];
 	}
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
--(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass 
-{
+-(id)getCellFromNibNamed:(NSString * )nibNamed withClass:(Class)klass {
     id cell = nil;
     NSArray *topLevelViews = [self getTopLevelViewsFromNib:nibNamed];
     for (id topLevelView in topLevelViews) {
@@ -306,7 +320,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
         self.completionBlock(self.selectedNetwork);
     } else {
         // Dismiss self
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 
         SEL didAuthSelector = @selector(socializeAuthViewController:didAuthenticate:);
         if ([self.delegate respondsToSelector:didAuthSelector] ) {
@@ -320,8 +334,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     [self authenticationComplete];
 }
 
--(SocializeAuthTableViewCell *)getAuthorizeTableViewCell
-{
+-(SocializeAuthTableViewCell *)getAuthorizeTableViewCell {
 	static NSString *profileCellIdentifier = @"authorize_cell";
 	SocializeAuthTableViewCell *cell =(SocializeAuthTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:profileCellIdentifier];
 	if (cell == nil) 
@@ -342,22 +355,20 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = nil;
     SocializeAuthTableViewCell* authCell = nil;
     SocializeAuthInfoTableViewCell* infoCell = nil;
 	
-	switch (indexPath.section)  
-	{
+	switch (indexPath.section) {
 		case _SZLinkDialogViewControllerSectionAuthTypes:
 			authCell = [self getAuthorizeTableViewCell];
 			authCell.backgroundColor = [UIColor colorWithRed:61/255.0f green:70/255.0f blue:76/255.0f alpha:1.0] ;
 
             NSDictionary *data = [self.authTypeRowData objectAtIndex:indexPath.row];
-            authCell.cellIcon.image = [UIImage imageNamed:[data objectForKey:kAuthTypeRowImageName]];
+            authCell.cellIcon.image = [data objectForKey:kAuthTypeRowImageName];
             authCell.cellLabel.text = [data objectForKey:kAuthTypeRowText];
-            authCell.cellAccessoryIcon.image = [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
+            authCell.cellAccessoryIcon.image = [self callOutArrow];
             
             cell = authCell;
             break;
@@ -366,7 +377,7 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
 		default:
 			infoCell = [self getAuthorizeInfoTableViewCell];
 			infoCell.backgroundColor = [UIColor colorWithRed:41/255.0f green:48/255.0f blue:54/255.0f alpha:1.0];
-            infoCell.cellIcon.image = [UIImage imageNamed:@"socialize-authorize-user-icon.png"];
+            infoCell.cellIcon.image = [self authorizeUserIcon];
             infoCell.cellLabel.text = @"You are currently anonymous.";
             infoCell.cellSubLabel.text = @"Authenticate with a service above";
             cell = infoCell;
@@ -375,5 +386,26 @@ CGFloat SocializeAuthTableViewRowHeight = 56;
     
 	return cell;
 }
+
+- (UIImage *)facebookIcon:(BOOL)enabled {
+    return enabled ?
+           [UIImage imageNamed:@"socialize-authorize-facebook-enabled-icon-ios7.png"] :
+           [UIImage imageNamed:@"socialize-authorize-facebook-disabled-icon-ios7.png"];
+}
+
+- (UIImage *)twitterIcon:(BOOL)enabled {
+    return enabled ?
+           [UIImage imageNamed:@"socialize-authorize-twitter-enabled-icon-ios7.png"] :
+           [UIImage imageNamed:@"socialize-authorize-twitter-disabled-icon-ios7.png"];
+}
+
+- (UIImage *)callOutArrow {
+    return [UIImage imageNamed:@"socialize-activity-call-out-arrow.png"];
+}
+
+- (UIImage *)authorizeUserIcon {
+    return [UIImage imageNamed:@"socialize-authorize-user-icon-ios7.png"];
+}
+
 
 @end

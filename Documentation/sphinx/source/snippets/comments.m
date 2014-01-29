@@ -31,12 +31,12 @@
     comments.completionBlock = ^{
         
         // Dismiss however you want here
-        [self dismissModalViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:NO completion:nil];
     };
     comments.commentOptions = options;
 
     // Present however you want here
-    [self presentModalViewController:comments animated:NO];
+    [self presentViewController:comments animated:NO completion:nil];
 }
 
 // end-manual-show-comments-list-snippet
@@ -62,11 +62,11 @@
     composer.completionBlock = ^(id<SZComment> comment) {
         NSLog(@"Created comment: %@", [comment text]);
         // Dismiss however you want here
-        [self dismissModalViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:NO completion:nil];
     };
     
     // Present however you want here
-    [self presentModalViewController:composer animated:NO];
+    [self presentViewController:composer animated:NO completion:nil];
 }
 
 // end-manual-show-comment-composer-snippet

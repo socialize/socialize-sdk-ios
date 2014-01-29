@@ -20,6 +20,8 @@
 #import <JSONKit/JSONKit.h>
 #import "SZEventUtils.h"
 #import "SZPinterestUtils.h"
+#import "SZNetworkImageProvider.h"
+#import "UIDevice+VersionCheck.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -162,6 +164,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if (self.footerView != nil) {
         self.shareDialogView.footerView = self.footerView;
     }
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)updateContinueButtonState {
@@ -282,11 +288,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
         WEAK(self) weakSelf = self;
 
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-            if ([SZFacebookUtils isLinked]) {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-icon.png"];
-            } else {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-facebook-dis-icon.png"];
-            }
+            cell.imageView.image = [SZNetworkImageProvider facebookSelectNetworkImage:[SZFacebookUtils isLinked]];
             cell.textLabel.text = @"Facebook";
             UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)] autorelease];
             [holder addSubview:weakSelf.facebookSwitch];
@@ -351,13 +353,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
         WEAK(self) weakSelf = self;
 
         void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-            if ([SZTwitterUtils isLinked]) {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-icon.png"];
-            } else {
-                cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-twitter-dis-icon.png"];
-            }
+            cell.imageView.image = [SZNetworkImageProvider twitterSelectNetworkImage:[SZTwitterUtils isLinked]];
             cell.textLabel.text = @"Twitter";
-            UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x, cell.accessoryView.frame.origin.x, weakSelf.facebookSwitch.frame.size.width, weakSelf.facebookSwitch.frame.size.height)] autorelease];
+            UIView* holder = [[[UIView alloc] initWithFrame:CGRectMake(cell.accessoryView.frame.origin.x,
+                                                                       cell.accessoryView.frame.origin.x,
+                                                                       weakSelf.facebookSwitch.frame.size.width,
+                                                                       weakSelf.facebookSwitch.frame.size.height)] autorelease];
             [holder addSubview:weakSelf.twitterSwitch];
             cell.accessoryView = holder;
         };
@@ -453,7 +454,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     };
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-        cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-pinterest-icon"];
+        cell.imageView.image = [SZNetworkImageProvider pinterestSelectImage];
         cell.textLabel.text = @"Pinterest";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         cell.textLabel.textColor = [UIColor whiteColor];
@@ -487,7 +488,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     };
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-        cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-SMS-icon"];
+        cell.imageView.image = [SZNetworkImageProvider smsSelectImage];//[UIImage imageNamed:@"socialize-selectnetwork-SMS-icon"];
         cell.textLabel.text = @"SMS";
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         cell.textLabel.textColor = [UIColor whiteColor];
@@ -522,7 +523,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
     };
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
-        cell.imageView.image = [UIImage imageNamed:@"socialize-selectnetwork-email-icon"];
+        cell.imageView.image = [SZNetworkImageProvider emailSelectImage];//[UIImage imageNamed:@"socialize-selectnetwork-email-icon"];
         cell.textLabel.text = @"Email";
     };
     
@@ -589,8 +590,12 @@ static NSString *kAutopostSection = @"kAutopostSection";
         cell.textLabel.text = @"Remember Selection";
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
         cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.shadowOffset = CGSizeMake(0, -1);
-        cell.textLabel.shadowColor = [UIColor blackColor];
+        
+        //different text shadow rules for different versions
+        if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+            cell.textLabel.shadowOffset = CGSizeMake(0, -1);
+            cell.textLabel.shadowColor = [UIColor blackColor];
+        }
     };
     
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -645,16 +650,6 @@ static NSString *kAutopostSection = @"kAutopostSection";
     }
     
     return sections_;
-    
-//    if (sections_ == nil) {
-////        sections_ = [[NSMutableArray alloc] init];
-//        (void
-//         if ([self showOtherShareTypes]) {
-//             [[sections_ addObject:[self otherSection]];
-//              }
-//         [self socialNetworkSection], [self otherSection], [self autopostSection], nil];
-//    }
-//    return sections_;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

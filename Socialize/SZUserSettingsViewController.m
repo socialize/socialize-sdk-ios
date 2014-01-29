@@ -8,6 +8,8 @@
 
 #import "SZUserSettingsViewController.h"
 #import "_SZUserSettingsViewController.h"
+#import "SZUserSettingsViewControllerIOS6.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface SZUserSettingsViewController ()
 @property (nonatomic, assign) BOOL initialized;
@@ -19,6 +21,18 @@
 @synthesize initialized = _initialized;
 @synthesize settings = _settings;
 @dynamic hideLogoutButtons;
+
+//class cluster impl
+//used for navbar as this class is a subclass of SZNavigationBar
++ (id)alloc {
+    if([self class] == [SZUserSettingsViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZUserSettingsViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)init {
     if (self = [super init]) {

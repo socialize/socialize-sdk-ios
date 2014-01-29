@@ -36,6 +36,8 @@
 #import "SZEntityUtils.h"
 #import "SZSmartAlertUtils.h"
 #import "SZPinterestEngine.h"
+#import "UIDevice+VersionCheck.h"
+#import "UIColor+Socialize.h"
 
 #define SYNTH_DEFAULTS_GETTER(TYPE, NAME, STORE_KEY) \
 + (TYPE*)NAME { \
@@ -208,6 +210,17 @@ static Socialize *_sharedSocialize;
         _deviceTokenService = [[SocializeDeviceTokenService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _subscriptionService = [[SocializeSubscriptionService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
         _eventsService = [[SocializeEventService alloc] initWithObjectFactory:_objectFactory delegate:delegate];
+        
+        //iOS 7 navbar standard init
+        if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
+            UIColor *barColor = [UIColor navigationBarBackgroundColor];
+            [[UINavigationBar appearance] setBarTintColor:barColor];
+            [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+            NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor blackColor], NSForegroundColorAttributeName,
+                                                       nil];
+            [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+        }
     }
     return self;
 }

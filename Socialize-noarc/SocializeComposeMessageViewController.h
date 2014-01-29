@@ -59,7 +59,7 @@
 - (id)initWithEntityUrlString:(NSString*)entityUrlString;
 - (id)initWithEntity:(id<SZEntity>)entity;
 
-- (void)addSocializeRoundedGrayButtonImagesToButton:(UIButton*)button;
+- (void)addSocializeGrayButtonLook:(UIButton*)button;
 - (void)setSubviewForLowerContainer:(UIView*)newSubview;
 
 - (void)stopReverseGeocodeTimer;

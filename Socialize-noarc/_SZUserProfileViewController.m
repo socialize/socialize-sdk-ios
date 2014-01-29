@@ -15,6 +15,8 @@
 #import "SZNavigationController.h"
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
+#import "_SZUserProfileViewControllerIOS6.h"
 
 @interface _SZUserProfileViewController ()
 -(void)configureViews;
@@ -28,14 +30,26 @@
 @synthesize userNameLabel = userNameLabel_;
 @synthesize userDescriptionLabel = userDescriptionLabel_;
 @synthesize userLocationLabel = userLocationLabel_;
+@synthesize backgroundImageView = backgroundImageView_;
+@synthesize sectionHeaderView = sectionHeaderView_;
 @synthesize profileImageView = profileImageView_;
+@synthesize profileImageBackgroundView = profileImageBackgroundView_;
 @synthesize profileImageActivityIndicator = profileImageActivityIndicator_;
 @synthesize imagesCache = imagesCache_;
-@synthesize defaultProfileImage = defaultProfileImage_;
 @synthesize alertView = alertView_;
 @synthesize activityViewController = activityViewController_;
 @synthesize activityLoadingActivityIndicator = activityLoadingActivityIndicator_;
 @synthesize completionBlock = completionBlock_;
+
++ (id)alloc {
+    if([self class] == [_SZUserProfileViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [_SZUserProfileViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (void)dealloc {
     self.user = nil;
@@ -46,7 +60,6 @@
     self.profileImageView = nil;
     self.profileImageActivityIndicator = nil;
     self.imagesCache = nil;
-    self.defaultProfileImage = nil;
     self.alertView = nil;
     [activityViewController_ setDelegate:nil];
     self.activityViewController = nil;
@@ -55,8 +68,7 @@
     [super dealloc];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
@@ -64,7 +76,6 @@
     self.userDescriptionLabel = nil;
     self.userLocationLabel = nil;
     self.profileImageView = nil;
-    self.defaultProfileImage = nil;
     self.activityViewController = nil;
 }
 
@@ -95,7 +106,7 @@
 }
 
 - (id)initWithUser:(id<SocializeUser>)user delegate:(id<SocializeBaseViewControllerDelegate>)delegate {
-    if (self = [super init]) {
+    if (self = [super initWithNibName:@"_SZUserProfileViewController" bundle:nil]) {
         self.delegate = delegate;
         self.user = user;
     }
@@ -117,15 +128,13 @@
     }
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Profile";
     
     //we will show a done button here if there is not left barbutton item already showing
     if (!self.navigationItem.leftBarButtonItem) {
-        
         WEAK(self) weakSelf = self;
         self.navigationItem.leftBarButtonItem = [UIBarButtonItem blueSocializeBarButtonWithTitle:@"Done" handler:^(id sender) {
             if ([weakSelf.delegate respondsToSelector:@selector(baseViewControllerDidFinish:)]) {
@@ -136,27 +145,42 @@
         }];
     }
 
+    self.backgroundImageView.image = [self defaultBackgroundImage];
+    self.sectionHeaderView.image = [self defaultHeaderBackgroundImage];
     [self setProfileImageFromImage:[self defaultProfileImage]];
-    
     [self addActivityControllerToView];
+    
+    //iOS 7 adjustments for nav bar
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark - View lifecycle
 
+
 - (UIImage*)defaultProfileImage {
-    if (defaultProfileImage_ == nil) {
-        defaultProfileImage_ = [[UIImage imageNamed:@"socialize-profileimage-large-default.png"] retain];
-    }
-    
-    return defaultProfileImage_;
+    return nil;
+}
+
+- (UIImage*)defaultProfileBackgroundImage {
+    return [UIImage imageNamed:@"socialize-profileimage-large-bg-ios7.png"];
+}
+
+- (UIImage *)defaultBackgroundImage {
+    return [UIImage imageNamed:@"background_plain.png"];
+}
+
+- (UIImage *)defaultHeaderBackgroundImage {
+    return [UIImage imageNamed:@"socialize-sectionheader-bg-ios7.png"];
 }
 
 - (void)setProfileImageFromImage:(UIImage*)image {
+    self.profileImageView.image = nil; //in this variant, profile image and background are one and the same
     if (image == nil) {
-        self.profileImageView.image = self.defaultProfileImage;
+        self.profileImageBackgroundView.image = [self defaultProfileBackgroundImage];
     }
     else {
-        self.profileImageView.image = image;
+        self.profileImageBackgroundView.image = image;
     }
 }
 
@@ -252,7 +276,7 @@
         _SZUserProfileViewController *profile = [_SZUserProfileViewController profileViewController];
         profile.user = user;
         SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:profile] autorelease];
-        [self presentModalViewController:nav animated:YES];
+        [self presentViewController:nav animated:YES completion:nil];
     }
 }
 

@@ -115,7 +115,7 @@
 
 - (void) testLikeTwitterAuth {
     [tester showLikeEntityRow];
-    [tester tapViewWithAccessibilityLabel:@"twitter"];
+    [tester tapViewWithAccessibilityLabel:@"Twitter"];
     [tester authWithTwitter];
     
     [tester tapViewWithAccessibilityLabel:@"Like"];

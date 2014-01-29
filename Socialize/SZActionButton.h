@@ -40,5 +40,8 @@
 - (void)autoresize;
 - (void)resetButtonsToDefaults;
 
++ (UIImage*)defaultDisabledImage;
++ (UIImage*)defaultImage;
++ (UIImage*)defaultHighlightedImage;
 
 @end

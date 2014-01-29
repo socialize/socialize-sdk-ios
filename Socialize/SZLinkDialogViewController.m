@@ -8,6 +8,8 @@
 
 #import "SZLinkDialogViewController.h"
 #import "_SZLinkDialogViewController.h"
+#import "SZLinkDialogViewControllerIOS6.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface SZLinkDialogViewController ()
 @property (nonatomic, strong) _SZLinkDialogViewController *linkDialog;
@@ -18,6 +20,18 @@
 @synthesize linkDialog = _linkDialog;
 @dynamic completionBlock;
 @dynamic cancellationBlock;
+
+//class cluster impl
+//used for navbar as this class is a subclass of SZNavigationBar
++ (id)alloc {
+    if([self class] == [SZLinkDialogViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZLinkDialogViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)init {
     if (self = [super init]) {

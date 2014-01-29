@@ -39,7 +39,7 @@
         }];
     };
     
-    [viewController presentModalViewController:commentsList animated:YES];
+    [viewController presentViewController:commentsList animated:YES completion:nil];
 }
 
 // Compose and share (but no initial link)
@@ -62,7 +62,7 @@
     
     composer.display = viewController;
     
-    [viewController presentModalViewController:composer animated:YES];
+    [viewController presentViewController:composer animated:YES completion:nil];
 }
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {

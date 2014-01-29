@@ -13,6 +13,8 @@
 #import "PropertyHelpers.h"
 #import "UIButton+Socialize.h"
 #import "_Socialize.h"
+#import "UIDevice+VersionCheck.h"
+#import "SocializeActivityDetailsViewIOS6.h"
 
 CGFloat const kMinActivityMessageHeight = 50;
 
@@ -29,7 +31,7 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize profileNameButton;
 @synthesize profileImage;
 @synthesize recentActivityView;
-@synthesize recentActivityHeaderImage;
+@synthesize recentActivityHeaderImage = recentActivityHeaderImage_;
 @synthesize activityMessage;
 @synthesize activityDate;
 @synthesize activity = activity_;
@@ -44,15 +46,25 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 @synthesize locationPinButton = _locationPinButton;
 @synthesize locationFatButton = _locationFatButton;
 
+//class cluster for iOS 6 compatibility
++ (id)alloc {
+    if([self class] == [SocializeActivityDetailsView class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SocializeActivityDetailsViewIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
+
 #pragma mark init/dealloc methods
-- (void)dealloc
-{
+- (void)dealloc {
     activityMessageView.delegate = nil;
     [activityMessageView release];
     [profileNameButton release];
     [profileImage release]; 
     [recentActivityView release]; 
-    [recentActivityHeaderImage release];
+    [recentActivityHeaderImage_ release];
     [activityMessage release];
     [activityDate release]; 
     [activity_ release];
@@ -69,11 +81,9 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
     [super dealloc];
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
-{
+- (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
-    if(self)
-    {
+    if(self) {
         self.backgroundColor = [UIColor colorWithRed:65/ 255.f green:77/ 255.f blue:86/ 255.f alpha:1.0];
         self.profileNameButton.titleLabel.textColor = [UIColor colorWithRed:217/ 255.f green:225/ 255.f blue:232/ 255.f alpha:1.0];
         self.profileNameButton.titleLabel.layer.shadowOpacity = 0.9;   
@@ -86,13 +96,11 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 }
 
 - (void)awakeFromNib {
-    UIImage *entityImage = [[UIImage imageNamed:@"socialize-activity-details-btn-link.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+    UIImage *entityImage = [[UIImage imageNamed:@"socialize-activity-details-btn-link-ios7.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
     [self.showEntityButton setBackgroundImage:entityImage forState:UIControlStateNormal];
 }
 
--(void) addShadowForView:(UIView*)view
-{
-
+-(void) addShadowForView:(UIView*)view {
     UIView* shadowView = [[UIView alloc] init];
     shadowView.layer.cornerRadius = 3.0;
     shadowView.layer.shadowColor = [UIColor colorWithRed:22/ 255.f green:28/ 255.f blue:31/ 255.f alpha:1.0].CGColor;
@@ -177,8 +185,7 @@ NSString * const kNoCommentMessage = @"Could not load activity.";
 }
 
 #pragma mark layout logic
--(void) layoutActivityDetailsSubviews
-{    
+-(void) layoutActivityDetailsSubviews {
     CGFloat messageHeight = [self getMessageHeight];
     //update comments height
     CGRect messageFrame = activityMessageView.frame;

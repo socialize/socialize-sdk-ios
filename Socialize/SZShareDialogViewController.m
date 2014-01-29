@@ -8,6 +8,8 @@
 
 #import "SZShareDialogViewController.h"
 #import "_SZShareDialogViewController.h"
+#import "SZShareDialogViewControllerIOS6.h"
+#import "UIDevice+VersionCheck.h"
 
 @interface SZShareDialogViewController ()
 
@@ -28,6 +30,18 @@
 @dynamic hidePinterest;
 @dynamic dontShowComposer;
 @dynamic shareOptions;
+
+//class cluster impl
+//used for navbar as this class is a subclass of SZNavigationBar
++ (id)alloc {
+    if([self class] == [SZShareDialogViewController class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+           return [SZShareDialogViewControllerIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
 
 - (id)init {
     [self doesNotRecognizeSelector:_cmd];

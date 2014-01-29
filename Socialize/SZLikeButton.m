@@ -16,6 +16,9 @@
 #import "SZActionButton_Private.h"
 #import "SZEntityUtils.h"
 #import "socialize_globals.h"
+#import "SZLikeButtonIOS6.h"
+#import "UIDevice+VersionCheck.h"
+#import "UIColor+Socialize.h"
 
 @interface SZLikeButton ()
 
@@ -25,6 +28,7 @@
 @end
 
 @implementation SZLikeButton
+
 @synthesize inactiveImage = inactiveImage_;
 @synthesize inactiveHighlightedImage = inactiveHighlightedImage_;
 @synthesize activeImage = activeImage_;
@@ -37,16 +41,29 @@
 @synthesize serverEntity = _serverEntity;
 @synthesize hideCount = hideCount_;
 @synthesize failureRetryInterval = _failureRetryInterval;
+@synthesize tabBarStyle = _tabBarStyle;
 
-- (id)initWithFrame:(CGRect)frame entity:(id<SocializeEntity>)entity viewController:(UIViewController*)viewController {
++ (id)alloc {
+    if([self class] == [SZLikeButton class] &&
+       [[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return [SZLikeButtonIOS6 alloc];
+    }
+    else {
+        return [super alloc];
+    }
+}
+
+- (id)initWithFrame:(CGRect)frame
+             entity:(id<SocializeEntity>)entity
+     viewController:(UIViewController*)viewController
+        tabBarStyle:(BOOL)buttonStyle {
     self = [super initWithFrame:frame];
+    
     if (self) {
-        [self configureButtonBackgroundImages];
-        
+        self.tabBarStyle = buttonStyle;
+        [self resetButtonsToDefaults];
         self.actualButton.accessibilityLabel = @"like button";
-
         self.viewController = viewController;
-        
         self.entity = entity;
         
     }
@@ -55,12 +72,21 @@
 
 - (void)resetButtonsToDefaults {
     [super resetButtonsToDefaults];
-    self.inactiveImage = [[self class] defaultInactiveImage];
-    self.inactiveHighlightedImage = [[self class] defaultInactiveHighlightedImage];
+    if(_tabBarStyle) {
+        self.inactiveImage = [[self class] defaultInactiveImage];
+        self.inactiveHighlightedImage = [[self class] defaultInactiveHighlightedImage];
+    }
+    else {
+        self.inactiveImage = [[self class] defaultNonTabBarInactiveImage];
+        self.inactiveHighlightedImage = [[self class] defaultNonTabBarInactiveHighlightedImage];
+    }
+    
+    self.disabledImage = [[self class] defaultDisabledImage];
     self.activeImage = [[self class] defaultActiveImage];
     self.activeHighlightedImage = [[self class] defaultActiveHighlightedImage];
     self.likedIcon = [[self class] defaultLikedIcon];
     self.unlikedIcon = [[self class] defaultUnlikedIcon];
+    [self.actualButton setTitleColor:[UIColor buttonTextHighlightColor] forState:UIControlStateHighlighted];
 }
 
 - (void)configureForNewServerEntity:(id<SocializeEntity>)serverEntity {
@@ -95,27 +121,39 @@
     return 10;
 }
 
-+ (UIImage*)defaultInactiveImage {
-    return [[UIImage imageNamed:@"action-bar-button-black.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
++ (UIImage *)defaultDisabledImage {
+    return nil;
 }
 
-+ (UIImage*)defaultInactiveHighlightedImage {
-    return [[UIImage imageNamed:@"action-bar-button-black-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
++ (UIImage *)defaultInactiveImage {
+    return nil;
 }
 
-+ (UIImage*)defaultActiveImage {
-    return [[UIImage imageNamed:@"action-bar-button-red.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
++ (UIImage *)defaultInactiveHighlightedImage {
+    return nil;
 }
 
-+ (UIImage*)defaultActiveHighlightedImage {
-    return [[UIImage imageNamed:@"action-bar-button-red-hover.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
++ (UIImage *)defaultNonTabBarInactiveImage {
+    return [[UIImage imageNamed:@"action-bar-button-black-ios7.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
 }
 
-+ (UIImage*)defaultLikedIcon {
++ (UIImage *)defaultNonTabBarInactiveHighlightedImage {
+    return [[UIImage imageNamed:@"action-bar-button-black-hover-ios7.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+}
+
++ (UIImage *)defaultActiveImage {
+    return [[UIImage imageNamed:@"action-bar-button-red-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+}
+
++ (UIImage *)defaultActiveHighlightedImage {
+    return [[UIImage imageNamed:@"action-bar-button-red-hover-ios7.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+}
+
++ (UIImage *)defaultLikedIcon {
     return [UIImage imageNamed:@"action-bar-icon-liked.png"];
 }
 
-+ (UIImage*)defaultUnlikedIcon {
++ (UIImage *)defaultUnlikedIcon {
     return [UIImage imageNamed:@"action-bar-icon-like.png"];
 }
 

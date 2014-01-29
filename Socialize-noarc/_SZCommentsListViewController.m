@@ -77,9 +77,11 @@
     [super dealloc];
 }
 
-
 + (UIViewController*)socializeCommentsTableViewControllerForEntity:(NSString*)entityName {
-    _SZCommentsListViewController* commentsController = [[[_SZCommentsListViewController alloc] initWithNibName:@"_SZCommentsListViewController" bundle:nil entryUrlString:entityName] autorelease];
+    _SZCommentsListViewController* commentsController =
+    [[[_SZCommentsListViewController alloc] initWithNibName:@"_SZCommentsListViewController"
+                                                     bundle:nil
+                                             entryUrlString:entityName] autorelease];
     SZNavigationController *nav = [[[SZNavigationController alloc] initWithRootViewController:commentsController] autorelease];
     
     return nav;
@@ -103,7 +105,6 @@
         
 		_errorLoading = NO;
 		_isLoading = YES;
-        
         
 		_commentDateFormatter = [[NSDateFormatter alloc] init];
 		[_commentDateFormatter setDateFormat:@"hh:mm:ss zzz"];
@@ -137,8 +138,7 @@
 }
 
 - (UIBarButtonItem*)closeButton {
-    if (_closeButton == nil)
-    {
+    if (_closeButton == nil) {
         UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:@"Close"];
         [button addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         _closeButton = [[UIBarButtonItem alloc] initWithCustomView:button];
@@ -146,10 +146,8 @@
     return _closeButton;
 }
 
--(UIBarButtonItem*)brandingButton
-{
-    if(_brandingButton == nil)
-    {
+-(UIBarButtonItem*)brandingButton {
+    if(_brandingButton == nil) {
         NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"commentsNavBarLeftItemView" owner:self options:nil];
         UIView* brandingView = [ nibViews objectAtIndex: 0];
         _brandingButton = [[UIBarButtonItem alloc] initWithCustomView:brandingView];
@@ -160,10 +158,12 @@
 - (void)closeButtonPressed:(id)button {
     if (self.completionBlock != nil) {
         self.completionBlock();
-    } else if ([self.delegate respondsToSelector:@selector(commentsTableViewControllerDidFinish:)]) {
+    }
+    else if ([self.delegate respondsToSelector:@selector(commentsTableViewControllerDidFinish:)]) {
         [self.delegate commentsTableViewControllerDidFinish:self];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
+    }
+    else {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -289,12 +289,17 @@
     if (![SZSmartAlertUtils isAvailable]) {
         [self.footerView hideSubscribedButton];
     }
+    
+    //iOS 7 adjustments for nav bar and cell separator
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    }
 }
 
 #pragma mark tableFooterViewDelegate
 
--(IBAction)addCommentButtonPressed:(id)sender 
-{
+-(IBAction)addCommentButtonPressed:(id)sender {
     WEAK(self) weakSelf = self;
     
     SZComposeCommentViewController *composer = [[[SZComposeCommentViewController alloc] initWithEntity:_entity] autorelease];
@@ -303,17 +308,17 @@
     };
     
     composer.cancellationBlock = ^{
-        [weakSelf dismissModalViewControllerAnimated:YES];
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
     
     composer.display = self;
     composer.commentOptions = self.commentOptions;
     
-    [self presentModalViewController:composer animated:YES];
+    [self presentViewController:composer animated:YES completion:nil];
 }
 
 - (void)baseViewControllerDidCancel:(SocializeBaseViewController *)baseViewController {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)cancel {
@@ -322,10 +327,9 @@
 
 - (void)postCommentViewController:(_SZComposeCommentViewController *)postCommentViewController didCreateComment:(id<SocializeComment>)comment {
     [self insertContentAtHead:[NSArray arrayWithObject:comment]];
-    
     self.footerView.subscribedButton.selected = !postCommentViewController.dontSubscribeToDiscussion;
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
@@ -336,10 +340,9 @@
 	return [NSDate getTimeElapsedString:startdate]; 
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([self.content count]){
-
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
         
@@ -355,6 +358,7 @@
         [self.navigationController pushViewController:details animated:YES];
     }
 }
+
 -(SocializeActivityDetailsViewController *)createActivityDetailsViewController:(id<SocializeComment>) entryComment{
     return [[[SocializeActivityDetailsViewController alloc] initWithActivity:entryComment] autorelease];
 }
@@ -378,9 +382,10 @@
 	CommentsTableViewCell *cell = (CommentsTableViewCell*)[newTableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	
     if (cell == nil) {
-        
         // Create a temporary UIViewController to instantiate the custom cell.
-        [[NSBundle mainBundle] loadNibNamed:@"CommentsTableViewCell" owner:self options:nil];
+        [[NSBundle mainBundle] loadNibNamed:[CommentsTableViewCell nibName]
+                                      owner:self
+                                    options:nil];
         // Grab a pointer to the custom cell.
         cell = commentsCell;
         self.commentsCell = nil;
@@ -390,7 +395,7 @@
     SocializeComment* entryComment = ((SocializeComment*)[self.content objectAtIndex:indexPath.row]);
 
     NSString *commentText = entryComment.text;
-    NSString *commentHeadline = entryComment.user.displayName;//entryComment.user.userName;
+    NSString *commentHeadline = entryComment.user.displayName;
     
     cell.locationPin.hidden = (entryComment.lat == nil);
     cell.btnViewProfile.tag = indexPath.row;
@@ -411,33 +416,35 @@
      
     CGRect locationPinFrame = cell.locationPin.frame;
     CGFloat xPinCoordinate = xLabelCoordinate - locationPinFrame.size.width - 7;
-    locationPinFrame = CGRectMake(xPinCoordinate, locationPinFrame.origin.y, locationPinFrame.size.width, locationPinFrame.size.height);
+    locationPinFrame = CGRectMake(xPinCoordinate,
+                                  locationPinFrame.origin.y,
+                                  locationPinFrame.size.width,
+                                  locationPinFrame.size.height);
     
     cell.locationPin.frame = locationPinFrame;
     
     UIImage * profileImage =(UIImage *)[_cache imageFromCache:entryComment.user.smallImageUrl];
-    
-    if (profileImage) 
-    {
+    if (profileImage) {
         cell.userProfileImage.image = profileImage;
     }
-    else
-    {
-        cell.userProfileImage.image = [UIImage imageNamed:@"socialize-cell-image-default.png"];
-        if (([entryComment.user.smallImageUrl length] > 0))
-        { 
-            
-            CompleteBlock completeAction = [[^(ImagesCache* cache)
-                                             {
+    else {
+        cell.userProfileImage.image = [cell defaultProfileImage];
+        if (([entryComment.user.smallImageUrl length] > 0)) {
+            CompleteBlock completeAction = [[^(ImagesCache* cache) {
                                                  if (!self.content)
                                                      return;
-                                                 
                                                  [self.tableView reloadData];
-                                             } copy]autorelease];
-            [_cache loadImageFromUrl: entryComment.user.smallImageUrl withLoader:[UrlImageLoader class] andCompleteAction:completeAction];
+                                             } copy] autorelease];
+            [_cache loadImageFromUrl:entryComment.user.smallImageUrl
+                          withLoader:[UrlImageLoader class]
+                   andCompleteAction:completeAction];
         }
     }
-    cell.bgImage.image = [UIImage imageNamed:@"socialize-cell-bg.png"];
+    
+    //different impls may not have a bgImage
+    if(cell.bgImage != nil) {
+        cell.bgImage.image = [cell defaultBackgroundImage];
+    }
 	return cell;
 }
 
@@ -449,25 +456,25 @@
 #pragma mark -
 
 #pragma mark UITableViewDelegate
+
 // Variable height support
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [CommentsTableViewCell getCellHeightForString:((SocializeComment*)[self.content objectAtIndex:indexPath.row]).text] + 50;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	
 	return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-	
 	return 0;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         return YES;
-    } else {
+    }
+    else {
         return toInterfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
     }
 }

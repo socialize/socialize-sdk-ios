@@ -83,8 +83,12 @@ both an email and a panic button to the action bar.
 Custom Background
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can change the background image and transparency of the bar.
+For iOS 6 and earlier, you can change the background image and transparency of the bar image. For iOS 7 and later, you can customize the "flatter" look by changing the background color and transparency of the bar itself:
 
 .. literalinclude:: snippets/create_action_bar.m
   :start-after: begin-customize-background-snippet
   :end-before: end-customize-background-snippet
+
+**NOTE:** iOS 7 introduced a range of new design principles and standards you should consider when designing apps for iOS 7 and later. Apple's guidelines can be found `here`_.
+
+.. _here: https://developer.apple.com/library/ios/design/index.html 

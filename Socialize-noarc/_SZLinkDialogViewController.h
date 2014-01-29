@@ -42,12 +42,17 @@ typedef enum {
 @property (nonatomic, copy) void (^completionBlock)(SZSocialNetwork selectedNetwork);
 
 - (id)initWithDelegate:(id<_SZLinkDialogViewControllerDelegate>)delegate;
-+(UINavigationController*)authViewControllerInNavigationController:(id<_SZLinkDialogViewControllerDelegate>)delegate;
++ (UINavigationController*)authViewControllerInNavigationController:(id<_SZLinkDialogViewControllerDelegate>)delegate;
+- (UIImage *)facebookIcon:(BOOL)enabled;
+- (UIImage *)twitterIcon:(BOOL)enabled;
+- (UIImage *)callOutArrow;
+- (UIImage *)authorizeUserIcon;
+
 @end
 
 @protocol _SZLinkDialogViewControllerDelegate<SocializeBaseViewControllerDelegate>
 @optional
--(IBAction)skipButtonPressed:(id)sender;
--(void)authorizationSkipped;
--(void)socializeAuthViewController:(_SZLinkDialogViewController *)authViewController didAuthenticate:(id<SocializeUser>)user;
+- (IBAction)skipButtonPressed:(id)sender;
+- (void)authorizationSkipped;
+- (void)socializeAuthViewController:(_SZLinkDialogViewController *)authViewController didAuthenticate:(id<SocializeUser>)user;
 @end

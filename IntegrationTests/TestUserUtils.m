@@ -48,7 +48,7 @@
     } failure:^(NSError *error) {
         [self notify:kGHUnitWaitStatusFailure];
     }];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:15];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:25];
 }
 
 - (void)testDefaultsAreCopiedToSettings {

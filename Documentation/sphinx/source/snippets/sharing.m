@@ -110,7 +110,7 @@
     share.completionBlock = ^(NSArray *shares) {
         
         // Dismiss however you want here
-        [self dismissModalViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:NO completion:nil];
     };
     
     // You can hide individual share types
@@ -121,7 +121,7 @@
 //    share.hidePinterest = YES;
     
     // Present however you want here
-    [self presentModalViewController:share animated:NO];
+    [self presentViewController:share animated:NO completion:nil];
 }
 
 // end-manual-show-share-dialog-snippet

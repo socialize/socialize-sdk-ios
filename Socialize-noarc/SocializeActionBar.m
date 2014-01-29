@@ -137,7 +137,7 @@
 
 - (void)presentInternalController:(UIViewController*)viewController {
     self.ignoreNextView = YES;
-    [self.viewController presentModalViewController:viewController animated:YES];
+    [self.viewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)setNoAutoLayout:(BOOL)noAutoLayout {
@@ -232,7 +232,7 @@
 {
     SZUserProfileViewController *profile = [[[SZUserProfileViewController alloc] initWithUser:(id<SZUser>)[SZUserUtils currentUser]] autorelease];
     profile.completionBlock = ^(id<SZFullUser> user) {
-        [self.viewController dismissModalViewControllerAnimated:YES];
+        [self.viewController dismissViewControllerAnimated:YES completion:nil];
     };
     [self presentInternalController:profile];
 }

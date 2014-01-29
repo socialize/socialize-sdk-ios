@@ -44,11 +44,11 @@
     settings.completionBlock = ^(BOOL didSave, id<SZFullUser> user) {
         
         // Dismiss however you want here
-        [self dismissModalViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:NO completion:nil];
     };
     
     // Present however you want here
-    [self presentModalViewController:settings animated:NO];
+    [self presentViewController:settings animated:NO completion:nil];
 
 }
 

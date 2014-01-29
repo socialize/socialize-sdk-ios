@@ -387,7 +387,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     NSInteger cancelIndex = 2;
     [[[self.mockActionSheet stub] andReturnValue:OCMOCK_VALUE(cancelIndex)] cancelButtonIndex];
     [[mockPicker expect] setSourceType:UIImagePickerControllerSourceTypeCamera];
-    [[(id)self.profileEditViewController expect] presentModalViewController:mockPicker animated:YES];
+    [[(id)self.profileEditViewController expect] presentViewController:mockPicker animated:YES completion:nil];
     [self.profileEditViewController actionSheet:self.mockActionSheet clickedButtonAtIndex:1];
     [mockPicker verify];
 }
@@ -399,7 +399,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     NSInteger cancelIndex = 2;
     [[[self.mockActionSheet stub] andReturnValue:OCMOCK_VALUE(cancelIndex)] cancelButtonIndex];
     [[mockPicker expect] setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    [[(id)self.profileEditViewController expect] presentModalViewController:mockPicker animated:YES];
+    [[(id)self.profileEditViewController expect] presentViewController:mockPicker animated:YES completion:nil;
 
     [self.profileEditViewController actionSheet:self.profileEditViewController.uploadPicActionSheet clickedButtonAtIndex:0];
     [mockPicker verify];
@@ -454,7 +454,7 @@ SYNTH_BUTTON_TEST(profileEditViewController, saveButton)
     // Picker should dismiss
     id mockPicker = [OCMockObject mockForClass:[UIImagePickerController class]];
     self.profileEditViewController.imagePicker = mockPicker;
-    [[mockPicker expect] dismissModalViewControllerAnimated:YES];
+    [[mockPicker expect] dismissViewControllerAnimated:YES completion:nil];
 
     // Image should be set
     id mockImage = [OCMockObject mockForClass:[UIImage class]];

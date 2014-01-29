@@ -13,6 +13,7 @@
 #import "SocializeTableBGInfoView.h"
 #import "_Socialize.h"
 #import "socialize_globals.h"
+#import "UIDevice+VersionCheck.h"
 
 @implementation SocializeActivityViewController
 @synthesize activityTableViewCell = activityTableViewCell_;
@@ -37,15 +38,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.informationView.errorLabel.text = @"No Activity to Show";
+    
+    //iOS 7 adjustments for nav bar and cell separator
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
 }
 
 - (SocializeActivityTableViewCell*)createActivityTableViewCell {
-    [self.bundle loadNibNamed:@"SocializeActivityTableViewCell" owner:self options:nil];
+    [[NSBundle mainBundle] loadNibNamed:[SocializeActivityViewController tableViewCellNibName] owner:self options:nil];
     SocializeActivityTableViewCell *cell = [[self.activityTableViewCell retain] autorelease];
     self.activityTableViewCell = nil;
     
     return cell;
 }
+
+
+//separate nibs for iOS 6/7 compatibility
+//necessary as iOS 7 tables have "flat" look and legacy NIB displays artifacts in iOS 7
++ (NSString *)tableViewCellNibName {
+    if([[UIDevice currentDevice] systemMajorVersion] < 7) {
+        return @"SocializeActivityTableViewCell";
+    }
+    else {
+        return @"SocializeActivityTableViewCellIOS7";
+    }
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return SocializeActivityTableViewCellHeight;
@@ -80,9 +101,11 @@
     
     if ([activity isMemberOfClass:[SocializeLike class]]) {
         image = [UIImage imageNamed:@"socialize-activity-cell-icon-like.png"];
-    } else if ([activity isMemberOfClass:[SocializeComment class]]) {
+    }
+    else if ([activity isMemberOfClass:[SocializeComment class]]) {
         image = [UIImage imageNamed:@"socialize-activity-cell-icon-comment.png"];
-    } else if ([activity isMemberOfClass:[SocializeShare class]]) {
+    }
+    else if ([activity isMemberOfClass:[SocializeShare class]]) {
         switch ([(SocializeShare*)activity medium]) {
             case SocializeShareMediumFacebook:
                 image = [UIImage imageNamed:@"socialize-activity-cell-icon-facebook.png"];
@@ -91,6 +114,9 @@
                 image = [UIImage imageNamed:@"socialize-activity-cell-icon-twitter.png"];
                 break;
             case SocializeShareMediumOther:
+                image = [UIImage imageNamed:@"socialize-activity-cell-icon-share.png"];
+                break;
+            default:
                 image = [UIImage imageNamed:@"socialize-activity-cell-icon-share.png"];
                 break;
         }

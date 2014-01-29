@@ -99,7 +99,7 @@
     [self waitForAbsenceOfViewWithAccessibilityLabel:@"In progress"];
     
     NSLog(@"Waiting for web view");
-    [self waitForTimeInterval:1];
+    [self waitForTimeInterval:3];
     [self noCheckEnterText:@"mr_socialize"  intoViewWithAccessibilityLabel:@"Username or email" traits:UIAccessibilityTraitNone];
 
     [self noCheckEnterText:@"supersecret" intoViewWithAccessibilityLabel:@"Password" traits:UIAccessibilityTraitNone];
