@@ -9,6 +9,7 @@
 #import "TestAppHelper.h"
 #import "TestAppListViewController.h"
 #import "SZTestHelper.h"
+#import "UIApplication+KIFRotationAdditions.h"
 
 @interface UIIntegrationAcceptanceTests : KIFTestCase
 
@@ -31,15 +32,16 @@
     [tester initializeTest];
 }
 
-//- (void)testRotation {
-//    [system simulateDeviceRotationToOrientation:UIDeviceOrientationLandscapeLeft];
-//    [tester openLinkDialogExample];
-//    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
-//    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
-//    [system simulateDeviceRotationToOrientation:UIDeviceOrientationPortrait];
-//    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
-//    [tester tapViewWithAccessibilityLabel:@"Cancel"];
-//}
+//In the absence of KIF releasing this in the 2.0.0 release, private APIs from Apple are used for rotation
+- (void)testRotation {
+    [[UIApplication sharedApplication] rotateIfNeeded:UIDeviceOrientationLandscapeLeft];
+    [tester openLinkDialogExample];
+    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
+    [[UIApplication sharedApplication] rotateIfNeeded:UIDeviceOrientationPortrait];
+    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
+    [tester tapViewWithAccessibilityLabel:@"Cancel"];
+}
 
 - (void)testActionBar {
     // Set up a test entity
