@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Action Bar &mdash; Socialize iOS SDK 2.9.0 documentation</title>
+    <title>Socialize Action Bar &mdash; Socialize iOS SDK 3.0.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.9.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.9.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.0 documentation" href="index.html" />
     <link rel="next" title="Socialize Like Button" href="like_button.html" />
     <link rel="prev" title="Upgrading Socialize" href="upgrading.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="upgrading.html" title="Upgrading Socialize"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.9.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -202,11 +202,7 @@ type UIView. You can also take advantage of the SZActionButton class, which
 allows you to specify both an <strong>actionBlock</strong> and an
 <strong>entityConfigurationBlock</strong>.  The following example shows how you might add
 both an email and a panic button to the action bar.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">emailButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">shareViaEmailWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">success</span><span class="o">:</span><span class="nb">nil</span> <span class="n">failure</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
@@ -218,17 +214,23 @@ both an email and a panic button to the action bar.</p>
             <span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="o">:</span><span class="s">@&quot;Oh no!&quot;</span> <span class="n">message</span><span class="o">:</span><span class="nb">nil</span> <span class="n">delegate</span><span class="o">:</span><span class="nb">nil</span> <span class="n">cancelButtonTitle</span><span class="o">:</span><span class="nb">nil</span> <span class="n">otherButtonTitles</span><span class="o">:</span><span class="s">@&quot;Ok&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
             <span class="p">[</span><span class="n">alertView</span> <span class="n">show</span><span class="p">];</span>
         <span class="p">};</span>
-        
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsRight</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="n">panicButton</span><span class="p">,</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">commentButton</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
         
-        <span class="n">UIButton</span> <span class="o">*</span><span class="n">emailButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectZero</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">emailButton</span> <span class="n">setImage</span><span class="o">:</span><span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;socialize-selectnetwork-email-icon.png&quot;</span><span class="p">]</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">emailButton</span> <span class="n">sizeToFit</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">emailButton</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">emailButtonPressed</span><span class="o">:</span><span class="p">)</span> <span class="n">forControlEvents</span><span class="o">:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsLeft</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="p">[</span><span class="n">SZActionButton</span> <span class="n">viewsButton</span><span class="p">],</span> <span class="n">emailButton</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+        <span class="n">UIButton</span> <span class="o">*</span><span class="n">likeButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectZero</span><span class="p">];</span>
+        <span class="n">UIImage</span> <span class="o">*</span><span class="n">backgroundImage</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;action-bar-button-red-ios7.png&quot;</span><span class="p">]</span> <span class="n">stretchableImageWithLeftCapWidth</span><span class="o">:</span><span class="mi">0</span> <span class="n">topCapHeight</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">UIImage</span> <span class="o">*</span><span class="n">buttonImage</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;action-bar-icon-liked.png&quot;</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">likeButton</span> <span class="n">setBackgroundImage</span><span class="o">:</span><span class="n">backgroundImage</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">likeButton</span> <span class="n">setImage</span><span class="o">:</span><span class="n">buttonImage</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">likeButton</span> <span class="n">sizeToFit</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">likeButton</span> <span class="n">addTarget</span><span class="o">:</span><span class="n">self</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">likeButtonPressed</span><span class="o">:</span><span class="p">)</span> <span class="n">forControlEvents</span><span class="o">:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsLeft</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="p">[</span><span class="n">SZActionButton</span> <span class="n">viewsButton</span><span class="p">],</span> <span class="n">likeButton</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
         
         <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">likeButtonPressed:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
+    <span class="c1">//code for like button goes here</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -236,7 +238,7 @@ both an email and a panic button to the action bar.</p>
 </div>
 <div class="section" id="custom-background">
 <h3>Custom Background<a class="headerlink" href="#custom-background" title="Permalink to this headline">¶</a></h3>
-<p>You can change the background image and transparency of the bar.</p>
+<p>For iOS 6 and earlier, you can change the background image and transparency of the bar image. For iOS 7 and later, you can customize the &#8220;flatter&#8221; look by changing the background color and transparency of the bar itself:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
     
@@ -244,15 +246,21 @@ both an email and a panic button to the action bar.</p>
         <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectNull</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
         
+        <span class="c1">//iOS 6 and earlier</span>
         <span class="n">UIImage</span> <span class="o">*</span><span class="n">customBackground</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;action-bar-bg.png&quot;</span><span class="p">]</span> <span class="n">stretchableImageWithLeftCapWidth</span><span class="o">:</span><span class="mf">0.5</span> <span class="n">topCapHeight</span><span class="o">:</span><span class="mf">0.5</span><span class="p">];</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">backgroundImageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">customBackground</span><span class="p">;</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">backgroundImageView</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3f</span><span class="p">;</span>
+
+        <span class="c1">//iOS 7 and later</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="n">setBackgroundColor</span><span class="o">:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">blueColor</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="n">setAlpha</span><span class="o">:</span><span class="mf">0.5f</span><span class="p">];</span>
         
         <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p><strong>NOTE:</strong> iOS 7 introduced a range of new design principles and standards you should consider when designing apps for iOS 7 and later. Apple&#8217;s guidelines can be found <a class="reference external" href="https://developer.apple.com/library/ios/design/index.html">here</a>.</p>
 </div>
 </div>
 </div>
@@ -318,7 +326,7 @@ both an email and a panic button to the action bar.</p>
         <li class="right" >
           <a href="upgrading.html" title="Upgrading Socialize"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.9.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

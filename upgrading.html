@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upgrading Socialize &mdash; Socialize iOS SDK 2.9.0 documentation</title>
+    <title>Upgrading Socialize &mdash; Socialize iOS SDK 3.0.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.9.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.9.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.0 documentation" href="index.html" />
     <link rel="next" title="Socialize Action Bar" href="action_bar.html" />
     <link rel="prev" title="Upgrading to Socialize v2" href="upgrading_2_0.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.9.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -108,7 +108,7 @@ situation.</p>
 </span><span class="hll">
 </span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">navigationController</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithRootViewController</span><span class="o">:</span><span class="n">entityLoader</span><span class="p">];</span>
-</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="n">presentModalViewController</span><span class="o">:</span><span class="n">navigationController</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">navigationController</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
 </span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="n">pushViewController</span><span class="o">:</span><span class="n">entityLoader</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
 </span><span class="hll">        <span class="p">}</span>
@@ -246,7 +246,7 @@ delete it before performing this step</p>
         <li class="right" >
           <a href="upgrading_2_0.html" title="Upgrading to Socialize v2"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.9.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

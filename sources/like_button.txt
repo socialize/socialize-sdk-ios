@@ -11,8 +11,7 @@ In v1.7 of the Socialize SDK for iOS is a new stand-alone Like Button. This
 is simply the “like” capablity of Socialize contained in a self-standing UI
 element which can be easily customized to suit your app.
 
-.. image:: images/like_button_unliked.png	
-.. image:: images/like_button_liked.png	
+.. image:: images/like_button_liked_unliked.png	
 
 Displaying the Like Button
 -------------------------
@@ -28,12 +27,15 @@ add it to your view hierarchy.
 
 Customizing the Like Button
 -------------------------
-All of the images on the like button can be changed. To do this, just set the appropriate property.
-The full list of image properties is:
+All of the images on the like button can be changed. To do this, just set the appropriate property. The full list of image properties is:
 
 .. literalinclude:: Socialize/SZLikeButton.h
   :start-after: begin-image-properties
   :end-before: end-image-properties
+
+**NOTE:** For iOS 7, the Like Button has been redesigned with a "flatter" look, something you may want to consider when designing custom images for it. For references, Apple's guidelines on iOS 7 UI can be found `here`_.
+
+.. _here: https://developer.apple.com/library/ios/design/index.html 
 
 Responding to State Changes
 -------------------------

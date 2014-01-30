@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Like Button &mdash; Socialize iOS SDK 2.9.0 documentation</title>
+    <title>Socialize Like Button &mdash; Socialize iOS SDK 3.0.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.9.0',
+        VERSION:     '3.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 2.9.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.0 documentation" href="index.html" />
     <link rel="next" title="Twitter Integration" href="twitter.html" />
     <link rel="prev" title="Socialize Action Bar" href="action_bar.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="action_bar.html" title="Socialize Action Bar"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.9.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -77,8 +77,7 @@
 <p>In v1.7 of the Socialize SDK for iOS is a new stand-alone Like Button. This
 is simply the “like” capablity of Socialize contained in a self-standing UI
 element which can be easily customized to suit your app.</p>
-<img alt="images/like_button_unliked.png" src="images/like_button_unliked.png" />
-<img alt="images/like_button_liked.png" src="images/like_button_liked.png" />
+<img alt="images/like_button_liked_unliked.png" src="images/like_button_liked_unliked.png" />
 </div>
 <div class="section" id="displaying-the-like-button">
 <h2>Displaying the Like Button<a class="headerlink" href="#displaying-the-like-button" title="Permalink to this headline">¶</a></h2>
@@ -110,7 +109,7 @@ add it to your view hierarchy.</p>
     
     <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">likeButton</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">SocializeEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SocializeEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;hot_ticket_1&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;A Hot Ticket&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">likeButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZLikeButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">likeButton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZLikeButton</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFrame</span><span class="o">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span> <span class="n">tabBarStyle</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
         
         <span class="c1">// Turn of automatic sizing of the like button (default NO)</span>
         <span class="c1">// likeButton.autoresizeDisabled = YES;</span>
@@ -129,8 +128,7 @@ add it to your view hierarchy.</p>
 </div>
 <div class="section" id="customizing-the-like-button">
 <h2>Customizing the Like Button<a class="headerlink" href="#customizing-the-like-button" title="Permalink to this headline">¶</a></h2>
-<p>All of the images on the like button can be changed. To do this, just set the appropriate property.
-The full list of image properties is:</p>
+<p>All of the images on the like button can be changed. To do this, just set the appropriate property. The full list of image properties is:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">inactiveImage</span><span class="p">;</span>
 <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">inactiveHighlightedImage</span><span class="p">;</span>
 
@@ -141,6 +139,7 @@ The full list of image properties is:</p>
 <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">UIImage</span> <span class="o">*</span><span class="n">unlikedIcon</span><span class="p">;</span>
 </pre></div>
 </div>
+<p><strong>NOTE:</strong> For iOS 7, the Like Button has been redesigned with a &#8220;flatter&#8221; look, something you may want to consider when designing custom images for it. For references, Apple&#8217;s guidelines on iOS 7 UI can be found <a class="reference external" href="https://developer.apple.com/library/ios/design/index.html">here</a>.</p>
 </div>
 <div class="section" id="responding-to-state-changes">
 <h2>Responding to State Changes<a class="headerlink" href="#responding-to-state-changes" title="Permalink to this headline">¶</a></h2>
@@ -251,7 +250,7 @@ this by listening for the SocializeLikeButtonDidChangeStateNotification as follo
         <li class="right" >
           <a href="action_bar.html" title="Socialize Action Bar"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 2.9.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
