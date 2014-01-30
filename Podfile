@@ -5,6 +5,10 @@ xcodeproj 'Socialize.xcodeproj'
 link_with 'Socialize', 'Socialize-profiling'
 pod 'Loopy', :podspec => 'https://raw.github.com/socialize/loopy-sdk-ios/master/Loopy.podspec'
 
+target 'UIIntegrationAcceptanceTests', :exclusive => true do
+  pod 'KIF', '~> 2.0'
+end
+
 #copy resources from Loopy to include in framework
 post_install do | installer |
   require 'fileutils'

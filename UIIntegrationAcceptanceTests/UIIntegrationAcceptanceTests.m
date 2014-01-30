@@ -31,15 +31,15 @@
     [tester initializeTest];
 }
 
-- (void)testRotation {
-    [system simulateDeviceRotationToOrientation:UIDeviceOrientationLandscapeLeft];
-    [tester openLinkDialogExample];
-    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
-    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
-    [system simulateDeviceRotationToOrientation:UIDeviceOrientationPortrait];
-    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
-    [tester tapViewWithAccessibilityLabel:@"Cancel"];
-}
+//- (void)testRotation {
+//    [system simulateDeviceRotationToOrientation:UIDeviceOrientationLandscapeLeft];
+//    [tester openLinkDialogExample];
+//    [tester waitForViewWithAccessibilityLabel:@"Cancel"];
+//    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"topImageView"];
+//    [system simulateDeviceRotationToOrientation:UIDeviceOrientationPortrait];
+//    [tester waitForViewWithAccessibilityLabel:@"topImageView"];
+//    [tester tapViewWithAccessibilityLabel:@"Cancel"];
+//}
 
 - (void)testActionBar {
     // Set up a test entity

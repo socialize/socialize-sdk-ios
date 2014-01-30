@@ -4,9 +4,6 @@
 [submodule "ThirdParty/JSONKit"]
 	path = ThirdParty/JSONKit
 	url = https://github.com/socialize/JSONKit.git
-[submodule "ThirdParty/KIF"]
-	path = ThirdParty/KIF
-	url = https://github.com/square/KIF.git
 [submodule "ThirdParty/OAuthConsumer"]
 	path = ThirdParty/OAuthConsumer
 	url = https://github.com/socialize/OAuthConsumer.git
