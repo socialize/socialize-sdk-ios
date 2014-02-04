@@ -29,13 +29,13 @@
 		2C23AACE187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AACF187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AAD0187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
+		2C27B8C018A1A9F50046CCF6 /* libSocialize-new.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize-new.a */; };
 		2C578C921891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
 		2C578C931891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
 		2C578C941891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
 		2C578C951891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
 		2C578C961891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
 		2C578C971891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
-		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C6E52E11884BE1C009C8F4F /* SZNetworkImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E52E01884BE1C009C8F4F /* SZNetworkImageProvider.m */; };
 		2C6E52E21884BE1C009C8F4F /* SZNetworkImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E52E01884BE1C009C8F4F /* SZNetworkImageProvider.m */; };
 		2C6E52FF1884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C6E52F71884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png */; };
@@ -851,7 +851,6 @@
 		AA6C99871591653900E24658 /* SZSelectNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6C99841591653900E24658 /* SZSelectNetworkViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6C99881591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
 		AA6C99891591653900E24658 /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
-		AA6CE2EC15905B0200A4B074 /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA6D5A851592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A861592F34000058669 /* SZFacebookLinkOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA6D5A871592F34000058669 /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
@@ -3313,13 +3312,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C27B8C018A1A9F50046CCF6 /* libSocialize-new.a in Frameworks */,
 				AAF580EE16BC99610007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
-				AA6CE2EC15905B0200A4B074 /* libSocialize-profiling.a in Frameworks */,
+				AA6C6445158F117E005E5632 /* libOCMock.a in Frameworks */,
 				AA511230158F12D2007341AA /* CoreLocation.framework in Frameworks */,
 				AA51122F158F12CD007341AA /* MessageUI.framework in Frameworks */,
 				AA51122E158F12C8007341AA /* QuartzCore.framework in Frameworks */,
 				AA51122D158F12C0007341AA /* MapKit.framework in Frameworks */,
-				AA6C6445158F117E005E5632 /* libOCMock.a in Frameworks */,
 				AA6C63CE158F0EB0005E5632 /* UIKit.framework in Frameworks */,
 				AA6C63CF158F0EB0005E5632 /* Foundation.framework in Frameworks */,
 				AA6C63D0158F0EB0005E5632 /* CoreGraphics.framework in Frameworks */,
@@ -4717,9 +4716,9 @@
 				AA6C640D158F0EE6005E5632 /* TestLocationUtils.m */,
 				AA6C6425158F0F49005E5632 /* IntegrationTestsAppDelegate.h */,
 				AA6C6426158F0F49005E5632 /* IntegrationTestsAppDelegate.m */,
-				AA6C63D2158F0EB0005E5632 /* Supporting Files */,
 				AA0F104115FAB90B00391CFE /* TestEventUtils.h */,
 				AA0F104215FAB90B00391CFE /* TestEventUtils.m */,
+				AA6C63D2158F0EB0005E5632 /* Supporting Files */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -7394,7 +7393,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */,
 				AA6C63D8158F0EB0005E5632 /* main.m in Sources */,
 				AA6C640E158F0EE6005E5632 /* SZIntegrationTestCase.m in Sources */,
 				AA6C640F158F0EE6005E5632 /* TestEntityServices.m in Sources */,
