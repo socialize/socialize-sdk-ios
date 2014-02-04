@@ -279,6 +279,70 @@
 		2CB6C3E4187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CB6C3E5187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CB7AF3D187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
+		2CBB667B18A1888000A68BAC /* SZPinterestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF2D1778C6CA00109630 /* SZPinterestUtils.m */; };
+		2CBB667C18A1888000A68BAC /* SZPinterestShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF441778D3F600109630 /* SZPinterestShareData.m */; };
+		2CBB667D18A1888000A68BAC /* SZPinterestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4810FF4A1778DA2E00109630 /* SZPinterestEngine.m */; };
+		2CBB667E18A188DD00A68BAC /* SZLikeButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94F51885FACC0031CF54 /* SZLikeButtonIOS6.m */; };
+		2CBB667F18A188E800A68BAC /* ASIdentifierManager+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A2D2516F8D7720066111B /* ASIdentifierManager+Utilities.m */; };
+		2CBB668018A1890100A68BAC /* SZLinkDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */; };
+		2CBB668118A1891200A68BAC /* SZOpenURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2168D1607D6DD0049850E /* SZOpenURLHandler.m */; };
+		2CBB668218A1892200A68BAC /* SZViewControllerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB86D6915FEBC510029F157 /* SZViewControllerWrapper.m */; };
+		2CBB668318A18A0200A68BAC /* SZDisplayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB86D6315FEABEF0029F157 /* SZDisplayUtils.m */; };
+		2CBB668418A18A1500A68BAC /* UIViewController+Display.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAA3CBA15FE5DA2003E08AF /* UIViewController+Display.m */; };
+		2CBB668518A18A2E00A68BAC /* SZWindowDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F10A115FC133E00391CFE /* SZWindowDisplay.m */; };
+		2CBB668618A18A4400A68BAC /* SZNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AADB363E15F0350A000264D6 /* SZNotificationHandler.m */; };
+		2CBB668718A18A4D00A68BAC /* SZStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84654615EBE52B00065678 /* SZStatusView.m */; };
+		2CBB668818A18A5900A68BAC /* SZEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F103C15FAB61900391CFE /* SZEventUtils.m */; };
+		2CBB668918A18A6600A68BAC /* SZEmailShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8B15DACDCC00A31E39 /* SZEmailShareData.m */; };
+		2CBB668A18A18A7000A68BAC /* SZSMSShareData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA815C8515DACDBE00A31E39 /* SZSMSShareData.m */; };
+		2CBB668B18A18A8100A68BAC /* SZOARequest+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC194D915AF712B00DDE42F /* SZOARequest+Twitter.m */; };
+		2CBB668C18A18A8100A68BAC /* SZOARequest+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */; };
+		2CBB668D18A18A8900A68BAC /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
+		2CBB668E18A18A9600A68BAC /* SZSocialNetworkPostData.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7CB7715C8A5D30064C5FD /* SZSocialNetworkPostData.m */; };
+		2CBB668F18A18AAB00A68BAC /* SZActionBarIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */; };
+		2CBB669018A18AAB00A68BAC /* SZActionButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EF1885F57E0031CF54 /* SZActionButtonIOS6.m */; };
+		2CBB669118A18ABB00A68BAC /* SZComposeCommentViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC69BD187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m */; };
+		2CBB669218A18AC800A68BAC /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67C15C083CD005FA860 /* NSString+UUID.m */; };
+		2CBB669318A18AD300A68BAC /* SZAPIClientHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AA91F93715B0D2E800BC373E /* SZAPIClientHelpers.m */; };
+		2CBB669418A18AE200A68BAC /* NSOperationQueue+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC194E615AF925200DDE42F /* NSOperationQueue+Socialize.m */; };
+		2CBB669518A18B0200A68BAC /* SZOARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA77C95515ACCE6B00745096 /* SZOARequest.m */; };
+		2CBB669618A18B1000A68BAC /* SZViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03E115A26CAA00EBB705 /* SZViewUtils.m */; };
+		2CBB669718A18B2700A68BAC /* SZUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03DF15A26CAA00EBB705 /* SZUserUtils.m */; };
+		2CBB669818A18B3100A68BAC /* SZTwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03DD15A26CAA00EBB705 /* SZTwitterUtils.m */; };
+		2CBB669918A18B3F00A68BAC /* SZSubscriptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03DB15A26CAA00EBB705 /* SZSubscriptionUtils.m */; };
+		2CBB669A18A18B4B00A68BAC /* SZSmartAlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03D915A26CAA00EBB705 /* SZSmartAlertUtils.m */; };
+		2CBB669B18A18B5700A68BAC /* SZShareUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03D715A26CAA00EBB705 /* SZShareUtils.m */; };
+		2CBB669C18A18B6000A68BAC /* SZLocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03D515A26CAA00EBB705 /* SZLocationUtils.m */; };
+		2CBB669D18A18BAE00A68BAC /* SZLikeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03D315A26CAA00EBB705 /* SZLikeUtils.m */; };
+		2CBB669E18A18BC600A68BAC /* SZFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03D115A26CAA00EBB705 /* SZFacebookUtils.m */; };
+		2CBB669F18A18BD000A68BAC /* SZEntityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03CF15A26CAA00EBB705 /* SZEntityUtils.m */; };
+		2CBB66A018A18BDA00A68BAC /* SZCommentUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03CD15A26CAA00EBB705 /* SZCommentUtils.m */; };
+		2CBB66A118A18BF500A68BAC /* SZActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03CB15A26CAA00EBB705 /* SZActionUtils.m */; };
+		2CBB66A218A18C7400A68BAC /* SZUserProfileViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3D5187B7E64008C0AAE /* SZUserProfileViewControllerIOS6.m */; };
+		2CBB66A318A18C7400A68BAC /* SZUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */; };
+		2CBB66A418A18C7D00A68BAC /* SZActionBarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D03C915A26CAA00EBB705 /* SZActionBarUtils.m */; };
+		2CBB66A518A18C9400A68BAC /* SZShareDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */; };
+		2CBB66A618A18C9400A68BAC /* SZShareDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD98F9F15916C6900845FC9 /* SZShareDialogViewController.m */; };
+		2CBB66A718A18CA400A68BAC /* SDKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEEE62415A26B6B003566BA /* SDKHelpers.m */; };
+		2CBB66A818A18CAD00A68BAC /* SZUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2D42E9159D4FFD00622210 /* SZUserSettings.m */; };
+		2CBB66A918A18CC800A68BAC /* SZActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5EA15967A7400FE2B61 /* SZActionBar.m */; };
+		2CBB66AA18A18CC800A68BAC /* SZActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5F61596973C00FE2B61 /* SZActionButton.m */; };
+		2CBB66AB18A18CD400A68BAC /* SZHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5EC15967A7400FE2B61 /* SZHorizontalContainerView.m */; };
+		2CBB66AC18A18D0700A68BAC /* SZLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AADFE5E415967A0E00FE2B61 /* SZLikeButton.m */; };
+		2CBB66AD18A18D1000A68BAC /* SZFacebookLinkOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */; };
+		2CBB66AE18A18D1F00A68BAC /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
+		2CBB66AF18A18D2600A68BAC /* SZCommentsListViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC69C1187C7FE50009F6F0 /* SZCommentsListViewControllerIOS6.m */; };
+		2CBB66B018A18D2E00A68BAC /* SZComposeCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F571592A14C0020E0E4 /* SZComposeCommentViewController.m */; };
+		2CBB66B118A18D4A00A68BAC /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
+		2CBB66B218A18D5200A68BAC /* SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */; };
+		2CBB66B318A18D6E00A68BAC /* _SZTwitterLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086D0158D35BE00480399 /* _SZTwitterLinkViewController.m */; };
+		2CBB66B418A18DAB00A68BAC /* SZSelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */; };
+		2CBB66B518A18DE000A68BAC /* SZShareOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008718158D35BF00480399 /* SZShareOptions.m */; };
+		2CBB66B618A18DEC00A68BAC /* SZLikeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008707158D35BF00480399 /* SZLikeOptions.m */; };
+		2CBB66B718A18DF500A68BAC /* SZCommentOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086F4158D35BF00480399 /* SZCommentOptions.m */; };
+		2CBB66B818A18E0300A68BAC /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086EE158D35BF00480399 /* SZActivityOptions.m */; };
+		2CBB66B918A18E1500A68BAC /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
+		2CBB66BA18A18E1500A68BAC /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
 		2CBBFE561880BB8F00A01EB2 /* CommentsTableFooterViewIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC3B0B187F428400112F66 /* CommentsTableFooterViewIOS6.m */; };
 		2CBBFE9D1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
 		2CBBFE9E1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
@@ -1853,6 +1917,7 @@
 		AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB0B8115E70FB10091600C /* ui_advanced.m */; };
 		BBD5B5817D2A486688169A09 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
 		E8D06AD4AB0744E59601B738 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
+		E9100DB445E643B5A40E9FFA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3168,6 +3233,7 @@
 				2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */,
 				2C7DDBAF18A06D290006A57A /* libfacebook_ios_sdk.a in Frameworks */,
 				2C7DDAE118A049490006A57A /* Foundation.framework in Frameworks */,
+				E9100DB445E643B5A40E9FFA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5179,10 +5245,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C7DDB1018A049490006A57A /* Build configuration list for PBXNativeTarget "Socialize-new" */;
 			buildPhases = (
+				1DF06C8DDD524E62A13C41D9 /* Check Pods Manifest.lock */,
 				2C7DDBAD18A06CCF0006A57A /* Perform Project Substitutions */,
 				2C7DDADC18A049490006A57A /* Sources */,
 				2C7DDADD18A049490006A57A /* Frameworks */,
 				2C7DDBAC18A06CC10006A57A /* CopyFiles */,
+				2CBB667A18A15E9600A68BAC /* Resources */,
+				DF4655E05FC3453A8CF21178 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5556,6 +5625,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2CB3CE53186CA373000B3CF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CBB667A18A15E9600A68BAC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6460,6 +6536,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1DF06C8DDD524E62A13C41D9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		252F26F178864470A60BAFA4 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6684,6 +6775,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		DF4655E05FC3453A8CF21178 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EF723DCA89644DF9A7EF7AA1 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6721,6 +6827,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBB66B918A18E1500A68BAC /* SZUserSettingsViewControllerIOS6.m in Sources */,
+				2CBB66BA18A18E1500A68BAC /* SZUserSettingsViewController.m in Sources */,
+				2CBB66B818A18E0300A68BAC /* SZActivityOptions.m in Sources */,
+				2CBB66B718A18DF500A68BAC /* SZCommentOptions.m in Sources */,
+				2CBB66B618A18DEC00A68BAC /* SZLikeOptions.m in Sources */,
+				2CBB66B518A18DE000A68BAC /* SZShareOptions.m in Sources */,
+				2CBB66A318A18C7400A68BAC /* SZUserProfileViewController.m in Sources */,
+				2CBB66B418A18DAB00A68BAC /* SZSelectNetworkViewController.m in Sources */,
+				2CBB66A618A18C9400A68BAC /* SZShareDialogViewController.m in Sources */,
+				2CBB66B318A18D6E00A68BAC /* _SZTwitterLinkViewController.m in Sources */,
+				2CBB66B218A18D5200A68BAC /* SZTwitterLinkViewController.m in Sources */,
+				2CBB66B118A18D4A00A68BAC /* SZLinkDialogViewController.m in Sources */,
+				2CBB66B018A18D2E00A68BAC /* SZComposeCommentViewController.m in Sources */,
+				2CBB66AF18A18D2600A68BAC /* SZCommentsListViewControllerIOS6.m in Sources */,
+				2CBB66AE18A18D1F00A68BAC /* SZCommentsListViewController.m in Sources */,
+				2CBB66AD18A18D1000A68BAC /* SZFacebookLinkOptions.m in Sources */,
+				2CBB66AC18A18D0700A68BAC /* SZLikeButton.m in Sources */,
+				2CBB66A918A18CC800A68BAC /* SZActionBar.m in Sources */,
+				2CBB66AB18A18CD400A68BAC /* SZHorizontalContainerView.m in Sources */,
+				2CBB66AA18A18CC800A68BAC /* SZActionButton.m in Sources */,
+				2CBB66A818A18CAD00A68BAC /* SZUserSettings.m in Sources */,
+				2CBB66A718A18CA400A68BAC /* SDKHelpers.m in Sources */,
+				2CBB66A518A18C9400A68BAC /* SZShareDialogViewControllerIOS6.m in Sources */,
+				2CBB66A418A18C7D00A68BAC /* SZActionBarUtils.m in Sources */,
+				2CBB66A218A18C7400A68BAC /* SZUserProfileViewControllerIOS6.m in Sources */,
+				2CBB66A118A18BF500A68BAC /* SZActionUtils.m in Sources */,
+				2CBB66A018A18BDA00A68BAC /* SZCommentUtils.m in Sources */,
+				2CBB669F18A18BD000A68BAC /* SZEntityUtils.m in Sources */,
+				2CBB669E18A18BC600A68BAC /* SZFacebookUtils.m in Sources */,
+				2CBB669D18A18BAE00A68BAC /* SZLikeUtils.m in Sources */,
+				2CBB669C18A18B6000A68BAC /* SZLocationUtils.m in Sources */,
+				2CBB669B18A18B5700A68BAC /* SZShareUtils.m in Sources */,
+				2CBB669A18A18B4B00A68BAC /* SZSmartAlertUtils.m in Sources */,
+				2CBB669918A18B3F00A68BAC /* SZSubscriptionUtils.m in Sources */,
+				2CBB669818A18B3100A68BAC /* SZTwitterUtils.m in Sources */,
+				2CBB669718A18B2700A68BAC /* SZUserUtils.m in Sources */,
+				2CBB669618A18B1000A68BAC /* SZViewUtils.m in Sources */,
+				2CBB669518A18B0200A68BAC /* SZOARequest.m in Sources */,
+				2CBB668B18A18A8100A68BAC /* SZOARequest+Twitter.m in Sources */,
+				2CBB669418A18AE200A68BAC /* NSOperationQueue+Socialize.m in Sources */,
+				2CBB669318A18AD300A68BAC /* SZAPIClientHelpers.m in Sources */,
+				2CBB669218A18AC800A68BAC /* NSString+UUID.m in Sources */,
+				2CBB669118A18ABB00A68BAC /* SZComposeCommentViewControllerIOS6.m in Sources */,
+				2CBB668F18A18AAB00A68BAC /* SZActionBarIOS6.m in Sources */,
+				2CBB669018A18AAB00A68BAC /* SZActionButtonIOS6.m in Sources */,
+				2CBB668E18A18A9600A68BAC /* SZSocialNetworkPostData.m in Sources */,
+				2CBB668D18A18A8900A68BAC /* Facebook+Socialize.m in Sources */,
+				2CBB668C18A18A8100A68BAC /* SZOARequest+Socialize.m in Sources */,
+				2CBB668A18A18A7000A68BAC /* SZSMSShareData.m in Sources */,
+				2CBB668918A18A6600A68BAC /* SZEmailShareData.m in Sources */,
+				2CBB668818A18A5900A68BAC /* SZEventUtils.m in Sources */,
+				2CBB668718A18A4D00A68BAC /* SZStatusView.m in Sources */,
+				2CBB668618A18A4400A68BAC /* SZNotificationHandler.m in Sources */,
+				2CBB668518A18A2E00A68BAC /* SZWindowDisplay.m in Sources */,
+				2CBB668418A18A1500A68BAC /* UIViewController+Display.m in Sources */,
+				2CBB668318A18A0200A68BAC /* SZDisplayUtils.m in Sources */,
+				2CBB668218A1892200A68BAC /* SZViewControllerWrapper.m in Sources */,
+				2CBB668118A1891200A68BAC /* SZOpenURLHandler.m in Sources */,
+				2CBB668018A1890100A68BAC /* SZLinkDialogViewControllerIOS6.m in Sources */,
+				2CBB667F18A188E800A68BAC /* ASIdentifierManager+Utilities.m in Sources */,
+				2CBB667E18A188DD00A68BAC /* SZLikeButtonIOS6.m in Sources */,
+				2CBB667B18A1888000A68BAC /* SZPinterestUtils.m in Sources */,
+				2CBB667C18A1888000A68BAC /* SZPinterestShareData.m in Sources */,
+				2CBB667D18A1888000A68BAC /* SZPinterestEngine.m in Sources */,
 				2C7DDB1E18A04B830006A57A /* _Socialize.m in Sources */,
 				2C7DDB1F18A04BBD0006A57A /* CommentDetailsView.m in Sources */,
 				2C7DDB2018A04BBD0006A57A /* CommentMapView.m in Sources */,
@@ -7570,6 +7740,7 @@
 /* Begin XCBuildConfiguration section */
 		2C7DDAFC18A049490006A57A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -7595,7 +7766,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				GCC_WARN_UNUSED_FUNCTION = NO;
-				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(CONFIGURATION_BUILD_DIR)",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -7609,6 +7783,7 @@
 		};
 		2C7DDAFD18A049490006A57A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -7633,7 +7808,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				GCC_WARN_UNUSED_FUNCTION = NO;
-				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(CONFIGURATION_BUILD_DIR)",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -8198,6 +8376,7 @@
 				2C7DDAFD18A049490006A57A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		487047D417EEFB04008D5741 /* Build configuration list for PBXNativeTarget "UIIntegrationAcceptanceTests" */ = {
 			isa = XCConfigurationList;
