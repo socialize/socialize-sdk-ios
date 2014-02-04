@@ -35,7 +35,6 @@
 		2C578C951891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
 		2C578C961891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
 		2C578C971891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */; };
-		2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C698F52181739C3003643B0 /* SZLinkDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAB845B1815ECEB00790B5F /* SZLinkDialogView.m */; };
 		2C6E52E11884BE1C009C8F4F /* SZNetworkImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E52E01884BE1C009C8F4F /* SZNetworkImageProvider.m */; };
 		2C6E52E21884BE1C009C8F4F /* SZNetworkImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E52E01884BE1C009C8F4F /* SZNetworkImageProvider.m */; };
@@ -209,6 +208,7 @@
 		2C7DDBAF18A06D290006A57A /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */; };
 		2C7DDBB018A06D290006A57A /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
+		2C7F1EA418A19F2C00E420D6 /* libSocialize-new.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize-new.a */; };
 		2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
 		2C8427A0187DDA1C00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
 		2C8427A1187DDA1D00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
@@ -3294,9 +3294,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
+				2C7F1EA418A19F2C00E420D6 /* libSocialize-new.a in Frameworks */,
 				AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */,
+				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
 				AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */,
 				AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */,
 				AACED946158FCDD20024EC43 /* MapKit.framework in Frameworks */,
@@ -5479,15 +5480,15 @@
 			projectRoot = "";
 			targets = (
 				AA00858F158D2B1100480399 /* TestApp */,
+				AA0C6013158FC4F000F66A3B /* UnitTests */,
+				AA6C63CB158F0EB0005E5632 /* IntegrationTests */,
+				487047C417EEFB03008D5741 /* UIIntegrationAcceptanceTests */,
+				AA6CE2DE1590536800A4B074 /* Socialize Framework */,
+				2C7DDADF18A049490006A57A /* Socialize-new */,
 				AA0085BF158D2EFC00480399 /* Socialize */,
 				AAB5E520159044F900D3EBDF /* Socialize-profiling */,
 				AA0085F2158D358B00480399 /* Socialize-noarc */,
 				AAB5E473159044E600D3EBDF /* Socialize-noarc-profiling */,
-				2C7DDADF18A049490006A57A /* Socialize-new */,
-				AA6C63CB158F0EB0005E5632 /* IntegrationTests */,
-				AA0C6013158FC4F000F66A3B /* UnitTests */,
-				AA6CE2DE1590536800A4B074 /* Socialize Framework */,
-				487047C417EEFB03008D5741 /* UIIntegrationAcceptanceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -7281,7 +7282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C698F3D1817398B003643B0 /* SZLinkDialogView.m in Sources */,
 				AA0C6074158FC5D000F66A3B /* TestUtils.m in Sources */,
 				AA0C6075158FC5D000F66A3B /* JRSwizzle.m in Sources */,
 				AA0C6076158FC5D000F66A3B /* UIAlertView+Observer.m in Sources */,

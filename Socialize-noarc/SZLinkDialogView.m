@@ -9,10 +9,14 @@
 #import "SZLinkDialogView.h"
 #import "UITableView+Resize.h"
 
+@interface SZLinkDialogView() {
+    int topImageIndex;
+    float topImageHeight;
+}
+@end
+
 @implementation SZLinkDialogView
 
-int topImageIndex = -1;
-float topImageHeight = 0.0;
 
 @synthesize topImageView;
 
