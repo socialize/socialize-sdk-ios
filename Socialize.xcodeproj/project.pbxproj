@@ -343,6 +343,7 @@
 		2CBB66B818A18E0300A68BAC /* SZActivityOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0086EE158D35BF00480399 /* SZActivityOptions.m */; };
 		2CBB66B918A18E1500A68BAC /* SZUserSettingsViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3E1187B81C2008C0AAE /* SZUserSettingsViewControllerIOS6.m */; };
 		2CBB66BA18A18E1500A68BAC /* SZUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */; };
+		2CBB66ED18A1993F00A68BAC /* libSocialize-new.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize-new.a */; };
 		2CBBFE561880BB8F00A01EB2 /* CommentsTableFooterViewIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC3B0B187F428400112F66 /* CommentsTableFooterViewIOS6.m */; };
 		2CBBFE9D1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
 		2CBBFE9E1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */; };
@@ -773,7 +774,6 @@
 		AA3A9E2D15E5909E00CD2F75 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
 		AA3A9E2E15E5909F00CD2F75 /* SZSessionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCC67615C08181005FA860 /* SZSessionTracker.m */; };
 		AA3BC36F158E7F170073AD50 /* libSocialize-noarc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085F3158D358B00480399 /* libSocialize-noarc.a */; };
-		AA3BC370158E7F200073AD50 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085C0158D2EFC00480399 /* libSocialize.a */; };
 		AA3BC376158E80780073AD50 /* TestAppListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC375158E80780073AD50 /* TestAppListViewController.m */; };
 		AA3BC37A158E820B0073AD50 /* ActionBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3BC378158E820B0073AD50 /* ActionBarExampleViewController.m */; };
 		AA3BC37B158E820B0073AD50 /* ActionBarExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3BC379158E820B0073AD50 /* ActionBarExampleViewController.xib */; };
@@ -800,7 +800,6 @@
 		AA552F5F1592EF260020E0E4 /* SZCommentsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA552F5C1592EF240020E0E4 /* SZCommentsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA552F601592EF260020E0E4 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
 		AA552F611592EF260020E0E4 /* SZCommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA552F5D1592EF250020E0E4 /* SZCommentsListViewController.m */; };
-		AA5624CD159046000052FCFD /* libSocialize-profiling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB5E54F159044F900D3EBDF /* libSocialize-profiling.a */; };
 		AA5CE7C21592998200DB5EAF /* SZLinkDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5CE7BF1592998200DB5EAF /* SZLinkDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA5CE7C31592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
 		AA5CE7C41592998200DB5EAF /* SZLinkDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE7C01592998200DB5EAF /* SZLinkDialogViewController.m */; };
@@ -3256,12 +3255,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBB66ED18A1993F00A68BAC /* libSocialize-new.a in Frameworks */,
 				AAA7C84F16B2073B0041DFD0 /* AdSupport.framework in Frameworks */,
 				AA3BC395158E868D0073AD50 /* MapKit.framework in Frameworks */,
 				AA3BC393158E86770073AD50 /* QuartzCore.framework in Frameworks */,
 				AA3BC391158E866F0073AD50 /* CoreLocation.framework in Frameworks */,
 				AA3BC38F158E866B0073AD50 /* MessageUI.framework in Frameworks */,
-				AA3BC370158E7F200073AD50 /* libSocialize.a in Frameworks */,
 				AA008595158D2B1100480399 /* UIKit.framework in Frameworks */,
 				AA008597158D2B1100480399 /* Foundation.framework in Frameworks */,
 				AA008599158D2B1100480399 /* CoreGraphics.framework in Frameworks */,
@@ -3297,7 +3296,6 @@
 			files = (
 				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
 				AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
-				AA5624CD159046000052FCFD /* libSocialize-profiling.a in Frameworks */,
 				AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */,
 				AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */,
 				AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */,
@@ -5485,11 +5483,11 @@
 				AAB5E520159044F900D3EBDF /* Socialize-profiling */,
 				AA0085F2158D358B00480399 /* Socialize-noarc */,
 				AAB5E473159044E600D3EBDF /* Socialize-noarc-profiling */,
+				2C7DDADF18A049490006A57A /* Socialize-new */,
 				AA6C63CB158F0EB0005E5632 /* IntegrationTests */,
 				AA0C6013158FC4F000F66A3B /* UnitTests */,
 				AA6CE2DE1590536800A4B074 /* Socialize Framework */,
 				487047C417EEFB03008D5741 /* UIIntegrationAcceptanceTests */,
-				2C7DDADF18A049490006A57A /* Socialize-new */,
 			);
 		};
 /* End PBXProject section */
