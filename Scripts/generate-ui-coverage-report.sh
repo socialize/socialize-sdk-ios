@@ -25,16 +25,14 @@ echo "Created directory: ${INFO_DIR}"
 
 TITLE="${PROJECT_NAME} - ${PRODUCT_NAME}"
 echo "TITLE: ${TITLE}"
-SOCIALIZE_LIB_DIR="Socialize-profiling.build"
+SOCIALIZE_LIB_DIR="Socialize-new.build"
 echo "SOCIALIZE_LIB_DIR: ${SOCIALIZE_LIB_DIR}"
-SOCIALIZE_NOARC_LIB_DIR="Socialize-noarc-profiling.build"
-echo "SOCIALIZE_NOARC_LIB_DIR: ${SOCIALIZE_NOARC_LIB_DIR}"
 INFO_TMP_FILE="${INFO_DIR}${PRODUCT_NAME}-Coverage_tmp.info"
 echo "INFO_TMP_FILE: ${INFO_TMP_FILE}"
 INFO_FILE="${INFO_DIR}${PRODUCT_NAME}-Coverage.info"
 echo "INFO_FILE: ${INFO_FILE}"
 
-"${LCOV}" --test-name "${TITLE}" --output-file "$INFO_TMP_FILE" --capture --directory "$CONFIGURATION_TEMP_DIR/$SOCIALIZE_LIB_DIR/Objects-normal/i386/" --directory "$CONFIGURATION_TEMP_DIR/$SOCIALIZE_NOARC_LIB_DIR/Objects-normal/i386/"
+"${LCOV}" --test-name "${TITLE}" --output-file "$INFO_TMP_FILE" --capture --directory "$CONFIGURATION_TEMP_DIR/$SOCIALIZE_LIB_DIR/Objects-normal/i386/"
 
 "${LCOV}" --extract "${INFO_TMP_FILE}" "*/Socialize*/*" --output-file "${INFO_FILE}"
 
