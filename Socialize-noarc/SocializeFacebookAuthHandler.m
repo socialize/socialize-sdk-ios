@@ -8,7 +8,7 @@
 // This file handles basic facebook auth flow to get a token and expiration date, and nothing more
 
 #import "SocializeFacebookAuthHandler.h"
-#import <FBConnect/FBConnect.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 #import "SocializeCommonDefinitions.h"
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"

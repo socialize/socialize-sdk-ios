@@ -7,7 +7,7 @@
 //
 
 #import "SocializeThirdParty.h"
-#import <FBConnect/FBConnect.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 @class SocializeFacebook;
 

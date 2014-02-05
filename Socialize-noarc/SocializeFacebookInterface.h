@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "ShareProviderProtocol.h"
-#import <FBConnect/FBConnect.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 @interface SocializeFacebookInterface : NSObject <ShareProviderProtocol, FBSessionDelegate>
 @property (nonatomic, retain) Facebook *facebook;

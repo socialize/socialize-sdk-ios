@@ -205,7 +205,6 @@
 		2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860D158D35BC00480399 /* ImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860B158D35BC00480399 /* HtmlPageCreator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
-		2C7DDBAF18A06D290006A57A /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */; };
 		2C7DDBB018A06D290006A57A /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		2C7F1EA418A19F2C00E420D6 /* libSocialize-new.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize-new.a */; };
@@ -618,7 +617,6 @@
 		AA0087CD158D35C000480399 /* UIViewController+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008737158D35BF00480399 /* UIViewController+Socialize.m */; };
 		AA0087CE158D35C000480399 /* URLDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008739158D35BF00480399 /* URLDownload.m */; };
 		AA0087CF158D35C000480399 /* URLDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00873B158D35BF00480399 /* URLDownloadOperation.m */; };
-		AA00882D158D3E5C00480399 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */; };
 		AA008846158D424100480399 /* DebugUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008831158D424100480399 /* DebugUtil.m */; };
 		AA008847158D424100480399 /* NSArray+AssociativeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008833158D424100480399 /* NSArray+AssociativeArray.m */; };
 		AA008848158D424100480399 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008835158D424100480399 /* NSData+Base64.m */; };
@@ -1603,7 +1601,6 @@
 		AAB5E516159044E600D3EBDF /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		AAB5E517159044E600D3EBDF /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		AAB5E518159044E600D3EBDF /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
-		AAB5E519159044E600D3EBDF /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */; };
 		AAB5E51A159044E600D3EBDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AAB5E525159044F900D3EBDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AAB5E528159044F900D3EBDF /* _Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008600158D35BC00480399 /* _Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1933,33 +1930,12 @@
 			remoteGlobalIDString = AACEDAB9158FF61A0024EC43;
 			remoteInfo = "OAuthConsumer iOS";
 		};
-		2C7DDB1C18A04B5E0006A57A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		487047D217EEFB04008D5741 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA008587158D2B1100480399 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AA00858F158D2B1100480399;
 			remoteInfo = TestApp;
-		};
-		AA0085B9158D2E2C00480399 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-		AA008963158D634300480399 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
 		};
 		AA1E632915A6186F0067070F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2009,13 +1985,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = AACEDAB9158FF61A0024EC43;
 			remoteInfo = "OAuthConsumer iOS";
-		};
-		AAB5E477159044E600D3EBDF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
 		};
 		AACEDAE7158FF7000024EC43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2298,7 +2267,6 @@
 		AA0085A2158D2B1100480399 /* TestApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApp-Prefix.pch"; sourceTree = "<group>"; };
 		AA0085A3158D2B1100480399 /* SZTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTestAppDelegate.h; sourceTree = "<group>"; };
 		AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTestAppDelegate.m; sourceTree = "<group>"; };
-		AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "ThirdParty/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		AA0085C0158D2EFC00480399 /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0085C4158D2EFC00480399 /* Socialize-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-Prefix.pch"; sourceTree = "<group>"; };
 		AA0085F3158D358B00480399 /* libSocialize-noarc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSocialize-noarc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2791,7 +2759,6 @@
 		AA3BC390158E866F0073AD50 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA3BC392158E86770073AD50 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AA3BC394158E868D0073AD50 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		AA3BC396158E87A60073AD50 /* hide_symbols_facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hide_symbols_facebook.h; path = "ThirdParty/facebook-ios-sdk/src/hide_symbols_facebook.h"; sourceTree = "<group>"; };
 		AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareUtilsTests.h; sourceTree = "<group>"; };
 		AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareUtilsTests.m; sourceTree = "<group>"; };
 		AA552F561592A14C0020E0E4 /* SZComposeCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZComposeCommentViewController.h; path = Socialize/SZComposeCommentViewController.h; sourceTree = SOURCE_ROOT; };
@@ -3229,7 +3196,6 @@
 				2C7DDBB018A06D290006A57A /* libJSONKit.a in Frameworks */,
 				2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */,
 				2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */,
-				2C7DDBAF18A06D290006A57A /* libfacebook_ios_sdk.a in Frameworks */,
 				2C7DDAE118A049490006A57A /* Foundation.framework in Frameworks */,
 				E9100DB445E643B5A40E9FFA /* libPods.a in Frameworks */,
 			);
@@ -3284,7 +3250,6 @@
 				AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */,
 				AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */,
 				AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */,
-				AA00882D158D3E5C00480399 /* libfacebook_ios_sdk.a in Frameworks */,
 				AA0085F4158D358B00480399 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3334,7 +3299,6 @@
 				AAB5E516159044E600D3EBDF /* libJSONKit.a in Frameworks */,
 				AAB5E517159044E600D3EBDF /* libBlocksKit.a in Frameworks */,
 				AAB5E518159044E600D3EBDF /* libOAuthConsumer.a in Frameworks */,
-				AAB5E519159044E600D3EBDF /* libfacebook_ios_sdk.a in Frameworks */,
 				AAB5E51A159044E600D3EBDF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4045,14 +4009,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AA0085B3158D2E2B00480399 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		AA0085C2158D2EFC00480399 /* Socialize */ = {
 			isa = PBXGroup;
 			children = (
@@ -4081,13 +4037,11 @@
 				AA876771159034D000E9B2C1 /* hide_symbols_jsonkit.h */,
 				AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */,
 				AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */,
-				AA3BC396158E87A60073AD50 /* hide_symbols_facebook.h */,
 				84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */,
 				AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */,
 				AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */,
 				AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */,
 				AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */,
-				AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */,
 				AA6C6436158F115D005E5632 /* OCMock.xcodeproj */,
 			);
 			name = ThirdParty;
@@ -5256,7 +5210,6 @@
 			dependencies = (
 				2C7DDB1918A04B5E0006A57A /* PBXTargetDependency */,
 				2C7DDB1B18A04B5E0006A57A /* PBXTargetDependency */,
-				2C7DDB1D18A04B5E0006A57A /* PBXTargetDependency */,
 			);
 			name = "Socialize-new";
 			productName = "Socialize-new";
@@ -5337,7 +5290,6 @@
 			dependencies = (
 				AA1E632A15A6186F0067070F /* PBXTargetDependency */,
 				AAE9E1E01590012B00B2B9FC /* PBXTargetDependency */,
-				AA008964158D634300480399 /* PBXTargetDependency */,
 			);
 			name = "Socialize-noarc";
 			productName = "Socialize-noarc";
@@ -5398,7 +5350,6 @@
 			dependencies = (
 				AA1E632C15A618AB0067070F /* PBXTargetDependency */,
 				AAB5E474159044E600D3EBDF /* PBXTargetDependency */,
-				AAB5E476159044E600D3EBDF /* PBXTargetDependency */,
 			);
 			name = "Socialize-noarc-profiling";
 			productName = "Socialize-noarc";
@@ -5456,10 +5407,6 @@
 					ProjectRef = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
 				},
 				{
-					ProductGroup = AA0085B3158D2E2B00480399 /* Products */;
-					ProjectRef = AA0085B2158D2E2B00480399 /* facebook-ios-sdk.xcodeproj */;
-				},
-				{
 					ProductGroup = AADFBFDB16B9FB7300291167 /* Products */;
 					ProjectRef = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
 				},
@@ -5493,13 +5440,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		AA0085BA158D2E2C00480399 /* libfacebook_ios_sdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libfacebook_ios_sdk.a;
-			remoteRef = AA0085B9158D2E2C00480399 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		AA6C6440158F115D005E5632 /* OCMock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -7656,20 +7596,10 @@
 			name = "OAuthConsumer iOS";
 			targetProxy = 2C7DDB1A18A04B5E0006A57A /* PBXContainerItemProxy */;
 		};
-		2C7DDB1D18A04B5E0006A57A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = 2C7DDB1C18A04B5E0006A57A /* PBXContainerItemProxy */;
-		};
 		487047D317EEFB04008D5741 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA00858F158D2B1100480399 /* TestApp */;
 			targetProxy = 487047D217EEFB04008D5741 /* PBXContainerItemProxy */;
-		};
-		AA008964158D634300480399 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = AA008963158D634300480399 /* PBXContainerItemProxy */;
 		};
 		AA1E632A15A6186F0067070F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7685,11 +7615,6 @@
 			isa = PBXTargetDependency;
 			name = "OAuthConsumer iOS";
 			targetProxy = AAB5E475159044E600D3EBDF /* PBXContainerItemProxy */;
-		};
-		AAB5E476159044E600D3EBDF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "facebook-ios-sdk";
-			targetProxy = AAB5E477159044E600D3EBDF /* PBXContainerItemProxy */;
 		};
 		AAE9E1E01590012B00B2B9FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

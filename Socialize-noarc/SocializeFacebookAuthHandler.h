@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FBConnect/FBConnect.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 @interface SocializeFacebookAuthHandler : NSObject <FBSessionDelegate>
 

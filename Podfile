@@ -4,6 +4,7 @@ xcodeproj 'Socialize.xcodeproj'
 
 link_with 'Socialize-new'
 pod 'Loopy', :podspec => 'https://raw.github.com/socialize/loopy-sdk-ios/master/Loopy.podspec'
+pod 'Facebook-iOS-SDK', '~> 3.9.0'
 
 target 'UIIntegrationAcceptanceTests', :exclusive => true do
   pod 'KIF', '~> 2.0'

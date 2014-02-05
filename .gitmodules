@@ -7,9 +7,6 @@
 [submodule "ThirdParty/OAuthConsumer"]
 	path = ThirdParty/OAuthConsumer
 	url = https://github.com/socialize/OAuthConsumer.git
-[submodule "ThirdParty/facebook-ios-sdk"]
-	path = ThirdParty/facebook-ios-sdk
-	url = https://github.com/socialize/facebook-ios-sdk.git
 [submodule "ThirdParty/ocmock"]
 	path = ThirdParty/ocmock
 	url = https://github.com/socialize/ocmock.git

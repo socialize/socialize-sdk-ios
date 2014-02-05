@@ -9,7 +9,7 @@
 #import "SocializeFacebookAuthHandlerTests.h"
 #import "SocializeCommonDefinitions.h"
 #import "NSError+Socialize.h"
-#import <FBConnect/FBConnect.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 @implementation SocializeFacebookAuthHandlerTests
 @synthesize facebookAuthHandler = facebookAuthHandler_;
