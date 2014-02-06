@@ -205,7 +205,6 @@
 		2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860D158D35BC00480399 /* ImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860B158D35BC00480399 /* HtmlPageCreator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
-		2C7DDBB018A06D290006A57A /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		2C7F1EA418A19F2C00E420D6 /* libSocialize-new.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize-new.a */; };
 		2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
@@ -933,7 +932,6 @@
 		AA8468D315EC25C200065678 /* SZStatusImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8468CF15EC25C200065678 /* SZStatusImageLabelView.xib */; };
 		AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */; };
 		AA85D2F2159E55B7004DEB35 /* standalone_share.m in Sources */ = {isa = PBXBuildFile; fileRef = AA85D2F1159E55B7004DEB35 /* standalone_share.m */; };
-		AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		AA90FFED159065C400AFD8A2 /* api_client.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFD9159065C400AFD8A2 /* api_client.m */; };
 		AA90FFEF159065C400AFD8A2 /* configure_keys.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFDB159065C400AFD8A2 /* configure_keys.m */; };
 		AA90FFF0159065C400AFD8A2 /* configure_notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = AA90FFDC159065C400AFD8A2 /* configure_notifications.m */; };
@@ -1598,7 +1596,6 @@
 		AAB5E512159044E600D3EBDF /* UITableView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008843158D424100480399 /* UITableView+Resize.m */; };
 		AAB5E513159044E600D3EBDF /* UITableView+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA008845158D424100480399 /* UITableView+Socialize.m */; };
 		AAB5E514159044E600D3EBDF /* DataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0089AB158D6F4E00480399 /* DataHelper.m */; };
-		AAB5E516159044E600D3EBDF /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8767021590327C00E9B2C1 /* libJSONKit.a */; };
 		AAB5E517159044E600D3EBDF /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		AAB5E518159044E600D3EBDF /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		AAB5E51A159044E600D3EBDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
@@ -1971,13 +1968,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 030EF0DC14632FF700B04273;
 			remoteInfo = OCMockLib;
-		};
-		AA8767011590327C00E9B2C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AA8766EA1590322900E9B2C1;
-			remoteInfo = JSONKit;
 		};
 		AAB5E475159044E600D3EBDF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2885,8 +2875,6 @@
 		AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOARequestTests.m; sourceTree = "<group>"; };
 		AA85D2F0159E55B7004DEB35 /* standalone_share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standalone_share.h; sourceTree = "<group>"; };
 		AA85D2F1159E55B7004DEB35 /* standalone_share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standalone_share.m; sourceTree = "<group>"; };
-		AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = ThirdParty/JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
-		AA876771159034D000E9B2C1 /* hide_symbols_jsonkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hide_symbols_jsonkit.h; path = ThirdParty/JSONKit/hide_symbols_jsonkit.h; sourceTree = "<group>"; };
 		AA90FFD8159065C400AFD8A2 /* api_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = api_client.h; sourceTree = "<group>"; };
 		AA90FFD9159065C400AFD8A2 /* api_client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = api_client.m; sourceTree = "<group>"; };
 		AA90FFDB159065C400AFD8A2 /* configure_keys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = configure_keys.m; sourceTree = "<group>"; };
@@ -3193,7 +3181,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7DDBB018A06D290006A57A /* libJSONKit.a in Frameworks */,
 				2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */,
 				2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */,
 				2C7DDAE118A049490006A57A /* Foundation.framework in Frameworks */,
@@ -3247,7 +3234,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA876708159032E900E9B2C1 /* libJSONKit.a in Frameworks */,
 				AAE9E25515902BA300B2B9FC /* libBlocksKit.a in Frameworks */,
 				AAE9E1DE1590012300B2B9FC /* libOAuthConsumer.a in Frameworks */,
 				AA0085F4158D358B00480399 /* Foundation.framework in Frameworks */,
@@ -3296,7 +3282,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAB5E516159044E600D3EBDF /* libJSONKit.a in Frameworks */,
 				AAB5E517159044E600D3EBDF /* libBlocksKit.a in Frameworks */,
 				AAB5E518159044E600D3EBDF /* libOAuthConsumer.a in Frameworks */,
 				AAB5E51A159044E600D3EBDF /* Foundation.framework in Frameworks */,
@@ -4034,12 +4019,10 @@
 		AA0085CC158D2F4600480399 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				AA876771159034D000E9B2C1 /* hide_symbols_jsonkit.h */,
 				AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */,
 				AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */,
 				84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */,
 				AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */,
-				AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */,
 				AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */,
 				AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */,
 				AA6C6436158F115D005E5632 /* OCMock.xcodeproj */,
@@ -4737,14 +4720,6 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
-		AA8766FB1590327B00E9B2C1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AA8767021590327C00E9B2C1 /* libJSONKit.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		AA90FFD7159065C400AFD8A2 /* snippets */ = {
 			isa = PBXGroup;
 			children = (
@@ -5411,10 +5386,6 @@
 					ProjectRef = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
 				},
 				{
-					ProductGroup = AA8766FB1590327B00E9B2C1 /* Products */;
-					ProjectRef = AA8766FA1590327B00E9B2C1 /* JSONKit.xcodeproj */;
-				},
-				{
 					ProductGroup = AACEDADE158FF6FF0024EC43 /* Products */;
 					ProjectRef = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
 				},
@@ -5459,13 +5430,6 @@
 			fileType = archive.ar;
 			path = libOCMock.a;
 			remoteRef = AA6C6443158F115D005E5632 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AA8767021590327C00E9B2C1 /* libJSONKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libJSONKit.a;
-			remoteRef = AA8767011590327C00E9B2C1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AACEDAE8158FF7000024EC43 /* OAuthConsumer.framework */ = {
@@ -6606,7 +6570,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -workspace Socialize.xcworkspace -scheme Socialize -configuration ${CONFIGURATION} -sdk iphonesimulator\nxcodebuild -workspace Socialize.xcworkspace -scheme Socialize -configuration ${CONFIGURATION} -sdk iphoneos";
+			shellScript = "xcodebuild -workspace Socialize.xcworkspace -scheme \"Socialize-new\" -configuration ${CONFIGURATION} -sdk iphonesimulator\nxcodebuild -workspace Socialize.xcworkspace -scheme \"Socialize-new\" -configuration ${CONFIGURATION} -sdk iphoneos";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E31590540400A4B074 /* Package Framework */ = {
