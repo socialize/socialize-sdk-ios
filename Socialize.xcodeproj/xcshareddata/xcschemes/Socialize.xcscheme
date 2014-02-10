@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AA0085BF158D2EFC00480399"
+               BlueprintIdentifier = "2C7DDADF18A049490006A57A"
                BuildableName = "libSocialize.a"
                BlueprintName = "Socialize"
                ReferencedContainer = "container:Socialize.xcodeproj">

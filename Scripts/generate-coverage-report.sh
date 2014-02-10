@@ -15,7 +15,7 @@ mkdir -p "$OUTPUT_DIR"
 mkdir -p "$INFO_DIR"
 
 TITLE="${PROJECT_NAME} - ${PRODUCT_NAME}"
-SOCIALIZE_LIB_DIR="Socialize-new.build"
+SOCIALIZE_LIB_DIR="Socialize.build"
 INFO_TMP_FILE="${INFO_DIR}/${PRODUCT_NAME}-Coverage_tmp.info"
 INFO_FILE="${INFO_DIR}/${PRODUCT_NAME}-Coverage.info"
 

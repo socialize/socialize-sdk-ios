@@ -25,7 +25,7 @@ echo "Created directory: ${INFO_DIR}"
 
 TITLE="${PROJECT_NAME} - ${PRODUCT_NAME}"
 echo "TITLE: ${TITLE}"
-SOCIALIZE_LIB_DIR="Socialize-new.build"
+SOCIALIZE_LIB_DIR="Socialize.build"
 echo "SOCIALIZE_LIB_DIR: ${SOCIALIZE_LIB_DIR}"
 INFO_TMP_FILE="${INFO_DIR}${PRODUCT_NAME}-Coverage_tmp.info"
 echo "INFO_TMP_FILE: ${INFO_TMP_FILE}"
