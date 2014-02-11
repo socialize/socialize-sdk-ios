@@ -33,21 +33,21 @@
     
     // Fetch by user
     fetchedComments = [self getCommentsByUser:(id<SZUser>)[SZUserUtils currentUser]];
-    fetchedComment = [fetchedComments match:^BOOL (id<SZComment> comment) {
+    fetchedComment = [fetchedComments bk_match:^BOOL (id<SZComment> comment) {
         return [comment objectID] == [serverComment objectID];
     }];
     GHAssertNotNil(fetchedComment, @"Comment not on user");
     
     // Fetch by user and entity
     fetchedComments = [self getCommentsByUser:(id<SZUser>)[SZUserUtils currentUser] entity:entity];
-    fetchedComment = [fetchedComments match:^BOOL (id<SZComment> comment) {
+    fetchedComment = [fetchedComments bk_match:^BOOL (id<SZComment> comment) {
         return [comment objectID] == [serverComment objectID];
     }];
     GHAssertNotNil(fetchedComment, @"Comment not on user");
     
     // Fetch by app (globally)
     fetchedComments = [self getCommentsByApplication];
-    fetchedComment = [fetchedComments match:^BOOL (id<SZComment> comment) {
+    fetchedComment = [fetchedComments bk_match:^BOOL (id<SZComment> comment) {
         return [comment objectID] == [serverComment objectID];
     }];
     GHAssertNotNil(fetchedComment, @"Comment not in application");

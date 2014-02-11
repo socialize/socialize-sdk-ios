@@ -230,7 +230,7 @@
 - (void)testMapViewLocationUpdateUpdatesLocationManager {
     [NSTimer startMockingClass];
     
-    [[NSTimer expect] scheduledTimerWithTimeInterval:10 block:OCMOCK_ANY repeats:YES];
+    [[NSTimer expect] bk_scheduledTimerWithTimeInterval:10 block:OCMOCK_ANY repeats:YES];
     
     id mockMKUserLocation = [OCMockObject niceMockForClass:[MKUserLocation class]];
     id mockLocation = [OCMockObject niceMockForClass:[CLLocation class]];

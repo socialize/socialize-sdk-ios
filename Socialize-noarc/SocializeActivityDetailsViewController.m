@@ -22,6 +22,7 @@
 #import "socialize_globals.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SZUserUtils.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 #define kCenterPointLatitude  37.779941
 #define kCenterPointLongitude -122.417908
@@ -85,9 +86,9 @@
     CLLocation *location = [self activityLocation];
     CLLocationCoordinate2D coordinate = location.coordinate;
     
-    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Open in maps?" message:@"External application required"];
-    [alertView addButtonWithTitle:@"No"];
-    [alertView addButtonWithTitle:@"Yes" handler:^{
+    UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Open in maps?" message:@"External application required"];
+    [alertView bk_addButtonWithTitle:@"No" handler:nil];
+    [alertView bk_addButtonWithTitle:@"Yes" handler:^{
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?q=%f,%f", coordinate.latitude, coordinate.longitude]]];
     }];
     [alertView show];

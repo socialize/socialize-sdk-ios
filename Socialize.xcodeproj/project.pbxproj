@@ -201,7 +201,6 @@
 		2C7DDBA918A06B110006A57A /* ImagesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860F158D35BC00480399 /* ImagesCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860D158D35BC00480399 /* ImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860B158D35BC00480399 /* HtmlPageCreator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
 		2C7F1EA418A19F2C00E420D6 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize.a */; };
 		2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
 		2C8427A0187DDA1C00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
@@ -1383,13 +1382,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C7DDB1818A04B5E0006A57A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 6C3DBF8C1382F1BA00E6C9AA;
-			remoteInfo = "iOS Library";
-		};
 		487047D217EEFB04008D5741 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA008587158D2B1100480399 /* Project object */;
@@ -1438,48 +1430,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 0097C4A813BA7FC800D3BEF0;
 			remoteInfo = Tests;
-		};
-		AAE9E21B15902B3E00B2B9FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6CC40A2A1447B58600E47595;
-			remoteInfo = "iOS Framework";
-		};
-		AAE9E21D15902B3E00B2B9FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6CC40A751447BB1400E47595;
-			remoteInfo = "OS X Framework";
-		};
-		AAE9E21F15902B3E00B2B9FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6C3DBF8D1382F1BA00E6C9AA;
-			remoteInfo = "iOS Library";
-		};
-		AAE9E22115902B3E00B2B9FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6CC08FCE1385555D00DDEABB;
-			remoteInfo = "OS X Library";
-		};
-		AAE9E22315902B3E00B2B9FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6CC0900913855CAE00DDEABB;
-			remoteInfo = "Chameleon Library";
-		};
-		AAE9E22515902B3E00B2B9FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 60FF000713C023CB004A1394;
-			remoteInfo = "iOS Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2096,7 +2046,6 @@
 		AA166555159D0B79001B6A1D /* comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comments.m; sourceTree = "<group>"; };
 		AA1759C016EEA1BF00550082 /* SZUnitTestAppHack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUnitTestAppHack.h; sourceTree = "<group>"; };
 		AA1759C116EEA1BF00550082 /* SZUnitTestAppHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUnitTestAppHack.m; sourceTree = "<group>"; };
-		AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hide_symbols_blockskit.h; path = ThirdParty/BlocksKit/hide_symbols_blockskit.h; sourceTree = "<group>"; };
 		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
 		AA25FEAC159119F00067741A /* SZUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserSettingsViewController.m; sourceTree = "<group>"; };
 		AA2A2D2416F8D7720066111B /* ASIdentifierManager+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIdentifierManager+Utilities.h"; sourceTree = "<group>"; };
@@ -2533,7 +2482,6 @@
 		AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZOpenURLHandlerTests.m; sourceTree = "<group>"; };
 		AAE748B015A23963009FFE95 /* BaseShareViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseShareViewControllerTests.h; sourceTree = "<group>"; };
 		AAE748B115A23963009FFE95 /* BaseShareViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseShareViewControllerTests.m; sourceTree = "<group>"; };
-		AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = ThirdParty/BlocksKit/BlocksKit.xcodeproj; sourceTree = "<group>"; };
 		AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKHelpersTests.h; sourceTree = "<group>"; };
 		AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKHelpersTests.m; sourceTree = "<group>"; };
 		AAEC2B0D15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-dev.embedded.mobileprovision"; sourceTree = "<group>"; };
@@ -2551,7 +2499,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */,
 				2C7DDAE118A049490006A57A /* Foundation.framework in Frameworks */,
 				E9100DB445E643B5A40E9FFA /* libPods.a in Frameworks */,
 			);
@@ -3327,10 +3274,8 @@
 		AA0085CC158D2F4600480399 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */,
 				84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */,
 				AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */,
-				AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */,
 				AA6C6436158F115D005E5632 /* OCMock.xcodeproj */,
 			);
 			name = ThirdParty;
@@ -4203,19 +4148,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AAE9E21315902B3E00B2B9FC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AAE9E21C15902B3E00B2B9FC /* BlocksKit.framework */,
-				AAE9E21E15902B3E00B2B9FC /* BlocksKit.framework */,
-				AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */,
-				AAE9E22215902B3E00B2B9FC /* BlocksKit.dylib */,
-				AAE9E22415902B3E00B2B9FC /* BlocksKit_Chameleon.dylib */,
-				AAE9E22615902B3E00B2B9FC /* iOS Tests.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -4356,7 +4288,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2C7DDB1918A04B5E0006A57A /* PBXTargetDependency */,
 			);
 			name = Socialize;
 			productName = "Socialize-new";
@@ -4468,10 +4399,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = AAE9E21315902B3E00B2B9FC /* Products */;
-					ProjectRef = AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */;
-				},
-				{
 					ProductGroup = AADFBFDB16B9FB7300291167 /* Products */;
 					ProjectRef = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
 				},
@@ -4533,48 +4460,6 @@
 			fileType = wrapper.application;
 			path = Tests.app;
 			remoteRef = AADFBFE516B9FB7400291167 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAE9E21C15902B3E00B2B9FC /* BlocksKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = BlocksKit.framework;
-			remoteRef = AAE9E21B15902B3E00B2B9FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAE9E21E15902B3E00B2B9FC /* BlocksKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BlocksKit.framework;
-			remoteRef = AAE9E21D15902B3E00B2B9FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBlocksKit.a;
-			remoteRef = AAE9E21F15902B3E00B2B9FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAE9E22215902B3E00B2B9FC /* BlocksKit.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = BlocksKit.dylib;
-			remoteRef = AAE9E22115902B3E00B2B9FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAE9E22415902B3E00B2B9FC /* BlocksKit_Chameleon.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = BlocksKit_Chameleon.dylib;
-			remoteRef = AAE9E22315902B3E00B2B9FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AAE9E22615902B3E00B2B9FC /* iOS Tests.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "iOS Tests.app";
-			remoteRef = AAE9E22515902B3E00B2B9FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -6070,11 +5955,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2C7DDB1918A04B5E0006A57A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "iOS Library";
-			targetProxy = 2C7DDB1818A04B5E0006A57A /* PBXContainerItemProxy */;
-		};
 		487047D317EEFB04008D5741 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA00858F158D2B1100480399 /* TestApp */;

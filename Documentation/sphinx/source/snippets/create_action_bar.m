@@ -108,7 +108,7 @@
         
         SZActionButton *panicButton = [SZActionButton actionButtonWithIcon:nil title:@"Panic"];
         panicButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [alertView show];
         };
         self.actionBar.itemsRight = [NSArray arrayWithObjects:panicButton, [SZActionButton commentButton], nil];

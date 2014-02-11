@@ -137,7 +137,7 @@
 
     // Fetch by user and entity
     NSArray *fetchedShares = [self getSharesByApplication];
-    id<SZComment> fetchedComment = [fetchedShares match:^BOOL (id<SZShare> share) {
+    id<SZComment> fetchedComment = [fetchedShares bk_match:^BOOL (id<SZShare> share) {
         return [share objectID] == [createdShare objectID];
     }];
     GHAssertNotNil(fetchedComment, @"Comment not on user");

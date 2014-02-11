@@ -24,6 +24,7 @@
 #import "SZLocationUtils.h"
 #import "SDKHelpers.h"
 #import "UIDevice+VersionCheck.h"
+#import <BlocksKit/BlocksKit.h>
 
 #define NO_CITY_MSG @"Could not locate the place name."
 
@@ -177,13 +178,15 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     }
     
     WEAK(self) weakSelf = self;
-    self.reverseGeocodeTimer = [NSTimer scheduledTimerWithTimeInterval:ReverseGeocodeRetryInterval block:^(NSTimeInterval time) {
-        if (_succeededReverseGeocode) {
-            [weakSelf stopReverseGeocodeTimer];
-        } else {
-            [weakSelf attemptReverseGeocode];
-        }
-    } repeats:YES];
+    self.reverseGeocodeTimer = [NSTimer bk_scheduledTimerWithTimeInterval:ReverseGeocodeRetryInterval
+                                                                    block:^(NSTimer *timer) {
+                                                                        if (_succeededReverseGeocode) {
+                                                                            [weakSelf stopReverseGeocodeTimer];
+                                                                        } else {
+                                                                            [weakSelf attemptReverseGeocode];
+                                                                        }
+                                                                    }
+                                                                  repeats:YES];
 }
 
 - (void)startReverseGeocode {

@@ -17,6 +17,7 @@
 #import "SocializeThirdPartyTwitter.h"
 #import "Socialize.h"
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 #import "SZUserUtils.h"
 #import "_Socialize.h"
 #import "SocializePrivateDefinitions.h"
@@ -81,9 +82,9 @@ BOOL SZShouldShowLinkDialog() {
 }
 
 void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)()) {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required" message:@"Link to Facebook?"];
-    [alertView addButtonWithTitle:@"Cancel" handler:cancelBlock];
-    [alertView addButtonWithTitle:@"Ok" handler:^{
+    UIAlertView *alertView = [[UIAlertView alloc] bk_initWithTitle:@"Facebook Authentication Required" message:@"Link to Facebook?"];
+    [alertView bk_addButtonWithTitle:@"Cancel" handler:cancelBlock];
+    [alertView bk_addButtonWithTitle:@"OK" handler:^{
         
         // This is a hack for the cases that require a fallback to in-app modal fb login dialog. It does not
         // like being displayed immediately after dismissal of a UIAlertView.
@@ -491,8 +492,8 @@ void SZEmitUIError(id object, NSError *error) {
     SZPostSocializeUIControllerDidFailWithErrorNotification(object, error);
     
     if (!SZErrorsAreDisabled()) {
-        UIAlertView *alertView = [UIAlertView alertWithTitle:@"Error" message:[error localizedDescription]];
-        [alertView addButtonWithTitle:@"Ok"];
+        UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Error" message:[error localizedDescription]];
+        [alertView bk_addButtonWithTitle:@"OK" handler:nil];
         [alertView show];
     }
 }

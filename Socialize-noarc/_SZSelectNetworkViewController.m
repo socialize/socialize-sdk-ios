@@ -8,6 +8,7 @@
 
 #import "_SZSelectNetworkViewController.h"
 #import "socialize_globals.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 @interface _SZSelectNetworkViewController ()
 
@@ -46,7 +47,10 @@
 - (void)continueButtonPressed:(id)sender {
     SZSocialNetwork networks = [self selectedNetworks];
     if (networks == SZSocialNetworkNone && !self.dontRequireNetworkSelection) {
-        [UIAlertView showAlertWithTitle:@"No Networks Selected" message:@"Please select one or more networks to continue." buttonTitle:@"Ok" handler:nil];
+        [UIAlertView bk_showAlertViewWithTitle:@"No Networks Selected"
+                                       message:@"Please select one or more networks to continue."
+                             cancelButtonTitle:@"OK"
+                             otherButtonTitles:nil handler:nil];
         return;
     }
     [self persistSelection];

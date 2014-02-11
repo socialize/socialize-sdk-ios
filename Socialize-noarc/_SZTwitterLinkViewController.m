@@ -14,6 +14,7 @@
 #import "NSString+QueryString.h"
 #import "NSHTTPCookieStorage+Utilities.h"
 #import "SZTwitterUtils.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 @interface _SZTwitterLinkViewController ()
 @property (nonatomic, assign) BOOL sentTokenToSocialize;
@@ -290,9 +291,9 @@ static NSString *const kTwitterAccessResponseUserID = @"user_id";
 - (void)stopLoadingAndShowRetryDialogWithMessage:(NSString*)message {
     [self stopLoading];
 
-    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Twitter Authentication Failed" message:message];
-    [alertView setCancelButtonWithTitle:@"Cancel" handler:^{ [self cancelledAlert]; }];
-    [alertView addButtonWithTitle:@"Retry" handler:^{ [self retry]; }];
+    UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Twitter Authentication Failed" message:message];
+    [alertView bk_setCancelButtonWithTitle:@"Cancel" handler:^{ [self cancelledAlert]; }];
+    [alertView bk_addButtonWithTitle:@"Retry" handler:^{ [self retry]; }];
     [alertView show];
 }
 

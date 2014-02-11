@@ -9,6 +9,7 @@
 #import "ActionBarExampleViewController.h"
 #import <Socialize/Socialize.h>
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 @interface ActionBarExampleViewController ()
 
@@ -38,7 +39,7 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     __unsafe_unretained id weakSelf = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
     
@@ -87,7 +88,7 @@
 - (void)customizeButtons {
     SZActionButton *panicButton = [SZActionButton actionButtonWithIcon:nil title:@"Panic"];
     panicButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oh no!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alertView show];
     };
     

@@ -11,6 +11,7 @@
 #import "ActionBarExampleViewController.h"
 #import "ButtonExampleViewController.h"
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -167,7 +168,7 @@ static TestAppListViewController *sharedSampleListViewController;
 //            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
-            [UIAlertView showAlertWithTitle:reason message:nil buttonTitle:@"Ok" handler:nil];
+            [UIAlertView bk_showAlertViewWithTitle:reason message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
         }];
     }]];
@@ -184,10 +185,10 @@ static TestAppListViewController *sharedSampleListViewController;
         };
 
         [SZShareUtils shareViaSMSWithViewController:self options:options entity:self.entity success:^(id<SZShare> share) {
-            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
+            [UIAlertView bk_showAlertViewWithTitle:@"Share successful" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
-            [UIAlertView showAlertWithTitle:reason message:nil buttonTitle:@"Ok" handler:nil];
+            [UIAlertView bk_showAlertViewWithTitle:reason message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
         }];
     }]];
@@ -230,16 +231,16 @@ static TestAppListViewController *sharedSampleListViewController;
     NSMutableArray *facebookRows = [NSMutableArray array];
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
         [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
-            [UIAlertView showAlertWithTitle:@"Facebook link successful" message:nil buttonTitle:@"Ok" handler:nil];
+            [UIAlertView bk_showAlertViewWithTitle:@"Facebook link successful" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
         } foreground:^{
-            [UIAlertView showAlertWithTitle:@"Facebook link foregrounded without success or failure" message:nil buttonTitle:@"Ok" handler:nil];
+            [UIAlertView bk_showAlertViewWithTitle:@"Facebook link foregrounded without success or failure" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             [SZFacebookUtils cancelLink];
         } failure:^(NSError *error) {
             if ([error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                [UIAlertView showAlertWithTitle:@"Facebook link cancelled by user" message:nil buttonTitle:@"Ok" handler:nil];                
+                [UIAlertView bk_showAlertViewWithTitle:@"Facebook link cancelled by user" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             } else {
                 NSString *message = [NSString stringWithFormat:@"Facebook link failed: %@", [error localizedDescription]];
-                [UIAlertView showAlertWithTitle:message message:nil buttonTitle:@"Ok" handler:nil];
+                [UIAlertView bk_showAlertViewWithTitle:message message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             }
         }];
     }]];

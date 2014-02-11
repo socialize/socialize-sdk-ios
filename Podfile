@@ -7,6 +7,7 @@ pod 'Loopy', :podspec => 'https://raw.github.com/socialize/loopy-sdk-ios/master/
 pod 'Facebook-iOS-SDK', '~> 3.9.0'
 pod 'JSONKit', '~> 1.4'
 pod 'SZOAuthConsumer', :podspec => 'https://raw.github.com/socialize/OAuthConsumer/master/SZOAuthConsumer.podspec'
+pod 'BlocksKit', '~> 2.0.0'
 
 target 'UIIntegrationAcceptanceTests', :exclusive => true do
   pod 'KIF', '~> 2.0'

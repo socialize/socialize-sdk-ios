@@ -8,6 +8,7 @@
 
 #import "UIBarButtonItem+Socialize.h"
 #import "socialize_globals.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 @implementation UIBarButtonItem (Socialize)
 
@@ -27,14 +28,14 @@
 
 + (UIBarButtonItem*)redSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler {
     UIButton *button = [UIButton redSocializeNavBarButtonWithTitle:title];
-    [button addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
+    [button bk_addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
     
     return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 }
 
 + (UIBarButtonItem*)blueSocializeBarButtonWithTitle:(NSString*)title handler:(void(^)(id sender))handler {
     UIButton *button = [UIButton blueSocializeNavBarButtonWithTitle:title];
-    [button addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
+    [button bk_addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
     
     return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 }

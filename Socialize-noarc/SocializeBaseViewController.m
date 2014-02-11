@@ -41,6 +41,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SZUserUtils.h"
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 #import "SDKHelpers.h"
 #import "_SZUserSettingsViewController.h"
 
@@ -273,7 +274,7 @@ SYNTH_RED_SOCIALIZE_BAR_BUTTON(cancelButton, @"Cancel")
 }
 
 -(void) showAlertWithText:(NSString*)alertMessage andTitle:(NSString*)title {
-    [UIAlertView showAlertWithTitle:title message:alertMessage buttonTitle:@"Ok" handler:nil];
+    [UIAlertView bk_showAlertViewWithTitle:title message:alertMessage cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
 }
 
 - (UIView*)showLoadingInView {

@@ -79,7 +79,7 @@
     [tester showLinkToFacebook];
     
     [tester waitForViewWithAccessibilityLabel:@"Facebook link successful"];
-    [tester tapViewWithAccessibilityLabel:@"Ok"];
+    [tester tapViewWithAccessibilityLabel:@"OK"];
     
     [[SZTestHelper sharedTestHelper] stopMockingSucceedingFacebookAuth];
     [tester waitForTimeInterval:1];

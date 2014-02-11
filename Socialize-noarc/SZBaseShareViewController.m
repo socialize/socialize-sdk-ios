@@ -22,6 +22,7 @@
 #import "SZPinterestUtils.h"
 #import "SZNetworkImageProvider.h"
 #import "UIDevice+VersionCheck.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -270,7 +271,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
             }
             
         };
-        [facebookSwitch_ addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
+        [facebookSwitch_ bk_addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
         
         if ([SZFacebookUtils isAvailable]) {
             BOOL wantsFacebookPost = ![[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeDontPostToFacebookKey] boolValue];
@@ -341,7 +342,7 @@ static NSString *kAutopostSection = @"kAutopostSection";
             [twitterSwitch_ setOn:wantsTwitterPost && twitterIsLinked animated:NO];
         }
 
-        [twitterSwitch_ addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
+        [twitterSwitch_ bk_addEventHandler:controlChangedBlock forControlEvents:UIControlEventValueChanged];
     }
     
     return twitterSwitch_;

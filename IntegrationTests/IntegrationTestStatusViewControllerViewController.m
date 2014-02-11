@@ -9,6 +9,7 @@
 #import "IntegrationTestStatusViewControllerViewController.h"
 #import <Socialize/Socialize.h>
 #import "integrationtests_globals.h"
+#import <BlocksKit/BlocksKit.h>
 
 @interface IntegrationTestStatusViewControllerViewController ()
 
@@ -34,10 +35,11 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:10 * 60
-                                                       block:^(NSTimeInterval time) {
-                                                           [self startTestsIfNeeded];
-                                                       } repeats:YES];
+        self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:10 * 60
+                                                          block:^(NSTimer *timer) {
+                                                              [self startTestsIfNeeded];
+                                                          }
+                                                        repeats:YES];
     }
     
     return self;

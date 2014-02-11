@@ -8,6 +8,7 @@
 
 #import "ButtonExampleViewController.h"
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 static CGRect likeFrame = { { 240.f, 120.f }, { 0.f, 0.f } };
 
@@ -27,7 +28,7 @@ static CGRect likeFrame = { { 240.f, 120.f }, { 0.f, 0.f } };
     [super viewDidLoad];
     
     __unsafe_unretained id weakSelf = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithTitle:@"Done" style:UIBarButtonItemStyleDone handler:^(id sender) {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] bk_initWithTitle:@"Done" style:UIBarButtonItemStyleDone handler:^(id sender) {
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
         

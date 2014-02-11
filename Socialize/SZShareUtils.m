@@ -9,6 +9,8 @@
 #import <MessageUI/MessageUI.h>
 #import "SZShareUtils.h"
 #import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
+#import <BlocksKit/BlocksKit+MessageUI.h>
 #import "Socialize.h"
 #import "SocializeObjects.h"
 #import "SZBaseShareViewController.h"
@@ -112,7 +114,7 @@
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     WEAK(viewController) weakViewController = viewController;
-    WEAK(shareDialog) weakShareDialog = shareDialog;
+//    WEAK(shareDialog) weakShareDialog = shareDialog;
     
     shareDialog.completionBlock = ^(NSArray *shares) {
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
@@ -238,7 +240,8 @@
     }
     
     __block id<SZShare> createdShare = nil;
-    composer.sz_completionBlock = ^(MFMailComposeResult result, NSError *error) {
+    
+    composer.bk_completionBlock = ^(MFMailComposeViewController *controller, MFMailComposeResult result, NSError *error) {
         switch (result) {
             case MFMailComposeResultSent: {
                 BLOCK_CALL_1(success, createdShare);
@@ -252,9 +255,9 @@
                 BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
                 break;
         }
+        //as of 2.0.0 BlocksKit, controllers do NOT dismiss themselves
+        [controller dismissViewControllerAnimated:YES completion:nil];
     };
-    
-    // Note that composers dismiss themselves
 
     [viewController showSocializeLoadingViewInSubview:nil];
     SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumEmail];
@@ -307,7 +310,8 @@
     }
 
     __block id<SZShare> createdShare = nil;
-    composer.sz_completionBlock = ^(MessageComposeResult result) {
+    
+    composer.bk_completionBlock = ^(MFMessageComposeViewController *controller, MessageComposeResult result) {
         switch (result) {
             case MessageComposeResultSent: {
                 BLOCK_CALL_1(success, createdShare);
@@ -320,9 +324,9 @@
                 BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializeErrorShareCancelledByUser]);
                 break;
         }
+        //as of 2.0.0 BlocksKit, controllers do NOT dismiss themselves
+        [controller dismissViewControllerAnimated:YES completion:nil];
     };
-    
-    // Note that composers dismiss themselves
     
     [viewController showSocializeLoadingViewInSubview:nil];
     SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumSMS];

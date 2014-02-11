@@ -9,6 +9,7 @@
 #import "_SZUserSettingsViewController.h"
 #import "SocializeProfileEditTableViewImageCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 #import "SocializeProfileEditTableViewCell.h"
 #import "UIButton+Socialize.h"
 #import "SocializeProfileEditValueViewController.h"
@@ -521,12 +522,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         switch (indexPath.row) {
             case _SZUserSettingsViewControllerFacebookRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.textAlignment = UITextAlignmentLeft;
+                cell.textLabel.textAlignment = NSTextAlignmentLeft;
                 cell.textLabel.text = @"Post to Facebook by Default";
                 cell.accessoryView = self.facebookSwitch;
                 break;
             case _SZUserSettingsViewControllerFacebookRowLoginLogout:
-                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.textLabel.textAlignment = NSTextAlignmentCenter;
                 
                 if ([SZFacebookUtils isLinked]) {
                     if (self.hideLogoutButtons) {
@@ -553,14 +554,14 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
         switch (indexPath.row) {
             case _SZUserSettingsViewControllerTwitterRowPost:
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.textAlignment = UITextAlignmentLeft;
+                cell.textLabel.textAlignment = NSTextAlignmentLeft;
                 cell.textLabel.text = @"Post to Twitter by Default";
                 cell.accessoryView = self.twitterSwitch;
                 
                 break;
             case _SZUserSettingsViewControllerTwitterRowLoginLogout:
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.textLabel.textAlignment = NSTextAlignmentCenter;
                 
                 if ([SZTwitterUtils isLinked]) {
                     
@@ -733,9 +734,9 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)showConfirmLogoutDialogForService:(NSString*)service handler:(void(^)())handler {
     NSString *message = [NSString stringWithFormat:@"%@ functionality will be disabled until you log in again", service];
-    UIAlertView *alertView = [UIAlertView alertWithTitle:@"Are You Sure?" message:message];
-    [alertView setCancelButtonWithTitle:@"Cancel" handler:^{}];
-    [alertView addButtonWithTitle:@"Log Out" handler:handler];
+    UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Are You Sure?" message:message];
+    [alertView bk_setCancelButtonWithTitle:@"Cancel" handler:^{}];
+    [alertView bk_addButtonWithTitle:@"Log Out" handler:handler];
     [alertView show];
 }
 

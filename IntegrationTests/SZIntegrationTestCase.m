@@ -415,7 +415,7 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
 }
 
 - (id<SZObject>)findObjectWithId:(int)objectID inArray:(NSArray*)array {
-    return [array match:^BOOL (id<SZObject> object) {
+    return [array bk_match:^BOOL (id<SZObject> object) {
         return [object objectID] == objectID;
     }];   
 }

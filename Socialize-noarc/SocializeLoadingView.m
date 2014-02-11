@@ -157,7 +157,7 @@ static CGPathRef NewPathWithRoundRect(CGRect rect, CGFloat cornerRadius)
 	loadingLabel.text = message;
 	loadingLabel.textColor = [UIColor whiteColor];
 	loadingLabel.backgroundColor = [UIColor clearColor];
-	loadingLabel.textAlignment = UITextAlignmentCenter;
+	loadingLabel.textAlignment = NSTextAlignmentCenter;
 	loadingLabel.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
 	loadingLabel.autoresizingMask =
 	UIViewAutoresizingFlexibleLeftMargin |
@@ -287,11 +287,11 @@ static char *kSocializeLoadingViewKey = "kSocializeLoadingViewKey";
     }
     
     SocializeLoadingView *loading = [SocializeLoadingView loadingViewInView:subview];
-    [self associateValue:loading withKey:kSocializeLoadingViewKey];
+    [self bk_associateValue:loading withKey:kSocializeLoadingViewKey];
 }
 
 - (void)hideSocializeLoadingView {
-    UIView *view = [self associatedValueForKey:kSocializeLoadingViewKey];
+    UIView *view = [self bk_associatedValueForKey:kSocializeLoadingViewKey];
     [view removeFromSuperview];
 }
 

@@ -14,6 +14,7 @@
 #import "SocializeLoadingView.h"
 #import "SZStatusView.h"
 #import "SocializeComposeMessageViewController.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 @interface _SZShareDialogViewController () {
     dispatch_once_t _initToken;
@@ -62,7 +63,11 @@
     SZSocialNetwork networks = [self selectedNetworks];
     
     if (networks == SZSocialNetworkNone) {
-        [UIAlertView showAlertWithTitle:@"Select a Network" message:@"One or more networks must be selected to perform a share" buttonTitle:@"Ok" handler:nil];
+        [UIAlertView bk_showAlertViewWithTitle:@"Select a Network"
+                                       message:@"One or more networks must be selected to perform a share"
+                             cancelButtonTitle:@"OK"
+                             otherButtonTitles:nil
+                                       handler:nil];
     } else {
         
         WEAK(self) weakSelf = self;
