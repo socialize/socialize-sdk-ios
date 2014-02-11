@@ -1541,7 +1541,6 @@
 		2C6E52FD1884C293009C8F4F /* socialize-selectnetwork-twitter-icon-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-twitter-icon-ios7.png"; path = "Socialize/Resources/socialize-selectnetwork-twitter-icon-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C6E52FE1884C293009C8F4F /* socialize-selectnetwork-twitter-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-twitter-icon-ios7@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-twitter-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C7DDAE018A049490006A57A /* libSocialize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocialize.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C7DDAE418A049490006A57A /* Socialize-new-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-new-Prefix.pch"; sourceTree = "<group>"; };
 		2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-back-ios7.png"; path = "Socialize/Resources/socialize-navbar-button-back-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C8427A2187DDAB600BD01AF /* socialize-navbar-button-back-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-navbar-button-back-ios7@2x.png"; path = "Socialize/Resources/socialize-navbar-button-back-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C842966187E0D5200BD01AF /* comment-header-icon-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-header-icon-ios7.png"; path = "Socialize/Resources/comment-header-icon-ios7.png"; sourceTree = SOURCE_ROOT; };
@@ -1665,7 +1664,6 @@
 		AA0085A3158D2B1100480399 /* SZTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTestAppDelegate.h; sourceTree = "<group>"; };
 		AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTestAppDelegate.m; sourceTree = "<group>"; };
 		AA0085C4158D2EFC00480399 /* Socialize-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-Prefix.pch"; sourceTree = "<group>"; };
-		AA0085F7158D358B00480399 /* Socialize-noarc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socialize-noarc-Prefix.pch"; sourceTree = "<group>"; };
 		AA0085FF158D35BC00480399 /* _Socialize_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Socialize_private.h; sourceTree = "<group>"; };
 		AA008600158D35BC00480399 /* _Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Socialize.h; sourceTree = "<group>"; };
 		AA008601158D35BC00480399 /* _Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Socialize.m; sourceTree = "<group>"; };
@@ -2664,22 +2662,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C7DDAE218A049490006A57A /* Socialize-new */ = {
-			isa = PBXGroup;
-			children = (
-				2C7DDAE318A049490006A57A /* Supporting Files */,
-			);
-			path = "Socialize-new";
-			sourceTree = "<group>";
-		};
-		2C7DDAE318A049490006A57A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2C7DDAE418A049490006A57A /* Socialize-new-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		2CB7AF25187B2B3A00BABE49 /* iOS6Compatibility */ = {
 			isa = PBXGroup;
 			children = (
@@ -3283,7 +3265,6 @@
 				AA0085CC158D2F4600480399 /* ThirdParty */,
 				AA0C6019158FC4F000F66A3B /* UnitTests */,
 				487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */,
-				2C7DDAE218A049490006A57A /* Socialize-new */,
 				AA008593158D2B1100480399 /* Frameworks */,
 				AA008591158D2B1100480399 /* Products */,
 				591BC9DD5AC34F3A94039250 /* Pods.xcconfig */,
@@ -3408,17 +3389,8 @@
 				AA0086E6158D35BF00480399 /* SynthesizeSingleton.h */,
 				AABCC67515C08181005FA860 /* SZSessionTracker.h */,
 				AABCC67615C08181005FA860 /* SZSessionTracker.m */,
-				AA0085F6158D358B00480399 /* Supporting Files */,
 			);
 			path = "Socialize-noarc";
-			sourceTree = "<group>";
-		};
-		AA0085F6158D358B00480399 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AA0085F7158D358B00480399 /* Socialize-noarc-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AA00882F158D424100480399 /* Misc */ = {
@@ -6235,14 +6207,14 @@
 				CLANG_WARN_ENUM_CONVERSION = NO;
 				CLANG_WARN_INT_CONVERSION = NO;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				DSTROOT = /tmp/Socialize_new.dst;
+				DSTROOT = /tmp/Socialize.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Socialize-new/Socialize-new-Prefix.pch";
+				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
@@ -6279,14 +6251,14 @@
 				CLANG_WARN_ENUM_CONVERSION = NO;
 				CLANG_WARN_INT_CONVERSION = NO;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				DSTROOT = /tmp/Socialize_new.dst;
+				DSTROOT = /tmp/Socialize.dst;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Socialize-new/Socialize-new-Prefix.pch";
+				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
