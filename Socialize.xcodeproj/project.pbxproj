@@ -202,7 +202,6 @@
 		2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860D158D35BC00480399 /* ImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860B158D35BC00480399 /* HtmlPageCreator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9E22015902B3E00B2B9FC /* libBlocksKit.a */; };
-		2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */; };
 		2C7F1EA418A19F2C00E420D6 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize.a */; };
 		2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
 		2C8427A0187DDA1C00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
@@ -1391,13 +1390,6 @@
 			remoteGlobalIDString = 6C3DBF8C1382F1BA00E6C9AA;
 			remoteInfo = "iOS Library";
 		};
-		2C7DDB1A18A04B5E0006A57A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AACEDAB9158FF61A0024EC43;
-			remoteInfo = "OAuthConsumer iOS";
-		};
 		487047D217EEFB04008D5741 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA008587158D2B1100480399 /* Project object */;
@@ -1425,27 +1417,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 030EF0DC14632FF700B04273;
 			remoteInfo = OCMockLib;
-		};
-		AACEDAE7158FF7000024EC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = OAuthConsumer;
-		};
-		AACEDAE9158FF7000024EC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FCAAF0750CC95C5E00C52F82;
-			remoteInfo = OAuthConsumerTestSuite;
-		};
-		AACEDAEB158FF7000024EC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AACEDABA158FF61A0024EC43;
-			remoteInfo = "OAuthConsumer iOS";
 		};
 		AADFBFE116B9FB7400291167 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2232,7 +2203,6 @@
 		AA6C99851591653900E24658 /* SZSelectNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSelectNetworkViewController.m; sourceTree = "<group>"; };
 		AA6D5A831592F34000058669 /* SZFacebookLinkOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZFacebookLinkOptions.h; sourceTree = "<group>"; };
 		AA6D5A841592F34000058669 /* SZFacebookLinkOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZFacebookLinkOptions.m; sourceTree = "<group>"; };
-		AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hide_symbols_oauth.h; path = ThirdParty/OAuthConsumer/hide_symbols_oauth.h; sourceTree = "<group>"; };
 		AA77C95415ACCE6B00745096 /* SZOARequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZOARequest.h; path = Socialize/SZOARequest.h; sourceTree = SOURCE_ROOT; };
 		AA77C95515ACCE6B00745096 /* SZOARequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZOARequest.m; path = Socialize/SZOARequest.m; sourceTree = SOURCE_ROOT; };
 		AA7D03C815A26CAA00EBB705 /* SZActionBarUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZActionBarUtils.h; sourceTree = "<group>"; };
@@ -2540,7 +2510,6 @@
 		AACC19F1159B9B1900800576 /* SZActionBarTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZActionBarTests.m; sourceTree = "<group>"; };
 		AACEDA14158FCF920024EC43 /* JSON-RequestAndResponse-TestFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JSON-RequestAndResponse-TestFiles"; sourceTree = "<group>"; };
 		AACEDA19158FD4D50024EC43 /* GCDAProfiling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GCDAProfiling.c; sourceTree = "<group>"; };
-		AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthConsumer.xcodeproj; path = ThirdParty/OAuthConsumer/OAuthConsumer.xcodeproj; sourceTree = "<group>"; };
 		AAD98F9A1591682000845FC9 /* _SZShareDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZShareDialogViewController.h; sourceTree = "<group>"; };
 		AAD98F9B1591682000845FC9 /* _SZShareDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SZShareDialogViewController.m; sourceTree = "<group>"; };
 		AAD98F9E15916C6900845FC9 /* SZShareDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewController.h; sourceTree = "<group>"; };
@@ -2583,7 +2552,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C7DDBAE18A06D290006A57A /* libBlocksKit.a in Frameworks */,
-				2C7DDBB118A06D290006A57A /* libOAuthConsumer.a in Frameworks */,
 				2C7DDAE118A049490006A57A /* Foundation.framework in Frameworks */,
 				E9100DB445E643B5A40E9FFA /* libPods.a in Frameworks */,
 			);
@@ -3360,11 +3328,9 @@
 			isa = PBXGroup;
 			children = (
 				AA1AD26815902E3B0020023C /* hide_symbols_blockskit.h */,
-				AA6E9979158FFFD7001F81FF /* hide_symbols_oauth.h */,
 				84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */,
 				AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */,
 				AAE9E21215902B3E00B2B9FC /* BlocksKit.xcodeproj */,
-				AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */,
 				AA6C6436158F115D005E5632 /* OCMock.xcodeproj */,
 			);
 			name = ThirdParty;
@@ -4157,16 +4123,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		AACEDADE158FF6FF0024EC43 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AACEDAE8158FF7000024EC43 /* OAuthConsumer.framework */,
-				AACEDAEA158FF7000024EC43 /* OAuthConsumerTestSuite.octest */,
-				AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		AAD1FF6C158EB21E00D908EC /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -4401,7 +4357,6 @@
 			);
 			dependencies = (
 				2C7DDB1918A04B5E0006A57A /* PBXTargetDependency */,
-				2C7DDB1B18A04B5E0006A57A /* PBXTargetDependency */,
 			);
 			name = Socialize;
 			productName = "Socialize-new";
@@ -4521,10 +4476,6 @@
 					ProjectRef = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
 				},
 				{
-					ProductGroup = AACEDADE158FF6FF0024EC43 /* Products */;
-					ProjectRef = AACEDADD158FF6FF0024EC43 /* OAuthConsumer.xcodeproj */;
-				},
-				{
 					ProductGroup = AA6C6437158F115D005E5632 /* Products */;
 					ProjectRef = AA6C6436158F115D005E5632 /* OCMock.xcodeproj */;
 				},
@@ -4561,27 +4512,6 @@
 			fileType = archive.ar;
 			path = libOCMock.a;
 			remoteRef = AA6C6443158F115D005E5632 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AACEDAE8158FF7000024EC43 /* OAuthConsumer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthConsumer.framework;
-			remoteRef = AACEDAE7158FF7000024EC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AACEDAEA158FF7000024EC43 /* OAuthConsumerTestSuite.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OAuthConsumerTestSuite.octest;
-			remoteRef = AACEDAE9158FF7000024EC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AACEDAEC158FF7000024EC43 /* libOAuthConsumer.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libOAuthConsumer.a;
-			remoteRef = AACEDAEB158FF7000024EC43 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */ = {
@@ -6144,11 +6074,6 @@
 			isa = PBXTargetDependency;
 			name = "iOS Library";
 			targetProxy = 2C7DDB1818A04B5E0006A57A /* PBXContainerItemProxy */;
-		};
-		2C7DDB1B18A04B5E0006A57A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "OAuthConsumer iOS";
-			targetProxy = 2C7DDB1A18A04B5E0006A57A /* PBXContainerItemProxy */;
 		};
 		487047D317EEFB04008D5741 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

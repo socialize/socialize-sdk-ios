@@ -1,9 +1,6 @@
 [submodule "ThirdParty/BlocksKit"]
 	path = ThirdParty/BlocksKit
 	url = https://github.com/socialize/BlocksKit.git
-[submodule "ThirdParty/OAuthConsumer"]
-	path = ThirdParty/OAuthConsumer
-	url = https://github.com/socialize/OAuthConsumer.git
 [submodule "ThirdParty/ocmock"]
 	path = ThirdParty/ocmock
 	url = https://github.com/socialize/ocmock.git
