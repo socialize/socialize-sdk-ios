@@ -4340,8 +4340,8 @@
 				AA0C6011158FC4F000F66A3B /* Frameworks */,
 				AA0C6012158FC4F000F66A3B /* Resources */,
 				3B19E4A8D7CB4B5AB864F6A5 /* Copy Pods Resources */,
-				AACEDAB2158FE8B00024EC43 /* ShellScript */,
-				AACEDAA9158FE5A30024EC43 /* Generate Coverage Report */,
+				AACEDAB2158FE8B00024EC43 /* Run Tests (Command-line only) */,
+				AACEDAA9158FE5A30024EC43 /* Generate Coverage Report (Command-line only) */,
 			);
 			buildRules = (
 			);
@@ -5475,14 +5475,14 @@
 			shellScript = "./Scripts/generate-coverage-report.sh";
 			showEnvVarsInLog = 0;
 		};
-		AACEDAA9158FE5A30024EC43 /* Generate Coverage Report */ = {
+		AACEDAA9158FE5A30024EC43 /* Generate Coverage Report (Command-line only) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Coverage Report";
+			name = "Generate Coverage Report (Command-line only)";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5490,13 +5490,14 @@
 			shellScript = "./Scripts/generate-coverage-report.sh";
 			showEnvVarsInLog = 0;
 		};
-		AACEDAB2158FE8B00024EC43 /* ShellScript */ = {
+		AACEDAB2158FE8B00024EC43 /* Run Tests (Command-line only) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Tests (Command-line only)";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
