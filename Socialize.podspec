@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license           = { :type => 'MIT', :file => 'LICENSE' }
   s.author            = { "David Jedeikin" => "djedeikin@sharethis.com" }
   s.source            = { :git => "https://github.com/socialize/socialize-sdk-ios.git", :tag => "3.0.1" }
-  s.source_files      = 'Loopy/**/*.{h,m}'
-  s.resources         = 'Loopy/Resources/*.png','Loopy/LoopyApiInfo.plist'
+  s.source_files      = 'Socialize/**/*.{h,m}','Socialize-noarc/**/*.{h,m}'
+  s.resources         = 'Socialize/Resources/*.png','Socialize/Resources/*.xib','Socialize/Resources/*.plist'  
   s.requires_arc      = false
  end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Socialize. All rights reserved.
 //
 
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
+#import <FacebookSDK/Facebook.h>
 
 @interface Facebook (Socialize)
 
