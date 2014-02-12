@@ -4,9 +4,9 @@ xcodeproj 'Socialize.xcodeproj'
 
 link_with 'Socialize'
 pod 'Loopy', :podspec => 'https://raw.github.com/socialize/loopy-sdk-ios/master/Loopy.podspec'
+pod 'OAuthConsumer', :podspec => 'https://raw.github.com/socialize/OAuthConsumer/master/OAuthConsumer.podspec'
 pod 'Facebook-iOS-SDK', '~> 3.9.0'
 pod 'JSONKit', :podspec => 'https://raw.github.com/socialize/JSONKit/master/SZJSONKit.podspec'
-pod 'SZOAuthConsumer', :podspec => 'https://raw.github.com/socialize/OAuthConsumer/master/SZOAuthConsumer.podspec'
 pod 'BlocksKit', :git => 'https://github.com/socialize/BlocksKit.git', :branch => 'upstream/next'
 #Need to use this podspec and post_install Pods.xcconfig script below as eliminate libffi issues
 #per https://github.com/pandamonia/BlocksKit/issues/178
