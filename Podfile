@@ -22,12 +22,13 @@ post_install do | installer |
   FileUtils.cp_r('Pods/Loopy/Loopy/LoopyApiInfo.plist', 'Socialize/Resources', :remove_destination => true)
 
   #per https://github.com/CocoaPods/CocoaPods/issues/1761
-  workDir = Dir.pwd
-  xcconfigFilename = "#{workDir}/Pods/Pods.xcconfig"
-  xcconfig = File.read(xcconfigFilename)
-  newXcconfig = xcconfig.gsub(/-Wl,-no_compact_unwind /, "")
-  newXcconfig = newXcconfig.concat("\nWARNING_LDFLAGS = -Wl,-no_compact_unwind")
-  File.open(xcconfigFilename, "w") { |file| file << newXcconfig }
+  #NO LONGER NEEDED 2/13/14: done in forked repo podspecs
+  #workDir = Dir.pwd
+  #xcconfigFilename = "#{workDir}/Pods/Pods.xcconfig"
+  #xcconfig = File.read(xcconfigFilename)
+  #newXcconfig = xcconfig.gsub(/-Wl,-no_compact_unwind /, "")
+  #newXcconfig = newXcconfig.concat("\nWARNING_LDFLAGS = -Wl,-no_compact_unwind")
+  #File.open(xcconfigFilename, "w") { |file| file << newXcconfig }
 
   #per http://stackoverflow.com/questions/19875166/ios-7-isa-is-deprecated
   installer.project.targets.each do |target|
