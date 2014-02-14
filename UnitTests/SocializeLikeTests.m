@@ -14,7 +14,7 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeLike.h"
 #import "SocializeTestCase.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 #define ENTITY @"entity_key"
 

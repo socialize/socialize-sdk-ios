@@ -11,7 +11,7 @@
 #import "SocializeObject.h"
 #import "SocializePOOCObjectFactory.h"
 #import "SocializeConfiguration.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 @interface SocializePOOCObjectFactoryTests ()
 -(id)helperCreateMockConfigurationWithPrototypeConfiguration:(NSDictionary *)prototypeConfiguration;

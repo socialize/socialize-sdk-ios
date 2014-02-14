@@ -29,7 +29,7 @@
 #import <OCMock/OCMock.h>
 #import "SocializeCommentFormaterTests.h"
 #import "SocializeEntityJSONFormatter.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeComment.h"
 #import "SocializeApplicationJSONFormatter.h"
 #import "SocializeUserJSONFormatter.h"

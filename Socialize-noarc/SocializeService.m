@@ -26,7 +26,7 @@
  */
 
 #import "SocializeService.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeError.h"
 #import "_Socialize.h"
 #import "socialize_globals.h"

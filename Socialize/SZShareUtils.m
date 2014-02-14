@@ -8,9 +8,9 @@
 
 #import <MessageUI/MessageUI.h>
 #import "SZShareUtils.h"
-#import <BlocksKit/BlocksKit.h>
-#import <BlocksKit/BlocksKit+UIKit.h>
-#import <BlocksKit/BlocksKit+MessageUI.h>
+#import <SZBlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit+MessageUI.h>
 #import "Socialize.h"
 #import "SocializeObjects.h"
 #import "SZBaseShareViewController.h"

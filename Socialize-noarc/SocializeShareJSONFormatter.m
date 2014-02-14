@@ -8,7 +8,7 @@
 
 #import "SocializeShareJSONFormatter.h"
 #import "SocializeShare.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeObjectFactory.h"
 
 @implementation SocializeShareJSONFormatter

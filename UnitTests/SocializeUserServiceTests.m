@@ -10,7 +10,7 @@
 #import "SocializeObjectFactory.h"
 #import "SocializePrivateDefinitions.h"
 #import "SocializeCommonDefinitions.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeTestCase.h"
 
 @implementation SocializeUserServiceTests

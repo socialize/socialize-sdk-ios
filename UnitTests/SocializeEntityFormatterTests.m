@@ -27,7 +27,7 @@
  */
 
 #import <OCMock/OCMock.h>
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "Socialize.h"
 #import "SocializeEntityJSONFormatter.h"
 #import "SocializeEntityFormatterTests.h"

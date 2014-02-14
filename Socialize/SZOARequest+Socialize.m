@@ -8,7 +8,8 @@
 
 #import "SZOARequest+Socialize.h"
 #import "Socialize.h"
-#import <JSONKit/JSONKit.h>
+//#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 @implementation SZOARequest (Socialize)
 

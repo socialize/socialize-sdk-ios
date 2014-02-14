@@ -24,7 +24,7 @@
 #import "SZLocationUtils.h"
 #import "SDKHelpers.h"
 #import "UIDevice+VersionCheck.h"
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 
 #define NO_CITY_MSG @"Could not locate the place name."
 

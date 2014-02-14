@@ -30,7 +30,7 @@
 #import "SocializeListFormatterTests.h"
 #import "SocializeEntity.h"
 #import "SocializeObjects.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 
 @implementation SocializeListFormatterTests

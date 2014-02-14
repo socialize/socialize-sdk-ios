@@ -20,7 +20,7 @@
 #import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
-#import <Blockskit/Blockskit.h>
+#import <SZBlockskit/Blockskit.h>
 #import "StringHelper.h"
 #import "SocializeDeviceTokenSender.h"
 #import "SocializeFacebookAuthHandler.h"

@@ -40,8 +40,8 @@
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SZUserUtils.h"
-#import <BlocksKit/BlocksKit.h>
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 #import "SDKHelpers.h"
 #import "_SZUserSettingsViewController.h"
 

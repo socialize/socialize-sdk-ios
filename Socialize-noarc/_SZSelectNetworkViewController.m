@@ -8,7 +8,7 @@
 
 #import "_SZSelectNetworkViewController.h"
 #import "socialize_globals.h"
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 @interface _SZSelectNetworkViewController ()
 

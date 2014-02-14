@@ -28,7 +28,7 @@
 #import "SocializeUserService.h"
 #import "SocializePrivateDefinitions.h"
 #import "UIImage+Network.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeEntity.h"
 #import "SocializeLike.h"
 #import "SocializeShare.h"

@@ -30,7 +30,7 @@
 #import "SocializeUserJSONFormatterTests.h"
 #import "SocializeUser.h"
 #import "SocializeUserJSONFormatter.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 @implementation SocializeUserJSONFormatterTests
 

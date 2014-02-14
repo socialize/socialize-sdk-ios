@@ -9,7 +9,7 @@
 #import "IntegrationTestStatusViewControllerViewController.h"
 #import <Socialize/Socialize.h>
 #import "integrationtests_globals.h"
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 
 @interface IntegrationTestStatusViewControllerViewController ()
 

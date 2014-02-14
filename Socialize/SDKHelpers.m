@@ -16,8 +16,8 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeThirdPartyTwitter.h"
 #import "Socialize.h"
-#import <BlocksKit/BlocksKit.h>
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 #import "SZUserUtils.h"
 #import "_Socialize.h"
 #import "SocializePrivateDefinitions.h"

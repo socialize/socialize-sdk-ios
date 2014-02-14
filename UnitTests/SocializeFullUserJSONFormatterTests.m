@@ -29,7 +29,7 @@
 #import "SocializeFullUserJSONFormatterTests.h"
 #import "SocializeFullUserJSONFormatter.h"
 #import "SocializeFullUser.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 #import <OCMock/OCMock.h>
 

@@ -10,7 +10,7 @@
 #import "SocializeCommonDefinitions.h"
 #import "_Socialize.h"
 #import "SocializePrivateDefinitions.h"
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 
 @interface SocializeDeviceTokenSender ()
 - (void)startTimer;

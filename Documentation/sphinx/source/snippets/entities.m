@@ -8,7 +8,7 @@
 
 #import "entities.h"
 #import <Socialize/Socialize.h>
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 
 @implementation entities
 

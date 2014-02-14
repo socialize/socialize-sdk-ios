@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "NSString+UrlSerialization.h"
 #import "SocializeCommonDefinitions.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import <Foundation/NSURLResponse.h>
 #import "SocializePrivateDefinitions.h"
 #import "SocializeConfiguration.h"

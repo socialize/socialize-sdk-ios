@@ -9,7 +9,7 @@
 #import "_SZUserSettingsViewController.h"
 #import "SocializeProfileEditTableViewImageCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 #import "SocializeProfileEditTableViewCell.h"
 #import "UIButton+Socialize.h"
 #import "SocializeProfileEditValueViewController.h"

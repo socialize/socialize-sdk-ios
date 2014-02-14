@@ -34,7 +34,7 @@
 #import "UINavigationBarBackground.h"
 #import "SocializeView.h"
 #import "SocializeEntity.h"
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 #import "SocializeFacebookInterface.h"
 #import "SocializeEntityService.h"
 #import "_SZUserProfileViewController.h"

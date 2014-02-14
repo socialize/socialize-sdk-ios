@@ -5,7 +5,7 @@
 //  Created by William Johnson on 5/23/11.
 //  Copyright 2011 Socialize, Inc. All rights reserved.
 //
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeObjectFormatterTests.h"
 #import "SocializePOOCObjectFactory.h"
 

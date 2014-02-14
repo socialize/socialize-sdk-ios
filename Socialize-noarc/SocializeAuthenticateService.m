@@ -10,7 +10,7 @@
 #import "SocializeRequest.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import <UIKit/UIKit.h>
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializePrivateDefinitions.h"
 #import "SocializeFullUser.h"
 #import "socialize_globals.h"

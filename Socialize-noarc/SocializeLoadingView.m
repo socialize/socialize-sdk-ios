@@ -14,7 +14,7 @@
 
 #import "SocializeLoadingView.h"
 #import <QuartzCore/QuartzCore.h>
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 
 //
 // NewPathWithRoundRect

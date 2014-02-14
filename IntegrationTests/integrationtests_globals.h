@@ -7,4 +7,4 @@
 //
 
 #import "StringHelper.h"
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>

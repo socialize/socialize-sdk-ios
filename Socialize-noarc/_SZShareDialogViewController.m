@@ -14,7 +14,7 @@
 #import "SocializeLoadingView.h"
 #import "SZStatusView.h"
 #import "SocializeComposeMessageViewController.h"
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 @interface _SZShareDialogViewController () {
     dispatch_once_t _initToken;

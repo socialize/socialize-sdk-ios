@@ -33,7 +33,7 @@
 #import "SocializeObjectFactory.h"
 
 #import <Foundation/Foundation.h>
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SocializeTestCase.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 

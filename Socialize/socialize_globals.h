@@ -1,4 +1,4 @@
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 
 #import "StringHelper.h"
 #import "SocializePrivateDefinitions.h"

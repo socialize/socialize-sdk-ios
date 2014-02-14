@@ -14,7 +14,7 @@
 #import "NSString+QueryString.h"
 #import "NSHTTPCookieStorage+Utilities.h"
 #import "SZTwitterUtils.h"
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 @interface _SZTwitterLinkViewController ()
 @property (nonatomic, assign) BOOL sentTokenToSocialize;

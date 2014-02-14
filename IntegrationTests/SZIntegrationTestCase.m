@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <OCMock/ClassMockRegistry.h>
 #import "StringHelper.h"
-#import <BlocksKit/BlocksKit.h>
+#import <SZBlocksKit/BlocksKit.h>
 
 static NSString *UUIDString() {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);

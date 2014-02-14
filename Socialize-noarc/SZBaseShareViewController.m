@@ -17,12 +17,12 @@
 #import "SDKHelpers.h"
 #import "socialize_globals.h"
 #import "SZLocationUtils.h"
-#import <JSONKit/JSONKit.h>
+#import <SZJSONKit/JSONKit.h>
 #import "SZEventUtils.h"
 #import "SZPinterestUtils.h"
 #import "SZNetworkImageProvider.h"
 #import "UIDevice+VersionCheck.h"
-#import <BlocksKit/BlocksKit+UIKit.h>
+#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
