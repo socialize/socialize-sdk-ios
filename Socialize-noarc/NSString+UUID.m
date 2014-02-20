@@ -12,7 +12,7 @@
 
 + (NSString*)stringWithUUID {
     CFUUIDRef	uuidObj = CFUUIDCreate(nil);
-    NSString	*uuidString = (__bridge_transfer NSString*)CFUUIDCreateString(nil, uuidObj);
+    NSString	*uuidString = (NSString*)CFUUIDCreateString(nil, uuidObj);
     CFRelease(uuidObj);
     
     return uuidString;
