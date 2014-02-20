@@ -9,12 +9,20 @@ Pod::Spec.new do |s|
   s.license           = { :type => 'MIT', :file => 'LICENSE' }
   s.author            = { "David Jedeikin" => "djedeikin@sharethis.com" }
   s.source            = { :git => "https://github.com/socialize/socialize-sdk-ios.git", :tag => "3.0.1" }
-  s.source_files      = 'Socialize/**/*.{h,m}','Socialize-noarc/**/*.{h,m}'
   s.dependency        'Loopy'
   s.dependency        'Facebook-iOS-SDK', '~> 3.9.0'
   s.dependency        'SZOAuthConsumer'
   s.dependency        'SZJSONKit'
   s.dependency        'SZBlocksKit'
   s.resources         = 'Socialize/Resources/*.png','Socialize/Resources/*.xib','Socialize/Resources/*.plist'  
-  s.requires_arc      = false
- end
+  s.subspec 'no-arc' do |ss1|
+    ss1.source_files = 'Socialize-noarc/**/*.{h,m}'
+    ss1.requires_arc = false
+    ss1.compiler_flags = '-fno-objc-arc'
+  end
+  s.subspec 'arc' do |ss2|
+    ss2.source_files = 'Socialize/**/*.{h,m}'
+    ss2.dependency 'Socialize/no-arc'
+    ss2.requires_arc = true
+  end
+end

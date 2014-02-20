@@ -15,6 +15,7 @@
 #import "SocializeFullUser.h"
 #import "socialize_globals.h"
 #import "NSData+Base64.h"
+#import "ASIdentifierManager+Utilities.h"
 
 static NSString *SZDefaultUDID = @"105105105105";
 

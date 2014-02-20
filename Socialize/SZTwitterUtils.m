@@ -14,6 +14,7 @@
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
 #import "SZOARequest+Twitter.h"
+#import "NSOperationQueue+Socialize.h"
 
 #define TWITTER_MAX_LENGTH 140
 #define DISPLAYNAME_MAX_LENGTH 50

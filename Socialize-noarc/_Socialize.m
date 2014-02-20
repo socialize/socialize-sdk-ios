@@ -36,6 +36,7 @@
 #import "SZEntityUtils.h"
 #import "SZSmartAlertUtils.h"
 #import "SZPinterestEngine.h"
+#import "SZViewControllerWrapper.h"
 #import "UIDevice+VersionCheck.h"
 #import "UIColor+Socialize.h"
 
@@ -214,12 +215,12 @@ static Socialize *_sharedSocialize;
         //iOS 7 navbar standard init
         if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
             UIColor *barColor = [UIColor navigationBarBackgroundColor];
-            [[UINavigationBar appearance] setBarTintColor:barColor];
-            [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
             NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                        [UIColor blackColor], NSForegroundColorAttributeName,
                                                        nil];
-            [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+            [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setBarTintColor:barColor];
+            [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setTintColor:[UIColor whiteColor]];
+            [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setTitleTextAttributes:navbarTitleTextAttributes];
         }
     }
     return self;
