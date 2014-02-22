@@ -22,13 +22,102 @@ passed into each call to the Socialize SDK.
 
 The main class through which you will be interacting would be Socialize. 
 
-.. note:: * iOS 4.0 is the minimum version supported by this SDK
+.. note:: * iOS 6.1 is the minimum version supported by this SDK
  
 Installing the SDK
 ------------------
 
 If you are upgrading from a previous release, check out the `Upgrading Guide`_.
     .. _Upgrading Guide: upgrading.html
+
+Installing with CocoaPods
+-------------------------
+
+As of release 3.0.1, Socialize iOS SDK can be installed with CocoaPods.
+
+CocoaPods is an easy, elegant way to manage library dependencies in iOS. No need to manually import frameworks or deal with compiler flags. After a one-time installation of RubyGems (CocoaPods is Ruby-based), a single command-line operation is all that's needed to install or upgrade Socialize. For more information on CocoaPods, check out the `CocoaPods homepage`_.
+
+  .. _CocoaPods homepage: http://cocoapods.org/
+
+
+Step 1: Install RubyGems & CocoaPods (One-Time Operation)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Current Macs come preinstalled with Ruby 1.8.7 or higher. For the purposes of CocoaPods, **this is the correct version.** However, you may still need to install RubyGems as directed from the `installation page`_.
+ 
+
+  .. _installation page: https://rubygems.org/pages/download
+ 
+
+- Verify that you have both Ruby and RubyGems installed by entering the following in the command line:
+
+::
+
+            $ ruby -v
+            ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+            $ gem -v
+            2.1.5
+ 
+- Install CocoaPods by entering the following in the command line:
+
+::
+
+           $ sudo gem install cocoapods
+           $ pod setup
+ 
+ 
+.. note:: Installing RubyGems and/or CocoaPods can take up to a minute, and may appear unresponsive for brief periods during install.
+
+
+Step 2: Initialize the Socialize Pod Repository (One-Time Operation)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- The Socialize SDK uses a number of customized forked frameworks. To prevent confusion with the public versions of these frameworks, these have been renamed and added to their own Spec repository. To install the Socialize Spec repository, enter the following in the command-line:
+
+::
+
+           $ pod repo add SocializeCocoaPods https://github.com/socialize/SocializeCocoaPods.git
+ 
+
+Step 3: Install Socialize as a CocoaPod
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- In the root directory of your project, create a Podfile or add to an existing Podfile. This file (named "Podfile" with no extension) specifies which CocoaPods will be included in your project. **Your Podfile should contain the following:**
+
+::
+
+            platform :ios, '6.1'
+            inhibit_all_warnings!
+
+            pod 'Socialize', :podspec => 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'
+ 
+
+.. note:: If you already use an Xcode workspace to manage your project files, you will need to customize your Podfile to include CocoaPods for each Xcode project and app target. If you are already using Pods also used by the Socialize SDK, you may need to ensure the versions are consistent. See this `CocoaPods help page`_ for more information.
+ 
+  .. _CocoaPods help page: https://github.com/CocoaPods/CocoaPods/issues/738
+
+- Once complete, your Podfile should appear in this location in your project directory:
+
+  .. image:: images/podfile_in_directory.png
+            :width: 994
+            :height: 235
+ 
+
+- In the command line at the root directory of your project, enter the following:
+
+::
+
+            $ pod install
+
+- After the Socialize CocoaPod is created in your project, **you must use the Xcode workspace (YourProject.xcworkspace) to use the CocoaPod.** All your project settings should still be available to you from the workspace. **DO NOT open the .xcodeproj directly.**
+
+**Once installation via CocoaPods is complete, go to "Configuring Socialize," below.**
+
+
+Manual Installation via Framework
+---------------------------------
+
+If you prefer not to use CocoaPods, the SDK can still be installed as before:
 
 Step 1: Add the Socialize Framework to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,8 +143,6 @@ Step 1: Add the Socialize Framework to Your Project
   and socialize will not be able to locate its resources.
 
 
- 
-
 Step 2: Add Required Frameworks to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -72,6 +159,7 @@ Step 2: Add Required Frameworks to Your Project
 
 .. image:: images/add_frameworks.png
 
+
 Step 3: Set Project Linker and Code Generation Flags
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -87,7 +175,7 @@ Step 3: Set Project Linker and Code Generation Flags
         :width: 529
         :height: 278
 
-- For older versions of Xcode (4.3 and newer), if your app is not arc-enabled, you MUST also add **-fobjc-arc** to the Other Linker flags.
+- For older versions of Xcode (4.3 and below), if your app is not arc-enabled, you MUST also add **-fobjc-arc** to the Other Linker flags.
 
 If you need more detail configuring the SDK in your app please see our `Getting Started Video`_.
 
@@ -99,7 +187,13 @@ You can also search or post on our `support forums`_
 
   .. _support forums: http://support.getsocialize.com
 
-Step 4: Import Header and Set up your Socialize Keys
+**Once installation is complete, go to "Configuring Socialize," below.**
+
+
+Configuring Socialize (Post-Installation)
+-----------------------------------------
+
+Step 1: Import Header and Set up your Socialize Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To utilize the iOS SDK and views into your app, we need to import the Socialize.h header and let the library know your app key and secret.  Your application key and secret can be found 
@@ -111,7 +205,8 @@ at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Clic
   :start-after: begin-snippet
   :end-before: end-snippet
 
-Step 5: Defining an Entity Loader
+
+Step 2: Define an Entity Loader
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Defining an Entity Loader allows Socialize's UI objects to link back to your
@@ -134,7 +229,7 @@ Copy the lines below to add an entity loader
 
 .. image:: images/entity_loader.png
 
-Step 6: Add Socialize URL Scheme Entry
+Step 3: Add Socialize URL Scheme Entry
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to allow Socialize to direct web users back into your app, you should add
@@ -160,7 +255,7 @@ following:
 .. image:: images/enable_smartdownloads_dashboard.png	
 
 
-Step 6: Include Socialize in your App!
+Step 4: Include Socialize in your App!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have your environment all setup, it’s time to include Socialize.

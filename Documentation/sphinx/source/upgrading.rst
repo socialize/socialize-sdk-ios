@@ -1,11 +1,20 @@
 .. include:: feedback_widget.rst
 
-=====================
-Upgrading Socialize
-=====================
+=================================================
+Upgrading Socialize (CocoaPods and non-CocoaPods)
+=================================================
+
+Important Notes on Upgrading to v3.0.1
+------------------------------------------------
+
+As of 3.0.1, Socialize is available as a CocoaPod!
+
+To upgrade from a non-CocoaPods install (pre-3.0.1) to a CocoaPods install, remove the old Socialize SDK per Step 2, below, then follow the directions in "Installing with CocoaPods" in the `Getting Started Guide`_. To upgrade a CocoaPods install, see below.
+    .. _Getting Started Guide: getting_started.html
+
 
 Important Notes on Upgrading to v2.8.9
------------------
+--------------------------------------
 
 For each of your application targets (or, if preferred, for the entire project), set the Debug setting of "Generate Test Coverage Files" and "Instrument Program Flow" in "Apple LLVM 5.0 - Code Generation" to "Yes":
 
@@ -13,8 +22,9 @@ For each of your application targets (or, if preferred, for the entire project),
         :width: 529
         :height: 278
 
+
 Important Notes on Upgrading to v2.4
------------------
+------------------------------------
 
 Entity loader events that occur when Socialize does not have a preexisting
 navigation controller on the screen no longer automatically push a new
@@ -29,14 +39,25 @@ situation.
   :end-before: end-entity-loader-snippet
   :emphasize-lines: 14-25
 
-Overview
-------------------
 
-This document highlights the process you should use for updating your project to use a new
-Socialize iOS SDK release.
+Upgrading with CocoaPods (v3.0.1 and Newer)
+-------------------------------------------
+
+If you already have a CocoaPods install of the SDK, future upgrades must also be done via CocoaPods. To do so, in the command line at the root directory of your project, enter the following:
+
+::
+
+            $ pod update
+
+
+Upgrading via Framework (v3.0.0 and Older)
+------------------------------------------
+
+.. note:: This upgrade process can only be done for Socialize SDK installed via Framework; if you have installed via CocoaPods, you **must** upgrade with CocoaPods, as instructed above.
  
 Step 1: Download a new release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 - **Download and unzip an iOS SDK release from the website.**  
   Release can be found here: https://github.com/socialize/socialize-sdk-ios/downloads
 
@@ -54,7 +75,7 @@ Step 2: Delete the Old Socialize Framework from your Project
   disk. Xcode may leave the empty Socialize.embeddedframework
   directory around. This could cause a copy error in the next step.**
 
-Step 2: Readd the framework to your project
+Step 2: Re-add the framework to your project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Install the embedded static framework to your application.**
