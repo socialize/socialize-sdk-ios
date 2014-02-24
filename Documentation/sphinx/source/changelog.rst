@@ -7,6 +7,26 @@ Changelog
 v3.0.1
 ------
 
+[feature] As a developer, KIF, one of the current Socialize SDK's submodules, can be managed in the SDK as a CocoaPod [ cocoapods+lib reorg ]
+
+[feature] As a developer, I no longer need to manage separate Socialize and Socialize-noarc variant libraries [ cocoapods+lib reorg ]
+
+[feature] As a tester, I can use the iOS Socialize SDK libraries without a separate profiling set [ cocoapods+lib reorg ]
+
+[bug] GetSat: Investigate: (Ellen/WB) Pod Duplication Problem in Update [ ]
+
+[feature] As a developer, JSONKit, one of the current Socialize SDK's git submodules, can be managed in the SDK as a CocoaPod [ cocoapods+lib reorg ]
+
+[feature] As a developer, OAuthConsumer, one of the current Socialize SDK's git submodules, can be managed in the SDK as a CocoaPod [ cocoapods+lib reorg ]
+
+[feature] As a developer, BlocksKit, one of the current Socialize SDK's git submodules, can be managed in the SDK as a CocoaPod [ cocoapods+lib reorg ]
+
+[feature] As a developer, I can use all Socialize SDK dependent Pods in a podspec with all strict lint checks passing [ cocoapods+lib reorg ]
+
+[bug] iOS 7: bar tint color should only apply to Socialize screens [ getsat ios7 ui ]
+
+[feature] As a developer, I can install the current Socialize SDK using CocoaPods with all its source, resource files, and dependent submodules initialized correctly [ cocoapods+lib reorg ]
+
 v3.0.0
 ------
 
