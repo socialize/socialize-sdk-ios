@@ -129,8 +129,7 @@ Step 1: Add the Socialize Framework to Your Project
   To do this just drag and drop Socialize.embeddedframework folder from the
   package to your framework section in your project.
 
-.. note:: Be sure to drag the outlying .embeddedframework folder, not just the framework. The .embeddedframework directory contains both the Socialize framework and the Socialize resources.
-  If you just add the framework, you will be missing important Socialize images and configuration files.
+.. note:: Be sure to drag the outlying .embeddedframework folder, not just the framework. The .embeddedframework directory contains both the Socialize framework and the Socialize resources. If you just add the framework, you will be missing important Socialize images and configuration files.
 
 .. image:: images/drag_and_drop.png
 
