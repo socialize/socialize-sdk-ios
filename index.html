@@ -6,15 +6,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize iOS SDK &mdash; Socialize iOS SDK 3.0.0 documentation</title>
+    <title>Socialize iOS SDK &mdash; Socialize iOS SDK 3.0.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.0',
+        VERSION:     '3.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,8 +25,10 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.0 documentation" href="#" />
-    <link rel="next" title="Getting Started Guide" href="getting_started.html" /> 
+    <link rel="top" title="Socialize iOS SDK 3.0.1 documentation" href="#" />
+    <link rel="next" title="Getting Started Guide" href="getting_started.html" />
+<script type="text/javascript" src="static/loopy.js"></script>
+
   </head>
   <body>
     <div class="related">
@@ -34,7 +37,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="N">next</a></li>
-        <li><a href="#">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
+        <li><a href="#">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -74,21 +77,26 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#installing-the-sdk">Installing the SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installing-with-cocoapods">Installing with CocoaPods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#manual-installation-via-framework">Manual Installation via Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#configuring-socialize-post-installation">Configuring Socialize (Post-Installation)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize (CocoaPods and non-CocoaPods)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html#important-notes-on-upgrading-to-v3-0-1">Important Notes on Upgrading to v3.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html#important-notes-on-upgrading-to-v2-8-9">Important Notes on Upgrading to v2.8.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html#upgrading-with-cocoapods-v3-0-1-and-newer">Upgrading with CocoaPods (v3.0.1 and Newer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html#upgrading-via-framework-v3-0-0-and-older">Upgrading via Framework (v3.0.0 and Older)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="upgrading_2_0.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading_2_0.html#basic-upgrade-process">Basic Upgrade Process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading_2_0.html#api-client-changes">API Client Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading_2_0.html#view-controller-changes">View Controller changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading_2_0.html#action-bar-changes">Action Bar Changes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="upgrading.html#important-notes-on-upgrading-to-v2-8-9">Important Notes on Upgrading to v2.8.9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="upgrading.html#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="upgrading.html#overview">Overview</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a><ul>
@@ -124,6 +132,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pinterest.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinterest.html#installation-with-cocoapods-3-0-1">Installation with CocoaPods (3.0.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinterest.html#non-cocoapods-installation">Non-CocoaPods Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pinterest.html#configuring-pinterest-in-socialize-sdk">Configuring Pinterest in Socialize (SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pinterest.html#posting-to-pinterest-on-your-own">Posting to Pinterest on your own</a></li>
 </ul>
@@ -203,6 +213,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v3-0-1">v3.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v3-0-0">v3.0.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v2-9-0">v2.9.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v2-8-10">v2.8.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v2-8-9">v2.8.9</a></li>
@@ -301,8 +313,8 @@
 <h3><a href="#">Table Of Contents</a></h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
@@ -346,11 +358,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="getting_started.html" title="Getting Started Guide"
              >next</a></li>
-        <li><a href="#">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
+        <li><a href="#">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, Socialize Inc.
+        &copy; Copyright 2012-2014, Socialize Inc.
     </div>
   </body>
 </html>

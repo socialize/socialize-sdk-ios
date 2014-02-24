@@ -6,15 +6,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Socialize Action Bar &mdash; Socialize iOS SDK 3.0.0 documentation</title>
+    <title>Socialize Action Bar &mdash; Socialize iOS SDK 3.0.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.0',
+        VERSION:     '3.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,9 +25,11 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.1 documentation" href="index.html" />
     <link rel="next" title="Socialize Like Button" href="like_button.html" />
-    <link rel="prev" title="Upgrading Socialize" href="upgrading.html" /> 
+    <link rel="prev" title="Upgrade Notes: Socialize v2" href="upgrading_2_0.html" />
+<script type="text/javascript" src="static/loopy.js"></script>
+
   </head>
   <body>
     <div class="related">
@@ -36,9 +39,9 @@
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="upgrading.html" title="Upgrading Socialize"
+          <a href="upgrading_2_0.html" title="Upgrade Notes: Socialize v2"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -211,7 +214,7 @@ both an email and a panic button to the action bar.</p>
         
         <span class="n">SZActionButton</span> <span class="o">*</span><span class="n">panicButton</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">actionButtonWithIcon</span><span class="o">:</span><span class="nb">nil</span> <span class="n">title</span><span class="o">:</span><span class="s">@&quot;Panic&quot;</span><span class="p">];</span>
         <span class="n">panicButton</span><span class="p">.</span><span class="n">actionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZActionButton</span> <span class="o">*</span><span class="n">button</span><span class="p">,</span> <span class="n">SZActionBar</span> <span class="o">*</span><span class="n">bar</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="o">:</span><span class="s">@&quot;Oh no!&quot;</span> <span class="n">message</span><span class="o">:</span><span class="nb">nil</span> <span class="n">delegate</span><span class="o">:</span><span class="nb">nil</span> <span class="n">cancelButtonTitle</span><span class="o">:</span><span class="nb">nil</span> <span class="n">otherButtonTitles</span><span class="o">:</span><span class="s">@&quot;Ok&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+            <span class="n">UIAlertView</span> <span class="o">*</span><span class="n">alertView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIAlertView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="o">:</span><span class="s">@&quot;Oh no!&quot;</span> <span class="n">message</span><span class="o">:</span><span class="nb">nil</span> <span class="n">delegate</span><span class="o">:</span><span class="nb">nil</span> <span class="n">cancelButtonTitle</span><span class="o">:</span><span class="nb">nil</span> <span class="n">otherButtonTitles</span><span class="o">:</span><span class="s">@&quot;OK&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
             <span class="p">[</span><span class="n">alertView</span> <span class="n">show</span><span class="p">];</span>
         <span class="p">};</span>
         <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">.</span><span class="n">itemsRight</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="n">panicButton</span><span class="p">,</span> <span class="p">[</span><span class="n">SZActionButton</span> <span class="n">commentButton</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
@@ -274,8 +277,8 @@ both an email and a panic button to the action bar.</p>
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrading to Socialize v2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Socialize Action Bar</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#displaying-the-action-bar">Displaying the Action Bar</a></li>
@@ -324,13 +327,13 @@ both an email and a panic button to the action bar.</p>
           <a href="like_button.html" title="Socialize Like Button"
              >next</a></li>
         <li class="right" >
-          <a href="upgrading.html" title="Upgrading Socialize"
+          <a href="upgrading_2_0.html" title="Upgrade Notes: Socialize v2"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, Socialize Inc.
+        &copy; Copyright 2012-2014, Socialize Inc.
     </div>
   </body>
 </html>

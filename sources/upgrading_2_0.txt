@@ -1,8 +1,8 @@
 .. include:: feedback_widget.rst
 
-=====================
-Upgrading to Socialize v2
-=====================
+===========================
+Upgrade Notes: Socialize v2
+===========================
 
 Overview
 ------------------

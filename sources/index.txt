@@ -9,8 +9,8 @@ Contents:
    :maxdepth: 2
    
    getting_started
-   upgrading_2_0
    upgrading
+   upgrading_2_0
    action_bar
    like_button
    twitter
