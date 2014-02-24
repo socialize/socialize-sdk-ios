@@ -17,7 +17,7 @@ To use the version of Pinterest SDK that is compatible with Socialize, `download
 Non-CocoaPods Installation
 --------------------------
 
-The Pinterest.embeddedframework can be found in Socialize SDK distribution archive. Simply drag it to the framework section of your project.
+The Pinterest.embeddedframework can be found in the Socialize SDK distribution archive. Simply drag it to the framework section of your project.
 
 Let Socialize know your Pinterest app id.  You can register or find your
 Pinterest app id here: http://developers.pinterest.com/manage/

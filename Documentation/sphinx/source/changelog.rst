@@ -4,6 +4,36 @@
 Changelog
 =============================================
 
+v3.0.1
+------
+
+v3.0.0
+------
+
+[feature] iOS 7 UI Migration: implement mechanisms (class clusters and/or other strategies) to handle both iOS 6 and iOS 7 UI variants [ ios7 ui ]
+
+[feature] iOS 7 UI Migration: Header (aka Navigation) bar [ ios7 ui ]
+
+[feature] iOS 7 UI Migration: Navigation buttons [ ios7 ui ]
+
+[feature] iOS 7 UI Migration: Screen backgrounds & assets [ ios7 ui ]
+
+[feature] iOS 7 UI Migration: Third-party assets [ ]
+
+[feature] iOS 7 UI Migration: Action bar [ ios7 ui ]
+
+[feature] iOS 7 UI Migration: Any remaining elements and class cluster tests [ ios7 ui ]
+
+[feature] Initial pixel polishing to iOS 7 L&F (per UI review 1/21) [ ]
+
+[feature] Final pixel polishing to iOS 7 L&F (per UI review 1/23) [ ]
+
+[bug] Ensure comment / like / share mini-icons always show up in User Profile List table cells [ ]
+
+[feature] Update documentation with iOS 7 screens [ ]
+
+[bug] Share Like Remember Selection button always disabled for iPhone 5 [ ]
+
 v2.9.0
 ------
 
