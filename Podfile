@@ -10,6 +10,7 @@ pod 'SZJSONKit', :podspec => 'https://raw.github.com/socialize/JSONKit/master/SZ
 pod 'SZBlocksKit', :podspec => 'https://raw.github.com/socialize/BlocksKit/master/SZBlocksKit.podspec'
 #Need to use this podspec and post_install Pods.xcconfig script below as eliminate libffi issues
 #per https://github.com/pandamonia/BlocksKit/issues/178
+pod 'Pinterest-iOS', '~> 2.3'
 
 target 'UIIntegrationAcceptanceTests', :exclusive => true do
   pod 'KIF', '~> 2.0'
