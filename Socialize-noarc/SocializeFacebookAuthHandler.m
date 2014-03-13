@@ -103,7 +103,12 @@ static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
     self.authenticating = NO;
     
     if (self.failureBlock != nil) {
-        self.failureBlock([NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
+        if (cancelled) {
+            self.failureBlock([NSError defaultSocializeErrorForCode:SocializeErrorFacebookCancelledByUser]);
+        }
+        else {
+            self.failureBlock([NSError defaultSocializeErrorForCode:SocializeErrorFacebookAuthFailed]);
+        }
     }
     
     self.successBlock = nil;

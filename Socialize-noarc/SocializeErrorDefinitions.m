@@ -25,6 +25,7 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Facebook Authentication Cancelled",
     @"Facebook is not Configured",
     @"Facebook authentication was restarted before completion",
+    @"Facebook authentication was failed",
     @"Twitter Authentication Cancelled",
     @"Twitter is not Configured",
     @"SMS Not Available",

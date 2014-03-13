@@ -24,6 +24,7 @@ typedef enum {
     SocializeErrorFacebookCancelledByUser,
     SocializeErrorFacebookUnavailable,
     SocializeErrorFacebookAuthRestarted,
+    SocializeErrorFacebookAuthFailed,
     SocializeErrorTwitterCancelledByUser,
     SocializeErrorTwitterUnavailable,
     SocializeErrorSMSNotAvailable,

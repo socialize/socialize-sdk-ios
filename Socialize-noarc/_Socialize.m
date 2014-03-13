@@ -403,6 +403,9 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 #pragma mark authentication info
 
 +(BOOL)handleOpenURL:(NSURL *)url {
+    
+    SDebugLog(2, @"Application was opened with URL: %@",  [url.absoluteString stringByRemovingPercentEncoding]);
+    
     if ([[SZOpenURLHandler sharedOpenURLHandler] handleOpenURL:url]) {
         return YES;
     }
