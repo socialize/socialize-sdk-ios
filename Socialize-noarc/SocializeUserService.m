@@ -34,6 +34,7 @@
 #import "SocializeShare.h"
 #import "SocializeView.h"
 #import "socialize_globals.h"
+#import "SZAPIClientHelpers.h"
 
 #define USER_GET_ENDPOINT     @"user/"
 #define USER_POST_ENDPOINT(userid)  [NSString stringWithFormat:@"user/%d/", userid]

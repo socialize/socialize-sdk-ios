@@ -12,6 +12,8 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeEntity.h"
 #import "socialize_globals.h"
+#import "SZAPIClientHelpers.h"
+
 
 #define LIKE_METHOD @"like/"
 #define ENTRY_KEY @"key"

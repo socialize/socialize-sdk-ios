@@ -4389,6 +4389,9 @@
 					487047C417EEFB03008D5741 = {
 						TestTargetID = AA00858F158D2B1100480399;
 					};
+					AA00858F158D2B1100480399 = {
+						DevelopmentTeam = 6QWWQR8948;
+					};
 				};
 			};
 			buildConfigurationList = AA00858A158D2B1100480399 /* Build configuration list for PBXProject "Socialize" */;
@@ -6246,6 +6249,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"/**",
@@ -6263,6 +6268,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6271,7 +6277,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"/**",

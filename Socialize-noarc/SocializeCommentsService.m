@@ -30,6 +30,7 @@
 #import "SocializeCommentJSONFormatter.h"
 #import "SocializeObjectFactory.h"
 #import "socialize_globals.h"
+#import "SZAPIClientHelpers.h"
 
 #define COMMENTS_LIST_METHOD @"comment/"
 

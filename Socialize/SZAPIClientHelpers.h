@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "SocializeObjects.h"
 
-id SZUnarchiveUser(Protocol* protocol);
-void SZHandleUserChange(id<SZFullUser> fullUser);
-NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
-BOOL SZUseProductionPush();
-void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
-BOOL SZEventTrackingDisabled();
+extern id SZUnarchiveUser(Protocol* protocol);
+extern void SZHandleUserChange(id<SZFullUser> fullUser);
+extern NSString *SZAPINSStringFromSZResultSorting(SZResultSorting sorting);
+extern BOOL SZUseProductionPush();
+extern void SZPostActivityEntityDidChangeNotifications(NSArray *activities);
+extern BOOL SZEventTrackingDisabled();

@@ -29,6 +29,7 @@
 #import "SocializeObjectFactory.h"
 #import "SocializeEntity.h"
 #import "socialize_globals.h"
+#import "SZAPIClientHelpers.h"
 
 #define ENTITY_GET_ENDPOINT     @"entity/"
 #define ENTITY_CREATE_ENDPOINT  @"entity/"

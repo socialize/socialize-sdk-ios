@@ -9,6 +9,7 @@
 #import "SocializeViewService.h"
 #import "SocializeEntity.h"
 #import "socialize_globals.h"
+#import "SZAPIClientHelpers.h"
 
 #define VIEW_METHOD @"view/"
 #define ENTRY_KEY @"key"

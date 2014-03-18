@@ -10,6 +10,7 @@
 #import "_Socialize.h"
 #import "socialize_globals.h"
 #import "SDKHelpers.h"
+#import "SZAPIClientHelpers.h"
 
 @implementation SZEventUtils
 

@@ -9,6 +9,7 @@
 #import "SocializeEventService.h"
 #import <Socialize/Socialize.h>
 #import "socialize_globals.h"
+#import "SZAPIClientHelpers.h"
 
 #define EVENT_METHOD @"private/sdk_event/"
 
