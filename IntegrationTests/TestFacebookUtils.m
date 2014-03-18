@@ -15,9 +15,15 @@
 - (void)linkToFacebookIfNeeded {
     if (![SZFacebookUtils isLinked]) {
         NSString *accessToken = [[SZTestHelper sharedTestHelper] facebookAccessToken];
+        
+        //set to date 30 days in future (preferred for FB access token)
+        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+        [dateComponents setDay:30];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:[NSDate date] options:0];
 
         [self prepare];
-        [SZFacebookUtils linkWithAccessToken:accessToken expirationDate:[NSDate distantFuture] success:^(id<SZFullUser> fullUser) {
+        [SZFacebookUtils linkWithAccessToken:accessToken expirationDate:newDate success:^(id<SZFullUser> fullUser) {
             [self notify:kGHUnitWaitStatusSuccess];
         } failure:^(NSError *error) {
             [self notify:kGHUnitWaitStatusFailure];        
