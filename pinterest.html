@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="Socialize iOS SDK 3.0.1 documentation" href="index.html" />
     <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
-    <link rel="prev" title="Facebook" href="facebook.html" />
+    <link rel="prev" title="Using Facebook Open Graph" href="facebook_og.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
 
   </head>
@@ -39,7 +39,7 @@
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="facebook.html" title="Facebook"
+          <a href="facebook_og.html" title="Using Facebook Open Graph"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -54,21 +54,19 @@
 <h1>Pinterest<a class="headerlink" href="#pinterest" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>To avoid duplication issues the Socialize SDK doesn&#8217;t include Pinterest SDK by default. To use the Pinterest sharing feature make sure to add Pinterest.embeddedframework in your project and link to appropriate target.</p>
+<p>As of release 3.0.2, Pinterest is included with the Socialize SDK by default if installing with CocoaPods.</p>
 </div>
-<div class="section" id="installation-with-cocoapods-3-0-1">
-<h2>Installation with CocoaPods (3.0.1)<a class="headerlink" href="#installation-with-cocoapods-3-0-1" title="Permalink to this headline">¶</a></h2>
-<p><strong>The Pinterest SDK is not yet included as a dependent CocoaPod for the Socialize SDK.</strong></p>
-<p>To use the version of Pinterest SDK that is compatible with Socialize, <a class="reference external" href="https://s3.amazonaws.com/socialize-sdk-distribution/Pinterest.embeddedframework.zip">download the framework here</a> and install it by uncompressing and dragging it to the framework section of your project. If you already have the Pinterest SDK installed from a recent Socialize SDK version (2.8.8 or newer) you do not need to install it again.</p>
+<div class="section" id="installation-with-cocoapods-3-0-2-and-later">
+<h2>Installation with CocoaPods (3.0.2 and later)<a class="headerlink" href="#installation-with-cocoapods-3-0-2-and-later" title="Permalink to this headline">¶</a></h2>
+<p>The Pinterest SDK will install automatically during a CocoaPods install or update. <strong>There is no need to add the Pinterest SDK manually. If you already have the Pinterest.embeddedframework installed from an older version and are now using CocoaPods to install Socialize, please delete the Pinterest.embeddedframework from your Xcode Workspace and from your file system.</strong></p>
 </div>
 <div class="section" id="non-cocoapods-installation">
 <h2>Non-CocoaPods Installation<a class="headerlink" href="#non-cocoapods-installation" title="Permalink to this headline">¶</a></h2>
 <p>The Pinterest.embeddedframework can be found in the Socialize SDK distribution archive. Simply drag it to the framework section of your project.</p>
-<p>Let Socialize know your Pinterest app id.  You can register or find your
-Pinterest app id here: <a class="reference external" href="http://developers.pinterest.com/manage/">http://developers.pinterest.com/manage/</a></p>
 </div>
 <div class="section" id="configuring-pinterest-in-socialize-sdk">
 <h2>Configuring Pinterest in Socialize (SDK)<a class="headerlink" href="#configuring-pinterest-in-socialize-sdk" title="Permalink to this headline">¶</a></h2>
+<p>Let Socialize know your Pinterest app id.  You can register or find your Pinterest app id here: <a class="reference external" href="http://developers.pinterest.com/manage/">http://developers.pinterest.com/manage/</a></p>
 <p>Once you have a pinterest application, simply tell Socialize about your application id:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
 <span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
@@ -121,10 +119,11 @@ direct Pintrest access methods on the utils classes.</p>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook_og.html">Using Facebook Open Graph</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Pinterest</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation-with-cocoapods-3-0-1">Installation with CocoaPods (3.0.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-with-cocoapods-3-0-2-and-later">Installation with CocoaPods (3.0.2 and later)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#non-cocoapods-installation">Non-CocoaPods Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-pinterest-in-socialize-sdk">Configuring Pinterest in Socialize (SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#posting-to-pinterest-on-your-own">Posting to Pinterest on your own</a></li>
@@ -169,7 +168,7 @@ direct Pintrest access methods on the utils classes.</p>
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >next</a></li>
         <li class="right" >
-          <a href="facebook.html" title="Facebook"
+          <a href="facebook_og.html" title="Using Facebook Open Graph"
              >previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
       </ul>

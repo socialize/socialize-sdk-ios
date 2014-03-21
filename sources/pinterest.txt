@@ -5,25 +5,22 @@ Pinterest
 Installation
 ------------
 
-To avoid duplication issues the Socialize SDK doesn't include Pinterest SDK by default. To use the Pinterest sharing feature make sure to add Pinterest.embeddedframework in your project and link to appropriate target.
+As of release 3.0.2, Pinterest is included with the Socialize SDK by default if installing with CocoaPods.
 
-Installation with CocoaPods (3.0.1)
------------------------------------
+Installation with CocoaPods (3.0.2 and later)
+---------------------------------------------
 
-**The Pinterest SDK is not yet included as a dependent CocoaPod for the Socialize SDK.** 
-
-To use the version of Pinterest SDK that is compatible with Socialize, `download the framework here <https://s3.amazonaws.com/socialize-sdk-distribution/Pinterest.embeddedframework.zip>`_ and install it by uncompressing and dragging it to the framework section of your project. If you already have the Pinterest SDK installed from a recent Socialize SDK version (2.8.8 or newer) you do not need to install it again.
+The Pinterest SDK will install automatically during a CocoaPods install or update. **There is no need to add the Pinterest SDK manually. If you already have the Pinterest.embeddedframework installed from an older version and are now using CocoaPods to install Socialize, please delete the Pinterest.embeddedframework from your Xcode Workspace and from your file system.**
 
 Non-CocoaPods Installation
 --------------------------
 
 The Pinterest.embeddedframework can be found in the Socialize SDK distribution archive. Simply drag it to the framework section of your project.
 
-Let Socialize know your Pinterest app id.  You can register or find your
-Pinterest app id here: http://developers.pinterest.com/manage/
-
 Configuring Pinterest in Socialize (SDK)
 ----------------------------------------
+
+Let Socialize know your Pinterest app id.  You can register or find your Pinterest app id here: http://developers.pinterest.com/manage/
 
 Once you have a pinterest application, simply tell Socialize about your application id:
 

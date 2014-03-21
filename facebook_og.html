@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Facebook Open Graph &mdash; Socialize iOS SDK 3.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="Socialize iOS SDK 3.0.1 documentation" href="index.html" />
+    <link rel="next" title="Pinterest" href="pinterest.html" />
+    <link rel="prev" title="Facebook Integration" href="facebook.html" />
+<script type="text/javascript" src="static/loopy.js"></script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="pinterest.html" title="Pinterest"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="facebook.html" title="Facebook Integration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-facebook-open-graph">
+<h1>Using Facebook Open Graph<a class="headerlink" href="#using-facebook-open-graph" title="Permalink to this headline">¶</a></h1>
+<p>From v2.3 onwards Socialize supports Facebook &#8220;like&#8221; Open Graph actions.  This means that when a user executes a &#8220;like&#8221; on Socialize and elects to
+share this on Facebook it can be posted as an &#8220;Open Graph Like&#8221; in the user&#8217;s Facebook Activity stream.</p>
+<p>This behavior can be enabled programatically as follows</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="c1">//import the socialize header</span>
+<span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
+
+<span class="cp">#pragma mark</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeOGLikeEnabled</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+    
+    <span class="c1">//your application specific code</span>
+    
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are not already familiar with the Facebook Open Graph we recommend reviewing the <a class="reference external" href="https://developers.facebook.com/docs/opengraph/">Facebook Documentation</a> first</p>
+</div>
+<div class="section" id="configuring-your-facebook-app-for-open-graph">
+<h2>Configuring your Facebook App for Open Graph<a class="headerlink" href="#configuring-your-facebook-app-for-open-graph" title="Permalink to this headline">¶</a></h2>
+<p>Before you are able to utilize Open Graph calls such as &#8220;like&#8221; you must first follow the Facebook Guidelines for approval of Open Graph actions.</p>
+<p>This is detailed on the Facebook website here:</p>
+<p><a class="reference external" href="http://developers.facebook.com/docs/opengraph/opengraph-approval/">Open Graph Approval Process</a></p>
+<p>The following steps apply to seeking approval for the in-built &#8220;like&#8221; action however the same approach can be followed for all Open Graph Actions.</p>
+<div class="section" id="adding-an-open-graph-action-to-your-app">
+<h3>Adding an Open Graph Action to your App<a class="headerlink" href="#adding-an-open-graph-action-to-your-app" title="Permalink to this headline">¶</a></h3>
+<p>In your app settings on Facebook, access the Open Graph section:</p>
+<img alt="images/fb_og_menu.png" src="images/fb_og_menu.png" />
+<p>You will be presented with the default configuration screen for Open Graph.  Click the <strong>Create New Action Type</strong> button and select the action to be added</p>
+<img alt="images/fb_og_page1.png" src="images/fb_og_page1.png" />
+<p>You will then be presented with a dialog in which your action can be selected.  Choose an appropriate action and click <strong>Submit</strong></p>
+<img alt="images/fb_og_select_action.png" src="images/fb_og_select_action.png" />
+<p>Once your action has been added you are ready to submit it for approval.  Click the <strong>Submit</strong> link.</p>
+<img alt="images/fb_og_page2.png" src="images/fb_og_page2.png" />
+<p>At this point you may encounter some validation errors.  The most common of which are:</p>
+<img alt="images/fb_og_error1.png" src="images/fb_og_error1.png" />
+<p>The <strong>Publish Action</strong> requirement is most easily satisfied by simply executing the same <em>curl</em> command provided by Facebook.</p>
+<p>Click on the <strong>Get Code</strong> link next to your action and run the <em>curl</em> command you are provided from your terminal (command line) interface</p>
+<img alt="images/fb_og_curl.png" src="images/fb_og_curl.png" />
+<p>The final step in the approval process requires you to clarify with Facebook the exact purpose for your OG action.</p>
+<img alt="images/fb_og_error2.png" src="images/fb_og_error2.png" />
+<p>Socialize has prepared a standard response for you to use in this situation.  If you are using the Socialize UI features &#8220;out-of-the-box&#8221; (that is, without modification) then you
+can simply refer to the content we have provided for you at:</p>
+<p><a class="reference external" href="http://blog.getsocialize.com/facebook-open-graph-review">http://blog.getsocialize.com/facebook-open-graph-review</a></p>
+<p>If you have implemented your own UI and/or are calling the Socialize SDK directly through any other means we recommend you follow the guidelines established by Facebook for the approval of
+Open Graph actions.</p>
+<p><a class="reference external" href="https://developers.facebook.com/docs/opengraph/checklist/">https://developers.facebook.com/docs/opengraph/checklist/</a></p>
+</div>
+</div>
+<div class="section" id="using-in-built-open-graph-actions">
+<h2>Using In Built Open Graph Actions<a class="headerlink" href="#using-in-built-open-graph-actions" title="Permalink to this headline">¶</a></h2>
+<p>The in built OG actions provided by Facebook <strong>require approval by Facebook</strong> and there is a limited set of actions available and a corresponding limited set of object types.</p>
+<p>The actions supported and the corresponding object types are as follows</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="31%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Action</th>
+<th class="head">Path</th>
+<th class="head">Object Types</th>
+<th class="head">Parameter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>like</td>
+<td>me/og.likes</td>
+<td>object</td>
+<td>object</td>
+</tr>
+<tr class="row-odd"><td>follow</td>
+<td>me/og.follows</td>
+<td>profile</td>
+<td>profile</td>
+</tr>
+<tr class="row-even"><td>publish</td>
+<td>me/news.publishes</td>
+<td>article</td>
+<td>article</td>
+</tr>
+<tr class="row-odd"><td>read</td>
+<td>me/news.reads</td>
+<td>article</td>
+<td>article</td>
+</tr>
+<tr class="row-even"><td>watch</td>
+<td>me/video.watches</td>
+<td>video.movie</td>
+<td>movie</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>video.episode</td>
+<td>movie</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>video.tv_show</td>
+<td>movie</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>video.other</td>
+<td>movie</td>
+</tr>
+</tbody>
+</table>
+<p>The Object Types specified in the Open Graph call <strong>MUST</strong> correspond to a valid <em>og:type</em> meta element in the HTML page that represents the object.</p>
+<p>For example:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;video.movie&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>Fortunately Socialize will <strong>automatically generate OG tags</strong> on your entity page, but you must specify the correct type on the entity object itself.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithType</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;http://myentity.com&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;My Name&quot;</span><span class="p">];</span>
+    
+    <span class="c1">// MUST be a valid OG type</span>
+    <span class="p">[</span><span class="n">entity</span> <span class="n">setType</span><span class="o">:</span><span class="s">@&quot;video.movie&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Once you have setup your Entity with the correct type you can force an Open Graph post by changing the PostData in the SocialNetworkListener.
+Here&#8217;s a complete example</p>
+<p>The corresponding entity page on Socialize will automatically populate the required OG meta tags:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:title&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;My Entity Name&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:description&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;...parsed from your URL...&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:image&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;...parsed from your URL...&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;video.movie&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;og:url&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s">&quot;...the URL of this page...&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>If you don&#8217;t have an actual URL for your entity you can setup the correct description, image etc by changing the meta data on your entity.</p>
+<p>Refer to <a class="reference internal" href="entities.html#entity-no-url"><em>Entities Without URLs</em></a> for more details on customizing the entity page.</p>
+<div class="section" id="using-custom-open-graph-actions">
+<h3>Using Custom Open Graph Actions<a class="headerlink" href="#using-custom-open-graph-actions" title="Permalink to this headline">¶</a></h3>
+<p>In addition to using the built-in Open Graph actions, you can also define your own.</p>
+<p>For example an app that reviews restaurants may want to post the fact that a user &#8220;ate&#8221; a &#8220;meal&#8221; rather than simply saying a user &#8220;shared&#8221; a &#8220;link&#8221;.</p>
+<p>There is however a fairly lengthy setup process to correctly configure your application to handle custom OG actions.</p>
+<p>We recommend reviewing the <a class="reference external" href="http://developers.facebook.com/docs/opengraph/tutorial/">Open Graph Tutorial</a> to understand how to configure your app for custom Open Graph actions.</p>
+<div class="section" id="configuring-custom-open-graph-actions">
+<h4>Configuring Custom Open Graph Actions<a class="headerlink" href="#configuring-custom-open-graph-actions" title="Permalink to this headline">¶</a></h4>
+<p>Facebook Open Graph implements several security systems to ensure that owners of content are verified.  One such security measure ensures that websites housing information about custom OG types are registered
+against the Facebook App to guarantee that 3rd party users cannot fraudulently represent custom types on external pages.</p>
+<p>If you want to utilize custom open graph actions in your Socialize enabled app you must first configure your Facebook application to expect posts that refer to websites hosted by Socialize.</p>
+<p>This consists of 3 simple steps:</p>
+<ol class="arabic simple">
+<li>Obtain your Socialize App Url from your dashboard at www.getsocialize.com</li>
+<li>Nominate the Socialize App Url as your &#8220;Site URL&#8221; on Facebook</li>
+<li>Add the <strong>getsocialize.com</strong> domain to your list of App Domains on Facebook.</li>
+</ol>
+<img alt="images/fb_og_config.png" src="images/fb_og_config.png" />
+<p>You can obtain your Socialize App Url from the &#8220;SmartDownloads&#8221; section accessed from your dashboard at www.getsocialize.com</p>
+<img alt="images/app_url.png" src="images/app_url.png" />
+<p>Once you have configured your application to accept custom Open Graph actions you can post these actions to Facebook by changing the PostData in the SocialNetworkListener.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Using Facebook Open Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-your-facebook-app-for-open-graph">Configuring your Facebook App for Open Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-in-built-open-graph-actions">Using In Built Open Graph Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#socialize-entities">Socialize Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="pinterest.html" title="Pinterest"
+             >next</a></li>
+        <li class="right" >
+          <a href="facebook.html" title="Facebook Integration"
+             >previous</a> |</li>
+        <li><a href="index.html">Socialize iOS SDK 3.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2014, Socialize Inc.
+    </div>
+  </body>
+</html>
