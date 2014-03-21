@@ -15,6 +15,7 @@ Contents:
    like_button
    twitter
    facebook
+   facebook_og
    pinterest
    push_notifications
    entities
