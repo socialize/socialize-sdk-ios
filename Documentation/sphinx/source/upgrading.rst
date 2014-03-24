@@ -4,6 +4,16 @@
 Upgrading Socialize (CocoaPods and non-CocoaPods)
 =================================================
 
+Important Notes on Upgrading to v3.0.2
+------------------------------------------------
+
+Socialize 3.0.2 is compatible with iOS 7.1, which compiles for 64-bit devices by default. Since some dependent libraries have not yet been optimized for 64-bit devices, you may encounter build problems when compiling the Socialize SDK. To avoid 64-bit build errors, ensure your "Archtectures" settings in Xcode Build Settings for your project and targets are set as follows:
+
+  .. image:: images/compiler_settings_302.png
+        :width: 834
+        :height: 193
+
+
 Important Notes on Upgrading to v3.0.1
 ------------------------------------------------
 
