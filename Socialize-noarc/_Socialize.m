@@ -8,6 +8,8 @@
 
 #import "_Socialize.h"
 
+#import <SZBlockskit/Blockskit.h>
+#import <Loopy/Loopy.h>
 #import "SocializeConfiguration.h"
 #import "SocializeCommentsService.h"
 #import "SocializeLikeService.h"
@@ -20,7 +22,6 @@
 #import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
-#import <SZBlockskit/Blockskit.h>
 #import "StringHelper.h"
 #import "SocializeDeviceTokenSender.h"
 #import "SocializeFacebookAuthHandler.h"
@@ -222,8 +223,26 @@ static Socialize *_sharedSocialize;
             [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setTintColor:[UIColor whiteColor]];
             [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setTitleTextAttributes:navbarTitleTextAttributes];
         }
+        
+        //Loopy init
+        [Socialize sharedLoopyAPIClient];
     }
     return self;
+}
+
++ (id)sharedLoopyAPIClient {
+    static STAPIClient *loopyAPIClient = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize consumerKey]
+                                                    loopyKey:[Socialize consumerSecret]];
+        [loopyAPIClient getSessionWithReferrer:@"www.facebook.com" //this is temporary until referrer clarified
+                                   postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   }
+                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                       }];
+    });
+    return loopyAPIClient;
 }
 
 + (NSString *)socializeVersion {

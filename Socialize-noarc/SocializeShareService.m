@@ -8,6 +8,8 @@
 
 #import "SocializeShareService.h"
 #import "SocializeShare.h"
+#import <Loopy/Loopy.h>
+#import "_Socialize.h"
 
 @interface SocializeShareService()
 @end
@@ -34,11 +36,74 @@
                                                                  params:[NSArray arrayWithObject:params]];
     request.successBlock = ^(NSArray *shares) {
         BLOCK_CALL_1(success, [shares objectAtIndex:0]);
+        //report to Loopy
+        NSString *shareText = (NSString *)[params objectForKey:@"text"];
+        NSString *medium = (NSString *)[params objectForKey:@"medium"];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *mediumNbr = [formatter numberFromString:medium];
+        int mediumInt = [mediumNbr intValue];
+        [self reportShareToLoopyWithText:shareText
+                                 channel:[self getNetworksForLoopy:mediumInt]
+                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                         }
+                                 failure:nil];
     };
     
     request.failureBlock = failure;
 
     [self executeRequest:request];
+}
+
+//Loopy analytics reporting
+- (void)reportShareToLoopyWithText:(NSString *)shareText
+                           channel:(NSString *)channel
+                           success:(id)success
+                           failure:(id)failure {
+    //cast callbacks until .h import failure issue fixed
+    void(^successCallback)(AFHTTPRequestOperation *operation, id responseObject) = (void(^)(AFHTTPRequestOperation *, id))success;
+    void(^failureCallback)(AFHTTPRequestOperation *operation, NSError *error) = (void(^)(AFHTTPRequestOperation *, NSError *))failure;
+    
+    STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
+    NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
+    [loopyAPIClient reportShare:shareDict
+                        success:successCallback
+                        failure:failureCallback];
+}
+
+//for now, simply text-ify networks being shared
+- (NSString *)getNetworksForLoopy:(int)networks {
+    NSString *channel = @"";
+    switch (networks) {
+        case SocializeShareMediumTwitter:
+            channel = @"twitter";
+            break;
+            
+        case SocializeShareMediumFacebook:
+            channel = @"facebook";
+            break;
+            
+        case SocializeShareMediumEmail:
+            channel = @"email";
+            break;
+            
+        case SocializeShareMediumSMS:
+            channel = @"sms";
+            break;
+            
+        case SocializeShareMediumPinterest:
+            channel = @"pinterest";
+            break;
+            
+        case SocializeShareMediumOther:
+            channel = @"facebook,twitter";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return channel;
 }
 
 -(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text{

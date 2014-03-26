@@ -127,6 +127,8 @@ otherwise you will get a failure.
 
 + (NSString *)socializeVersion;
 
++ (id)sharedLoopyAPIClient;
+
 /**
  Provide access to the entity loader block
  

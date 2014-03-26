@@ -15,7 +15,6 @@
 
 @interface SZShareOptions : SZActivityOptions
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic) BOOL loopyEnabled;
 @property (nonatomic, copy) void (^willShowSMSComposerBlock)(SZSMSShareData *smsData);
 @property (nonatomic, copy) void (^willShowEmailComposerBlock)(SZEmailShareData *emailData);
 @property (nonatomic, copy) void (^willRedirectToPinterestBlock)(SZPinterestShareData *pinData);
