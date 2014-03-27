@@ -15,7 +15,7 @@
 // begin-create-snippet
 
 - (void)createEntity {
-    SZEntity *entity = [SZEntity entityWithKey:@"my_key" name:@"An Entity"];
+    SZEntity *entity = [SZEntity entityWithKey:@"my_key_or_url" name:@"An Entity"];
     [SZEntityUtils addEntity:entity success:^(id<SZEntity> entity) {
         NSLog(@"Created entity %@/%d", [entity key], [entity objectID]);
     } failure:^(NSError *error) {
@@ -28,7 +28,7 @@
 // begin-get-snippet
 
 - (void)getEntity {
-    [SZEntityUtils getEntityWithKey:@"my_key" success:^(id<SZEntity> entity) {
+    [SZEntityUtils getEntityWithKey:@"my_key_or_url" success:^(id<SZEntity> entity) {
         NSLog(@"Retrieved entity %@/%d", [entity key], [entity objectID]);
     } failure:^(NSError *error) {
         NSLog(@"Failure: %@", [error localizedDescription]);        
@@ -104,7 +104,7 @@
 // begin-basic-meta-snippet
 
 - (void)createEntityWithMeta {
-    SZEntity *entity = [SZEntity entityWithKey:@"my_key" name:@"An Entity"];
+    SZEntity *entity = [SZEntity entityWithKey:@"my_key_or_url" name:@"An Entity"];
     entity.meta = @"123";
     
     [SZEntityUtils addEntity:entity success:^(id<SZEntity> serverEntity) {
@@ -120,7 +120,7 @@
 // begin-json-meta-snippet
 
 - (void)createEntityWithJSONMeta {
-    SZEntity *entity = [SZEntity entityWithKey:@"my_key" name:@"An Entity"];
+    SZEntity *entity = [SZEntity entityWithKey:@"my_key_or_url" name:@"An Entity"];
     
     NSDictionary *dictionary = [NSDictionary dictionaryWithObject:@"123" forKey:@"key"];
     entity.meta = [dictionary JSONString];
@@ -139,7 +139,7 @@
 // begin-custom-entity-page-snippet
 
 - (void)createEntityWithCustomPageInfo {
-    SZEntity *entity = [SZEntity entityWithKey:@"my_key" name:@"An Entity"];
+    SZEntity *entity = [SZEntity entityWithKey:@"my_key_or_url" name:@"An Entity"];
 
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"Some title for the page, if you don't want to use the entity name", @"szsd_title",

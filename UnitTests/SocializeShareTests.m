@@ -17,16 +17,14 @@
 
 @implementation SocializeShareTests
 
--(void) setUpClass
-{  
+-(void) setUpClass {
     SocializeObjectFactory* factory = [[SocializeObjectFactory new] autorelease];
     _service = [[SocializeShareService alloc] initWithObjectFactory:factory delegate:self];
     _mockService = [[_service nonRetainingMock] retain];
     _testError = [NSError errorWithDomain:@"Socialize" code: 400 userInfo:nil];
 }
 
--(void) tearDownClass
-{
+-(void) tearDownClass {
     [_mockService release]; _mockService = nil;
     [_service release]; _service = nil;
 }
@@ -34,16 +32,16 @@
 
 -(NSString *)helperGetJSONStringFromFile:(NSString *)fileName {
     
-    NSString * JSONFilePath = [[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"%@/%@",@"JSON-RequestAndResponse-TestFiles", fileName ] ofType:nil];
-    
-    NSString * JSONString = [NSString stringWithContentsOfFile:JSONFilePath 
+    NSString * JSONFilePath = [[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"%@/%@",@"JSON-RequestAndResponse-TestFiles", fileName ]
+                                                             ofType:nil];
+    NSString * JSONString = [NSString stringWithContentsOfFile:JSONFilePath
                                                       encoding:NSUTF8StringEncoding 
                                                          error:nil];
     
     return  JSONString;
 }
 
--(void)testCreateShareForEntity{
+-(void)testCreateShareForEntity {
     
     SocializeObjectFactory* objectCreator = [[SocializeObjectFactory alloc] init];
     SocializeEntity* mockEntity = [objectCreator createObjectForProtocol:@protocol(SocializeEntity)]; 
@@ -69,8 +67,7 @@
     [_mockService verify];
 }
 
--(void)testProtocol
-{
+-(void)testProtocol {
     GHAssertTrue([_service ProtocolType] == @protocol(SocializeShare), nil);
 }
 

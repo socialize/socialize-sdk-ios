@@ -8,6 +8,7 @@
 
 #import "SocializeEntity.h"
 #import "SocializeObjectFactory.h"
+#import "StringHelper.h"
 
 @implementation SocializeEntity
 
@@ -39,6 +40,7 @@
 
 + (SocializeEntity*)entityWithKey:(NSString*)key name:(NSString*)name {
     SocializeEntity *entity = [[[self alloc] init] autorelease];
+    
     entity.key = key;
     entity.name = name;
     return entity;
@@ -46,6 +48,10 @@
 
 - (BOOL)isEqual:(id)object {
     return [object isKindOfClass:[SZEntity class]] && [[object key] isEqualToString:[self key]];
+}
+
+- (BOOL)keyIsURL {
+    return [self.key isURLString];
 }
 
 - (NSUInteger)hash {

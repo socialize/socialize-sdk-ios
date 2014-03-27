@@ -8,7 +8,6 @@
 
 #import "SocializeShareService.h"
 #import "SocializeShare.h"
-#import <Loopy/Loopy.h>
 #import "_Socialize.h"
 
 @interface SocializeShareService()
@@ -28,7 +27,36 @@
     [self createShare:share success:nil failure:nil];
 }
 
-- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure {
+    __block SocializeActivity *activityObj = (SocializeActivity *)share;
+    __block id<SocializeEntity>entityObj = activityObj.entity;
+    NSString *entityKey = entityObj.key;
+    BOOL keyIsURL = [entityObj keyIsURL];
+
+    //derive a Loopy shortlink from URL
+    if(keyIsURL) {
+        [self getLoopyShortlink:entityKey success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *responseDict = (NSDictionary *)responseObject;
+            NSString *shortlink = (NSString *)[responseDict objectForKey:@"shortlink"];
+            [entityObj setKey:shortlink];
+            [self executeShare:share success:success failure:failure];            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //currently does nothing and imply "passes thru" the share
+            //TODO is this right??
+            [self executeShare:share success:success failure:failure];
+        }];
+    }
+    else {
+        [self executeShare:share success:success failure:failure];
+    }
+}
+
+//second half of createShare; called with Loopy shortlink, if applicable
+- (void)executeShare:(id<SocializeShare>)share
+             success:(void(^)(id<SZShare> share))success
+             failure:(void(^)(NSError *error))failure {
     NSDictionary *params = [_objectCreator createDictionaryRepresentationOfObject:share];
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
                                                            resourcePath:SHARE_METHOD
@@ -36,7 +64,7 @@
                                                                  params:[NSArray arrayWithObject:params]];
     request.successBlock = ^(NSArray *shares) {
         BLOCK_CALL_1(success, [shares objectAtIndex:0]);
-        //report to Loopy
+        //report to Loopy -- either as straight share or sharelink
         NSString *shareText = (NSString *)[params objectForKey:@"text"];
         NSString *medium = (NSString *)[params objectForKey:@"medium"];
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -46,29 +74,36 @@
         [self reportShareToLoopyWithText:shareText
                                  channel:[self getNetworksForLoopy:mediumInt]
                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                         }
-                                 failure:nil];
+                                     //currently does nothing
+                                 }
+                                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                     //currently does nothing
+                                 }];
     };
-    
     request.failureBlock = failure;
-
+    
     [self executeRequest:request];
 }
 
 //Loopy analytics reporting
 - (void)reportShareToLoopyWithText:(NSString *)shareText
                            channel:(NSString *)channel
-                           success:(id)success
-                           failure:(id)failure {
-    //cast callbacks until .h import failure issue fixed
-    void(^successCallback)(AFHTTPRequestOperation *operation, id responseObject) = (void(^)(AFHTTPRequestOperation *, id))success;
-    void(^failureCallback)(AFHTTPRequestOperation *operation, NSError *error) = (void(^)(AFHTTPRequestOperation *, NSError *))failure;
-    
+                           success:(void(^)(AFHTTPRequestOperation *, id))success
+                           failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
     NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
     [loopyAPIClient reportShare:shareDict
-                        success:successCallback
-                        failure:failureCallback];
+                        success:success
+                        failure:failure];
+}
+
+//Loopy analytics reporting
+- (void)getLoopyShortlink:(NSString *)urlStr
+                  success:(void(^)(AFHTTPRequestOperation *, id))success
+                  failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
+    STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
+    NSDictionary *shortlinkDict = [loopyAPIClient shortlinkDictionary:urlStr title:nil meta:nil tags:nil];
+    [loopyAPIClient shortlink:shortlinkDict success:success failure:failure];
 }
 
 //for now, simply text-ify networks being shared
@@ -146,7 +181,11 @@
                    } failure:failure];
 }
 
-- (void)getSharesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+- (void)getSharesForEntityKey:(NSString*)key
+                        first:(NSNumber*)first
+                         last:(NSNumber*)last
+                      success:(void(^)(NSArray *shares))success
+                      failure:(void(^)(NSError *error))failure {
     
     NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
     if (key)
@@ -165,7 +204,10 @@
     [self executeRequest:request];
 }
 
-- (void)getSharesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+- (void)getSharesWithFirst:(NSNumber*)first
+                      last:(NSNumber*)last
+                   success:(void(^)(NSArray *shares))success
+                   failure:(void(^)(NSError *error))failure {
     [self callListingGetEndpointWithPath:SHARE_METHOD params:nil first:first last:last success:success failure:failure];
 }
 
