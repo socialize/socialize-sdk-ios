@@ -24,39 +24,21 @@
 }
 
 - (void)createShare:(id<SocializeShare>)share {
-    [self createShare:share success:nil failure:nil];
+    [self createShare:share success:nil failure:nil loopySuccess:nil loopyFailure:nil];
 }
 
 - (void)createShare:(id<SocializeShare>)share
             success:(void(^)(id<SZShare> share))success
             failure:(void(^)(NSError *error))failure {
-    __block SocializeActivity *activityObj = (SocializeActivity *)share;
-    __block id<SocializeEntity>entityObj = activityObj.entity;
-    NSString *entityKey = entityObj.key;
-    BOOL keyIsURL = [entityObj keyIsURL];
-
-    //derive a Loopy shortlink from URL
-    if(keyIsURL) {
-        [self getLoopyShortlink:entityKey success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSDictionary *responseDict = (NSDictionary *)responseObject;
-            NSString *shortlink = (NSString *)[responseDict objectForKey:@"shortlink"];
-            [entityObj setKey:shortlink];
-            [self executeShare:share success:success failure:failure];            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            //currently does nothing and imply "passes thru" the share
-            //TODO is this right??
-            [self executeShare:share success:success failure:failure];
-        }];
-    }
-    else {
-        [self executeShare:share success:success failure:failure];
-    }
+    [self createShare:share success:success failure:failure loopySuccess:nil loopyFailure:nil];
 }
 
-//second half of createShare; called with Loopy shortlink, if applicable
-- (void)executeShare:(id<SocializeShare>)share
-             success:(void(^)(id<SZShare> share))success
-             failure:(void(^)(NSError *error))failure {
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+    //perform Socialize share
     NSDictionary *params = [_objectCreator createDictionaryRepresentationOfObject:share];
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
                                                            resourcePath:SHARE_METHOD
@@ -64,32 +46,43 @@
                                                                  params:[NSArray arrayWithObject:params]];
     request.successBlock = ^(NSArray *shares) {
         BLOCK_CALL_1(success, [shares objectAtIndex:0]);
-        //report to Loopy -- either as straight share or sharelink
-        NSString *shareText = (NSString *)[params objectForKey:@"text"];
-        NSString *medium = (NSString *)[params objectForKey:@"medium"];
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *mediumNbr = [formatter numberFromString:medium];
-        int mediumInt = [mediumNbr intValue];
-        [self reportShareToLoopyWithText:shareText
-                                 channel:[self getNetworksForLoopy:mediumInt]
-                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                     //currently does nothing
-                                 }
-                                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                     //currently does nothing
-                                 }];
     };
     request.failureBlock = failure;
-    
     [self executeRequest:request];
+
+    //record share in Loopy
+    //if URL, record as Loopy sharelink
+    //otherwise, record simple share
+    SocializeActivity *activityObj = (SocializeActivity *)share;
+    id<SocializeEntity>entityObj = activityObj.entity;
+    NSString *medium = (NSString *)[params objectForKey:@"medium"];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber *mediumNbr = [formatter numberFromString:medium];
+    int mediumInt = [mediumNbr intValue];
+    NSString *channelStr = [self getNetworksForLoopy:mediumInt];
+    BOOL keyIsURL = [entityObj keyIsURL];
+    if(keyIsURL) {
+        NSString *keyURL = [entityObj key];
+        [self reportLoopySharelink:keyURL
+                           channel:channelStr
+                           success:loopySuccess
+                           failure:loopyFailure];
+    }
+    else {
+        NSString *shareText = (NSString *)[params objectForKey:@"text"];
+        [self reportLoopyShare:shareText
+                       channel:channelStr
+                       success:loopySuccess
+                       failure:loopyFailure];
+    }
 }
 
 //Loopy analytics reporting
-- (void)reportShareToLoopyWithText:(NSString *)shareText
-                           channel:(NSString *)channel
-                           success:(void(^)(AFHTTPRequestOperation *, id))success
-                           failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
+- (void)reportLoopyShare:(NSString *)shareText
+                 channel:(NSString *)channel
+                 success:(void(^)(AFHTTPRequestOperation *, id))success
+                 failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
     NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
     [loopyAPIClient reportShare:shareDict
@@ -98,12 +91,17 @@
 }
 
 //Loopy analytics reporting
-- (void)getLoopyShortlink:(NSString *)urlStr
-                  success:(void(^)(AFHTTPRequestOperation *, id))success
+- (void)reportLoopySharelink:(NSString *)urlStr
+                     channel:(NSString *)channel
+                     success:(void(^)(AFHTTPRequestOperation *, id))success
                   failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
-    NSDictionary *shortlinkDict = [loopyAPIClient shortlinkDictionary:urlStr title:nil meta:nil tags:nil];
-    [loopyAPIClient shortlink:shortlinkDict success:success failure:failure];
+    NSDictionary *sharelinkDict = [loopyAPIClient sharelinkDictionary:urlStr
+                                                              channel:channel
+                                                                title:nil
+                                                                 meta:nil
+                                                                 tags:nil];
+    [loopyAPIClient sharelink:sharelinkDict success:success failure:failure];
 }
 
 //for now, simply text-ify networks being shared
@@ -141,13 +139,12 @@
     return channel;
 }
 
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text{
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text {
     [self createShareForEntityKey:[entity key] medium:medium text:text];
 }
 
--(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text{
-    
-    if (key && [key length]){   
+-(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text {
+    if (key && [key length]){
         NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];

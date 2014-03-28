@@ -29,4 +29,23 @@
     GHAssertNotNil([facebookResponse objectForKey:@"entity_url"], nil);
 }
 
+- (void)testCreateShareWithLoopyVerification {
+    __block BOOL operationSucceeded = NO;
+    [self prepare];
+    NSString *shareURL = @"http://www.sharethis.com";//[self testURL:[NSString stringWithFormat:@"%s/share", sel_getName(_cmd)]];
+    SocializeEntity *entity = [SocializeEntity entityWithKey:shareURL name:@"Test"];
+    SocializeShare *share = [SocializeShare shareWithEntity:entity text:@"a share" medium:SocializeShareMediumFacebook];
+    [self createShare:share
+         loopySuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+             [self notify:kGHUnitWaitStatusSuccess forSelector:@selector(testCreateShareWithLoopyVerification)];
+             operationSucceeded = YES;
+         }
+         loopyFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [self notify:kGHUnitWaitStatusFailure forSelector:@selector(testCreateShareWithLoopyVerification)];
+             operationSucceeded = NO;
+         }];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+    GHAssertTrue(operationSucceeded, @"");
+}
+
 @end

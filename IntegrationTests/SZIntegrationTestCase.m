@@ -465,6 +465,12 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     [self waitForStatus:kGHUnitWaitStatusSuccess];
 }
 
+- (void)createShare:(id<SocializeShare>)share
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+    [self.socialize createShare:share success:nil failure:nil loopySuccess:loopySuccess loopyFailure:loopyFailure];
+}
+
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
     [self prepare];
     [self.socialize likeEntityWithKey:url longitude:longitude latitude:latitude];

@@ -9,7 +9,6 @@
 #import "_Socialize.h"
 
 #import <SZBlockskit/Blockskit.h>
-#import <Loopy/Loopy.h>
 #import "SocializeConfiguration.h"
 #import "SocializeCommentsService.h"
 #import "SocializeLikeService.h"
@@ -1016,4 +1015,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_shareService createShare:share success:success failure:failure];
 }
 
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+    [_shareService createShare:share success:success failure:failure loopySuccess:loopySuccess loopyFailure:loopyFailure];
+}
 @end

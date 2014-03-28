@@ -8,6 +8,7 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import <Socialize/Socialize.h>
+#import <Loopy/Loopy.h>
 
 @interface SZIntegrationTestCase : GHAsyncTestCase <SocializeServiceDelegate>
 @property (nonatomic, readonly) NSString *runID;
@@ -26,6 +27,9 @@
 - (void)getCommentsForEntityWithKey:(NSString*)entityKey;
 - (void)createShareWithURL:(NSString*)url medium:(SocializeShareMedium)medium text:(NSString*)text;
 - (void)createShare:(id<SocializeShare>)share;
+- (void)createShare:(id<SocializeShare>)share
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))success
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
 - (void)createLike:(id<SocializeLike>)like;
 - (void)createViewWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;

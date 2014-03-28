@@ -29,6 +29,11 @@
 - (void)createShare:(id<SocializeShare>)share
             success:(void(^)(id<SZShare> share))success
             failure:(void(^)(NSError *error))failure;
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure;
 - (void)getSharesWithIds:(NSArray*)shareIds
                  success:(void(^)(NSArray *shares))success
                  failure:(void(^)(NSError *error))failure;
@@ -44,12 +49,13 @@
                       last:(NSNumber*)last
                    success:(void(^)(NSArray *shares))success
                    failure:(void(^)(NSError *error))failure;
-- (void)reportShareToLoopyWithText:(NSString *)shareText
-                           channel:(NSString *)channel
-                           success:(void(^)(AFHTTPRequestOperation *, id))success
-                           failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
-- (void)getLoopyShortlink:(NSString *)urlStr
-                  success:(void(^)(AFHTTPRequestOperation *, id))success
-                  failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
+- (void)reportLoopyShare:(NSString *)shareText
+                 channel:(NSString *)channel
+                 success:(void(^)(AFHTTPRequestOperation *, id))success
+                 failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
+- (void)reportLoopySharelink:(NSString *)urlStr
+                     channel:(NSString *)channel
+                     success:(void(^)(AFHTTPRequestOperation *, id))success
+                     failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
 
 @end
