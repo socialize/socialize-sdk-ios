@@ -139,7 +139,7 @@ static ImagesCache *sharedImagesCache;
 		UIImage *profileImage = [UIImage imageWithData:data];
         [pendingUrlDownloads removeObjectForKey:url];
         
-        if (url != nil) {
+        if ((profileImage != nil) && (url != nil)) {
             [imagesDictionary setObject:profileImage forKey:url];
         }
 	}
