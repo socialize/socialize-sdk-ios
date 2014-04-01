@@ -14,7 +14,7 @@
 // begin-record-snippet
 
 - (void)recordView {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
 
     [SZViewUtils viewEntity:entity success:^(id<SocializeView> view) {
         NSLog(@"View created: %d", [view objectID]);
