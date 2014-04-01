@@ -471,6 +471,14 @@ typedef void (^ActionBlock1B)(void(^actionSuccess)(BOOL), void(^actionFailure)(N
     [self.socialize createShare:share success:nil failure:nil loopySuccess:loopySuccess loopyFailure:loopyFailure];
 }
 
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+    [self.socialize createShare:share success:success failure:failure loopySuccess:loopySuccess loopyFailure:loopyFailure];
+}
+
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
     [self prepare];
     [self.socialize likeEntityWithKey:url longitude:longitude latitude:latitude];

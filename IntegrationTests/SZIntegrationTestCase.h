@@ -30,6 +30,11 @@
 - (void)createShare:(id<SocializeShare>)share
        loopySuccess:(void(^)(AFHTTPRequestOperation *, id))success
        loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure;
 - (void)createLikeWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;
 - (void)createLike:(id<SocializeLike>)like;
 - (void)createViewWithURL:(NSString*)url latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude;

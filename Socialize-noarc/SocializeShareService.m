@@ -46,36 +46,35 @@
                                                                  params:[NSArray arrayWithObject:params]];
     request.successBlock = ^(NSArray *shares) {
         BLOCK_CALL_1(success, [shares objectAtIndex:0]);
-    };
-    request.failureBlock = failure;
-    [self executeRequest:request];
-
-    //record share in Loopy
-    //if URL, record as Loopy sharelink
-    //otherwise, record simple share
-    SocializeActivity *activityObj = (SocializeActivity *)share;
-    id<SocializeEntity>entityObj = activityObj.entity;
-    NSString *medium = (NSString *)[params objectForKey:@"medium"];
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *mediumNbr = [formatter numberFromString:medium];
-    int mediumInt = [mediumNbr intValue];
-    NSString *channelStr = [self getNetworksForLoopy:mediumInt];
-    BOOL keyIsURL = [entityObj keyIsURL];
-    if(keyIsURL) {
-        NSString *keyURL = [entityObj key];
-        [self reportLoopySharelink:keyURL
+        
+        //now call out to Loopy with Socialize URL
+        SocializeShare *shareObj = (SocializeShare *)[shares objectAtIndex:0];
+        id<SocializeEntity> entityObj = shareObj.entity;
+        NSString *key = [entityObj key];
+        NSString *medium = (NSString *)[params objectForKey:@"medium"];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *mediumNbr = [formatter numberFromString:medium];
+        int mediumInt = [mediumNbr intValue];
+        NSString *channelStr = [self getNetworksForLoopy:mediumInt];
+        BOOL keyIsURL = [entityObj keyIsURL];
+        if(keyIsURL) {
+            NSString *keyURL = key;
+            [self reportLoopySharelink:keyURL
+                               channel:channelStr
+                               success:loopySuccess
+                               failure:loopyFailure];
+        }
+        else {
+            NSString *shareText = (NSString *)[params objectForKey:@"text"];
+            [self reportLoopyShare:shareText
                            channel:channelStr
                            success:loopySuccess
                            failure:loopyFailure];
-    }
-    else {
-        NSString *shareText = (NSString *)[params objectForKey:@"text"];
-        [self reportLoopyShare:shareText
-                       channel:channelStr
-                       success:loopySuccess
-                       failure:loopyFailure];
-    }
+        }
+    };
+    request.failureBlock = failure;
+    [self executeRequest:request];
 }
 
 //Loopy analytics reporting
