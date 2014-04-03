@@ -26,39 +26,8 @@
 #import "SocializeLoadingView.h"
 #import "socialize_globals.h"
 #import "UIDevice+VersionCheck.h"
-#import <Loopy/Loopy.h>
 
 @implementation SZShareUtils
-
-+ (id)sharedLoopyAPIClient {
-    static STAPIClient *loopyAPIClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize consumerKey]
-                                                    loopyKey:[Socialize consumerSecret]];
-        [loopyAPIClient getSessionWithReferrer:@"www.facebook.com" //this is temporary until referred clarified
-                                   postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                   }
-                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                       }];
-    });
-    return loopyAPIClient;
-}
-
-+ (void)reportShareToLoopyWithText:(NSString *)shareText
-                           channel:(NSString *)channel
-                           success:(id)success
-                           failure:(id)failure {
-    //cast callbacks until .h import failure issue fixed
-    void(^successCallback)(AFHTTPRequestOperation *operation, id responseObject) = (void(^)(AFHTTPRequestOperation *, id))success;
-    void(^failureCallback)(AFHTTPRequestOperation *operation, NSError *error) = (void(^)(AFHTTPRequestOperation *, NSError *))failure;
-    
-    STAPIClient *loopyAPIClient = (STAPIClient *)[SZShareUtils sharedLoopyAPIClient];
-    NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
-    [loopyAPIClient reportShare:shareDict
-                        success:successCallback
-                        failure:failureCallback];
-}
 
 + (SZShareOptions*)userShareOptions {
     SZShareOptions *options = (SZShareOptions*)SZActivityOptionsFromUserDefaults([SZShareOptions class]);
@@ -69,22 +38,10 @@
                                    entity:(id<SZEntity>)entity
                                completion:(void(^)(NSArray *shares))completion {
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
-
     WEAK(viewController) weakViewController = viewController;
-    WEAK(shareDialog) weakShareDialog = shareDialog;
 
     shareDialog.completionBlock = ^(NSArray *shares) {
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
-            SZSocialNetwork selectedNetworks = weakShareDialog._shareDialogViewController.selectedNetworks;
-            SZShareOptions *options = weakShareDialog.shareOptions;
-            BOOL useLoopy = options != nil && options.loopyEnabled;
-            if(useLoopy) {
-                [SZShareUtils reportShareToLoopyWithText:options.text
-                                                 channel:[SZShareUtils getNetworksForLoopy:selectedNetworks]
-                                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                                 }
-                                                 failure:nil];
-            }
             BLOCK_CALL_1(completion, shares);
         }];
     };
@@ -114,20 +71,9 @@
     
     SZShareDialogViewController *shareDialog = [[SZShareDialogViewController alloc] initWithEntity:entity];
     WEAK(viewController) weakViewController = viewController;
-//    WEAK(shareDialog) weakShareDialog = shareDialog;
     
     shareDialog.completionBlock = ^(NSArray *shares) {
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
-            //This is handled in shareViaSocialNetworksWithEntity
-//            SZSocialNetwork selectedNetworks = weakShareDialog._shareDialogViewController.selectedNetworks;
-//            BOOL useLoopy = options != nil && options.loopyEnabled;
-//            if(useLoopy) {
-//                [SZShareUtils reportShareToLoopyWithText:options.text
-//                                                 channel:[SZShareUtils getNetworksForLoopy:selectedNetworks]
-//                                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                                                 }
-//                                                 failure:nil];
-//            }
             BLOCK_CALL_1(completion, shares);
         }];
     };
@@ -162,39 +108,8 @@
     //successful shares now report to Loopy SDK also if so configured
     void (^shareSuccess)(id<SZShare> share) = ^(id<SZShare> share) {
         success(share);
-        BOOL useLoopy = options != nil && options.loopyEnabled;
-        if(useLoopy) {
-            [SZShareUtils reportShareToLoopyWithText:options.text
-                                             channel:[SZShareUtils getNetworksForLoopy:networks]
-                                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                             }
-                                             failure:nil];
-        }
     };
     SZCreateAndShareActivity(share, SZDefaultLinkPostData(), options, networks, shareCreator, shareSuccess, failure);
-}
-
-//for now, simply text-ify networks being shared
-+ (NSString *)getNetworksForLoopy:(SZSocialNetwork)networks {
-    NSString *channel = @"";
-    switch (networks) {
-        case SZSocialNetworkTwitter:
-            channel = @"twitter";
-            break;
-            
-        case SZSocialNetworkFacebook:
-            channel = @"facebook";
-            break;
-            
-        case (SZSocialNetworkTwitter + SZSocialNetworkFacebook):
-            channel = @"facebook,twitter";
-            break;
-            
-        default:
-            break;
-    }
-    
-    return channel;
 }
 
 + (NSString*)defaultMessageForShare:(id<SZShare>)share {

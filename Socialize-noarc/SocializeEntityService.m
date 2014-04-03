@@ -47,18 +47,18 @@
 @implementation SocializeEntityService
 
 
--(void) dealloc
-{
+- (void)dealloc {
     [super dealloc];
 }
 
--(Protocol *)ProtocolType
-{
+- (Protocol *)ProtocolType {
     return  @protocol(SocializeEntity);
 }
 
 
-- (void)callEntityGetWithParams:(NSDictionary*)params success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+- (void)callEntityGetWithParams:(NSDictionary*)params
+                        success:(void(^)(NSArray *entities))success
+                        failure:(void(^)(NSError *error))failure {
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"GET"
                                                            resourcePath:ENTITY_GET_ENDPOINT
                                                      expectedJSONFormat:SocializeDictionaryWithListAndErrors
@@ -81,7 +81,9 @@
     [self executeRequest:request];
 }
 
-- (void)getEntitiesWithIds:(NSArray*)entityIds success:(void(^)(NSArray *comments))success failure:(void(^)(NSError *error))failure {
+- (void)getEntitiesWithIds:(NSArray*)entityIds
+                   success:(void(^)(NSArray *comments))success
+                   failure:(void(^)(NSError *error))failure {
     NSDictionary *params = [NSDictionary dictionaryWithObject:entityIds forKey:@"id"];
     [self callEntityGetWithParams:params success:success failure:failure];
 }
@@ -95,12 +97,18 @@
     [self getEntitiesWithIds:[NSArray arrayWithObject:entityId]];
 }
 
-- (void)getEntityWithKey:(NSString*)entityKey success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+- (void)getEntityWithKey:(NSString*)entityKey
+                 success:(void(^)(NSArray *entities))success
+                 failure:(void(^)(NSError *error))failure {
     NSDictionary *params = [NSDictionary dictionaryWithObject:entityKey forKey:@"entity_key"];
     [self callEntityGetWithParams:params success:success failure:failure];
 }
 
-- (void)getEntitiesWithSorting:(SZResultSorting)sorting first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+- (void)getEntitiesWithSorting:(SZResultSorting)sorting
+                         first:(NSNumber*)first
+                          last:(NSNumber*)last
+                       success:(void(^)(NSArray *entities))success
+                       failure:(void(^)(NSError *error))failure {
     NSString *sortingString = SZAPINSStringFromSZResultSorting(sorting);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:first forKey:@"first"];
@@ -110,12 +118,14 @@
     [self callEntityGetWithParams:params success:success failure:failure];
 }
 
-- (void)getEntitiesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *entities))success failure:(void(^)(NSError *error))failure {
+- (void)getEntitiesWithFirst:(NSNumber*)first
+                        last:(NSNumber*)last
+                     success:(void(^)(NSArray *entities))success
+                     failure:(void(^)(NSError *error))failure {
     [self getEntitiesWithSorting:SZResultSortingDefault first:first last:last success:success failure:failure];
 }
 
--(void)entityWithKey:(NSString *)keyOfEntity
-{
+- (void)entityWithKey:(NSString *)keyOfEntity {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:keyOfEntity,ENTRY_KEY, nil];
     [self executeRequest:
      [SocializeRequest requestWithHttpMethod:@"GET"
@@ -126,8 +136,8 @@
 
 }
 
--(void)createEntities:(NSArray *)entities expectedResponseFormat:(ExpectedResponseFormat)expectedFormat
-{
+- (void)createEntities:(NSArray *)entities
+expectedResponseFormat:(ExpectedResponseFormat)expectedFormat {
     NSString * stringRepresentation =  [_objectCreator createStringRepresentationOfArray:entities]; 
     NSMutableDictionary* params = [self generateParamsFromJsonString:stringRepresentation];
    
@@ -140,13 +150,12 @@
 
 }
 
--(void)createEntity:(id<SocializeEntity>)entity
-{
+- (void)createEntity:(id<SocializeEntity>)entity {
     [self createEntities:[NSArray arrayWithObject:entity]];
 }
 
--(void)createEntityWithKey:(NSString *)keyOfEntity andName:(NSString *)nameOfEntity
-{
+- (void)createEntityWithKey:(NSString *)keyOfEntity
+                   andName:(NSString *)nameOfEntity {
     id<SocializeEntity> entity = (id<SocializeEntity>)[_objectCreator createObjectForProtocol:@protocol(SocializeEntity)];
    
     [entity setKey:keyOfEntity];
@@ -155,11 +164,13 @@
     [self createEntity:entity];
 }
 
--(void)createEntities:(NSArray *)entities{
+-(void)createEntities:(NSArray *)entities {
     [self createEntities:entities expectedResponseFormat:SocializeDictionaryWithListAndErrors];
 }
 
-- (void)createEntities:(NSArray*)entities success:(void(^)(id entityOrEntities))success failure:(void(^)(NSError *error))failure {
+- (void)createEntities:(NSArray*)entities
+               success:(void(^)(id entityOrEntities))success
+               failure:(void(^)(NSError *error))failure {
     NSArray* params = [_objectCreator createDictionaryRepresentationArrayForObjects:entities];
     [self callEntityPostWithParams:params success:success failure:failure];
 }

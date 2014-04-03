@@ -2087,7 +2087,7 @@
 		AA166551159CF9CB001B6A1D /* sharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sharing.h; sourceTree = "<group>"; };
 		AA166552159CF9CB001B6A1D /* sharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sharing.m; sourceTree = "<group>"; };
 		AA166554159D0B79001B6A1D /* comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comments.h; sourceTree = "<group>"; };
-		AA166555159D0B79001B6A1D /* comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comments.m; sourceTree = "<group>"; };
+		AA166555159D0B79001B6A1D /* comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = comments.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA1759C016EEA1BF00550082 /* SZUnitTestAppHack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUnitTestAppHack.h; sourceTree = "<group>"; };
 		AA1759C116EEA1BF00550082 /* SZUnitTestAppHack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUnitTestAppHack.m; sourceTree = "<group>"; };
 		AA25FEAB159119F00067741A /* SZUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserSettingsViewController.h; sourceTree = "<group>"; };
@@ -2099,9 +2099,9 @@
 		AA2B1248159E486E00AD53D5 /* facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook.h; sourceTree = "<group>"; };
 		AA2B1249159E486E00AD53D5 /* facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = facebook.m; sourceTree = "<group>"; };
 		AA2D42E2159D19F400622210 /* likes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = likes.h; sourceTree = "<group>"; };
-		AA2D42E3159D19F400622210 /* likes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = likes.m; sourceTree = "<group>"; };
+		AA2D42E3159D19F400622210 /* likes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = likes.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA2D42E5159D1FA600622210 /* views.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = views.h; sourceTree = "<group>"; };
-		AA2D42E6159D1FA600622210 /* views.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = views.m; sourceTree = "<group>"; };
+		AA2D42E6159D1FA600622210 /* views.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = views.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA2FC1A515926CAF00B52772 /* SZTwitterLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTwitterLinkViewController.h; sourceTree = "<group>"; };
 		AA2FC1A615926CAF00B52772 /* SZTwitterLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterLinkViewController.m; sourceTree = "<group>"; };
 		AA3BC374158E80780073AD50 /* TestAppListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppListViewController.h; sourceTree = "<group>"; };

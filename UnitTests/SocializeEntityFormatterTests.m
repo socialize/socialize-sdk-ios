@@ -107,6 +107,20 @@
     GHAssertNotNil(key, @"Bad dict");
 }
 
+- (void)testEntityURLKey {
+    SZEntity *entity = [SZEntity entityWithKey:@"http://www.sharethis.com" name:@"@hareThis"];
+    BOOL isURL = [entity keyIsURL];
+    GHAssertTrue(isURL, @"");
+
+    entity = [SZEntity entityWithKey:@"www.sharethis.com" name:@"@hareThis"];
+    isURL = [entity keyIsURL];
+    GHAssertTrue(isURL, @"");
+
+    entity = [SZEntity entityWithKey:@"something" name:@"Something"];
+    isURL = [entity keyIsURL];
+    GHAssertFalse(isURL, @"");
+}
+
 
 #pragma mark helper methods
 
