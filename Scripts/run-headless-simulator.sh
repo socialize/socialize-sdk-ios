@@ -11,9 +11,13 @@ if [ -z "$RUN_CLI" ]; then
   exit 0
 fi
 
-if [ -n "$SIMVER_OVERRIDE" ]; then
-    export SDKROOT="$DEVELOPER_DIR/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator${SIMVER_OVERRIDE}.sdk/"
-fi
+# if [ -n "$SIMVER_OVERRIDE" ]; then
+# DOES NOT WORK with 7.1 simulator; force version to 7.0
+    export SDKROOT="$DEVELOPER_DIR/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/"
+    # export SDKROOT="$DEVELOPER_DIR/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator${SIMVER_OVERRIDE}.sdk/"
+# fi
+
+echo "SDKROOT =" $SDKROOT
 
 echo DYLD_ROOT_PATH = "$SDKROOT"
 export DYLD_ROOT_PATH="$SDKROOT"
@@ -50,14 +54,9 @@ fi
 mkdir "$CFFIXED_USER_HOME"
 mkdir "$CFFIXED_USER_HOME/Documents"
 mkdir -p "$CFFIXED_USER_HOME/Library/Caches"
-
-# securityd for keychain / auth
-#LAUNCHNAME="RunIPhoneLaunchDaemons"
-#launchctl submit -l $LAUNCHNAME -- "${THISDIR}/RunIPhoneLaunchDaemons.sh" $IPHONE_SIMULATOR_ROOT $CFFIXED_USER_HOME
-#trap "launchctl remove $LAUNCHNAME" INT TERM EXIT
+echo "CFFIXED_USER_HOME =" $CFFIXED_USER_HOME
 
 killall "iPhone Simulator" >/dev/null 2>&1
-#RUN_CMD="gdb --args \"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 
 echo "Running: $RUN_CMD"
