@@ -14,7 +14,7 @@
 // begin-show-comments-list-snippet
 
 - (void)showCommentsList {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     [SZCommentUtils showCommentsListWithViewController:self entity:entity completion:nil];
 }
 
@@ -44,7 +44,7 @@
 // begin-show-comment-composer-snippet
 
 - (void)showCommentComposer {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     [SZCommentUtils showCommentComposerWithViewController:self entity:entity completion:^(id<SZComment> comment) {
         NSLog(@"Created comment: %@", [comment text]);
     } cancellation:^{
@@ -74,7 +74,7 @@
 // begin-add-comment-snippet
 
 - (void)addComment {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     
     SZCommentOptions *options = [SZCommentUtils userCommentOptions];
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
@@ -99,7 +99,7 @@
 // begin-add-comment-ui-snippet
 
 - (void)addCommentPromptForNetworks {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     
     SZCommentOptions *options = [SZCommentUtils userCommentOptions];
     [SZCommentUtils addCommentWithViewController:self entity:entity text:@"A comment!" options:options success:^(id<SZComment> comment) {
@@ -127,7 +127,7 @@
 // begin-list-by-user-and-entity-snippet
 
 - (void)listCommentsByUserAndEntity {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
 
     [SZCommentUtils getCommentsByUser:USER_ADDR_NULL entity:entity first:nil last:nil success:^(NSArray *comments) {
         NSLog(@"Fetched comments: %@", comments);
@@ -141,7 +141,7 @@
 // begin-list-by-entity-snippet
 
 - (void)listCommentsByEntity {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     
     [SZCommentUtils getCommentsByEntity:entity success:^(NSArray *comments) {
         NSLog(@"Fetched comments: %@", comments);

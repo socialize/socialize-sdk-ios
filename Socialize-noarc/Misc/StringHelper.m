@@ -60,14 +60,29 @@
 	return [s isEqualToString:[self substringFrom:0 to:[s length]]];
 }
 
-- (BOOL)containsString:(NSString *)aString
-{
+- (BOOL)containsString:(NSString *)aString {
 	NSRange range = [[self lowercaseString] rangeOfString:[aString lowercaseString]];
 	return range.location != NSNotFound;
 }
 
-- (NSString *)urlEncode
-{
+- (BOOL)isURLString {
+    NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+    NSRange urlStringRange = NSMakeRange(0, [self length]);
+    NSMatchingOptions matchingOptions = 0;
+    
+    if (1 != [linkDetector numberOfMatchesInString:self options:matchingOptions range:urlStringRange]) {
+        return NO;
+    }
+    
+    NSTextCheckingResult *checkingResult = [linkDetector firstMatchInString:self
+                                                                    options:matchingOptions
+                                                                      range:urlStringRange];
+    
+    return checkingResult.resultType == NSTextCheckingTypeLink && NSEqualRanges(checkingResult.range, urlStringRange);
+}
+
+
+- (NSString *)urlEncode {
 	NSString* encodedString = (NSString *)CFURLCreateStringByAddingPercentEscapes(
                                                                                   NULL,
                                                                                   (CFStringRef) self,

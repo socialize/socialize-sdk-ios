@@ -9,20 +9,20 @@ Socialize Entities
 ==================
 
 An *Entity* is the term Socialize uses to describe any item of content within
-your app.  This could be anything from a News Article to a Hamburger and simply
+your app. This could be anything from a News Article to a Hamburger and simply
 provides a reference point from which your users can perform social actions
 such as liking, commenting and sharing.
 
 For example, imagine your app is a photography app where users can share photos
-they take with their device.  In this scenario each photo would be an *entity*
+they take with their device. In this scenario each photo would be an *entity*
 and users can then perform social actions on this entity.
 
 .. note:: It is recommended that where possible an HTTP URL be used for your entity key
 
-Entities in Socialize MUST be associated with a unique key.  It is recommended
+Entities in Socialize MUST be associated with a unique key. It is recommended
 that where possible an HTTP URL be used (i.e. one that corresponds to an active
-web page).  If your entities do not have web addressable URLs Socialize can
-automatically generate an Entity Page for you.  Refer to the
+web page that your entity will represent). If your entities do not have web addressable URLs, Socialize can
+automatically generate an Entity Page for you. Refer to the
 :ref:`entity_no_url` section on this page for more information.
 
 Auto-Creation of Entities
@@ -35,7 +35,7 @@ For example, if you are using the :doc:`action_bar` the entity that you pass to
 the Action Bar will be automatically created for you if it does not already
 exist.
 
-.. note:: You should always specify a name when creating an entity, however if you have previously created the entity with a name and do not want to specify the name every time you can provide a "null" argument for the name.  This will instruct Socialize to ignore the name attribute and the name of the entity will NOT be updated.
+.. note:: You should always specify a name when creating an entity, however if you have previously created the entity with a name and do not want to specify the name every time you can provide a "null" argument for the name. This will instruct Socialize to ignore the name attribute and the name of the entity will NOT be updated.
 
 Working with Entities
 -------------------------

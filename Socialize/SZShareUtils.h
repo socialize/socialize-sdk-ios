@@ -12,12 +12,6 @@
 
 @interface SZShareUtils : NSObject
 
-//Loopy share integration
-+ (id)sharedLoopyAPIClient;
-+ (void)reportShareToLoopyWithText:(NSString *)shareText
-                           channel:(NSString *)channel
-                           success:(id)success
-                           failure:(id)failure;
 + (SZShareOptions*)userShareOptions;
 + (void)showShareDialogWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(NSArray *shares))success __attribute__((deprecated("Please use showShareDialogWithViewController:entity:completion:cancellation:, instead")));
 
