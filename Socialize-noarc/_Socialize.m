@@ -234,7 +234,8 @@ static Socialize *_sharedSocialize;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize consumerKey]
-                                                    loopyKey:[Socialize consumerSecret]];
+                                                    loopyKey:[Socialize consumerSecret]
+                                           locationsDisabled:[self locationSharingDisabled]];
         [loopyAPIClient getSessionWithReferrer:@"www.facebook.com" //this is temporary until referrer clarified
                                    postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                                    }
@@ -344,7 +345,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocia
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
 
 SYNTH_DEFAULTS_BOOL_PROPERTY(AuthenticationNotRequired, authenticationNotRequired, kSocializeAuthenticationNotRequired)
-SYNTH_DEFAULTS_BOOL_PROPERTY(LocationSharingDisabled, locationSharingDisabled, kSocializeLocationSharingDisabled)
 SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnonymousAllowed);
 SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabled);
 
@@ -358,6 +358,19 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SOCIALIZE_APPLICATION_LINK];
     [defaults synchronize];
+}
+
+//this should be set BEFORE initializing Loopy
+//(i.e. before storing Socialize consumerKey and consumerSecret, which init Loopy)
++(void)storeLocationSharingDisabled:(BOOL)disableBranding {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSNumber numberWithBool:disableBranding] forKey:kSocializeLocationSharingDisabled];
+    
+    [defaults synchronize];
+}
+
++(BOOL)locationSharingDisabled {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeLocationSharingDisabled] boolValue];
 }
 
 +(void)storeDisableBranding:(BOOL)disableBranding {

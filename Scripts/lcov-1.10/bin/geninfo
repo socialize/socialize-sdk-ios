@@ -1858,35 +1858,40 @@ sub read_gcov_file($)
 # GCOV version. Version numbers can be compared using standard integer
 # operations.
 #
-
+# MODIFIED per http://stackoverflow.com/questions/22343725/xcode-5-1-unit-test-coverage-analysis-fails-on-files-using-blocks
+#
 sub get_gcov_version()
 {
-	local *HANDLE;
-	my $version_string;
-	my $result;
+    local *HANDLE;
+    my $version_string;
+    my $result;
 
-	open(GCOV_PIPE, "-|", "$gcov_tool -v")
-		or die("ERROR: cannot retrieve gcov version!\n");
-	$version_string = <GCOV_PIPE>;
-	close(GCOV_PIPE);
+    open(GCOV_PIPE, "-|", "$gcov_tool --version")
+        or die("ERROR: cannot retrieve gcov version!\n");
+    $version_string = <GCOV_PIPE>;
+    close(GCOV_PIPE);
 
-	$result = 0;
-	if ($version_string =~ /(\d+)\.(\d+)(\.(\d+))?/)
-	{
-		if (defined($4))
-		{
-			info("Found gcov version: $1.$2.$4\n");
-			$result = $1 << 16 | $2 << 8 | $4;
-		}
-		else
-		{
-			info("Found gcov version: $1.$2\n");
-			$result = $1 << 16 | $2 << 8;
-		}
-	}
-	return ($result, $version_string);
+    $result = 0;
+    if ($version_string =~ m/LLVM/)
+    {
+        info("Found llvm-cov\n");
+        $result = 0x40201;
+    }
+    elsif ($version_string =~ /(\d+)\.(\d+)(\.(\d+))?/)
+    {
+        if (defined($4))
+        {
+            info("Found gcov version: $1.$2.$4\n");
+            $result = $1 << 16 | $2 << 8 | $4;
+        }
+        else
+        {
+            info("Found gcov version: $1.$2\n");
+            $result = $1 << 16 | $2 << 8;
+        }
+    }
+    return ($result, $version_string);
 }
-
 
 #
 # info(printf_parameter)

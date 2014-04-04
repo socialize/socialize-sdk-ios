@@ -25,17 +25,19 @@ extern void __gcov_flush(void);
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    //this should be set BEFORE initializing Loopy
+    //(i.e. before storing Socialize consumerKey and consumerSecret, which init Loopy)
+//    [Socialize storeLocationSharingDisabled:YES];
+    
     [Socialize storeOGLikeEnabled:YES];
     [Socialize storeAnonymousAllowed:YES];
     [Socialize storeConsumerKey:@"976421bd-0bc9-44c8-a170-bd12376123a3"];
     [Socialize storeConsumerSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
+
+    
     [SZTwitterUtils setConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ" consumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
     [SZFacebookUtils setAppId:@"268891373224435"];
     [SZPinterestUtils setApplicationId:@"1431852"];
-    
-//     char testTokenData[32] = "\xaa\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff";
-//     NSData *testToken = [NSData dataWithBytes:&testTokenData length:sizeof(testTokenData)];
-//     [Socialize registerDeviceToken:testToken];
     
     [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SZEntity> entity) {
         SampleEntityLoader *entityLoader = [[SampleEntityLoader alloc] initWithEntity:entity];
@@ -57,10 +59,6 @@ extern void __gcov_flush(void);
     if (userInfo != nil) {
         [self handleNotification:userInfo];
     }
-    
-//    [SZDisplayUtils setGlobalDisplayBlock:^id<SZDisplay>{
-//        return sample;
-//    }];
     
 #if RUN_KIF_TESTS
     [[SZTestHelper sharedTestHelper] startMockingSucceedingLocation];
