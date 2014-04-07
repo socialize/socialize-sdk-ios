@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2C11FCCA18FF0423004733C5 /* SocializePinterestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FCC918FF0423004733C5 /* SocializePinterestTests.m */; };
+		2C11FCDD18FF0B66004733C5 /* SocializeWhatsAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FCDC18FF0B66004733C5 /* SocializeWhatsAppTests.m */; };
 		2C23AACB187F598A00BA2FBA /* comment-bg-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */; };
 		2C23AACC187F598A00BA2FBA /* comment-bg-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */; };
 		2C23AACD187F598A00BA2FBA /* comment-bg-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */; };
@@ -1458,6 +1460,10 @@
 
 /* Begin PBXFileReference section */
 		28052EE4EDAE4D3598062EF0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C11FCC818FF0423004733C5 /* SocializePinterestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializePinterestTests.h; sourceTree = "<group>"; };
+		2C11FCC918FF0423004733C5 /* SocializePinterestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializePinterestTests.m; sourceTree = "<group>"; };
+		2C11FCDB18FF0B66004733C5 /* SocializeWhatsAppTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeWhatsAppTests.h; sourceTree = "<group>"; };
+		2C11FCDC18FF0B66004733C5 /* SocializeWhatsAppTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeWhatsAppTests.m; sourceTree = "<group>"; };
 		2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7.png"; path = "Socialize/Resources/comment-bg-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7@2x.png"; path = "Socialize/Resources/comment-bg-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-mask-ios7.png"; path = "Socialize/Resources/socialize-cell-image-mask-ios7.png"; sourceTree = SOURCE_ROOT; };
@@ -3458,6 +3464,8 @@
 				AA0C608E158FC61D00F66A3B /* LoadingViewTests.m */,
 				AA0C608F158FC61D00F66A3B /* SmartAlertUtilsTests.h */,
 				AA0C6090158FC61D00F66A3B /* SmartAlertUtilsTests.m */,
+				AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */,
+				AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */,
 				AA0C6091158FC61D00F66A3B /* SocializeActionViewForTest.h */,
 				AA0C6092158FC61D00F66A3B /* SocializeActionViewForTest.m */,
 				AA0C6093158FC61D00F66A3B /* SocializeActionViewTests.h */,
@@ -3521,6 +3529,8 @@
 				AA0C60D5158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.m */,
 				2CCEA6781887664B00B56C1C /* SocializeOSVersionTests.h */,
 				2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */,
+				2C11FCC818FF0423004733C5 /* SocializePinterestTests.h */,
+				2C11FCC918FF0423004733C5 /* SocializePinterestTests.m */,
 				AA0C60D6158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.h */,
 				AA0C60D7158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.m */,
 				AA0C60D8158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.h */,
@@ -3553,10 +3563,12 @@
 				AA0C60FB158FC61D00F66A3B /* SocializeViewFormatterTests.m */,
 				AA0C60FC158FC61D00F66A3B /* SocializeViewTests.h */,
 				AA0C60FD158FC61D00F66A3B /* SocializeViewTests.m */,
+				2C11FCDB18FF0B66004733C5 /* SocializeWhatsAppTests.h */,
+				2C11FCDC18FF0B66004733C5 /* SocializeWhatsAppTests.m */,
 				AA0C60FE158FC61D00F66A3B /* StringWithPlacemarkTest.h */,
 				AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */,
-				AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */,
-				AA0C6101158FC61D00F66A3B /* SocializeActionBarTests.m */,
+				AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */,
+				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
 				AACC19F0159B9B1900800576 /* SZActionBarTests.h */,
 				AACC19F1159B9B1900800576 /* SZActionBarTests.m */,
 				AA84CCE715B0F50A00D7109C /* SZOARequestTests.h */,
@@ -3567,8 +3579,6 @@
 				AA84CCE815B0F50A00D7109C /* SZOARequestTests.m */,
 				AAE216961607F6AE0049850E /* SZOpenURLHandlerTests.h */,
 				AAE216971607F6AE0049850E /* SZOpenURLHandlerTests.m */,
-				AAEC2B0A15B4D88000C9C65A /* SDKHelpersTests.h */,
-				AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */,
 				AA4BDF3B15B5222100301AD0 /* SZShareUtilsTests.h */,
 				AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */,
 				AA823CD515C09D8900F83091 /* SZSessionTrackerTests.h */,
@@ -4405,6 +4415,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SZ;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Socialize;
 				TargetAttributes = {
@@ -5874,6 +5885,7 @@
 				AA0C612D158FC61D00F66A3B /* SocializeConfigurationTests.m in Sources */,
 				AA0C612E158FC61D00F66A3B /* SocializeDeviceTokenJSONFormatterTests.m in Sources */,
 				AA0C612F158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m in Sources */,
+				2C11FCDD18FF0B66004733C5 /* SocializeWhatsAppTests.m in Sources */,
 				AA0C6130158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m in Sources */,
 				AA0C6132158FC61D00F66A3B /* SocializeEntityFormatterTests.m in Sources */,
 				AA0C6133158FC61D00F66A3B /* SocializeEntityServiceTests.m in Sources */,
@@ -5948,6 +5960,7 @@
 				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
 				2CCDBC4A18FD7B0400DB2215 /* whatsapp-snippets.m in Sources */,
 				AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */,
+				2C11FCCA18FF0423004733C5 /* SocializePinterestTests.m in Sources */,
 				AA840C54161CEF5700494EE4 /* SZTwitterUtilsTests.m in Sources */,
 				AA1759C216EEA1BF00550082 /* SZUnitTestAppHack.m in Sources */,
 				48C069941780192C004E7843 /* pinterest-snippets.m in Sources */,
