@@ -13,6 +13,7 @@
 + (UIImage *)facebookSelectNetworkImage:(BOOL)enabled;
 + (UIImage *)twitterSelectNetworkImage:(BOOL)enabled;
 + (UIImage *)pinterestSelectImage;
++ (UIImage *)whatsAppSelectImage;
 + (UIImage *)emailSelectImage;
 + (UIImage *)smsSelectImage;
 
