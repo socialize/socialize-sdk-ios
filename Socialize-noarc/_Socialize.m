@@ -233,8 +233,8 @@ static Socialize *_sharedSocialize;
     static STAPIClient *loopyAPIClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize consumerKey]
-                                                    loopyKey:[Socialize consumerSecret]
+        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize loopyAppID]
+                                                    loopyKey:[Socialize loopyKey]
                                            locationsDisabled:[self locationSharingDisabled]];
         [loopyAPIClient getSessionWithReferrer:@"www.facebook.com" //this is temporary until referrer clarified
                                    postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -243,6 +243,18 @@ static Socialize *_sharedSocialize;
                                        }];
     });
     return loopyAPIClient;
+}
+
++ (NSString *)loopyAppID {
+    //FIXME need Loopy keys to match Socialize keys
+    return @"be6a5004-6abb-4382-a131-8d6812a9e74b";
+    return [Socialize consumerKey];
+}
+
++ (NSString *)loopyKey {
+    //FIXME need Loopy keys
+    return @"3d4pnhzpar8bz8t44w7hb42k";
+    return [Socialize consumerSecret];
 }
 
 + (NSString *)socializeVersion {
