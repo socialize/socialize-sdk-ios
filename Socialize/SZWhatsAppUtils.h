@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SocializeObjects.h"
+#import "SZShareOptions.h"
 
 @interface SZWhatsAppUtils : NSObject
 
 + (BOOL) isAvailable;
++ (void) shareViaWhatsAppWithViewController:(UIViewController*)viewController
+                                    options:(SZShareOptions*)options
+                                     entity:(id<SZEntity>)entity
+                                    success:(void(^)(id<SZShare> share))success
+                                    failure:(void(^)(NSError *error))failure;
 
 @end

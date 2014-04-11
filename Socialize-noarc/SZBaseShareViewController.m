@@ -472,17 +472,21 @@ static NSString *kAutopostSection = @"kAutopostSection";
     WEAK(self) weakSelf = self;
     
     void (^executionBlock)() = ^{
-//        [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"Pinterest"]];
-//        [SZPinterestUtils shareViaPinterestWithViewController:weakSelf.SZPresentationTarget options:[weakSelf shareOptions] entity:weakSelf.entity success:^(id<SocializeShare> share) {
-//            [weakSelf deselectSelectedRow];
-//            [weakSelf.createdShares addObject:share];
-//        } failure:^(NSError *error) {
-//            [weakSelf deselectSelectedRow];
-//            
-//            if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
-//                [weakSelf failWithError:error];
-//            };
-//        }];
+        [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"WhatsApp"]];
+        [SZWhatsAppUtils shareViaWhatsAppWithViewController:weakSelf.SZPresentationTarget
+                                                    options:[weakSelf shareOptions]
+                                                     entity:weakSelf.entity
+                                                    success:^(id<SocializeShare> share) {
+                                                        [weakSelf deselectSelectedRow];
+                                                        [weakSelf.createdShares addObject:share];
+                                                    }
+                                                    failure:^(NSError *error) {
+                                                        [weakSelf deselectSelectedRow];
+                                                        
+                                                        if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                                                            [weakSelf failWithError:error];
+                                                        };
+                                                    }];
     };
     
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {

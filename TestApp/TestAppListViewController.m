@@ -252,13 +252,19 @@ static TestAppListViewController *sharedSampleListViewController;
 
     NSMutableArray *smartAlertsRows = [NSMutableArray array];
     [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Direct URL SmartAlert" executionBlock:^{
-        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       @"www.getsocialize.com", @"url",
-                                       @"developer_direct_url", @"notification_type",
-                                       nil];
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
         
-        [SZSmartAlertUtils openNotification:userInfo];
+        //TEST ONLY
+        UIWebView *webview = [[UIWebView alloc] init];
+        NSURL *url = [NSURL URLWithString:@"tel:14154702179"];
+        [webview loadRequest:[NSURLRequest requestWithURL:url]];
+
+//        NSDictionary *socializeInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                       @"www.getsocialize.com", @"url",
+//                                       @"developer_direct_url", @"notification_type",
+//                                       nil];
+//        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:socializeInfo forKey:@"socialize"];
+//        
+//        [SZSmartAlertUtils openNotification:userInfo];
     }]];
 
     [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Comment SmartAlert" executionBlock:^{
