@@ -47,6 +47,8 @@ typedef enum {
     SocializeErrorEntityLoadRejected,
     SocializePinterestNotAvailable,
     SocializePinterestShareFailed,
+    SocializeWhatsAppNotAvailable,
+    SocializeWhatsAppShareFailed,
     SocializeNumErrors,
 } SocializeErrorCode;
 
