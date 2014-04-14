@@ -38,6 +38,7 @@ extern void __gcov_flush(void);
     [SZTwitterUtils setConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ" consumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
     [SZFacebookUtils setAppId:@"268891373224435"];
     [SZPinterestUtils setApplicationId:@"1431852"];
+    [SZWhatsAppUtils setShowInShare:YES];
     
     [Socialize setEntityLoaderBlock:^(UINavigationController *navigationController, id<SZEntity> entity) {
         SampleEntityLoader *entityLoader = [[SampleEntityLoader alloc] initWithEntity:entity];

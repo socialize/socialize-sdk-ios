@@ -48,6 +48,7 @@
 #import "SZEventUtils.h"
 #import "SZDisplayUtils.h"
 #import "SZPinterestUtils.h"
+#import "SZWhatsAppUtils.h"
 
 #import "SZUserSettingsViewController.h"
 #import "SZUserProfileViewController.h"

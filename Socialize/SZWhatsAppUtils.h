@@ -10,8 +10,9 @@
 #import "SocializeObjects.h"
 #import "SZShareOptions.h"
 
-@interface SZWhatsAppUtils : NSObject
+@interface SZWhatsAppUtils : NSObject<UIAlertViewDelegate>
 
++ (void) setShowInShare:(BOOL)show;
 + (BOOL) isAvailable;
 + (void) shareViaWhatsAppWithViewController:(UIViewController*)viewController
                                     options:(SZShareOptions*)options

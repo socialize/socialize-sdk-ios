@@ -13,29 +13,41 @@
 
 @implementation SZWhatsAppUtils
 
-//+ (NSString*)defaultMessageForShare:(id<SZShare>)share {
-//    NSDictionary *info = [[[share propagationInfoResponse] allValues] lastObject];
-//    NSString *entityURL = [info objectForKey:@"entity_url"];
-//    NSString *applicationURL = [info objectForKey:@"application_url"];
-//    
-//    id<SocializeEntity> e = share.entity;
-//    
-//    NSMutableString *msg = [NSMutableString stringWithString:@"I thought you would find this interesting: "];
-//    
-//    if ([e.name length] > 0) {
-//        [msg appendFormat:@"%@ ", e.name];
-//    }
-//    
-//    NSString *applicationName = [share.application name];
-//    
-//    [msg appendFormat:@"%@\n\nSent from %@ (%@)", entityURL, applicationName, applicationURL];
-//    
-//    return msg;
-//}
+static BOOL showInShare = NO;
+static UIViewController *controller;
+static id<SZEntity> shareEntity;
+static void (^successBlock)(id<SZShare>);
+static void (^failureBlock)(NSError *);
 
-//operates purely on URL scheme
++ (void)setShowInShare:(BOOL)show {
+    showInShare = show;
+}
+
++ (NSString*)defaultMessageForShare:(id<SZShare>)share {
+    NSDictionary *info = [[[share propagationInfoResponse] allValues] lastObject];
+    NSString *entityURL = [info objectForKey:@"entity_url"];
+    NSString *applicationURL = [info objectForKey:@"application_url"];
+    
+    id<SocializeEntity> e = share.entity;
+    
+    NSMutableString *msg = [NSMutableString stringWithString:@"I thought you would find this interesting: "];
+    
+    if ([e.name length] > 0) {
+        [msg appendFormat:@"%@ ", e.name];
+    }
+    
+    NSString *applicationName = [share.application name];
+    
+    [msg appendFormat:@"%@\n\nSent from %@ (%@)", entityURL, applicationName, applicationURL];
+    
+    return msg;
+}
+
+//operates purely on URL scheme and on whether it's been set to show in share
 + (BOOL)isAvailable {
-    BOOL canOpenWhatsApp = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://"]];
+    BOOL canOpenWhatsApp = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://"]] &&
+                           showInShare;
+    
     return canOpenWhatsApp;
 }
 
@@ -50,22 +62,47 @@
         return;
     }
     
-    [viewController showSocializeLoadingViewInSubview:nil];
-    
-    SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumOther];
-    [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"]];
+    controller = viewController;
+    shareEntity = entity;
+    successBlock = success;
+    failureBlock = failure;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WhatsApp Share"
+                                                    message:@"To share in WhatsApp, select the message recipient for the share. After you have finished, you will need to leave WhatsApp to navigate back here."
+                                                   delegate:[SZWhatsAppUtils class]
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK",nil];
+    [alert show];
+}
 
-    [[Socialize sharedSocialize] createShare:share
-                                     success:^(id<SZShare> serverShare) {
-                                         [viewController hideSocializeLoadingView];
-                                         NSURL *whatsappURL = [NSURL URLWithString:@"whatsapp://send?text=Hello%2C%20World!"];
-                                         if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
++ (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    //go ahead with share
+    if (buttonIndex == 1 && shareEntity != nil && successBlock != nil && failureBlock != nil) {
+        [controller showSocializeLoadingViewInSubview:nil];
+        SZShare *share = [SZShare shareWithEntity:shareEntity text:nil medium:SocializeShareMediumOther];
+        [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"]];
+        
+        [[Socialize sharedSocialize] createShare:share
+                                         success:^(id<SZShare> serverShare) {
+                                             BLOCK_CALL_1(successBlock, serverShare);
+                                             [controller hideSocializeLoadingView];
+                                             NSString *messageBody = [self defaultMessageForShare:serverShare];
+                                             NSString *encodedMessageBody =
+                                             (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                                                   (CFStringRef)messageBody,
+                                                                                                                   NULL,
+                                                                                                                   CFSTR("/%&=?$#+-~@<>|\\*,.()[]{}^!"),
+                                                                                                                   kCFStringEncodingUTF8);
+                                             NSString *whatsAppMessageString = [NSString stringWithFormat:@"whatsapp://send?text=%@", encodedMessageBody];
+                                             NSURL *whatsappURL = [NSURL URLWithString:whatsAppMessageString];
                                              [[UIApplication sharedApplication] openURL: whatsappURL];
                                          }
-                                     }
-                                     failure:^(NSError *error) {
-                                         [viewController hideSocializeLoadingView];
-                                         BLOCK_CALL_1(failure, error);
-    }];
+                                         failure:^(NSError *error) {
+                                             [controller hideSocializeLoadingView];
+                                             BLOCK_CALL_1(failureBlock, error);
+                                         }];
+    }
+    else if(failureBlock != nil) {
+        BLOCK_CALL_1(failureBlock, [NSError defaultSocializeErrorForCode:SocializeWhatsAppShareCancelledByUser]);
+    }
 }
-@end
+    @end
