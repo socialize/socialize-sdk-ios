@@ -13,7 +13,10 @@
 #import "SZViewControllerWrapper.h"
 
 @interface SZShareDialogViewController : SZViewControllerWrapper
+
 - (id)initWithEntity:(id<SZEntity>)entity;
+- (void)deselectSelectedRow;
+
 @property (nonatomic, retain) NSArray *shares;
 @property (nonatomic, copy) void (^completionBlock)(NSArray *shares);
 @property (nonatomic, copy) void (^cancellationBlock)();

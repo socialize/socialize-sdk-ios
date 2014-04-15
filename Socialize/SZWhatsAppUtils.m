@@ -52,8 +52,8 @@ static void (^failureBlock)(NSError *);
 }
 
 //since WhatsApp doesn't have a callback mechanism, simply record the share and open WhatsApp
-+ (void)shareViaWhatsAppWithViewController:(UIViewController*)viewController
-                                    options:(SZShareOptions*)options
++ (void)shareViaWhatsAppWithViewController:(UIViewController *)viewController
+                                    options:(SZShareOptions *)options
                                      entity:(id<SZEntity>)entity
                                     success:(void(^)(id<SZShare> share))success
                                     failure:(void(^)(NSError *error))failure {
@@ -100,6 +100,13 @@ static void (^failureBlock)(NSError *);
                                              [controller hideSocializeLoadingView];
                                              BLOCK_CALL_1(failureBlock, error);
                                          }];
+    }
+    //user cancel
+    else if(buttonIndex == 0) {
+        if([controller isKindOfClass:[SZShareDialogViewController class]]) {
+            SZShareDialogViewController *shareController = (SZShareDialogViewController *)controller;
+            [shareController deselectSelectedRow];
+        }
     }
     else if(failureBlock != nil) {
         BLOCK_CALL_1(failureBlock, [NSError defaultSocializeErrorForCode:SocializeWhatsAppShareCancelledByUser]);
