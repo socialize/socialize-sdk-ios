@@ -367,6 +367,7 @@
 		2CC323191888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC323151888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png */; };
 		2CC3231A1888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC323151888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png */; };
 		2CC3231B1888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC323151888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png */; };
+		2CCDBC4A18FD7B0400DB2215 /* whatsapp-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDBC4918FD7B0400DB2215 /* whatsapp-snippets.m */; };
 		2CCEA67A1887664B00B56C1C /* SocializeOSVersionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */; };
 		2CDB94CC1885C1300031CF54 /* socialize-authorize-facebook-disabled-icon-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDB94C41885C1300031CF54 /* socialize-authorize-facebook-disabled-icon-ios7.png */; };
 		2CDB94CD1885C1300031CF54 /* socialize-authorize-facebook-disabled-icon-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CDB94C41885C1300031CF54 /* socialize-authorize-facebook-disabled-icon-ios7.png */; };
@@ -1585,6 +1586,8 @@
 		2CC323151888B9A500FADBDF /* socialize-selectnetwork-pinterest-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon-ios7@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CC6263117CFFC3A00896610 /* UserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelper.h; sourceTree = "<group>"; };
 		2CC6263217CFFC3A00896610 /* UserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelper.m; sourceTree = "<group>"; };
+		2CCDBC4818FD7B0400DB2215 /* whatsapp-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "whatsapp-snippets.h"; sourceTree = "<group>"; };
+		2CCDBC4918FD7B0400DB2215 /* whatsapp-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "whatsapp-snippets.m"; sourceTree = "<group>"; };
 		2CCEA6781887664B00B56C1C /* SocializeOSVersionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeOSVersionTests.h; sourceTree = "<group>"; };
 		2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeOSVersionTests.m; sourceTree = "<group>"; };
 		2CDB94C01885B8030031CF54 /* _SZLinkDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SZLinkDialogViewControllerIOS6.h; sourceTree = "<group>"; };
@@ -4021,6 +4024,8 @@
 				AAFB0B8115E70FB10091600C /* ui_advanced.m */,
 				48C069921780192B004E7843 /* pinterest-snippets.h */,
 				48C069931780192B004E7843 /* pinterest-snippets.m */,
+				2CCDBC4818FD7B0400DB2215 /* whatsapp-snippets.h */,
+				2CCDBC4918FD7B0400DB2215 /* whatsapp-snippets.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -5941,6 +5946,7 @@
 				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
 				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
 				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
+				2CCDBC4A18FD7B0400DB2215 /* whatsapp-snippets.m in Sources */,
 				AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */,
 				AA840C54161CEF5700494EE4 /* SZTwitterUtilsTests.m in Sources */,
 				AA1759C216EEA1BF00550082 /* SZUnitTestAppHack.m in Sources */,
