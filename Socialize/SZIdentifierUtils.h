@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AdSupport/ASIdentifierManager.h>
 
 @interface SZIdentifierUtils : NSObject
 

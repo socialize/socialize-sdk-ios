@@ -10,19 +10,18 @@
 #import "NSData+Base64.h"
 
 //set to 1 to use it, 0 to use generic UUID that's cached
-#define SHOULD_USE_IDFA 0
+#define SHOULD_USE_IDFA 1
 
 @implementation SZIdentifierUtils
 
 //Returns IDFA UNLESS directive forces it to return IDFV
 + (NSString *)advertisingIdentifierString {
     NSString *identifier;
-    //TODO need to implement a non-IDFA solution...
+    
+#if SHOULD_USE_IDFA
     if (!NSClassFromString(@"ASIdentifierManager")) {
         return nil;
     }
-    
-#if SHOULD_USE_IDFA
     ASIdentifierManager *idManager = [ASIdentifierManager sharedManager];
     identifier = [idManager.advertisingIdentifier UUIDString];
 #else
