@@ -41,7 +41,7 @@ static NSString *SZDefaultUDID = @"105105105105";
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     [params setObject:SZDefaultUDID forKey:@"udid"];
     
-    NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
+    NSString *adsId = [SZIdentifierUtils base64IdentifierString];
     if ([adsId length] > 0) {
         [params setObject:adsId forKey:@"a"];
     }
@@ -128,7 +128,7 @@ static NSString *SZDefaultUDID = @"105105105105";
         [params setObject:thirdPartyAuthTokenSecret forKey:@"auth_token_secret"];
     }
 
-    NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
+    NSString *adsId = [SZIdentifierUtils base64IdentifierString];
     if ([adsId length] > 0) {
         [params setObject:adsId forKey:@"a"];
     }

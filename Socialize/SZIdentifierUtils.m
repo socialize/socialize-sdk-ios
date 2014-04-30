@@ -9,13 +9,13 @@
 #import "SZIdentifierUtils.h"
 #import "NSData+Base64.h"
 
-//set to 1 to use it, 0 to use generic UUID that's cached
+//set to 1 to use it, 0 to use IDFV instead
 #define SHOULD_USE_IDFA 1
 
 @implementation SZIdentifierUtils
 
 //Returns IDFA UNLESS directive forces it to return IDFV
-+ (NSString *)advertisingIdentifierString {
++ (NSString *)identifierString {
     NSString *identifier;
     
 #if SHOULD_USE_IDFA
@@ -32,8 +32,8 @@
     return identifier;
 }
 
-+ (NSString *)base64AdvertisingIdentifierString {
-    NSString *adsId = [self advertisingIdentifierString];
++ (NSString *)base64IdentifierString {
+    NSString *adsId = [self identifierString];
     NSData *data = [adsId dataUsingEncoding:NSUTF8StringEncoding];
     NSString *encoded = [data base64Encoding];
     return encoded;

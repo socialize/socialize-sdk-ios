@@ -112,7 +112,7 @@
         GHAssertEqualObjects([params objectForKey:@"auth_type"], authTypeString, @"Bad type");
     }];
 
-    [[[SZIdentifierUtils stub] andReturn:nil] base64AdvertisingIdentifierString];
+    [[[SZIdentifierUtils stub] andReturn:nil] base64IdentifierString];
 
     [_service authenticateWithThirdPartyAuthType:authType thirdPartyAuthToken:token thirdPartyAuthTokenSecret:secret];
 }

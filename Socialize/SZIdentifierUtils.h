@@ -11,7 +11,7 @@
 
 @interface SZIdentifierUtils : NSObject
 
-+ (NSString *)advertisingIdentifierString;
-+ (NSString *)base64AdvertisingIdentifierString;
++ (NSString *)identifierString;
++ (NSString *)base64IdentifierString;
 
 @end
