@@ -15,7 +15,7 @@
 #import "SocializePrivateDefinitions.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "SocializeTestCase.h"
-#import "ASIdentifierManager+Utilities.h"
+#import "SZIdentifierUtils.h"
 
 @implementation SocializeAuthTests
 
@@ -100,9 +100,9 @@
     
     [self becomePartial];
     
-    [ASIdentifierManager startMockingClass];
+    [SZIdentifierUtils startMockingClass];
     [self atTearDown:^{
-        [ASIdentifierManager stopMockingClassAndVerify];
+        [SZIdentifierUtils stopMockingClassAndVerify];
     }];
     
     [self expectRequest:^(SocializeRequest *request) {
@@ -112,7 +112,7 @@
         GHAssertEqualObjects([params objectForKey:@"auth_type"], authTypeString, @"Bad type");
     }];
 
-    [[[ASIdentifierManager stub] andReturn:nil] base64AdvertisingIdentifierString];
+    [[[SZIdentifierUtils stub] andReturn:nil] base64AdvertisingIdentifierString];
 
     [_service authenticateWithThirdPartyAuthType:authType thirdPartyAuthToken:token thirdPartyAuthTokenSecret:secret];
 }

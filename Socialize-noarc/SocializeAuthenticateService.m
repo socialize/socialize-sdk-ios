@@ -15,7 +15,7 @@
 #import "SocializeFullUser.h"
 #import "socialize_globals.h"
 #import "NSData+Base64.h"
-#import "ASIdentifierManager+Utilities.h"
+#import "SZIdentifierUtils.h"
 #import "SZAPIClientHelpers.h"
 
 static NSString *SZDefaultUDID = @"105105105105";
@@ -41,7 +41,7 @@ static NSString *SZDefaultUDID = @"105105105105";
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     [params setObject:SZDefaultUDID forKey:@"udid"];
     
-    NSString *adsId = [ASIdentifierManager base64AdvertisingIdentifierString];
+    NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
     if ([adsId length] > 0) {
         [params setObject:adsId forKey:@"a"];
     }
@@ -128,7 +128,7 @@ static NSString *SZDefaultUDID = @"105105105105";
         [params setObject:thirdPartyAuthTokenSecret forKey:@"auth_token_secret"];
     }
 
-    NSString *adsId = [ASIdentifierManager base64AdvertisingIdentifierString];
+    NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
     if ([adsId length] > 0) {
         [params setObject:adsId forKey:@"a"];
     }
