@@ -8,6 +8,7 @@
 
 #import "TestLocationUtils.h"
 #import <Socialize/Socialize.h>
+#import <Loopy/Loopy.h>
 
 @implementation TestLocationUtils
 
@@ -23,6 +24,16 @@
     
     CLLocation *lastLocation = [SZLocationUtils lastKnownLocation];
     GHAssertNotNil(lastLocation, @"last location should not be nil");
+}
+
+//ensures the Loopy location manager and Socialize location manager match up
+- (void)testLoopyLocationIntegration {
+    STAPIClient *loopy = [Socialize sharedLoopyAPIClient];
+    CLLocationManager *loopyLocationManager = loopy.deviceSettings.locationManager;
+    BOOL locationSharingDisabled = [Socialize locationSharingDisabled];
+    BOOL loopyLocationIntegMatch = (locationSharingDisabled && !loopyLocationManager) ||
+                                  (!locationSharingDisabled && loopyLocationManager);
+    GHAssertTrue(loopyLocationIntegMatch, @"");
 }
 
 @end

@@ -11,20 +11,9 @@
 
 @implementation SZShareOptions
 
-@synthesize loopyEnabled;
 @synthesize text = text_;
 @synthesize willShowSMSComposerBlock = _willShowSMSComposerBlock;
 @synthesize willShowEmailComposerBlock = _willShowEmailComposerBlock;
-
-//init Loopy by default
-- (id)init {
-    if(self == [super init]) {
-        self.loopyEnabled = YES;
-        [SZShareUtils sharedLoopyAPIClient]; //init this up-front
-    }
-    
-    return self;
-}
 
 + (SZShareOptions *)defaultOptions {
     SZShareOptions *options = [[self alloc] init];

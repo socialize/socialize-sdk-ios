@@ -8,6 +8,7 @@
 
 #import "SocializeShareService.h"
 #import "SocializeShare.h"
+#import "_Socialize.h"
 
 @interface SocializeShareService()
 @end
@@ -23,10 +24,21 @@
 }
 
 - (void)createShare:(id<SocializeShare>)share {
-    [self createShare:share success:nil failure:nil];
+    [self createShare:share success:nil failure:nil loopySuccess:nil loopyFailure:nil];
 }
 
-- (void)createShare:(id<SocializeShare>)share success:(void(^)(id<SZShare> share))success failure:(void(^)(NSError *error))failure {
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure {
+    [self createShare:share success:success failure:failure loopySuccess:nil loopyFailure:nil];
+}
+
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+    //perform Socialize share
     NSDictionary *params = [_objectCreator createDictionaryRepresentationOfObject:share];
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
                                                            resourcePath:SHARE_METHOD
@@ -34,20 +46,100 @@
                                                                  params:[NSArray arrayWithObject:params]];
     request.successBlock = ^(NSArray *shares) {
         BLOCK_CALL_1(success, [shares objectAtIndex:0]);
+        
+        //now call out to Loopy with Socialize URL
+        SocializeShare *shareObj = (SocializeShare *)[shares objectAtIndex:0];
+        id<SocializeEntity> entityObj = shareObj.entity;
+        NSString *key = [entityObj key];
+        NSString *medium = (NSString *)[params objectForKey:@"medium"];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *mediumNbr = [formatter numberFromString:medium];
+        int mediumInt = [mediumNbr intValue];
+        NSString *channelStr = [self getNetworksForLoopy:mediumInt];
+        BOOL keyIsURL = [entityObj keyIsURL];
+        if(keyIsURL) {
+            NSString *keyURL = key;
+            [self reportLoopySharelink:keyURL
+                               channel:channelStr
+                               success:loopySuccess
+                               failure:loopyFailure];
+        }
+        else {
+            NSString *shareText = (NSString *)[params objectForKey:@"text"];
+            [self reportLoopyShare:shareText
+                           channel:channelStr
+                           success:loopySuccess
+                           failure:loopyFailure];
+        }
     };
-    
     request.failureBlock = failure;
-
     [self executeRequest:request];
 }
 
--(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text{
+//Loopy analytics reporting
+- (void)reportLoopyShare:(NSString *)shareText
+                 channel:(NSString *)channel
+                 success:(void(^)(AFHTTPRequestOperation *, id))success
+                 failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
+    STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
+    STShare * shareObj = [loopyAPIClient reportShareWithShortlink:shareText channel:channel];
+    [loopyAPIClient reportShare:shareObj
+                        success:success
+                        failure:failure];
+}
+
+//Loopy analytics reporting
+- (void)reportLoopySharelink:(NSString *)urlStr
+                     channel:(NSString *)channel
+                     success:(void(^)(AFHTTPRequestOperation *, id))success
+                  failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
+    STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
+    STSharelink *sharelinkObj = [loopyAPIClient sharelinkWithURL:urlStr channel:channel title:nil meta:nil tags:nil];
+    [loopyAPIClient sharelink:sharelinkObj success:success failure:failure];
+}
+
+//for now, simply text-ify networks being shared
+- (NSString *)getNetworksForLoopy:(int)networks {
+    NSString *channel = @"";
+    switch (networks) {
+        case SocializeShareMediumTwitter:
+            channel = @"twitter";
+            break;
+            
+        case SocializeShareMediumFacebook:
+            channel = @"facebook";
+            break;
+            
+        case SocializeShareMediumEmail:
+            channel = @"email";
+            break;
+            
+        case SocializeShareMediumSMS:
+            channel = @"sms";
+            break;
+            
+        case SocializeShareMediumPinterest:
+            channel = @"pinterest";
+            break;
+            
+        case SocializeShareMediumOther:
+            channel = @"facebook,twitter";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return channel;
+}
+
+-(void)createShareForEntity:(id<SocializeEntity>)entity medium:(SocializeShareMedium)medium  text:(NSString*)text {
     [self createShareForEntityKey:[entity key] medium:medium text:text];
 }
 
--(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text{
-    
-    if (key && [key length]){   
+-(void)createShareForEntityKey:(NSString*)key medium:(SocializeShareMedium)medium  text:(NSString*)text {
+    if (key && [key length]){
         NSDictionary* entityParam = [NSDictionary dictionaryWithObjectsAndKeys:key, @"entity_key", text, @"text", [NSNumber numberWithInt:medium], @"medium" , nil];
         NSArray *params = [NSArray arrayWithObjects:entityParam, 
                            nil];
@@ -81,7 +173,11 @@
                    } failure:failure];
 }
 
-- (void)getSharesForEntityKey:(NSString*)key first:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+- (void)getSharesForEntityKey:(NSString*)key
+                        first:(NSNumber*)first
+                         last:(NSNumber*)last
+                      success:(void(^)(NSArray *shares))success
+                      failure:(void(^)(NSError *error))failure {
     
     NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease]; 
     if (key)
@@ -100,7 +196,10 @@
     [self executeRequest:request];
 }
 
-- (void)getSharesWithFirst:(NSNumber*)first last:(NSNumber*)last success:(void(^)(NSArray *shares))success failure:(void(^)(NSError *error))failure {
+- (void)getSharesWithFirst:(NSNumber*)first
+                      last:(NSNumber*)last
+                   success:(void(^)(NSArray *shares))success
+                   failure:(void(^)(NSError *error))failure {
     [self callListingGetEndpointWithPath:SHARE_METHOD params:nil first:first last:last success:success failure:failure];
 }
 

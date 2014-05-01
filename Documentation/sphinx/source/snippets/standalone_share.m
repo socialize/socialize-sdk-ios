@@ -14,7 +14,7 @@
 @implementation StandaloneShareViewController
 
 - (IBAction)shareButtonPressed:(id)sender {
-//    SocializeEntity *entity = [SocializeEntity entityWithKey:@"my_key" name:@"An Entity"];
+//    SocializeEntity *entity = [SocializeEntity entityWithKey:@"my_key_or_url" name:@"An Entity"];
 //    [Socialize showShareActionSheetWithViewController:self entity:entity success:^{
 //        NSLog(@"Share created successfully");
 //    } failure:^(NSError *error) {

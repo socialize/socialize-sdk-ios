@@ -5,7 +5,6 @@ pods:
 
 test:
 	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=7.0,name="iPhone Retina (4-inch)"
-	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=6.1,name="iPhone Retina (4-inch)"
 
 default: build buildsample test package
 

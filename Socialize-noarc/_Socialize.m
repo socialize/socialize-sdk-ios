@@ -8,6 +8,7 @@
 
 #import "_Socialize.h"
 
+#import <SZBlockskit/Blockskit.h>
 #import "SocializeConfiguration.h"
 #import "SocializeCommentsService.h"
 #import "SocializeLikeService.h"
@@ -20,7 +21,6 @@
 #import "SocializeDeviceTokenService.h"
 #import "SocializeShareService.h"
 #import "SocializeSubscriptionService.h"
-#import <SZBlockskit/Blockskit.h>
 #import "StringHelper.h"
 #import "SocializeDeviceTokenSender.h"
 #import "SocializeFacebookAuthHandler.h"
@@ -222,8 +222,39 @@ static Socialize *_sharedSocialize;
             [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setTintColor:[UIColor whiteColor]];
             [[UINavigationBar appearanceWhenContainedIn:[SZViewControllerWrapper class], nil] setTitleTextAttributes:navbarTitleTextAttributes];
         }
+        
+        //Loopy init
+        [Socialize sharedLoopyAPIClient];
     }
     return self;
+}
+
++ (id)sharedLoopyAPIClient {
+    static STAPIClient *loopyAPIClient = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        loopyAPIClient = [[STAPIClient alloc] initWithAPIKey:[Socialize loopyAppID]
+                                                    loopyKey:[Socialize loopyKey]
+                                           locationsDisabled:[self locationSharingDisabled]];
+        [loopyAPIClient getSessionWithReferrer:@"www.facebook.com" //this is temporary until referrer clarified
+                                   postSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   }
+                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                       }];
+    });
+    return loopyAPIClient;
+}
+
++ (NSString *)loopyAppID {
+    //FIXME need Loopy keys to match Socialize keys
+    return @"be6a5004-6abb-4382-a131-8d6812a9e74b";
+    return [Socialize consumerKey];
+}
+
++ (NSString *)loopyKey {
+    //FIXME need Loopy keys
+    return @"3d4pnhzpar8bz8t44w7hb42k";
+    return [Socialize consumerSecret];
 }
 
 + (NSString *)socializeVersion {
@@ -326,7 +357,6 @@ SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerKey, twitterConsumerKey, kSocia
 SYNTH_DEFAULTS_PROPERTY(NSString, TwitterConsumerSecret, twitterConsumerSecret, kSocializeTwitterAuthConsumerSecret)
 
 SYNTH_DEFAULTS_BOOL_PROPERTY(AuthenticationNotRequired, authenticationNotRequired, kSocializeAuthenticationNotRequired)
-SYNTH_DEFAULTS_BOOL_PROPERTY(LocationSharingDisabled, locationSharingDisabled, kSocializeLocationSharingDisabled)
 SYNTH_DEFAULTS_BOOL_PROPERTY(AnonymousAllowed, anonymousAllowed, kSocializeAnonymousAllowed);
 SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabled);
 
@@ -340,6 +370,19 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SOCIALIZE_APPLICATION_LINK];
     [defaults synchronize];
+}
+
+//this should be set BEFORE initializing Loopy
+//(i.e. before storing Socialize consumerKey and consumerSecret, which init Loopy)
++(void)storeLocationSharingDisabled:(BOOL)disableBranding {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSNumber numberWithBool:disableBranding] forKey:kSocializeLocationSharingDisabled];
+    
+    [defaults synchronize];
+}
+
++(BOOL)locationSharingDisabled {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeLocationSharingDisabled] boolValue];
 }
 
 +(void)storeDisableBranding:(BOOL)disableBranding {
@@ -997,4 +1040,11 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
     [_shareService createShare:share success:success failure:failure];
 }
 
+- (void)createShare:(id<SocializeShare>)share
+            success:(void(^)(id<SZShare> share))success
+            failure:(void(^)(NSError *error))failure
+       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
+       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+    [_shareService createShare:share success:success failure:failure loopySuccess:loopySuccess loopyFailure:loopyFailure];
+}
 @end

@@ -40,6 +40,8 @@
 
 - (BOOL)containsString:(NSString*)aString;
 
+- (BOOL)isURLString;
+
 - (NSString*)urlEncode;
 
 - (NSString*)sha1;

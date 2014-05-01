@@ -74,6 +74,9 @@
 
 - (NSString*)displayName;
 
+/**YES if key is a valid URL String*/
+- (BOOL)keyIsURL;
+
 @end
 
 /**Private implementation of <SocializeEntity> protocol*/

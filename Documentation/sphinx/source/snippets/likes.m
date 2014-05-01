@@ -14,7 +14,7 @@
 // begin-create-like-snippet
 
 - (void)like {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     
     SZLikeOptions *options = [SZLikeUtils userLikeOptions];
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
@@ -33,7 +33,7 @@
 // begin-delete-like-snippet
 
 - (void)unlike {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     
     [SZLikeUtils unlike:entity success:^(id<SZLike> like) {
         NSLog(@"Deleted like: %d", [like objectID]);
@@ -59,7 +59,7 @@
 // begin-get-by-user-and-entity-snippet
 
 - (void)getLikeForUserOnEntity {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     [SZLikeUtils getLikeForUser:nil entity:entity success:^(id<SZLike> like) {
         if (like != nil) {
             NSLog(@"Liked with like descriptor: %@", like);
@@ -76,7 +76,7 @@
 // begin-get-by-entity-snippet
 
 - (void)getLikesByEntity {
-    SZEntity *entity = [SZEntity entityWithKey:@"some_key" name:@"Something"];
+    SZEntity *entity = [SZEntity entityWithKey:@"some_key_or_url" name:@"Something"];
     
     [SZLikeUtils getLikesForEntity:entity start:nil end:nil success:^(NSArray *likes) {
         NSLog(@"Got likes: %@", likes);

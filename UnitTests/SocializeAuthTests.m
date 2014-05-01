@@ -15,7 +15,7 @@
 #import "SocializePrivateDefinitions.h"
 #import <OAuthConsumer/OAuthConsumer.h>
 #import "SocializeTestCase.h"
-#import "ASIdentifierManager+Utilities.h"
+#import "SZIdentifierUtils.h"
 
 @implementation SocializeAuthTests
 
@@ -50,6 +50,23 @@
     [[[_mockService expect] andDo1:^(SocializeRequest *request) {
         GHAssertEqualStrings(request.resourcePath, @"authenticate/", @"Bad path");
         GHAssertNotNil(request.params, @"Missing params");
+
+        NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
+        NSString *vendorId = [SZIdentifierUtils base64VendorIdentifierString];
+        
+        //these should either both be nil or equal
+        NSString *matchAdsId = (NSString *)[request.params objectForKey:IDFAKey];
+        NSString *matchVendorId = (NSString *)[request.params objectForKey:IDFVKey];
+        
+        //nil for headless devices
+        if(adsId != nil && matchAdsId != nil) {
+            GHAssertEqualStrings(adsId, matchAdsId, @"");
+        }
+        
+        if(vendorId != nil && matchVendorId != nil) {
+            GHAssertEqualStrings(vendorId, matchVendorId, @"");
+        }
+        
     }] executeRequest:OCMOCK_ANY];
 
     [_mockService authenticateWithApiKey:@"98e76bb9-c707-45a4-acf2-029cca3bf216" apiSecret:@"b7364905-cdc6-46d3-85ad-06516b128819"];
@@ -100,9 +117,9 @@
     
     [self becomePartial];
     
-    [ASIdentifierManager startMockingClass];
+    [SZIdentifierUtils startMockingClass];
     [self atTearDown:^{
-        [ASIdentifierManager stopMockingClassAndVerify];
+        [SZIdentifierUtils stopMockingClassAndVerify];
     }];
     
     [self expectRequest:^(SocializeRequest *request) {
@@ -112,7 +129,7 @@
         GHAssertEqualObjects([params objectForKey:@"auth_type"], authTypeString, @"Bad type");
     }];
 
-    [[[ASIdentifierManager stub] andReturn:nil] base64AdvertisingIdentifierString];
+    [[[SZIdentifierUtils stub] andReturn:nil] base64AdvertisingIdentifierString];
 
     [_service authenticateWithThirdPartyAuthType:authType thirdPartyAuthToken:token thirdPartyAuthTokenSecret:secret];
 }
