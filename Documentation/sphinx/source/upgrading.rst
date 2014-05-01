@@ -4,6 +4,22 @@
 Upgrading Socialize (CocoaPods and non-CocoaPods)
 =================================================
 
+Important Notes on Upgrading to v3.0.3
+------------------------------------------------
+
+To allow compliance with Apple's rules on IDFA ("advertisingIdentifier"), the Socialize iOS SDK offers the option to disable the use of IDFA. **You must disable IDFA if your app does not serve ads or it will be rejected by the App Store.**
+
+To disable IDFA in Socialize, navigate to SZIdentifierUtils.m and set the proprocessor macro flag to 0; to enable IDFA, set to 1 (the default):
+
+::
+
+  #define SHOULD_USE_IDFA 1
+
+The macro will remove any references to advertisingIdentifier in the code if so specified, ensuring it will not be detected during App Store submission.
+
+.. note:: References to advertisingIdentifier may still exist in your code or in any CocoaPods your project and/or the Socialize iOS SDK depends on. You will have to implement an equivalent scheme to strip out these references before building your app if your app is not serving ads.
+
+
 Important Notes on Upgrading to v3.0.1
 ------------------------------------------------
 

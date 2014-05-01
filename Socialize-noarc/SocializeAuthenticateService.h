@@ -17,6 +17,10 @@ Socialize authentication service is the authentication engine. It performs anony
  */
 @interface SocializeAuthenticateService : SocializeService
 
+extern NSString *const UDIDKey;
+extern NSString *const IDFAKey;
+extern NSString *const IDFVKey;
+
 @property (nonatomic, readonly) id<SocializeUser>authenticatedUser;
 @property (nonatomic, readonly) id<SocializeFullUser>authenticatedFullUser;
 
