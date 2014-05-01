@@ -83,8 +83,8 @@
                  success:(void(^)(AFHTTPRequestOperation *, id))success
                  failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
-    NSDictionary *shareDict = [loopyAPIClient reportShareDictionary:shareText channel:channel];
-    [loopyAPIClient reportShare:shareDict
+    STShare * shareObj = [loopyAPIClient reportShareWithShortlink:shareText channel:channel];
+    [loopyAPIClient reportShare:shareObj
                         success:success
                         failure:failure];
 }
@@ -95,12 +95,8 @@
                      success:(void(^)(AFHTTPRequestOperation *, id))success
                   failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
-    NSDictionary *sharelinkDict = [loopyAPIClient sharelinkDictionary:urlStr
-                                                              channel:channel
-                                                                title:nil
-                                                                 meta:nil
-                                                                 tags:nil];
-    [loopyAPIClient sharelink:sharelinkDict success:success failure:failure];
+    STSharelink *sharelinkObj = [loopyAPIClient sharelinkWithURL:urlStr channel:channel title:nil meta:nil tags:nil];
+    [loopyAPIClient sharelink:sharelinkObj success:success failure:failure];
 }
 
 //for now, simply text-ify networks being shared

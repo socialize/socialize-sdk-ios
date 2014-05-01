@@ -29,7 +29,7 @@
 //ensures the Loopy location manager and Socialize location manager match up
 - (void)testLoopyLocationIntegration {
     STAPIClient *loopy = [Socialize sharedLoopyAPIClient];
-    CLLocationManager *loopyLocationManager = loopy.locationManager;
+    CLLocationManager *loopyLocationManager = loopy.deviceSettings.locationManager;
     BOOL locationSharingDisabled = [Socialize locationSharingDisabled];
     BOOL loopyLocationIntegMatch = (locationSharingDisabled && !loopyLocationManager) ||
                                   (!locationSharingDisabled && loopyLocationManager);
