@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Entities &mdash; Socialize iOS SDK 3.0.2 documentation</title>
+    <title>Entities &mdash; Socialize iOS SDK 3.0.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.2',
+        VERSION:     '3.0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.3 documentation" href="index.html" />
     <link rel="next" title="Users" href="users.html" />
     <link rel="prev" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -79,20 +79,20 @@
 <div class="section" id="socialize-entities">
 <h1>Socialize Entities<a class="headerlink" href="#socialize-entities" title="Permalink to this headline">¶</a></h1>
 <p>An <em>Entity</em> is the term Socialize uses to describe any item of content within
-your app.  This could be anything from a News Article to a Hamburger and simply
+your app. This could be anything from a News Article to a Hamburger and simply
 provides a reference point from which your users can perform social actions
 such as liking, commenting and sharing.</p>
 <p>For example, imagine your app is a photography app where users can share photos
-they take with their device.  In this scenario each photo would be an <em>entity</em>
+they take with their device. In this scenario each photo would be an <em>entity</em>
 and users can then perform social actions on this entity.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">It is recommended that where possible an HTTP URL be used for your entity key</p>
 </div>
-<p>Entities in Socialize MUST be associated with a unique key.  It is recommended
+<p>Entities in Socialize MUST be associated with a unique key. It is recommended
 that where possible an HTTP URL be used (i.e. one that corresponds to an active
-web page).  If your entities do not have web addressable URLs Socialize can
-automatically generate an Entity Page for you.  Refer to the
+web page that your entity will represent). If your entities do not have web addressable URLs, Socialize can
+automatically generate an Entity Page for you. Refer to the
 <a class="reference internal" href="#entity-no-url"><em>Entities Without URLs</em></a> section on this page for more information.</p>
 <div class="section" id="auto-creation-of-entities">
 <h2>Auto-Creation of Entities<a class="headerlink" href="#auto-creation-of-entities" title="Permalink to this headline">¶</a></h2>
@@ -103,7 +103,7 @@ the Action Bar will be automatically created for you if it does not already
 exist.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You should always specify a name when creating an entity, however if you have previously created the entity with a name and do not want to specify the name every time you can provide a &#8220;null&#8221; argument for the name.  This will instruct Socialize to ignore the name attribute and the name of the entity will NOT be updated.</p>
+<p class="last">You should always specify a name when creating an entity, however if you have previously created the entity with a name and do not want to specify the name every time you can provide a &#8220;null&#8221; argument for the name. This will instruct Socialize to ignore the name attribute and the name of the entity will NOT be updated.</p>
 </div>
 </div>
 <div class="section" id="working-with-entities">
@@ -115,7 +115,7 @@ exist.</p>
 <p class="last">You do necessarily need to create an entity on your own. The <a class="reference external" href="comments.html#working-with-comments">Comment</a>, <a class="reference external" href="likes.html#working-with-likes">Like</a>, and <a class="reference external" href="sharing.html#working-with-shares">Share</a> utility functions will automatically create any specified entities.</p>
 </div>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntity</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="n">addEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>
     <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
@@ -132,7 +132,7 @@ in this way will also provide aggregate data on comments, likes, shares and
 views. Refer to the <a class="reference external" href="http://api.getsocialize.com/docs/v1/#entity-object">Entity Object Structure</a>  in the API Docs. for more detail on
 these aggregate values.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getEntity</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="n">getEntityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key&quot;</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="n">getEntityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key_or_url&quot;</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Retrieved entity %@/%d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">entity</span> <span class="n">key</span><span class="p">],</span> <span class="p">[</span><span class="n">entity</span> <span class="n">objectID</span><span class="p">]);</span>
     <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>        
@@ -205,7 +205,7 @@ about the number of comments,likes,views and shares:</p>
 additional information you want to store about the entity.</p>
 <p>Meta data is stored with the entity and returned then the entity is requested.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithMeta</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
     <span class="n">entity</span><span class="p">.</span><span class="n">meta</span> <span class="o">=</span> <span class="s">@&quot;123&quot;</span><span class="p">;</span>
     
     <span class="p">[</span><span class="n">SZEntityUtils</span> <span class="n">addEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZEntity</span><span class="o">&gt;</span> <span class="n">serverEntity</span><span class="p">)</span> <span class="p">{</span>
@@ -221,7 +221,7 @@ additional information you want to store about the entity.</p>
 notation. To do this, you will need to use a third party library such as the
 excellent <a class="reference external" href="https://github.com/johnezang/JSONKit/">JSONKit</a></p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithJSONMeta</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
     
     <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">dictionary</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="n">dictionaryWithObject</span><span class="o">:</span><span class="s">@&quot;123&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;key&quot;</span><span class="p">];</span>
     <span class="n">entity</span><span class="p">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span> <span class="n">JSONString</span><span class="p">];</span>
@@ -261,7 +261,7 @@ taken from your entity meta data.</p>
 </div>
 <p>In code this would look something like this</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithCustomPageInfo</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;my_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;An Entity&quot;</span><span class="p">];</span>
 
     <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="n">dictionaryWithObjectsAndKeys</span><span class="o">:</span>
                             <span class="s">@&quot;Some title for the page, if you don&#39;t want to use the entity name&quot;</span><span class="p">,</span> <span class="s">@&quot;szsd_title&quot;</span><span class="p">,</span>
@@ -351,7 +351,7 @@ taken from your entity meta data.</p>
         <li class="right" >
           <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

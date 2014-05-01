@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upgrading Socialize (CocoaPods and non-CocoaPods) &mdash; Socialize iOS SDK 3.0.2 documentation</title>
+    <title>Upgrading Socialize (CocoaPods and non-CocoaPods) &mdash; Socialize iOS SDK 3.0.3 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.2',
+        VERSION:     '3.0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.2 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.3 documentation" href="index.html" />
     <link rel="next" title="Upgrade Notes: Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -75,12 +75,18 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="upgrading-socialize-cocoapods-and-non-cocoapods">
 <h1>Upgrading Socialize (CocoaPods and non-CocoaPods)<a class="headerlink" href="#upgrading-socialize-cocoapods-and-non-cocoapods" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="important-notes-on-upgrading-to-v3-0-2">
-<h2>Important Notes on Upgrading to v3.0.2<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-2" title="Permalink to this headline">¶</a></h2>
-<p>Socialize 3.0.2 is compatible with iOS 7.1, which compiles for 64-bit devices by default. Since some dependent libraries have not yet been optimized for 64-bit devices, you may encounter build problems when compiling the Socialize SDK. To avoid 64-bit build errors, ensure your &#8220;Archtectures&#8221; settings in Xcode Build Settings for your project and targets are set as follows:</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="images/compiler_settings_302.png"><img alt="images/compiler_settings_302.png" src="images/compiler_settings_302.png" style="width: 834px; height: 193px;" /></a>
-</div></blockquote>
+<div class="section" id="important-notes-on-upgrading-to-v3-0-3">
+<h2>Important Notes on Upgrading to v3.0.3<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-3" title="Permalink to this headline">¶</a></h2>
+<p>To allow compliance with Apple&#8217;s rules on IDFA (&#8220;advertisingIdentifier&#8221;), the Socialize iOS SDK offers the option to disable the use of IDFA. <strong>You must disable IDFA if your app does not serve ads or it will be rejected by the App Store.</strong></p>
+<p>To disable IDFA in Socialize, navigate to SZIdentifierUtils.m and set the proprocessor macro flag to 0; to enable IDFA, set to 1 (the default):</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#define SHOULD_USE_IDFA 1</span>
+</pre></div>
+</div>
+<p>The macro will remove any references to advertisingIdentifier in the code if so specified, ensuring it will not be detected during App Store submission.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">References to advertisingIdentifier may still exist in your code or in any CocoaPods your project and/or the Socialize iOS SDK depends on. You will have to implement an equivalent scheme to strip out these references before building your app if your app is not serving ads.</p>
+</div>
 </div>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-1">
 <h2>Important Notes on Upgrading to v3.0.1<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-1" title="Permalink to this headline">¶</a></h2>
@@ -220,7 +226,7 @@ delete it before performing this step</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-2">Important Notes on Upgrading to v3.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-3">Important Notes on Upgrading to v3.0.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-1">Important Notes on Upgrading to v3.0.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-8-9">Important Notes on Upgrading to v2.8.9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
@@ -276,7 +282,7 @@ delete it before performing this step</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
