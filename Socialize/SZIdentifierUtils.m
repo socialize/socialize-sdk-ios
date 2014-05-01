@@ -14,8 +14,10 @@
 
 @implementation SZIdentifierUtils
 
+NSString *const IDFAUnavailable = @"UNAVAILABLE";
+
 //Returns IDFA UNLESS directive forces it to return IDFV
-+ (NSString *)identifierString {
++ (NSString *)advertisingIdentifierString {
     NSString *identifier;
     
 #if SHOULD_USE_IDFA
@@ -25,16 +27,30 @@
     ASIdentifierManager *idManager = [ASIdentifierManager sharedManager];
     identifier = [idManager.advertisingIdentifier UUIDString];
 #else
-    UIDevice *device = [UIDevice currentDevice];
-    identifier = [device.identifierForVendor UUIDString];
+    identifier = [NSString stringWithString:IDFAUnavailable];
 #endif
     
     return identifier;
 }
 
-+ (NSString *)base64IdentifierString {
-    NSString *adsId = [self identifierString];
-    NSData *data = [adsId dataUsingEncoding:NSUTF8StringEncoding];
++ (NSString *)base64AdvertisingIdentifierString {
+    NSString *adsId = [self advertisingIdentifierString];
+    return [self base64StringFromString:adsId];
+}
+
++ (NSString *)vendorIdentifierString {
+    UIDevice *device = [UIDevice currentDevice];
+    NSString *identifier = [device.identifierForVendor UUIDString];
+    return identifier;
+}
+
++ (NSString *)base64VendorIdentifierString {
+    NSString *vendor = [self vendorIdentifierString];
+    return [self base64StringFromString:vendor];
+}
+
++ (NSString *)base64StringFromString:(NSString *)string {
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
     NSString *encoded = [data base64Encoding];
     return encoded;
 }

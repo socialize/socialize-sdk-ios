@@ -26,6 +26,11 @@ static NSString *SZDefaultUDID = @"105105105105";
 @end
 
 @implementation SocializeAuthenticateService
+
+NSString *const UDIDKey = @"udid";
+NSString *const IDFAKey = @"a";
+NSString *const IDFVKey = @"v";
+
 @synthesize authenticatedUser;
 
 -(void)dealloc
@@ -39,11 +44,16 @@ static NSString *SZDefaultUDID = @"105105105105";
 -(void)authenticateWithApiKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret success:(void(^)(id<SZFullUser>))success failure:(void(^)(NSError *error))failure {
     
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
-    [params setObject:SZDefaultUDID forKey:@"udid"];
+    [params setObject:SZDefaultUDID forKey:UDIDKey];
     
-    NSString *adsId = [SZIdentifierUtils base64IdentifierString];
+    NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
     if ([adsId length] > 0) {
-        [params setObject:adsId forKey:@"a"];
+        [params setObject:adsId forKey:IDFAKey];
+    }
+    
+    NSString *vendorId = [SZIdentifierUtils base64VendorIdentifierString];
+    if ([vendorId length] > 0) {
+        [params setObject:vendorId forKey:IDFVKey];
     }
 
     [self persistConsumerInfo:apiKey andApiSecret:apiSecret];
@@ -128,7 +138,7 @@ static NSString *SZDefaultUDID = @"105105105105";
         [params setObject:thirdPartyAuthTokenSecret forKey:@"auth_token_secret"];
     }
 
-    NSString *adsId = [SZIdentifierUtils base64IdentifierString];
+    NSString *adsId = [SZIdentifierUtils base64AdvertisingIdentifierString];
     if ([adsId length] > 0) {
         [params setObject:adsId forKey:@"a"];
     }

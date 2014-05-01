@@ -11,7 +11,11 @@
 
 @interface SZIdentifierUtils : NSObject
 
-+ (NSString *)identifierString;
-+ (NSString *)base64IdentifierString;
+extern NSString *const IDFAUnavailable;
+
++ (NSString *)advertisingIdentifierString;
++ (NSString *)base64AdvertisingIdentifierString;
++ (NSString *)vendorIdentifierString;
++ (NSString *)base64VendorIdentifierString;
 
 @end
