@@ -88,6 +88,13 @@
 <p class="last">References to advertisingIdentifier may still exist in your code or in any CocoaPods your project and/or the Socialize iOS SDK depends on. You will have to implement an equivalent scheme to strip out these references before building your app if your app is not serving ads.</p>
 </div>
 </div>
+<div class="section" id="important-notes-on-upgrading-to-v3-0-2">
+<h2>Important Notes on Upgrading to v3.0.2<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-2" title="Permalink to this headline">¶</a></h2>
+<p>Socialize 3.0.2 is compatible with iOS 7.1, which compiles for 64-bit devices by default. Since some dependent libraries have not yet been optimized for 64-bit devices, you may encounter build problems when compiling the Socialize SDK. To avoid 64-bit build errors, ensure your &#8220;Archtectures&#8221; settings in Xcode Build Settings for your project and targets are set as follows:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="images/compiler_settings_302.png"><img alt="images/compiler_settings_302.png" src="images/compiler_settings_302.png" style="width: 834px; height: 193px;" /></a>
+</div></blockquote>
+</div>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-1">
 <h2>Important Notes on Upgrading to v3.0.1<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-1" title="Permalink to this headline">¶</a></h2>
 <p>As of 3.0.1, Socialize is available as a CocoaPod!</p>
@@ -227,6 +234,7 @@ delete it before performing this step</p>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-3">Important Notes on Upgrading to v3.0.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-2">Important Notes on Upgrading to v3.0.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-1">Important Notes on Upgrading to v3.0.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-8-9">Important Notes on Upgrading to v2.8.9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
