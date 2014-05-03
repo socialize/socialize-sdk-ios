@@ -61,10 +61,13 @@
     self._shareDialogViewController = [[_SZShareDialogViewController alloc] initWithEntity:self.entity];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self pushViewController:self._shareDialogViewController animated:NO];
+}
+
+- (void)deselectSelectedRow {
+    [self._shareDialogViewController deselectSelectedRow];
 }
 
 - (void)setTitle:(NSString *)title {

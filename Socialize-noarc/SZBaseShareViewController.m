@@ -20,6 +20,7 @@
 #import <SZJSONKit/JSONKit.h>
 #import "SZEventUtils.h"
 #import "SZPinterestUtils.h"
+#import "SZWhatsAppUtils.h"
 #import "SZNetworkImageProvider.h"
 #import "UIDevice+VersionCheck.h"
 #import <SZBlocksKit/BlocksKit+UIKit.h>
@@ -27,7 +28,6 @@
 static NSString *CellIdentifier = @"CellIdentifier";
 
 static NSString *kSectionIdentifier = @"kSectionIdentifier";
-//static NSString *kSectionTitle = @"kSectionTitle";
 static NSString *kSectionRows = @"kSectionRows";
 static NSString *kSectionCellConfigurationBlock = @"kSectionCellConfigurationBlock";
 
@@ -38,6 +38,7 @@ static NSString *kRowIdentifier = @"kRowIdentifier";
 static NSString *kFacebookRow = @"kRowFacebook";
 static NSString *kTwitterRow = @"kTwitterRow";
 static NSString *kPinterestRow = @"kPinterestRow";
+static NSString *kWhatsAppRow = @"kWhatsAppRow";
 static NSString *kSMSRow = @"kSMSRow";
 static NSString *kEmailRow = @"kEmailRow";
 static NSString *kAutopostRow = @"kAutopostRow";
@@ -97,8 +98,6 @@ static NSString *kAutopostSection = @"kAutopostSection";
     self.facebookSwitch = nil;
     self.twitterSwitch = nil;
     self.autopostSwitch = nil;
-    
-//    self.tableView = nil;
     
     [SZFacebookUtils cancelLink];
 
@@ -468,6 +467,41 @@ static NSString *kAutopostSection = @"kAutopostSection";
             nil];
 }
 
+- (NSDictionary*)WhatsAppRow {
+    
+    WEAK(self) weakSelf = self;
+    
+    void (^executionBlock)() = ^{
+        [weakSelf trackShareEventsForNetworkNames:[NSArray arrayWithObject:@"WhatsApp"]];
+        [SZWhatsAppUtils shareViaWhatsAppWithViewController:weakSelf.SZPresentationTarget
+                                                    options:[weakSelf shareOptions]
+                                                     entity:weakSelf.entity
+                                                    success:^(id<SocializeShare> share) {
+                                                        [weakSelf deselectSelectedRow];
+                                                        [weakSelf.createdShares addObject:share];
+                                                    }
+                                                    failure:^(NSError *error) {
+                                                        [weakSelf deselectSelectedRow];
+                                                        
+                                                        if (![error isSocializeErrorWithCode:SocializeErrorShareCancelledByUser]) {
+                                                            [weakSelf failWithError:error];
+                                                        };
+                                                    }];
+    };
+    
+    void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
+        cell.imageView.image = [SZNetworkImageProvider whatsAppSelectImage];
+        cell.textLabel.text = @"WhatsApp";
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    };
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            kWhatsAppRow, kRowIdentifier,
+            COPIED_BLOCK(cellConfigurationBlock), kRowCellConfigurationBlock,
+            COPIED_BLOCK(executionBlock), kRowExecutionBlock,
+            nil];
+}
 
 - (NSDictionary*)SMSRow {
     
@@ -548,7 +582,11 @@ static NSString *kAutopostSection = @"kAutopostSection";
     if ([self showPinterest]) {
         [rows addObject:[self PinterestRow]];
     }
-        
+
+    if ([self showWhatsApp]) {
+        [rows addObject:[self WhatsAppRow]];
+    }
+
     void (^cellConfigurationBlock)(UITableViewCell*) = ^(UITableViewCell *cell) {
         
         if (![cell.accessoryView isKindOfClass:[UIImageView class]]) {
@@ -624,6 +662,10 @@ static NSString *kAutopostSection = @"kAutopostSection";
 
 - (BOOL)showPinterest {
     return self.showOtherShareTypes && [SZPinterestUtils isAvailable] && !self.hidePinterest;
+}
+
+- (BOOL)showWhatsApp {
+    return self.showOtherShareTypes && [SZWhatsAppUtils isAvailable] && !self.hideWhatsApp;
 }
 
 - (BOOL)showOtherShareTypesSection {

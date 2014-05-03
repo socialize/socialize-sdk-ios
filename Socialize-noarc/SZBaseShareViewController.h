@@ -21,6 +21,7 @@
 - (void)trackShareEventsForNetworks:(SZSocialNetwork)networks;
 - (void)trackShareEventsForNetworkNames:(NSArray*)networkNames;
 - (SZShareOptions*)optionsForShare;
+- (void)deselectSelectedRow;
 
 @property (nonatomic, retain) NSMutableArray *createdShares;
 @property (nonatomic, retain) id<SZEntity> entity;
@@ -40,5 +41,6 @@
 @property (nonatomic, assign) BOOL hideFacebook;
 @property (nonatomic, assign) BOOL hideTwitter;
 @property (nonatomic, assign) BOOL hidePinterest;
+@property (nonatomic, assign) BOOL hideWhatsApp;
 
 @end

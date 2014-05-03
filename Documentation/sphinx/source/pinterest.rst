@@ -1,6 +1,6 @@
-=========
-Pinterest
-=========
+=================
+Pinterest Sharing
+=================
 
 Installation
 ------------
@@ -27,15 +27,15 @@ Once you have a pinterest application, simply tell Socialize about your applicat
 .. literalinclude:: snippets/pinterest-snippets.m
   :start-after: begin-configure-snippet
   :end-before: end-configure-snippet
-  :emphasize-lines: 9
+  :emphasize-lines: 6
 
-Note that the Pinterest app must be installed on a device for Pinterest sharing to display in the Share dialog. This functionality works on devices only, not in Simulator.
+.. note:: The Pinterest app must be installed on a device for Pinterest sharing to display in the Share dialog. This functionality works on devices only, not in Simulator.
 
 Posting to Pinterest on your own
 ---------------------------------
 
 Should you need to post to Pinterest on your own, you can do so by using the
-direct Pintrest access methods on the utils classes.
+direct Pinterest access methods on the utils classes.
 
 .. literalinclude:: snippets/pinterest-snippets.m
   :start-after: begin-share-snippet

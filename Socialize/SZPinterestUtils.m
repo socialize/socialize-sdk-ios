@@ -55,10 +55,8 @@
                                     options:(SZShareOptions*)options
                                      entity:(id<SZEntity>)entity
                                     success:(void(^)(id<SZShare> share))success
-                                    failure:(void(^)(NSError *error))failure
-{
-    
-    if (![self isAvailable]) {
+                                    failure:(void(^)(NSError *error))failure {
+    if(![self isAvailable]) {
         BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializePinterestNotAvailable]);
         return;
     }
@@ -68,37 +66,69 @@
     SZShare *share = [SZShare shareWithEntity:entity text:nil medium:SocializeShareMediumOther];
     [share setPropagationInfoRequest:[NSDictionary dictionaryWithObject:[NSArray arrayWithObject:@"facebook"] forKey:@"third_parties"]];
     
-    [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> serverShare) {
-        SZPinterestShareData *pinterestData = [[SZPinterestShareData alloc] init];
-        pinterestData.share = serverShare;
-        pinterestData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"facebook"];
-        pinterestData.body = [SZPinterestUtils defaultMessageForShare:serverShare];
-        BLOCK_CALL_1(options.willRedirectToPinterestBlock, pinterestData);
-        
-        [viewController hideSocializeLoadingView];
-        
-        SZPinterestEngine* engine = [SZPinterestEngine sharedInstance];
-        NSURL* imageUrl = [NSURL URLWithString:entity.key];
-        NSURL* sourceUrl = [NSURL URLWithString:[self propogationUrl:serverShare]];
-        [engine share:pinterestData.body imageURL:imageUrl sourceUrl:sourceUrl success:^{
-            SZAuthWrapper(^{
-                SZShare *share = [SZShare shareWithEntity:entity text:@"" medium:SocializeShareMediumOther];
-                [[Socialize sharedSocialize] createShare:share success:^(id<SZShare> createdShare) {
-                    BLOCK_CALL_1(success, createdShare);
-                } failure:^(NSError *error) {
-                    BLOCK_CALL_1(failure, error);
-                }];
-            }, ^(NSError *error) {
-                BLOCK_CALL_1(failure, error);
-            });
-        } failure:^{
-            BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializePinterestShareFailed]);
-        }];
-        
-    } failure:^(NSError *error) {
-        [viewController hideSocializeLoadingView];
-        BLOCK_CALL_1(failure, error);
-    }];
+    [[Socialize sharedSocialize] createShare:share
+                                     success:^(id<SZShare> serverShare) {
+                                         [SZPinterestUtils shareSuccess:serverShare
+                                                         viewController:viewController
+                                                                options:options
+                                                                 entity:entity
+                                                                success:success
+                                                                failure:failure];
+                                     }
+                                     failure:^(NSError *error) {
+                                         [viewController hideSocializeLoadingView];
+                                         BLOCK_CALL_1(failure, error);
+                                     }];
+}
+
+//successful share create
++ (void)shareSuccess:(id<SZShare>)serverShare
+      viewController:(UIViewController*)viewController
+             options:(SZShareOptions*)options
+              entity:(id<SZEntity>)entity
+             success:(void(^)(id<SZShare> share))success
+             failure:(void(^)(NSError *error))failure {
+    SZPinterestShareData *pinterestData = [[SZPinterestShareData alloc] init];
+    pinterestData.share = serverShare;
+    pinterestData.propagationInfo = [[serverShare propagationInfoResponse] objectForKey:@"facebook"];
+    pinterestData.body = [SZPinterestUtils defaultMessageForShare:serverShare];
+    BLOCK_CALL_1(options.willRedirectToPinterestBlock, pinterestData);
+    [viewController hideSocializeLoadingView];
+    SZPinterestEngine* engine = [SZPinterestEngine sharedInstance];
+    NSURL* imageUrl = [NSURL URLWithString:entity.key];
+    NSURL* sourceUrl = [NSURL URLWithString:[self propogationUrl:serverShare]];
+    
+    [engine share:pinterestData.body
+         imageURL:imageUrl
+        sourceUrl:sourceUrl
+          success:^{
+              [SZPinterestUtils engineShareSuccess:entity success:success failure:failure];
+          }
+          failure:^{
+              BLOCK_CALL_1(failure, [NSError defaultSocializeErrorForCode:SocializePinterestShareFailed]);
+          }];
+
+}
+
+//successful share create
++ (void)engineShareSuccess:(id<SZEntity>)entity
+                   success:(void(^)(id<SZShare> share))success
+                   failure:(void(^)(NSError *error))failure {
+    SZAuthWrapper(^{
+        SZShare *share = [SZShare shareWithEntity:entity
+                                             text:@""
+                                           medium:SocializeShareMediumOther];
+        [[Socialize sharedSocialize] createShare:share
+                                         success:^(id<SZShare> createdShare) {
+                                             BLOCK_CALL_1(success, createdShare);
+                                         }
+                                         failure:^(NSError *error) {
+                                             BLOCK_CALL_1(failure, error);
+                                         }];
+    },
+  ^(NSError *error) {
+      BLOCK_CALL_1(failure, error);
+  });
 }
 
 @end
