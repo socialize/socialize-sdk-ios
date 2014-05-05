@@ -67,6 +67,10 @@
     [self pushViewController:self._shareDialogViewController animated:NO];
 }
 
+- (void)deselectSelectedRow {
+    [self._shareDialogViewController deselectSelectedRow];
+}
+
 - (void)setTitle:(NSString *)title {
     __title = title;
     [self._shareDialogViewController setTitle:title];
