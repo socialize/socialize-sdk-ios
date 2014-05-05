@@ -7,7 +7,7 @@
 //
 
 #import "SocializeProfileEditValueViewControllerTest.h"
-#import "OCMock/OCMock.h"
+#import <OCMock/OCMock.h>
 #import "SocializeEditValueTableViewCell.h"
 
 @interface SocializeProfileEditValueViewController ()

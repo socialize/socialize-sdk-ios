@@ -7,7 +7,7 @@
 //
 
 #import "LoadingViewTests.h"
-#import "OCMock/OCMock.h"
+#import <OCMock/OCMock.h>
 #import "SocializeLoadingView.h"
 
 @implementation LoadingViewTests
