@@ -7,7 +7,9 @@
 //
 
 #import <GHUnitIOS/GHTestCase.h>
+#import <OCMock/OCMock.h>
+#import "SocializeTestCase.h"
 
-@interface SocializeWhatsAppTests : GHTestCase
+@interface SocializeWhatsAppTests : SocializeTestCase
 
 @end
