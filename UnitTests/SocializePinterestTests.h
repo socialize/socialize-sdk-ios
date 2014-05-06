@@ -8,8 +8,8 @@
 
 #import <GHUnitIOS/GHUnit.h>
 #import <OCMock/OCMock.h>
-#import "SZPinterestUtils.h"
+#import "SocializeTestCase.h"
 
-@interface SocializePinterestTests : GHTestCase
+@interface SocializePinterestTests : SocializeTestCase
 
 @end
