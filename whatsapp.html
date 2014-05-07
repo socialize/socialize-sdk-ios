@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pinterest &mdash; Socialize iOS SDK 3.0.4 documentation</title>
+    <title>WhatsApp Sharing (Via URL Scheme) &mdash; Socialize iOS SDK 3.0.4 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="Socialize iOS SDK 3.0.4 documentation" href="index.html" />
-    <link rel="next" title="WhatsApp Sharing (Via URL Scheme)" href="whatsapp.html" />
-    <link rel="prev" title="Using Facebook Open Graph" href="facebook_og.html" />
+    <link rel="next" title="Enabling SmartAlerts™ Notifications" href="push_notifications.html" />
+    <link rel="prev" title="Pinterest" href="pinterest.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
 
   </head>
@@ -36,10 +36,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="whatsapp.html" title="WhatsApp Sharing (Via URL Scheme)"
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="facebook_og.html" title="Using Facebook Open Graph"
+          <a href="pinterest.html" title="Pinterest"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 3.0.4 documentation</a> &raquo;</li> 
       </ul>
@@ -50,50 +50,48 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="pinterest">
-<h1>Pinterest<a class="headerlink" href="#pinterest" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="whatsapp-sharing-via-url-scheme">
+<h1>WhatsApp Sharing (Via URL Scheme)<a class="headerlink" href="#whatsapp-sharing-via-url-scheme" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>As of release 3.0.2, Pinterest is included with the Socialize SDK by default if installing with CocoaPods.</p>
+<p>As of release 3.0.3, WhatsApp is available as a Share option that can be easily enabled.</p>
+<p>Since WhatsApp does not have a formal API/SDK, no app registration or access tokens are required. Instead, the WhatsApp URL Scheme (&#8220;whatsapp://&#8221;) is used to communicate between the Socialize SDK and WhatsApp.</p>
 </div>
-<div class="section" id="installation-with-cocoapods-3-0-2-and-later">
-<h2>Installation with CocoaPods (3.0.2 and later)<a class="headerlink" href="#installation-with-cocoapods-3-0-2-and-later" title="Permalink to this headline">¶</a></h2>
-<p>The Pinterest SDK will install automatically during a CocoaPods install or update. <strong>There is no need to add the Pinterest SDK manually. If you already have the Pinterest.embeddedframework installed from an older version and are now using CocoaPods to install Socialize, please delete the Pinterest.embeddedframework from your Xcode Workspace and from your file system.</strong></p>
-</div>
-<div class="section" id="non-cocoapods-installation">
-<h2>Non-CocoaPods Installation<a class="headerlink" href="#non-cocoapods-installation" title="Permalink to this headline">¶</a></h2>
-<p>The Pinterest.embeddedframework can be found in the Socialize SDK distribution archive. Simply drag it to the framework section of your project.</p>
-</div>
-<div class="section" id="configuring-pinterest-in-socialize-sdk">
-<h2>Configuring Pinterest in Socialize (SDK)<a class="headerlink" href="#configuring-pinterest-in-socialize-sdk" title="Permalink to this headline">¶</a></h2>
-<p>Let Socialize know your Pinterest app id.  You can register or find your Pinterest app id here: <a class="reference external" href="http://developers.pinterest.com/manage/">http://developers.pinterest.com/manage/</a></p>
-<p>Once you have a pinterest application, simply tell Socialize about your application id:</p>
+<div class="section" id="configuring-whatsapp-in-socialize-sdk">
+<h2>Configuring WhatsApp in Socialize (SDK)<a class="headerlink" href="#configuring-whatsapp-in-socialize-sdk" title="Permalink to this headline">¶</a></h2>
+<p>To enable WhatsApp sharing, simply enable it:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
 <span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerKey</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
     <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerSecret</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZPinterestUtils</span> <span class="n">setApplicationId</span><span class="o">:</span><span class="s">@&quot;YOUR PINTEREST APP ID&quot;</span><span class="p">];</span>
-    
+<span class="hll">    <span class="p">[</span><span class="n">SZWhatsAppUtils</span> <span class="n">setShowInShare</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+</span>    
     <span class="c1">//your application specific code</span>
-<span class="hll">    
-</span>    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Note that the Pinterest app must be installed on a device for Pinterest sharing to display in the Share dialog. This functionality works on devices only, not in Simulator.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The WhatsApp app must be installed on a device for WhatsApp sharing to display in the Share dialog. This functionality works on devices only, not in Simulator.</p>
 </div>
-<div class="section" id="posting-to-pinterest-on-your-own">
-<h2>Posting to Pinterest on your own<a class="headerlink" href="#posting-to-pinterest-on-your-own" title="Permalink to this headline">¶</a></h2>
-<p>Should you need to post to Pinterest on your own, you can do so by using the
-direct Pintrest access methods on the utils classes.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">shareOnPinterest</span>
-<span class="p">{</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since WhatsApp uses URL Schemes to navigate from your app, there is no callback mechanism to return to your app from WhatsApp once the user has sent the share as a WhatsApp message. Users will be notified of this via a UIAlertView before navigating to WhatsApp.</p>
+</div>
+<img alt="images/whats_app_share.png" class="align-center" src="images/whats_app_share.png" />
+</div>
+<div class="section" id="posting-to-whatsapp-on-your-own">
+<h2>Posting to WhatsApp on your own<a class="headerlink" href="#posting-to-whatsapp-on-your-own" title="Permalink to this headline">¶</a></h2>
+<p>Should you need to post to WhatsApp on your own, you can do so by using the
+direct WhatsApp access methods on the utils classes.</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">shareOnWhatsApp</span> <span class="p">{</span>
     <span class="n">SZEntity</span><span class="o">*</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;http://cs303404.vk.me/v303404440/1ae3/ZkKQLEFGeyY.jpg&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
-    <span class="k">if</span> <span class="p">([</span><span class="n">SZPinterestUtils</span> <span class="n">isAvailable</span><span class="p">])</span>
-    <span class="p">{</span>
-        <span class="p">[</span><span class="n">SZPinterestUtils</span> <span class="n">shareViaPinterestWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeShare</span><span class="o">&gt;</span> <span class="n">share</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">SZWhatsAppUtils</span> <span class="n">isAvailable</span><span class="p">])</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">SZWhatsAppUtils</span> <span class="n">shareViaWhatsAppWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeShare</span><span class="o">&gt;</span> <span class="n">share</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">//your application specific code on success action</span>
         <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">//your application specific code on failure action</span>
@@ -121,15 +119,13 @@ direct Pintrest access methods on the utils classes.</p>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook_og.html">Using Facebook Open Graph</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Pinterest</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">WhatsApp Sharing (Via URL Scheme)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation-with-cocoapods-3-0-2-and-later">Installation with CocoaPods (3.0.2 and later)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#non-cocoapods-installation">Non-CocoaPods Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-pinterest-in-socialize-sdk">Configuring Pinterest in Socialize (SDK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#posting-to-pinterest-on-your-own">Posting to Pinterest on your own</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-whatsapp-in-socialize-sdk">Configuring WhatsApp in Socialize (SDK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-to-whatsapp-on-your-own">Posting to WhatsApp on your own</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whatsapp.html">WhatsApp Sharing (Via URL Scheme)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html#socialize-entities">Socialize Entities</a></li>
@@ -166,10 +162,10 @@ direct Pintrest access methods on the utils classes.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="whatsapp.html" title="WhatsApp Sharing (Via URL Scheme)"
+          <a href="push_notifications.html" title="Enabling SmartAlerts™ Notifications"
              >next</a></li>
         <li class="right" >
-          <a href="facebook_og.html" title="Using Facebook Open Graph"
+          <a href="pinterest.html" title="Pinterest"
              >previous</a> |</li>
         <li><a href="index.html">Socialize iOS SDK 3.0.4 documentation</a> &raquo;</li> 
       </ul>

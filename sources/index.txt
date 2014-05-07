@@ -17,6 +17,7 @@ Contents:
    facebook
    facebook_og
    pinterest
+   whatsapp
    push_notifications
    entities
    users
