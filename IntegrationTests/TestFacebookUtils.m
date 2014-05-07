@@ -8,6 +8,7 @@
 
 #import "TestFacebookUtils.h"
 #import "SZTestHelper.h"
+#import "SZUserUtils.h"
 #import <OCMock/NSObject+ClassMock.h>
 
 @implementation TestFacebookUtils
@@ -35,6 +36,45 @@
 - (void)testLink {
     [SZFacebookUtils unlink];
     [self linkToFacebookIfNeeded];
+}
+
+- (void)testLinkAndSaveUserSettings {
+    [SZFacebookUtils unlink];
+    if (![SZFacebookUtils isLinked]) {
+        NSString *accessToken = [[SZTestHelper sharedTestHelper] facebookAccessToken];
+        
+        //set to date 30 days in future (preferred for FB access token)
+        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+        [dateComponents setDay:30];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:[NSDate date] options:0];
+        
+        [self prepare];
+        [SZFacebookUtils linkWithAccessToken:accessToken
+                              expirationDate:newDate
+                                     success:^(id<SZFullUser> fullUser) {
+                                         SZUserSettings *settings = [SZUserUtils currentUserSettings];
+                                         UIImage *newImage = nil;
+                                         settings.profileImage = newImage;
+                                         settings.bio = @"I love this app!";
+                                         settings.firstName = @"firstName";
+                                         settings.lastName = @"lastName";
+                                        
+                                         [SZUserUtils saveUserSettings:settings
+                                                               success:^(SZUserSettings *settings, id<SocializeFullUser> updatedUser) {
+                                                                   [self notify:kGHUnitWaitStatusSuccess];
+                                                               }
+                                                               failure:^(NSError *error) {
+                                                                   [self notify:kGHUnitWaitStatusFailure];
+                                                               }];
+            
+                                     }
+                                     failure:^(NSError *error) {
+                                         [self notify:kGHUnitWaitStatusFailure];
+                                     }];
+        
+        [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10];
+    }
 }
 
 //- (void)testGraphGetWhenNotAuthed {
