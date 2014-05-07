@@ -1,5 +1,5 @@
 //
-//  Blah.m
+//  SocializeErrorDefinitions.m
 //  SocializeSDK
 //
 //  Created by Nathaniel Griswold on 12/2/11.
@@ -48,6 +48,9 @@ static NSString *SocializeDefaultErrorStrings[SocializeNumErrors] = {
     @"Entity cannot be loaded",
     @"Pinterest sharing not available",
     @"Pinterest application failed share entity",
+    @"WhatsApp sharing not available",
+    @"WhatsApp application failed share entity",
+    @"WhatsApp sharing cancelled by user",
 };
 
 NSString *SocializeDefaultErrorStringForCode(NSUInteger code) {

@@ -286,6 +286,17 @@
 		2CB0E51A18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
 		2CB0E51B18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
 		2CB0E51C18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
+		2CB9BCCE1918000B00BFDB04 /* SZWhatsAppUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB9BCCC1918000B00BFDB04 /* SZWhatsAppUtils.h */; };
+		2CB9BCCF1918000B00BFDB04 /* SZWhatsAppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9BCCD1918000B00BFDB04 /* SZWhatsAppUtils.m */; };
+		2CB9BCD2191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */; };
+		2CB9BCD3191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */; };
+		2CB9BCD4191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */; };
+		2CB9BCD5191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD1191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png */; };
+		2CB9BCD6191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD1191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png */; };
+		2CB9BCD7191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD1191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png */; };
+		2CB9BCDA1918068000BFDB04 /* whatsapp-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD91918068000BFDB04 /* whatsapp-snippets.m */; };
+		2CB9BCDF19180BEC00BFDB04 /* SocializePinterestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9BCDC19180BEC00BFDB04 /* SocializePinterestTests.m */; };
+		2CB9BCE019180BEC00BFDB04 /* SocializeWhatsAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9BCDE19180BEC00BFDB04 /* SocializeWhatsAppTests.m */; };
 		2CBB667E18A188DD00A68BAC /* SZLikeButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94F51885FACC0031CF54 /* SZLikeButtonIOS6.m */; };
 		2CBB668018A1890100A68BAC /* SZLinkDialogViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6C3B5187B7B4B008C0AAE /* SZLinkDialogViewControllerIOS6.m */; };
 		2CBB668118A1891200A68BAC /* SZOpenURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2168D1607D6DD0049850E /* SZOpenURLHandler.m */; };
@@ -1536,6 +1547,16 @@
 		2CB6D3AA189AE1110030D43F /* UIApplication+KIFRotationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+KIFRotationAdditions.h"; sourceTree = "<group>"; };
 		2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewControllerIOS6.m; sourceTree = "<group>"; };
+		2CB9BCCC1918000B00BFDB04 /* SZWhatsAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZWhatsAppUtils.h; sourceTree = "<group>"; };
+		2CB9BCCD1918000B00BFDB04 /* SZWhatsAppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZWhatsAppUtils.m; sourceTree = "<group>"; };
+		2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-whatsapp-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-whatsapp-icon.png"; sourceTree = SOURCE_ROOT; };
+		2CB9BCD1191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-whatsapp-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-whatsapp-icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		2CB9BCD81918068000BFDB04 /* whatsapp-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "whatsapp-snippets.h"; sourceTree = "<group>"; };
+		2CB9BCD91918068000BFDB04 /* whatsapp-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "whatsapp-snippets.m"; sourceTree = "<group>"; };
+		2CB9BCDB19180BEC00BFDB04 /* SocializePinterestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializePinterestTests.h; sourceTree = "<group>"; };
+		2CB9BCDC19180BEC00BFDB04 /* SocializePinterestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializePinterestTests.m; sourceTree = "<group>"; };
+		2CB9BCDD19180BEC00BFDB04 /* SocializeWhatsAppTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeWhatsAppTests.h; sourceTree = "<group>"; };
+		2CB9BCDE19180BEC00BFDB04 /* SocializeWhatsAppTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeWhatsAppTests.m; sourceTree = "<group>"; };
 		2CBBFE9B1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-btn-link-ios7.png"; path = "Socialize/Resources/socialize-activity-details-btn-link-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2CBBFE9C1880CAEA00A01EB2 /* socialize-activity-details-btn-link-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-activity-details-btn-link-ios7@2x.png"; path = "Socialize/Resources/socialize-activity-details-btn-link-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2CBBFEB71880CBDD00A01EB2 /* SocializeActivityDetailsViewIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeActivityDetailsViewIOS6.h; sourceTree = "<group>"; };
@@ -3047,6 +3068,8 @@
 				AA935978158F187200B5B2BC /* socialize-selectnetwork-twitter-icon@2x.png */,
 				2C6E52FD1884C293009C8F4F /* socialize-selectnetwork-twitter-icon-ios7.png */,
 				2C6E52FE1884C293009C8F4F /* socialize-selectnetwork-twitter-icon-ios7@2x.png */,
+				2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */,
+				2CB9BCD1191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png */,
 			);
 			name = SocialNetwork;
 			sourceTree = "<group>";
@@ -3504,6 +3527,8 @@
 				AA0C60D5158FC61D00F66A3B /* SocializeObjectListJSONFormatterTests.m */,
 				2CCEA6781887664B00B56C1C /* SocializeOSVersionTests.h */,
 				2CCEA6791887664B00B56C1C /* SocializeOSVersionTests.m */,
+				2CB9BCDB19180BEC00BFDB04 /* SocializePinterestTests.h */,
+				2CB9BCDC19180BEC00BFDB04 /* SocializePinterestTests.m */,
 				AA0C60D6158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.h */,
 				AA0C60D7158FC61D00F66A3B /* SocializePOOCObjectFactoryTests.m */,
 				AA0C60D8158FC61D00F66A3B /* SocializeProfileEditValueViewControllerTest.h */,
@@ -3536,6 +3561,8 @@
 				AA0C60FB158FC61D00F66A3B /* SocializeViewFormatterTests.m */,
 				AA0C60FC158FC61D00F66A3B /* SocializeViewTests.h */,
 				AA0C60FD158FC61D00F66A3B /* SocializeViewTests.m */,
+				2CB9BCDD19180BEC00BFDB04 /* SocializeWhatsAppTests.h */,
+				2CB9BCDE19180BEC00BFDB04 /* SocializeWhatsAppTests.m */,
 				AA0C60FE158FC61D00F66A3B /* StringWithPlacemarkTest.h */,
 				AA0C60FF158FC61D00F66A3B /* StringWithPlacemarkTest.m */,
 				AA0C6100158FC61D00F66A3B /* SocializeActionBarTests.h */,
@@ -3848,6 +3875,8 @@
 				2CA6802718BC17C000B442DE /* SZUserUtils.m */,
 				2CA6802818BC17C000B442DE /* SZViewUtils.h */,
 				2CA6802918BC17C000B442DE /* SZViewUtils.m */,
+				2CB9BCCC1918000B00BFDB04 /* SZWhatsAppUtils.h */,
+				2CB9BCCD1918000B00BFDB04 /* SZWhatsAppUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -4007,6 +4036,8 @@
 				AAFB0B8115E70FB10091600C /* ui_advanced.m */,
 				48C069921780192B004E7843 /* pinterest-snippets.h */,
 				48C069931780192B004E7843 /* pinterest-snippets.m */,
+				2CB9BCD81918068000BFDB04 /* whatsapp-snippets.h */,
+				2CB9BCD91918068000BFDB04 /* whatsapp-snippets.m */,
 			);
 			name = snippets;
 			path = Documentation/sphinx/source/snippets;
@@ -4258,6 +4289,7 @@
 				2CA6801C18BC17A500B442DE /* SZShareUtils.h in Headers */,
 				2CA6803018BC17C000B442DE /* SZUserSettings.h in Headers */,
 				2CA6800218BC178600B442DE /* SZDisplayUtils.h in Headers */,
+				2CB9BCCE1918000B00BFDB04 /* SZWhatsAppUtils.h in Headers */,
 				2CA6800618BC178600B442DE /* SZEventUtils.h in Headers */,
 				2CE6275F18A997570070CD99 /* SDKHelpers.h in Headers */,
 				2CE6276C18A998240070CD99 /* SZOARequest.h in Headers */,
@@ -4773,6 +4805,8 @@
 				AA7E63A616C1BC0E00A84E7A /* Default-568h@2x.png in Resources */,
 				2C6E52FF1884C293009C8F4F /* socialize-selectnetwork-facebook-dis-icon-ios7.png in Resources */,
 				84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */,
+				2CB9BCD2191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */,
+				2CB9BCD5191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png in Resources */,
 				2CE9D32B1890680400CE2D75 /* socialize-selectnetwork-SMS-icon-ios7.png in Resources */,
 				84AEF7DE176341D3006DB43A /* socialize-selectnetwork-pinterest-icon.png in Resources */,
 			);
@@ -4793,6 +4827,7 @@
 				2C8D86BA18875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */,
 				AACED94F158FCE770024EC43 /* action-bar-button-black.png in Resources */,
 				AACED950158FCE770024EC43 /* action-bar-button-black@2x.png in Resources */,
+				2CB9BCD6191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png in Resources */,
 				AACED951158FCE770024EC43 /* action-bar-button-red-hover.png in Resources */,
 				AACED952158FCE770024EC43 /* action-bar-button-red-hover@2x.png in Resources */,
 				AACED953158FCE770024EC43 /* action-bar-button-red.png in Resources */,
@@ -4985,6 +5020,7 @@
 				AACED9EB158FCE770024EC43 /* socialize-selectnetwork-continue-btn.png in Resources */,
 				2CB0E505188731FF0080DF6B /* background_plain@2x.png in Resources */,
 				AACED9EC158FCE770024EC43 /* socialize-selectnetwork-continue-btn@2x.png in Resources */,
+				2CB9BCD3191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */,
 				AACED9ED158FCE770024EC43 /* socialize-selectnetwork-email-icon.png in Resources */,
 				AACED9EE158FCE770024EC43 /* socialize-selectnetwork-email-icon@2x.png in Resources */,
 				AACED9EF158FCE770024EC43 /* socialize-selectnetwork-facebook-dis-icon.png in Resources */,
@@ -5184,6 +5220,7 @@
 				AA935A8B158F187200B5B2BC /* socialize-comment-background-text-input.png in Resources */,
 				AA935A8E158F187200B5B2BC /* socialize-comment-background-text-input@2x.png in Resources */,
 				2CBC3B05187F3F9600112F66 /* socialize-comment-background-text-input-ios7.png in Resources */,
+				2CB9BCD7191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon@2x.png in Resources */,
 				AA935A91158F187200B5B2BC /* socialize-comment-button-active.png in Resources */,
 				AA935A94158F187200B5B2BC /* socialize-comment-button-active@2x.png in Resources */,
 				AA935A97158F187200B5B2BC /* socialize-comment-button.png in Resources */,
@@ -5249,6 +5286,7 @@
 				2C6E530F1884C293009C8F4F /* socialize-selectnetwork-twitter-dis-icon-ios7@2x.png in Resources */,
 				AA935B33158F187200B5B2BC /* socialize-navbar-button-dark-active@2x.png in Resources */,
 				2CDB9508188610370031CF54 /* action-bar-button-red-ios7@2x.png in Resources */,
+				2CB9BCD4191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */,
 				AA935B36158F187200B5B2BC /* socialize-navbar-button-dark.png in Resources */,
 				AA935B39158F187200B5B2BC /* socialize-navbar-button-dark@2x.png in Resources */,
 				AA935B3C158F187200B5B2BC /* socialize-navbar-button-green-active.png in Resources */,
@@ -5691,6 +5729,7 @@
 				2C7DDB7818A0683C0006A57A /* SocializeErrorDefinitions.m in Sources */,
 				2C7DDB7918A0683C0006A57A /* SocializeError.m in Sources */,
 				2C7DDB7A18A0683C0006A57A /* SocializeErrorFormatter.m in Sources */,
+				2CB9BCCF1918000B00BFDB04 /* SZWhatsAppUtils.m in Sources */,
 				2C7DDB7718A068240006A57A /* SocializeEventService.m in Sources */,
 				2C7DDB7518A0681C0006A57A /* SocializeFacebookAuthHandler.m in Sources */,
 				2C7DDB7618A0681C0006A57A /* SocializeFacebookInterface.m in Sources */,
@@ -5845,6 +5884,7 @@
 				AA0C612D158FC61D00F66A3B /* SocializeConfigurationTests.m in Sources */,
 				AA0C612E158FC61D00F66A3B /* SocializeDeviceTokenJSONFormatterTests.m in Sources */,
 				AA0C612F158FC61D00F66A3B /* SocializeDeviceTokenSenderTests.m in Sources */,
+				2CB9BCE019180BEC00BFDB04 /* SocializeWhatsAppTests.m in Sources */,
 				AA0C6130158FC61D00F66A3B /* SocializeDeviceTokenServiceTests.m in Sources */,
 				AA0C6132158FC61D00F66A3B /* SocializeEntityFormatterTests.m in Sources */,
 				AA0C6133158FC61D00F66A3B /* SocializeEntityServiceTests.m in Sources */,
@@ -5917,7 +5957,9 @@
 				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
 				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
 				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
+				2CB9BCDA1918068000BFDB04 /* whatsapp-snippets.m in Sources */,
 				AAE216981607F6AE0049850E /* SZOpenURLHandlerTests.m in Sources */,
+				2CB9BCDF19180BEC00BFDB04 /* SocializePinterestTests.m in Sources */,
 				AA840C54161CEF5700494EE4 /* SZTwitterUtilsTests.m in Sources */,
 				AA1759C216EEA1BF00550082 /* SZUnitTestAppHack.m in Sources */,
 				48C069941780192C004E7843 /* pinterest-snippets.m in Sources */,

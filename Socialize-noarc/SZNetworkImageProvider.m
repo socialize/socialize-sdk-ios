@@ -74,6 +74,12 @@
     return retVal;
 }
 
++ (UIImage *)whatsAppSelectImage {
+    //WhatsApp is unchanged in iOS7+
+    UIImage *retVal = [UIImage imageNamed:@"socialize-selectnetwork-whatsapp-icon"];
+    return retVal;
+}
+
 + (UIImage *)emailSelectImage {
     UIImage *retVal;
     

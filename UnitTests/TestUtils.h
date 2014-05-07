@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OCMock/OCMock.h"
+#import <OCMock/OCMock.h>
 
 @interface OCMockObject (TestUtils)
 + (id)classMockForClass:(Class)class;

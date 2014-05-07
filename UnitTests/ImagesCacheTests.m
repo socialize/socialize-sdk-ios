@@ -29,7 +29,7 @@
 #import "ImagesCacheTests.h"
 #import "ImagesCache.h"
 #import "ImageLoader.h"
-#import "OCMock/OCMock.h"
+#import <OCMock/OCMock.h>
 
 #define TEST_URL @"TestImageUrl"
 
