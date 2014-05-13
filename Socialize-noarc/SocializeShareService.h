@@ -12,7 +12,6 @@
 #import "SocializeEntity.h"
 #import "SocializeRequest.h"
 #import "SocializeService.h"
-#import <Loopy/Loopy.h>
 
 @protocol SocializeShare;
 @protocol SZShare;
@@ -32,8 +31,8 @@
 - (void)createShare:(id<SocializeShare>)share
             success:(void(^)(id<SZShare> share))success
             failure:(void(^)(NSError *error))failure
-       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
-       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure;
+       loopySuccess:(id)loopySuccess
+       loopyFailure:(id)loopyFailure;
 - (void)getSharesWithIds:(NSArray*)shareIds
                  success:(void(^)(NSArray *shares))success
                  failure:(void(^)(NSError *error))failure;
@@ -51,11 +50,11 @@
                    failure:(void(^)(NSError *error))failure;
 - (void)reportLoopyShare:(NSString *)shareText
                  channel:(NSString *)channel
-                 success:(void(^)(AFHTTPRequestOperation *, id))success
-                 failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
+                 success:(id)success
+                 failure:(id)failure;
 - (void)reportLoopySharelink:(NSString *)urlStr
                      channel:(NSString *)channel
-                     success:(void(^)(AFHTTPRequestOperation *, id))success
-                     failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
+                     success:(id)success
+                     failure:(id)failure;
 
 @end

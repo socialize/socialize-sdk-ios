@@ -9,6 +9,8 @@
 #import "SocializeShareService.h"
 #import "SocializeShare.h"
 #import "_Socialize.h"
+#import <Loopy/Loopy.h>
+#import <AFNetworking/AFNetworking.h>
 
 @interface SocializeShareService()
 @end
@@ -36,8 +38,8 @@
 - (void)createShare:(id<SocializeShare>)share
             success:(void(^)(id<SZShare> share))success
             failure:(void(^)(NSError *error))failure
-       loopySuccess:(void(^)(AFHTTPRequestOperation *, id))loopySuccess
-       loopyFailure:(void(^)(AFHTTPRequestOperation *, NSError *))loopyFailure {
+       loopySuccess:(id)loopySuccess
+       loopyFailure:(id)loopyFailure {
     //perform Socialize share
     NSDictionary *params = [_objectCreator createDictionaryRepresentationOfObject:share];
     SocializeRequest *request = [SocializeRequest requestWithHttpMethod:@"POST"
@@ -58,6 +60,7 @@
         int mediumInt = [mediumNbr intValue];
         NSString *channelStr = [self getNetworksForLoopy:mediumInt];
         BOOL keyIsURL = [entityObj keyIsURL];
+        
         if(keyIsURL) {
             NSString *keyURL = key;
             [self reportLoopySharelink:keyURL
@@ -80,23 +83,23 @@
 //Loopy analytics reporting
 - (void)reportLoopyShare:(NSString *)shareText
                  channel:(NSString *)channel
-                 success:(void(^)(AFHTTPRequestOperation *, id))success
-                 failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
+                 success:(id)successObj
+                 failure:(id)failureObj {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
     STShare * shareObj = [loopyAPIClient reportShareWithShortlink:shareText channel:channel];
     [loopyAPIClient reportShare:shareObj
-                        success:success
-                        failure:failure];
+                        success:successObj
+                        failure:failureObj];
 }
 
 //Loopy analytics reporting
 - (void)reportLoopySharelink:(NSString *)urlStr
                      channel:(NSString *)channel
-                     success:(void(^)(AFHTTPRequestOperation *, id))success
-                  failure:(void(^)(AFHTTPRequestOperation *, NSError *))failure {
+                     success:(id)successObj
+                  failure:(id)failureObj {
     STAPIClient *loopyAPIClient = (STAPIClient *)[Socialize sharedLoopyAPIClient];
     STSharelink *sharelinkObj = [loopyAPIClient sharelinkWithURL:urlStr channel:channel title:nil meta:nil tags:nil];
-    [loopyAPIClient sharelink:sharelinkObj success:success failure:failure];
+    [loopyAPIClient sharelink:sharelinkObj success:successObj failure:failureObj];
 }
 
 //for now, simply text-ify networks being shared
