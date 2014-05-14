@@ -147,9 +147,9 @@
     composer.modalPresentationStyle = UIModalPresentationFormSheet;
     
     if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
-        [composer.navigationBar setTintColor:[UIColor whiteColor]];
+        [composer.navigationBar setTintColor:[UIColor blackColor]];
         NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                   [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                   [UIColor blackColor], NSForegroundColorAttributeName,
                                                    nil];
         [composer.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
     }
@@ -217,9 +217,9 @@
     MFMessageComposeViewController *composer = [[MFMessageComposeViewController alloc] init];
     
     if([[UIDevice currentDevice] systemMajorVersion] >= 7) {
-        [composer.navigationBar setTintColor:[UIColor whiteColor]];
+        [composer.navigationBar setTintColor:[UIColor blackColor]];
         NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                   [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                   [UIColor blackColor], NSForegroundColorAttributeName,
                                                    nil];
         [composer.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
     }
