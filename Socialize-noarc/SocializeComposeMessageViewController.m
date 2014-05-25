@@ -324,6 +324,7 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(sendButton, @"Send")
     [super viewDidLoad];
     
     self.mapOfUserLocation = [[self class] sharedMapView];
+    self.mapOfUserLocation.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapOfUserLocation.frame = CGRectMake(0, 0, self.mapViewContainer.frame.size.width, self.mapViewContainer.frame.size.height);
     [self.mapViewContainer addSubview:self.mapOfUserLocation];
 
