@@ -1,6 +1,6 @@
 #!/bin/sh
 BUILD_DIR="./build"
-ZIP_FILE="../socialize_ios.zip"
+ZIP_FILE="../socialize-sdk-ios-RELEASE.zip"
 PACKAGE_DIR="${BUILD_DIR}/package_dir"
 EMBEDDED_FRAMEWORK="./build/Socialize.embeddedframework"
 PINTEREST_FRAMEWORK="./ThirdParty/Pinterest.embeddedframework"
