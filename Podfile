@@ -4,7 +4,7 @@ xcodeproj 'Socialize.xcodeproj'
 
 link_with 'Socialize'
 pod 'Loopy', :podspec => 'https://raw.github.com/socialize/loopy-ios/master/Loopy.podspec'
-pod 'Facebook-iOS-SDK', '~> 3.9.0'
+pod 'Facebook-iOS-SDK', '~> 3.14.1'
 pod 'SZOAuthConsumer', :podspec => 'https://raw.github.com/socialize/OAuthConsumer/master/SZOAuthConsumer.podspec'
 pod 'SZJSONKit', :podspec => 'https://raw.github.com/socialize/JSONKit/master/SZJSONKit.podspec'
 pod 'SZBlocksKit', :podspec => 'https://raw.github.com/socialize/BlocksKit/master/SZBlocksKit.podspec'
