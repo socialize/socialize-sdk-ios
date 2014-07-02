@@ -25,7 +25,9 @@ clean:
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
-	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info build/test-coverage/UIIntegrationTests-Coverage.info
+	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info 
+	#temporarily turned off due to slow build machine
+	#build/test-coverage/UIIntegrationTests-Coverage.info
 
 integration-tests:
 	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator build
