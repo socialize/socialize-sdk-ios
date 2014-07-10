@@ -77,8 +77,8 @@
 <h1>Upgrading Socialize (CocoaPods and non-CocoaPods)<a class="headerlink" href="#upgrading-socialize-cocoapods-and-non-cocoapods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-3">
 <h2>Important Notes on Upgrading to v3.0.3<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-3" title="Permalink to this headline">¶</a></h2>
-<p>To allow compliance with Apple&#8217;s rules on IDFA (&#8220;advertisingIdentifier&#8221;), the Socialize iOS SDK offers the option to disable the use of IDFA. <strong>You must disable IDFA if your app does not serve ads or it will be rejected by the App Store.</strong></p>
-<p>To disable IDFA in Socialize, navigate to SZIdentifierUtils.m and set the proprocessor macro flag to 0; to enable IDFA, set to 1 (the default):</p>
+<p>To comply with Apple&#8217;s rules on IDFA (&#8220;advertisingIdentifier&#8221;), the Socialize iOS SDK offers the option to disable the use of IDFA. <strong>You must disable IDFA if your app does not serve ads or it will be rejected by the App Store.</strong></p>
+<p>To disable IDFA in Socialize, navigate to SZIdentifierUtils.m (in a CocoaPods installation, this will be in the Socialize Pods directory) and set the proprocessor macro flag to 0; to enable IDFA, set to 1 (the default):</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#define SHOULD_USE_IDFA 1</span>
 </pre></div>
 </div>
@@ -86,6 +86,11 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">References to advertisingIdentifier may still exist in your code or in any CocoaPods your project and/or the Socialize iOS SDK depends on. You will have to implement an equivalent scheme to strip out these references before building your app if your app is not serving ads.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are using Socialize as a framework, you will need to download the source from GitHub, perform the above adjustment in SZIdentifierUtils.m, then compile the source to build the framework. For more information, see &#8220;Manual Installation via Framework&#8221; in in the <a class="reference external" href="getting_started.html">Getting Started Guide</a>.
+.. _Getting Started Guide: getting_started.html</p>
 </div>
 </div>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-2">
