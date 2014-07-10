@@ -95,7 +95,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#configuring-socialize-post-installation" id="id13">Configuring Socialize (Post-Installation)</a><ul>
-<li><a class="reference internal" href="#step-1-import-header-and-set-up-your-socialize-keys" id="id14">Step 1: Import Header and Set up your Socialize Keys</a></li>
+<li><a class="reference internal" href="#step-1-import-header-configure-location-sharing-and-set-up-socialize-keys" id="id14">Step 1: Import Header, Configure Location Sharing, and Set Up Socialize Keys</a></li>
 <li><a class="reference internal" href="#step-2-define-an-entity-loader" id="id15">Step 2: Define an Entity Loader</a></li>
 <li><a class="reference internal" href="#step-3-add-socialize-url-scheme-entry" id="id16">Step 3: Add Socialize URL Scheme Entry</a></li>
 <li><a class="reference internal" href="#step-4-include-socialize-in-your-app" id="id17">Step 4: Include Socialize in your App!</a></li>
@@ -286,7 +286,7 @@ and socialize will not be able to locate its resources.</p>
 <p>If you need more detail configuring the SDK in your app please see our <a class="reference external" href="http://vimeo.com/31403067">Getting Started Video</a>.</p>
 <blockquote>
 <div></div></blockquote>
-<p>If you&#8217;re having problems please let us know by clicking on the &#8216;Feedback&#8217; tab on the right side of the page.   We&#8217;re here to help.</p>
+<p>If you&#8217;re having problems please let us know by clicking on the &#8216;Feedback&#8217; tab on the right side of the page. We&#8217;re here to help.</p>
 <p>You can also search or post on our <a class="reference external" href="http://support.getsocialize.com">support forums</a></p>
 <blockquote>
 <div></div></blockquote>
@@ -295,10 +295,13 @@ and socialize will not be able to locate its resources.</p>
 </div>
 <div class="section" id="configuring-socialize-post-installation">
 <h2><a class="toc-backref" href="#id13">Configuring Socialize (Post-Installation)</a><a class="headerlink" href="#configuring-socialize-post-installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="step-1-import-header-and-set-up-your-socialize-keys">
-<h3><a class="toc-backref" href="#id14">Step 1: Import Header and Set up your Socialize Keys</a><a class="headerlink" href="#step-1-import-header-and-set-up-your-socialize-keys" title="Permalink to this headline">¶</a></h3>
-<p>To utilize the iOS SDK and views into your app, we need to import the Socialize.h header and let the library know your app key and secret.  Your application key and secret can be found
-at <a class="reference external" href="http://www.getsocialize.com/apps">http://www.getsocialize.com/apps</a>.  Click your app and look for the &#8216;oAuth Keys&#8217; module on the right-hand column.</p>
+<div class="section" id="step-1-import-header-configure-location-sharing-and-set-up-socialize-keys">
+<h3><a class="toc-backref" href="#id14">Step 1: Import Header, Configure Location Sharing, and Set Up Socialize Keys</a><a class="headerlink" href="#step-1-import-header-configure-location-sharing-and-set-up-socialize-keys" title="Permalink to this headline">¶</a></h3>
+<p>To utilize the iOS SDK and views into your app, you need to import the Socialize.h header and let the library know your app key and secret. Your application key and secret can be found at <a class="reference external" href="http://www.getsocialize.com/apps">http://www.getsocialize.com/apps</a>. Click your app and look for the &#8216;oAuth Keys&#8217; module on the right-hand column.</p>
+<p>By default, Socialize enables location sharing for use in analytics. However, if you want to disable this capability, add the following line <strong>before</strong> the key setting calls in the code snippet below:</p>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">[</span><span class="n">Socialize</span> <span class="n">storeLocationSharingDisabled</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure to import the Socialize header in the code snippet below</p>
@@ -314,10 +317,6 @@ at <a class="reference external" href="http://www.getsocialize.com/apps">http://
     <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Make sure to import the Socialize header in the code snippet below</p>
 </div>
 </div>
 <div class="section" id="step-2-define-an-entity-loader">
@@ -381,7 +380,7 @@ scheme is <strong>szYOURAPPID</strong>. That is, a lower case sz followed immedi
 Socialize app id from the dashboard, defined as below:</p>
 <img alt="images/add_smartdownloads_scheme.png" src="images/add_smartdownloads_scheme.png" />
 <p>You currently must also take the final step of enabling SmartDownloads in the
-web dashboard.  Select your app from the list of apps at
+web dashboard. Select your app from the list of apps at
 <a class="reference external" href="http://getsocialize.com/apps/">http://getsocialize.com/apps/</a>, select &#8216;SmartDownloads&#8217; on the right, then
 Scroll to the bottom until you see the &#8216;iOS Schema URL&#8217; field. Enter the
 following:
@@ -393,7 +392,7 @@ following:
 <p>Now that you have your environment all setup, it’s time to include Socialize.</p>
 <p>The core component of the Socialize SDK is the “Action Bar”</p>
 <img alt="images/action_bar_solo.png" src="images/action_bar_solo.png" />
-<p>This is a general purpose toolbar that sits at the bottom of your app and provides a central &#8220;one-stop-shop&#8221; of social features for your users.  Remember if you want to use
+<p>This is a general purpose toolbar that sits at the bottom of your app and provides a central &#8220;one-stop-shop&#8221; of social features for your users. Remember if you want to use
 components individually please go see the SDK user guide.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -456,7 +455,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 </pre></div>
 </div>
 <p>For more info on configuring the action bar, see the <a class="reference external" href="action_bar.html">Action Bar Section</a>.</p>
-<p>By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a></p>
+<p>By now you should be able to see the Socialize Action Bar. If you need any help please visit us at <a class="reference external" href="http://support.getsocialize.com">http://support.getsocialize.com</a></p>
 </div>
 <div class="section" id="optional-configure-your-app-for-facebook">
 <h3><a class="toc-backref" href="#id18">Optional: Configure Your App for Facebook</a><a class="headerlink" href="#optional-configure-your-app-for-facebook" title="Permalink to this headline">¶</a></h3>
@@ -469,7 +468,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 </div>
 <div class="section" id="next-steps">
 <h2><a class="toc-backref" href="#id20">Next Steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
-<p>Run the app in your simulator or device, have fun with the action bar, add comments, likes and shares. Then you can visit the app dashboard on the Socialize website to see new user actions show up in the analytics charts.  You can also enable additional features like Push Notifications.</p>
+<p>Run the app in your simulator or device, have fun with the action bar, add comments, likes and shares. Then you can visit the app dashboard on the Socialize website to see new user actions show up in the analytics charts. You can also enable additional features like Push Notifications.</p>
 <p><a class="reference external" href="http://www.getsocialize.com/apps/">http://www.getsocialize.com/apps/</a></p>
 </div>
 </div>
