@@ -119,6 +119,37 @@ Manual Installation via Framework
 
 If you prefer not to use CocoaPods, the SDK can still be installed as before:
 
+
+Optional Step: Download and Compile Source
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some circumstances require Socialize source files to be altered before they are compiled. For those scenarios, you msut build the SDK from source instead of downloading it as specified in Step 1.
+
+- Clone the source (or download and unzip it) from the `GitHub page`_
+
+ .. _GitHub page: https://github.com/socialize/socialize-sdk-ios
+
+- From the command line in the root directory of the Socialize SDK source, enter the following: 
+
+::
+
+	$ git submodule init 
+	$ git submodule update 
+	$ pod install
+	$ pod update
+
+.. note:: Even though you are not using CocoaPods for your project, the Socialize SDK still uses it for some of its own dependencies. If you need to install CocoaPods, see the information above.
+
+
+- Build the Socialize SDK: 
+
+::
+
+	$ make package 
+
+The SDK will compile into build/package_dir
+
+
 Step 1: Add the Socialize Framework to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -203,6 +234,8 @@ at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Clic
 .. literalinclude:: snippets/configure_keys.m
   :start-after: begin-snippet
   :end-before: end-snippet
+
+.. note:: Make sure to import the Socialize header in the code snippet below
 
 
 Step 2: Define an Entity Loader
