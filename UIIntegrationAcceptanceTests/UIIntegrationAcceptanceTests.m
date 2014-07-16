@@ -130,10 +130,14 @@
     [tester authWithTwitter];
     [tester tapViewWithAccessibilityLabel:@"Continue"];
     [tester waitForViewWithAccessibilityLabel:@"Comment Entry"];
-    //unite test using date-time to avoid failed duplicate Twitter updates
-    NSDate *date = [NSDate date];
-    NSString *dateStr = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle];
-    [tester enterText:[NSString stringWithFormat:@"Share to Twitter: %@", dateStr] intoViewWithAccessibilityLabel:@"Comment Entry"];
+    
+    //random String to avoid failed duplicate Twitter updates
+     NSString *letters = @"abcdefghijklmnopqrstuvwxyz";
+     NSMutableString *randomString = [NSMutableString stringWithCapacity:10];
+     for (int i=0; i<10; i++) {
+         [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length]) % [letters length]]];
+     }
+    [tester enterText:[NSString stringWithFormat:@"share to twitter: %@", randomString] intoViewWithAccessibilityLabel:@"Comment Entry"];
     [tester tapViewWithAccessibilityLabel:@"Continue"];
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
@@ -148,7 +152,7 @@
 
 - (void) testComposeCommentNoAuth {
     [tester showCommentComposer];
-    [tester enterText:@"Anonymous Comment"  intoViewWithAccessibilityLabel:@"Comment Entry"];
+    [tester enterText:@"anonymous comment"  intoViewWithAccessibilityLabel:@"Comment Entry"];
     [tester tapViewWithAccessibilityLabel:@"Continue"];
     [tester tapViewWithAccessibilityLabel:@"Skip"];
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
