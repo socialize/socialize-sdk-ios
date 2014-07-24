@@ -137,7 +137,7 @@
      for (int i=0; i<10; i++) {
          [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length]) % [letters length]]];
      }
-    [tester enterText:[NSString stringWithFormat:@"share to twitter: %@", randomString] intoViewWithAccessibilityLabel:@"Comment Entry"];
+    [tester enterText:[NSString stringWithFormat:@"Share to twitter: %@", randomString] intoViewWithAccessibilityLabel:@"Comment Entry"];
     [tester tapViewWithAccessibilityLabel:@"Continue"];
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
