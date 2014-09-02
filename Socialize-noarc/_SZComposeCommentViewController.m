@@ -56,6 +56,7 @@
     self.enableSubscribeButton = nil;
     self.subscribeContainer = nil;
     self.twitterButton = nil;
+    self.options = nil;
 
     [super dealloc];
 }
@@ -131,7 +132,7 @@
 - (void)createComment {
     [self startLoading];
     
-    SZCommentOptions *options = [SZCommentUtils userCommentOptions];
+    SZCommentOptions *options =  self.options ? self.options : [SZCommentUtils userCommentOptions];
     options.dontSubscribeToNotifications = self.dontSubscribeToDiscussion;
     
     [SZCommentUtils addCommentWithViewController:self entity:self.entity text:commentTextView.text options:options success:^(id<SZComment> comment) {

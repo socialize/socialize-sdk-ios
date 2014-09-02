@@ -78,7 +78,13 @@
     };
     
     options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
-        NSLog(@"Failed posting to %d", network);
+        if (network == SZSocialNetworkFacebook) {
+            NSLog(@"%@", [SZFacebookUtils userMessageForError:error]);
+            //Example output: @"This app doesn't have permission to do this. To change permissions, try logging into the app again.”;
+            NSLog(@"%@", [SZFacebookUtils userTitleForError:error]);
+        } else {
+            NSLog(@"Failed posting to %d", network);
+        }
     };
 
     [SZShareUtils showShareDialogWithViewController:self options:options entity:entity completion:^(NSArray *shares) {

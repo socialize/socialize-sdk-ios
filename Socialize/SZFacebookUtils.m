@@ -44,7 +44,7 @@
 }
 
 + (NSArray*)requiredPermissions {
-    return [NSArray arrayWithObjects:@"publish_stream", nil];
+    return [NSArray arrayWithObjects:@"public_profile", @"publish_actions", nil];
 }
 
 + (BOOL)isAvailable {
@@ -129,5 +129,14 @@
         [self sendRequestWithHTTPMethod:@"DELETE" graphPath:graphPath postData:params success:success failure:failure];
     }, failure);
 }
+
++ (NSString*)userMessageForError:(NSError*)error{
+    return [FBErrorUtility userMessageForError:error];
+}
+
++ (NSString*)userTitleForError:(NSError*)error{
+    return [FBErrorUtility userTitleForError:error];
+}
+
 
 @end

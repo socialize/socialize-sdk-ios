@@ -29,21 +29,37 @@
 }
 
 + (void)showCommentsListWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)())completion {
-    SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:entity];
-    
-    WEAK(viewController) weakViewController = viewController;
+    [self showCommentsListWithViewController:viewController options:nil entity:entity completion:completion];
+}
 
++ (void)showCommentsListWithViewController:(UIViewController*)viewController
+                                   options:(SZCommentOptions*)options
+                                    entity:(id<SZEntity>)entity
+                                completion:(void(^)())completion {
+    SZCommentsListViewController *commentsList = [[SZCommentsListViewController alloc] initWithEntity:entity];
+    WEAK(viewController) weakViewController = viewController;
+    
     commentsList.completionBlock = ^{
         [weakViewController SZDismissViewControllerAnimated:YES completion:^{
             BLOCK_CALL(completion);
         }];
     };
+    commentsList.commentOptions = options;
     
     [viewController presentViewController:commentsList animated:YES completion:nil];
 }
 
 // Compose and share (but no initial link)
 + (void)showCommentComposerWithViewController:(UIViewController*)viewController entity:(id<SZEntity>)entity completion:(void(^)(id<SZComment> comment))completion cancellation:(void(^)())cancellation {
+
+    [self showCommentComposerWithViewController:viewController options:nil entity:entity completion:completion cancellation:cancellation];
+}
+
++ (void)showCommentComposerWithViewController:(UIViewController*)viewController
+                                      options:(SZCommentOptions*)options
+                                       entity:(id<SZEntity>)entity
+                                   completion:(void(^)(id<SZComment> comment))completion
+                                 cancellation:(void(^)())cancellation{
     
     WEAK(viewController) weakViewController = viewController;
     
@@ -61,9 +77,11 @@
     };
     
     composer.display = viewController;
+    composer.commentOptions = options;
     
     [viewController presentViewController:composer animated:YES completion:nil];
 }
+
 
 + (void)addCommentWithEntity:(id<SZEntity>)entity text:(NSString*)text options:(SZCommentOptions*)options networks:(SZSocialNetwork)networks success:(void(^)(id<SZComment> comment))success failure:(void(^)(NSError *error))failure {
     SZComment *comment = [SZComment commentWithEntity:entity text:text];
