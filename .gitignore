@@ -39,3 +39,4 @@ ThirdParty/lib
 xcuserdata
 Pods
 Podfile.lock
+*.profraw
