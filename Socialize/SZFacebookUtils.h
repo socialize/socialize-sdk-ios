@@ -31,4 +31,7 @@
 + (void)getWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;
 + (void)deleteWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure;
 
++ (NSString*)userMessageForError:(NSError*)error;
++ (NSString*)userTitleForError:(NSError*)error;
+
 @end

@@ -143,6 +143,11 @@ static TestAppListViewController *sharedSampleListViewController;
         
         options.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
             NSLog(@"Failed posting to %d", network);
+            
+            if (network == SZSocialNetworkFacebook) {
+                NSLog(@"%@", [SZFacebookUtils userMessageForError:error]);
+                NSLog(@"%@", [SZFacebookUtils userTitleForError:error]);
+            }
         };
 
         [SZShareUtils showShareDialogWithViewController:self options:options entity:self.entity completion:nil cancellation:nil];

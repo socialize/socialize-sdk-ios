@@ -10,6 +10,7 @@
 #import "SZLikeButton.h"
 #import "SZShareOptions.h"
 #import "SZLikeOptions.h"
+#import "SZCommentOptions.h"
 
 @interface SZActionBar : UIView
 
@@ -35,5 +36,6 @@
 
 @property (nonatomic, strong) SZShareOptions *shareOptions;
 @property (nonatomic, strong) SZLikeOptions *likeOptions;
+@property (nonatomic, strong) SZCommentOptions *commentOptions;
 
 @end

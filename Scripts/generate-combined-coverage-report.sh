@@ -20,7 +20,9 @@ enter_lcov_dir()
 generate_report()
 {
 	echo "${COMBINED_COVERAGE_OUTPUT_DIR}"
-    "${LCOV_PATH}/genhtml" --title "Combined" --output-directory ${COMBINED_COVERAGE_OUTPUT_DIR} ../UnitTests-Coverage.info ../IntegrationTests-Coverage.info ../UIIntegrationTests-Coverage.info --legend
+    "${LCOV_PATH}/genhtml" --title "Combined" --output-directory ${COMBINED_COVERAGE_OUTPUT_DIR} ../UnitTests-Coverage.info ../IntegrationTests-Coverage.info 
+    #temporarily disabled due to iOS 8 changes -- DAJ 7/24/14
+    #../UIIntegrationTests-Coverage.info --legend
 }
 
 LCOV_PATH=${PWD}/Scripts/lcov-1.10/bin

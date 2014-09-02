@@ -75,8 +75,23 @@
             NSLog(@"Failed posting to %d", network);
         };
 
+        SZCommentOptions *commentOptions = [SZCommentUtils userCommentOptions];
+        
+        commentOptions.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
+            NSLog(@"Failed posting to %d", network);
+        };
+        
+        SZLikeOptions *likeOptions = [[SZLikeOptions alloc] init];
+        
+        likeOptions.didFailPostingToSocialNetworkBlock = ^(SZSocialNetwork network, NSError *error) {
+            NSLog(@"Failed posting to %d", network);
+        };
+        
         self.actionBar = [SZActionBar defaultActionBarWithFrame:CGRectNull entity:self.entity viewController:self];
         self.actionBar.shareOptions = options;
+        self.actionBar.commentOptions = commentOptions;
+        self.actionBar.likeOptions = likeOptions;
+        
         [self.view addSubview:self.actionBar];
 //        [self customizeButtons];
 //        [self makeActionBarVertical];

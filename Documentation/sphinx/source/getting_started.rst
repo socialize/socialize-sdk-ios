@@ -119,6 +119,37 @@ Manual Installation via Framework
 
 If you prefer not to use CocoaPods, the SDK can still be installed as before:
 
+
+Optional Step: Download and Compile Source
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some circumstances require Socialize source files to be altered before they are compiled. For those scenarios, you msut build the SDK from source instead of downloading it as specified in Step 1.
+
+- Clone the source (or download and unzip it) from the `GitHub page`_
+
+ .. _GitHub page: https://github.com/socialize/socialize-sdk-ios
+
+- From the command line in the root directory of the Socialize SDK source, enter the following: 
+
+::
+
+	$ git submodule init 
+	$ git submodule update 
+	$ pod install
+	$ pod update
+
+.. note:: Even though you are not using CocoaPods for your project, the Socialize SDK still uses it for some of its own dependencies. If you need to install CocoaPods, see the information above.
+
+
+- Build the Socialize SDK: 
+
+::
+
+	$ make package 
+
+The SDK will compile into build/package_dir
+
+
 Step 1: Add the Socialize Framework to Your Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -180,7 +211,7 @@ If you need more detail configuring the SDK in your app please see our `Getting 
 
     .. _Getting Started Video: http://vimeo.com/31403067
 
-If you're having problems please let us know by clicking on the 'Feedback' tab on the right side of the page.   We're here to help.
+If you're having problems please let us know by clicking on the 'Feedback' tab on the right side of the page. We're here to help.
 
 You can also search or post on our `support forums`_
 
@@ -192,11 +223,17 @@ You can also search or post on our `support forums`_
 Configuring Socialize (Post-Installation)
 -----------------------------------------
 
-Step 1: Import Header and Set up your Socialize Keys
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 1: Import Header, Configure Location Sharing, and Set Up Socialize Keys
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To utilize the iOS SDK and views into your app, we need to import the Socialize.h header and let the library know your app key and secret.  Your application key and secret can be found 
-at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_.  Click your app and look for the 'oAuth Keys' module on the right-hand column.
+To utilize the iOS SDK and views into your app, you need to import the Socialize.h header and let the library know your app key and secret. Your application key and secret can be found at `http://www.getsocialize.com/apps <http://www.getsocialize.com/apps>`_. Click your app and look for the 'oAuth Keys' module on the right-hand column.
+
+By default, Socialize enables location sharing for use in analytics. However, if you want to disable this capability, add the following line **before** the key setting calls in the code snippet below:
+
+::
+
+    [Socialize storeLocationSharingDisabled:YES];
+
 
 .. note:: Make sure to import the Socialize header in the code snippet below
 
@@ -245,7 +282,7 @@ Socialize app id from the dashboard, defined as below:
 .. image:: images/add_smartdownloads_scheme.png	
 
 You currently must also take the final step of enabling SmartDownloads in the
-web dashboard.  Select your app from the list of apps at
+web dashboard. Select your app from the list of apps at
 http://getsocialize.com/apps/, select 'SmartDownloads' on the right, then
 Scroll to the bottom until you see the 'iOS Schema URL' field. Enter the
 following:
@@ -263,7 +300,7 @@ The core component of the Socialize SDK is the “Action Bar”
 
 .. image:: images/action_bar_solo.png	
 
-This is a general purpose toolbar that sits at the bottom of your app and provides a central "one-stop-shop" of social features for your users.  Remember if you want to use 
+This is a general purpose toolbar that sits at the bottom of your app and provides a central "one-stop-shop" of social features for your users. Remember if you want to use 
 components individually please go see the SDK user guide.
 
 .. note:: Each Action Bar instance in your app is bound to an Entity. An Entity is simply an item of content in your app. Each Socialize action (comment, share, like etc.) is associated with an Entity.
@@ -271,7 +308,7 @@ An entity can be any item of content like a website, photo or person but MUST be
 It is not necessary to explicitly create an Entity object when rendering the Action bar as this will be done for you, however entities can be created manually.
 
 
-Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller.  
+Using the SocializeActionBar is very simple. Instantiate a SocializeActionBar controller and add the view to your view controller. 
 
 In your View controller's header file place the following code:
 
@@ -285,7 +322,7 @@ For more info on configuring the action bar, see the `Action Bar Section <action
 
 
 
-By now you should be able to see the Socialize Action Bar.  If you need any help please visit us at http://support.getsocialize.com
+By now you should be able to see the Socialize Action Bar. If you need any help please visit us at http://support.getsocialize.com
 
 Optional: Configure Your App for Facebook
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -297,7 +334,7 @@ See the `Twitter section <twitter.html>`_.
  
 Next Steps
 -----------------------------------------------------------------------------------------
-Run the app in your simulator or device, have fun with the action bar, add comments, likes and shares. Then you can visit the app dashboard on the Socialize website to see new user actions show up in the analytics charts.  You can also enable additional features like Push Notifications.
+Run the app in your simulator or device, have fun with the action bar, add comments, likes and shares. Then you can visit the app dashboard on the Socialize website to see new user actions show up in the analytics charts. You can also enable additional features like Push Notifications.
 
 
 http://www.getsocialize.com/apps/

@@ -66,7 +66,7 @@
     if ([options.text length] > 0) {
         self._composeCommentViewController.initialText = options.text;
     }
-    
+    self._composeCommentViewController.options = options;
     [self pushViewController:self._composeCommentViewController animated:NO];
 }
 
