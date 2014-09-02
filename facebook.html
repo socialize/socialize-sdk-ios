@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Facebook Integration &mdash; Socialize iOS SDK 3.0.7 documentation</title>
+    <title>Facebook Integration &mdash; Socialize iOS SDK 3.0.8 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.7',
+        VERSION:     '3.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.8 documentation" href="index.html" />
     <link rel="next" title="Using Facebook Open Graph" href="facebook_og.html" />
     <link rel="prev" title="Twitter Integration" href="twitter.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -101,6 +101,8 @@ you can skip this section.</p>
 </div>
 </div></blockquote>
 </li>
+<li><p class="first">Since &#8220;publish_actions&#8221; permission is required for Socialize to function correctly as of Facebook SDK 3.17.0 (which uses Facebook API v2.1), it is now <strong>required</strong> to complete the <a class="reference external" href="https://developers.facebook.com/docs/apps/review#submit">app review process on Facebook</a>.</p>
+</li>
 </ol>
 </div></blockquote>
 </div>
@@ -144,6 +146,14 @@ completes the authentication flow.</p>
 </div>
 </div>
 </div>
+<div class="section" id="handling-missing-permissions">
+<h2>Handling Missing Permissions<a class="headerlink" href="#handling-missing-permissions" title="Permalink to this headline">¶</a></h2>
+<p>When an app requests permissions, people may completely deny those permissions, not fully grant those permissions, or change them later. In order to provide a great experience, apps should be built to handle these situations.</p>
+<p>To be more familiar with new FB API please read:</p>
+<p><a class="reference external" href="https://developers.facebook.com/docs/facebook-login/permissions/v2.1#handling">Facebook missed permissions</a></p>
+<p><a class="reference external" href="https://developers.facebook.com/docs/facebook-login/ios/v2.1#permissions-review">Facebook login process</a></p>
+<p>Refer for example to  <a class="reference external" href="sharing.html#custom-share-dialog-behavior">Share section</a> for more details how to handle missing permissions error situation take a look at <strong>didFailPostingToSocialNetworkBlock</strong> callback.</p>
+</div>
 <div class="section" id="linking-with-existing-facebook-credentials">
 <h2>Linking with Existing Facebook Credentials<a class="headerlink" href="#linking-with-existing-facebook-credentials" title="Permalink to this headline">¶</a></h2>
 <p>If your app already authenticates with Facebook, you can let Socialize
@@ -173,7 +183,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The &#8220;publish_stream&#8221; permission is required for Socialize to function correctly. For maximum
+<p class="last">The &#8220;public_profile&#8221; and &#8220;publish_actions&#8221; permissions are required for Socialize to function correctly. For maximum
 compatibility you should merge your apps required permissions with the &#8216;requiredPermissions&#8217; class method of SZFacebookUtils</p>
 </div>
 </div>
@@ -235,6 +245,7 @@ direct Facebook access methods on the utils classes</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Facebook Integration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-facebook">Setting up Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-missing-permissions">Handling Missing Permissions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linking-with-existing-facebook-credentials">Linking with Existing Facebook Credentials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#posting-to-facebook-on-your-own">Posting to Facebook on your own</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#posting-images-to-facebook">Posting Images to Facebook</a></li>
@@ -284,7 +295,7 @@ direct Facebook access methods on the utils classes</p>
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

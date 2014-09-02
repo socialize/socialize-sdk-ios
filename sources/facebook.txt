@@ -48,6 +48,8 @@ Creating a Facebook Application
 
          .. note:: Ensure **iOS Native Deep Linking is DISABLED** otherwise Facebook will bypass the Socialize SmartDownload process.
 
+     5. Since "publish_actions" permission is required for Socialize to function correctly as of Facebook SDK 3.17.0 (which uses Facebook API v2.1), it is now **required** to complete the `app review process on Facebook <https://developers.facebook.com/docs/apps/review#submit>`_.
+
 Configuring Facebook in Socialize
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -81,6 +83,19 @@ completes the authentication flow.
 
 .. note:: Standard Facebook configuration complete. Keep reading for special configuration
 
+Handling Missing Permissions
+----------------------------
+When an app requests permissions, people may completely deny those permissions, not fully grant those permissions, or change them later. In order to provide a great experience, apps should be built to handle these situations.
+
+
+To be more familiar with new FB API please read:
+
+`Facebook missed permissions <https://developers.facebook.com/docs/facebook-login/permissions/v2.1#handling>`_
+
+`Facebook login process <https://developers.facebook.com/docs/facebook-login/ios/v2.1#permissions-review>`_
+
+Refer for example to  `Share section <sharing.html#custom-share-dialog-behavior>`_ for more details how to handle missing permissions error situation take a look at **didFailPostingToSocialNetworkBlock** callback.
+
 Linking with Existing Facebook Credentials
 ------------------------------------------
 
@@ -95,7 +110,7 @@ using FBConnect on your own, you can check the official Facebook tutorial at
   :start-after: begin-link-snippet
   :end-before: end-link-snippet
 
-.. note:: The "publish_stream" permission is required for Socialize to function correctly. For maximum
+.. note:: The "public_profile" and "publish_actions" permissions are required for Socialize to function correctly. For maximum
   compatibility you should merge your apps required permissions with the 'requiredPermissions' class method of SZFacebookUtils
 
 Posting to Facebook on your own

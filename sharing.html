@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sharing &mdash; Socialize iOS SDK 3.0.7 documentation</title>
+    <title>Sharing &mdash; Socialize iOS SDK 3.0.8 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.7',
+        VERSION:     '3.0.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.7 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.0.8 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Activity (Social Actions)" href="actions.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -154,7 +154,13 @@ must do so with a separate call to [SZEntityUtils addEntity:success:failure:]</p
     <span class="p">};</span>
     
     <span class="n">options</span><span class="p">.</span><span class="n">didFailPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed posting to %d&quot;</span><span class="p">,</span> <span class="n">network</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkFacebook</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">userMessageForError</span><span class="o">:</span><span class="n">error</span><span class="p">]);</span>
+            <span class="c1">//Example output: @&quot;This app doesn&#39;t have permission to do this. To change permissions, try logging into the app again.”;</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">userTitleForError</span><span class="o">:</span><span class="n">error</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed posting to %d&quot;</span><span class="p">,</span> <span class="n">network</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">};</span>
 
     <span class="p">[</span><span class="n">SZShareUtils</span> <span class="n">showShareDialogWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">options</span><span class="o">:</span><span class="n">options</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">shares</span><span class="p">)</span> <span class="p">{</span>
@@ -435,7 +441,7 @@ can do so</p>
         <li class="right" >
           <a href="actions.html" title="Activity (Social Actions)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.0.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
