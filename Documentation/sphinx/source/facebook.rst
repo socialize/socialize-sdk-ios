@@ -48,7 +48,7 @@ Creating a Facebook Application
 
          .. note:: Ensure **iOS Native Deep Linking is DISABLED** otherwise Facebook will bypass the Socialize SmartDownload process.
 
-     5. Since "publish_actions" permission is required for Socialize to function correctly starting from the last FB SDK revision, that uses API v2.1, it's **requared** to complete `app review process on Facebook <https://developers.facebook.com/docs/apps/review#submit>`_.
+     5. Since "publish_actions" permission is required for Socialize to function correctly as of Facebook SDK 3.17.0 (which uses Facebook API v2.1), it is now **required** to complete the `app review process on Facebook <https://developers.facebook.com/docs/apps/review#submit>`_.
 
 Configuring Facebook in Socialize
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
