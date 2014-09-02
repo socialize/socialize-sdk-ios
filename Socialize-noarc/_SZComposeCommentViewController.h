@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL dontSubscribeToDiscussion;
 @property(nonatomic, retain) IBOutlet UIView *subscribeContainer;
 @property (nonatomic, copy) void (^completionBlock)(id<SZComment>);
+@property (nonatomic, retain) SZCommentOptions *options;
 
 -(IBAction)unsubscribeButtonPressed:(id)sender;
 -(IBAction)enableSubscribeButtonPressed:(id)sender;

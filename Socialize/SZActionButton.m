@@ -64,7 +64,7 @@
     };
     
     commentButton.actionBlock = ^(SZActionButton *button, SZActionBar *bar) {
-        [SZCommentUtils showCommentsListWithViewController:bar.viewController entity:bar.entity completion:nil];        
+        [SZCommentUtils showCommentsListWithViewController:bar.viewController options:bar.commentOptions entity:bar.entity completion:nil];
     };
     
     return commentButton;
