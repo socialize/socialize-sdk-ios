@@ -42,6 +42,7 @@ NSString *kShowCommentComposerRow = @"kShowCommentComposerRow";
 NSString *kShowCommentsListRow = @"kShowCommentsListRow";
 NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
+NSString *kShareImageToTwitterRow = @"kShareImageToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kShowShareRow = @"kShowShareRow";
 NSString *kHandleDirectURLSmartAlertRow = @"kHandleDirectURLSmartAlertRow";
@@ -53,11 +54,14 @@ static TestAppListViewController *sharedSampleListViewController;
 
 @interface TestAppListViewController ()
 @property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) UIViewController *twitterImageController;
 @end
 
 @implementation TestAppListViewController
+
 @synthesize sections = sections_;
 @synthesize entity = entity_;
+@synthesize twitterImageController = twitterImageController_;
 
 + (TestAppListViewController*)sharedSampleListViewController {
     if (sharedSampleListViewController == nil) {
@@ -254,6 +258,27 @@ static TestAppListViewController *sharedSampleListViewController;
     [twitterRows addObject:[self rowWithIdentifier:kLinkToTwitterRow text:@"Link to Twitter" executionBlock:^{
         [SZTwitterUtils linkWithViewController:self success:nil failure:nil];
     }]];
+    [twitterRows addObject:[self rowWithIdentifier:kShareImageToTwitterRow text:@"Share Image to Twitter" executionBlock:^{
+        //use a known image in this bundle
+        __block UIImage *image = [UIImage imageNamed:@"Smiley.png"];
+        NSData *imageData = UIImagePNGRepresentation(image);
+        
+        NSDictionary *paramss = @{
+                                  @"status": @"twitter test post",
+                                  @"media[]": imageData
+                                  };
+        [SZTwitterUtils postWithViewController:self
+                                          path:@"1.1/statuses/update_with_media.json"
+                                        params:paramss
+                                     multipart:YES
+                                       success:^(id result) {
+                                           [self twitterImageShareSuccess:image];
+                                           NSLog(@"Image Posted");
+                                       }
+                                       failure:^(NSError *error) {
+                                           NSLog(@"Image Post Failed %@", [error localizedDescription]);
+                                       }];
+    }]];
 
     NSMutableArray *smartAlertsRows = [NSMutableArray array];
     [smartAlertsRows addObject:[self rowWithIdentifier:kHandleDirectURLSmartAlertRow text:@"Direct URL SmartAlert" executionBlock:^{
@@ -337,7 +362,7 @@ static TestAppListViewController *sharedSampleListViewController;
                                    rows:facebookRows],
             
             [self sectionWithIdentifier:kTwitterSection
-                                  title:@"Twiter Utilities"
+                                  title:@"Twitter Utilities"
                                    rows:twitterRows],
 
             [self sectionWithIdentifier:kSmartAlertsSection
@@ -357,17 +382,38 @@ static TestAppListViewController *sharedSampleListViewController;
     return sections;
 }
 
+//twitter image sharing logic
+- (void)twitterImageTapped:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded && self.twitterImageController != nil) {
+        [self.twitterImageController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+//twitter image sharing logic
+- (void)twitterImageShareSuccess:(UIImage *)image {
+    //bring up a bogus view controller with the image that was shared
+    self.twitterImageController = [[UIViewController alloc] init];
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:bounds];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.accessibilityLabel = @"twitterImageView";
+    imageView.image = image;
+    imageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapImageRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twitterImageTapped:)];
+    [imageView addGestureRecognizer:tapImageRecognizer];
+    self.twitterImageController.view = imageView;
+    [self presentViewController:self.twitterImageController animated:YES completion:nil];
+}
+
 - (void)viewDidLoad {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"socialize_logo.png"]];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.alpha = 0.25;
     self.tableView.backgroundView = imageView;
     self.tableView.accessibilityLabel = @"tableView";
-//    [self createSections];
 }
 
-- (void)viewDidLayoutSubviews
-{
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.tableView.frame = CGRectMake(0, 20, 320, 460);
 }
