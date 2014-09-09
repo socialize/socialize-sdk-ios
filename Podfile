@@ -11,6 +11,7 @@ pod 'SZBlocksKit', :podspec => 'https://raw.github.com/socialize/BlocksKit/maste
 #Need to use this podspec and post_install Pods.xcconfig script below as eliminate libffi issues
 #per https://github.com/pandamonia/BlocksKit/issues/178
 pod 'Pinterest-iOS', '~> 2.3'
+pod 'STTwitter', '~> 0.1.4'
 
 target 'UIIntegrationAcceptanceTests', :exclusive => true do
   pod 'KIF', '~> 2.0'

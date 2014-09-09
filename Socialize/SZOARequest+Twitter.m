@@ -9,7 +9,6 @@
 #import "SZOARequest+Twitter.h"
 #import "SZTwitterUtils.h"
 #import <SZJSONKit/JSONKit.h>
-//#import <JSONKit/JSONKit.h>
 
 @implementation SZOARequest (Twitter)
 

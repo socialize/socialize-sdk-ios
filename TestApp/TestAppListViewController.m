@@ -256,11 +256,15 @@ static TestAppListViewController *sharedSampleListViewController;
     }]];
 
     NSMutableArray *twitterRows = [NSMutableArray array];
-    [twitterRows addObject:[self rowWithIdentifier:kLinkToTwitterRow text:@"Link to Twitter" executionBlock:^{
+    [twitterRows addObject:[self rowWithIdentifier:kLinkToTwitterRow
+                                              text:@"Link to Twitter"
+                                    executionBlock:^{
         [SZTwitterUtils linkWithViewController:self success:nil failure:nil];
     }]];
     
-    [twitterRows addObject:[self rowWithIdentifier:kPostToTwitterRow text:@"Post to Twitter" executionBlock:^{
+    [twitterRows addObject:[self rowWithIdentifier:kPostToTwitterRow
+                                              text:@"Post to Twitter"
+                                    executionBlock:^{
         NSDate *now = [NSDate date];
         NSTimeInterval epoch = [now timeIntervalSince1970];
         NSString *postText = [NSString stringWithFormat:@"Twitter test post: %f", epoch];
@@ -288,13 +292,18 @@ static TestAppListViewController *sharedSampleListViewController;
                                        }];
     }]];
      
-    [twitterRows addObject:[self rowWithIdentifier:kShareImageToTwitterRow text:@"Share Image to Twitter" executionBlock:^{
+    [twitterRows addObject:[self rowWithIdentifier:kShareImageToTwitterRow
+                                              text:@"Post Image to Twitter"
+                                    executionBlock:^{
         //use a known image in this bundle
         __block UIImage *image = [UIImage imageNamed:@"Smiley.png"];
         NSData *imageData = UIImagePNGRepresentation(image);
+        NSDate *now = [NSDate date];
+        NSTimeInterval epoch = [now timeIntervalSince1970];
+        NSString *postText = [NSString stringWithFormat:@"Twitter test post: %f", epoch];
         
         NSDictionary *paramss = @{
-                                  @"status": @"twitter test post",
+                                  @"status": postText,
                                   @"media[]": imageData
                                   };
         [SZTwitterUtils postWithViewController:self
