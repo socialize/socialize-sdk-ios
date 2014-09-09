@@ -42,6 +42,7 @@ NSString *kShowCommentComposerRow = @"kShowCommentComposerRow";
 NSString *kShowCommentsListRow = @"kShowCommentsListRow";
 NSString *kLinkToFacebookRow = @"kLinkToFacebookRow";
 NSString *kLinkToTwitterRow = @"kLinkToTwitterRow";
+NSString *kPostToTwitterRow = @"kPostToTwitterRow";
 NSString *kShareImageToTwitterRow = @"kShareImageToTwitterRow";
 NSString *kLikeEntityRow = @"kLikeEntityRow";
 NSString *kShowShareRow = @"kShowShareRow";
@@ -258,6 +259,35 @@ static TestAppListViewController *sharedSampleListViewController;
     [twitterRows addObject:[self rowWithIdentifier:kLinkToTwitterRow text:@"Link to Twitter" executionBlock:^{
         [SZTwitterUtils linkWithViewController:self success:nil failure:nil];
     }]];
+    
+    [twitterRows addObject:[self rowWithIdentifier:kPostToTwitterRow text:@"Post to Twitter" executionBlock:^{
+        NSDate *now = [NSDate date];
+        NSTimeInterval epoch = [now timeIntervalSince1970];
+        NSString *postText = [NSString stringWithFormat:@"Twitter test post: %f", epoch];
+        NSDictionary *paramss = @{@"status": postText};
+        [SZTwitterUtils postWithViewController:self
+                                          path:@"1.1/statuses/update.json"
+                                        params:paramss
+                                     multipart:YES
+                                       success:^(id result) {
+                                           [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+                                           UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+                                           CGRect frame = CGRectMake(0, 0, window.bounds.size.width, window.bounds.size.height);
+                                           SZStatusView *status = [SZStatusView successStatusViewWithFrame:frame];
+                                           [status showAndHideInKeyWindow];
+                                           NSLog(@"Twitter Update Posted");
+                                       }
+                                       failure:^(NSError *error) {
+                                           NSString *failureMessage = [NSString stringWithFormat:@"Twitter Post Failed %@", [error localizedDescription]];
+                                           [UIAlertView bk_showAlertViewWithTitle:@"Failure"
+                                                                          message:failureMessage
+                                                                cancelButtonTitle:@"OK"
+                                                                otherButtonTitles:nil
+                                                                          handler:nil];
+                                           NSLog(@"Twitter Update Failed %@", [error localizedDescription]);
+                                       }];
+    }]];
+     
     [twitterRows addObject:[self rowWithIdentifier:kShareImageToTwitterRow text:@"Share Image to Twitter" executionBlock:^{
         //use a known image in this bundle
         __block UIImage *image = [UIImage imageNamed:@"Smiley.png"];
@@ -276,6 +306,12 @@ static TestAppListViewController *sharedSampleListViewController;
                                            NSLog(@"Image Posted");
                                        }
                                        failure:^(NSError *error) {
+                                           NSString *failureMessage = [NSString stringWithFormat:@"Image Post Failed %@", [error localizedDescription]];
+                                           [UIAlertView bk_showAlertViewWithTitle:@"Failure"
+                                                                          message:failureMessage
+                                                                cancelButtonTitle:@"OK"
+                                                                otherButtonTitles:nil
+                                                                          handler:nil];
                                            NSLog(@"Image Post Failed %@", [error localizedDescription]);
                                        }];
     }]];
