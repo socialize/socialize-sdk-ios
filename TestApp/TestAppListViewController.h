@@ -24,6 +24,8 @@ extern NSString *kShowCommentComposerRow;
 extern NSString *kShowCommentsListRow;
 extern NSString *kLinkToFacebookRow;
 extern NSString *kLinkToTwitterRow;
+extern NSString *kPostToTwitterRow;
+extern NSString *kShareImageToTwitterRow;
 extern NSString *kLikeEntityRow;
 extern NSString *kShowShareRow;
 extern NSString *kHandleDirectURLSmartAlertRow;

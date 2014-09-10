@@ -29,6 +29,8 @@
 		2C23AACF187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AAD0187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C27B8C018A1A9F50046CCF6 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize.a */; };
+		2C34129719BFB34C002C434B /* SZTwitterImageRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C34129519BFB34C002C434B /* SZTwitterImageRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C34129819BFB34C002C434B /* SZTwitterImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C34129619BFB34C002C434B /* SZTwitterImageRequest.m */; };
 		2C578C921891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
 		2C578C931891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
 		2C578C941891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
@@ -1465,6 +1467,8 @@
 		28052EE4EDAE4D3598062EF0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7.png"; path = "Socialize/Resources/comment-bg-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7@2x.png"; path = "Socialize/Resources/comment-bg-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
+		2C34129519BFB34C002C434B /* SZTwitterImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTwitterImageRequest.h; sourceTree = "<group>"; };
+		2C34129619BFB34C002C434B /* SZTwitterImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTwitterImageRequest.m; sourceTree = "<group>"; };
 		2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-mask-ios7.png"; path = "Socialize/Resources/socialize-cell-image-mask-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C578C911891E3F1003869C6 /* socialize-cell-image-mask-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-cell-image-mask-ios7@2x.png"; path = "Socialize/Resources/socialize-cell-image-mask-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C6E52DF1884BE1B009C8F4F /* SZNetworkImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZNetworkImageProvider.h; sourceTree = "<group>"; };
@@ -3997,6 +4001,8 @@
 				AAC194D915AF712B00DDE42F /* SZOARequest+Twitter.m */,
 				AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */,
 				AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */,
+				2C34129519BFB34C002C434B /* SZTwitterImageRequest.h */,
+				2C34129619BFB34C002C434B /* SZTwitterImageRequest.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -4259,6 +4265,7 @@
 				2CBE4A7E18B6B35E001BBB47 /* SZActivityOptions.h in Headers */,
 				2CBE4A6818B691FE001BBB47 /* NSData+Base64.h in Headers */,
 				2CBE4A9318B6B433001BBB47 /* SZPinterestShareData.h in Headers */,
+				2C34129719BFB34C002C434B /* SZTwitterImageRequest.h in Headers */,
 				2CBE4A8F18B6B433001BBB47 /* SZEmailShareData.h in Headers */,
 				2CBE4A9118B6B433001BBB47 /* SZFacebookLinkOptions.h in Headers */,
 				2CBE4A9518B6B433001BBB47 /* SZSMSShareData.h in Headers */,
@@ -5680,6 +5687,7 @@
 				2C7DDB1F18A04BBD0006A57A /* CommentDetailsView.m in Sources */,
 				2C7DDB2018A04BBD0006A57A /* CommentMapView.m in Sources */,
 				2C7DDB2118A04BBD0006A57A /* CommentsTableFooterView.m in Sources */,
+				2C34129819BFB34C002C434B /* SZTwitterImageRequest.m in Sources */,
 				2C7DDB2218A04BBD0006A57A /* CommentsTableViewCell.m in Sources */,
 				2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */,
 				2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */,

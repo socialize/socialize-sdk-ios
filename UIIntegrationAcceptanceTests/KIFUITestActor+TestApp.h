@@ -19,6 +19,7 @@
 - (void)showLinkToFacebook;
 - (void)wipeAuthData;
 - (void)showLinkToTwitter;
+- (void)showShareImageToTwitter;
 - (void)showLikeEntityRow;
 - (void)showShareDialog;
 - (void)showDirectUrlNotifications;

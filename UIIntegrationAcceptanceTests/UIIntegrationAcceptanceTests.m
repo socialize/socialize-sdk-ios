@@ -142,6 +142,15 @@
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
 }
 
+- (void) testShareImageTwitterAuth {
+    [tester showShareImageToTwitter];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"tableView"];
+    [tester authWithTwitter];
+    [tester waitForViewWithAccessibilityLabel:@"twitterImageView"];
+    [tester tapViewWithAccessibilityLabel:@"twitterImageView"];
+    [tester waitForViewWithAccessibilityLabel:@"tableView"];
+}
+
 - (void) testDirectURLNotification {
     [tester showDirectUrlNotifications];
     

@@ -72,7 +72,10 @@
         }];
         [self.request setOAParameters:oaParams multipart:multipart];
         
-        self.fetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:self.request delegate:self didFinishSelector:@selector(fetcherDidFinishWithTicket:data:) didFailSelector:@selector(fetcherDidFailWithTicket:error:)];
+        self.fetcher = [[OAAsynchronousDataFetcher alloc] initWithRequest:self.request
+                                                                 delegate:self
+                                                        didFinishSelector:@selector(fetcherDidFinishWithTicket:data:)
+                                                          didFailSelector:@selector(fetcherDidFailWithTicket:error:)];
         
         self.successBlock = success;
         self.failureBlock = failure;

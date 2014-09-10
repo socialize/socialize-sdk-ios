@@ -14,6 +14,7 @@
 #import "SZUserUtils.h"
 #import "socialize_globals.h"
 #import "SZOARequest+Twitter.h"
+#import "SZTwitterImageRequest.h"
 #import "NSOperationQueue+Socialize.h"
 
 #define TWITTER_MAX_LENGTH 140
@@ -123,13 +124,36 @@
     }, failure);
 }
 
-+ (void)postWithViewController:(UIViewController*)viewController path:(NSString*)path params:(NSDictionary*)params success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
++ (void)postWithViewController:(UIViewController*)viewController
+                          path:(NSString*)path params:(NSDictionary*)params
+                       success:(void(^)(id))success
+                       failure:(void(^)(NSError *error))failure {
     [self postWithViewController:viewController path:path params:params multipart:NO success:success failure:failure];
 }
 
-+ (void)postWithViewController:(UIViewController*)viewController path:(NSString*)path params:(NSDictionary*)params multipart:(BOOL)multipart success:(void(^)(id))success failure:(void(^)(NSError *error))failure {
++ (void)postWithViewController:(UIViewController*)viewController
+                          path:(NSString*)path
+                        params:(NSDictionary*)params
+                     multipart:(BOOL)multipart
+                       success:(void(^)(id))success
+                       failure:(void(^)(NSError *error))failure {
     SZTWAuthWrapper(viewController, ^{
-        SZOARequest *req = [SZOARequest twitterRequestWithMethod:@"POST" path:path parameters:params multipart:multipart success:success failure:failure];
+        //SZ-88: since SZOAuthConsumer is broken for Twitter image posting, use newer library for that case
+        NSOperation *req = nil;
+        if([params objectForKey:@"media[]"] != nil && [path isEqualToString:@"1.1/statuses/update_with_media.json"]) {
+            req = [SZTwitterImageRequest twitterRequestWithMethod:@"POST"
+                                                       parameters:params
+                                                          success:success
+                                                          failure:failure];
+        }
+        else {
+            req = [SZOARequest twitterRequestWithMethod:@"POST"
+                                                   path:path
+                                             parameters:params
+                                              multipart:multipart
+                                                success:success
+                                                failure:failure];
+        }
         [[NSOperationQueue socializeQueue] addOperation:req];
     }, failure);
 }
