@@ -2106,12 +2106,6 @@
 		AA0F10A115FC133E00391CFE /* SZWindowDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZWindowDisplay.m; sourceTree = "<group>"; };
 		AA1505F8159CDE0E00F639E7 /* users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = users.h; sourceTree = "<group>"; };
 		AA1505F9159CDE0E00F639E7 /* users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = users.m; sourceTree = "<group>"; };
-		AA159E20158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+TestAppAdditions.h"; path = "UIIntegrationTests/KIFTestScenario+TestAppAdditions.h"; sourceTree = "<group>"; };
-		AA159E21158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestScenario+TestAppAdditions.m"; path = "UIIntegrationTests/KIFTestScenario+TestAppAdditions.m"; sourceTree = "<group>"; };
-		AA159E22158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+TestAppAdditions.h"; path = "UIIntegrationTests/KIFTestStep+TestAppAdditions.h"; sourceTree = "<group>"; };
-		AA159E23158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+TestAppAdditions.m"; path = "UIIntegrationTests/KIFTestStep+TestAppAdditions.m"; sourceTree = "<group>"; };
-		AA159E24158FAE11006E1CAE /* TestAppKIFTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestAppKIFTestController.h; path = UIIntegrationTests/TestAppKIFTestController.h; sourceTree = "<group>"; };
-		AA159E25158FAE11006E1CAE /* TestAppKIFTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAppKIFTestController.m; path = UIIntegrationTests/TestAppKIFTestController.m; sourceTree = "<group>"; };
 		AA15EFEE15915300008F1237 /* SZUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUserProfileViewController.h; sourceTree = "<group>"; };
 		AA15EFEF15915300008F1237 /* SZUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUserProfileViewController.m; sourceTree = "<group>"; };
 		AA166551159CF9CB001B6A1D /* sharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sharing.h; sourceTree = "<group>"; };
@@ -3235,7 +3229,6 @@
 				AA0085F5158D358B00480399 /* Socialize-noarc */,
 				AA00859A158D2B1100480399 /* TestApp */,
 				AA6C63D1158F0EB0005E5632 /* IntegrationTests */,
-				AA159E15158FADD1006E1CAE /* UIIntegrationTests */,
 				AA0085CC158D2F4600480399 /* ThirdParty */,
 				AA0C6019158FC4F000F66A3B /* UnitTests */,
 				487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */,
@@ -3624,19 +3617,6 @@
 				AA0C604C158FC5B700F66A3B /* UnitTest-SocializeConfigurationInfo.plist */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		AA159E15158FADD1006E1CAE /* UIIntegrationTests */ = {
-			isa = PBXGroup;
-			children = (
-				AA159E20158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.h */,
-				AA159E21158FAE11006E1CAE /* KIFTestScenario+TestAppAdditions.m */,
-				AA159E22158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.h */,
-				AA159E23158FAE11006E1CAE /* KIFTestStep+TestAppAdditions.m */,
-				AA159E24158FAE11006E1CAE /* TestAppKIFTestController.h */,
-				AA159E25158FAE11006E1CAE /* TestAppKIFTestController.m */,
-			);
-			name = UIIntegrationTests;
 			sourceTree = "<group>";
 		};
 		AA1C1C00158EB2EC00A763CA /* SDK */ = {

@@ -32,7 +32,9 @@
 - (void)sizeToCells {
     CGRect origFrame = self.frame;
     
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGFLOAT_MAX);
+    //temporarily make it taller than screen bounds
+    //iOS 8 fix: don't make CGFLOAT_MAX height
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, origFrame.size.height *2);
     
     UITableViewCell *firstCell = [self firstCell];
     UITableViewCell *lastCell = [self lastCell];
