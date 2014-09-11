@@ -80,7 +80,7 @@
 //    
 //    [tester showLinkToFacebook];
 //    
-    [tester waitForViewWithAccessibilityLabel:@"Facebook link successful"];
+//    [tester waitForViewWithAccessibilityLabel:@"Facebook link successful"];
 //    UIView * okButton = [tester waitForViewWithAccessibilityLabel:@"OK"];
 //    CGPoint buttonCenter = okButton.center;
 //    CGPoint screenPoint = [okButton convertPoint:buttonCenter toView:nil];
