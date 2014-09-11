@@ -4,7 +4,7 @@ pods:
 	pod install
 
 test:
-	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=7.0.3,name="iPhone 5"
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=7.1,name="iPhone 5"
 
 default: build buildsample test package
 
@@ -25,15 +25,13 @@ clean:
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
-	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info 
-	#temporarily turned off due to slow build machine
-	#build/test-coverage/UIIntegrationTests-Coverage.info
+	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info build/test-coverage/UIIntegrationTests-Coverage.info
 
 integration-tests:
-	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator -destination OS=7.0.3,name="iPhone 5" build
+	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator -destination OS=7.1,name="iPhone 5" build
 
 ui-integration-tests:
-	xcodebuild -workspace Socialize.xcworkspace -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=7.0.3,name="iPhone 5" test
+	xcodebuild -workspace Socialize.xcworkspace -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=7.1,name="iPhone 5" test
 	./Scripts/generate-ui-coverage-report.sh
 
 doc:

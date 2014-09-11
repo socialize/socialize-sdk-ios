@@ -161,7 +161,7 @@
 
 - (void) testComposeCommentNoAuth {
     [tester showCommentComposer];
-    [tester enterText:@"anonymous comment"  intoViewWithAccessibilityLabel:@"Comment Entry"];
+    [tester enterText:@"Anonymous comment"  intoViewWithAccessibilityLabel:@"Comment Entry"];
     [tester tapViewWithAccessibilityLabel:@"Continue"];
     [tester tapViewWithAccessibilityLabel:@"Skip"];
     [tester waitForViewWithAccessibilityLabel:@"tableView"];
