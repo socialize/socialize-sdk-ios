@@ -57,4 +57,5 @@ ci:
 	make clean
 	make test
 	make integration-tests
+	make ui-integration-tests
 	make coverage
