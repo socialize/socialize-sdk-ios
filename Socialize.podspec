@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "Socialize"
-  s.platform          = :ios, '6.1'
+  s.platform          = :ios, '7.0'
   s.version           = "3.0.8"
   s.summary           = "Socialize SDK for iOS devices."
   s.description       = "An iOS social sharing SDK for native apps. Learn more at http://getsocialize.com/"

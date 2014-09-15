@@ -1,9 +1,9 @@
-platform :ios, '6.1'
+platform :ios, '7.0'
 inhibit_all_warnings!
 xcodeproj 'Socialize.xcodeproj'
 
 link_with 'Socialize'
-pod 'Loopy', :podspec => 'https://raw.github.com/socialize/loopy-ios/master/Loopy.podspec'
+pod 'Loopy', '~> 1.0.0'
 pod 'Facebook-iOS-SDK', '~> 3.17'
 pod 'SZOAuthConsumer', :podspec => 'https://raw.github.com/socialize/OAuthConsumer/master/SZOAuthConsumer.podspec'
 pod 'SZJSONKit', :podspec => 'https://raw.github.com/socialize/JSONKit/master/SZJSONKit.podspec'

@@ -22,6 +22,7 @@ clean:
 	xcodebuild -workspace Socialize.xcworkspace -scheme "IntegrationTests" -configuration Debug -sdk iphonesimulator clean
 	xcodebuild -workspace Socialize.xcworkspace -scheme "TestApp" -configuration Debug -sdk iphonesimulator clean
 	rm -rfd build
+	rm -rfd Pods
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
@@ -55,8 +56,8 @@ tags:
 	ctags -R --language-force=ObjectiveC --extra=f Socialize SampleSdkApp Frameworks
 
 ci:
-	make pods
 	make clean
+	make pods
 	make test
 	make integration-tests
 #	make ui-integration-tests
