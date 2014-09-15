@@ -10,6 +10,13 @@ As of release 3.0.2, Pinterest is included with the Socialize SDK by default if 
 Installation with CocoaPods (3.0.2 and later)
 ---------------------------------------------
 
+To install Pinterest with CocoaPods, simply add the following to your Podfile:
+
+::
+
+            pod 'Pinterest-iOS', '~> 2.3'
+
+
 The Pinterest SDK will install automatically during a CocoaPods install or update. **There is no need to add the Pinterest SDK manually. If you already have the Pinterest.embeddedframework installed from an older version and are now using CocoaPods to install Socialize, please delete the Pinterest.embeddedframework from your Xcode Workspace and from your file system.**
 
 Non-CocoaPods Installation
