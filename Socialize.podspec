@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.dependency        'SZOAuthConsumer'
   s.dependency        'SZJSONKit'
   s.dependency        'SZBlocksKit'
+  s.dependency        'STTwitter'
   s.resources         = 'Socialize/Resources/*.png','Socialize/Resources/*.xib','Socialize/Resources/*.plist','Socialize/Resources/*.htm'
   s.subspec 'no-arc' do |ss1|
     ss1.source_files = 'Socialize-noarc/**/*.{h,m}'
