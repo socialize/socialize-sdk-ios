@@ -75,6 +75,12 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="upgrading-socialize-cocoapods-and-non-cocoapods">
 <h1>Upgrading Socialize (CocoaPods and non-CocoaPods)<a class="headerlink" href="#upgrading-socialize-cocoapods-and-non-cocoapods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="important-notes-on-upgrading-to-v3-0-9-1">
+<h2>Important Notes on Upgrading to v3.0.9.1<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-9-1" title="Permalink to this headline">¶</a></h2>
+<p><strong>This patch release temporarily makes the Socialize iOS SDK compatible with changes to its dependent libraries post-iOS 8.0.</strong></p>
+<p>If installing with CocoaPods, <strong>ensure your CocoaPods version is 0.33.x; the Socialize iOS SDK has not yet been updated to use CocoaPods 0.34.x.</strong> You may also need to delete and reinstall the SocializeCocoaPods private repo located in your .cocoapods directory.**</p>
+<p>We will be issuing an update for these (and related issues) soon.</p>
+</div>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-3">
 <h2>Important Notes on Upgrading to v3.0.3<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-3" title="Permalink to this headline">¶</a></h2>
 <p>To comply with Apple&#8217;s rules on IDFA (&#8220;advertisingIdentifier&#8221;), the Socialize iOS SDK offers the option to disable the use of IDFA. <strong>You must disable IDFA if your app does not serve ads or it will be rejected by the App Store.</strong></p>
@@ -238,6 +244,7 @@ delete it before performing this step</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-9-1">Important Notes on Upgrading to v3.0.9.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-3">Important Notes on Upgrading to v3.0.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-2">Important Notes on Upgrading to v3.0.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-1">Important Notes on Upgrading to v3.0.1</a></li>

@@ -4,6 +4,17 @@
 Upgrading Socialize (CocoaPods and non-CocoaPods)
 =================================================
 
+
+Important Notes on Upgrading to v3.0.9.1
+------------------------------------------------
+
+**This patch release temporarily makes the Socialize iOS SDK compatible with changes to its dependent libraries post-iOS 8.0.** 
+
+If installing with CocoaPods, **ensure your CocoaPods version is 0.33.x; the Socialize iOS SDK has not yet been updated to use CocoaPods 0.34.x.** You may also need to delete and reinstall the SocializeCocoaPods private repo located in your .cocoapods directory.** 
+
+We will be issuing an update for these (and related issues) soon.
+
+
 Important Notes on Upgrading to v3.0.3
 ------------------------------------------------
 
