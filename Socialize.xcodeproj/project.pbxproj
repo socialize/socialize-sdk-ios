@@ -216,6 +216,8 @@
 		2C84296D187E111300BD01AF /* comment-header-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */; };
 		2C84296E187E111300BD01AF /* comment-header-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */; };
 		2C84296F187E111400BD01AF /* comment-header-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */; };
+		2C8D185A19F5DAC7003B5716 /* SocializeFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C8D185819F5DAC7003B5716 /* SocializeFacebook.h */; };
+		2C8D185B19F5DAC7003B5716 /* SocializeFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D185919F5DAC7003B5716 /* SocializeFacebook.m */; };
 		2C8D86B818875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
 		2C8D86B918875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
 		2C8D86BA18875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
@@ -309,7 +311,6 @@
 		2CBB668718A18A4D00A68BAC /* SZStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA84654615EBE52B00065678 /* SZStatusView.m */; };
 		2CBB668B18A18A8100A68BAC /* SZOARequest+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC194D915AF712B00DDE42F /* SZOARequest+Twitter.m */; };
 		2CBB668C18A18A8100A68BAC /* SZOARequest+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60845215D3015D0065C543 /* SZOARequest+Socialize.m */; };
-		2CBB668D18A18A8900A68BAC /* Facebook+Socialize.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB9D35215D2783700004E77 /* Facebook+Socialize.m */; };
 		2CBB668F18A18AAB00A68BAC /* SZActionBarIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94E51885CE0C0031CF54 /* SZActionBarIOS6.m */; };
 		2CBB669018A18AAB00A68BAC /* SZActionButtonIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB94EF1885F57E0031CF54 /* SZActionButtonIOS6.m */; };
 		2CBB669118A18ABB00A68BAC /* SZComposeCommentViewControllerIOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC69BD187C7CF10009F6F0 /* SZComposeCommentViewControllerIOS6.m */; };
@@ -493,7 +494,6 @@
 		2CE6276D18A998240070CD99 /* SZOARequest+Twitter.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC194D815AF712B00DDE42F /* SZOARequest+Twitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6276E18A998390070CD99 /* NSOperationQueue+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC194E515AF925200DDE42F /* NSOperationQueue+Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6276F18A998480070CD99 /* SZAPIClientHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = AA91F93615B0D2E800BC373E /* SZAPIClientHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2CE6277118A9986B0070CD99 /* Facebook+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB9D35115D2783700004E77 /* Facebook+Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6277218A998860070CD99 /* SZOARequest+Socialize.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60845115D3015D0065C543 /* SZOARequest+Socialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6277618A998B40070CD99 /* SZStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA84654515EBE52B00065678 /* SZStatusView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6277718A998BF0070CD99 /* SZNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = AADB363D15F0350A000264D6 /* SZNotificationHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1464,6 +1464,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0035FA2E2C3388B62F745858 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		28052EE4EDAE4D3598062EF0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7.png"; path = "Socialize/Resources/comment-bg-ios7.png"; sourceTree = SOURCE_ROOT; };
 		2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-bg-ios7@2x.png"; path = "Socialize/Resources/comment-bg-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1488,6 +1489,8 @@
 		2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comment-header-icon-ios7@2x.png"; path = "Socialize/Resources/comment-header-icon-ios7@2x.png"; sourceTree = SOURCE_ROOT; };
 		2C842970187E236600BD01AF /* CommentsTableViewCellIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCellIOS6.h; sourceTree = "<group>"; };
 		2C842971187E236600BD01AF /* CommentsTableViewCellIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCellIOS6.m; sourceTree = "<group>"; };
+		2C8D185819F5DAC7003B5716 /* SocializeFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeFacebook.h; sourceTree = "<group>"; };
+		2C8D185919F5DAC7003B5716 /* SocializeFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeFacebook.m; sourceTree = "<group>"; };
 		2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SocializeActivityTableViewCellIOS7.xib; path = Socialize/Resources/SocializeActivityTableViewCellIOS7.xib; sourceTree = SOURCE_ROOT; };
 		2C9790EC187A042A002C3268 /* SZNavigationControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZNavigationControllerIOS6.m; sourceTree = "<group>"; };
 		2C979105187A075B002C3268 /* UIDevice+VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+VersionCheck.h"; sourceTree = "<group>"; };
@@ -1653,11 +1656,11 @@
 		487047F617F01ACE008D5741 /* TestAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppHelper.m; sourceTree = "<group>"; };
 		48C069921780192B004E7843 /* pinterest-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pinterest-snippets.h"; sourceTree = "<group>"; };
 		48C069931780192B004E7843 /* pinterest-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "pinterest-snippets.m"; sourceTree = "<group>"; };
-		591BC9DD5AC34F3A94039250 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		84AEF7DD176341CE006DB43A /* socialize-selectnetwork-pinterest-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon.png"; sourceTree = SOURCE_ROOT; };
 		84FCF44E175E706B009AD5C1 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
 		84FCF450175E706B009AD5C1 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
+		94C9ED6D895DC389018010ED /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AA008590158D2B1100480399 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA008594158D2B1100480399 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA008596158D2B1100480399 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2470,8 +2473,6 @@
 		AAB73D561597C01800220492 /* ButtonExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonExampleViewController.xib; sourceTree = "<group>"; };
 		AAB86D6815FEBC510029F157 /* SZViewControllerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZViewControllerWrapper.h; sourceTree = "<group>"; };
 		AAB86D6915FEBC510029F157 /* SZViewControllerWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZViewControllerWrapper.m; sourceTree = "<group>"; };
-		AAB9D35115D2783700004E77 /* Facebook+Socialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Facebook+Socialize.h"; sourceTree = "<group>"; };
-		AAB9D35215D2783700004E77 /* Facebook+Socialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Facebook+Socialize.m"; sourceTree = "<group>"; };
 		AABCC67515C08181005FA860 /* SZSessionTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZSessionTracker.h; sourceTree = "<group>"; };
 		AABCC67615C08181005FA860 /* SZSessionTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZSessionTracker.m; sourceTree = "<group>"; };
 		AAC194D815AF712B00DDE42F /* SZOARequest+Twitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SZOARequest+Twitter.h"; sourceTree = "<group>"; };
@@ -2515,7 +2516,8 @@
 		AAFB0B8015E70FB10091600C /* ui_advanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_advanced.h; sourceTree = "<group>"; };
 		AAFB0B8115E70FB10091600C /* ui_advanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ui_advanced.m; sourceTree = "<group>"; };
 		AC2429241B964749A8E7E141 /* libPods-UIIntegrationAcceptanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIIntegrationAcceptanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB69FD35EC8C4A1084C94650 /* Pods-UIIntegrationAcceptanceTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIIntegrationAcceptanceTests.xcconfig"; path = "Pods/Pods-UIIntegrationAcceptanceTests.xcconfig"; sourceTree = "<group>"; };
+		B21DDA47C40B05B3A2C03DEF /* Pods-UIIntegrationAcceptanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIIntegrationAcceptanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIIntegrationAcceptanceTests/Pods-UIIntegrationAcceptanceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C55CC1E3CCD2B52835832A9F /* Pods-UIIntegrationAcceptanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIIntegrationAcceptanceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIIntegrationAcceptanceTests/Pods-UIIntegrationAcceptanceTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3203,6 +3205,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84C44097E6099E5C33EBDFE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0035FA2E2C3388B62F745858 /* Pods.debug.xcconfig */,
+				94C9ED6D895DC389018010ED /* Pods.release.xcconfig */,
+				B21DDA47C40B05B3A2C03DEF /* Pods-UIIntegrationAcceptanceTests.debug.xcconfig */,
+				C55CC1E3CCD2B52835832A9F /* Pods-UIIntegrationAcceptanceTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		84FCF44D175E706B009AD5C1 /* Pinterest.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -3234,8 +3247,7 @@
 				487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */,
 				AA008593158D2B1100480399 /* Frameworks */,
 				AA008591158D2B1100480399 /* Products */,
-				591BC9DD5AC34F3A94039250 /* Pods.xcconfig */,
-				FB69FD35EC8C4A1084C94650 /* Pods-UIIntegrationAcceptanceTests.xcconfig */,
+				84C44097E6099E5C33EBDFE0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3632,6 +3644,8 @@
 				AA00866A158D35BD00480399 /* SocializeDynamicTest.m */,
 				AA008675158D35BD00480399 /* SocializeErrorDefinitions.h */,
 				AA008676158D35BD00480399 /* SocializeErrorDefinitions.m */,
+				2C8D185819F5DAC7003B5716 /* SocializeFacebook.h */,
+				2C8D185919F5DAC7003B5716 /* SocializeFacebook.m */,
 				AA00867B158D35BD00480399 /* SocializeFacebookAuthHandler.h */,
 				AA00867C158D35BD00480399 /* SocializeFacebookAuthHandler.m */,
 				AA00867D158D35BD00480399 /* SocializeFacebookInterface.h */,
@@ -4083,8 +4097,6 @@
 		AAC194E415AF923700DDE42F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AAB9D35115D2783700004E77 /* Facebook+Socialize.h */,
-				AAB9D35215D2783700004E77 /* Facebook+Socialize.m */,
 				AAC194E515AF925200DDE42F /* NSOperationQueue+Socialize.h */,
 				AAC194E615AF925200DDE42F /* NSOperationQueue+Socialize.m */,
 			);
@@ -4235,6 +4247,7 @@
 				2CE6274818A995D60070CD99 /* SZLikeButton.h in Headers */,
 				2CE6274B18A9962C0070CD99 /* SZSessionTracker.h in Headers */,
 				2CE6274E18A9965C0070CD99 /* SZWindowDisplay.h in Headers */,
+				2C8D185A19F5DAC7003B5716 /* SocializeFacebook.h in Headers */,
 				2CE6274F18A996710070CD99 /* UIViewController+Socialize.h in Headers */,
 				2CBE4A7118B6AE59001BBB47 /* NSString+UUID.h in Headers */,
 				2CBE4A7418B6B019001BBB47 /* socialize_globals.h in Headers */,
@@ -4287,7 +4300,6 @@
 				2CE6277218A998860070CD99 /* SZOARequest+Socialize.h in Headers */,
 				2CE6276E18A998390070CD99 /* NSOperationQueue+Socialize.h in Headers */,
 				2CE6276F18A998480070CD99 /* SZAPIClientHelpers.h in Headers */,
-				2CE6277118A9986B0070CD99 /* Facebook+Socialize.h in Headers */,
 				2CE6277618A998B40070CD99 /* SZStatusView.h in Headers */,
 				2CE6277718A998BF0070CD99 /* SZNotificationHandler.h in Headers */,
 				2CE6277818A998CD0070CD99 /* SZViewControllerWrapper.h in Headers */,
@@ -4347,7 +4359,6 @@
 				AA00858C158D2B1100480399 /* Sources */,
 				AA00858D158D2B1100480399 /* Frameworks */,
 				AA00858E158D2B1100480399 /* Resources */,
-				FC6E898C19B042FB809B6A2A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4365,7 +4376,6 @@
 				AA0C6010158FC4F000F66A3B /* Sources */,
 				AA0C6011158FC4F000F66A3B /* Frameworks */,
 				AA0C6012158FC4F000F66A3B /* Resources */,
-				3B19E4A8D7CB4B5AB864F6A5 /* Copy Pods Resources */,
 				AACEDAB2158FE8B00024EC43 /* Run Tests (Command-line only) */,
 				AACEDAA9158FE5A30024EC43 /* Generate Coverage Report (Command-line only) */,
 			);
@@ -4385,7 +4395,6 @@
 				AA6C63C8158F0EB0005E5632 /* Sources */,
 				AA6C63C9158F0EB0005E5632 /* Frameworks */,
 				AA6C63CA158F0EB0005E5632 /* Resources */,
-				0BD245E7220848C59C87642E /* Copy Pods Resources */,
 				AA6CE2E4159057D900A4B074 /* Run Tests (Command-line only) */,
 				AA6CE2E51590592100A4B074 /* Generate Coverage (Command-line only) */,
 			);
@@ -5393,21 +5402,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0BD245E7220848C59C87642E /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1DF06C8DDD524E62A13C41D9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5436,21 +5430,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${PROJECT_DIR}\" && make subst";
-			showEnvVarsInLog = 0;
-		};
-		3B19E4A8D7CB4B5AB864F6A5 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E21590539400A4B074 /* Build Against Both SDKs */ = {
@@ -5555,7 +5534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-UIIntegrationAcceptanceTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIIntegrationAcceptanceTests/Pods-UIIntegrationAcceptanceTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF4655E05FC3453A8CF21178 /* Copy Pods Resources */ = {
@@ -5570,7 +5549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF723DCA89644DF9A7EF7AA1 /* Check Pods Manifest.lock */ = {
@@ -5586,21 +5565,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FC6E898C19B042FB809B6A2A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5637,12 +5601,12 @@
 				2CBB669118A18ABB00A68BAC /* SZComposeCommentViewControllerIOS6.m in Sources */,
 				2CBB668F18A18AAB00A68BAC /* SZActionBarIOS6.m in Sources */,
 				2CBB669018A18AAB00A68BAC /* SZActionButtonIOS6.m in Sources */,
-				2CBB668D18A18A8900A68BAC /* Facebook+Socialize.m in Sources */,
 				2CA6802F18BC17C000B442DE /* SZTwitterUtils.m in Sources */,
 				2CBB668C18A18A8100A68BAC /* SZOARequest+Socialize.m in Sources */,
 				2CA6803118BC17C000B442DE /* SZUserSettings.m in Sources */,
 				2CBB668718A18A4D00A68BAC /* SZStatusView.m in Sources */,
 				2CA6800318BC178600B442DE /* SZDisplayUtils.m in Sources */,
+				2C8D185B19F5DAC7003B5716 /* SocializeFacebook.m in Sources */,
 				2CBB668618A18A4400A68BAC /* SZNotificationHandler.m in Sources */,
 				2CBB668518A18A2E00A68BAC /* SZWindowDisplay.m in Sources */,
 				2CBB668418A18A1500A68BAC /* UIViewController+Display.m in Sources */,
@@ -6044,7 +6008,7 @@
 /* Begin XCBuildConfiguration section */
 		2C7DDAFC18A049490006A57A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
+			baseConfigurationReference = 0035FA2E2C3388B62F745858 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -6088,7 +6052,7 @@
 		};
 		2C7DDAFD18A049490006A57A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
+			baseConfigurationReference = 94C9ED6D895DC389018010ED /* Pods.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -6131,7 +6095,7 @@
 		};
 		487047D517EEFB04008D5741 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB69FD35EC8C4A1084C94650 /* Pods-UIIntegrationAcceptanceTests.xcconfig */;
+			baseConfigurationReference = B21DDA47C40B05B3A2C03DEF /* Pods-UIIntegrationAcceptanceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TestApp.app/TestApp";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -6173,6 +6137,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				OTHER_LIBTOOLFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -6181,7 +6146,7 @@
 		};
 		487047D617EEFB04008D5741 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB69FD35EC8C4A1084C94650 /* Pods-UIIntegrationAcceptanceTests.xcconfig */;
+			baseConfigurationReference = C55CC1E3CCD2B52835832A9F /* Pods-UIIntegrationAcceptanceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TestApp.app/TestApp";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -6218,6 +6183,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				OTHER_LIBTOOLFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -6283,7 +6249,6 @@
 		};
 		AA0085A9158D2B1100480399 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6311,7 +6276,6 @@
 		};
 		AA0085AA158D2B1100480399 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6339,14 +6303,12 @@
 		};
 		AA0C6026158FC4F000F66A3B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ThirdParty",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -6354,7 +6316,10 @@
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(CONFIGURATION_BUILD_DIR)",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
@@ -6368,14 +6333,12 @@
 		};
 		AA0C6027158FC4F000F66A3B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ThirdParty",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -6383,7 +6346,10 @@
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PROFILING_CODE = NO;
-				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(CONFIGURATION_BUILD_DIR)",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
@@ -6397,7 +6363,6 @@
 		};
 		AA6C63DE158F0EB0005E5632 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6425,7 +6390,6 @@
 		};
 		AA6C63DF158F0EB0005E5632 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591BC9DD5AC34F3A94039250 /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

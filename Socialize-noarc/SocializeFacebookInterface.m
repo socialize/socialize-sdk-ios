@@ -11,6 +11,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "socialize_globals.h"
 #import "SZFacebookUtils.h"
+#import <FacebookSDK/FBRequest.h>
 
 static const int FBRESTAPIAccessTokenErrorCode = 190;
 
@@ -18,15 +19,15 @@ static SocializeFacebookInterface *sharedFacebookInterface;
 
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
-@interface SocializeFacebookInterface () <FBRequestDelegate>
+@interface SocializeFacebookInterface () //<FBRequestDelegate>
 @end
 
 @implementation SocializeFacebookInterface
-@synthesize facebook = facebook_;
+//@synthesize facebook = facebook_;
 @synthesize handlers = handlers_;
 
 - (void)dealloc {
-    self.facebook = nil;
+//    self.facebook = nil;
     self.handlers = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -43,8 +44,8 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (void)tryToExtendAccessToken {
     if ([SZFacebookUtils isAvailable] && [SZFacebookUtils isLinked]) {
-        [self.facebook extendAccessToken];
-    }    
+//        [self.facebook extendAccessToken];
+    }
 }
 
 - (void)applicationDidBecomeActive:(NSNotification*)notification {
@@ -63,14 +64,14 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     return sharedFacebookInterface;
 }
 
-- (Facebook*)facebook {
-    if (facebook_ == nil || ![facebook_ isForCurrentSocializeSession]) {
-        facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
-        facebook_.sessionDelegate = self;
-    }
-    
-    return facebook_;
-}
+//- (Facebook*)facebook {
+//    if (facebook_ == nil || ![facebook_ isForCurrentSocializeSession]) {
+//        facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
+//        facebook_.sessionDelegate = self;
+//    }
+//    
+//    return facebook_;
+//}
 
 - (NSMutableDictionary*)handlers {
     if (handlers_ == nil) handlers_ = [[NSMutableDictionary alloc] init];
@@ -92,7 +93,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }
-    FBRequest *request = [self.facebook requestWithGraphPath:graphPath andParams:[[params mutableCopy] autorelease] andHttpMethod:httpMethod andDelegate:self];
+    FBRequest *request = nil;//[self.facebook requestWithGraphPath:graphPath andParams:[[params mutableCopy] autorelease] andHttpMethod:httpMethod andDelegate:self];
     NSValue *requestId = [self requestIdentifier:request];
     NSAssert([self.handlers objectForKey:requestId] == nil, @"Key for request %@ already exists (should be nil)", requestId);
     
@@ -102,7 +103,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 }
 
 - (void)wipeLocalSession {
-    self.facebook = nil;
+//    self.facebook = nil;
     [SocializeThirdPartyFacebook removeLocalCredentials];
 }
 

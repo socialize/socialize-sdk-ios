@@ -10,8 +10,8 @@
 #import <Socialize/Socialize.h>
 #import "ActionBarExampleViewController.h"
 #import "ButtonExampleViewController.h"
-#import <SZBlocksKit/BlocksKit.h>
-#import <SZBlocksKit/BlocksKit+UIKit.h>
+//#import <SZBlocksKit/BlocksKit.h>
+//#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -178,7 +178,7 @@ static TestAppListViewController *sharedSampleListViewController;
 //            [UIAlertView showAlertWithTitle:@"Share successful" message:nil buttonTitle:@"OK" handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
-            [UIAlertView bk_showAlertViewWithTitle:reason message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//            [UIAlertView bk_showAlertViewWithTitle:reason message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
         }];
     }]];
@@ -195,10 +195,10 @@ static TestAppListViewController *sharedSampleListViewController;
         };
 
         [SZShareUtils shareViaSMSWithViewController:self options:options entity:self.entity success:^(id<SZShare> share) {
-            [UIAlertView bk_showAlertViewWithTitle:@"Share successful" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//            [UIAlertView bk_showAlertViewWithTitle:@"Share successful" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
         } failure:^(NSError *error) {
             NSString *reason = [NSString stringWithFormat:@"Share failed: %@", [error localizedDescription]];
-            [UIAlertView bk_showAlertViewWithTitle:reason message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//            [UIAlertView bk_showAlertViewWithTitle:reason message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
         }];
     }]];
@@ -241,16 +241,16 @@ static TestAppListViewController *sharedSampleListViewController;
     NSMutableArray *facebookRows = [NSMutableArray array];
     [facebookRows addObject:[self rowWithIdentifier:kLinkToFacebookRow text:@"Link to Facebook" executionBlock:^{
         [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
-            [UIAlertView bk_showAlertViewWithTitle:@"Facebook link successful" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//            [UIAlertView bk_showAlertViewWithTitle:@"Facebook link successful" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
         } foreground:^{
-            [UIAlertView bk_showAlertViewWithTitle:@"Facebook link foregrounded without success or failure" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//            [UIAlertView bk_showAlertViewWithTitle:@"Facebook link foregrounded without success or failure" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             [SZFacebookUtils cancelLink];
         } failure:^(NSError *error) {
             if ([error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                [UIAlertView bk_showAlertViewWithTitle:@"Facebook link cancelled by user" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//                [UIAlertView bk_showAlertViewWithTitle:@"Facebook link cancelled by user" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             } else {
                 NSString *message = [NSString stringWithFormat:@"Facebook link failed: %@", [error localizedDescription]];
-                [UIAlertView bk_showAlertViewWithTitle:message message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
+//                [UIAlertView bk_showAlertViewWithTitle:message message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:nil];
             }
         }];
     }]];
@@ -283,11 +283,11 @@ static TestAppListViewController *sharedSampleListViewController;
                                        }
                                        failure:^(NSError *error) {
                                            NSString *failureMessage = [NSString stringWithFormat:@"Twitter Post Failed %@", [error localizedDescription]];
-                                           [UIAlertView bk_showAlertViewWithTitle:@"Failure"
-                                                                          message:failureMessage
-                                                                cancelButtonTitle:@"OK"
-                                                                otherButtonTitles:nil
-                                                                          handler:nil];
+//                                           [UIAlertView bk_showAlertViewWithTitle:@"Failure"
+//                                                                          message:failureMessage
+//                                                                cancelButtonTitle:@"OK"
+//                                                                otherButtonTitles:nil
+//                                                                          handler:nil];
                                            NSLog(@"Twitter Update Failed %@", [error localizedDescription]);
                                        }];
     }]];
@@ -316,11 +316,11 @@ static TestAppListViewController *sharedSampleListViewController;
                                        }
                                        failure:^(NSError *error) {
                                            NSString *failureMessage = [NSString stringWithFormat:@"Image Post Failed %@", [error localizedDescription]];
-                                           [UIAlertView bk_showAlertViewWithTitle:@"Failure"
-                                                                          message:failureMessage
-                                                                cancelButtonTitle:@"OK"
-                                                                otherButtonTitles:nil
-                                                                          handler:nil];
+//                                           [UIAlertView bk_showAlertViewWithTitle:@"Failure"
+//                                                                          message:failureMessage
+//                                                                cancelButtonTitle:@"OK"
+//                                                                otherButtonTitles:nil
+//                                                                          handler:nil];
                                            NSLog(@"Image Post Failed %@", [error localizedDescription]);
                                        }];
     }]];

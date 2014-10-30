@@ -14,7 +14,6 @@
 #import <UIKit/UIKit.h>
 #import <OCMock/OCMock.h>
 #import "SocializeObjectFactory.h"
-#import <SZJSONKit/JSONKit.h>
 
 @interface SocializeObjectFormatterTests : GHTestCase 
 {

@@ -8,7 +8,6 @@
 // This file handles basic facebook auth flow to get a token and expiration date, and nothing more
 
 #import "SocializeFacebookAuthHandler.h"
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 #import "SocializeCommonDefinitions.h"
 #import "SocializePreprocessorUtilities.h"
 #import "SocializeThirdPartyFacebook.h"
@@ -21,7 +20,7 @@ static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
 @synthesize successBlock = successBlock_;
 @synthesize failureBlock = failureBlock_;
 @synthesize foregroundBlock = foregroundBlock_;
-@synthesize facebook = facebook_;
+//@synthesize facebook = facebook_;
 @synthesize authenticating = authenticating_;
 
 - (void)dealloc {
@@ -29,7 +28,7 @@ static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
     self.successBlock = nil;
     self.failureBlock = nil;
     self.foregroundBlock = nil;
-    self.facebook = nil;
+//    self.facebook = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super dealloc];
@@ -77,23 +76,24 @@ static SocializeFacebookAuthHandler *sharedFacebookAuthHandler;
                       failure:(void(^)(NSError*))failure {
     
     self.authenticating = YES;
-    self.facebook = [[[Facebook alloc] initWithAppId:appId urlSchemeSuffix:urlSchemeSuffix andDelegate:self] autorelease];
+//    self.facebook = [[[Facebook alloc] initWithAppId:appId urlSchemeSuffix:urlSchemeSuffix andDelegate:self] autorelease];
     self.permissions = permissions;
     self.successBlock = success;
     self.failureBlock = failure;
     self.foregroundBlock = foreground;
-    [self.facebook authorize:self.permissions];
+//    [self.facebook authorize:self.permissions];
 }
 
 - (BOOL)handleOpenURL:(NSURL*)url {
-    return [self.facebook handleOpenURL:url];
+//    return [self.facebook handleOpenURL:url];
+    return YES; //TEMPORARY
 }
 
 - (void)fbDidLogin {
     self.authenticating = NO;
     
     if (self.successBlock != nil) {
-        self.successBlock([self.facebook accessToken], [self.facebook expirationDate]);
+//        self.successBlock([self.facebook accessToken], [self.facebook expirationDate]);
     }
     self.successBlock = nil;
     self.failureBlock = nil;

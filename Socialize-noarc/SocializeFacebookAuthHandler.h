@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
-@interface SocializeFacebookAuthHandler : NSObject <FBSessionDelegate>
+@interface SocializeFacebookAuthHandler : NSObject //<FBSessionDelegate>
 
 + (SocializeFacebookAuthHandler*)sharedFacebookAuthHandler;
 - (void)authenticateWithAppId:(NSString*)appId
@@ -25,6 +24,6 @@
 @property (nonatomic, copy) void (^successBlock)(NSString *accessToken, NSDate *expirationDate);
 @property (nonatomic, copy) void (^foregroundBlock)();
 @property (nonatomic, copy) void (^failureBlock)(NSError *error);
-@property (nonatomic, retain) Facebook *facebook;
+//@property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic, assign) BOOL authenticating;
 @end

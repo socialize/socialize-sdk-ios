@@ -10,7 +10,6 @@
 #import "SocializeFacebookAuthHandler.h"
 #import <OCMock/OCMock.h>
 #import <OCMock/NSObject+ClassMock.h>
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 #import "SocializeLocationManager.h"
 
 static SZTestHelper *sharedTestHelper;

@@ -7,8 +7,8 @@
 //
 
 #import "ButtonExampleViewController.h"
-#import <SZBlocksKit/BlocksKit.h>
-#import <SZBlocksKit/BlocksKit+UIKit.h>
+//#import <SZBlocksKit/BlocksKit.h>
+//#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 static CGRect likeFrame = { { 240.f, 120.f }, { 0.f, 0.f } };
 
@@ -28,10 +28,10 @@ static CGRect likeFrame = { { 240.f, 120.f }, { 0.f, 0.f } };
     [super viewDidLoad];
     
     __unsafe_unretained id weakSelf = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] bk_initWithTitle:@"Done" style:UIBarButtonItemStyleDone handler:^(id sender) {
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-    }];
-        
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] bk_initWithTitle:@"Done" style:UIBarButtonItemStyleDone handler:^(id sender) {
+//        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//    }];
+    
     self.likeButton = [[SZLikeButton alloc] initWithFrame:likeFrame
                                                    entity:self.entity
                                            viewController:self

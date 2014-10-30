@@ -8,8 +8,8 @@
 
 #import "ActionBarExampleViewController.h"
 #import <Socialize/Socialize.h>
-#import <SZBlocksKit/BlocksKit.h>
-#import <SZBlocksKit/BlocksKit+UIKit.h>
+//#import <SZBlocksKit/BlocksKit.h>
+//#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 @interface ActionBarExampleViewController ()
 
@@ -39,9 +39,9 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     __unsafe_unretained id weakSelf = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-    }];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
+//        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//    }];
     
     // Do any additional setup after loading the view from its nib.
 }

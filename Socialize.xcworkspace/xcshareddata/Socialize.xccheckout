@@ -5,27 +5,17 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1DADCF07-D862-4216-A714-7BCE0277546C</string>
+	<string>89FA92BC-42B6-437C-B2CF-AB3DCDCA9240</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Socialize</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>2E0920F4BCCAA8DEB243438FBFBF1CA07F9C4DA5</key>
-		<string>ssh://github.com/socialize/socialize-sdk-ios.git</string>
+		<string>github.com:socialize/socialize-sdk-ios.git</string>
 		<key>3AE8CFD4EB52DB0A3FEFAF71B8106BFBB027F4D5</key>
 		<string>https://github.com/socialize/gh-unit.git</string>
-		<key>4A2DF420-FCEC-4238-8115-D9E0A4359615</key>
-		<string>https://github.com/socialize/JSONKit.git</string>
-		<key>9719FFA6-7057-4891-94E0-E9CA0BFE8331</key>
-		<string>https://github.com/socialize/BlocksKit.git</string>
-		<key>AC12281F-F643-425F-9404-9E374E4A054F</key>
-		<string>https://github.com/socialize/OAuthConsumer.git</string>
-		<key>CED599B9-29AA-4BB5-A97B-09EEA71A413D</key>
-		<string>https://github.com/square/KIF.git</string>
 		<key>E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025</key>
 		<string>https://github.com/socialize/ocmock.git</string>
-		<key>F6617B16-5E3B-40F8-BDA4-4D163B783181</key>
-		<string>https://github.com/socialize/facebook-ios-sdk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Socialize.xcworkspace</string>
@@ -34,22 +24,12 @@
 		<key>2E0920F4BCCAA8DEB243438FBFBF1CA07F9C4DA5</key>
 		<string>..</string>
 		<key>3AE8CFD4EB52DB0A3FEFAF71B8106BFBB027F4D5</key>
-		<string>../ThirdParty/ghunit</string>
-		<key>4A2DF420-FCEC-4238-8115-D9E0A4359615</key>
-		<string>../ThirdParty/JSONKit</string>
-		<key>9719FFA6-7057-4891-94E0-E9CA0BFE8331</key>
-		<string>../ThirdParty/BlocksKit</string>
-		<key>AC12281F-F643-425F-9404-9E374E4A054F</key>
-		<string>../ThirdParty/OAuthConsumer</string>
-		<key>CED599B9-29AA-4BB5-A97B-09EEA71A413D</key>
-		<string>../ThirdParty/KIF</string>
+		<string>..ThirdParty/ghunit</string>
 		<key>E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025</key>
-		<string>../ThirdParty/ocmock</string>
-		<key>F6617B16-5E3B-40F8-BDA4-4D163B783181</key>
-		<string>../ThirdParty/facebook-ios-sdk</string>
+		<string>..ThirdParty/ocmock</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/socialize/socialize-sdk-ios.git</string>
+	<string>github.com:socialize/socialize-sdk-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -60,49 +40,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>9719FFA6-7057-4891-94E0-E9CA0BFE8331</string>
-			<key>IDESourceControlWCCName</key>
-			<string>BlocksKit</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F6617B16-5E3B-40F8-BDA4-4D163B783181</string>
-			<key>IDESourceControlWCCName</key>
-			<string>facebook-ios-sdk</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>3AE8CFD4EB52DB0A3FEFAF71B8106BFBB027F4D5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ghunit</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4A2DF420-FCEC-4238-8115-D9E0A4359615</string>
-			<key>IDESourceControlWCCName</key>
-			<string>JSONKit</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CED599B9-29AA-4BB5-A97B-09EEA71A413D</string>
-			<key>IDESourceControlWCCName</key>
-			<string>KIF</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AC12281F-F643-425F-9404-9E374E4A054F</string>
-			<key>IDESourceControlWCCName</key>
-			<string>OAuthConsumer</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

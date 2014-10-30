@@ -12,6 +12,7 @@
 #import "_Socialize.h"
 #import "SocializeFacebookInterface.h"
 #import "SDKHelpers.h"
+#import <FacebookSDK/FBErrorUtility.h>
 
 @implementation SZFacebookUtils
 

@@ -7,7 +7,6 @@
 //
 
 #import "SocializeThirdParty.h"
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 @class SocializeFacebook;
 
@@ -22,6 +21,6 @@
 + (void)storeLocalCredentialsWithAccessToken:(NSString*)accessToken
                               expirationDate:(NSDate*)expirationDate;
 
-+ (Facebook*)createFacebookClient;
+//+ (Facebook*)createFacebookClient;
 
 @end

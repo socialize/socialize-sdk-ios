@@ -8,11 +8,9 @@
 
 #import "SocializeFacebookInterfaceTests.h"
 #import "SocializeFacebookInterface.h"
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 #import "Socialize.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeTestCase.h"
-#import "Facebook+Socialize.h"
 
 @interface SocializeFacebookInterface () <FBRequestDelegate>
 @end
