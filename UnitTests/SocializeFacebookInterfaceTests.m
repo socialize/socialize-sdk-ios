@@ -12,7 +12,7 @@
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeTestCase.h"
 
-@interface SocializeFacebookInterface () <FBRequestDelegate>
+@interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
 @end
 
 @implementation SocializeFacebookInterfaceTests

@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "SocializeFacebook.h"
 #import "ShareProviderProtocol.h"
 
-@interface SocializeFacebookInterface : NSObject <ShareProviderProtocol>//, FBSessionDelegate>
-//@property (nonatomic, retain) Facebook *facebook;
+@interface SocializeFacebookInterface : NSObject <ShareProviderProtocol, SocializeFBSessionDelegate>
+@property (nonatomic, retain) SocializeFacebook *facebook;
 @property (nonatomic, retain) NSMutableDictionary *handlers;
 
 + (SocializeFacebookInterface*)sharedFacebookInterface;

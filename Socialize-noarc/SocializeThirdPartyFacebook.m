@@ -129,17 +129,19 @@
     [defaults removeObjectForKey:kSocializeFacebookAuthExpirationDate];
 }
 
-//+ (Facebook*)createFacebookClient {
-//    NSAssert([self available], @"Tried to create facebook instance when facebook not available");
-//    NSAssert([self hasLocalCredentials], @"Tried to create facebook instance without local credentials");
-//    
-//    Facebook *facebook = [[[Facebook alloc] initWithAppId:[self facebookAppId] urlSchemeSuffix:[self facebookLocalAppId] andDelegate:nil] autorelease];
-//    facebook.accessToken = [self facebookAccessToken];
-//    facebook.expirationDate = [self facebookExpirationDate];
-//    
-//    return facebook;
-//    
-//}
++ (SocializeFacebook*)createFacebookClient {
+    NSAssert([self available], @"Tried to create facebook instance when facebook not available");
+    NSAssert([self hasLocalCredentials], @"Tried to create facebook instance without local credentials");
+    
+    SocializeFacebook *facebook = [[[SocializeFacebook alloc] initWithAppId:[self facebookAppId]
+                                                            urlSchemeSuffix:[self facebookLocalAppId]
+                                                                andDelegate:nil] autorelease];
+    facebook.accessToken = [self facebookAccessToken];
+    facebook.expirationDate = [self facebookExpirationDate];
+    
+    return facebook;
+    
+}
 
 + (NSString*)dontPostKey {
     return kSocializeDontPostToFacebookKey;

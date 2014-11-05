@@ -19,15 +19,15 @@ static SocializeFacebookInterface *sharedFacebookInterface;
 
 typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
-@interface SocializeFacebookInterface () //<FBRequestDelegate>
+@interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
 @end
 
 @implementation SocializeFacebookInterface
-//@synthesize facebook = facebook_;
+@synthesize facebook = facebook_;
 @synthesize handlers = handlers_;
 
 - (void)dealloc {
-//    self.facebook = nil;
+    self.facebook = nil;
     self.handlers = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -44,7 +44,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 
 - (void)tryToExtendAccessToken {
     if ([SZFacebookUtils isAvailable] && [SZFacebookUtils isLinked]) {
-//        [self.facebook extendAccessToken];
+        [self.facebook extendAccessToken];
     }
 }
 
@@ -64,14 +64,14 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     return sharedFacebookInterface;
 }
 
-//- (Facebook*)facebook {
-//    if (facebook_ == nil || ![facebook_ isForCurrentSocializeSession]) {
-//        facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
-//        facebook_.sessionDelegate = self;
-//    }
-//    
-//    return facebook_;
-//}
+- (SocializeFacebook*)facebook {
+    if (facebook_ == nil) {// || ![facebook_ isForCurrentSocializeSession]) {
+        facebook_ = [[SocializeThirdPartyFacebook createFacebookClient] retain];
+        facebook_.sessionDelegate = self;
+    }
+
+    return facebook_;
+}
 
 - (NSMutableDictionary*)handlers {
     if (handlers_ == nil) handlers_ = [[NSMutableDictionary alloc] init];
@@ -89,7 +89,10 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     }
 }
 
-- (void)requestWithGraphPath:(NSString*)graphPath params:(NSDictionary*)params httpMethod:(NSString*)httpMethod completion:(void (^)(id result, NSError *error))completion {
+- (void)requestWithGraphPath:(NSString*)graphPath
+                      params:(NSDictionary*)params
+                  httpMethod:(NSString*)httpMethod
+                  completion:(void (^)(id result, NSError *error))completion {
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }
@@ -103,7 +106,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
 }
 
 - (void)wipeLocalSession {
-//    self.facebook = nil;
+    self.facebook = nil;
     [SocializeThirdPartyFacebook removeLocalCredentials];
 }
 
