@@ -293,6 +293,8 @@ static NSString *const FBexpirationDatePropertyName = @"expirationDate";
     // Note this legacy flow does not use `params`.
     [_lastAccessTokenUpdate release];
     _lastAccessTokenUpdate = [[NSDate date] retain];
+    self.accessToken = token;
+    self.expirationDate = expirationDate;
 //    [self reloadFrictionlessRecipientCache];
     if ([self.sessionDelegate respondsToSelector:@selector(fbDidLogin)]) {
         [self.sessionDelegate fbDidLogin];
