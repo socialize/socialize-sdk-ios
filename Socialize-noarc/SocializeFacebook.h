@@ -11,6 +11,7 @@
 #import <FacebookSDK/FBRequest.h>
 
 @protocol SocializeFBSessionDelegate;
+@protocol SocializeFBRequestDelegate;
 
 @interface SocializeFacebook : NSObject
 
@@ -19,7 +20,6 @@
 @property (nonatomic, assign) id<SocializeFBSessionDelegate> sessionDelegate;
 @property (nonatomic, copy) NSString *urlSchemeSuffix;
 @property (nonatomic, readonly) BOOL isFrictionlessRequestsEnabled;
-@property (nonatomic, readonly, retain) FBSession *session;
 
 - (instancetype)initWithAppId:(NSString *)appId
               urlSchemeSuffix:(NSString *)urlSchemeSuffix
@@ -30,6 +30,11 @@
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 - (void)extendAccessToken;
+
+- (FBRequest *)requestWithGraphPath:(NSString *)graphPath
+                          andParams:(NSMutableDictionary *)params
+                      andHttpMethod:(NSString *)httpMethod
+                        andDelegate:(id<SocializeFBRequestDelegate>)delegate;
 
 @end
 

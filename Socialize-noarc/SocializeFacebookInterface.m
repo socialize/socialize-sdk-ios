@@ -96,7 +96,7 @@ typedef void (^RequestCompletionBlock)(id result, NSError *error);
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }
-    FBRequest *request = nil;//[self.facebook requestWithGraphPath:graphPath andParams:[[params mutableCopy] autorelease] andHttpMethod:httpMethod andDelegate:self];
+    FBRequest *request = [self.facebook requestWithGraphPath:graphPath andParams:[[params mutableCopy] autorelease] andHttpMethod:httpMethod andDelegate:self];
     NSValue *requestId = [self requestIdentifier:request];
     NSAssert([self.handlers objectForKey:requestId] == nil, @"Key for request %@ already exists (should be nil)", requestId);
     
