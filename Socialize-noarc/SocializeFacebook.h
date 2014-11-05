@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FacebookSDK/FBSession.h>
-#import <FacebookSDK/FBRequest.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @protocol SocializeFBSessionDelegate;
 @protocol SocializeFBRequestDelegate;
