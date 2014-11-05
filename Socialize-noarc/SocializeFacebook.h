@@ -76,6 +76,13 @@
 
 @end
 
+enum {
+    kFBRequestStateReady,
+    kFBRequestStateLoading,
+    kFBRequestStateComplete,
+    kFBRequestStateError
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 
 /*

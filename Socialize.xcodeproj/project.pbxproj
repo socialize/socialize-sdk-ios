@@ -217,7 +217,7 @@
 		2C84296E187E111300BD01AF /* comment-header-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */; };
 		2C84296F187E111400BD01AF /* comment-header-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842967187E0D5200BD01AF /* comment-header-icon-ios7@2x.png */; };
 		2C8D185A19F5DAC7003B5716 /* SocializeFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C8D185819F5DAC7003B5716 /* SocializeFacebook.h */; };
-		2C8D185B19F5DAC7003B5716 /* SocializeFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D185919F5DAC7003B5716 /* SocializeFacebook.m */; };
+		2C8D185B19F5DAC7003B5716 /* SocializeFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D185919F5DAC7003B5716 /* SocializeFacebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C8D86B818875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
 		2C8D86B918875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
 		2C8D86BA18875ED900142402 /* SocializeActivityTableViewCellIOS7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8D86B718875ED900142402 /* SocializeActivityTableViewCellIOS7.xib */; };
@@ -290,6 +290,8 @@
 		2CB0E51A18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
 		2CB0E51B18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
 		2CB0E51C18874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E51618874B5A0080DF6B /* socialize-selectnetwork-SMS-icon-ios7@2x.png */; };
+		2CB85C381A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB85C361A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.h */; };
+		2CB85C391A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB85C371A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CB9BCCE1918000B00BFDB04 /* SZWhatsAppUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CB9BCCC1918000B00BFDB04 /* SZWhatsAppUtils.h */; };
 		2CB9BCCF1918000B00BFDB04 /* SZWhatsAppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9BCCD1918000B00BFDB04 /* SZWhatsAppUtils.m */; };
 		2CB9BCD2191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */; };
@@ -1557,6 +1559,8 @@
 		2CB6D3AA189AE1110030D43F /* UIApplication+KIFRotationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+KIFRotationAdditions.h"; sourceTree = "<group>"; };
 		2CB7AF3A187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZShareDialogViewControllerIOS6.h; sourceTree = "<group>"; };
 		2CB7AF3B187B2C5B00BABE49 /* SZShareDialogViewControllerIOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZShareDialogViewControllerIOS6.m; sourceTree = "<group>"; };
+		2CB85C361A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeFBSessionManualTokenCachingStrategy.h; sourceTree = "<group>"; };
+		2CB85C371A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeFBSessionManualTokenCachingStrategy.m; sourceTree = "<group>"; };
 		2CB9BCCC1918000B00BFDB04 /* SZWhatsAppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZWhatsAppUtils.h; sourceTree = "<group>"; };
 		2CB9BCCD1918000B00BFDB04 /* SZWhatsAppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZWhatsAppUtils.m; sourceTree = "<group>"; };
 		2CB9BCD0191805A600BFDB04 /* socialize-selectnetwork-whatsapp-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-whatsapp-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-whatsapp-icon.png"; sourceTree = SOURCE_ROOT; };
@@ -3646,6 +3650,8 @@
 				AA008676158D35BD00480399 /* SocializeErrorDefinitions.m */,
 				2C8D185819F5DAC7003B5716 /* SocializeFacebook.h */,
 				2C8D185919F5DAC7003B5716 /* SocializeFacebook.m */,
+				2CB85C361A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.h */,
+				2CB85C371A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.m */,
 				AA00867B158D35BD00480399 /* SocializeFacebookAuthHandler.h */,
 				AA00867C158D35BD00480399 /* SocializeFacebookAuthHandler.m */,
 				AA00867D158D35BD00480399 /* SocializeFacebookInterface.h */,
@@ -4295,6 +4301,7 @@
 				2CB9BCCE1918000B00BFDB04 /* SZWhatsAppUtils.h in Headers */,
 				2CA6800618BC178600B442DE /* SZEventUtils.h in Headers */,
 				2CE6275F18A997570070CD99 /* SDKHelpers.h in Headers */,
+				2CB85C381A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.h in Headers */,
 				2CE6276C18A998240070CD99 /* SZOARequest.h in Headers */,
 				2CE6276D18A998240070CD99 /* SZOARequest+Twitter.h in Headers */,
 				2CE6277218A998860070CD99 /* SZOARequest+Socialize.h in Headers */,
@@ -5606,7 +5613,6 @@
 				2CA6803118BC17C000B442DE /* SZUserSettings.m in Sources */,
 				2CBB668718A18A4D00A68BAC /* SZStatusView.m in Sources */,
 				2CA6800318BC178600B442DE /* SZDisplayUtils.m in Sources */,
-				2C8D185B19F5DAC7003B5716 /* SocializeFacebook.m in Sources */,
 				2CBB668618A18A4400A68BAC /* SZNotificationHandler.m in Sources */,
 				2CBB668518A18A2E00A68BAC /* SZWindowDisplay.m in Sources */,
 				2CBB668418A18A1500A68BAC /* UIViewController+Display.m in Sources */,
@@ -5626,12 +5632,13 @@
 				2CA6801518BC17A500B442DE /* SZLikeUtils.m in Sources */,
 				2CA6801918BC17A500B442DE /* SZPinterestEngine.m in Sources */,
 				2CA6801718BC17A500B442DE /* SZLocationUtils.m in Sources */,
+				2C34129819BFB34C002C434B /* SZTwitterImageRequest.m in Sources */,
+				2C8D185B19F5DAC7003B5716 /* SocializeFacebook.m in Sources */,
 				2CBB66B318A18D6E00A68BAC /* _SZTwitterLinkViewController.m in Sources */,
 				2C7DDB1E18A04B830006A57A /* _Socialize.m in Sources */,
 				2C7DDB1F18A04BBD0006A57A /* CommentDetailsView.m in Sources */,
 				2C7DDB2018A04BBD0006A57A /* CommentMapView.m in Sources */,
 				2C7DDB2118A04BBD0006A57A /* CommentsTableFooterView.m in Sources */,
-				2C34129819BFB34C002C434B /* SZTwitterImageRequest.m in Sources */,
 				2C7DDB2218A04BBD0006A57A /* CommentsTableViewCell.m in Sources */,
 				2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */,
 				2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */,
@@ -5741,6 +5748,7 @@
 				2C7DDB4818A060F90006A57A /* _SZComposeCommentViewController.m in Sources */,
 				2C7DDB4618A060DF0006A57A /* SZNavigationController.m in Sources */,
 				2C7DDB4318A060C30006A57A /* _SZUserProfileViewController.m in Sources */,
+				2CB85C391A0A9E45008EDAD2 /* SocializeFBSessionManualTokenCachingStrategy.m in Sources */,
 				2C7DDB4418A060C30006A57A /* _SZUserSettingsViewController.m in Sources */,
 				2C7DDB4118A0606C0006A57A /* SZShareDialogView.m in Sources */,
 				2C7DDB4018A060570006A57A /* SZBaseShareViewController.m in Sources */,
