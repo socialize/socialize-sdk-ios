@@ -4,8 +4,7 @@ pods:
 	pod install
 
 test:
-	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=8.0,name="iPhone 5"
-
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=8.01
 default: build buildsample test package
 
 package: framework
@@ -26,16 +25,14 @@ clean:
 	rm -f $(SUBST_BUILD_FILES)
 
 coverage:
-	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info 
-	#build/test-coverage/UIIntegrationTests-Coverage.info
+	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info build/test-coverage/UIIntegrationTests-Coverage.info
 
 integration-tests:
-	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator -destination OS=8.0,name="iPhone 5" build
+	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator -destination OS=8.1,name="iPhone 5" build
 
 ui-integration-tests:
-	echo 'to be restored after fixes complete in Xcode 6 per https://github.com/kiwi-bdd/Kiwi/issues/565'
-	# xcodebuild -workspace Socialize.xcworkspace -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=8.0,name="iPhone 5" test
-	# ./Scripts/generate-ui-coverage-report.sh
+	xcodebuild -workspace Socialize.xcworkspace -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=8.1,name="iPhone 5" test
+	./Scripts/generate-ui-coverage-report.sh
 
 doc:
 	cd Socialize && appledoc ./DocSettings.plist
@@ -60,5 +57,5 @@ ci:
 	make pods
 	make test
 	make integration-tests
-#	make ui-integration-tests
+	make ui-integration-tests
 	make coverage
