@@ -79,6 +79,12 @@
 <h2>Important Notes on Upgrading to v3.1.0<a class="headerlink" href="#important-notes-on-upgrading-to-v3-1-0" title="Permalink to this headline">¶</a></h2>
 <p>As of this release, the Socialize SDK is compatible with <a class="reference external" href="http://www.apple.com/ios/">iOS 8.1</a>, <a class="reference external" href="https://developers.facebook.com/docs/ios">Facebook SDK 3.19</a>, and the revisions to <a class="reference external" href="http://blog.cocoapods.org/CocoaPods-0.34/">CocoaPods 0.34.x</a>. <strong>However, some of the SDK&#8217;s internal automated tests have not yet been upgraded.</strong> The SDK has been tested manually to ensure functionality works as before, and some changes to adapt to the new Facebook SDK have been made. We will update this page with any updates to the testing targets, but if you build the SDK from source (i.e. not via CocoaPods or as a framework package), note that &#8220;UnitTests&#8221; and &#8220;IntegrationTests&#8221; targets are not available in this version.</p>
 </div>
+<div class="section" id="important-notes-on-upgrading-to-v3-0-9-1">
+<h2>Important Notes on Upgrading to v3.0.9.1<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-9-1" title="Permalink to this headline">¶</a></h2>
+<p><strong>This patch release temporarily makes the Socialize iOS SDK compatible with changes to its dependent libraries post-iOS 8.0.</strong></p>
+<p>If installing with CocoaPods, <strong>ensure your CocoaPods version is 0.33.x; the Socialize iOS SDK has not yet been updated to use CocoaPods 0.34.x.</strong> You may also need to delete and reinstall the SocializeCocoaPods private repo located in your .cocoapods directory.**</p>
+<p>We will be issuing an update for these (and related issues) soon.</p>
+</div>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-3">
 <h2>Important Notes on Upgrading to v3.0.3<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-3" title="Permalink to this headline">¶</a></h2>
 <p>To comply with Apple&#8217;s rules on IDFA (&#8220;advertisingIdentifier&#8221;), the Socialize iOS SDK offers the option to disable the use of IDFA. <strong>You must disable IDFA if your app does not serve ads or it will be rejected by the App Store.</strong></p>
