@@ -452,7 +452,6 @@
 		2CE6272E18A991810070CD99 /* SocializeApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = AA00863B158D35BD00480399 /* SocializeApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6272F18A991A10070CD99 /* SocializeCommonDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008654158D35BD00480399 /* SocializeCommonDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6273018A992260070CD99 /* SocializeErrorDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008675158D35BD00480399 /* SocializeErrorDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2CE6273118A9923B0070CD99 /* SocializeVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086DC158D35BF00480399 /* SocializeVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6273218A9924E0070CD99 /* SocializeShare.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086B7158D35BE00480399 /* SocializeShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6273318A992630070CD99 /* SocializeServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0086B6158D35BE00480399 /* SocializeServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CE6273418A992880070CD99 /* SocializeBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA008647158D35BD00480399 /* SocializeBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1878,7 +1877,6 @@
 		AA0086D9158D35BF00480399 /* SocializeUserJSONFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUserJSONFormatter.m; sourceTree = "<group>"; };
 		AA0086DA158D35BF00480399 /* SocializeUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeUserService.h; sourceTree = "<group>"; };
 		AA0086DB158D35BF00480399 /* SocializeUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeUserService.m; sourceTree = "<group>"; };
-		AA0086DC158D35BF00480399 /* SocializeVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeVersion.h; sourceTree = "<group>"; };
 		AA0086DD158D35BF00480399 /* SocializeVersion.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SocializeVersion.h.in; sourceTree = "<group>"; };
 		AA0086DE158D35BF00480399 /* SocializeVerticalLayoutContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocializeVerticalLayoutContainerView.h; sourceTree = "<group>"; };
 		AA0086DF158D35BF00480399 /* SocializeVerticalLayoutContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocializeVerticalLayoutContainerView.m; sourceTree = "<group>"; };
@@ -3368,7 +3366,6 @@
 				AA008654158D35BD00480399 /* SocializeCommonDefinitions.h */,
 				AA0086A8158D35BE00480399 /* SocializePreprocessorUtilities.h */,
 				AA0086A9158D35BE00480399 /* SocializePrivateDefinitions.h */,
-				AA0086DC158D35BF00480399 /* SocializeVersion.h */,
 				AA0086DD158D35BF00480399 /* SocializeVersion.h.in */,
 				AA0086E6158D35BF00480399 /* SynthesizeSingleton.h */,
 				AABCC67515C08181005FA860 /* SZSessionTracker.h */,
@@ -4232,7 +4229,6 @@
 				2CE6272E18A991810070CD99 /* SocializeApplication.h in Headers */,
 				2CE6272F18A991A10070CD99 /* SocializeCommonDefinitions.h in Headers */,
 				2CE6273018A992260070CD99 /* SocializeErrorDefinitions.h in Headers */,
-				2CE6273118A9923B0070CD99 /* SocializeVersion.h in Headers */,
 				2CE6273218A9924E0070CD99 /* SocializeShare.h in Headers */,
 				2CE6273318A992630070CD99 /* SocializeServiceDelegate.h in Headers */,
 				2CE6273418A992880070CD99 /* SocializeBaseViewController.h in Headers */,
