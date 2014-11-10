@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Twitter Integration &mdash; Socialize iOS SDK 3.0.9.1 documentation</title>
+    <title>Twitter Integration &mdash; Socialize iOS SDK 3.1.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.9.1',
+        VERSION:     '3.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.9.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.1.0 documentation" href="index.html" />
     <link rel="next" title="Facebook Integration" href="facebook.html" />
     <link rel="prev" title="Socialize Like Button" href="like_button.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -41,14 +41,14 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.9.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="twitter-integration">
 <h1>Twitter Integration<a class="headerlink" href="#twitter-integration" title="Permalink to this headline">¶</a></h1>
@@ -174,26 +174,24 @@ authorize with twitter by calling the link methods directly.</p>
 </pre></div>
 </div>
 <p>Posting to twitter with media requires that you use an update_with_media endpoint.</p>
-<div class="highlight-objective-c"><pre>
-- (void)statusWithMedia {
+<div class="highlight-objective-c"><div class="highlight"><pre>- (void)statusWithMedia {
     
-    UIImage *image = [UIImage imageNamed:@"Smiley.png"];
+    UIImage *image = [UIImage imageNamed:@&quot;Smiley.png&quot;];
     NSData *imageData = UIImagePNGRepresentation(image);
     
     NSDictionary *params = @{
-        @"status": @"Hello",
-        @"media[]": imageData
+        @&quot;status&quot;: @&quot;Hello&quot;,
+        @&quot;media[]&quot;: imageData
     };
     
-    [SZTwitterUtils postWithViewController:self path:@"1.1/statuses/update_with_media.json" params:params multipart:YES success:^(id result) {
-        NSLog(@"Posted %@", result);
+    [SZTwitterUtils postWithViewController:self path:@&quot;1.1/statuses/update_with_media.json&quot; params:params multipart:YES success:^(id result) {
+        NSLog(@&quot;Posted %@&quot;, result);
     } failure:^(NSError *error) {
-        NSLog(@"Failed %@", [error localizedDescription]);
+        NSLog(@&quot;Failed %@&quot;, [error localizedDescription]);
     }];
     
 }
-
-</pre>
+</pre></div>
 </div>
 </div>
 <div class="section" id="troubleshooting">
@@ -210,7 +208,7 @@ authorize with twitter by calling the link methods directly.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
@@ -219,16 +217,7 @@ authorize with twitter by calling the link methods directly.</p>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Twitter Integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-a-twitter-application">Creating a Twitter Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#updating-your-socialize-application-settings-web">Updating your Socialize Application Settings (Web)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-twitter-in-socialize-sdk">Configuring Twitter in Socialize (SDK)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linking-to-twitter-using-existing-credentials">Linking to Twitter Using Existing Credentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#posting-to-twitter-on-your-own">Posting to Twitter on your own</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook_og.html">Using Facebook Open Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a></li>
@@ -248,7 +237,7 @@ authorize with twitter by calling the link methods directly.</p>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -265,7 +254,7 @@ authorize with twitter by calling the link methods directly.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -274,10 +263,10 @@ authorize with twitter by calling the link methods directly.</p>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.9.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, Socialize Inc.
     </div>
   </body>

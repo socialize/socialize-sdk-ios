@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Getting Started Guide &mdash; Socialize iOS SDK 3.0.9.1 documentation</title>
+    <title>Getting Started Guide &mdash; Socialize iOS SDK 3.1.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.9.1',
+        VERSION:     '3.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.9.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.1.0 documentation" href="index.html" />
     <link rel="next" title="Upgrading Socialize (CocoaPods and non-CocoaPods)" href="upgrading.html" />
     <link rel="prev" title="Socialize iOS SDK" href="index.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -41,14 +41,14 @@
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.9.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <script type="text/javascript" charset="utf-8">
   var is_ssl = ("https:" == document.location.protocol);
@@ -144,16 +144,18 @@ passed into each call to the Socialize SDK.</p>
 <li>Current Macs come preinstalled with Ruby 1.8.7 or higher. For the purposes of CocoaPods, <strong>this is the correct version.</strong> However, you may still need to install RubyGems as directed from the <a class="reference external" href="https://rubygems.org/pages/download">installation page</a>.</li>
 <li>Verify that you have both Ruby and RubyGems installed by entering the following in the command line:</li>
 </ul>
-<div class="highlight-objective-c"><pre>$ ruby -v
+<div class="highlight-objective-c"><div class="highlight"><pre>$ ruby -v
 ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
 $ gem -v
-2.1.5</pre>
+2.1.5
+</pre></div>
 </div>
 <ul class="simple">
 <li>Install CocoaPods by entering the following in the command line:</li>
 </ul>
-<div class="highlight-objective-c"><pre>$ sudo gem install cocoapods
-$ pod setup</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre>$ sudo gem install cocoapods
+$ pod setup
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -165,7 +167,8 @@ $ pod setup</pre>
 <ul class="simple">
 <li>The Socialize SDK uses a number of customized forked frameworks. To prevent confusion with the public versions of these frameworks, these have been renamed and added to their own Spec repository. To install the Socialize Spec repository, enter the following in the command-line:</li>
 </ul>
-<div class="highlight-objective-c"><pre>$ pod repo add SocializeCocoaPods https://github.com/socialize/SocializeCocoaPods.git</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre>$ pod repo add SocializeCocoaPods https://github.com/socialize/SocializeCocoaPods.git
+</pre></div>
 </div>
 </div>
 <div class="section" id="step-3-install-socialize-as-a-cocoapod">
@@ -173,10 +176,11 @@ $ pod setup</pre>
 <ul class="simple">
 <li>In the root directory of your project, create a Podfile or add to an existing Podfile. This file (named &#8220;Podfile&#8221; with no extension) specifies which CocoaPods will be included in your project. <strong>Your Podfile should contain the following:</strong></li>
 </ul>
-<div class="highlight-objective-c"><pre>platform :ios, '6.1'
+<div class="highlight-objective-c"><div class="highlight"><pre>platform :ios, &#39;6.1&#39;
 inhibit_all_warnings!
 
-pod 'Socialize', :podspec =&gt; 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'</pre>
+pod &#39;Socialize&#39;, :podspec =&gt; &#39;https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec&#39;
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -189,7 +193,8 @@ pod 'Socialize', :podspec =&gt; 'https://raw.github.com/socialize/socialize-sdk-
 <li><p class="first">In the command line at the root directory of your project, enter the following:</p>
 </li>
 </ul>
-<div class="highlight-objective-c"><pre>$ pod install</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre>$ pod install
+</pre></div>
 </div>
 <ul class="simple">
 <li>After the Socialize CocoaPod is created in your project, <strong>you must use the Xcode workspace (YourProject.xcworkspace) to use the CocoaPod.</strong> All your project settings should still be available to you from the workspace. <strong>DO NOT open the .xcodeproj directly.</strong></li>
@@ -211,10 +216,11 @@ pod 'Socialize', :podspec =&gt; 'https://raw.github.com/socialize/socialize-sdk-
 <ul class="simple">
 <li>From the command line in the root directory of the Socialize SDK source, enter the following:</li>
 </ul>
-<div class="highlight-objective-c"><pre>$ git submodule init
+<div class="highlight-objective-c"><div class="highlight"><pre>$ git submodule init
 $ git submodule update
 $ pod install
-$ pod update</pre>
+$ pod update
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -223,7 +229,8 @@ $ pod update</pre>
 <ul class="simple">
 <li>Build the Socialize SDK:</li>
 </ul>
-<div class="highlight-objective-c"><pre>$ make package</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre>$ make package
+</pre></div>
 </div>
 <p>The SDK will compile into build/package_dir</p>
 </div>
@@ -477,19 +484,11 @@ It is not necessary to explicitly create an Entity object when rendering the Act
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-the-sdk">Installing the SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-with-cocoapods">Installing with CocoaPods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#manual-installation-via-framework">Manual Installation via Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-socialize-post-installation">Configuring Socialize (Post-Installation)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
@@ -514,7 +513,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -531,7 +530,7 @@ It is not necessary to explicitly create an Entity object when rendering the Act
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -540,10 +539,10 @@ It is not necessary to explicitly create an Entity object when rendering the Act
         <li class="right" >
           <a href="index.html" title="Socialize iOS SDK"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.9.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, Socialize Inc.
     </div>
   </body>

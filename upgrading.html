@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upgrading Socialize (CocoaPods and non-CocoaPods) &mdash; Socialize iOS SDK 3.0.9.1 documentation</title>
+    <title>Upgrading Socialize (CocoaPods and non-CocoaPods) &mdash; Socialize iOS SDK 3.1.0 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.0.9.1',
+        VERSION:     '3.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.0.9.1 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.1.0 documentation" href="index.html" />
     <link rel="next" title="Upgrade Notes: Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -41,14 +41,14 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.9.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <script type="text/javascript" charset="utf-8">
   var is_ssl = ("https:" == document.location.protocol);
@@ -75,11 +75,9 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="upgrading-socialize-cocoapods-and-non-cocoapods">
 <h1>Upgrading Socialize (CocoaPods and non-CocoaPods)<a class="headerlink" href="#upgrading-socialize-cocoapods-and-non-cocoapods" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="important-notes-on-upgrading-to-v3-0-9-1">
-<h2>Important Notes on Upgrading to v3.0.9.1<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-9-1" title="Permalink to this headline">¶</a></h2>
-<p><strong>This patch release temporarily makes the Socialize iOS SDK compatible with changes to its dependent libraries post-iOS 8.0.</strong></p>
-<p>If installing with CocoaPods, <strong>ensure your CocoaPods version is 0.33.x; the Socialize iOS SDK has not yet been updated to use CocoaPods 0.34.x.</strong> You may also need to delete and reinstall the SocializeCocoaPods private repo located in your .cocoapods directory.**</p>
-<p>We will be issuing an update for these (and related issues) soon.</p>
+<div class="section" id="important-notes-on-upgrading-to-v3-1-0">
+<h2>Important Notes on Upgrading to v3.1.0<a class="headerlink" href="#important-notes-on-upgrading-to-v3-1-0" title="Permalink to this headline">¶</a></h2>
+<p>As of this release, the Socialize SDK is compatible with <a class="reference external" href="http://www.apple.com/ios/">iOS 8.1</a>, <a class="reference external" href="https://developers.facebook.com/docs/ios">Facebook SDK 3.19</a>, and the revisions to <a class="reference external" href="http://blog.cocoapods.org/CocoaPods-0.34/">CocoaPods 0.34.x</a>. <strong>However, some of the SDK&#8217;s internal automated tests have not yet been upgraded.</strong> The SDK has been tested manually to ensure functionality works as before, and some changes to adapt to the new Facebook SDK have been made. We will update this page with any updates to the testing targets, but if you build the SDK from source (i.e. not via CocoaPods or as a framework package), note that &#8220;UnitTests&#8221; and &#8220;IntegrationTests&#8221; targets are not available in this version.</p>
 </div>
 <div class="section" id="important-notes-on-upgrading-to-v3-0-3">
 <h2>Important Notes on Upgrading to v3.0.3<a class="headerlink" href="#important-notes-on-upgrading-to-v3-0-3" title="Permalink to this headline">¶</a></h2>
@@ -170,7 +168,8 @@ situation.</p>
 <div class="section" id="upgrading-with-cocoapods-v3-0-1-and-newer">
 <h2>Upgrading with CocoaPods (v3.0.1 and Newer)<a class="headerlink" href="#upgrading-with-cocoapods-v3-0-1-and-newer" title="Permalink to this headline">¶</a></h2>
 <p>If you already have a CocoaPods install of the SDK, future upgrades must also be done via CocoaPods. To do so, in the command line at the root directory of your project, enter the following:</p>
-<div class="highlight-objective-c"><pre>$ pod update</pre>
+<div class="highlight-objective-c"><div class="highlight"><pre>$ pod update
+</pre></div>
 </div>
 </div>
 <div class="section" id="upgrading-via-framework-v3-0-0-and-older">
@@ -238,22 +237,12 @@ delete it before performing this step</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-9-1">Important Notes on Upgrading to v3.0.9.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-3">Important Notes on Upgrading to v3.0.3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-2">Important Notes on Upgrading to v3.0.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-1">Important Notes on Upgrading to v3.0.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-8-9">Important Notes on Upgrading to v2.8.9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#upgrading-with-cocoapods-v3-0-1-and-newer">Upgrading with CocoaPods (v3.0.1 and Newer)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#upgrading-via-framework-v3-0-0-and-older">Upgrading via Framework (v3.0.0 and Older)</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
@@ -277,7 +266,7 @@ delete it before performing this step</p>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -294,7 +283,7 @@ delete it before performing this step</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -303,10 +292,10 @@ delete it before performing this step</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.0.9.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2014, Socialize Inc.
     </div>
   </body>
