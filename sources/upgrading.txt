@@ -4,10 +4,32 @@
 Upgrading Socialize (CocoaPods and non-CocoaPods)
 =================================================
 
+Important Notes on Upgrading to v3.1.0.1
+------------------------------------------------
+
+This patch release corrects some lingering CocoaPods-related issues. If you are installing the SDK with CocoaPods, do the following:
+
+1. Delete the SocializeCocoaPods directory in ~/.cocoapods/repos, and re-run pod repo add as as described in the `Getting Started Guide`_.
+    .. _Getting Started Guide: getting_started.html
+2. Delete your project directory and re-clone from git, or else delete the Pods directory in the project
+3. In Xcode, navigate to the "Organizer" window and delete DerivedData for your project
+4. Re-run pod install in your local project
+
+
 Important Notes on Upgrading to v3.1.0
 ------------------------------------------------
 
 As of this release, the Socialize SDK is compatible with `iOS 8.1 <http://www.apple.com/ios/>`_, `Facebook SDK 3.19 <https://developers.facebook.com/docs/ios>`_, and the revisions to `CocoaPods 0.34.x <http://blog.cocoapods.org/CocoaPods-0.34/>`_. **However, some of the SDK's internal automated tests have not yet been upgraded.** The SDK has been tested manually to ensure functionality works as before, and some changes to adapt to the new Facebook SDK have been made. We will update this page with any updates to the testing targets, but if you build the SDK from source (i.e. not via CocoaPods or as a framework package), note that "UnitTests" and "IntegrationTests" targets are not available in this version.
+
+
+Important Notes on Upgrading to v3.0.9.1
+------------------------------------------------
+
+**This patch release temporarily makes the Socialize iOS SDK compatible with changes to its dependent libraries post-iOS 8.0.** 
+
+If installing with CocoaPods, **ensure your CocoaPods version is 0.33.x; the Socialize iOS SDK has not yet been updated to use CocoaPods 0.34.x.** You may also need to delete and reinstall the SocializeCocoaPods private repo located in your .cocoapods directory.** 
+
+We will be issuing an update for these (and related issues) soon.
 
 
 Important Notes on Upgrading to v3.0.3

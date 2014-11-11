@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upgrading Socialize (CocoaPods and non-CocoaPods) &mdash; Socialize iOS SDK 3.1.0 documentation</title>
+    <title>Upgrading Socialize (CocoaPods and non-CocoaPods) &mdash; Socialize iOS SDK 3.1.0.1 documentation</title>
     
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.1.0',
+        VERSION:     '3.1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="Socialize iOS SDK 3.1.0 documentation" href="index.html" />
+    <link rel="top" title="Socialize iOS SDK 3.1.0.1 documentation" href="index.html" />
     <link rel="next" title="Upgrade Notes: Socialize v2" href="upgrading_2_0.html" />
     <link rel="prev" title="Getting Started Guide" href="getting_started.html" />
 <script type="text/javascript" src="static/loopy.js"></script>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -75,6 +75,23 @@
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script><div class="section" id="upgrading-socialize-cocoapods-and-non-cocoapods">
 <h1>Upgrading Socialize (CocoaPods and non-CocoaPods)<a class="headerlink" href="#upgrading-socialize-cocoapods-and-non-cocoapods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="important-notes-on-upgrading-to-v3-1-0-1">
+<h2>Important Notes on Upgrading to v3.1.0.1<a class="headerlink" href="#important-notes-on-upgrading-to-v3-1-0-1" title="Permalink to this headline">¶</a></h2>
+<p>This patch release corrects some lingering CocoaPods-related issues. If you are installing the SDK with CocoaPods, do the following:</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Delete the SocializeCocoaPods directory in ~/.cocoapods/repos, and re-run pod repo add as as described in the <a class="reference external" href="getting_started.html">Getting Started Guide</a>.</dt>
+<dd></dd>
+</dl>
+</li>
+<li><p class="first">Delete your project directory and re-clone from git, or else delete the Pods directory in the project</p>
+</li>
+<li><p class="first">In Xcode, navigate to the &#8220;Organizer&#8221; window and delete DerivedData for your project</p>
+</li>
+<li><p class="first">Re-run pod install in your local project</p>
+</li>
+</ol>
+</div>
 <div class="section" id="important-notes-on-upgrading-to-v3-1-0">
 <h2>Important Notes on Upgrading to v3.1.0<a class="headerlink" href="#important-notes-on-upgrading-to-v3-1-0" title="Permalink to this headline">¶</a></h2>
 <p>As of this release, the Socialize SDK is compatible with <a class="reference external" href="http://www.apple.com/ios/">iOS 8.1</a>, <a class="reference external" href="https://developers.facebook.com/docs/ios">Facebook SDK 3.19</a>, and the revisions to <a class="reference external" href="http://blog.cocoapods.org/CocoaPods-0.34/">CocoaPods 0.34.x</a>. <strong>However, some of the SDK&#8217;s internal automated tests have not yet been upgraded.</strong> The SDK has been tested manually to ensure functionality works as before, and some changes to adapt to the new Facebook SDK have been made. We will update this page with any updates to the testing targets, but if you build the SDK from source (i.e. not via CocoaPods or as a framework package), note that &#8220;UnitTests&#8221; and &#8220;IntegrationTests&#8221; targets are not available in this version.</p>
@@ -298,7 +315,7 @@ delete it before performing this step</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Socialize iOS SDK 3.1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
