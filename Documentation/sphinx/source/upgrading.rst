@@ -4,6 +4,18 @@
 Upgrading Socialize (CocoaPods and non-CocoaPods)
 =================================================
 
+Important Notes on Upgrading to v3.1.0.1
+------------------------------------------------
+
+This patch release corrects some lingering CocoaPods-related issues. If you are installing the SDK with CocoaPods, do the following:
+
+1. Delete the SocializeCocoaPods directory in ~/.cocoapods/repos, and re-run pod repo add as as described in the `Getting Started Guide`_.
+    .. _Getting Started Guide: getting_started.html
+2. Delete your project directory and re-clone from git, or else delete the Pods directory in the project
+3. In Xcode, navigate to the "Organizer" window and delete DerivedData for your project
+4. Re-run pod install in your local project
+
+
 Important Notes on Upgrading to v3.1.0
 ------------------------------------------------
 
