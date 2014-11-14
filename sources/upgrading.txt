@@ -13,7 +13,7 @@ This patch release corrects some lingering CocoaPods-related issues. If you are 
     .. _Getting Started Guide: getting_started.html
 2. Delete your project directory and re-clone from git, or else delete the Pods directory in the project
 3. In Xcode, navigate to the "Organizer" window and delete DerivedData for your project
-4. Re-run pod install in your local project
+4. Re-run pod install **and** pod update in your local project
 
 
 Important Notes on Upgrading to v3.1.0
