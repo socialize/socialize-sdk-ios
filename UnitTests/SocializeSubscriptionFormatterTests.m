@@ -10,6 +10,7 @@
 #import "SocializeObjects.h"
 #import "NSDate+Socialize.h"
 #import "SocializeSubscriptionJSONFormatter.h"
+#import <SZJSONKit/JSONKit.h>
 
 @implementation SocializeSubscriptionFormatterTests
 

@@ -10,7 +10,7 @@
 #import "SocializeAuthenticateService.h"
 #import <OCMock/OCMock.h>
 #import "Socialize.h"
-#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
+#import <FacebookSDK/FacebookSDK.h>
 #import "SocializeCommonDefinitions.h"
 #import "SocializePrivateDefinitions.h"
 #import <OAuthConsumer/OAuthConsumer.h>

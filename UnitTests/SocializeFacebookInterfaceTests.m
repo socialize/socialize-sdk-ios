@@ -11,6 +11,8 @@
 #import "Socialize.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeTestCase.h"
+#import <SZJSONKit/JSONKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface SocializeFacebookInterface () <SocializeFBRequestDelegate>
 @end
@@ -29,7 +31,7 @@
 - (void)testSuccessfulRequest {
     __block BOOL completed = NO;
     
-    id mockFacebook = [OCMockObject mockForClass:[Facebook class]];
+    id mockFacebook = [OCMockObject mockForClass:NSClassFromString(@"Facebook")];
     [[[mockFacebook stub] andReturnBool:YES] isForCurrentSocializeSession];
     id mockRequest = [OCMockObject mockForClass:[FBRequest class]];
     [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
@@ -48,7 +50,7 @@
 - (void)testFailedRequest {
     __block BOOL completed = NO;
     
-    id mockFacebook = [OCMockObject mockForClass:[Facebook class]];
+    id mockFacebook = [OCMockObject mockForClass:NSClassFromString(@"Facebook")];
     [[[mockFacebook stub] andReturnBool:YES] isForCurrentSocializeSession];
     id mockRequest = [OCMockObject mockForClass:[FBRequest class]];
     [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];

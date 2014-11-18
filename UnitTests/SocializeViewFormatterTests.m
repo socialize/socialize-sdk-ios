@@ -8,6 +8,7 @@
 
 #import "SocializeViewFormatterTests.h"
 #import "SocializeView.h"
+#import <SZJSONKit/JSONKit.h>
 
 @implementation SocializeViewFormatterTests
 
