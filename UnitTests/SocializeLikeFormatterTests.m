@@ -8,6 +8,7 @@
 
 #import "SocializeLikeFormatterTests.h"
 #import "SocializeLike.h"
+#import <SZJSONKit/JSONKit.h>
 
 @implementation SocializeLikeFormatterTests
 -(void) setUpClass

@@ -203,7 +203,6 @@
 		2C7DDBA918A06B110006A57A /* ImagesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860F158D35BC00480399 /* ImagesCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAA18A06B1C0006A57A /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860D158D35BC00480399 /* ImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7DDBAB18A06B280006A57A /* HtmlPageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = AA00860B158D35BC00480399 /* HtmlPageCreator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2C7F1EA418A19F2C00E420D6 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize.a */; };
 		2C84279F187DDA1B00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
 		2C8427A0187DDA1C00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
 		2C8427A1187DDA1D00BD01AF /* socialize-navbar-button-back-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C842789187DD96D00BD01AF /* socialize-navbar-button-back-ios7.png */; };
@@ -543,6 +542,9 @@
 		48E1378A17F0BCB200EB3633 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		48E1378C17F0BD6D00EB3633 /* SZIntegrationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
+		48EC667D1A1BF68500F79EDE /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60BB158FC61D00F66A3B /* SocializeFacebookInterfaceTests.m */; };
+		48EC667E1A1BF96900F79EDE /* SocializeFacebookAuthHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B9158FC61D00F66A3B /* SocializeFacebookAuthHandlerTests.m */; };
+		7DB19E7B3E656C4417DCDF8D /* libPods-UnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56485215AE462B2924244760 /* libPods-UnitTests.a */; };
 		7E1DE002F4214B44909C3D0D /* libPods-UIIntegrationAcceptanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2429241B964749A8E7E141 /* libPods-UIIntegrationAcceptanceTests.a */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -598,8 +600,6 @@
 		AA0C6132158FC61D00F66A3B /* SocializeEntityFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B3158FC61D00F66A3B /* SocializeEntityFormatterTests.m */; };
 		AA0C6133158FC61D00F66A3B /* SocializeEntityServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B5158FC61D00F66A3B /* SocializeEntityServiceTests.m */; };
 		AA0C6134158FC61D00F66A3B /* SocializeErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B7158FC61D00F66A3B /* SocializeErrorTests.m */; };
-		AA0C6135158FC61D00F66A3B /* SocializeFacebookAuthHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B9158FC61D00F66A3B /* SocializeFacebookAuthHandlerTests.m */; };
-		AA0C6136158FC61D00F66A3B /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60BB158FC61D00F66A3B /* SocializeFacebookInterfaceTests.m */; };
 		AA0C6137158FC61D00F66A3B /* SocializeFullUserJSONFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60BD158FC61D00F66A3B /* SocializeFullUserJSONFormatterTests.m */; };
 		AA0C6138158FC61D00F66A3B /* SocializeHorizontalLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60BF158FC61D00F66A3B /* SocializeHorizontalLayoutTests.m */; };
 		AA0C6139158FC61D00F66A3B /* SocializeKeyboardListenerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60C1158FC61D00F66A3B /* SocializeKeyboardListenerTests.m */; };
@@ -1661,6 +1661,7 @@
 		487047F617F01ACE008D5741 /* TestAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppHelper.m; sourceTree = "<group>"; };
 		48C069921780192B004E7843 /* pinterest-snippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pinterest-snippets.h"; sourceTree = "<group>"; };
 		48C069931780192B004E7843 /* pinterest-snippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "pinterest-snippets.m"; sourceTree = "<group>"; };
+		56485215AE462B2924244760 /* libPods-UnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon@2x.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		84AEF7DD176341CE006DB43A /* socialize-selectnetwork-pinterest-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "socialize-selectnetwork-pinterest-icon.png"; path = "Socialize/Resources/socialize-selectnetwork-pinterest-icon.png"; sourceTree = SOURCE_ROOT; };
 		84FCF44E175E706B009AD5C1 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
@@ -2522,6 +2523,8 @@
 		AC2429241B964749A8E7E141 /* libPods-UIIntegrationAcceptanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIIntegrationAcceptanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21DDA47C40B05B3A2C03DEF /* Pods-UIIntegrationAcceptanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIIntegrationAcceptanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIIntegrationAcceptanceTests/Pods-UIIntegrationAcceptanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C55CC1E3CCD2B52835832A9F /* Pods-UIIntegrationAcceptanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIIntegrationAcceptanceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIIntegrationAcceptanceTests/Pods-UIIntegrationAcceptanceTests.release.xcconfig"; sourceTree = "<group>"; };
+		DCB5E3C9AD8A5C165BAF2B6C /* Pods-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0B72F55C6E9807FDCE493D8 /* Pods-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2570,7 +2573,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7F1EA418A19F2C00E420D6 /* libSocialize.a in Frameworks */,
 				AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */,
 				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
@@ -2582,6 +2584,7 @@
 				AACED949158FCDD20024EC43 /* MessageUI.framework in Frameworks */,
 				AAA7C85116B207450041DFD0 /* AdSupport.framework in Frameworks */,
 				84AEF7EB1763435C006DB43A /* Pinterest.framework in Frameworks */,
+				7DB19E7B3E656C4417DCDF8D /* libPods-UnitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3216,6 +3219,8 @@
 				94C9ED6D895DC389018010ED /* Pods.release.xcconfig */,
 				B21DDA47C40B05B3A2C03DEF /* Pods-UIIntegrationAcceptanceTests.debug.xcconfig */,
 				C55CC1E3CCD2B52835832A9F /* Pods-UIIntegrationAcceptanceTests.release.xcconfig */,
+				E0B72F55C6E9807FDCE493D8 /* Pods-UnitTests.debug.xcconfig */,
+				DCB5E3C9AD8A5C165BAF2B6C /* Pods-UnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -3285,6 +3290,7 @@
 				487047AF17EEFA90008D5741 /* SenTestingKit.framework */,
 				28052EE4EDAE4D3598062EF0 /* libPods.a */,
 				AC2429241B964749A8E7E141 /* libPods-UIIntegrationAcceptanceTests.a */,
+				56485215AE462B2924244760 /* libPods-UnitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4380,11 +4386,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA0C6025158FC4F000F66A3B /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
+				8E8859E0DB4239402CBD2C8F /* Check Pods Manifest.lock */,
 				AA0C6010158FC4F000F66A3B /* Sources */,
 				AA0C6011158FC4F000F66A3B /* Frameworks */,
 				AA0C6012158FC4F000F66A3B /* Resources */,
 				AACEDAB2158FE8B00024EC43 /* Run Tests (Command-line only) */,
 				AACEDAA9158FE5A30024EC43 /* Generate Coverage Report (Command-line only) */,
+				1839677791F0147E5ED2013F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5409,6 +5417,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1839677791F0147E5ED2013F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1DF06C8DDD524E62A13C41D9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5437,6 +5460,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${PROJECT_DIR}\" && make subst";
+			showEnvVarsInLog = 0;
+		};
+		8E8859E0DB4239402CBD2C8F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E21590539400A4B074 /* Build Against Both SDKs */ = {
@@ -5838,6 +5876,7 @@
 				AA0C6120158FC61D00F66A3B /* SmartAlertUtilsTests.m in Sources */,
 				AA0C6121158FC61D00F66A3B /* SocializeActionViewForTest.m in Sources */,
 				AA0C6122158FC61D00F66A3B /* SocializeActionViewTests.m in Sources */,
+				48EC667D1A1BF68500F79EDE /* SocializeFacebookInterfaceTests.m in Sources */,
 				AA0C6123158FC61D00F66A3B /* SocializeActivityServiceTests.m in Sources */,
 				AA0C6124158FC61D00F66A3B /* SocializeActivityViewControllerTests.m in Sources */,
 				AA0C6125158FC61D00F66A3B /* SocializeApplicationJSONFormatterTests.m in Sources */,
@@ -5846,6 +5885,7 @@
 				AA0C6128158FC61D00F66A3B /* SocializeBubbleViewTests.m in Sources */,
 				AA0C6129158FC61D00F66A3B /* SocializeCommentFormaterTests.m in Sources */,
 				AA0C612A158FC61D00F66A3B /* SocializeCommentsServiceTests.m in Sources */,
+				48EC667E1A1BF96900F79EDE /* SocializeFacebookAuthHandlerTests.m in Sources */,
 				AA0C612C158FC61D00F66A3B /* SocializeComposeMessageViewControllerTests.m in Sources */,
 				AA0C612D158FC61D00F66A3B /* SocializeConfigurationTests.m in Sources */,
 				AA0C612E158FC61D00F66A3B /* SocializeDeviceTokenJSONFormatterTests.m in Sources */,
@@ -5855,8 +5895,6 @@
 				AA0C6132158FC61D00F66A3B /* SocializeEntityFormatterTests.m in Sources */,
 				AA0C6133158FC61D00F66A3B /* SocializeEntityServiceTests.m in Sources */,
 				AA0C6134158FC61D00F66A3B /* SocializeErrorTests.m in Sources */,
-				AA0C6135158FC61D00F66A3B /* SocializeFacebookAuthHandlerTests.m in Sources */,
-				AA0C6136158FC61D00F66A3B /* SocializeFacebookInterfaceTests.m in Sources */,
 				AA0C6137158FC61D00F66A3B /* SocializeFullUserJSONFormatterTests.m in Sources */,
 				AA0C6138158FC61D00F66A3B /* SocializeHorizontalLayoutTests.m in Sources */,
 				AA0C6139158FC61D00F66A3B /* SocializeKeyboardListenerTests.m in Sources */,
@@ -6321,6 +6359,7 @@
 		};
 		AA0C6026158FC4F000F66A3B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0B72F55C6E9807FDCE493D8 /* Pods-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
@@ -6360,6 +6399,7 @@
 		};
 		AA0C6027158FC4F000F66A3B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCB5E3C9AD8A5C165BAF2B6C /* Pods-UnitTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;

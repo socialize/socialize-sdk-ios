@@ -20,6 +20,10 @@ target 'UIIntegrationAcceptanceTests', :exclusive => true do
   pod 'KIF', '2.0'
 end
 
+target 'UnitTests' , :exclusive => true do
+  pod 'Socialize', :podspec => 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'
+end
+
 post_install do | installer |
   #copy resources from Loopy to include in framework
   require 'fileutils'

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Socialize, Inc. All rights reserved.
 //
 
+#import <FacebookSDK/FacebookSDK.h>
 #import "SocializeFacebookAuthHandlerTests.h"
 #import "SocializeCommonDefinitions.h"
 #import "NSError+Socialize.h"
@@ -18,16 +19,16 @@
 - (void)setUp {
     self.facebookAuthHandler = [[[SocializeFacebookAuthHandler alloc] init] autorelease];
     
-    self.mockFacebookClass = [OCMockObject classMockForClass:[Facebook class]];
-    [Facebook startMockingClass];
+    self.mockFacebookClass = [OCMockObject classMockForClass:NSClassFromString(@"Facebook")];
+    [NSClassFromString(@"Facebook") startMockingClass];
     
-    self.mockFacebook = [OCMockObject niceMockForClass:[Facebook class]];
+    self.mockFacebook = [OCMockObject niceMockForClass:NSClassFromString(@"Facebook")];
     
     [super setUp];
 }
 
 - (void)tearDown {
-    [Facebook stopMockingClassAndVerify];
+    [NSClassFromString(@"Facebook") stopMockingClassAndVerify];
     
     self.facebookAuthHandler = nil;
     
@@ -35,7 +36,7 @@
 }
 
 - (void)expectFacebookCreation {
-    [[[Facebook expect] andReturnFromBlock:^{ return [self.mockFacebook retain]; }] alloc];
+    [[[NSClassFromString(@"Facebook") expect] andReturnFromBlock:^{ return [self.mockFacebook retain]; }] alloc];
     [[[self.mockFacebook expect] andReturn:self.mockFacebook] initWithAppId:OCMOCK_ANY urlSchemeSuffix:OCMOCK_ANY andDelegate:OCMOCK_ANY];
 }
 
