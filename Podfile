@@ -21,7 +21,8 @@ target 'UIIntegrationAcceptanceTests', :exclusive => true do
 end
 
 target 'UnitTests' , :exclusive => true do
-  pod 'Socialize', :podspec => 'https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec'
+  link_with ['UnitTests', 'IntegrationTests']
+  pod 'Socialize', :path => './Socialize.podspec'
 end
 
 post_install do | installer |
