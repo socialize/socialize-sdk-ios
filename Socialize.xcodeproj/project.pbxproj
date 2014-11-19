@@ -22,13 +22,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1CFEDE147D923422CA56F836 /* libPods-UnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56485215AE462B2924244760 /* libPods-UnitTests.a */; };
 		2C23AACB187F598A00BA2FBA /* comment-bg-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */; };
 		2C23AACC187F598A00BA2FBA /* comment-bg-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */; };
 		2C23AACD187F598A00BA2FBA /* comment-bg-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AAC9187F598A00BA2FBA /* comment-bg-ios7.png */; };
 		2C23AACE187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AACF187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
 		2C23AAD0187F598A00BA2FBA /* comment-bg-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C23AACA187F598A00BA2FBA /* comment-bg-ios7@2x.png */; };
-		2C27B8C018A1A9F50046CCF6 /* libSocialize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DDAE018A049490006A57A /* libSocialize.a */; };
 		2C34129719BFB34C002C434B /* SZTwitterImageRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C34129519BFB34C002C434B /* SZTwitterImageRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C34129819BFB34C002C434B /* SZTwitterImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C34129619BFB34C002C434B /* SZTwitterImageRequest.m */; };
 		2C578C921891E3F1003869C6 /* socialize-cell-image-mask-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C578C901891E3F1003869C6 /* socialize-cell-image-mask-ios7.png */; };
@@ -2592,7 +2592,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C27B8C018A1A9F50046CCF6 /* libSocialize.a in Frameworks */,
 				AAF580EE16BC99610007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
 				AA6C6445158F117E005E5632 /* libOCMock.a in Frameworks */,
 				AA511230158F12D2007341AA /* CoreLocation.framework in Frameworks */,
@@ -2604,6 +2603,7 @@
 				AA6C63D0158F0EB0005E5632 /* CoreGraphics.framework in Frameworks */,
 				AAA7C85016B207440041DFD0 /* AdSupport.framework in Frameworks */,
 				84AEF7EA1763435B006DB43A /* Pinterest.framework in Frameworks */,
+				1CFEDE147D923422CA56F836 /* libPods-UnitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4407,11 +4407,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA6C63DD158F0EB0005E5632 /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
 			buildPhases = (
+				04F8CDAB1F34883D40CDE813 /* Check Pods Manifest.lock */,
 				AA6C63C8158F0EB0005E5632 /* Sources */,
 				AA6C63C9158F0EB0005E5632 /* Frameworks */,
 				AA6C63CA158F0EB0005E5632 /* Resources */,
 				AA6CE2E4159057D900A4B074 /* Run Tests (Command-line only) */,
 				AA6CE2E51590592100A4B074 /* Generate Coverage (Command-line only) */,
+				74E7097D9631FB8C975BFE23 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5417,6 +5419,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		04F8CDAB1F34883D40CDE813 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		1839677791F0147E5ED2013F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5460,6 +5477,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${PROJECT_DIR}\" && make subst";
+			showEnvVarsInLog = 0;
+		};
+		74E7097D9631FB8C975BFE23 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8E8859E0DB4239402CBD2C8F /* Check Pods Manifest.lock */ = {
@@ -6439,6 +6471,7 @@
 		};
 		AA6C63DE158F0EB0005E5632 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0B72F55C6E9807FDCE493D8 /* Pods-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6452,7 +6485,10 @@
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PROFILING_CODE = YES;
-				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
@@ -6467,6 +6503,7 @@
 		};
 		AA6C63DF158F0EB0005E5632 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCB5E3C9AD8A5C165BAF2B6C /* Pods-UnitTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -6480,7 +6517,10 @@
 				GCC_PREFIX_HEADER = "IntegrationTests/IntegrationTests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PROFILING_CODE = NO;
-				HEADER_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(CONFIGURATION_BUILD_DIR)",
+				);
 				INFOPLIST_FILE = "IntegrationTests/IntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
