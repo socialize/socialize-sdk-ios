@@ -4,7 +4,7 @@ pods:
 	pod install
 
 test:
-	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=8.01
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 GHUNIT_AUTORUN=1 xcodebuild -workspace Socialize.xcworkspace -scheme UnitTests -configuration Debug -sdk iphonesimulator -destination OS=8.1,name="iPhone 5"
 default: build buildsample test package
 
 package: framework
@@ -40,7 +40,7 @@ doc:
 .SUFFIXES:
 
 -include subst.mk
-SUBST_BUILD_FILES := Socialize-noarc/SocializeVersion.h Documentation/sphinx/source/conf.py
+SUBST_BUILD_FILES := Documentation/sphinx/source/conf.py
 subst: $(SUBST_BUILD_FILES)
 
 sphinx_doc: subst
