@@ -90,15 +90,15 @@
     [[self.mockFacebook expect] authorize:OCMOCK_ANY];
 }
 
-//- (void)testSuccessfulAuthenticationCallsSuccessHandler {
-//    [self succeedFacebookAuthentication];
-//    [self attemptAuthenticationAndWaitForStatus:kGHUnitWaitStatusSuccess];
-//}
+- (void)testSuccessfulAuthenticationCallsSuccessHandler {
+    [self succeedFacebookAuthentication];
+    [self attemptAuthenticationAndWaitForStatus:kGHUnitWaitStatusSuccess];
+}
 
-//- (void)testFailedAuthenticationCallsFailureHandler {
-//    [self failFacebookAuthentication];
-//    [self attemptAuthenticationAndWaitForStatus:kGHUnitWaitStatusFailure];
-//}
+- (void)testFailedAuthenticationCallsFailureHandler {
+    [self failFacebookAuthentication];
+    [self attemptAuthenticationAndWaitForStatus:kGHUnitWaitStatusFailure];
+}
 
 - (void)testSharedHandler {
     SocializeFacebookAuthHandler *handler = [SocializeFacebookAuthHandler sharedFacebookAuthHandler];
