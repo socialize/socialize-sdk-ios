@@ -35,6 +35,10 @@ post_install do | installer |
   installer.project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['CLANG_WARN_DIRECT_OBJC_ISA_USAGE'] = 'NO'
+        if target.name == "Pods-UnitTests-Socialize" then
+            config.build_settings['GCC_GENERATE_TEST_COVERAGE_FILES'] = 'YES'
+            config.build_settings['GCC_INSTRUMENT_PROGRAM_FLOW_ARCS'] = 'YES'
+        end
     end
   end
 end

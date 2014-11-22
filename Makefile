@@ -28,7 +28,7 @@ coverage:
 	./Scripts/generate-combined-coverage-report.sh build/test-coverage/IntegrationTests-Coverage.info build/test-coverage/unitTests-Coverage.info build/test-coverage/UIIntegrationTests-Coverage.info
 
 integration-tests:
-	WRITE_JUNIT_XML=YES RUN_CLI=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator -destination OS=8.1,name="iPhone 5" build
+	SZEventTrackingDisabled=1 WRITE_JUNIT_XML=YES RUN_CLI=1 GHUNIT_CLI=1 GHUNIT_AUTORUN=1 xcodebuild -workspace Socialize.xcworkspace -scheme IntegrationTests -configuration Debug -sdk iphonesimulator -destination OS=8.1,name="iPhone 5" build
 
 ui-integration-tests:
 	xcodebuild -workspace Socialize.xcworkspace -scheme "TestApp" -configuration Debug -sdk iphonesimulator -destination OS=8.1,name="iPhone 5" test

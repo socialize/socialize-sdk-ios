@@ -19,10 +19,10 @@ mkdir -p "$OUTPUT_DIR"
 mkdir -p "$INFO_DIR"
 
 export TITLE="${PROJECT_NAME} - ${PRODUCT_NAME}"
-export SOCIALIZE_LIB_DIR="Socialize.build"
-export INFO_TMP_FILE="${INFO_DIR}/${PRODUCT_NAME}-Coverage_tmp.info"
-export INFO_FILE="${INFO_DIR}/${PRODUCT_NAME}-Coverage.info"
-export INPUT_DIR="$CONFIGURATION_TEMP_DIR/$SOCIALIZE_LIB_DIR/Objects-normal/i386/"
+export SOCIALIZE_LIB_DIR="Pods.build/Debug-iphonesimulator/Pods-UnitTests-Socialize.build"
+export INFO_TMP_FILE="${INFO_DIR}${PRODUCT_NAME}-Coverage_tmp.info"
+export INFO_FILE="${INFO_DIR}${PRODUCT_NAME}-Coverage.info"
+export INPUT_DIR="$OBJROOT/$SOCIALIZE_LIB_DIR/Objects-normal/i386/"
 
 echo $TITLE
 echo $INPUT_DIR
@@ -34,3 +34,5 @@ echo "${LCOV} --test-name ${TITLE} --output-file $INFO_TMP_FILE --capture --dire
 "${LCOV_PATH}/genhtml" --title "${TITLE}"  --output-directory "$OUTPUT_DIR" "$INFO_FILE" --legend
 
 exit $RETVAL
+
+

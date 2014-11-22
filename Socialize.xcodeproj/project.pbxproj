@@ -526,6 +526,8 @@
 		4804349E19AD099B006EAC7E /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84FCF450175E706B009AD5C1 /* PinterestSDKResources.bundle */; };
 		480434A619AD099C006EAC7E /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84FCF450175E706B009AD5C1 /* PinterestSDKResources.bundle */; };
 		480434A719AD099C006EAC7E /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84FCF450175E706B009AD5C1 /* PinterestSDKResources.bundle */; };
+		482B62A81A1F4B98001BFB2D /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
+		482B62A91A1F4B9D001BFB2D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		485BD8B717F192A80076FF93 /* SZTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0085A4158D2B1100480399 /* SZTestAppDelegate.m */; };
 		485BD8B817F193370076FF93 /* SocializeApiInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA935C06158F1C2600B5B2BC /* SocializeApiInfo.plist */; };
 		487047C717EEFB04008D5741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
@@ -544,7 +546,6 @@
 		48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		48EC667D1A1BF68500F79EDE /* SocializeFacebookInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60BB158FC61D00F66A3B /* SocializeFacebookInterfaceTests.m */; };
 		48EC667E1A1BF96900F79EDE /* SocializeFacebookAuthHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C60B9158FC61D00F66A3B /* SocializeFacebookAuthHandlerTests.m */; };
-		7DB19E7B3E656C4417DCDF8D /* libPods-UnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56485215AE462B2924244760 /* libPods-UnitTests.a */; };
 		7E1DE002F4214B44909C3D0D /* libPods-UIIntegrationAcceptanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2429241B964749A8E7E141 /* libPods-UIIntegrationAcceptanceTests.a */; };
 		84AEF7D617633AF8006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
 		84AEF7DA17633AFA006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AEF7C3176339AB006DB43A /* socialize-selectnetwork-pinterest-icon@2x.png */; };
@@ -555,6 +556,7 @@
 		84AEF7E81763435A006DB43A /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FCF44E175E706B009AD5C1 /* Pinterest.framework */; };
 		84AEF7EA1763435B006DB43A /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FCF44E175E706B009AD5C1 /* Pinterest.framework */; };
 		84AEF7EB1763435C006DB43A /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FCF44E175E706B009AD5C1 /* Pinterest.framework */; };
+		91EF5494C6E7ABCEA82E2487 /* libPods-UnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56485215AE462B2924244760 /* libPods-UnitTests.a */; };
 		AA008595158D2B1100480399 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008594158D2B1100480399 /* UIKit.framework */; };
 		AA008597158D2B1100480399 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008596158D2B1100480399 /* Foundation.framework */; };
 		AA008599158D2B1100480399 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA008598158D2B1100480399 /* CoreGraphics.framework */; };
@@ -637,7 +639,6 @@
 		AA0C6161158FC61D00F66A3B /* UrlSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6111158FC61D00F66A3B /* UrlSerializationTests.m */; };
 		AA0C6162158FC61D00F66A3B /* UserUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6113158FC61D00F66A3B /* UserUtilsTests.m */; };
 		AA0C6165158FC6D400F66A3B /* SocializeUnitTestApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6164158FC6D400F66A3B /* SocializeUnitTestApplication.m */; };
-		AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6C6444158F115D005E5632 /* libOCMock.a */; };
 		AA0F104315FAB90B00391CFE /* TestEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0F104215FAB90B00391CFE /* TestEventUtils.m */; };
 		AA1505FA159CDE0E00F639E7 /* users.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1505F9159CDE0E00F639E7 /* users.m */; };
 		AA166553159CF9CB001B6A1D /* sharing.m in Sources */ = {isa = PBXBuildFile; fileRef = AA166552159CF9CB001B6A1D /* sharing.m */; };
@@ -655,7 +656,6 @@
 		AA3BC391158E866F0073AD50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC390158E866F0073AD50 /* CoreLocation.framework */; };
 		AA3BC393158E86770073AD50 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
 		AA3BC395158E868D0073AD50 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
-		AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */; };
 		AA51122D158F12C0007341AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC394158E868D0073AD50 /* MapKit.framework */; };
 		AA51122E158F12C8007341AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC392158E86770073AD50 /* QuartzCore.framework */; };
 		AA51122F158F12CD007341AA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3BC38E158E866B0073AD50 /* MessageUI.framework */; };
@@ -1393,7 +1393,6 @@
 		AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEC2B0B15B4D88000C9C65A /* SDKHelpersTests.m */; };
 		AAEC2B0E15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = AAEC2B0D15B4DA4D00C9C65A /* example-dev.embedded.mobileprovision */; };
 		AAEC2B1015B4DA5400C9C65A /* example-distribution.embedded.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = AAEC2B0F15B4DA5400C9C65A /* example-distribution.embedded.mobileprovision */; };
-		AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
 		AAF580EE16BC99610007BE58 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
 		AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB0B8115E70FB10091600C /* ui_advanced.m */; };
 		E8D06AD4AB0744E59601B738 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28052EE4EDAE4D3598062EF0 /* libPods.a */; };
@@ -1401,6 +1400,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		482B62AA1A1F4BB8001BFB2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADFBFDA16B9FB7300291167 /* GHUnitIOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0041C5E913BA7B8A0015FC22;
+			remoteInfo = "GHUnitIOS (Simulator)";
+		};
+		482B62AC1A1F4BB8001BFB2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA6C6436158F115D005E5632 /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 030EF0DB14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
 		487047D217EEFB04008D5741 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA008587158D2B1100480399 /* Project object */;
@@ -2573,8 +2586,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAF5808D16BC6ABB0007BE58 /* libGHUnitIOSSimulator.a in Frameworks */,
-				AA0C6167158FC72700F66A3B /* libOCMock.a in Frameworks */,
+				482B62A91A1F4B9D001BFB2D /* libOCMock.a in Frameworks */,
+				482B62A81A1F4B98001BFB2D /* libGHUnitIOSSimulator.a in Frameworks */,
 				48E2339317F6D64800B83D39 /* UIKit.framework in Frameworks */,
 				AA0C6017158FC4F000F66A3B /* Foundation.framework in Frameworks */,
 				AA0C6018158FC4F000F66A3B /* CoreGraphics.framework in Frameworks */,
@@ -2584,7 +2597,7 @@
 				AACED949158FCDD20024EC43 /* MessageUI.framework in Frameworks */,
 				AAA7C85116B207450041DFD0 /* AdSupport.framework in Frameworks */,
 				84AEF7EB1763435C006DB43A /* Pinterest.framework in Frameworks */,
-				7DB19E7B3E656C4417DCDF8D /* libPods-UnitTests.a in Frameworks */,
+				91EF5494C6E7ABCEA82E2487 /* libPods-UnitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4390,13 +4403,15 @@
 				AA0C6010158FC4F000F66A3B /* Sources */,
 				AA0C6011158FC4F000F66A3B /* Frameworks */,
 				AA0C6012158FC4F000F66A3B /* Resources */,
+				1839677791F0147E5ED2013F /* Copy Pods Resources */,
 				AACEDAB2158FE8B00024EC43 /* Run Tests (Command-line only) */,
 				AACEDAA9158FE5A30024EC43 /* Generate Coverage Report (Command-line only) */,
-				1839677791F0147E5ED2013F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				482B62AB1A1F4BB8001BFB2D /* PBXTargetDependency */,
+				482B62AD1A1F4BB8001BFB2D /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -4411,9 +4426,9 @@
 				AA6C63C8158F0EB0005E5632 /* Sources */,
 				AA6C63C9158F0EB0005E5632 /* Frameworks */,
 				AA6C63CA158F0EB0005E5632 /* Resources */,
+				74E7097D9631FB8C975BFE23 /* Copy Pods Resources */,
 				AA6CE2E4159057D900A4B074 /* Run Tests (Command-line only) */,
 				AA6CE2E51590592100A4B074 /* Generate Coverage (Command-line only) */,
-				74E7097D9631FB8C975BFE23 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5551,7 +5566,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GHUNIT_CLI=1 ./Scripts/run-headless-simulator.sh";
+			shellScript = "./Scripts/run-headless-simulator.sh";
 			showEnvVarsInLog = 0;
 		};
 		AA6CE2E51590592100A4B074 /* Generate Coverage (Command-line only) */ = {
@@ -5596,7 +5611,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GHUNIT_CLI=1 ./Scripts/run-headless-simulator.sh";
+			shellScript = "./Scripts/run-headless-simulator.sh";
 			showEnvVarsInLog = 0;
 		};
 		D5D46459814B4DB7AB5E8EC1 /* Copy Pods Resources */ = {
@@ -5989,7 +6004,6 @@
 				AA60B3BA15A23E500062BD41 /* BaseShareViewControllerTests.m in Sources */,
 				AA84CCE915B0F50A00D7109C /* SZOARequestTests.m in Sources */,
 				AAEC2B0C15B4D88000C9C65A /* SDKHelpersTests.m in Sources */,
-				AA4BDF3D15B5222100301AD0 /* SZShareUtilsTests.m in Sources */,
 				AA823CD715C09D8900F83091 /* SZSessionTrackerTests.m in Sources */,
 				AAC7CB7E15C9C1640064C5FD /* SZLikeUtilsTests.m in Sources */,
 				AAFB0B8215E70FB10091600C /* ui_advanced.m in Sources */,
@@ -6041,6 +6055,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		482B62AB1A1F4BB8001BFB2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "GHUnitIOS (Simulator)";
+			targetProxy = 482B62AA1A1F4BB8001BFB2D /* PBXContainerItemProxy */;
+		};
+		482B62AD1A1F4BB8001BFB2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMockLib;
+			targetProxy = 482B62AC1A1F4BB8001BFB2D /* PBXContainerItemProxy */;
+		};
 		487047D317EEFB04008D5741 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA00858F158D2B1100480399 /* TestApp */;
@@ -6103,6 +6127,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
@@ -6148,6 +6173,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/Pinterest.embeddedframework\"",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Socialize/Socialize-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
