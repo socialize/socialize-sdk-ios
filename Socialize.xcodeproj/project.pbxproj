@@ -538,6 +538,7 @@
 		487047F017EF0030008D5741 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487047EF17EF0030008D5741 /* SenTestingKit.framework */; };
 		487047F417F01530008D5741 /* KIFUITestActor+TestApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F317F01530008D5741 /* KIFUITestActor+TestApp.m */; };
 		487047F717F01ACE008D5741 /* TestAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 487047F617F01ACE008D5741 /* TestAppHelper.m */; };
+		48B2DFD31A20EF47007BDFA4 /* SZShareUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4BDF3C15B5222100301AD0 /* SZShareUtilsTests.m */; };
 		48C069941780192C004E7843 /* pinterest-snippets.m in Sources */ = {isa = PBXBuildFile; fileRef = 48C069931780192B004E7843 /* pinterest-snippets.m */; };
 		48E1378817F0B2F200EB3633 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADFBFE216B9FB7400291167 /* libGHUnitIOSSimulator.a */; };
 		48E1378917F0B37800EB3633 /* SZTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6431158F10D7005E5632 /* SZTestHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -5968,6 +5969,7 @@
 				AA0C6154158FC61D00F66A3B /* SocializeUserJSONFormatterTests.m in Sources */,
 				AA0C6155158FC61D00F66A3B /* SocializeUserServiceTests.m in Sources */,
 				AA0C6156158FC61D00F66A3B /* SocializeViewFormatterTests.m in Sources */,
+				48B2DFD31A20EF47007BDFA4 /* SZShareUtilsTests.m in Sources */,
 				AA0C6157158FC61D00F66A3B /* SocializeViewTests.m in Sources */,
 				AA0C6158158FC61D00F66A3B /* StringWithPlacemarkTest.m in Sources */,
 				AA0C6159158FC61D00F66A3B /* SocializeActionBarTests.m in Sources */,
