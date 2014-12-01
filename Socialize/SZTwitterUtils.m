@@ -140,7 +140,7 @@
     SZTWAuthWrapper(viewController, ^{
         //SZ-88: since SZOAuthConsumer is broken for Twitter image posting, use newer library for that case
         NSOperation *req = nil;
-        if([params objectForKey:@"media[]"] != nil && [path isEqualToString:@"1.1/statuses/update_with_media.json"]) {
+        if([params objectForKey:@"media[]"] != nil && [path isEqualToString:@"/1.1/statuses/update_with_media.json"]) {
             req = [SZTwitterImageRequest twitterRequestWithMethod:@"POST"
                                                        parameters:params
                                                           success:success
