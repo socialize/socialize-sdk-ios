@@ -8,6 +8,7 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 #import "SocializeFacebookAuthHandlerTests.h"
+#import "SocializeFacebook.h"
 #import "SocializeCommonDefinitions.h"
 #import "NSError+Socialize.h"
 
@@ -19,16 +20,16 @@
 - (void)setUp {
     self.facebookAuthHandler = [[[SocializeFacebookAuthHandler alloc] init] autorelease];
     
-    self.mockFacebookClass = [OCMockObject classMockForClass:NSClassFromString(@"Facebook")];
-    [NSClassFromString(@"Facebook") startMockingClass];
+    self.mockFacebookClass = [OCMockObject classMockForClass:[SocializeFacebook class]];
+    [SocializeFacebook startMockingClass];
     
-    self.mockFacebook = [OCMockObject niceMockForClass:NSClassFromString(@"Facebook")];
+    self.mockFacebook = [OCMockObject niceMockForClass:[SocializeFacebook class]];
     
     [super setUp];
 }
 
 - (void)tearDown {
-    [NSClassFromString(@"Facebook") stopMockingClassAndVerify];
+    [[SocializeFacebook class] stopMockingClassAndVerify];
     
     self.facebookAuthHandler = nil;
     
@@ -36,11 +37,12 @@
 }
 
 - (void)expectFacebookCreation {
-    [[[NSClassFromString(@"Facebook") expect] andReturnFromBlock:^{ return [self.mockFacebook retain]; }] alloc];
+    [[[[SocializeFacebook class] expect] andReturnFromBlock:^{ return [self.mockFacebook retain]; }] alloc];
     [[[self.mockFacebook expect] andReturn:self.mockFacebook] initWithAppId:OCMOCK_ANY urlSchemeSuffix:OCMOCK_ANY andDelegate:OCMOCK_ANY];
 }
 
-- (void)attemptAuthenticationWithSuccess:(void(^)(NSString *accessToken, NSDate *expirationDate))success failure:(void(^)(NSError *error))failure {
+- (void)attemptAuthenticationWithSuccess:(void(^)(NSString *accessToken, NSDate *expirationDate))success
+                                 failure:(void(^)(NSError *error))failure {
     [self expectFacebookCreation];
     [self.facebookAuthHandler authenticateWithAppId:nil
                                     urlSchemeSuffix:nil
