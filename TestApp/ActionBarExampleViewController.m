@@ -37,13 +37,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor greenColor];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                          target:self
+                                                                                          action:@selector(cancelButtonPressed:)];
+    self.navigationItem.leftBarButtonItem.accessibilityLabel = @"Cancel";
+}
+
+- (void)cancelButtonPressed:(id)sender {
     __unsafe_unretained id weakSelf = self;
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemCancel handler:^(id sender) {
-//        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//    }];
-    
-    // Do any additional setup after loading the view from its nib.
+    [weakSelf dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)emailButtonPressed:(id)sender {
