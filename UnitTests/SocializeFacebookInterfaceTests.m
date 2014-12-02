@@ -11,6 +11,7 @@
 #import "Socialize.h"
 #import "SocializeThirdPartyFacebook.h"
 #import "SocializeTestCase.h"
+#import "SocializeFacebook.h"
 #import <SZJSONKit/JSONKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
@@ -30,14 +31,19 @@
 
 - (void)testSuccessfulRequest {
     __block BOOL completed = NO;
-    
-    id mockFacebook = [OCMockObject mockForClass:NSClassFromString(@"Facebook")];
-    [[[mockFacebook stub] andReturnBool:YES] isForCurrentSocializeSession];
+
+    id mockFacebook = [OCMockObject mockForClass:[SocializeFacebook class]];
     id mockRequest = [OCMockObject mockForClass:[FBRequest class]];
-    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
+    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path"
+                                                              andParams:[NSMutableDictionary dictionary]
+                                                          andHttpMethod:@"METHOD"
+                                                            andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
     
-    [self.facebookInterface requestWithGraphPath:@"some/path" params:nil httpMethod:@"METHOD" completion:^(id result, NSError *error) {
+    [self.facebookInterface requestWithGraphPath:@"some/path"
+                                          params:nil
+                                      httpMethod:@"METHOD"
+                                      completion:^(id result, NSError *error) {
         GHAssertNil(error, @"error was not nil");
         completed = YES;
     }];
@@ -50,13 +56,18 @@
 - (void)testFailedRequest {
     __block BOOL completed = NO;
     
-    id mockFacebook = [OCMockObject mockForClass:NSClassFromString(@"Facebook")];
-    [[[mockFacebook stub] andReturnBool:YES] isForCurrentSocializeSession];
+    id mockFacebook = [OCMockObject mockForClass:[SocializeFacebook class]];
     id mockRequest = [OCMockObject mockForClass:[FBRequest class]];
-    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path" andParams:[NSMutableDictionary dictionary] andHttpMethod:@"METHOD" andDelegate:self.facebookInterface];
+    [[[mockFacebook expect] andReturn:mockRequest] requestWithGraphPath:@"some/path"
+                                                              andParams:[NSMutableDictionary dictionary]
+                                                          andHttpMethod:@"METHOD"
+                                                            andDelegate:self.facebookInterface];
     self.facebookInterface.facebook = mockFacebook;
     
-    [self.facebookInterface requestWithGraphPath:@"some/path" params:nil httpMethod:@"METHOD" completion:^(id result, NSError *error) {
+    [self.facebookInterface requestWithGraphPath:@"some/path"
+                                          params:nil
+                                      httpMethod:@"METHOD"
+                                      completion:^(id result, NSError *error) {
         GHAssertNil(result, @"result was not nil");
         completed = YES;
     }];
