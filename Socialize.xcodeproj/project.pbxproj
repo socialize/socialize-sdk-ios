@@ -3202,6 +3202,44 @@
 			name = Auth;
 			sourceTree = "<group>";
 		};
+		2CEF45C31A311B2400F6B6EB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AA6C63F6158F0EE6005E5632 /* TestShareUtils.h */,
+				AA6C63F7158F0EE6005E5632 /* TestShareUtils.m */,
+				AA6C63F8158F0EE6005E5632 /* TestUserUtils.h */,
+				AA6C63F9158F0EE6005E5632 /* TestUserUtils.m */,
+				AA6C63FA158F0EE6005E5632 /* TestFacebookUtils.h */,
+				AA6C63FB158F0EE6005E5632 /* TestFacebookUtils.m */,
+				AA6C63FC158F0EE6005E5632 /* TestTwitterUtils.h */,
+				AA6C63FD158F0EE6005E5632 /* TestTwitterUtils.m */,
+				AA6C63FE158F0EE6005E5632 /* TestCommentUtils.h */,
+				AA6C63FF158F0EE6005E5632 /* TestCommentUtils.m */,
+				AA6C6400158F0EE6005E5632 /* TestEntityUtils.h */,
+				AA6C6401158F0EE6005E5632 /* TestEntityUtils.m */,
+				AA6C6402158F0EE6005E5632 /* TestSmartAlertUtils.h */,
+				AA6C6403158F0EE6005E5632 /* TestSmartAlertUtils.m */,
+				AA6C6404158F0EE6005E5632 /* TestActionUtils.h */,
+				AA6C6405158F0EE6005E5632 /* TestActionUtils.m */,
+				AA6C6406158F0EE6005E5632 /* TestSubscriptionUtils.h */,
+				AA6C6407158F0EE6005E5632 /* TestSubscriptionUtils.m */,
+				AA6C6408158F0EE6005E5632 /* TestViewUtils.h */,
+				AA6C6409158F0EE6005E5632 /* TestViewUtils.m */,
+				AA6C640A158F0EE6005E5632 /* TestLikeUtils.h */,
+				AA6C640B158F0EE6005E5632 /* TestLikeUtils.m */,
+				AA6C640C158F0EE6005E5632 /* TestLocationUtils.h */,
+				AA6C640D158F0EE6005E5632 /* TestLocationUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		2CEF45C41A311B8B00F6B6EB /* Test Cases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Test Cases";
+			sourceTree = "<group>";
+		};
 		487047C917EEFB04008D5741 /* UIIntegrationAcceptanceTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -3931,62 +3969,29 @@
 		AA6C63D1158F0EB0005E5632 /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA6C6430158F10D7005E5632 /* SZTestHelper.h */,
-				AA6C6431158F10D7005E5632 /* SZTestHelper.m */,
-				AA6C642B158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.h */,
-				AA6C642C158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.m */,
-				AA6C642D158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.xib */,
-				AA6C63E0158F0EE6005E5632 /* SZIntegrationTestCase.h */,
-				AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */,
-				AA6C63E2158F0EE6005E5632 /* TestEntityServices.h */,
-				AA6C63E3158F0EE6005E5632 /* TestEntityServices.m */,
-				AA6C63E4158F0EE6005E5632 /* TestLikeServices.h */,
-				AA6C63E5158F0EE6005E5632 /* TestLikeServices.m */,
-				AA6C63E6158F0EE6005E5632 /* AuthTest.h */,
-				AA6C63E7158F0EE6005E5632 /* AuthTest.m */,
+				2CEF45C41A311B8B00F6B6EB /* Test Cases */,
+				2CEF45C31A311B2400F6B6EB /* Utils */,
+				AA6C63D2158F0EB0005E5632 /* Supporting Files */,
 				AA6C63E8158F0EE6005E5632 /* TestActivityServices.h */,
 				AA6C63E9158F0EE6005E5632 /* TestActivityServices.m */,
-				AA6C63EA158F0EE6005E5632 /* TestShareServices.h */,
-				AA6C63EB158F0EE6005E5632 /* TestShareServices.m */,
-				AA6C63EC158F0EE6005E5632 /* TestSubscriptionService.h */,
-				AA6C63ED158F0EE6005E5632 /* TestSubscriptionService.m */,
 				AA6C63EE158F0EE6005E5632 /* TestCommentServices.h */,
 				AA6C63EF158F0EE6005E5632 /* TestCommentServices.m */,
-				AA6C63F0158F0EE6005E5632 /* TestSocializeService.h */,
-				AA6C63F1158F0EE6005E5632 /* TestSocializeService.m */,
-				AA6C63F2158F0EE6005E5632 /* TestNotifications.h */,
-				AA6C63F3158F0EE6005E5632 /* TestNotifications.m */,
-				AA6C63F4158F0EE6005E5632 /* TestUserService.h */,
-				AA6C63F5158F0EE6005E5632 /* TestUserService.m */,
-				AA6C63F6158F0EE6005E5632 /* TestShareUtils.h */,
-				AA6C63F7158F0EE6005E5632 /* TestShareUtils.m */,
-				AA6C63F8158F0EE6005E5632 /* TestUserUtils.h */,
-				AA6C63F9158F0EE6005E5632 /* TestUserUtils.m */,
-				AA6C63FA158F0EE6005E5632 /* TestFacebookUtils.h */,
-				AA6C63FB158F0EE6005E5632 /* TestFacebookUtils.m */,
-				AA6C63FC158F0EE6005E5632 /* TestTwitterUtils.h */,
-				AA6C63FD158F0EE6005E5632 /* TestTwitterUtils.m */,
-				AA6C63FE158F0EE6005E5632 /* TestCommentUtils.h */,
-				AA6C63FF158F0EE6005E5632 /* TestCommentUtils.m */,
-				AA6C6400158F0EE6005E5632 /* TestEntityUtils.h */,
-				AA6C6401158F0EE6005E5632 /* TestEntityUtils.m */,
-				AA6C6402158F0EE6005E5632 /* TestSmartAlertUtils.h */,
-				AA6C6403158F0EE6005E5632 /* TestSmartAlertUtils.m */,
-				AA6C6404158F0EE6005E5632 /* TestActionUtils.h */,
-				AA6C6405158F0EE6005E5632 /* TestActionUtils.m */,
-				AA6C6406158F0EE6005E5632 /* TestSubscriptionUtils.h */,
-				AA6C6407158F0EE6005E5632 /* TestSubscriptionUtils.m */,
-				AA6C6408158F0EE6005E5632 /* TestViewUtils.h */,
-				AA6C6409158F0EE6005E5632 /* TestViewUtils.m */,
-				AA6C640A158F0EE6005E5632 /* TestLikeUtils.h */,
-				AA6C640B158F0EE6005E5632 /* TestLikeUtils.m */,
-				AA6C640C158F0EE6005E5632 /* TestLocationUtils.h */,
-				AA6C640D158F0EE6005E5632 /* TestLocationUtils.m */,
-				AA6C6425158F0F49005E5632 /* IntegrationTestsAppDelegate.h */,
-				AA6C6426158F0F49005E5632 /* IntegrationTestsAppDelegate.m */,
+				AA6C63E2158F0EE6005E5632 /* TestEntityServices.h */,
+				AA6C63E3158F0EE6005E5632 /* TestEntityServices.m */,
 				AA0F104115FAB90B00391CFE /* TestEventUtils.h */,
 				AA0F104215FAB90B00391CFE /* TestEventUtils.m */,
-				AA6C63D2158F0EB0005E5632 /* Supporting Files */,
+				AA6C63E4158F0EE6005E5632 /* TestLikeServices.h */,
+				AA6C63E5158F0EE6005E5632 /* TestLikeServices.m */,
+				AA6C63F2158F0EE6005E5632 /* TestNotifications.h */,
+				AA6C63F3158F0EE6005E5632 /* TestNotifications.m */,
+				AA6C63EA158F0EE6005E5632 /* TestShareServices.h */,
+				AA6C63EB158F0EE6005E5632 /* TestShareServices.m */,
+				AA6C63F0158F0EE6005E5632 /* TestSocializeService.h */,
+				AA6C63F1158F0EE6005E5632 /* TestSocializeService.m */,
+				AA6C63EC158F0EE6005E5632 /* TestSubscriptionService.h */,
+				AA6C63ED158F0EE6005E5632 /* TestSubscriptionService.m */,
+				AA6C63F4158F0EE6005E5632 /* TestUserService.h */,
+				AA6C63F5158F0EE6005E5632 /* TestUserService.m */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -3994,6 +3999,17 @@
 		AA6C63D2158F0EB0005E5632 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA6C6425158F0F49005E5632 /* IntegrationTestsAppDelegate.h */,
+				AA6C6426158F0F49005E5632 /* IntegrationTestsAppDelegate.m */,
+				AA6C6430158F10D7005E5632 /* SZTestHelper.h */,
+				AA6C6431158F10D7005E5632 /* SZTestHelper.m */,
+				AA6C642B158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.h */,
+				AA6C642C158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.m */,
+				AA6C642D158F10C3005E5632 /* IntegrationTestStatusViewControllerViewController.xib */,
+				AA6C63E0158F0EE6005E5632 /* SZIntegrationTestCase.h */,
+				AA6C63E1158F0EE6005E5632 /* SZIntegrationTestCase.m */,
+				AA6C63E6158F0EE6005E5632 /* AuthTest.h */,
+				AA6C63E7158F0EE6005E5632 /* AuthTest.m */,
 				AA05955E159D5F1D00138B12 /* integrationtests_globals.h */,
 				AA6C63D3158F0EB0005E5632 /* IntegrationTests-Info.plist */,
 				AA6C63D4158F0EB0005E5632 /* InfoPlist.strings */,

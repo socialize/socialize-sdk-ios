@@ -26,6 +26,8 @@
 #import "socialize_globals.h"
 #import "UIDevice+VersionCheck.h"
 
+static NSInteger kFacebookLinkAlertTag = 1001;
+
 @interface _SZUserSettingsViewController () {
     BOOL _initialized;
 }
@@ -758,21 +760,34 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
     }];
 }
 
-- (void)authenticateViaFacebook {
-    SZShowLinkToFacebookAlertView(^{
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if(alertView.tag == kFacebookLinkAlertTag) {
+        WEAK(self) weakSelf = self;
+        if(buttonIndex == alertView.cancelButtonIndex) {
+            [weakSelf updateInterfaceToReflectSessionStatuses];
+        }
+        else {
+            [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> fullUser) {
+                // Successfully linked
+                [weakSelf updateInterfaceToReflectSessionStatuses];
+            } foreground:^{
+                [weakSelf updateInterfaceToReflectSessionStatuses];
+            } failure:^(NSError *error) {
+                [self configureForAfterEdit];
+                [weakSelf updateInterfaceToReflectSessionStatuses];
+            }];
+        }
+    }
+}
 
-        [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> user) {
-            [self configureForAfterEdit];
-            [self updateInterfaceToReflectSessionStatuses];
-        } foreground:^{
-            [self updateInterfaceToReflectSessionStatuses];            
-        } failure:^(NSError *error) {
-            [self configureForAfterEdit];
-            [self updateInterfaceToReflectSessionStatuses];        
-        }];
-    }, ^{
-        [self updateInterfaceToReflectSessionStatuses];
-    });
+- (void)authenticateViaFacebook {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required"
+                                                        message:@"Link to Facebook?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+    alertView.tag = kFacebookLinkAlertTag;
+    [alertView show];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

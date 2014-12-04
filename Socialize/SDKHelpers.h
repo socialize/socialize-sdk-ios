@@ -17,7 +17,6 @@ typedef enum {
     SZLinkContextLike,
 } SZLinkContext;
 
-void SZShowLinkToFacebookAlertView(void (^okBlock)(), void (^cancelBlock)());
 SZSocialNetwork SZLinkedSocialNetworks();
 SZSocialNetwork SZAvailableSocialNetworks();
 typedef void (^ActivityCreatorBlock)(id<SZActivity>, void(^)(id<SZActivity>), void(^)(NSError*));
