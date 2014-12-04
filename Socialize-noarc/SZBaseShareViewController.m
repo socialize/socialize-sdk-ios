@@ -47,6 +47,8 @@ static NSString *kSocialNetworkSection = @"kSocialNetworkSection";
 static NSString *kOtherSection = @"kOtherSection";
 static NSString *kAutopostSection = @"kAutopostSection";
 
+static NSInteger kFacebookLinkAlertTag = 1001;
+
 @interface SZBaseShareViewController () {
     dispatch_once_t _initToken;
 }
@@ -233,6 +235,31 @@ static NSString *kAutopostSection = @"kAutopostSection";
     [self updateContinueButtonState];
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if(alertView.tag == kFacebookLinkAlertTag) {
+        WEAK(self) weakSelf = self;
+        if(buttonIndex == alertView.cancelButtonIndex) {
+            [weakSelf syncInterfaceWithThirdPartyState];
+        }
+        else {
+            [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> fullUser) {
+                // Successfully linked
+                [weakSelf syncInterfaceWithThirdPartyState];
+            } foreground:^{
+                [weakSelf syncInterfaceWithThirdPartyState];
+            } failure:^(NSError *error) {
+                
+                // Link failed
+                [weakSelf syncInterfaceWithThirdPartyState];
+                
+                if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
+                    [weakSelf failWithError:error];
+                }
+            }];
+        }
+    }
+}
+
 - (UISwitch*)facebookSwitch {
     if (facebookSwitch_ == nil) {
         facebookSwitch_ = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -245,27 +272,15 @@ static NSString *kAutopostSection = @"kAutopostSection";
                 
                 // Switch just turned on
                 // Attempt link
-                
-                SZShowLinkToFacebookAlertView(^{
-
-                    [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> fullUser) {
-                        // Successfully linked
-                        [weakSelf syncInterfaceWithThirdPartyState];
-                    } foreground:^{
-                        [weakSelf syncInterfaceWithThirdPartyState];                        
-                    } failure:^(NSError *error) {
-                        
-                        // Link failed
-                        [weakSelf syncInterfaceWithThirdPartyState];
-                        
-                        if (![error isSocializeErrorWithCode:SocializeErrorFacebookCancelledByUser]) {
-                            [weakSelf failWithError:error];
-                        }
-                    }];
-                }, ^{
-                    [weakSelf syncInterfaceWithThirdPartyState];
-                });
-            } else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook Authentication Required"
+                                                                    message:@"Link to Facebook?"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Cancel"
+                                                          otherButtonTitles:@"OK", nil];
+                alertView.tag = kFacebookLinkAlertTag;
+                [alertView show];
+            }
+            else {
                 [weakSelf syncInterfaceWithThirdPartyState];
             }
             

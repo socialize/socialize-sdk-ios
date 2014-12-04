@@ -8,8 +8,6 @@
 
 #import "ActionBarExampleViewController.h"
 #import <Socialize/Socialize.h>
-//#import <SZBlocksKit/BlocksKit.h>
-//#import <SZBlocksKit/BlocksKit+UIKit.h>
 
 @interface ActionBarExampleViewController ()
 
@@ -20,9 +18,9 @@
 @synthesize oldActionBar = _oldActionBar;
 @synthesize entity = _entity;
 
-//- (void)dealloc {
-////    self.actionBar.viewController = nil;
-//}
+- (void)dealloc {
+    self.actionBar.viewController = nil;
+}
 
 - (id)initWithEntity:(id<SZEntity>)entity {
     self = [super init];
