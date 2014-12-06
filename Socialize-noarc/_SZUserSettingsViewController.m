@@ -27,6 +27,8 @@
 #import "UIDevice+VersionCheck.h"
 
 static NSInteger kFacebookLinkAlertTag = 1001;
+static NSInteger kFacebookUnlinkAlertTag = 1003;
+static NSInteger kTwitterUnlinkAlertTag = 1004;
 
 @interface _SZUserSettingsViewController () {
     BOOL _initialized;
@@ -714,11 +716,13 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)twitterLogout {
     [SocializeThirdPartyTwitter removeLocalCredentials];
+    [self configureForAfterEdit];
     [self updateInterfaceToReflectTwitterSessionStatus];
 }
 
 - (void)facebookLogout {
     [SocializeThirdPartyFacebook removeLocalCredentials];
+    [self configureForAfterEdit];
     [self updateInterfaceToReflectFacebookSessionStatus];
 }
 
@@ -740,9 +744,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 
 - (void)showConfirmLogoutDialogForService:(NSString*)service handler:(void(^)())handler {
     NSString *message = [NSString stringWithFormat:@"%@ functionality will be disabled until you log in again", service];
-    UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Are You Sure?" message:message];
-    [alertView bk_setCancelButtonWithTitle:@"Cancel" handler:^{}];
-    [alertView bk_addButtonWithTitle:@"Log Out" handler:handler];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are You Sure?"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+    alertView.tag = [service isEqualToString:@"Facebook"] ? kFacebookUnlinkAlertTag : kTwitterUnlinkAlertTag;
     [alertView show];
 }
 
@@ -761,14 +768,16 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    WEAK(self) weakSelf = self;
+    
     if(alertView.tag == kFacebookLinkAlertTag) {
-        WEAK(self) weakSelf = self;
         if(buttonIndex == alertView.cancelButtonIndex) {
             [weakSelf updateInterfaceToReflectSessionStatuses];
         }
         else {
             [SZFacebookUtils linkWithOptions:nil success:^(id<SZFullUser> fullUser) {
                 // Successfully linked
+                [self configureForAfterEdit];
                 [weakSelf updateInterfaceToReflectSessionStatuses];
             } foreground:^{
                 [weakSelf updateInterfaceToReflectSessionStatuses];
@@ -777,6 +786,12 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
                 [weakSelf updateInterfaceToReflectSessionStatuses];
             }];
         }
+    }
+    else if(alertView.tag == kFacebookUnlinkAlertTag) {
+        [weakSelf facebookLogout];
+    }
+    else if(alertView.tag == kTwitterUnlinkAlertTag) {
+        [weakSelf twitterLogout];
     }
 }
 
