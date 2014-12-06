@@ -787,10 +787,10 @@ SYNTH_BLUE_SOCIALIZE_BAR_BUTTON(saveButton, @"Save")
             }];
         }
     }
-    else if(alertView.tag == kFacebookUnlinkAlertTag) {
+    else if(alertView.tag == kFacebookUnlinkAlertTag && buttonIndex != alertView.cancelButtonIndex) {
         [weakSelf facebookLogout];
     }
-    else if(alertView.tag == kTwitterUnlinkAlertTag) {
+    else if(alertView.tag == kTwitterUnlinkAlertTag && buttonIndex != alertView.cancelButtonIndex) {
         [weakSelf twitterLogout];
     }
 }
