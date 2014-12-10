@@ -98,6 +98,13 @@
         
         // Save the portion of the settings that are user defaults
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        //SZ-125: for some reason, this can be nil and causes location sharing to be turned on
+        //if nil, always set dontShareLocation=YES
+        if(settings.dontShareLocation == nil) {
+            settings.dontShareLocation = [NSNumber numberWithBool:YES];
+        }
+        
         BOOL shouldShareLocation = ![settings.dontShareLocation boolValue];
         [defaults setObject:[NSNumber numberWithBool:shouldShareLocation] forKey:kSocializeShouldShareLocationKey];
         [defaults setObject:settings.dontPostToFacebook forKey:kSocializeDontPostToFacebookKey];

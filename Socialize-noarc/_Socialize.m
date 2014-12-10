@@ -384,7 +384,15 @@ SYNTH_DEFAULTS_BOOL_PROPERTY(OGLikeEnabled, OGLikeEnabled, kSocializeOGLikeEnabl
 }
 
 +(BOOL)locationSharingDisabled {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSocializeLocationSharingDisabled] boolValue];
+    NSNumber *sharingDisabled = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeLocationSharingDisabled];
+    
+    //SZ-125: if nil and not set, causes location sharing to be turned on
+    //if nil, always set to NSNumber 0
+    if(sharingDisabled == nil) {
+        [Socialize storeLocationSharingDisabled:YES];
+        sharingDisabled = [[NSUserDefaults standardUserDefaults] objectForKey:kSocializeLocationSharingDisabled];
+    }
+    return [sharingDisabled boolValue];
 }
 
 +(void)storeDisableBranding:(BOOL)disableBranding {
