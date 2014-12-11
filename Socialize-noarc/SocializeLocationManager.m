@@ -8,7 +8,7 @@
 
 #import "SocializeLocationManager.h"
 #import "SocializeCommonDefinitions.h"
-#import <SZBlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit.h>
 #import "socialize_globals.h"
 
 static SocializeLocationManager *sharedLocationManager;

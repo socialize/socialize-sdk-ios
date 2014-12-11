@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.dependency        'Facebook-iOS-SDK', '3.20'
   s.dependency        'SZOAuthConsumer'
   s.dependency        'SZJSONKit'
-  s.dependency        'SZBlocksKit'
+  s.dependency        'BlocksKit'
   s.dependency        'STTwitter'
   s.resources         = 'Socialize/Resources/*.png','Socialize/Resources/*.xib','Socialize/Resources/*.plist','Socialize/Resources/*.htm'
   s.subspec 'no-arc' do |ss1|

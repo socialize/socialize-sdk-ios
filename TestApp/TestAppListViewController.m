@@ -10,8 +10,8 @@
 #import <Socialize/Socialize.h>
 #import "ActionBarExampleViewController.h"
 #import "ButtonExampleViewController.h"
-//#import <SZBlocksKit/BlocksKit.h>
-//#import <SZBlocksKit/BlocksKit+UIKit.h>
+//#import <BlocksKit/BlocksKit.h>
+//#import <BlocksKit/BlocksKit+UIKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 

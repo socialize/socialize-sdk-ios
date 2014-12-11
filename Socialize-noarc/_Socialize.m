@@ -8,7 +8,7 @@
 
 #import "_Socialize.h"
 
-#import <SZBlockskit/Blockskit.h>
+#import <Blockskit/Blockskit.h>
 #import <Loopy/Loopy.h>
 #import <AFNetworking/AFNetworking.h>
 #import "SocializeConfiguration.h"

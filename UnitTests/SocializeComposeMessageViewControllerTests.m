@@ -16,7 +16,7 @@
 #import "SocializeGeocoderAdapter.h"
 #import "SocializeComposeMessageViewController.h"
 #import "SZHorizontalContainerView.h"
-#import <SZBlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit.h>
 #import "UIBarButtonItem+Socialize.h"
 
 

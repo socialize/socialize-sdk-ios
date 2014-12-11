@@ -7,7 +7,7 @@
 //
 
 #import "SocializeRichPushNotificationViewController.h"
-#import <SZBlocksKit/BlocksKit.h>
+#import <BlocksKit/BlocksKit.h>
 #import "StringHelper.h"
 
 @interface SocializeRichPushNotificationViewController ()

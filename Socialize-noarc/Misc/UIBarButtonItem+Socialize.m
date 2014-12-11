@@ -8,7 +8,7 @@
 
 #import "UIBarButtonItem+Socialize.h"
 #import "socialize_globals.h"
-#import <SZBlocksKit/BlocksKit+UIKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 @implementation UIBarButtonItem (Socialize)
 

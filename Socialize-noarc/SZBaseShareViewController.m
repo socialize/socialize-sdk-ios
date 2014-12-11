@@ -23,7 +23,7 @@
 #import "SZWhatsAppUtils.h"
 #import "SZNetworkImageProvider.h"
 #import "UIDevice+VersionCheck.h"
-#import <SZBlocksKit/BlocksKit+UIKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 

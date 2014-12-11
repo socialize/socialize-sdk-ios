@@ -22,7 +22,7 @@
 #import "socialize_globals.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SZUserUtils.h"
-#import <SZBlocksKit/BlocksKit+UIKit.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 #define kCenterPointLatitude  37.779941
 #define kCenterPointLongitude -122.417908
