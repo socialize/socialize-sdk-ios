@@ -6,7 +6,7 @@ inhibit_all_warnings!
 xcodeproj 'Socialize.xcodeproj'
 
 link_with 'Socialize'
-pod 'Loopy', '1.1.1'
+pod 'Loopy', '1.1.2'
 pod 'Facebook-iOS-SDK', '3.20'
 pod 'BlocksKit'
 pod 'SZOAuthConsumer', :podspec => 'https://raw.github.com/socialize/OAuthConsumer/master/SZOAuthConsumer.podspec'
