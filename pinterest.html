@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="facebook_og.html" title="Using Facebook Open Graph"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -73,11 +73,11 @@
 <p>Let Socialize know your Pinterest app id.  You can register or find your Pinterest app id here: <a class="reference external" href="http://developers.pinterest.com/manage/">http://developers.pinterest.com/manage/</a></p>
 <p>Once you have a pinterest application, simply tell Socialize about your application id:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerKey</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerSecret</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZPinterestUtils</span> <span class="n">setApplicationId</span><span class="o">:</span><span class="s">@&quot;YOUR PINTEREST APP ID&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey</span><span class="p">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret</span><span class="p">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZPinterestUtils</span> <span class="nl">setApplicationId</span><span class="p">:</span><span class="s">@&quot;YOUR PINTEREST APP ID&quot;</span><span class="p">];</span>
     
     <span class="c1">//your application specific code</span>
 <span class="hll">    
@@ -91,15 +91,15 @@
 <h2>Posting to Pinterest on your own<a class="headerlink" href="#posting-to-pinterest-on-your-own" title="Permalink to this headline">¶</a></h2>
 <p>Should you need to post to Pinterest on your own, you can do so by using the
 direct Pintrest access methods on the utils classes.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">shareOnPinterest</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">shareOnPinterest</span>
 <span class="p">{</span>
-    <span class="n">SZEntity</span><span class="o">*</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;http://cs303404.vk.me/v303404440/1ae3/ZkKQLEFGeyY.jpg&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="n">SZEntity</span><span class="o">*</span> <span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;http://cs303404.vk.me/v303404440/1ae3/ZkKQLEFGeyY.jpg&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
     <span class="k">if</span> <span class="p">([</span><span class="n">SZPinterestUtils</span> <span class="n">isAvailable</span><span class="p">])</span>
     <span class="p">{</span>
-        <span class="p">[</span><span class="n">SZPinterestUtils</span> <span class="n">shareViaPinterestWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeShare</span><span class="o">&gt;</span> <span class="n">share</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">SZPinterestUtils</span> <span class="nl">shareViaPinterestWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">options</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">entity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeShare</span><span class="o">&gt;</span> <span class="n">share</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">//your application specific code on success action</span>
-        <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">//your application specific code on failure action</span>
         <span class="p">}];</span>
     <span class="p">}</span>
@@ -125,7 +125,14 @@ direct Pintrest access methods on the utils classes.</p>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook_og.html">Using Facebook Open Graph</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Pinterest</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Pinterest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-with-cocoapods-3-0-2-and-later">Installation with CocoaPods (3.0.2 and later)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-cocoapods-installation">Non-CocoaPods Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-pinterest-in-socialize-sdk">Configuring Pinterest in Socialize (SDK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-to-pinterest-on-your-own">Posting to Pinterest on your own</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="whatsapp.html">WhatsApp Sharing (Via URL Scheme)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
@@ -168,7 +175,7 @@ direct Pintrest access methods on the utils classes.</p>
         <li class="right" >
           <a href="facebook_og.html" title="Using Facebook Open Graph"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

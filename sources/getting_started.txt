@@ -69,8 +69,8 @@ Step 1: Install RubyGems & CocoaPods (One-Time Operation)
 .. note:: Installing RubyGems and/or CocoaPods can take up to a minute, and may appear unresponsive for brief periods during install.
 
 
-Step 2: Initialize the Socialize Pod Repository (One-Time Operation)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 2: Initialize the Socialize Pod Repository (One-Time Operation. Optional for CocoaPods 0.35 or newer)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - The Socialize SDK uses a number of customized forked frameworks. To prevent confusion with the public versions of these frameworks, these have been renamed and added to their own Spec repository. To install the Socialize Spec repository, enter the following in the command-line:
 
@@ -85,6 +85,8 @@ Step 3: Install Socialize as a CocoaPod
 - In the root directory of your project, create a Podfile or add to an existing Podfile. This file (named "Podfile" with no extension) specifies which CocoaPods will be included in your project. **Your Podfile should contain the following:**
 
 ::
+            source 'https://github.com/socialize/SocializeCocoaPods.git'
+            source 'https://github.com/CocoaPods/Specs.git'
 
             platform :ios, '6.1'
             inhibit_all_warnings!

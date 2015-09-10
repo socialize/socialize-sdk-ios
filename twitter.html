@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -114,11 +114,11 @@ valid URL for callback otherwise authentication will fail.</li>
 <h2>Configuring Twitter in Socialize (SDK)<a class="headerlink" href="#configuring-twitter-in-socialize-sdk" title="Permalink to this headline">¶</a></h2>
 <p>Once you have a twitter application, simply tell Socialize about your consumer key and secret:</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerKey</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerSecret</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="n">setConsumerKey</span><span class="o">:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span> <span class="n">consumerSecret</span><span class="o">:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey</span><span class="p">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret</span><span class="p">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey</span><span class="p">:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_KEY&quot;</span> <span class="nl">consumerSecret</span><span class="p">:</span><span class="s">@&quot;YOUR_TWITTER_CONSUMER_SECRET&quot;</span><span class="p">];</span>
     <span class="c1">//your application specific code</span>
     
 <span class="hll">    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
@@ -138,15 +138,15 @@ valid URL for callback otherwise authentication will fail.</li>
 <p class="last">You only need to do this if you implement your own twitter link flow. If you just want
 to use Socialize&#8217;s automatic twitter login, you should not perform this step.</p>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">linkToTwitter</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="n">setConsumerKey</span><span class="o">:</span><span class="s">@&quot;MYAPPCONSUMERKEY&quot;</span> <span class="n">consumerSecret</span><span class="o">:</span><span class="s">@&quot;MYAPPCONSUMERSECRET&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">linkToTwitter</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">setConsumerKey</span><span class="p">:</span><span class="s">@&quot;MYAPPCONSUMERKEY&quot;</span> <span class="nl">consumerSecret</span><span class="p">:</span><span class="s">@&quot;MYAPPCONSUMERSECRET&quot;</span><span class="p">];</span>
     
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">existingAccessToken</span> <span class="o">=</span> <span class="s">@&quot;PREAUTHEDACCESSTOKEN&quot;</span><span class="p">;</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">existingSecret</span> <span class="o">=</span> <span class="s">@&quot;PREAUTHEDACCESSTOKENSECRET&quot;</span><span class="p">;</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">existingAccessToken</span> <span class="o">=</span> <span class="s">@&quot;PREAUTHEDACCESSTOKEN&quot;</span><span class="p">;</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">existingSecret</span> <span class="o">=</span> <span class="s">@&quot;PREAUTHEDACCESSTOKENSECRET&quot;</span><span class="p">;</span>
     
-    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="n">linkWithAccessToken</span><span class="o">:</span><span class="n">existingAccessToken</span> <span class="n">accessTokenSecret</span><span class="o">:</span><span class="n">existingSecret</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">linkWithAccessToken</span><span class="p">:</span><span class="n">existingAccessToken</span> <span class="nl">accessTokenSecret</span><span class="p">:</span><span class="n">existingSecret</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link Complete&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link failure: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -159,14 +159,14 @@ to use Socialize&#8217;s automatic twitter login, you should not perform this st
 direct Twitter access methods on the utils classes. A viewcontroller must be specified
 so that Socialize can prompt the user for twitter authentication if needed. You can also preemptively
 authorize with twitter by calling the link methods directly.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">postToTwitter</span> <span class="p">{</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;The Status&quot;</span><span class="p">;</span>
-    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="n">dictionaryWithObject</span><span class="o">:</span><span class="n">text</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">postToTwitter</span> <span class="p">{</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;The Status&quot;</span><span class="p">;</span>
+    <span class="bp">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableDictionary</span> <span class="nl">dictionaryWithObject</span><span class="p">:</span><span class="n">text</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>
 
-    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="n">postWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">path</span><span class="o">:</span><span class="s">@&quot;/1.1/statuses/update.json&quot;</span> <span class="n">params</span><span class="o">:</span><span class="n">params</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">postWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">path</span><span class="p">:</span><span class="s">@&quot;/1.1/statuses/update.json&quot;</span> <span class="nl">params</span><span class="p">:</span><span class="n">params</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Posted to Twitter feed: %@&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
 
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to post to Twitter feed: %@ / %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">],</span> <span class="p">[</span><span class="n">error</span> <span class="n">userInfo</span><span class="p">]);</span>
     <span class="p">}];</span>
 
@@ -174,23 +174,23 @@ authorize with twitter by calling the link methods directly.</p>
 </pre></div>
 </div>
 <p>Posting to twitter with media requires that you use an update_with_media endpoint.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre>- (void)statusWithMedia {
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">statusWithMedia</span> <span class="p">{</span>
     
-    UIImage *image = [UIImage imageNamed:@&quot;Smiley.png&quot;];
-    NSData *imageData = UIImagePNGRepresentation(image);
+    <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Smiley.png&quot;</span><span class="p">];</span>
+    <span class="bp">NSData</span> <span class="o">*</span><span class="n">imageData</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
     
-    NSDictionary *params = @{
-        @&quot;status&quot;: @&quot;Hello&quot;,
-        @&quot;media[]&quot;: imageData
-    };
+    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="l">@{</span>
+        <span class="s">@&quot;status&quot;</span><span class="o">:</span> <span class="s">@&quot;Hello&quot;</span><span class="p">,</span>
+        <span class="s">@&quot;media[]&quot;</span><span class="o">:</span> <span class="n">imageData</span>
+    <span class="l">}</span><span class="p">;</span>
     
-    [SZTwitterUtils postWithViewController:self path:@&quot;1.1/statuses/update_with_media.json&quot; params:params multipart:YES success:^(id result) {
-        NSLog(@&quot;Posted %@&quot;, result);
-    } failure:^(NSError *error) {
-        NSLog(@&quot;Failed %@&quot;, [error localizedDescription]);
-    }];
+    <span class="p">[</span><span class="n">SZTwitterUtils</span> <span class="nl">postWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">path</span><span class="p">:</span><span class="s">@&quot;1.1/statuses/update_with_media.json&quot;</span> <span class="nl">params</span><span class="p">:</span><span class="n">params</span> <span class="nl">multipart</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Posted %@&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
     
-}
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -217,7 +217,16 @@ authorize with twitter by calling the link methods directly.</p>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Twitter Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Twitter Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-twitter-application">Creating a Twitter Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-your-socialize-application-settings-web">Updating your Socialize Application Settings (Web)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-twitter-in-socialize-sdk">Configuring Twitter in Socialize (SDK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linking-to-twitter-using-existing-credentials">Linking to Twitter Using Existing Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-to-twitter-on-your-own">Posting to Twitter on your own</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook_og.html">Using Facebook Open Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a></li>
@@ -263,7 +272,7 @@ authorize with twitter by calling the link methods directly.</p>
         <li class="right" >
           <a href="like_button.html" title="Socialize Like Button"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

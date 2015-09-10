@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="facebook.html" title="Facebook Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,8 +59,8 @@ share this on Facebook it can be posted as an &#8220;Open Graph Like&#8221; in t
 <span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
 <span class="cp">#pragma mark</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeOGLikeEnabled</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeOGLikeEnabled</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
     
     <span class="c1">//your application specific code</span>
     
@@ -170,11 +170,11 @@ Open Graph actions.</p>
 </pre></div>
 </div>
 <p>Fortunately Socialize will <strong>automatically generate OG tags</strong> on your entity page, but you must specify the correct type on the entity object itself.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithType</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;http://myentity.com&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;My Name&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createEntityWithType</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;http://myentity.com&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;My Name&quot;</span><span class="p">];</span>
     
     <span class="c1">// MUST be a valid OG type</span>
-    <span class="p">[</span><span class="n">entity</span> <span class="n">setType</span><span class="o">:</span><span class="s">@&quot;video.movie&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">entity</span> <span class="nl">setType</span><span class="p">:</span><span class="s">@&quot;video.movie&quot;</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -189,7 +189,7 @@ Here&#8217;s a complete example</p>
 </pre></div>
 </div>
 <p>If you don&#8217;t have an actual URL for your entity you can setup the correct description, image etc by changing the meta data on your entity.</p>
-<p>Refer to <a class="reference internal" href="entities.html#entity-no-url"><em>Entities Without URLs</em></a> for more details on customizing the entity page.</p>
+<p>Refer to <a class="reference internal" href="entities.html#entity-no-url"><span>Entities Without URLs</span></a> for more details on customizing the entity page.</p>
 <div class="section" id="using-custom-open-graph-actions">
 <h3>Using Custom Open Graph Actions<a class="headerlink" href="#using-custom-open-graph-actions" title="Permalink to this headline">¶</a></h3>
 <p>In addition to using the built-in Open Graph actions, you can also define your own.</p>
@@ -231,7 +231,11 @@ against the Facebook App to guarantee that 3rd party users cannot fraudulently r
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="facebook.html">Facebook Integration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Using Facebook Open Graph</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Using Facebook Open Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-your-facebook-app-for-open-graph">Configuring your Facebook App for Open Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-in-built-open-graph-actions">Using In Built Open Graph Actions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whatsapp.html">WhatsApp Sharing (Via URL Scheme)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
@@ -275,7 +279,7 @@ against the Facebook App to guarantee that 3rd party users cannot fraudulently r
         <li class="right" >
           <a href="facebook.html" title="Facebook Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

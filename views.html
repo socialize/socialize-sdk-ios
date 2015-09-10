@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="likes.html" title="Likes"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -78,12 +78,12 @@
 <p>A &#8220;view&#8221; represents the action of a user viewing an entity and is an extremely useful analytics tool</p>
 <div class="section" id="recording-views">
 <h2>Recording Views<a class="headerlink" href="#recording-views" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">recordView</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">recordView</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
 
-    <span class="p">[</span><span class="n">SZViewUtils</span> <span class="n">viewEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeView</span><span class="o">&gt;</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZViewUtils</span> <span class="nl">viewEntity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeView</span><span class="o">&gt;</span> <span class="n">view</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;View created: %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">view</span> <span class="n">objectID</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed recording view: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -118,7 +118,10 @@
 <li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Views</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#recording-views">Recording Views</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdk_pro_tips.html">SDK Pro Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
@@ -151,7 +154,7 @@
         <li class="right" >
           <a href="likes.html" title="Likes"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

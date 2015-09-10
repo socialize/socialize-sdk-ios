@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="sharing.html" title="Sharing"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -83,9 +83,9 @@
 Bar however if you wanted to create your own ActionBar or simply want to launch
 the Comment List from elsewhere in your app this can simply be done with a few
 lines of code</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showCommentsList</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">showCommentsListWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showCommentsList</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">showCommentsListWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">entity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -96,21 +96,21 @@ lines of code</p>
 <p class="first admonition-title">Note</p>
 <p class="last">You could use comments options to prefill comment with custom message.</p>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowCommentsList</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowCommentsList</span> <span class="p">{</span>
     <span class="n">SZCommentOptions</span><span class="o">*</span> <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">userCommentOptions</span><span class="p">];</span>
     <span class="n">options</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;Hello world&quot;</span><span class="p">;</span>
 
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>   
-    <span class="n">SZCommentsListViewController</span> <span class="o">*</span><span class="n">comments</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZCommentsListViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithEntity</span><span class="o">:</span><span class="n">entity</span><span class="p">];</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;key&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>   
+    <span class="n">SZCommentsListViewController</span> <span class="o">*</span><span class="n">comments</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZCommentsListViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity</span><span class="p">:</span><span class="n">entity</span><span class="p">];</span>
     <span class="n">comments</span><span class="p">.</span><span class="n">completionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
         
         <span class="c1">// Dismiss however you want here</span>
-        <span class="p">[</span><span class="n">self</span> <span class="n">dismissViewControllerAnimated</span><span class="o">:</span><span class="nb">NO</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="nl">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
     <span class="p">};</span>
     <span class="n">comments</span><span class="p">.</span><span class="n">commentOptions</span> <span class="o">=</span> <span class="n">options</span><span class="p">;</span>
 
     <span class="c1">// Present however you want here</span>
-    <span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">comments</span> <span class="n">animated</span><span class="o">:</span><span class="nb">NO</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">comments</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -119,11 +119,11 @@ lines of code</p>
 <h3>Comment Composer<a class="headerlink" href="#comment-composer" title="Permalink to this headline">¶</a></h3>
 <p>Although the comments list opens a composer, a standalone comment composition
 controller is also provided:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showCommentComposer</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">showCommentComposerWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showCommentComposer</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">showCommentComposerWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">entity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">comment</span> <span class="n">text</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="n">cancellation</span><span class="o">:^</span><span class="p">{</span>
+    <span class="p">}</span> <span class="nl">cancellation</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Cancelled comment create&quot;</span><span class="p">);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -136,17 +136,17 @@ controller is also provided:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">You could use comments options to prefill comment with custom message.</p>
 </div>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowCommentComposer</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;key&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
-    <span class="n">SZComposeCommentViewController</span> <span class="o">*</span><span class="n">composer</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZComposeCommentViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithEntity</span><span class="o">:</span><span class="n">entity</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowCommentComposer</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;key&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+    <span class="n">SZComposeCommentViewController</span> <span class="o">*</span><span class="n">composer</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZComposeCommentViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity</span><span class="p">:</span><span class="n">entity</span><span class="p">];</span>
     <span class="n">composer</span><span class="p">.</span><span class="n">completionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">comment</span> <span class="n">text</span><span class="p">]);</span>
         <span class="c1">// Dismiss however you want here</span>
-        <span class="p">[</span><span class="n">self</span> <span class="n">dismissViewControllerAnimated</span><span class="o">:</span><span class="nb">NO</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="nl">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
     <span class="p">};</span>
     
     <span class="c1">// Present however you want here</span>
-    <span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">composer</span> <span class="n">animated</span><span class="o">:</span><span class="nb">NO</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">composer</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -160,22 +160,22 @@ controller is also provided:</p>
 on <strong>CommentUtils</strong></p>
 <p>Similar to shares, you can specify how the comment is to be propagated to 3rd party
 networks</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addComment</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addComment</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
     <span class="n">SZCommentOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">userCommentOptions</span><span class="p">];</span>
     <span class="n">options</span><span class="p">.</span><span class="n">willAttemptPostingToSocialNetworkBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">network</span><span class="p">,</span> <span class="n">SZSocialNetworkPostData</span> <span class="o">*</span><span class="n">postData</span><span class="p">)</span> <span class="p">{</span>
         
         <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkFacebook</span><span class="p">)</span> <span class="p">{</span>
-            <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;Custom message&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
+            <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject</span><span class="p">:</span><span class="s">@&quot;Custom message&quot;</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;message&quot;</span><span class="p">];</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">network</span> <span class="o">==</span> <span class="n">SZSocialNetworkTwitter</span><span class="p">)</span> <span class="p">{</span>
-            <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;Custom status&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>            
+            <span class="p">[</span><span class="n">postData</span><span class="p">.</span><span class="n">params</span> <span class="nl">setObject</span><span class="p">:</span><span class="s">@&quot;Custom status&quot;</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;status&quot;</span><span class="p">];</span>            
         <span class="p">}</span>
     <span class="p">};</span>
     
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">addCommentWithEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">text</span><span class="o">:</span><span class="s">@&quot;A Comment!&quot;</span> <span class="n">options</span><span class="o">:</span><span class="n">options</span> <span class="n">networks</span><span class="o">:</span><span class="n">SZAvailableSocialNetworks</span><span class="p">()</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">addCommentWithEntity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">text</span><span class="p">:</span><span class="s">@&quot;A Comment!&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="n">options</span> <span class="nl">networks</span><span class="p">:</span><span class="n">SZAvailableSocialNetworks</span><span class="p">()</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">comment</span> <span class="n">text</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed creating comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -187,14 +187,14 @@ networks</p>
 <p>If you&#8217;d to create a comment and specify text but not networks, you can do so.
 You might use this to build your own comment composer but still show the
 Socialize network selection dialog.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addCommentPromptForNetworks</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addCommentPromptForNetworks</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
     <span class="n">SZCommentOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">userCommentOptions</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">addCommentWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">text</span><span class="o">:</span><span class="s">@&quot;A comment!&quot;</span> <span class="n">options</span><span class="o">:</span><span class="n">options</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">addCommentWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">entity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">text</span><span class="p">:</span><span class="s">@&quot;A comment!&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="n">options</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
         
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">comment</span> <span class="n">text</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed creating comment: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -205,59 +205,59 @@ Socialize network selection dialog.</p>
 <h3>Retrieving Comments<a class="headerlink" href="#retrieving-comments" title="Permalink to this headline">¶</a></h3>
 <p>You can retrieve existing comments by User, Entity or directly using an ID</p>
 <p>List comments by User</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByUser</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">getCommentsByUser</span><span class="o">:</span><span class="nb">nil</span> <span class="n">first</span><span class="o">:</span><span class="nb">nil</span> <span class="n">last</span><span class="o">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByUser</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">getCommentsByUser</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">first</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">last</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched comments: %@&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>List comments by Entity</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByEntity</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByEntity</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">getCommentsByEntity</span><span class="o">:</span><span class="n">entity</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">getCommentsByEntity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched comments: %@&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>List comments by User on a specific entity</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByUserAndEntity</span> <span class="p">{</span>
-    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByUserAndEntity</span> <span class="p">{</span>
+    <span class="n">SZEntity</span> <span class="o">*</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_key_or_url&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Something&quot;</span><span class="p">];</span>
 
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">getCommentsByUser</span><span class="o">:</span><span class="n">USER_ADDR_NULL</span> <span class="n">entity</span><span class="o">:</span><span class="n">entity</span> <span class="n">first</span><span class="o">:</span><span class="nb">nil</span> <span class="n">last</span><span class="o">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">getCommentsByUser</span><span class="p">:</span><span class="n">USER_ADDR_NULL</span> <span class="nl">entity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">first</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">last</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched comments: %@&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>List comments by ID</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByIds</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByIds</span> <span class="p">{</span>
     
     <span class="c1">// I&#39;ve stashed these ids somewhere</span>
-    <span class="n">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="n">numberWithInteger</span><span class="o">:</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="n">numberWithInteger</span><span class="o">:</span><span class="mi">1</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
+    <span class="bp">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithObjects</span><span class="p">:[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInteger</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInteger</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">getCommentsWithIds</span><span class="o">:</span><span class="n">ids</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">getCommentsWithIds</span><span class="p">:</span><span class="n">ids</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched comments: %@&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>List all comments in application</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByApplication</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">listCommentsByApplication</span> <span class="p">{</span>
     
-    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="n">getCommentsByApplicationWithFirst</span><span class="o">:</span><span class="nb">nil</span> <span class="n">last</span><span class="o">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZCommentUtils</span> <span class="nl">getCommentsByApplicationWithFirst</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">last</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">comments</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Fetched comments: %@&quot;</span><span class="p">,</span> <span class="n">comments</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -267,19 +267,19 @@ Socialize network selection dialog.</p>
 <div class="section" id="responding-to-changes-in-comment-state">
 <h3>Responding to changes in comment state<a class="headerlink" href="#responding-to-changes-in-comment-state" title="Permalink to this headline">¶</a></h3>
 <p>You can choose to be notified when comments are created</p>
-<div class="highlight-objective-c"><div class="highlight"><pre>- (void)didCreate:(NSNotification*)notification {
-    NSArray *comments = [[notification userInfo] objectForKey:kSZCreatedObjectsKey];
-    id&lt;SZComment&gt; comment = [comments lastObject];
-    if ([comment conformsToProtocol:@protocol(SZComment)]) {
-        NSLog(@&quot;Commented on %@&quot;, comment.entity);
-    }
-}
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">didCreate:</span><span class="p">(</span><span class="bp">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">notification</span> <span class="p">{</span>
+    <span class="bp">NSArray</span> <span class="o">*</span><span class="n">comments</span> <span class="o">=</span> <span class="p">[[</span><span class="n">notification</span> <span class="n">userInfo</span><span class="p">]</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">kSZCreatedObjectsKey</span><span class="p">];</span>
+    <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZComment</span><span class="o">&gt;</span> <span class="n">comment</span> <span class="o">=</span> <span class="p">[</span><span class="n">comments</span> <span class="n">lastObject</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">comment</span> <span class="nl">conformsToProtocol</span><span class="p">:@</span><span class="n">protocol</span><span class="p">(</span><span class="n">SZComment</span><span class="p">)])</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Commented on %@&quot;</span><span class="p">,</span> <span class="n">comment</span><span class="p">.</span><span class="n">entity</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-- (void)respondToComments {
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">respondToComments</span> <span class="p">{</span>
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreate:) name:SZDidCreateObjectsNotification object:nil];
+    <span class="p">[[</span><span class="bp">NSNotificationCenter</span> <span class="n">defaultCenter</span><span class="p">]</span> <span class="nl">addObserver</span><span class="p">:</span><span class="nb">self</span> <span class="nl">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">didCreate</span><span class="p">:)</span> <span class="nl">name</span><span class="p">:</span><span class="n">SZDidCreateObjectsNotification</span> <span class="nl">object</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
     
-}
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -310,7 +310,11 @@ Socialize network selection dialog.</p>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Comments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Comments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ui-elements">UI Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-comments">Working with comments</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="likes.html">Likes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ui_advanced.html">Advanced UI Configuration</a></li>
@@ -345,7 +349,7 @@ Socialize network selection dialog.</p>
         <li class="right" >
           <a href="sharing.html" title="Sharing"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

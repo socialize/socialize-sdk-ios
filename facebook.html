@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -110,11 +110,11 @@ you can skip this section.</p>
 <h3>Configuring Facebook in Socialize<a class="headerlink" href="#configuring-facebook-in-socialize" title="Permalink to this headline">¶</a></h3>
 <p>Let Socialize know your Facebook App ID, as shown above.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#pragma mark</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     <span class="c1">// set the socialize api key and secret, register your app here: http://www.getsocialize.com/apps/</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerKey</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">Socialize</span> <span class="n">storeConsumerSecret</span><span class="o">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">setAppId</span><span class="o">:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerKey</span><span class="p">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_KEY&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">storeConsumerSecret</span><span class="p">:</span><span class="s">@&quot;SOCIALIZE_CONSUMER_SECRET&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setAppId</span><span class="p">:</span><span class="s">@&quot;YOUR FB APP ID&quot;</span><span class="p">];</span>
     
     <span class="c1">//your application specific code</span>
 <span class="hll">    
@@ -135,8 +135,8 @@ care of handing off the openURL request to the underlying <a class="reference ex
 completes the authentication flow.</p>
 <div class="highlight-objective-c"><div class="highlight"><pre><span class="cp">#import &lt;Socialize/Socialize.h&gt;</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">openURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="nf">sourceApplication:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">sourceApplication</span> <span class="nf">annotation:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">annotation</span> <span class="p">{</span>
-<span class="hll">    <span class="k">return</span> <span class="p">[</span><span class="n">Socialize</span> <span class="n">handleOpenURL</span><span class="o">:</span><span class="n">url</span><span class="p">];</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">openURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="nf">sourceApplication:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">sourceApplication</span> <span class="nf">annotation:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">annotation</span> <span class="p">{</span>
+<span class="hll">    <span class="k">return</span> <span class="p">[</span><span class="n">Socialize</span> <span class="nl">handleOpenURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
 </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -161,21 +161,21 @@ know about the existing session. You can do this with the
 <strong>linkToFacebookWithAccessToken:expirationDate:</strong> call.  For more information on
 using FBConnect on your own, you can check the official Facebook tutorial at
 <a class="reference external" href="http://developers.facebook.com/docs/reference/iossdk/authentication/">Facebook iOS SDK</a>.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">linkToFacebook</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">setAppId</span><span class="o">:</span><span class="s">@&quot;fbMYFACEBOOKAPPID&quot;</span><span class="p">];</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">linkToFacebook</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setAppId</span><span class="p">:</span><span class="s">@&quot;fbMYFACEBOOKAPPID&quot;</span><span class="p">];</span>
     
     <span class="c1">// The following is only needed if you have multiple apps sharing the same facebook app id</span>
-    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">setURLSchemeSuffix</span><span class="o">:</span><span class="s">@&quot;myfreeversion&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">setURLSchemeSuffix</span><span class="p">:</span><span class="s">@&quot;myfreeversion&quot;</span><span class="p">];</span>
     
     <span class="c1">// Don&#39;t forget to add the fbMYFACEBOOKAPPIDmyfreeversion:// URL Scheme to your app, as above</span>
     
     <span class="c1">// These should come from your own facebook auth process</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">existingToken</span> <span class="o">=</span> <span class="s">@&quot;EXISTING_TOKEN&quot;</span><span class="p">;</span>
-    <span class="n">NSDate</span> <span class="o">*</span><span class="n">existingExpiration</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">distantFuture</span><span class="p">];</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">existingToken</span> <span class="o">=</span> <span class="s">@&quot;EXISTING_TOKEN&quot;</span><span class="p">;</span>
+    <span class="bp">NSDate</span> <span class="o">*</span><span class="n">existingExpiration</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDate</span> <span class="n">distantFuture</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">linkWithAccessToken</span><span class="o">:</span><span class="n">existingToken</span> <span class="n">expirationDate</span><span class="o">:</span><span class="n">existingExpiration</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">linkWithAccessToken</span><span class="p">:</span><span class="n">existingToken</span> <span class="nl">expirationDate</span><span class="p">:</span><span class="n">existingExpiration</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link successful&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Link failed: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -191,14 +191,14 @@ compatibility you should merge your apps required permissions with the &#8216;re
 <h2>Posting to Facebook on your own<a class="headerlink" href="#posting-to-facebook-on-your-own" title="Permalink to this headline">¶</a></h2>
 <p>Should you need to post to Facebook on your own, you can do so by using the
 direct Facebook access methods on the utils classes</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">postToFacebookFeed</span> <span class="p">{</span>
-    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">postData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="n">dictionaryWithObjectsAndKeys</span><span class="o">:</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">postToFacebookFeed</span> <span class="p">{</span>
+    <span class="bp">NSMutableDictionary</span> <span class="o">*</span><span class="n">postData</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys</span><span class="p">:</span>
                                      <span class="s">@&quot;hi there&quot;</span><span class="p">,</span> <span class="s">@&quot;message&quot;</span><span class="p">,</span>
                                      <span class="nb">nil</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">postWithGraphPath</span><span class="o">:</span><span class="s">@&quot;me/feed&quot;</span> <span class="n">params</span><span class="o">:</span><span class="n">postData</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">post</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">postWithGraphPath</span><span class="p">:</span><span class="s">@&quot;me/feed&quot;</span> <span class="nl">params</span><span class="p">:</span><span class="n">postData</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">post</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Posted %@!&quot;</span><span class="p">,</span> <span class="n">post</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Facebook post failed: %@, %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">],</span> <span class="p">[</span><span class="n">error</span> <span class="n">userInfo</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -209,16 +209,16 @@ direct Facebook access methods on the utils classes</p>
 <div class="section" id="posting-images-to-facebook">
 <h2>Posting Images to Facebook<a class="headerlink" href="#posting-images-to-facebook" title="Permalink to this headline">¶</a></h2>
 <p>You can also post an image.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">postImageToFacebook</span> <span class="p">{</span>
-    <span class="n">UIImage</span> <span class="o">*</span><span class="n">logo</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;socialize_logo.png&quot;</span><span class="p">];</span>
-    <span class="n">NSData</span> <span class="o">*</span><span class="n">logoData</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">logo</span><span class="p">);</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">postImageToFacebook</span> <span class="p">{</span>
+    <span class="bp">UIImage</span> <span class="o">*</span><span class="n">logo</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;socialize_logo.png&quot;</span><span class="p">];</span>
+    <span class="bp">NSData</span> <span class="o">*</span><span class="n">logoData</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">logo</span><span class="p">);</span>
 
-    <span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="n">dictionary</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="n">logoData</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;source&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">params</span> <span class="n">setObject</span><span class="o">:</span><span class="s">@&quot;Socialize&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="n">postWithGraphPath</span><span class="o">:</span><span class="s">@&quot;me/photos&quot;</span> <span class="n">params</span><span class="o">:</span><span class="n">params</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">NSMutableDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableDictionary</span> <span class="n">dictionary</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">params</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">logoData</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;source&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">params</span> <span class="nl">setObject</span><span class="p">:</span><span class="s">@&quot;Socialize&quot;</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;caption&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">SZFacebookUtils</span> <span class="nl">postWithGraphPath</span><span class="p">:</span><span class="s">@&quot;me/photos&quot;</span> <span class="nl">params</span><span class="p">:</span><span class="n">params</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created post: %@&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to post: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -242,7 +242,15 @@ direct Facebook access methods on the utils classes</p>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Facebook Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Facebook Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-facebook">Setting up Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-missing-permissions">Handling Missing Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linking-with-existing-facebook-credentials">Linking with Existing Facebook Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-to-facebook-on-your-own">Posting to Facebook on your own</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posting-images-to-facebook">Posting Images to Facebook</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="facebook_og.html">Using Facebook Open Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pinterest.html">Pinterest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whatsapp.html">WhatsApp Sharing (Via URL Scheme)</a></li>
@@ -287,7 +295,7 @@ direct Facebook access methods on the utils classes</p>
         <li class="right" >
           <a href="twitter.html" title="Twitter Integration"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

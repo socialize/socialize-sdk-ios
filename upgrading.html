@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -151,29 +151,29 @@ intrusive for apps that might not want to display a navigation controller at
 all for this case. The UINavigationController parameter of the entity loader is
 now passed as nil, and it is left up to you to choose how to handle this
 situation.</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span><span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
     
     <span class="c1">// ...</span>
     
     <span class="c1">// Register for Apple Push Notification Service</span>
-    <span class="p">[</span><span class="n">application</span> <span class="n">registerForRemoteNotificationTypes</span><span class="o">:</span><span class="p">(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
+    <span class="p">[</span><span class="n">application</span> <span class="nl">registerForRemoteNotificationTypes</span><span class="p">:(</span><span class="n">UIRemoteNotificationTypeAlert</span> <span class="o">|</span> <span class="n">UIRemoteNotificationTypeSound</span><span class="p">)];</span>
 
     <span class="c1">// Handle Socialize notification at launch</span>
-    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="n">objectForKey</span><span class="o">:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
+    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">userInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">launchOptions</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">UIApplicationLaunchOptionsRemoteNotificationKey</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">userInfo</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">self</span> <span class="n">handleNotification</span><span class="o">:</span><span class="n">userInfo</span><span class="p">];</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="nl">handleNotification</span><span class="p">:</span><span class="n">userInfo</span><span class="p">];</span>
     <span class="p">}</span>
 
 <span class="hll">    <span class="c1">// Specify a Socialize entity loader block</span>
-</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="n">setEntityLoaderBlock</span><span class="o">:^</span><span class="p">(</span><span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">    <span class="p">[</span><span class="n">Socialize</span> <span class="nl">setEntityLoaderBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeEntity</span><span class="o">&gt;</span><span class="n">entity</span><span class="p">)</span> <span class="p">{</span>
 </span><span class="hll">        
-</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithEntity</span><span class="o">:</span><span class="n">entity</span><span class="p">];</span>
+</span><span class="hll">        <span class="n">SampleEntityLoader</span> <span class="o">*</span><span class="n">entityLoader</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SampleEntityLoader</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEntity</span><span class="p">:</span><span class="n">entity</span><span class="p">];</span>
 </span><span class="hll">
 </span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">navigationController</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">            <span class="n">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithRootViewController</span><span class="o">:</span><span class="n">entityLoader</span><span class="p">];</span>
-</span><span class="hll">            <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">navigationController</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class="hll">            <span class="bp">UINavigationController</span> <span class="o">*</span><span class="n">navigationController</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UINavigationController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRootViewController</span><span class="p">:</span><span class="n">entityLoader</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">navigationController</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 </span><span class="hll">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="n">pushViewController</span><span class="o">:</span><span class="n">entityLoader</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+</span><span class="hll">            <span class="p">[</span><span class="n">navigationController</span> <span class="nl">pushViewController</span><span class="p">:</span><span class="n">entityLoader</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
 </span><span class="hll">        <span class="p">}</span>
 </span><span class="hll">    <span class="p">}];</span>
 </span>    
@@ -265,7 +265,19 @@ delete it before performing this step</p>
 <h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrading Socialize (CocoaPods and non-CocoaPods)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-1-0-1">Important Notes on Upgrading to v3.1.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-1-0">Important Notes on Upgrading to v3.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-9-1">Important Notes on Upgrading to v3.0.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-3">Important Notes on Upgrading to v3.0.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-2">Important Notes on Upgrading to v3.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v3-0-1">Important Notes on Upgrading to v3.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-8-9">Important Notes on Upgrading to v2.8.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes-on-upgrading-to-v2-4">Important Notes on Upgrading to v2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrading-with-cocoapods-v3-0-1-and-newer">Upgrading with CocoaPods (v3.0.1 and Newer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrading-via-framework-v3-0-0-and-older">Upgrading via Framework (v3.0.0 and Older)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading_2_0.html">Upgrade Notes: Socialize v2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
@@ -315,7 +327,7 @@ delete it before performing this step</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

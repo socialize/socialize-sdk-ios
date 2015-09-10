@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="entities.html" title="Entities"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -88,10 +88,10 @@ actions.</p>
 <div class="section" id="user-profile">
 <h3>User Profile<a class="headerlink" href="#user-profile" title="Permalink to this headline">¶</a></h3>
 <p>You can display a profile view for any user which includes their recent activity</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showUserProfile</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showUserProfile</span> <span class="p">{</span>
     
     <span class="c1">// Pass nil to show the current user</span>
-    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">showUserProfileInViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">user</span><span class="o">:</span><span class="nb">nil</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="nl">showUserProfileInViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">user</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">SZFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Done showing profile&quot;</span><span class="p">);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -102,8 +102,8 @@ actions.</p>
 <div class="section" id="user-settings">
 <h3>User Settings<a class="headerlink" href="#user-settings" title="Permalink to this headline">¶</a></h3>
 <p>To allow a user to update their settings you can simply present them with the User Settings view:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showUserSettings</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">showUserSettingsInViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showUserSettings</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="nl">showUserSettingsInViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Done showing settings&quot;</span><span class="p">);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -111,7 +111,7 @@ actions.</p>
 </div>
 <img alt="images/user_settings.png" class="align-center" src="images/user_settings.png" />
 <p>You can manually show the settings for further customization</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowUserSettings</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">manuallyShowUserSettings</span> <span class="p">{</span>
     <span class="n">SZUserSettingsViewController</span> <span class="o">*</span><span class="n">settings</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SZUserSettingsViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
     
     <span class="c1">// Uncomment to hide logout buttons</span>
@@ -120,11 +120,11 @@ actions.</p>
     <span class="n">settings</span><span class="p">.</span><span class="n">completionBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">didSave</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZFullUser</span><span class="o">&gt;</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
         
         <span class="c1">// Dismiss however you want here</span>
-        <span class="p">[</span><span class="n">self</span> <span class="n">dismissViewControllerAnimated</span><span class="o">:</span><span class="nb">NO</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="nl">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
     <span class="p">};</span>
     
     <span class="c1">// Present however you want here</span>
-    <span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">settings</span> <span class="n">animated</span><span class="o">:</span><span class="nb">NO</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">settings</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -133,11 +133,11 @@ actions.</p>
 <div class="section" id="link-dialog">
 <h3>Link Dialog<a class="headerlink" href="#link-dialog" title="Permalink to this headline">¶</a></h3>
 <p>If you&#8217;d like to prompt the user to link to a third party on your own, you can do so:</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showLinkDialog</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">showLinkDialog</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">userIsLinked</span><span class="p">])</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">showLinkDialogWithViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">selectedNetwork</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">SZUserUtils</span> <span class="nl">showLinkDialogWithViewController</span><span class="p">:</span><span class="nb">self</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">SZSocialNetwork</span> <span class="n">selectedNetwork</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Linked!&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="n">cancellation</span><span class="o">:^</span><span class="p">{</span>
+        <span class="p">}</span> <span class="nl">cancellation</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Not linked!&quot;</span><span class="p">);</span>
         <span class="p">}];</span>
     <span class="p">}</span>
@@ -152,39 +152,39 @@ actions.</p>
 <div class="section" id="getting-a-user">
 <h3>Getting a User<a class="headerlink" href="#getting-a-user" title="Permalink to this headline">¶</a></h3>
 <p>To obtain a reference to the current user simply call the <strong>getCurrentUser</strong> method</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getCurrentUser</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getCurrentUser</span> <span class="p">{</span>
     <span class="kt">id</span><span class="o">&lt;</span><span class="n">SZFullUser</span><span class="o">&gt;</span> <span class="n">currentUser</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">currentUser</span><span class="p">];</span>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;My name is %@ %@!&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">currentUser</span> <span class="n">firstName</span><span class="p">],</span> <span class="p">[</span><span class="n">currentUser</span> <span class="n">lastName</span><span class="p">]);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>To obtain a User object users other than the current user</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getOtherUser</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getOtherUser</span> <span class="p">{</span>
     
     <span class="c1">// I have stashed a list of ids somewhere</span>
-    <span class="n">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">arrayWithObjects</span><span class="o">:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="n">numberWithInteger</span><span class="o">:</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="n">numberWithInteger</span><span class="o">:</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="n">numberWithInteger</span><span class="o">:</span><span class="mi">3</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
+    <span class="bp">NSArray</span> <span class="o">*</span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithObjects</span><span class="p">:[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInteger</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInteger</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInteger</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="nb">nil</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">getUsersWithIds</span><span class="o">:</span><span class="n">ids</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">users</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="nl">getUsersWithIds</span><span class="p">:</span><span class="n">ids</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">users</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Got users: %@&quot;</span><span class="p">,</span> <span class="n">users</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to get users: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>If you want to build your own UI to update a User&#8217;s settings you can simply call the <em>saveUserSettings</em> method</p>
-<div class="highlight-objective-c"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">saveSettings</span> <span class="p">{</span>
+<div class="highlight-objective-c"><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">saveSettings</span> <span class="p">{</span>
     
     <span class="c1">// Specify a new image and description for the current user</span>
     <span class="n">SZUserSettings</span> <span class="o">*</span><span class="n">settings</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">currentUserSettings</span><span class="p">];</span>
-    <span class="n">UIImage</span> <span class="o">*</span><span class="n">newImage</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@&quot;Smiley.png&quot;</span><span class="p">];</span>
+    <span class="bp">UIImage</span> <span class="o">*</span><span class="n">newImage</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;Smiley.png&quot;</span><span class="p">];</span>
     <span class="n">settings</span><span class="p">.</span><span class="n">profileImage</span> <span class="o">=</span> <span class="n">newImage</span><span class="p">;</span>
     <span class="n">settings</span><span class="p">.</span><span class="n">bio</span> <span class="o">=</span> <span class="s">@&quot;I do some stuff from time to time&quot;</span><span class="p">;</span>
     
     <span class="c1">// Update the server</span>
-    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="n">saveUserSettings</span><span class="o">:</span><span class="n">settings</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">SZUserSettings</span> <span class="o">*</span><span class="n">settings</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">updatedUser</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">SZUserUtils</span> <span class="nl">saveUserSettings</span><span class="p">:</span><span class="n">settings</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">SZUserSettings</span> <span class="o">*</span><span class="n">settings</span><span class="p">,</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">SocializeFullUser</span><span class="o">&gt;</span> <span class="n">updatedUser</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Saved user %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">updatedUser</span> <span class="n">objectID</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Broke: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="n">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
@@ -220,7 +220,12 @@ the activity stream for a given user.</p>
 <li class="toctree-l1"><a class="reference internal" href="push_notifications.html">Enabling SmartAlerts™ Notifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html#socialize-entities">Socialize Entities</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Users</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-ui-elements">User UI Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-users">Working with Users</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Activity (Social Actions)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a></li>
@@ -258,7 +263,7 @@ the activity stream for a given user.</p>
         <li class="right" >
           <a href="entities.html" title="Entities"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

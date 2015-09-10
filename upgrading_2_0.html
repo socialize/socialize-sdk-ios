@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="upgrading.html" title="Upgrading Socialize (CocoaPods and non-CocoaPods)"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -128,13 +128,13 @@ can read more about using the new action bar in the <a class="reference external
 
 <span class="c1">// Instantiate the action bar in your view controller</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewWillAppear</span><span class="o">:</span><span class="n">animated</span><span class="p">];</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">super</span> <span class="nl">viewWillAppear</span><span class="p">:</span><span class="n">animated</span><span class="p">];</span>
     
-    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="n">entityWithKey</span><span class="o">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="n">name</span><span class="o">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="n">defaultActionBarWithFrame</span><span class="o">:</span><span class="n">CGRectNull</span> <span class="n">entity</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">entity</span> <span class="n">viewController</span><span class="o">:</span><span class="n">self</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">entity</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZEntity</span> <span class="nl">entityWithKey</span><span class="p">:</span><span class="s">@&quot;some_entity&quot;</span> <span class="nl">name</span><span class="p">:</span><span class="s">@&quot;Some Entity&quot;</span><span class="p">];</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">actionBar</span> <span class="o">=</span> <span class="p">[</span><span class="n">SZActionBar</span> <span class="nl">defaultActionBarWithFrame</span><span class="p">:</span><span class="n">CGRectNull</span> <span class="nl">entity</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">entity</span> <span class="nl">viewController</span><span class="p">:</span><span class="nb">self</span><span class="p">];</span>
+        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">actionBar</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -152,7 +152,14 @@ can read more about using the new action bar in the <a class="reference external
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading Socialize (CocoaPods and non-CocoaPods)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrade Notes: Socialize v2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Upgrade Notes: Socialize v2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-upgrade-process">Basic Upgrade Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-client-changes">API Client Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-controller-changes">View Controller changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#action-bar-changes">Action Bar Changes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="action_bar.html">Socialize Action Bar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="like_button.html">Socialize Like Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twitter.html">Twitter Integration</a></li>
@@ -201,7 +208,7 @@ can read more about using the new action bar in the <a class="reference external
         <li class="right" >
           <a href="upgrading.html" title="Upgrading Socialize (CocoaPods and non-CocoaPods)"
              >previous</a> |</li>
-        <li><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Socialize iOS SDK 3.1.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
