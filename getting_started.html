@@ -176,15 +176,15 @@ $ pod setup
 <ul class="simple">
 <li>In the root directory of your project, create a Podfile or add to an existing Podfile. This file (named &#8220;Podfile&#8221; with no extension) specifies which CocoaPods will be included in your project. <strong>Your Podfile should contain the following:</strong></li>
 </ul>
-<dl class="docutils">
-<dt>::</dt>
-<dd><p class="first">source &#8216;<a class="reference external" href="https://github.com/socialize/SocializeCocoaPods.git">https://github.com/socialize/SocializeCocoaPods.git</a>&#8216;
-source &#8216;<a class="reference external" href="https://github.com/CocoaPods/Specs.git">https://github.com/CocoaPods/Specs.git</a>&#8216;</p>
-<p>platform :ios, &#8216;6.1&#8217;
-inhibit_all_warnings!</p>
-<p class="last">pod &#8216;Socialize&#8217;, :podspec =&gt; &#8216;<a class="reference external" href="https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec">https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec</a>&#8216;</p>
-</dd>
-</dl>
+<div class="highlight-objective-c"><div class="highlight"><pre>source &#39;https://github.com/socialize/SocializeCocoaPods.git&#39;
+source &#39;https://github.com/CocoaPods/Specs.git&#39;
+
+platform :ios, &#39;6.1&#39;
+inhibit_all_warnings!
+
+pod &#39;Socialize&#39;, :podspec =&gt; &#39;https://raw.github.com/socialize/socialize-sdk-ios/master/Socialize.podspec&#39;
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you already use an Xcode workspace to manage your project files, you will need to customize your Podfile to include CocoaPods for each Xcode project and app target. If you are already using Pods also used by the Socialize SDK, you may need to ensure the versions are consistent. See this <a class="reference external" href="https://github.com/CocoaPods/CocoaPods/issues/738">CocoaPods help page</a> for more information.</p>

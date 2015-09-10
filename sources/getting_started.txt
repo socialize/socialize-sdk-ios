@@ -85,6 +85,7 @@ Step 3: Install Socialize as a CocoaPod
 - In the root directory of your project, create a Podfile or add to an existing Podfile. This file (named "Podfile" with no extension) specifies which CocoaPods will be included in your project. **Your Podfile should contain the following:**
 
 ::
+            
             source 'https://github.com/socialize/SocializeCocoaPods.git'
             source 'https://github.com/CocoaPods/Specs.git'
 
