@@ -4463,6 +4463,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SZ;
+				LastTestingUpgradeCheck = 0710;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Socialize;
 				TargetAttributes = {
