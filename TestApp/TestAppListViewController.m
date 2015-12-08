@@ -72,14 +72,6 @@ static TestAppListViewController *sharedSampleListViewController;
     return sharedSampleListViewController;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.sections = [self createSections];
-    }
-    
-    return self;
-}
-
 - (id<SZEntity>)entity {
     if (entity_ == nil) {
         
@@ -456,6 +448,8 @@ static TestAppListViewController *sharedSampleListViewController;
     imageView.alpha = 0.25;
     self.tableView.backgroundView = imageView;
     self.tableView.accessibilityLabel = @"tableView";
+
+    self.sections = [self createSections];
 }
 
 - (void)viewDidLayoutSubviews {
