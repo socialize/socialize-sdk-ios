@@ -40,3 +40,6 @@ xcuserdata
 Pods
 Podfile.lock
 *.profraw
+CoreGraphics.gcno
+CoreLocation.gcno
+ObjectiveC.gcno
