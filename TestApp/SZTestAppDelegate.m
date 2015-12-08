@@ -35,7 +35,7 @@ extern void __gcov_flush(void);
     [Socialize storeConsumerSecret:@"2bf36ced-b9ab-4c5b-b054-8ca975d39c14"];
 
     
-    [SZTwitterUtils setConsumerKey:@"ZWxJ0zIK73n5HKwGLHolQ" consumerSecret:@"3K1LTY39QM9DPAqJzSZAD3L2EBEXXvuCdtTRr8NDd8"];
+    [SZTwitterUtils setConsumerKey:@"U18LUnVjULkkpGoJ6CoP3A" consumerSecret:@"RiIljnFq4RWV9LEaCM1ZLsAHf053vX2KyhJhmCOlBE"];
     [SZFacebookUtils setAppId:@"268891373224435"];
     [SZPinterestUtils setApplicationId:@"1431852"];
     [SZWhatsAppUtils setShowInShare:YES];
