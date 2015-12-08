@@ -4470,9 +4470,6 @@
 					487047C417EEFB03008D5741 = {
 						TestTargetID = AA00858F158D2B1100480399;
 					};
-					AA00858F158D2B1100480399 = {
-						DevelopmentTeam = 6QWWQR8948;
-					};
 				};
 			};
 			buildConfigurationList = AA00858A158D2B1100480399 /* Build configuration list for PBXProject "Socialize" */;
@@ -6377,6 +6374,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"/**",
@@ -6408,6 +6406,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"/**",
