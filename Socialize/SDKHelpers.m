@@ -268,7 +268,7 @@ SZPostDataBuilderBlock SZDefaultLinkPostData() {
                                            nil];
         SZSocialNetworkPostData *postData = [[SZSocialNetworkPostData alloc] init];
         postData.params = postParams;
-        postData.path = @"me/links";
+        postData.path = @"me/feed";
         postData.entity = [activity entity];
         postData.propagationInfo = [activity propagationInfoResponse];
         
