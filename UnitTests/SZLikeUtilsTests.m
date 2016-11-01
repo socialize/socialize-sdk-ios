@@ -139,7 +139,7 @@
     __block BOOL willPostCalled = NO;
     options.willAttemptPostingToSocialNetworkBlock = ^(SZSocialNetwork network, SZSocialNetworkPostData *postData) {
         GHAssertEquals(network, SZSocialNetworkFacebook, @"Should be facebook");
-        GHAssertEqualStrings(postData.path, @"me/feed", @"Should be links endpoint");
+        GHAssertEqualStrings(postData.path, @"me/feed", @"Should be feed endpoint");
         willPostCalled = YES;
     };
     
@@ -155,7 +155,7 @@
     };
     
     [self succeedFacebookPostWithVerify:^void(NSString *path, NSDictionary *params) {
-        GHAssertEqualStrings(path, @"me/feed", @"Should be links endpoint");
+        GHAssertEqualStrings(path, @"me/feed", @"Should be feed endpoint");
     }];
     
     [self succeedLikeCreateWithVerify:nil];
